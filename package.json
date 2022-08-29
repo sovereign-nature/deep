@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "eslint-config-sni": "*",
+    "@sni/prettier-config": "*",
     "prettier": "latest",
     "turbo": "latest",
     "husky": "8.0.1",
