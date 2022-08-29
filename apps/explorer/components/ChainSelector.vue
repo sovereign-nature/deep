@@ -4,7 +4,7 @@
       <label tabindex="0" class="btn m-2 rounded-full">
         <div class="placeholder avatar">
           <div class="w-10 rounded-full bg-neutral-focus text-neutral-content">
-            <span class="text-md">K</span>
+            <span>K</span>
           </div>
         </div>
         <span class="mx-3">Select network</span>

@@ -1,10 +1,15 @@
 {
   "editor.formatOnSave": true,
+  "eslint.workingDirectories": [
+    { "directory": "apps/explorer", "!cwd": false }
+  ],
   "cSpell.words": [
+    "Ceuvel",
     "daisyui",
     "ipfs",
     "Kusama",
     "mapbox",
+    "mapboxgl",
     "moonbase",
     "nomicfoundation",
     "nomiclabs",

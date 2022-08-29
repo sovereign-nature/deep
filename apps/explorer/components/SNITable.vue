@@ -21,9 +21,7 @@
             <td class="bg-inherit font-light">001</td>
             <td class="bg-inherit font-light">Leo Sabotus</td>
             <td class="bg-inherit font-light">
-              <span class="rounded-md border border-2 p-2"
-                >Preserved Specimen</span
-              >
+              <span class="rounded-md border-2 p-2">Preserved Specimen</span>
             </td>
             <td class="bg-inherit font-light">01-01-2022</td>
             <td class="bg-inherit font-light">12-12-2022</td>
@@ -34,9 +32,7 @@
             <td class="bg-inherit font-light">002</td>
             <td class="bg-inherit font-light">Leo Supremus</td>
             <td class="bg-inherit font-light">
-              <span class="rounded-md border border-2 p-2"
-                >Preserved Specimen</span
-              >
+              <span class="rounded-md border-2 p-2">Preserved Specimen</span>
             </td>
             <td class="bg-inherit font-light">01-01-2022</td>
             <td class="bg-inherit font-light">12-12-2022</td>

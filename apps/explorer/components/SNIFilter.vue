@@ -33,7 +33,7 @@
             <input
               id="default-search"
               type="search"
-              class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder-white focus:outline-none"
+              class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder:text-white focus:outline-none"
               placeholder="Search Name or Id..."
               required
             />
@@ -79,7 +79,7 @@
               <input
                 datepicker
                 type="text"
-                class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder-white focus:outline-none"
+                class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder:text-white focus:outline-none"
                 placeholder="Created at"
               />
             </div>
@@ -106,7 +106,7 @@
               <input
                 datepicker
                 type="text"
-                class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder-white focus:outline-none"
+                class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder:text-white focus:outline-none"
                 placeholder="Updated at"
               />
             </div>
@@ -141,7 +141,7 @@
         <input
           id="default-search"
           type="search"
-          class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder-white focus:outline-none"
+          class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder:text-white focus:outline-none"
           placeholder="Search Name or Id..."
           required
         />
@@ -181,7 +181,7 @@
           <input
             datepicker
             type="text"
-            class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder-white focus:outline-none"
+            class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder:text-white focus:outline-none"
             placeholder="Created at"
           />
         </div>
@@ -206,7 +206,7 @@
           <input
             datepicker
             type="text"
-            class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder-white focus:outline-none"
+            class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder:text-white focus:outline-none"
             placeholder="Updated at"
           />
         </div>
