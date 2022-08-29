@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a class="pl-5 hidden md:block">
+    <a class="hidden pl-5 md:block">
       <img src="~/assets/images/wallet.svg" />
     </a>
     <li class="flex md:hidden">

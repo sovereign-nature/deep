@@ -1,6 +1,6 @@
 <!-- eslint-disable -->
 <template>
-  <div id="map" class="w-full h-screen"></div>
+  <div id="map" class="h-screen w-full"></div>
 </template>
 
 <script lang="ts">

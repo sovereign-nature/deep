@@ -2,8 +2,8 @@
   <div>
     <div class="dropdown hidden md:block">
       <label tabindex="0" class="btn m-2 rounded-full">
-        <div class="avatar placeholder">
-          <div class="bg-neutral-focus text-neutral-content rounded-full w-10">
+        <div class="placeholder avatar">
+          <div class="w-10 rounded-full bg-neutral-focus text-neutral-content">
             <span class="text-md">K</span>
           </div>
         </div>
@@ -22,12 +22,12 @@
       </label>
       <ul
         tabindex="0"
-        class="dropdown-content menu p-2 shadow bg-neutral rounded-box w-52"
+        class="dropdown-content menu rounded-box w-52 bg-neutral p-2 shadow"
       >
         <li class="flex">
-          <div class="avatar placeholder">
+          <div class="placeholder avatar">
             <div
-              class="bg-neutral-focus text-neutral-content rounded-full w-10"
+              class="w-10 rounded-full bg-neutral-focus text-neutral-content"
             >
               <img src="~/assets/images/dot.svg" alt="Polkadot" />
             </div>
@@ -35,9 +35,9 @@
           </div>
         </li>
         <li class="flex">
-          <div class="avatar placeholder">
+          <div class="placeholder avatar">
             <div
-              class="bg-neutral-focus text-neutral-content rounded-full w-10"
+              class="w-10 rounded-full bg-neutral-focus text-neutral-content"
             >
               <img src="~/assets/images/ksm.svg" alt="Kusama" />
             </div>
@@ -47,13 +47,13 @@
       </ul>
     </div>
     <!-- Mobile  menu -->
-    <div class="dropdown dropdown-left md:hidden">
+    <div class="dropdown-left dropdown md:hidden">
       <label tabindex="0" class="btn btn-ghost btn-circle">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          class="inline-block w-5 h-5 stroke-current"
+          class="inline-block h-5 w-5 stroke-current"
         >
           <path
             stroke-linecap="round"
@@ -65,13 +65,13 @@
       </label>
       <ul
         tabindex="0"
-        class="dropdown-content menu menu-compact p-2 shadow bg-neutral rounded-box w-52"
+        class="dropdown-content menu rounded-box menu-compact w-52 bg-neutral p-2 shadow"
       >
         <h2>Select network</h2>
         <li class="flex">
-          <div class="avatar placeholder">
+          <div class="placeholder avatar">
             <div
-              class="bg-neutral-focus text-neutral-content rounded-full w-10"
+              class="w-10 rounded-full bg-neutral-focus text-neutral-content"
             >
               <img src="~/assets/images/dot.svg" alt="Polkadot" />
             </div>
@@ -79,9 +79,9 @@
           </div>
         </li>
         <li class="flex">
-          <div class="avatar placeholder">
+          <div class="placeholder avatar">
             <div
-              class="bg-neutral-focus text-neutral-content rounded-full w-10"
+              class="w-10 rounded-full bg-neutral-focus text-neutral-content"
             >
               <img src="~/assets/images/ksm.svg" alt="Kusama" />
             </div>

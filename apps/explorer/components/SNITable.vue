@@ -1,27 +1,27 @@
 <template>
   <div class="flex w-full justify-center">
-    <div class="overflow-x-auto w-full">
+    <div class="w-full overflow-x-auto">
       <table class="table w-full">
         <!-- head -->
         <thead>
-          <tr class="bg-neutral text-white border-b-2 border-primary">
-            <th class="bg-inherit text-inherit font-light">Id</th>
-            <th class="bg-inherit text-inherit font-light">Name</th>
-            <th class="bg-inherit text-inherit font-light">Location</th>
-            <th class="bg-inherit text-inherit font-light">Created</th>
-            <th class="bg-inherit text-inherit font-light">Updated</th>
-            <th class="bg-inherit text-inherit font-light">
+          <tr class="border-b-2 border-primary bg-neutral text-white">
+            <th class="bg-inherit font-light text-inherit">Id</th>
+            <th class="bg-inherit font-light text-inherit">Name</th>
+            <th class="bg-inherit font-light text-inherit">Location</th>
+            <th class="bg-inherit font-light text-inherit">Created</th>
+            <th class="bg-inherit font-light text-inherit">Updated</th>
+            <th class="bg-inherit font-light text-inherit">
               Conservation status
             </th>
           </tr>
         </thead>
         <tbody>
           <!-- row 1 -->
-          <tr class="bg-neutral text-white border-b-2 border-primary">
+          <tr class="border-b-2 border-primary bg-neutral text-white">
             <td class="bg-inherit font-light">001</td>
             <td class="bg-inherit font-light">Leo Sabotus</td>
             <td class="bg-inherit font-light">
-              <span class="border border-2 rounded-md p-2"
+              <span class="rounded-md border border-2 p-2"
                 >Preserved Specimen</span
               >
             </td>
@@ -30,11 +30,11 @@
             <td class="bg-inherit font-light">Kenya</td>
           </tr>
           <!-- row 2 -->
-          <tr class="bg-neutral text-white border-primary">
+          <tr class="border-primary bg-neutral text-white">
             <td class="bg-inherit font-light">002</td>
             <td class="bg-inherit font-light">Leo Supremus</td>
             <td class="bg-inherit font-light">
-              <span class="border border-2 rounded-md p-2"
+              <span class="rounded-md border border-2 p-2"
                 >Preserved Specimen</span
               >
             </td>

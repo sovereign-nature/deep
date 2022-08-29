@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-col gap-6 h-full">
+  <div class="flex h-full flex-col gap-6">
     <div
-      class="border-2 rounded-lg border-primary py-4 px-8 bg-base-content text-white"
+      class="rounded-lg border-2 border-primary bg-base-content py-4 px-8 text-white"
     >
-      <h1 class="text-4xl mb-4">Leo Sabotus</h1>
+      <h1 class="mb-4 text-4xl">Leo Sabotus</h1>
       <ul>
         <li class="my-2">Id: 001</li>
         <li class="my-2">Conservation status: Preserved Specimen</li>
@@ -12,15 +12,15 @@
         <li class="my-2">Location: Kenya</li>
         <li class="my-4">
           <NuxtLink class="min-w-full" to="/detail">
-            <button class="btn btn-primary text-md min-w-full">Details</button>
+            <button class="text-md btn btn-primary min-w-full">Details</button>
           </NuxtLink>
         </li>
       </ul>
     </div>
     <div
-      class="border-2 rounded-lg border-primary py-4 px-8 bg-base-content text-white"
+      class="rounded-lg border-2 border-primary bg-base-content py-4 px-8 text-white"
     >
-      <h1 class="text-4xl mb-4">Leo Supremus</h1>
+      <h1 class="mb-4 text-4xl">Leo Supremus</h1>
       <ul>
         <li class="my-2">Id: 002</li>
         <li class="my-2">Conservation status: Preserved Specimen</li>
@@ -29,7 +29,7 @@
         <li class="my-2">Location: Kenya</li>
         <li class="my-4">
           <NuxtLink class="min-w-full" to="/detail">
-            <button class="btn btn-primary text-md min-w-full">Details</button>
+            <button class="text-md btn btn-primary min-w-full">Details</button>
           </NuxtLink>
         </li>
       </ul>

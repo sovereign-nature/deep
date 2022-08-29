@@ -2,21 +2,21 @@
   <div>
     <div
       tabindex="1"
-      class="collapse collapse-arrow text-white bg-neutral lg:hidden"
+      class="collapse collapse-arrow bg-neutral text-white lg:hidden"
     >
       <input type="checkbox" class="peer" />
-      <div class="collapse-title text-xl w-full">Filters</div>
-      <div class="collapse-content pr-24 border-t-2">
+      <div class="collapse-title w-full text-xl">Filters</div>
+      <div class="collapse-content border-t-2 pr-24">
         <form class="mt-6">
           <div
-            class="relative border-2 p-2 border-white bg-neutral rounded-full w-full"
+            class="relative w-full rounded-full border-2 border-white bg-neutral p-2"
           >
             <div
-              class="flex absolute inset-y-0 left-0 items-center p-2 pointer-events-none bg-inherit rounded-full"
+              class="pointer-events-none absolute inset-y-0 left-0 flex items-center rounded-full bg-inherit p-2"
             >
               <svg
                 aria-hidden="true"
-                class="w-5 h-5 text-white"
+                class="h-5 w-5 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -33,14 +33,14 @@
             <input
               id="default-search"
               type="search"
-              class="block h-full pl-12 w-full focus:outline-none text-sm bg-inherit rounded-full text-white placeholder-white"
+              class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder-white focus:outline-none"
               placeholder="Search Name or Id..."
               required
             />
           </div>
-          <div class="flex flex-col gap-4 md:flex-row mt-6">
+          <div class="mt-6 flex flex-col gap-4 md:flex-row">
             <select
-              class="select border-2 border-accent bg-neutral text-white rounded-full"
+              class="select rounded-full border-2 border-accent bg-neutral text-white"
             >
               <option disabled selected class="text-white">
                 Conservation status
@@ -50,21 +50,21 @@
               <option>Machine observation</option>
             </select>
             <select
-              class="select border-2 bg-neutral border-accent text-white rounded-full"
+              class="select rounded-full border-2 border-accent bg-neutral text-white"
             >
               <option disabled selected class="text-white">Location</option>
               <option>Kenya</option>
               <option>Netherlands</option>
             </select>
             <div
-              class="relative border-2 border-accent p-2 bg-neutral rounded-full"
+              class="relative rounded-full border-2 border-accent bg-neutral p-2"
             >
               <div
-                class="flex absolute inset-y-0 left-0 items-center p-2 pointer-events-none bg-inherit rounded-full"
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center rounded-full bg-inherit p-2"
               >
                 <svg
                   aria-hidden="true"
-                  class="w-5 h-5 text-white"
+                  class="h-5 w-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -79,19 +79,19 @@
               <input
                 datepicker
                 type="text"
-                class="block h-full pl-12 w-full focus:outline-none text-sm bg-inherit rounded-full text-white placeholder-white"
+                class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder-white focus:outline-none"
                 placeholder="Created at"
               />
             </div>
             <div
-              class="border-2 border-accent relative p-2 bg-neutral rounded-full"
+              class="relative rounded-full border-2 border-accent bg-neutral p-2"
             >
               <div
-                class="flex absolute inset-y-0 left-0 items-center p-2 pointer-events-none bg-inherit rounded-full"
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center rounded-full bg-inherit p-2"
               >
                 <svg
                   aria-hidden="true"
-                  class="w-5 h-5 text-white"
+                  class="h-5 w-5 text-white"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +106,7 @@
               <input
                 datepicker
                 type="text"
-                class="block h-full pl-12 w-full focus:outline-none text-sm bg-inherit rounded-full text-white placeholder-white"
+                class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder-white focus:outline-none"
                 placeholder="Updated at"
               />
             </div>
@@ -115,16 +115,16 @@
       </div>
     </div>
     <!-- Mobile -->
-    <form class="hidden lg:flex w-full py-12">
+    <form class="hidden w-full py-12 lg:flex">
       <div
-        class="w-1/2 relative border-2 border-white bg-neutral rounded-full mr-5"
+        class="relative mr-5 w-1/2 rounded-full border-2 border-white bg-neutral"
       >
         <div
-          class="flex absolute inset-y-0 left-0 items-center p-3 pointer-events-none bg-inherit rounded-full"
+          class="pointer-events-none absolute inset-y-0 left-0 flex items-center rounded-full bg-inherit p-3"
         >
           <svg
             aria-hidden="true"
-            class="w-5 h-5 text-white"
+            class="h-5 w-5 text-white"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -141,13 +141,13 @@
         <input
           id="default-search"
           type="search"
-          class="block h-full pl-12 w-full focus:outline-none text-sm bg-inherit rounded-full text-white placeholder-white"
+          class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder-white focus:outline-none"
           placeholder="Search Name or Id..."
           required
         />
       </div>
       <div class="flex w-full justify-end">
-        <select class="select max-w-xs bg-neutral text-white rounded-full">
+        <select class="select max-w-xs rounded-full bg-neutral text-white">
           <option disabled selected class="text-white">
             Conservation status
           </option>
@@ -155,18 +155,18 @@
           <option>Human observation</option>
           <option>Machine observation</option>
         </select>
-        <select class="select max-w-xs bg-neutral text-white rounded-full">
+        <select class="select max-w-xs rounded-full bg-neutral text-white">
           <option disabled selected class="text-white">Location</option>
           <option>Kenya</option>
           <option>Netherlands</option>
         </select>
-        <div class="w-1/2 relative bg-neutral rounded-full">
+        <div class="relative w-1/2 rounded-full bg-neutral">
           <div
-            class="flex absolute inset-y-0 left-0 items-center p-3 pointer-events-none bg-inherit rounded-full"
+            class="pointer-events-none absolute inset-y-0 left-0 flex items-center rounded-full bg-inherit p-3"
           >
             <svg
               aria-hidden="true"
-              class="w-5 h-5 text-white"
+              class="h-5 w-5 text-white"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -181,17 +181,17 @@
           <input
             datepicker
             type="text"
-            class="block h-full pl-12 w-full focus:outline-none text-sm bg-inherit rounded-full text-white placeholder-white"
+            class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder-white focus:outline-none"
             placeholder="Created at"
           />
         </div>
-        <div class="w-1/2 relative bg-neutral rounded-full">
+        <div class="relative w-1/2 rounded-full bg-neutral">
           <div
-            class="flex absolute inset-y-0 left-0 items-center p-3 pointer-events-none bg-inherit rounded-full"
+            class="pointer-events-none absolute inset-y-0 left-0 flex items-center rounded-full bg-inherit p-3"
           >
             <svg
               aria-hidden="true"
-              class="w-5 h-5 text-white"
+              class="h-5 w-5 text-white"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -206,7 +206,7 @@
           <input
             datepicker
             type="text"
-            class="block h-full pl-12 w-full focus:outline-none text-sm bg-inherit rounded-full text-white placeholder-white"
+            class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder-white focus:outline-none"
             placeholder="Updated at"
           />
         </div>
