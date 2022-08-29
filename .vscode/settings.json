@@ -1,4 +1,10 @@
 {
   "editor.formatOnSave": true,
-  "cSpell.enabled": false
+  "cSpell.words": [
+    "ipfs",
+    "moonbase",
+    "nomicfoundation",
+    "nomiclabs",
+    "solhint"
+  ]
 }
