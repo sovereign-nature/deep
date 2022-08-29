@@ -1,10 +1,17 @@
 {
   "editor.formatOnSave": true,
   "cSpell.words": [
+    "daisyui",
     "ipfs",
+    "mapbox",
     "moonbase",
     "nomicfoundation",
     "nomiclabs",
-    "solhint"
+    "nuxt",
+    "nuxtjs",
+    "solhint",
+    "tailwindcss",
+    "vitepress",
+    "vueuse"
   ]
 }

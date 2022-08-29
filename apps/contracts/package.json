@@ -6,24 +6,21 @@
     "deploy:local": "hardhat run scripts/deploy.ts",
     "deploy:moonbase": "hardhat run --network moonbase scripts/deploy.ts",
     "coverage": "hardhat coverage",
-    "lint": "solhint contracts/**/*.sol",
-    "lint:tests": "eslint **/*.ts"
+    "lint:contracts": "solhint contracts/**/*.sol",
+    "lint:tests": "eslint **/*.ts",
+    "lint": "npm run lint:contracts && npm run lint:tests"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "1.0.2",
     "@nomiclabs/hardhat-ethers": "2.1.1",
     "@openzeppelin/contracts": "4.7.3",
     "@openzeppelin/hardhat-upgrades": "1.20.0",
-    "@typescript-eslint/eslint-plugin": "5.35.1",
-    "@typescript-eslint/parser": "5.35.1",
     "eslint": "8.22.0",
-    "eslint-config-prettier": "8.5.0",
+    "eslint-config-sni": "*",
     "ethers": "5.7.0",
     "hardhat": "2.10.2",
     "solhint": "3.3.7",
-    "solidity-coverage": "0.7.21"
-  },
-  "dependencies": {
+    "solidity-coverage": "0.7.21",
     "dotenv": "16.0.1"
   }
 }

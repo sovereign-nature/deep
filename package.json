@@ -10,13 +10,15 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{js,ts,vue,md}\"",
     "prepare": "husky install"
   },
   "devDependencies": {
-    "eslint-config-custom": "*",
+    "eslint-config-sni": "*",
     "prettier": "latest",
-    "turbo": "latest"
+    "turbo": "latest",
+    "husky": "8.0.1",
+    "lint-staged": "13.0.3"
   },
   "engines": {
     "npm": ">=8.0.0",

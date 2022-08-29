@@ -6,6 +6,7 @@
       "outputs": ["dist/**", ".next/**"]
     },
     "lint": {
+      "dependsOn": ["$PRIVATE_KEY", "$OWNER_ADDRESS", "$LATEST_ADDRESS"],
       "outputs": []
     },
     "dev": {
