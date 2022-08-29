@@ -1,27 +1,18 @@
 {
-  "name": "docs",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --port 3001",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+  "name": "@sni/docs",
+  "engines": {
+    "npm": "^8.12",
+    "node": "^16.15"
   },
-  "dependencies": {
-    "next": "12.2.3",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "ui": "*"
+  "scripts": {
+    "dev": "vitepress dev pages",
+    "build": "vitepress build pages",
+    "serve": "vitepress serve pages"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "eslint": "7.32.0",
-    "eslint-config-custom": "*",
-    "next-transpile-modules": "9.0.0",
-    "tsconfig": "*",
-    "@types/node": "^17.0.12",
-    "@types/react": "17.0.48",
-    "typescript": "^4.5.3"
+    "@vueuse/core": "^9.1.0",
+    "vitepress": "1.0.0-alpha.5",
+    "vue": "^3.2.37",
+    "vitepress-plugin-mermaid": "^1.0.2"
   }
 }
