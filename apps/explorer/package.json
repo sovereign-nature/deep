@@ -1,0 +1,34 @@
+{
+  "private": true,
+  "name": "@sni/explorer",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "lint:all": "eslint \"**/*.{vue,ts,js}\"",
+    "lint:staged": "npx lint-staged",
+    "prettier:all": "npx prettier . --write",
+    "prettier:staged": "npx pretty-quick --staged",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "devDependencies": {
+    "@nuxtjs/color-mode": "3.1.4",
+    "@nuxtjs/eslint-config-typescript": "10.0.0",
+    "@nuxtjs/tailwindcss": "5.3.2",
+    "@types/mapbox-gl": "2.7.5",
+    "@typescript-eslint/eslint-plugin": "5.35.1",
+    "@typescript-eslint/parser": "5.35.1",
+    "daisyui": "2.24.0",
+    "eslint": "8.23.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-vue": "9.4.0",
+    "husky": "8.0.1",
+    "lint-staged": "13.0.3",
+    "mapbox-gl": "2.10.0",
+    "nuxt": "3.0.0-rc.8",
+    "prettier": "2.7.1",
+    "pretty-quick": "3.1.3",
+    "typescript": "4.7.4",
+    "vite-plugin-eslint": "1.8.1"
+  }
+}
