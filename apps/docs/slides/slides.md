@@ -1,6 +1,6 @@
 ---
 marp: true
-footer: "Sovereign Nature Initiative"
+footer: 'Sovereign Nature Initiative'
 ---
 
 # Sovereign Nature Identifier
