@@ -2,6 +2,7 @@
   "name": "@sni/contracts",
   "scripts": {
     "compile": "hardhat compile",
+    "build": "npm run compile",
     "test": "hardhat test",
     "deploy:local": "hardhat run scripts/deploy.ts",
     "deploy:moonbase": "hardhat run --network moonbase scripts/deploy.ts",
