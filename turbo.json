@@ -8,7 +8,8 @@
         ".output/**",
         "artifacts/**",
         "cache/**",
-        "typechain-types/**"
+        "typechain-types/**",
+        "pages/.vitepress/dist/**"
       ]
     },
     "lint": {
