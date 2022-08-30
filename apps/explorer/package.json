@@ -2,7 +2,8 @@
   "private": true,
   "name": "@sni/explorer",
   "scripts": {
-    "build": "nuxt build",
+    "build:server": "nuxt build",
+    "build": "npm run generate",
     "dev": "nuxt dev",
     "lint": "eslint \"**/*.{vue,ts,js}\"",
     "generate": "nuxt generate",
@@ -22,7 +23,7 @@
     "mapbox-gl": "2.10.0",
     "nuxt": "3.0.0-rc.8",
     "prettier": "2.7.1",
-    "@sni/prettier-config":"*",
+    "@sni/prettier-config": "*",
     "typescript": "4.7.4",
     "vite-plugin-eslint": "1.8.1"
   }
