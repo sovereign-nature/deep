@@ -13,6 +13,14 @@
     "format": "prettier --write \"**/*.{js,ts,vue,md}\"",
     "prepare": "husky install"
   },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "eslint --quiet --fix"
+    ],
+    "*.{json,md,js,ts,vue}": [
+      "prettier --write"
+    ]
+  },
   "devDependencies": {
     "eslint-config-sni": "*",
     "@sni/prettier-config": "*",
