@@ -1,9 +1,5 @@
 {
   "name": "@sni/docs",
-  "engines": {
-    "npm": "^8.12",
-    "node": "^16.15"
-  },
   "scripts": {
     "dev": "vitepress dev pages",
     "build": "vitepress build pages",
