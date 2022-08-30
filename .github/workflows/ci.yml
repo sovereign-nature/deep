@@ -1,0 +1,24 @@
+name: Code Quality
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    # To use Remote Caching, uncomment the next lines and follow the steps below.
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      TURBO_REMOTE_ONLY: true
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+      - run: npm run test

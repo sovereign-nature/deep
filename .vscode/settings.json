@@ -18,6 +18,7 @@
     "Polkadot",
     "solhint",
     "tailwindcss",
+    "typechain",
     "vitepress",
     "vueuse"
   ]

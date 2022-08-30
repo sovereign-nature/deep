@@ -3,7 +3,13 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": [
+        "dist/**",
+        ".output/**",
+        "artifacts/**",
+        "cache/**",
+        "typechain-types/**"
+      ]
     },
     "lint": {
       "dependsOn": ["$PRIVATE_KEY", "$OWNER_ADDRESS", "$LATEST_ADDRESS"],
@@ -13,6 +19,7 @@
       "cache": false
     },
     "test": {
+      "dependsOn": ["^build"],
       "outputs": []
     }
   }
