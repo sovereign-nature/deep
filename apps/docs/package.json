@@ -14,7 +14,7 @@
     "vitepress": "1.0.0-alpha.5",
     "vue": "^3.2.37",
     "vitepress-plugin-mermaid": "^1.0.2",
-    "eslint": "8.22.0",
+    "eslint": "8.23.0",
     "eslint-config-sni": "*",
     "eslint-config-sni-vue": "*"
   }
