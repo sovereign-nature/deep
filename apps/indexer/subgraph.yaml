@@ -1,0 +1,44 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SovereignNatureIdentifier
+    network: mbase
+    source:
+      address: "0xB72a77d425aad2faAE3F695846b337E7d65D098e"
+      abi: SovereignNatureIdentifier
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - StatusSet
+        - TokenURISet
+        - Transfer
+      abis:
+        - name: SovereignNatureIdentifier
+          file: ./abis/SovereignNatureIdentifier.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: StatusSet(indexed uint256,uint256)
+          handler: handleStatusSet
+        - event: TokenURISet(indexed uint256,string)
+          handler: handleTokenURISet
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/sovereign-nature-identifier.ts

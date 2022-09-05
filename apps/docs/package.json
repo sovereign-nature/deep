@@ -1,5 +1,6 @@
 {
   "name": "@sni/docs",
+  "version": "0.0.0",
   "scripts": {
     "dev": "vitepress dev pages",
     "build": "vitepress build pages",
@@ -10,6 +11,7 @@
     "vitepress": "1.0.0-alpha.13",
     "vue": "3.2.38",
     "vitepress-plugin-mermaid": "1.0.2",
+    "mermaid": "9.1.6",
     "eslint": "8.23.0",
     "eslint-config-sni": "*",
     "eslint-config-sni-vue": "*"

@@ -1,13 +1,15 @@
 {
   "private": true,
   "name": "@sni/explorer",
+  "version": "0.0.0",
   "scripts": {
     "build:server": "nuxt build",
     "build": "npm run generate",
     "dev": "nuxt dev",
     "lint": "eslint \"**/*.{vue,ts,js}\"",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@nuxtjs/color-mode": "3.1.4",

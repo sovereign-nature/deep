@@ -31,9 +31,8 @@
     "lint-staged": "13.0.3"
   },
   "engines": {
-    "npm": ">=8.0.0",
     "node": ">=16.0.0"
   },
   "dependencies": {},
-  "packageManager": "npm@8.18.0"
+  "packageManager": "yarn@1.22.19"
 }
