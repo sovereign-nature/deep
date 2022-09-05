@@ -13,16 +13,16 @@
     "lint": "npm run lint:contracts && npm run lint:tests"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "1.0.2",
-    "@nomiclabs/hardhat-ethers": "2.1.1",
     "@nomicfoundation/hardhat-chai-matchers": "1.0.3",
     "@nomicfoundation/hardhat-network-helpers": "1.0.5",
+    "@nomicfoundation/hardhat-toolbox": "1.0.2",
+    "@nomiclabs/hardhat-ethers": "2.1.1",
     "@nomiclabs/hardhat-etherscan": "3.1.0",
     "@openzeppelin/contracts": "4.7.3",
     "@openzeppelin/hardhat-upgrades": "1.20.0",
-    "@typechain/hardhat": "6.1.2",
     "@typechain/ethers-v5": "10.1.0",
-    "typechain": "8.1.0",
+    "@typechain/hardhat": "6.1.2",
+    "@types/mocha": "^9.1.1",
     "chai": "4.3.6",
     "dotenv": "16.0.1",
     "eslint": "8.23.0",
@@ -32,6 +32,7 @@
     "hardhat-gas-reporter": "1.0.8",
     "solhint": "3.3.7",
     "solidity-coverage": "0.7.21",
-    "ts-node": "10.9.1"
+    "ts-node": "10.9.1",
+    "typechain": "8.1.0"
   }
 }
