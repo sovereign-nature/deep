@@ -1,5 +1,5 @@
 {
-  "name": "sni",
+  "name": "@sni/indexer",
   "version": "0.0.0",
   "license": "UNLICENSED",
   "scripts": {
