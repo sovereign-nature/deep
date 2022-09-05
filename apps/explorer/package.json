@@ -22,7 +22,7 @@
     "eslint-config-sni": "*",
     "eslint-config-sni-vue": "*",
     "mapbox-gl": "2.10.0",
-    "nuxt": "3.0.0-rc.8",
+    "nuxt": "3.0.0-rc.9",
     "prettier": "2.7.1",
     "@sni/prettier-config": "*",
     "typescript": "4.7.4",
