@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "@sni/explorer",
+  "version": "0.0.0",
   "scripts": {
     "build:server": "nuxt build",
     "build": "npm run generate",

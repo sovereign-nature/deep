@@ -1,5 +1,6 @@
 {
   "name": "@sni/docs",
+  "version": "0.0.0",
   "scripts": {
     "dev": "vitepress dev pages",
     "build": "vitepress build pages",
