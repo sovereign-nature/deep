@@ -22,6 +22,11 @@
     "test": {
       "dependsOn": ["^build"],
       "outputs": []
+    },
+    "codegen": {
+      "outputs": [
+        "generated/**"
+      ]
     }
   }
 }

@@ -11,6 +11,7 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
+    "codegen": "turbo run codegen",
     "format": "prettier --write \"**/*.{js,ts,vue,md}\"",
     "prepare": "husky install"
   },
