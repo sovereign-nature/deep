@@ -8,8 +8,7 @@
     "dev": "nuxt dev",
     "lint": "eslint \"**/*.{vue,ts,js}\"",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preview": "nuxt preview"
   },
   "devDependencies": {
     "@nuxtjs/color-mode": "3.1.4",
