@@ -24,7 +24,7 @@
     "nuxt": "3.0.0-rc.9",
     "prettier": "2.7.1",
     "@sni/prettier-config": "*",
-    "typescript": "4.7.4",
+    "typescript": "4.8.2",
     "vite-plugin-eslint": "1.8.1"
   }
 }
