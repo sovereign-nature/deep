@@ -3,7 +3,8 @@
   "name": "@sni/explorer",
   "version": "0.0.0",
   "scripts": {
-    "build": "nuxt build",
+    "build:ssr": "nuxt build",
+    "build": "nuxt generate",
     "dev": "nuxt dev",
     "lint": "eslint \"**/*.{vue,ts,js}\"",
     "generate": "nuxt generate",
