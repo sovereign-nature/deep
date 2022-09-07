@@ -1,18 +1,24 @@
 <template>
-  <NuxtLink
-    class="min-w-full grid grid-cols-6 place-items-center border-b-2 border-primary bg-neutral text-white py-4 last:border-none last:rounded-b-lg hover:bg-neutral-focus"
-    to="/detail"
-  >
-    <div class="bg-inherit font-light border-none">001</div>
-    <div class="bg-inherit font-light border-none">Leo Sabotus</div>
-    <div class="bg-inherit font-light border-none">
-      <span class="rounded-md border p-1">Preserved Specimen</span>
-    </div>
-    <div class="bg-inherit font-light border-none">01-01-2022</div>
-    <div class="bg-inherit font-light border-none">12-12-2022</div>
-    <div class="bg-inherit font-light border-none">Kenya</div>
-  </NuxtLink>
+  <div>
+    <NuxtLink
+      v-for="lion in lions"
+      :key="lion.id"
+      class="grid min-w-full grid-cols-6 place-items-center border-b-2 border-primary bg-neutral py-4 text-white last:rounded-b-lg last:border-none hover:bg-stone-800"
+      :to="{ path: 'detail', query: { id: lion.id } }"
+    >
+      <div class="border-none bg-inherit font-light">{{ lion.id }}</div>
+      <div class="border-none bg-inherit font-light">{{ lion.name }}</div>
+      <div class="border-none bg-inherit font-light">
+        <span class="rounded-md border p-1">{{ lion.conservationStatus }}</span>
+      </div>
+      <div class="border-none bg-inherit font-light">{{ lion.created }}</div>
+      <div class="border-none bg-inherit font-light">{{ lion.updated }}</div>
+      <div class="border-none bg-inherit font-light">{{ lion.location }}</div>
+    </NuxtLink>
+  </div>
 </template>
-<!-- <script lang="ts">
-const data = {}
-</script> -->
+<script lang="ts">
+export default {
+  props: ['lions']
+}
+</script>
