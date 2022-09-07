@@ -4,9 +4,9 @@
   >
     <div class="bg-inherit font-light text-inherit">Id</div>
     <div class="bg-inherit font-light text-inherit">Name</div>
-    <div class="bg-inherit font-light text-inherit">Location</div>
+    <div class="bg-inherit font-light text-inherit">Conservation status</div>
     <div class="bg-inherit font-light text-inherit">Created</div>
     <div class="bg-inherit font-light text-inherit">Updated</div>
-    <div class="bg-inherit font-light text-inherit">Conservation status</div>
+    <div class="bg-inherit font-light text-inherit">Location</div>
   </div>
 </template>
