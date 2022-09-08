@@ -5,12 +5,7 @@
   </div>
 </template>
 <script lang="ts">
-import { TableRow } from '~~/.nuxt/components'
-
 export default {
-  components: {
-    TableRow
-  },
   data() {
     return {
       lions: [
