@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { BigInt } from '@graphprotocol/graph-ts'
 import {
   SovereignNatureIdentifier,
@@ -27,6 +28,7 @@ export function handleApproval(event: Approval): void {
   }
 
   // BigInt and BigDecimal math are supported
+  // @ts-ignore
   entity.count = entity.count + BigInt.fromI32(1)
 
   // Entity fields can be set based on event parameters

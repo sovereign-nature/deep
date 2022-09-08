@@ -17,7 +17,7 @@
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
-      "eslint --quiet --fix"
+      "eslint --quiet"
     ],
     "*.{json,md,js,ts,vue}": [
       "prettier --write"
