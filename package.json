@@ -11,12 +11,13 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
+    "codegen": "turbo run codegen",
     "format": "prettier --write \"**/*.{js,ts,vue,md}\"",
     "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
-      "eslint --quiet --fix"
+      "eslint --quiet"
     ],
     "*.{json,md,js,ts,vue}": [
       "prettier --write"

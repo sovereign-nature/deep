@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/ban-types */
 import { newMockEvent } from 'matchstick-as'
 import { ethereum, Address, BigInt, Bytes } from '@graphprotocol/graph-ts'
 import {
@@ -14,8 +16,9 @@ import {
 export function createApprovalEvent(
   owner: Address,
   approved: Address,
-  tokenId: bigint
+  tokenId: BigInt
 ): Approval {
+  //@ts-ignore
   const approvalEvent = changetype<Approval>(newMockEvent())
 
   approvalEvent.parameters = []
@@ -41,6 +44,7 @@ export function createApprovalForAllEvent(
   operator: Address,
   approved: boolean
 ): ApprovalForAll {
+  //@ts-ignore
   const approvalForAllEvent = changetype<ApprovalForAll>(newMockEvent())
 
   approvalForAllEvent.parameters = []
@@ -63,6 +67,7 @@ export function createRoleAdminChangedEvent(
   previousAdminRole: Bytes,
   newAdminRole: Bytes
 ): RoleAdminChanged {
+  //@ts-ignore
   const roleAdminChangedEvent = changetype<RoleAdminChanged>(newMockEvent())
 
   roleAdminChangedEvent.parameters = []
@@ -91,6 +96,7 @@ export function createRoleGrantedEvent(
   account: Address,
   sender: Address
 ): RoleGranted {
+  //@ts-ignore
   const roleGrantedEvent = changetype<RoleGranted>(newMockEvent())
 
   roleGrantedEvent.parameters = []
@@ -113,6 +119,7 @@ export function createRoleRevokedEvent(
   account: Address,
   sender: Address
 ): RoleRevoked {
+  //@ts-ignore
   const roleRevokedEvent = changetype<RoleRevoked>(newMockEvent())
 
   roleRevokedEvent.parameters = []
@@ -131,9 +138,10 @@ export function createRoleRevokedEvent(
 }
 
 export function createStatusSetEvent(
-  tokenId: bigint,
-  status: bigint
+  tokenId: BigInt,
+  status: BigInt
 ): StatusSet {
+  //@ts-ignore
   const statusSetEvent = changetype<StatusSet>(newMockEvent())
 
   statusSetEvent.parameters = []
@@ -152,9 +160,10 @@ export function createStatusSetEvent(
 }
 
 export function createTokenURISetEvent(
-  tokenId: bigint,
+  tokenId: BigInt,
   tokenURI: string
 ): TokenURISet {
+  //@ts-ignore
   const tokenUriSetEvent = changetype<TokenURISet>(newMockEvent())
 
   tokenUriSetEvent.parameters = []
@@ -175,8 +184,9 @@ export function createTokenURISetEvent(
 export function createTransferEvent(
   from: Address,
   to: Address,
-  tokenId: bigint
+  tokenId: BigInt
 ): Transfer {
+  //@ts-ignore
   const transferEvent = changetype<Transfer>(newMockEvent())
 
   transferEvent.parameters = []

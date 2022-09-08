@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { BigInt } from '@graphprotocol/graph-ts'
 import {
   SovereignNatureIdentifier,
@@ -27,6 +28,7 @@ export function handleApproval(event: Approval): void {
   }
 
   // BigInt and BigDecimal math are supported
+  // @ts-ignore
   entity.count = entity.count + BigInt.fromI32(1)
 
   // Entity fields can be set based on event parameters
@@ -67,16 +69,32 @@ export function handleApproval(event: Approval): void {
   // - contract.tokenURI(...)
 }
 
-// export function handleApprovalForAll(event: ApprovalForAll): void {}
+export function handleApprovalForAll(event: ApprovalForAll): void {
+  const contract = SovereignNatureIdentifier.bind(event.address)
+  console.log(contract.statusOf(BigInt.fromI32(0)).toString())
+  console.log(event.address.toString())
+}
 
-// export function handleRoleAdminChanged(event: RoleAdminChanged): void {}
+export function handleRoleAdminChanged(event: RoleAdminChanged): void {
+  console.log(event.address.toString())
+}
 
-// export function handleRoleGranted(event: RoleGranted): void {}
+export function handleRoleGranted(event: RoleGranted): void {
+  console.log(event.address.toString())
+}
 
-// export function handleRoleRevoked(event: RoleRevoked): void {}
+export function handleRoleRevoked(event: RoleRevoked): void {
+  console.log(event.address.toString())
+}
 
-// export function handleStatusSet(event: StatusSet): void {}
+export function handleStatusSet(event: StatusSet): void {
+  console.log(event.address.toString())
+}
 
-// export function handleTokenURISet(event: TokenURISet): void {}
+export function handleTokenURISet(event: TokenURISet): void {
+  console.log(event.address.toString())
+}
 
-// export function handleTransfer(event: Transfer): void {}
+export function handleTransfer(event: Transfer): void {
+  console.log(event.address.toString())
+}
