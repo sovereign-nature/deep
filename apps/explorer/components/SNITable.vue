@@ -1,9 +1,11 @@
 <template>
   <div class="w-full border-collapse overflow-x-auto rounded-lg">
-    <TableHeader></TableHeader>
-    <TableRow :lions="lions"></TableRow>
+    <TableHeader :data="data"></TableHeader>
+    <TableRow :data="data"></TableRow>
   </div>
 </template>
-<script setup>
-const lions = useLions()
+<script lang="ts">
+export default {
+  props: ['data']
+}
 </script>
