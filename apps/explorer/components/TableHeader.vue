@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-cols-6 place-items-center border-b-2 border-primary bg-neutral py-3 text-white"
+    class="grid grid-flow-col auto-cols-fr place-items-center border-b-2 border-primary bg-neutral py-3 text-white"
   >
     <div
       v-for="(value, key) in data[0]"

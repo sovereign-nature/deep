@@ -3,7 +3,7 @@
     <NuxtLink
       v-for="lion in data"
       :key="lion.id"
-      class="grid min-w-full grid-cols-6 place-items-center border-b-2 border-primary bg-neutral py-4 text-white last:rounded-b-lg last:border-none hover:bg-stone-800"
+      class="grid grid-flow-col auto-cols-fr place-items-center border-b-2 border-primary bg-neutral py-4 text-white last:rounded-b-lg last:border-none hover:bg-stone-800"
       :to="{ path: 'detail', query: { id: lion.id } }"
     >
       <div
