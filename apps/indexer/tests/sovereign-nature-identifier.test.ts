@@ -51,7 +51,8 @@ describe('Describe entity assertions', () => {
       'approved',
       '0x0000000000000000000000000000000000000001'
     )
-    //TODO: Write proper tests
+    //Write proper tests
+
     // assert.fieldEquals(
     //   'ExampleEntity',
     //   '0xa16081f360e3847006db660bae1c6d1b2e17ec2a',
