@@ -9,7 +9,8 @@
         "artifacts/**",
         "cache/**",
         "typechain-types/**",
-        "pages/.vitepress/dist/**"
+        "pages/.vitepress/dist/**",
+        ".nuxt/"
       ]
     },
     "lint": {
@@ -22,6 +23,9 @@
     "test": {
       "dependsOn": ["^build"],
       "outputs": []
+    },
+    "codegen": {
+      "outputs": ["generated/**"]
     }
   }
 }
