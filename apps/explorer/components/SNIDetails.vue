@@ -6,19 +6,22 @@
     >
       <h1 class="mb-4 text-4xl">{{ detail[0].name }}</h1>
       <ul>
-        <li class="my-2">Id: {{ detail[0].id }}</li>
-        <li class="my-2">
-          Conservation status: {{ detail[0].preservedSpecimen }}
+        <li v-for="(value, key) in detail[0]" :key="key" class="my-2">
+          {{ splitCamelCase(key) }}: {{ value }}
         </li>
-        <li class="my-2">Created: {{ detail[0].created }}</li>
-        <li class="my-2">Updated: {{ detail[0].updated }}</li>
-        <li class="my-2">Location: {{ detail[0].location }}</li>
       </ul>
     </div>
   </div>
 </template>
 <script lang="ts">
 export default {
-  props: ['detail']
+  props: ['detail'],
+  methods: {
+    splitCamelCase: function (text: string): string {
+      return (
+        text.charAt(0).toUpperCase() + text.slice(1).replace(/[A-Z]/g, ' $&')
+      )
+    }
+  }
 }
 </script>
