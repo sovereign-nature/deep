@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "1.0.3",
-    "@nomicfoundation/hardhat-network-helpers": "1.0.5",
+    "@nomicfoundation/hardhat-network-helpers": "1.0.6",
     "@nomicfoundation/hardhat-toolbox": "1.0.2",
     "@nomiclabs/hardhat-ethers": "2.1.1",
     "@nomiclabs/hardhat-etherscan": "3.1.0",
@@ -28,10 +28,10 @@
     "eslint": "8.23.0",
     "eslint-config-sni": "*",
     "ethers": "5.7.0",
-    "hardhat": "2.11.0",
+    "hardhat": "2.11.1",
     "hardhat-gas-reporter": "1.0.9",
     "solhint": "3.3.7",
-    "solidity-coverage": "0.7.21",
+    "solidity-coverage": "0.8.1",
     "ts-node": "10.9.1",
     "typechain": "8.1.0"
   }
