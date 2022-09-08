@@ -9,7 +9,8 @@
         "artifacts/**",
         "cache/**",
         "typechain-types/**",
-        "pages/.vitepress/dist/**"
+        "pages/.vitepress/dist/**",
+        ".nuxt/"
       ]
     },
     "lint": {
@@ -24,9 +25,7 @@
       "outputs": []
     },
     "codegen": {
-      "outputs": [
-        "generated/**"
-      ]
+      "outputs": ["generated/**"]
     }
   }
 }
