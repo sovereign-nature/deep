@@ -1,5 +1,5 @@
-export const useLions = () => {
-  return useState('lions', () => [
+export const useSouls = () => {
+  return useState('souls', () => [
     {
       id: '001',
       name: 'Leo Sabotus',
