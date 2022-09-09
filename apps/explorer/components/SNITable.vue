@@ -1,11 +1,11 @@
 <template>
   <div class="w-auto border-collapse overflow-x-auto rounded-lg">
-    <TableHeader :data="data"></TableHeader>
-    <TableRow :data="data"></TableRow>
+    <TableHeader :data="props.data"></TableHeader>
+    <TableRow :data="props.data"></TableRow>
   </div>
 </template>
-<script lang="ts">
-export default {
-  props: ['data']
-}
+<script setup lang="ts">
+const props = defineProps({
+  data: []
+})
 </script>
