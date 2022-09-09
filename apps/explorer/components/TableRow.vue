@@ -1,7 +1,7 @@
 <template>
   <div>
     <NuxtLink
-      v-for="lion in data"
+      v-for="lion in props.data"
       :key="lion.id"
       class="grid grid-flow-col auto-cols-fr place-items-center border-b-2 border-primary bg-neutral py-4 text-white last:rounded-b-lg last:border-none hover:bg-stone-800"
       :to="{ path: 'detail', query: { id: lion.id } }"
@@ -16,8 +16,8 @@
     </NuxtLink>
   </div>
 </template>
-<script lang="ts">
-export default {
-  props: ['data']
-}
+<script setup lang="ts">
+const props = defineProps({
+  data: []
+})
 </script>

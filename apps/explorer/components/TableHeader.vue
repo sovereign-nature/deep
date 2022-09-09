@@ -12,10 +12,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import { splitCamelCase } from '~/components/utils'
 const props = defineProps({
   data: []
 })
-const splitCamelCase = function (text: string): string {
-  return text.charAt(0).toUpperCase() + text.slice(1).replace(/[A-Z]/g, ' $&')
-}
 </script>
