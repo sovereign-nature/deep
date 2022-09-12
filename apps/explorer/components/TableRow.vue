@@ -13,9 +13,12 @@
   </div>
 </template>
 <script setup lang="ts">
+import { Soul } from './soul'
+import { Transaction } from './transaction'
+
 const props = defineProps({
   data: {
-    type: Array,
+    type: Array as () => Soul[] | Transaction[],
     required: false,
     default: () => [{}]
   }

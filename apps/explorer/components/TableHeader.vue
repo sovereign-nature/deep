@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-flow-col auto-cols-fr place-items-center border-b-2 border-primary bg-neutral py-3 text-white"
+    class="grid auto-cols-fr grid-flow-col place-items-center border-b-2 border-primary bg-neutral py-3 text-white"
   >
     <div
       v-for="(value, key) in props.data[0]"
@@ -12,12 +12,15 @@
   </div>
 </template>
 <script setup lang="ts">
+import { Soul } from './soul'
+import { Transaction } from './transaction'
 import { splitCamelCase } from '~/components/utils'
+
 const props = defineProps({
   data: {
-    type: Array,
+    type: Array as () => Soul[] | Transaction[],
     required: false,
-    default: () => []
+    default: () => [{}]
   }
 })
 </script>
