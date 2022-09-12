@@ -14,8 +14,14 @@
   </div>
 </template>
 <script setup lang="ts">
+import { Soul } from './soul'
 import { splitCamelCase } from '~/components/utils'
+
 const props = defineProps({
-  detail: []
+  detail: {
+    type: Array as () => Soul[],
+    required: false,
+    default: () => [{}]
+  }
 })
 </script>

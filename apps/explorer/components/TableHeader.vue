@@ -7,13 +7,17 @@
       :key="key"
       class="bg-inherit font-light text-inherit"
     >
-      {{ splitCamelCase(key.toString()) }}
+      {{ splitCamelCase(key) }}
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { splitCamelCase } from '~/components/utils'
 const props = defineProps({
-  data: []
+  data: {
+    type: Array,
+    required: false,
+    default: () => []
+  }
 })
 </script>
