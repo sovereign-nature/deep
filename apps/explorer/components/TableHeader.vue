@@ -12,9 +12,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Soul } from './soul'
-import { Transaction } from './transaction'
-import { splitCamelCase } from '~/components/utils'
+import { Soul } from '~/interfaces/soul'
+import { Transaction } from '~/interfaces/transaction'
+import { splitCamelCase } from '~/utils/index'
 
 const props = defineProps({
   data: {
