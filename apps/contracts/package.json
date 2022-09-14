@@ -27,7 +27,7 @@
     "dotenv": "16.0.2",
     "eslint": "8.23.1",
     "eslint-config-sni": "*",
-    "ethers": "5.7.0",
+    "ethers": "5.7.1",
     "hardhat": "2.11.1",
     "hardhat-gas-reporter": "1.0.9",
     "solhint": "3.3.7",
