@@ -14,8 +14,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Soul } from './soul'
-import { splitCamelCase } from '~/components/utils'
+import { Soul } from '~/interfaces/soul'
+import { splitCamelCase } from '~/utils/index'
 
 const props = defineProps({
   detail: {
