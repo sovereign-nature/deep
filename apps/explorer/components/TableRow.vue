@@ -6,7 +6,7 @@
       class="last:rounded-b-lg last:border-none"
     >
       <div
-        v-if="!dt.name"
+        v-if="!(dt as Soul).name"
         class="grid auto-cols-fr grid-flow-col place-items-center border-b-2 border-primary bg-neutral py-4 text-white"
       >
         <div
@@ -19,8 +19,7 @@
       </div>
       <NuxtLink
         v-else
-        :class="{ 'hover:bg-stone-800': dt.name, 'cursor-default': !dt.name }"
-        class="grid auto-cols-fr grid-flow-col place-items-center border-b-2 border-primary bg-neutral py-4 text-white"
+        class="grid auto-cols-fr grid-flow-col place-items-center border-b-2 border-primary bg-neutral py-4 text-white hover:bg-stone-800"
         :to="{ path: 'detail', query: { id: dt.id } }"
       >
         <div
