@@ -99,8 +99,14 @@ Bellow you can find a scheme illustrating smart contracts relationships:
       IOT[IOT Data]-.->Oracle;
       Satellite[Satellite Data]-.->Oracle;
       CitizenScience[Citizen Science Data]-.->Oracle;
-      Oracle((Oracle Contract))-->SNI((SNI Contract));
-      GovernanceContract((Governance Contract))-->SNI;
-      NatureRepresentations[(Nature Representations as NFTs)]-->SNI;
-      NatureRepresentations-.->Metaverse{{Metaverse}};
+      Oracle((Oracle Contract))--data-->GovernanceDAO{{Governance DAO}}
+      Validator1(Validator 1)-->GovernanceDAO
+      Validator2(Validator 2)-->GovernanceDAO
+      Validator3(Validator 3)-->GovernanceDAO
+      GovernanceDAO--status-->SNI((SNI Contract));
+      SNI-- status -->TreasuryContract((Treasury Contract));
+      SNI-- status -->Derrivatives[(Derrivative Products like Living NFTs)];
+      Derrivatives--metadata-->Metaverse{{Metaverse}};
+      Derrivatives--funds-->TreasuryContract
+      TreasuryContract--funds-->GovernanceDAO
 ```
