@@ -26,11 +26,10 @@
 </template>
 <script setup lang="ts">
 import { Soul } from '~/interfaces/soul'
-import { Transaction } from '~/interfaces/transaction'
 
 const props = defineProps({
   data: {
-    type: Array as () => Soul[] | Transaction[],
+    type: Array as () => Soul[],
     required: false,
     default: () => [{}]
   }
