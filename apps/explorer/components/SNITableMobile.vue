@@ -12,7 +12,7 @@
         <li class="my-2">Location: Kenya</li>
         <li class="my-4">
           <NuxtLink class="min-w-full" to="/detail">
-            <button class="btn btn-primary min-w-full">Details</button>
+            <button class="btn-primary btn min-w-full">Details</button>
           </NuxtLink>
         </li>
       </ul>
@@ -29,7 +29,7 @@
         <li class="my-2">Location: Kenya</li>
         <li class="my-4">
           <NuxtLink class="min-w-full" to="/detail">
-            <button class="btn btn-primary min-w-full">Details</button>
+            <button class="btn-primary btn min-w-full">Details</button>
           </NuxtLink>
         </li>
       </ul>

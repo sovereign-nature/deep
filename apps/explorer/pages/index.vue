@@ -11,7 +11,7 @@
         A developer guide for exploring nature's metadata
       </p>
       <NuxtLink class="min-w-full" to="/search">
-        <button class="btn btn-primary mt-12 min-w-full">
+        <button class="btn-primary btn mt-12 min-w-full">
           Start Exploring
         </button>
       </NuxtLink>
