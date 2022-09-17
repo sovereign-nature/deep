@@ -1,4 +1,4 @@
-import MermaidPlugin from 'vitepress-plugin-mermaid'
+import { MermaidMarkdown } from 'vitepress-plugin-mermaid'
 
 export default {
   lang: 'en-US',
@@ -18,6 +18,6 @@ export default {
     ]
   },
   markdown: {
-    config: MermaidPlugin
+    config: MermaidMarkdown
   }
 }
