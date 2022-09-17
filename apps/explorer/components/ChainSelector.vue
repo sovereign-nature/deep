@@ -48,7 +48,7 @@
     </div>
     <!-- Mobile  menu -->
     <div class="dropdown-left dropdown md:hidden">
-      <label tabindex="0" class="btn btn-ghost btn-circle">
+      <label tabindex="0" class="btn-ghost btn-circle btn">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

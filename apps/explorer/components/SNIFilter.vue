@@ -146,7 +146,7 @@
           required
         />
       </div>
-      <div class="flex gap-2 w-full justify-end">
+      <div class="flex w-full justify-end gap-2">
         <select class="select max-w-xs rounded-full bg-neutral text-white">
           <option disabled selected class="text-white">
             Conservation status
