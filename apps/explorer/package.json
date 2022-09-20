@@ -13,6 +13,7 @@
     "@nuxtjs/color-mode": "3.1.5",
     "@nuxtjs/eslint-config-typescript": "11.0.0",
     "@nuxtjs/tailwindcss": "5.3.3",
+    "@sni/prettier-config": "*",
     "@types/mapbox-gl": "2.7.5",
     "@typescript-eslint/eslint-plugin": "5.38.0",
     "@typescript-eslint/parser": "5.38.0",
@@ -23,8 +24,14 @@
     "mapbox-gl": "2.10.0",
     "nuxt": "3.0.0-rc.10",
     "prettier": "2.7.1",
-    "@sni/prettier-config": "*",
     "typescript": "4.8.3",
     "vite-plugin-eslint": "1.8.1"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.6.9",
+    "@vue/apollo-composable": "^4.0.0-alpha.19",
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
+    "vue-apollo": "^3.1.0"
   }
 }

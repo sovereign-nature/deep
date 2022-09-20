@@ -1,8 +1,9 @@
 import { defineNuxtConfig } from 'nuxt'
-// import eslintPlugin from 'vite-plugin-eslint'
 
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  build: {
+    transpile: ['@apollo/client', 'ts-invariant/process']
+  },
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
   typescript: {
     shim: false
@@ -11,8 +12,5 @@ export default defineNuxtConfig({
     preference: 'system', // default theme
     dataValue: 'theme', // activate data-theme in <html> tag
     classSuffix: ''
-  },
-  vite: {
-    // plugins: [eslintPlugin()]
   }
 })

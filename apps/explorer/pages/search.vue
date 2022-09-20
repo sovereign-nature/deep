@@ -3,8 +3,13 @@
     <SNIFilter />
     <SNITableMobile :data="souls" class="mx-6 py-12 lg:hidden" />
     <SNITable :data="souls" class="hidden lg:block lg:h-screen lg:w-full" />
+    <p>{{ useResult }}{{ loading }}{{ result }}</p>
   </div>
 </template>
 <script setup>
+import { useQuery, useResult } from '@vue/apollo-composable'
+import { GET_POSTS } from '@/api/queries'
 const souls = useSouls()
+
+const { loading, result } = useQuery(GET_POSTS)
 </script>
