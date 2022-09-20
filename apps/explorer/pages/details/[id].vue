@@ -5,7 +5,7 @@
     ></div>
     <div class="lg:col-span-2">
       <SNIDetails
-        :detail="souls.filter((soul) => soul.id === $route.query.id)"
+        :detail="souls.filter((soul) => soul.id === $route.params.id)"
         class="my-6 lg:my-0"
       ></SNIDetails>
       <SNITransactions class="my-6 lg:mt-6"></SNITransactions>
