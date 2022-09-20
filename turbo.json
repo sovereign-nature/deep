@@ -10,7 +10,8 @@
         "cache/**",
         "typechain-types/**",
         "pages/.vitepress/dist/**",
-        ".nuxt/**"
+        ".nuxt/**",
+        ".vercel/**"
       ]
     },
     "lint": {
