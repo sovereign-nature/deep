@@ -19,6 +19,10 @@ Packages:
 - `eslint-config-*`: Shared `esLint` configurations.
 - `prettier-config`: Shared `prettier` configuration.
 
+### Installing Dependencies
+
+To install dependencies for whole monorepo run `yarn install` from the root repo dirrectory.
+
 ### Build
 
 To build all apps and packages, run the following command:
