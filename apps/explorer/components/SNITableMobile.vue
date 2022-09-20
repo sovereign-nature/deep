@@ -13,10 +13,7 @@
         <li class="my-2">Updated: {{ dt.updated }}</li>
         <li class="my-2">Location: {{ dt.location }}</li>
         <li class="my-4">
-          <NuxtLink
-            class="min-w-full"
-            :to="{ path: 'detail', query: { id: dt.id } }"
-          >
+          <NuxtLink class="min-w-full" :to="{ path: `details/${dt.id}` }">
             <button class="btn btn-primary min-w-full">Details</button>
           </NuxtLink>
         </li>
