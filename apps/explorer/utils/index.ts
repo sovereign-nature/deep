@@ -1,3 +1,3 @@
-export function splitCamelCase(text) {
+export function splitCamelCase(text: string) {
   return text.charAt(0).toUpperCase() + text.slice(1).replace(/[A-Z]/g, ' $&')
 }
