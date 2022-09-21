@@ -15,6 +15,6 @@ export default defineNuxtConfig({
     classSuffix: ''
   },
   publicRuntimeConfig: {
-    indexerUrl: process.env.INDEXER_URL
+    baseURL: process.env.ENV_BUILD || process.env.ENV_DEV
   }
 })
