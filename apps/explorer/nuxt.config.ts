@@ -1,4 +1,5 @@
-import { defineNuxtConfig } from 'nuxt'
+/* eslint-disable turbo/no-undeclared-env-vars */
+import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
   build: {
@@ -12,5 +13,8 @@ export default defineNuxtConfig({
     preference: 'system', // default theme
     dataValue: 'theme', // activate data-theme in <html> tag
     classSuffix: ''
+  },
+  publicRuntimeConfig: {
+    baseURL: process.env.ENV_BUILD || process.env.ENV_DEV
   }
 })
