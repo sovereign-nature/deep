@@ -12,7 +12,7 @@
     </div>
     <div class="col-span-full">
       <h1 class="my-6 text-3xl text-white">Identification place</h1>
-      <SNIMap class="rounded-lg border-2 border-primary"></SNIMap>
+      <!-- <SNIMap class="rounded-lg border-2 border-primary"></SNIMap> -->
     </div>
   </div>
 </template>
