@@ -4959,10 +4959,10 @@ dagre@^0.8.5:
     graphlib "^2.1.8"
     lodash "^4.17.15"
 
-daisyui@2.30.0:
-  version "2.30.0"
-  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-2.30.0.tgz#6739d1d233a4dba85799b7c093f48eef0a40f4af"
-  integrity sha512-BFwcsRIAFiW4egRIKFpu8Q8csJjXkz60THvL0HdHsEriIPtjc6uWJqVBAQoK8qpFxOTVVv4sWfJ9yD50K6Hz3Q==
+daisyui@2.31.0:
+  version "2.31.0"
+  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-2.31.0.tgz#906bc447b59c24782320f33fbc990ea1d8c2200c"
+  integrity sha512-qepRXgQPLNcJ8ZPZy+dUvsC7mRWvMLRcVMe85/wZA60Tnhm/bkidhOzdllL8aAk2JX+W/xlIsTJ8NZFpPm+eyw==
   dependencies:
     color "^4.2"
     css-selector-tokenizer "^0.8.0"
