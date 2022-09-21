@@ -6,7 +6,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const config = useRuntimeConfig()
   const apolloClient = new ApolloClient({
     cache: new InMemoryCache(),
-    uri: config.baseURL
+    uri: config.indexerUrl
   })
   nuxtApp.vueApp.provide(DefaultApolloClient, apolloClient)
 })
