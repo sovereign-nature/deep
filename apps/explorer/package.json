@@ -5,11 +5,13 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "test": "nuxt test",
     "lint": "eslint \"**/*.{vue,ts,js}\"",
     "generate": "nuxt generate",
     "preview": "nuxt preview"
   },
   "devDependencies": {
+    "@nuxt/test-utils-edge": "3.0.0-rc.12-27729267.0640a6c",
     "@nuxtjs/color-mode": "3.1.5",
     "@nuxtjs/eslint-config-typescript": "11.0.0",
     "@nuxtjs/tailwindcss": "5.3.3",
@@ -17,7 +19,7 @@
     "@types/mapbox-gl": "2.7.5",
     "@typescript-eslint/eslint-plugin": "5.38.0",
     "@typescript-eslint/parser": "5.38.0",
-    "daisyui": "2.29.0",
+    "daisyui": "2.31.0",
     "eslint": "8.23.1",
     "eslint-config-sni": "*",
     "eslint-config-sni-vue": "*",
@@ -26,6 +28,8 @@
     "nuxt-graphql-client": "^0.1.18",
     "prettier": "2.7.1",
     "typescript": "4.8.3",
-    "vite-plugin-eslint": "1.8.1"
+    "vite-plugin-eslint": "1.8.1",
+    "vitest": "0.19.1",
+    "jsdom": "20.0.0"
   }
 }
