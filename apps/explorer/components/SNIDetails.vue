@@ -7,21 +7,21 @@
       <h1 class="mb-4 text-4xl">{{ props.detail[0].name }}</h1>
       <ul>
         <li v-for="(value, key) in detail[0]" :key="key" class="my-2">
-          {{ splitCamelCase(key) }}: {{ value }}
+          {{ splitCamelCase(key.toString()) }}: {{ value }}
         </li>
       </ul>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { Soul } from '~/interfaces/soul'
+import { Soul } from '~/types/soul'
 import { splitCamelCase } from '~/utils/index'
 
 const props = defineProps({
   detail: {
-    type: Array as () => Soul[],
+    type: Object as () => Soul,
     required: false,
-    default: () => [{}]
+    default: Object as () => Soul
   }
 })
 </script>

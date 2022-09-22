@@ -5,7 +5,7 @@
     ></div>
     <div class="lg:col-span-2">
       <SNIDetails
-        :detail="souls.filter((soul) => soul.id === $route.params.id)"
+        :detail="detail.filter((detail) => detail.id === $route.params.id)"
         class="my-6 lg:my-0"
       ></SNIDetails>
       <SNITransactions class="my-6 lg:mt-6"></SNITransactions>
@@ -16,6 +16,16 @@
     </div>
   </div>
 </template>
-<script setup>
-const souls = useSouls()
+<script lang="ts" setup>
+// import { Soul } from '~~/types/soul'
+
+// const souls = useSouls()
+useGqlCors({ credentials: 'same-origin' })
+const { data, error } = await useAsyncGql('sniList', { sniId: '1' })
+const detail = data.value.snis
+
+if (error.value) {
+  // eslint-disable-next-line no-console
+  console.error(error.value)
+}
 </script>
