@@ -2,19 +2,17 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
-  build: {
-    transpile: ['@apollo/client', 'ts-invariant/process']
-  },
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', 'nuxt-graphql-client'],
   typescript: {
     shim: false
   },
+  'graphql-client': { },
   colorMode: {
     preference: 'system', // default theme
     dataValue: 'theme', // activate data-theme in <html> tag
     classSuffix: ''
   },
   publicRuntimeConfig: {
-    baseURL: process.env.ENV_BUILD || process.env.ENV_DEV
+    GQL_HOST: process.env.GRAPHQL_API_URL
   }
 })

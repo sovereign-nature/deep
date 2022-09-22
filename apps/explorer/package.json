@@ -23,15 +23,9 @@
     "eslint-config-sni-vue": "*",
     "mapbox-gl": "2.10.0",
     "nuxt": "3.0.0-rc.11",
+    "nuxt-graphql-client": "^0.1.18",
     "prettier": "2.7.1",
     "typescript": "4.8.3",
     "vite-plugin-eslint": "1.8.1"
-  },
-  "dependencies": {
-    "@apollo/client": "^3.6.9",
-    "@vue/apollo-composable": "^4.0.0-alpha.19",
-    "graphql": "^16.6.0",
-    "graphql-tag": "^2.12.6",
-    "vue-apollo": "^3.1.0"
   }
 }
