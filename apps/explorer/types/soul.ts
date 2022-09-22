@@ -5,12 +5,12 @@ export interface Soul {
   status: number,
   createdTimestamp: number,
   updatedTimestamp: number,
-  owner: string,
+  owner?: string,
   name: string,
-  description: string,
-  image: string,
-  properties: SoulProperty
-  symbol: string,
-  collectionName: string,
-  oracle: string
+  description?: string,
+  image?: string,
+  properties?: SoulProperty
+  symbol?: string,
+  collectionName?: string,
+  oracle?: string
 }
