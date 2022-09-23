@@ -29,7 +29,6 @@
       "outputs": ["generated/**"]
     }
   },
-  "globalDependencies": [
-    ".env"
-  ]
+  "globalDependencies": [".env"],
+  "globalEnv": ["GQL_HOST"]
 }

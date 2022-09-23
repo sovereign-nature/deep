@@ -1,4 +1,3 @@
-/* eslint-disable turbo/no-undeclared-env-vars */
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
@@ -17,7 +16,7 @@ export default defineNuxtConfig({
       'graphql-client': {
         clients: {
           default: {
-            host: 'http:localhost:4000/graphql',
+            host: process.env.GQL_HOST,
             schema: './schema.gql'
           }
         }
