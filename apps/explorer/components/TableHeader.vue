@@ -12,13 +12,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Soul } from '~/interfaces/soul'
-import { Transaction } from '~/interfaces/transaction'
 import { splitCamelCase } from '~/utils/index'
 
 const props = defineProps({
   data: {
-    type: Array as () => Soul[] | Transaction[],
+    type: Array as () => unknown[],
     required: false,
     default: () => [{}]
   }
