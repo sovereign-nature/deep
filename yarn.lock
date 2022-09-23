@@ -1355,12 +1355,12 @@
     unimport "^0.6.7"
     untyped "^0.5.0"
 
-"@nuxt/kit@npm:@nuxt/kit-edge@3.0.0-rc.12-27729267.0640a6c":
-  version "3.0.0-rc.12-27729267.0640a6c"
-  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-rc.12-27729267.0640a6c.tgz#6b45a2e0046bce9fe7738d368d75af75988eb1ea"
-  integrity sha512-/YfYq2btlyW0mwUH5gYGYCZYDu4Wf+mrZKZoxYPVsbc9btlSDeC9NzWlK7powrbv6c+lcsFIrCK0maUyUF6IOg==
+"@nuxt/kit@npm:@nuxt/kit-edge@3.0.0-rc.12-27730995.2894a75":
+  version "3.0.0-rc.12-27730995.2894a75"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-rc.12-27730995.2894a75.tgz#ef094a5a90d2d1be4359f1318d6c4195b3646fc7"
+  integrity sha512-oSpOacBwMTO9gZNgQBxzqqHFS7byMl4KRB0wH0/zxRs/vIlCTtf5rMH+K2xdmTQNlmu5Zfqnnd4XmDTxU877Yw==
   dependencies:
-    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-rc.12-27729267.0640a6c"
+    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-rc.12-27730995.2894a75"
     c12 "^0.2.13"
     consola "^2.15.3"
     defu "^6.1.0"
@@ -1410,10 +1410,10 @@
     ufo "^0.8.5"
     unimport "^0.6.7"
 
-"@nuxt/schema@npm:@nuxt/schema-edge@3.0.0-rc.12-27729267.0640a6c":
-  version "3.0.0-rc.12-27729267.0640a6c"
-  resolved "https://registry.yarnpkg.com/@nuxt/schema-edge/-/schema-edge-3.0.0-rc.12-27729267.0640a6c.tgz#becca94b515c329ab3c7ed1fc381cd6627e9d904"
-  integrity sha512-Af4pZDrJRjd9By9IItfTQU1vXfxfxG/mU5OtWQRSoOuVhNfwfTR8vw8cTNJZ8xvNlmJe7JKdeHZix1OrYpys/A==
+"@nuxt/schema@npm:@nuxt/schema-edge@3.0.0-rc.12-27730995.2894a75":
+  version "3.0.0-rc.12-27730995.2894a75"
+  resolved "https://registry.yarnpkg.com/@nuxt/schema-edge/-/schema-edge-3.0.0-rc.12-27730995.2894a75.tgz#aedcd2d23ce57401eae976199c83bf8d834963f8"
+  integrity sha512-FmUjla5rsO7NpOPurWoBgPiKr8gWBqGtQKgkRLCCFNfp4/wsLn5X+sBvQP30bYzQzmF841VVVvgeoS4jw5C8NQ==
   dependencies:
     c12 "^0.2.13"
     create-require "^1.1.1"
@@ -1453,13 +1453,13 @@
     rc9 "^1.2.2"
     std-env "^3.2.1"
 
-"@nuxt/test-utils-edge@3.0.0-rc.12-27729267.0640a6c":
-  version "3.0.0-rc.12-27729267.0640a6c"
-  resolved "https://registry.yarnpkg.com/@nuxt/test-utils-edge/-/test-utils-edge-3.0.0-rc.12-27729267.0640a6c.tgz#64643a364f41cdb13b7d0a987ad02627089952a1"
-  integrity sha512-yiWEabf9wRX81pgYvIQeqIpsm9aUK4GY5An1D9UBecFd1FAGHg+B+Cup19a4+J9zL5daCmuYYys7J4wWp+5X/Q==
+"@nuxt/test-utils-edge@3.0.0-rc.12-27730995.2894a75":
+  version "3.0.0-rc.12-27730995.2894a75"
+  resolved "https://registry.yarnpkg.com/@nuxt/test-utils-edge/-/test-utils-edge-3.0.0-rc.12-27730995.2894a75.tgz#b2130ca5df61267593bf1e7f98aa58df98ef9bdc"
+  integrity sha512-zwqXuwO9o6UX74c6E5JiwGJyJvlePCVneLr5X3PGZTzR4QUE038L692II61gSuRPdBuDGzTJ4gjKqoahPp5rQQ==
   dependencies:
-    "@nuxt/kit" "npm:@nuxt/kit-edge@3.0.0-rc.12-27729267.0640a6c"
-    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-rc.12-27729267.0640a6c"
+    "@nuxt/kit" "npm:@nuxt/kit-edge@3.0.0-rc.12-27730995.2894a75"
+    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-rc.12-27730995.2894a75"
     consola "^2.15.3"
     defu "^6.1.0"
     execa "^6.1.0"
@@ -1511,10 +1511,10 @@
     vite-plugin-checker "^0.5.1"
     vue-bundle-renderer "^0.4.3"
 
-"@nuxtjs/color-mode@3.1.5":
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/color-mode/-/color-mode-3.1.5.tgz#25d17af09eea4569f633b1a632f411662cfd9525"
-  integrity sha512-i5guOxWn3XkHwVdzLZ7iYGMw9fasj6UjiQYaVtD3PyuFNBY3LtdoipUS7ItkMo89ZnOYwf88dLURwOtx247rRw==
+"@nuxtjs/color-mode@3.1.6":
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/color-mode/-/color-mode-3.1.6.tgz#74057448eee3524ab85af6d844083d16d87f32a3"
+  integrity sha512-vTjlWCw+KHK9XLaiUWRPLhRGtiqkNm1RxW2GnzXaKlMONaruACtsrbJMRiwa/NB4G17uH+3pIri9z7ozADkgEw==
   dependencies:
     "@nuxt/kit" "^3.0.0-rc.9"
     lodash.template "^4.5.0"
@@ -5362,12 +5362,12 @@ eslint-config-standard@^17.0.0:
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-17.0.0.tgz#fd5b6cf1dcf6ba8d29f200c461de2e19069888cf"
   integrity sha512-/2ks1GKyqSOkH7JFvXJicu0iMpoojkwB+f5Du/1SC0PtBL+s8v30k9njRZ21pm2drKYm2342jFnGWzttxPmZVg==
 
-eslint-config-turbo@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/eslint-config-turbo/-/eslint-config-turbo-0.0.3.tgz#61a3b6fdc4186bb6832ab4b48bb6ed2d3bad57a8"
-  integrity sha512-hK5MlxDugUWZV9ZKcyfNwLXrlMuM2wPgAUk51cUFBC3nXRCVmCA9uSRFBZsyAIurN1wH7mS7G1NBo5F8VkF7lQ==
+eslint-config-turbo@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/eslint-config-turbo/-/eslint-config-turbo-0.0.4.tgz#4850255f8c858131843aa38854d4aed0ff09bb6e"
+  integrity sha512-HErPS/wfWkSdV9Yd2dDkhZt3W2B78Ih/aWPFfaHmCMjzPalh+5KxRRGTf8MOBQLCebcWJX0lP1Zvc1rZIHlXGg==
   dependencies:
-    eslint-plugin-turbo "0.0.3"
+    eslint-plugin-turbo "0.0.4"
 
 eslint-import-resolver-node@^0.3.6:
   version "0.3.6"
@@ -5472,10 +5472,10 @@ eslint-plugin-tailwindcss@3.6.2:
     postcss "^8.4.4"
     tailwindcss "^3.1.3"
 
-eslint-plugin-turbo@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-turbo/-/eslint-plugin-turbo-0.0.3.tgz#9d86895732f95b0c236d6363177a52368fffdc71"
-  integrity sha512-QjidATGxWtaB9QUrD3NocUySmsgWKZlBMFlw4kX2IIjRLAxMPwukk90h3ZTaNXyRHuaQsrEgh7hhlCZoxP0TTw==
+eslint-plugin-turbo@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-turbo/-/eslint-plugin-turbo-0.0.4.tgz#966f3dd6202143d0c28dc9cdbb48b0f779d06172"
+  integrity sha512-dfmYE/iPvoJInQq+5E/0mj140y/rYwKtzZkn3uVK8+nvwC5zmWKQ6ehMWrL4bYBkGzSgpOndZM+jOXhPQ2m8Cg==
 
 eslint-plugin-unicorn@^43.0.2:
   version "43.0.2"
@@ -12224,95 +12224,47 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
-turbo-android-arm64@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo-android-arm64/-/turbo-android-arm64-1.4.7.tgz#553f68a1f475495549fb8a260461239c90f40410"
-  integrity sha512-BtWtH8e8w1GhtYpGQmkcDS/AUzVZhQ4ZZN+qtUFei1wZD7VAdtJ9Wcsfi3WD+mXA6vtpIpRJVfQMcShr8l8ErA==
+turbo-darwin-64@1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/turbo-darwin-64/-/turbo-darwin-64-1.5.2.tgz#9da3f078abab724ae6bc3495bea98a14d4eb9f22"
+  integrity sha512-NFOHgYKsuhuF6KRiUM3GzLx1wNTerFcZbIGhANsmeaOo48zSpOhNaKpRsS+DbLuBcxF6WZFwF4qngtduKGZqUw==
 
-turbo-darwin-64@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo-darwin-64/-/turbo-darwin-64-1.4.7.tgz#c23e2452a01115136e631dc06aa6a9bb379d2d32"
-  integrity sha512-bMvZaAz5diec9feZ0XpQosYI8U0kiOQM2tj2sv0Y2WZbe227wodVMCQMyUowmcotO8nr6NF76Xo5E+H+dnY6LQ==
+turbo-darwin-arm64@1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/turbo-darwin-arm64/-/turbo-darwin-arm64-1.5.2.tgz#fcf3e97f5a75d5018e59a594744122c0a9511dfc"
+  integrity sha512-mrd7TIFT+U+mblJtKX2ZIDh5NZ6qIG5rc/I2T+PFL1qIZvuRAOCs1JLCUB4m+IusNOYIzYKQWbupX4JWzPfm0w==
 
-turbo-darwin-arm64@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo-darwin-arm64/-/turbo-darwin-arm64-1.4.7.tgz#4212917f4892159033cfa88bafa662f6e865fe49"
-  integrity sha512-AyfxYfKgh1EigQKjypbnDoMLuy4e/n/go+KYiWKKIpOaWXWLBokrBWzYN/aI3NMDRUJWK5ExdlWI9Nleelq8uQ==
+turbo-linux-64@1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/turbo-linux-64/-/turbo-linux-64-1.5.2.tgz#3342e2207dac4b587eb85ec413ea25832d8b1a11"
+  integrity sha512-KjQzYLxgPyDBD8Uye+Tst0rYmJkjbqWl1l5QwuZaVtSmyss+U3hF7Nd9Dk93EhXXEEKIhzXfdqOVcW2+zKAPrA==
 
-turbo-freebsd-64@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo-freebsd-64/-/turbo-freebsd-64-1.4.7.tgz#7d60d44a623bd000f53673a0db0205a16d8815e6"
-  integrity sha512-T5/osfbCh0rL53MFS5byFFfsR3vPMHIKIJ4fMMCNkoHsmFj2R0Pv53nqhEItogt0FJwCDHPyt7oBqO83H/AWQQ==
+turbo-linux-arm64@1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/turbo-linux-arm64/-/turbo-linux-arm64-1.5.2.tgz#46bf404998ee472aa5998e384bc847f76132e7c1"
+  integrity sha512-cbcRTt9hJMK7aLHSpk4hHjekm5A5fVL71NSgNxvaRKI47qXJTc4aAeWSpHBWSe4KNKhMg/DyJ8D3aTfnnqx4rA==
 
-turbo-freebsd-arm64@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo-freebsd-arm64/-/turbo-freebsd-arm64-1.4.7.tgz#35e5b23313d42aab074e69c1d1c44cab17f438ac"
-  integrity sha512-PL+SaO78AUCas+YKj01UiS2rpmGcxz8XPmLdFWmq6PYjPX6GL5UBAc3pkBphIm0aTLZtsikoEul+JrwAuAy6UA==
+turbo-windows-64@1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/turbo-windows-64/-/turbo-windows-64-1.5.2.tgz#ca3d3f83426a5cbeb1f5b012a0850f82256108e3"
+  integrity sha512-ntLpZ86wJCVEHdwTrz4JWZ12+LkiWt0teEcXpxlmL6hKHMEmHcf2v5rnEPbVFqo5TMkuXRUgfXSZ2SZ0meJzPg==
 
-turbo-linux-32@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo-linux-32/-/turbo-linux-32-1.4.7.tgz#2861539d767cdfca058224f284991d918d7b1965"
-  integrity sha512-dK94UwDzySMALoQtjBVVPbWJZP6xw3yHGuytM3q5p4kfMZPSA+rgNBn5T5Af2Rc7jxlLAsu5ODJ0SgIbWSF5Hg==
+turbo-windows-arm64@1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/turbo-windows-arm64/-/turbo-windows-arm64-1.5.2.tgz#d93d19d5be7eeb43424c64904cdcf43dbc239eed"
+  integrity sha512-ghCC2MjC1obxv/wPXM9H7JklnxNtxNlZ6HjnDHNOg3LSUF2NCPd6X52uOXb9JtEpIq+bL3EhtDCth9Z61nWpuA==
 
-turbo-linux-64@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo-linux-64/-/turbo-linux-64-1.4.7.tgz#5ff0e648a1d0b0053ad2f3c6a4fc735744cadc16"
-  integrity sha512-F6IM23zgTYo9gYJaNp17gVvQBt0hMIvz52OF91DpPYSLpV2h9OSlzPJ3j5TGaWueS/bc/YCV23+VojXX/MauGQ==
-
-turbo-linux-arm64@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo-linux-arm64/-/turbo-linux-arm64-1.4.7.tgz#c5cb63db0ab59dd2ea37be4e44efef119a289ad1"
-  integrity sha512-kFe5jzj3FoY6jAEwyNEswndj1t/fPl0qyxfcQv6aNPz7Nb2Lh7mY/EEse+CG3ydIo5RZKba7ppQoBSDmHx7JsA==
-
-turbo-linux-arm@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo-linux-arm/-/turbo-linux-arm-1.4.7.tgz#93ed9e43a95760e660a42dbf65cbfd430e558e89"
-  integrity sha512-FTh4itdMNZ7IxGKknFnQ6iPO9vGGKqyySkCYLR01lnw6BTnKL9KuM9XUCBRyn7dNmHhAnqu1ZtVsBkH7CE7DEw==
-
-turbo-linux-mips64le@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo-linux-mips64le/-/turbo-linux-mips64le-1.4.7.tgz#77357165c3ae0102fd5924dd85229676938dd717"
-  integrity sha512-756nG8dnPQVcnl9s70S4NQ43aJjpsnc2h0toktPO+9u2ayv9XTbIPvZLFsS55bDeYhodDGvxoB96W6Xnx01hyQ==
-
-turbo-linux-ppc64le@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo-linux-ppc64le/-/turbo-linux-ppc64le-1.4.7.tgz#2a7399d6ee31d894d48aea393ed1f9addc4a310c"
-  integrity sha512-VS2ofGN/XsafNGJdZ21UguURHb7KRG879yWLj59hO1d+0xXXQbx7ljsmEPOhiE4UjEdx4Ur6P44BhztTgDx9Og==
-
-turbo-windows-32@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo-windows-32/-/turbo-windows-32-1.4.7.tgz#e93233d8681886dc0b609c897447991afa378340"
-  integrity sha512-M5GkZdA0CbJAOcR8SScM63CBV+NtX7qjhoNNOl0F99nGJ+rO3dH71CcM/rbhlz9SQzKQoX8rcuwZHe4r2HZAug==
-
-turbo-windows-64@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo-windows-64/-/turbo-windows-64-1.4.7.tgz#da9fe6b6bf2b6fd1f85ecdc186fc7a49b8411d22"
-  integrity sha512-ftZUtZ1BX1vi8MbxKr+a7riIkhwvGnNTtWGprVu+aDJ8PnV+lNqbkrLJGvKP7Cn22hGTfzcjNNPcJ5PBZpQEQw==
-
-turbo-windows-arm64@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo-windows-arm64/-/turbo-windows-arm64-1.4.7.tgz#c60a772aab36c45ce461e3305e35d1c22a00e516"
-  integrity sha512-mZ79XeJFfaeVKdBV3w0eoGaqAxFnwxrme0jZtSWemAbeDSCF/13wcbLGwtq0+Lu0LxEGweeQ5AqsCIc9t9i6sA==
-
-turbo@1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/turbo/-/turbo-1.4.7.tgz#859989a5dce2a7b1fa51f17ac4fb1e34dbfd455d"
-  integrity sha512-oIk7PAISPidDOkTM5M+ydEe5GDQ/+TahDgIbaYKeAAy2Qpmur4s0HybSDWHIdxLqI96OPD/mOKymRLrjh3Mdhg==
+turbo@1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/turbo/-/turbo-1.5.2.tgz#ca64707c5798f40cae6f27879fe10340d0afed4e"
+  integrity sha512-id1q+kFjFhuwmrP4E0EWrPTKsJ5HDZtFkFF7XNwZl/Q0idVTwq+4feg3Xn96AyXXDNca50lafhjIUxrq3Q2cIA==
   optionalDependencies:
-    turbo-android-arm64 "1.4.7"
-    turbo-darwin-64 "1.4.7"
-    turbo-darwin-arm64 "1.4.7"
-    turbo-freebsd-64 "1.4.7"
-    turbo-freebsd-arm64 "1.4.7"
-    turbo-linux-32 "1.4.7"
-    turbo-linux-64 "1.4.7"
-    turbo-linux-arm "1.4.7"
-    turbo-linux-arm64 "1.4.7"
-    turbo-linux-mips64le "1.4.7"
-    turbo-linux-ppc64le "1.4.7"
-    turbo-windows-32 "1.4.7"
-    turbo-windows-64 "1.4.7"
-    turbo-windows-arm64 "1.4.7"
+    turbo-darwin-64 "1.5.2"
+    turbo-darwin-arm64 "1.5.2"
+    turbo-linux-64 "1.5.2"
+    turbo-linux-arm64 "1.5.2"
+    turbo-windows-64 "1.5.2"
+    turbo-windows-arm64 "1.5.2"
 
 tweetnacl-util@^0.15.1:
   version "0.15.1"
