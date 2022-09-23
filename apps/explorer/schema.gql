@@ -1,0 +1,28 @@
+type SNI {
+  id: ID!
+  status: Int!
+  createdTimestamp: Int!
+  updatedTimestamp: Int
+  owner: ID!
+  oracle: ID!
+  collectionName: String!
+  symbol: String!
+  name: String!
+  description: String
+  image: String
+  properties: SNIProperties
+}
+
+type SNIProperties {
+  # Contains JSON describing status values like {"0": "Good", "1": "Bad"}
+  statusDescription: String
+  taxonId: String
+  conservationStatus: String
+  # Geometry in WKT standard
+  geometry: String
+}
+
+type Query {
+  snis: [SNI!]!
+  sni(id: ID!): SNI
+}
