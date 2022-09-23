@@ -4,7 +4,10 @@
       class="h-64 w-full self-center rounded-lg bg-leo bg-cover bg-center bg-no-repeat md:h-96 lg:h-full"
     ></div>
     <div class="lg:col-span-2">
-      <SNIDetails :detail="detail" class="my-6 lg:my-0"></SNIDetails>
+      <SNIDetails
+        :detail="(detail as Soul[])"
+        class="my-6 lg:my-0"
+      ></SNIDetails>
       <SNITransactions class="my-6 lg:mt-6"></SNITransactions>
     </div>
     <div class="col-span-full">
@@ -22,9 +25,7 @@ useGqlCors({ credentials: 'same-origin' })
 const route = useRoute()
 
 const { data, error } = await useAsyncGql('sniList', { sniId: '1' })
-const detail = data.value.snis.filter(
-  (detail) => detail.id === route.params.id
-) as Soul
+const detail = data.value.snis.filter((detail) => detail.id === route.params.id)
 
 if (error.value) {
   // eslint-disable-next-line no-console

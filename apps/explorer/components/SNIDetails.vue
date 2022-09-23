@@ -19,9 +19,9 @@ import { splitCamelCase } from '~/utils/index'
 
 const props = defineProps({
   detail: {
-    type: Object as () => Soul,
+    type: Object as () => Soul[],
     required: false,
-    default: Object as () => Soul
+    default: Object as () => Soul[]
   }
 })
 </script>
