@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      GQL_HOST: process.env.GRAPHQL_API_URL
+      GQL_HOST: ''
     }
   }
 })
