@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      GQL_HOST: 'http://localhost:4000/graphql'
+      GQL_HOST: process.env.NUXT_GQL_HOST
     }
   }
 })
