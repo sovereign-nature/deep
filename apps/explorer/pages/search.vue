@@ -1,8 +1,7 @@
 <template>
   <div>
-    <div class="text-white">{{}}</div>
     <div class="lg:px-24 lg:pb-12">
-      <SNIFilter />
+      <!-- <SNIFilter /> -->
       <SNITableMobile
         :data="(data.snis as Soul[])"
         class="mx-6 py-12 lg:hidden"
