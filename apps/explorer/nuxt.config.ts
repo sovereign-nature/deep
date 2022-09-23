@@ -6,13 +6,15 @@ export default defineNuxtConfig({
   typescript: {
     shim: false
   },
-  'graphql-client': { },
+  'graphql-client': {},
   colorMode: {
     preference: 'system', // default theme
     dataValue: 'theme', // activate data-theme in <html> tag
     classSuffix: ''
   },
-  publicRuntimeConfig: {
-    GQL_HOST: process.env.GRAPHQL_API_URL
+  runtimeConfig: {
+    public: {
+      GQL_HOST: process.env.GRAPHQL_API_URL
+    }
   }
 })
