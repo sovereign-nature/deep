@@ -1,4 +1,5 @@
-import { Transaction } from '~~/interfaces/transaction'
+// TODO: Change for transaction query when it exists
+import { Transaction } from '~~/types/transaction'
 
 export const useTransactions = () => {
   return useState(

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <div class="text-white">{{ souls }}</div> -->
+    <div class="text-white">{{}}</div>
     <div class="lg:px-24 lg:pb-12">
       <SNIFilter />
       <SNITableMobile
@@ -17,8 +17,6 @@
 <script lang="ts" setup>
 import { Soul } from '~~/types/soul'
 
-// const souls = useSouls()
-// console.log(souls)
 useGqlCors({ credentials: 'same-origin' })
 const { data, error } = await useAsyncGql('sniList', { sniId: '1' })
 

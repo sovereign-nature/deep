@@ -5,9 +5,12 @@
   </div>
 </template>
 <script setup lang="ts">
+import { Transaction } from '~~/types/transaction'
+import { Soul } from '~~/types/soul'
+
 const props = defineProps({
   data: {
-    type: Array as () => any[],
+    type: Array as () => Soul[] | Transaction[],
     required: false,
     default: () => [{}]
   }
