@@ -20,7 +20,7 @@
     "@typescript-eslint/eslint-plugin": "5.38.0",
     "@typescript-eslint/parser": "5.38.0",
     "daisyui": "2.31.0",
-    "eslint": "8.23.1",
+    "eslint": "8.24.0",
     "eslint-config-sni": "*",
     "eslint-config-sni-vue": "*",
     "mapbox-gl": "2.10.0",
