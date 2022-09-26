@@ -11,7 +11,7 @@
       >
         <div
           v-for="li in dt"
-          :key="li"
+          :key="(li as string)"
           class="border-none bg-inherit font-light"
         >
           {{ li }}
@@ -24,7 +24,7 @@
       >
         <div
           v-for="li in dt"
-          :key="li"
+          :key="(li as string)"
           class="border-none bg-inherit font-light"
         >
           {{ li }}
