@@ -11,7 +11,7 @@
         "typechain-types/**",
         "pages/.vitepress/dist/**",
         ".nuxt/**",
-        ".vercel/output/**"
+        ".vercel/**"
       ]
     },
     "lint": {
