@@ -16,7 +16,7 @@ export default defineNuxtConfig({
       'graphql-client': {
         clients: {
           default: {
-            host: process.env.GQL_HOST,
+            host: '',
             schema: './schema.gql'
           }
         }
