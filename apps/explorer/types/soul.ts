@@ -1,4 +1,4 @@
-import SoulProperty from '~~/types/soul-property'
+import { SoulProperty } from '~~/types/soul-property'
 
 export interface Soul {
   id: string
