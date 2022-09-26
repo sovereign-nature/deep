@@ -28,7 +28,7 @@ To install dependencies for whole monorepo run `yarn install` from the root repo
 To build all apps and packages, run the following command:
 
 ```shell
-npm run build
+yan build
 ```
 
 ### Develop
@@ -36,7 +36,7 @@ npm run build
 To develop all apps and packages, run the following command:
 
 ```shell
-npm run dev
+yarn dev
 ```
 
 To develop specific package run:
