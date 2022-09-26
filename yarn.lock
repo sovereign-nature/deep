@@ -1355,12 +1355,12 @@
     unimport "^0.6.7"
     untyped "^0.5.0"
 
-"@nuxt/kit@npm:@nuxt/kit-edge@3.0.0-rc.12-27736403.c0e99c7":
-  version "3.0.0-rc.12-27736403.c0e99c7"
-  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-rc.12-27736403.c0e99c7.tgz#b6f8a29fa4e90125cbdeaa4e6a4665afceb478d9"
-  integrity sha512-2WbqEYKpPToAtuVr+WvTs+FqjkCdYLaI74yP3b87+JwMQLpH2z7eqiNY8KVGPTl6ldBOvqAMyX6REMgroNBJxA==
+"@nuxt/kit@npm:@nuxt/kit-edge@3.0.0-rc.12-27736464.4c50488":
+  version "3.0.0-rc.12-27736464.4c50488"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-rc.12-27736464.4c50488.tgz#3702c79ced1e4aa84e344adca5f4a9947043c718"
+  integrity sha512-lDFS7J3XcKu7MKc6NTFJL80YLqw9qKkW/ry5XX+tAro2CCxbyDj1m3hdkmJhIO7x+Qx7CvMn1Z0bNzLMk5cdNg==
   dependencies:
-    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-rc.12-27736403.c0e99c7"
+    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-rc.12-27736464.4c50488"
     c12 "^0.2.13"
     consola "^2.15.3"
     defu "^6.1.0"
@@ -1410,10 +1410,10 @@
     ufo "^0.8.5"
     unimport "^0.6.7"
 
-"@nuxt/schema@npm:@nuxt/schema-edge@3.0.0-rc.12-27736403.c0e99c7":
-  version "3.0.0-rc.12-27736403.c0e99c7"
-  resolved "https://registry.yarnpkg.com/@nuxt/schema-edge/-/schema-edge-3.0.0-rc.12-27736403.c0e99c7.tgz#8210d167d9cf2004db919c135c0505ffb1fae662"
-  integrity sha512-Z/agQ3x5e03IX41VwyZkf61BRjtcoOU/leODbl0eJdbPmpOb0j6AYn1K9kTbxHS/p4ra18X1+U4tM/TXmeZLjA==
+"@nuxt/schema@npm:@nuxt/schema-edge@3.0.0-rc.12-27736464.4c50488":
+  version "3.0.0-rc.12-27736464.4c50488"
+  resolved "https://registry.yarnpkg.com/@nuxt/schema-edge/-/schema-edge-3.0.0-rc.12-27736464.4c50488.tgz#5694c6dc61788d45823ad33ee42988e6dfdfd43b"
+  integrity sha512-A97BPmz1nv1G3tAdm9Dv0rLD5rDkG43YvHn6Vfx1YlA1J53YpdQeMRAWPfBu5N5vgeCR7dBzhUTPIx6qRd/RFQ==
   dependencies:
     c12 "^0.2.13"
     create-require "^1.1.1"
@@ -1453,13 +1453,13 @@
     rc9 "^1.2.2"
     std-env "^3.2.1"
 
-"@nuxt/test-utils-edge@3.0.0-rc.12-27736403.c0e99c7":
-  version "3.0.0-rc.12-27736403.c0e99c7"
-  resolved "https://registry.yarnpkg.com/@nuxt/test-utils-edge/-/test-utils-edge-3.0.0-rc.12-27736403.c0e99c7.tgz#60b88c08df955754711377c06343186db9ae0797"
-  integrity sha512-nrEwuyprlJEWCYi6TRE0B9N0qKFO0+EX2Q2ReUebWeClOl3Bva1Lu9tlVW7sHkMdg2xummcn5vQ1UnrnCXpQpw==
+"@nuxt/test-utils-edge@3.0.0-rc.12-27736464.4c50488":
+  version "3.0.0-rc.12-27736464.4c50488"
+  resolved "https://registry.yarnpkg.com/@nuxt/test-utils-edge/-/test-utils-edge-3.0.0-rc.12-27736464.4c50488.tgz#f7ccddf2849b9d0a78a3d589f94082f40e48ee63"
+  integrity sha512-YyUf/Hw+r+SgPqZ26slCD+58cxibBqWxEXU07Hwh9vNFMqnOV0o+Y4tw4+q2H8TQEpNQP5DVg0tz7NfocOp5Ig==
   dependencies:
-    "@nuxt/kit" "npm:@nuxt/kit-edge@3.0.0-rc.12-27736403.c0e99c7"
-    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-rc.12-27736403.c0e99c7"
+    "@nuxt/kit" "npm:@nuxt/kit-edge@3.0.0-rc.12-27736464.4c50488"
+    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-rc.12-27736464.4c50488"
     consola "^2.15.3"
     defu "^6.1.0"
     execa "^6.1.0"
