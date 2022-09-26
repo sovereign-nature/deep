@@ -1,18 +1,26 @@
-import { defineNuxtConfig } from 'nuxt'
-// import eslintPlugin from 'vite-plugin-eslint'
+import { defineNuxtConfig } from 'nuxt/config'
 
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', 'nuxt-graphql-client'],
   typescript: {
     shim: false
   },
+  'graphql-client': {},
   colorMode: {
     preference: 'system', // default theme
     dataValue: 'theme', // activate data-theme in <html> tag
     classSuffix: ''
   },
-  vite: {
-    // plugins: [eslintPlugin()]
+  runtimeConfig: {
+    public: {
+      'graphql-client': {
+        clients: {
+          default: {
+            host: 'http://localhost:4000/graphql',
+            schema: './schema.gql'
+          }
+        }
+      }
+    }
   }
 })

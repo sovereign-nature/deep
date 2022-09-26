@@ -11,7 +11,7 @@
       >
         <div
           v-for="li in dt"
-          :key="li"
+          :key="(li as string)"
           class="border-none bg-inherit font-light"
         >
           {{ li }}
@@ -24,7 +24,7 @@
       >
         <div
           v-for="li in dt"
-          :key="li"
+          :key="(li as string)"
           class="border-none bg-inherit font-light"
         >
           {{ li }}
@@ -34,8 +34,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Soul } from '~/interfaces/soul'
-import { Transaction } from '~/interfaces/transaction'
+import { Soul } from '~/types/soul'
+import { Transaction } from '~/types/transaction'
 
 const props = defineProps({
   data: {

@@ -28,5 +28,7 @@
     "codegen": {
       "outputs": ["generated/**"]
     }
-  }
+  },
+  "globalDependencies": [".env"],
+  "globalEnv": ["GQL_HOST"]
 }

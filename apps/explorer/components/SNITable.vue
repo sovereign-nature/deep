@@ -5,8 +5,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Soul } from '~/interfaces/soul'
-import { Transaction } from '~/interfaces/transaction'
+import { Transaction } from '~~/types/transaction'
+import { Soul } from '~~/types/soul'
 
 const props = defineProps({
   data: {
