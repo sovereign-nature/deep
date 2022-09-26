@@ -16,7 +16,7 @@ export default defineNuxtConfig({
       'graphql-client': {
         clients: {
           default: {
-            host: '',
+            host: 'http://localhost:4000/graphql',
             schema: './schema.gql'
           }
         }
