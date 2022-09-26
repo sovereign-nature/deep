@@ -12663,10 +12663,10 @@ vite-plugin-eslint@1.8.1:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vitepress-plugin-mermaid@2.0.7:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/vitepress-plugin-mermaid/-/vitepress-plugin-mermaid-2.0.7.tgz#6949c301f39a08c168a8836832ab4ef1e92699a1"
-  integrity sha512-VIi+pCvi7StdMjZvJtIsg90k44eLtG/NGkeKKvu17G/7AqKVIlt3Cb23KogdHiSlS2f4Ku70a2JAH1x0aEDM4w==
+vitepress-plugin-mermaid@2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/vitepress-plugin-mermaid/-/vitepress-plugin-mermaid-2.0.8.tgz#7a2447d9fa5835fdc00195859d7864d35aeb19a9"
+  integrity sha512-ywWxTeg9kMv7ZPf/igCBF4ZHhWZAyRtbPnA12ICQuNK2AMp7r5IHOfnuX1EJQf8gNdsh8bcvvSvm8Ll92fdOTw==
 
 vitepress@1.0.0-alpha.15:
   version "1.0.0-alpha.15"
