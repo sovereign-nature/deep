@@ -1,10 +1,6 @@
 <template>
   <div>
-    <div
-      v-for="dt in props.data"
-      :key="dt.id"
-      class="last:rounded-b-lg last:border-none"
-    >
+    <div v-for="dt in props.data" :key="dt.id">
       <div
         v-if="!(dt as Soul).name"
         class="grid auto-cols-fr grid-flow-col place-items-center border-b-2 border-primary bg-neutral py-4 text-white"
@@ -19,7 +15,7 @@
       </div>
       <NuxtLink
         v-else
-        class="grid auto-cols-fr grid-flow-col place-items-center border-b-2 border-primary bg-neutral py-4 text-white hover:bg-stone-800"
+        class="grid auto-cols-fr grid-flow-col place-items-center border-b-2 border-primary bg-neutral p-4 text-white hover:bg-stone-800"
         :to="{ path: `details/${dt.id}` }"
       >
         <div
