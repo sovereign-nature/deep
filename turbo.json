@@ -4,14 +4,12 @@
     "build": {
       "dependsOn": ["^build", "$GQL_HOST"],
       "outputs": [
-        "dist/**",
-        ".output/**",
         "artifacts/**",
         "cache/**",
         "typechain-types/**",
         "pages/.vitepress/dist/**",
         ".nuxt/**",
-        ".vercel/**"
+        ".output/**"
       ]
     },
     "lint": {
