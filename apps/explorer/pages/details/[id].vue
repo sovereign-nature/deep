@@ -8,6 +8,10 @@
         :detail="(detail as Soul[])"
         class="my-6 lg:my-0"
       ></SNIDetails>
+      <SNIProperties
+        :properties="(properties[0] as SoulProperty)"
+        class="my-6 lg:mt-6"
+      ></SNIProperties>
       <SNITransactions class="my-6 lg:mt-6"></SNITransactions>
     </div>
     <div class="col-span-full">
@@ -19,6 +23,7 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router'
 import { Soul } from '~~/types/soul'
+import { SoulProperty } from '~~/types/soul-property'
 
 // const souls = useSouls()
 useGqlCors({ credentials: 'same-origin' })
@@ -26,6 +31,10 @@ const route = useRoute()
 
 const { data, error } = await useAsyncGql('sniList', { sniId: '1' })
 const detail = data.value.snis.filter((detail) => detail.id === route.params.id)
+const properties = detail.map((dt) => dt.properties)
+detail.forEach((obj) => {
+  delete obj.properties
+})
 
 if (error.value) {
   // eslint-disable-next-line no-console
