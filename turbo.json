@@ -2,7 +2,7 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "$GQL_HOST"],
       "outputs": [
         "dist/**",
         ".output/**",
@@ -29,6 +29,5 @@
       "outputs": ["generated/**"]
     }
   },
-  "globalDependencies": [".env"],
-  "globalEnv": ["GQL_HOST"]
+  "globalDependencies": [".env"]
 }
