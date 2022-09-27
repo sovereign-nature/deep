@@ -2,7 +2,8 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build", "$GQL_HOST"],
+      "dependsOn": ["^build"],
+      "env": ["GQL_HOST"],
       "outputs": [
         "artifacts/**",
         "cache/**",
@@ -13,14 +14,14 @@
       ]
     },
     "lint": {
-      "dependsOn": ["$PRIVATE_KEY", "$OWNER_ADDRESS", "$LATEST_ADDRESS"],
+      "env": ["PRIVATE_KEY", "OWNER_ADDRESS", "LATEST_ADDRESS"],
       "outputs": []
     },
     "dev": {
       "cache": false
     },
     "test": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["build"],
       "outputs": []
     },
     "codegen": {
