@@ -3,7 +3,8 @@
   "name": "@sni/explorer",
   "version": "0.0.0",
   "scripts": {
-    "build": "nuxt build",
+    "build": "NITRO_PRESET=vercel-edge nuxt build",
+    "build:node": "nuxt build",
     "dev": "nuxt dev",
     "test": "nuxt test",
     "lint": "eslint \"**/*.{vue,ts,js}\"",
