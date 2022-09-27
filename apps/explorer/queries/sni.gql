@@ -6,17 +6,7 @@ query sniList($sniId: ID!) {
     updatedTimestamp
     owner
     name
-    description
-    image
-    properties {
-      statusDescription
-      taxonId
-      conservationStatus
-      geometry
-    }
-    symbol
     collectionName
-    oracle
   }
   sni(id: $sniId) {
     id

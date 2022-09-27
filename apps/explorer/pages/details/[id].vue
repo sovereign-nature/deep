@@ -4,12 +4,9 @@
       class="h-64 w-full self-center rounded-lg bg-leo bg-cover bg-center bg-no-repeat md:h-96 lg:h-full"
     ></div>
     <div class="lg:col-span-2">
-      <SNIDetails
-        :detail="(detail as Soul[])"
-        class="my-6 lg:my-0"
-      ></SNIDetails>
+      <SNIDetails :detail="(detail as Soul)" class="my-6 lg:my-0"></SNIDetails>
       <SNIProperties
-        :properties="(properties[0] as SoulProperty)"
+        :properties="(properties as SoulProperty)"
         class="my-6 lg:mt-6"
       ></SNIProperties>
       <SNITransactions class="my-6 lg:mt-6"></SNITransactions>
@@ -29,12 +26,12 @@ import { SoulProperty } from '~~/types/soul-property'
 useGqlCors({ credentials: 'same-origin' })
 const route = useRoute()
 
-const { data, error } = await useAsyncGql('sniList', { sniId: '1' })
-const detail = data.value.snis.filter((detail) => detail.id === route.params.id)
-const properties = detail.map((dt) => dt.properties)
-detail.forEach((obj) => {
-  delete obj.properties
+const { data, error } = await useAsyncGql('sniList', {
+  sniId: route.params.id.toString()
 })
+const detail = data.value.sni
+const properties = data.value.sni.properties
+delete detail.properties
 
 if (error.value) {
   // eslint-disable-next-line no-console

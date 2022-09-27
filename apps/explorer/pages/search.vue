@@ -18,13 +18,7 @@ import { Soul } from '~~/types/soul'
 
 useGqlCors({ credentials: 'same-origin' })
 const { data, error } = await useAsyncGql('sniList', { sniId: '1' })
-
-const details = data.value.snis.map(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  ({ properties, image, description, symbol, oracle, ...tableDetails }) => {
-    return tableDetails
-  }
-)
+const details = data.value.snis
 
 if (error.value) {
   // eslint-disable-next-line no-console
