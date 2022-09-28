@@ -1,6 +1,25 @@
-type ExampleEntity @entity {
+type SNI @entity {
   id: ID!
   count: BigInt!
-  owner: Bytes! # address
-  approved: Bytes! # address
+  owner: Bytes!
+  approved: Bytes!
+
+  status: Int!
+
+  createdTimestamp: Int!
+  updatedTimestamp: Int
+
+  oracle: ID!
+  collectionName: String!
+  symbol: String!
+  name: String!
+  description: String
+  image: String
+
+  # Properties
+  # TODO: Upgrade to properties object when The Graph will support it
+  statusDescription: String
+  taxonId: String
+  conservationStatus: String
+  geometry: String
 }
