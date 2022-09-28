@@ -29,8 +29,10 @@ const route = useRoute()
 const { data, error } = await useAsyncGql('sniList', {
   sniId: route.params.id.toString()
 })
+
 const detail = data.value.sni
 const properties = data.value.sni.properties
+// TODO: Optimize data format
 delete detail.properties
 
 if (error.value) {
