@@ -4,9 +4,9 @@
     <div
       class="mt-6 w-full rounded-lg border-2 border-primary bg-base-content py-4 px-8"
     >
-      <h1 class="mb-4 text-4xl">{{ props.detail[0].name }}</h1>
+      <h1 class="mb-4 text-4xl">{{ props.detail.name }}</h1>
       <ul>
-        <li v-for="(value, key) in detail[0]" :key="key" class="my-2">
+        <li v-for="(value, key) in detail" :key="key" class="my-2">
           {{ splitCamelCase(key.toString()) }}: {{ value }}
         </li>
       </ul>
@@ -19,9 +19,9 @@ import { splitCamelCase } from '~/utils/index'
 
 const props = defineProps({
   detail: {
-    type: Object as () => Soul[],
+    type: Object as () => Soul,
     required: false,
-    default: Object as () => Soul[]
+    default: Object as () => Soul
   }
 })
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-auto border-collapse overflow-x-auto rounded-lg">
+  <div class="w-auto border-collapse overflow-x-auto">
     <TableHeader :data="props.data"></TableHeader>
     <TableRow :data="props.data"></TableRow>
   </div>
