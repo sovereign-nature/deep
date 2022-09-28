@@ -3,14 +3,16 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "env": ["GQL_HOST"],
+      "env": ["GQL_HOST", "NITRO_PRESET"],
       "outputs": [
         "artifacts/**",
         "cache/**",
         "typechain-types/**",
         "pages/.vitepress/dist/**",
         ".nuxt/**",
-        ".vercel/**"
+        ".vercel/**",
+        "build/**",
+        "generated/**"
       ]
     },
     "lint": {
