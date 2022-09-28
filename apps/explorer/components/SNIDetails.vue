@@ -4,10 +4,12 @@
     <div
       class="mt-6 w-full rounded-lg border-2 border-primary bg-base-content py-4 px-8"
     >
-      <h1 class="mb-4 text-4xl">{{ props.detail.name }}</h1>
+      <h1 class="mb-4 text-4xl">{{ detail.name }}</h1>
       <ul>
         <li v-for="(value, key) in detail" :key="key" class="my-2">
-          {{ splitCamelCase(key.toString()) }}: {{ value }}
+          <div v-if="key !== 'properties'">
+            {{ splitCamelCase(key.toString()) }}: {{ value }}
+          </div>
         </li>
       </ul>
     </div>
@@ -17,7 +19,7 @@
 import { Soul } from '~/types/soul'
 import { splitCamelCase } from '~/utils/index'
 
-const props = defineProps({
+defineProps({
   detail: {
     type: Object as () => Soul,
     required: false,
