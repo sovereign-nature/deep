@@ -29,7 +29,6 @@ const route = useRoute()
 const { data, error } = await useAsyncGql('sniList', {
   sniId: route.params.id.toString()
 })
-
 const detail = data.value.sni
 const sniProperties = data.value.sni.properties
 
