@@ -6,14 +6,14 @@
     <div class="lg:col-span-2">
       <SNIDetails :detail="(detail as Soul)" class="my-6 lg:my-0"></SNIDetails>
       <SNIProperties
-        :properties="(properties as SoulProperty)"
+        :properties="(sniProperties as SoulProperty)"
         class="my-6 lg:mt-6"
       ></SNIProperties>
       <SNITransactions class="my-6 lg:mt-6"></SNITransactions>
     </div>
     <div class="col-span-full">
       <h1 class="my-6 text-3xl text-white">Identification place</h1>
-      <!-- <SNIMap class="rounded-lg border-2 border-primary"></SNIMap> -->
+      <SNIMap class="rounded-lg border-2 border-primary"></SNIMap>
     </div>
   </div>
 </template>
@@ -29,11 +29,8 @@ const route = useRoute()
 const { data, error } = await useAsyncGql('sniList', {
   sniId: route.params.id.toString()
 })
-
 const detail = data.value.sni
-const properties = data.value.sni.properties
-// TODO: Optimize data format
-delete detail.properties
+const sniProperties = data.value.sni.properties
 
 if (error.value) {
   // eslint-disable-next-line no-console
