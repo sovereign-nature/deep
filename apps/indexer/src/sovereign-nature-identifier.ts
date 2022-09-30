@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { BigInt } from '@graphprotocol/graph-ts'
+import { BigInt, Address } from '@graphprotocol/graph-ts'
 import {
   SovereignNatureIdentifier,
   Approval,
@@ -11,67 +11,37 @@ import {
   TokenURISet,
   Transfer
 } from '../generated/SovereignNatureIdentifier/SovereignNatureIdentifier'
-import { ExampleEntity } from '../generated/schema'
+import { SNI } from '../generated/schema'
+import { SNI_CONTRACT_ADDRESS } from '@sni/constants'
 
-export function handleApproval(event: Approval): void {
-  // Entities can be loaded from the store using a string ID; this ID
-  // needs to be unique across all entities of the same type
-  let entity = ExampleEntity.load(event.transaction.from.toHex())
+const CONTRACT_ADDRESS = Address.fromString(SNI_CONTRACT_ADDRESS)
 
-  // Entities only exist after they have been saved to the store;
-  // `null` checks allow to create entities on demand
+// eslint-disable-next-line @typescript-eslint/ban-types
+function findEntity(id: string, blockTimestamp: BigInt): SNI {
+  let entity = SNI.load(id)
+
   if (!entity) {
-    entity = new ExampleEntity(event.transaction.from.toHex())
+    entity = new SNI(id)
+    entity.createdAt = blockTimestamp
 
-    // Entity fields can be set using simple assignments
     entity.count = BigInt.fromI32(0)
   }
 
+  entity.updatedAt = blockTimestamp
+
   // BigInt and BigDecimal math are supported
   // @ts-ignore
-  entity.count = entity.count + BigInt.fromI32(1)
+  // entity.count = entity.count + BigInt.fromI32(1)
 
-  // Entity fields can be set based on event parameters
-  entity.owner = event.params.owner
-  entity.approved = event.params.approved
+  return entity
+}
 
-  // Entities can be written to the store with `.save()`
-  entity.save()
-
-  // Note: If a handler doesn't require existing field values, it is faster
-  // _not_ to load the entity from the store. Instead, create it fresh with
-  // `new Entity(...)`, set the fields that should be updated and save the
-  // entity back to the store. Fields that were not set or unset remain
-  // unchanged, allowing for partial updates to be applied.
-
-  // It is also possible to access smart contracts from mappings. For
-  // example, the contract that has emitted the event can be connected to
-  // with:
-  //
-  // let contract = Contract.bind(event.address)
-  //
-  // The following functions can then be called on this contract to access
-  // state variables and other data:
-  //
-  // - contract.DEFAULT_ADMIN_ROLE(...)
-  // - contract.MINTER_ROLE(...)
-  // - contract.ORACLE_ROLE(...)
-  // - contract.balanceOf(...)
-  // - contract.getApproved(...)
-  // - contract.getRoleAdmin(...)
-  // - contract.hasRole(...)
-  // - contract.isApprovedForAll(...)
-  // - contract.name(...)
-  // - contract.ownerOf(...)
-  // - contract.statusOf(...)
-  // - contract.supportsInterface(...)
-  // - contract.symbol(...)
-  // - contract.tokenURI(...)
+//TODO: Decide if we need approval events. Marketplace integration is not planned.
+export function handleApproval(event: Approval): void {
+  console.log(event.address.toString())
 }
 
 export function handleApprovalForAll(event: ApprovalForAll): void {
-  const contract = SovereignNatureIdentifier.bind(event.address)
-  console.log(contract.statusOf(BigInt.fromI32(0)).toString())
   console.log(event.address.toString())
 }
 
@@ -88,13 +58,40 @@ export function handleRoleRevoked(event: RoleRevoked): void {
 }
 
 export function handleStatusSet(event: StatusSet): void {
-  console.log(event.address.toString())
+  const tokenId = event.params.tokenId
+  const status = event.params.status
+
+  const entity = findEntity(tokenId.toHex(), event.block.timestamp)
+  entity.status = status
+
+  entity.save()
 }
 
 export function handleTokenURISet(event: TokenURISet): void {
-  console.log(event.address.toString())
+  const tokenId = event.params.tokenId
+  const tokenURI = event.params.tokenURI
+
+  const entity = findEntity(tokenId.toHex(), event.block.timestamp)
+  entity.tokenURI = tokenURI
+
+  entity.save()
 }
 
 export function handleTransfer(event: Transfer): void {
-  console.log(event.address.toString())
+  const contract = SovereignNatureIdentifier.bind(CONTRACT_ADDRESS)
+
+  const tokenId = event.params.tokenId
+  const owner = event.params.to
+  const status = contract.statusOf(tokenId)
+  const tokenURI = contract.tokenURI(tokenId)
+
+  const timestamp = event.block.timestamp
+
+  const entity = findEntity(tokenId.toHex(), event.block.timestamp)
+  entity.owner = owner
+  entity.status = status
+  entity.tokenURI = tokenURI
+  entity.updatedAt = timestamp
+
+  entity.save()
 }

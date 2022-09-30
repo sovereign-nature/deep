@@ -1,66 +1,123 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 import {
   assert,
   describe,
   test,
-  clearStore,
   beforeAll,
-  afterAll
+  createMockedFunction
 } from 'matchstick-as/assembly/index'
-import { Address, BigInt, Bytes } from '@graphprotocol/graph-ts'
-import { ExampleEntity } from '../generated/schema'
-import { Approval } from '../generated/SovereignNatureIdentifier/SovereignNatureIdentifier'
-import { handleApproval } from '../src/sovereign-nature-identifier'
-import { createApprovalEvent } from './sovereign-nature-identifier-utils'
 
-// Tests structure (matchstick-as >=0.5.0)
-// https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0
+import { Address, BigInt, ethereum, store } from '@graphprotocol/graph-ts'
 
-describe('Describe entity assertions', () => {
+import {
+  handleStatusSet,
+  handleTokenURISet,
+  handleTransfer
+} from '../src/sovereign-nature-identifier'
+import {
+  createTokenURISetEvent,
+  createTransferEvent,
+  createStatusSetEvent
+} from './sovereign-nature-identifier-utils'
+
+import { SNI_CONTRACT_ADDRESS } from '@sni/constants'
+
+const INITIAL_URI = 'ipfs://initial'
+const NEW_URI = 'ipfs://new'
+const TOKEN_ID = BigInt.fromI32(0)
+const TEMP_TOKEN_ID = BigInt.fromI32(99)
+const MINTER = Address.fromString('0x0000000000000000000000000000000000000000')
+const OWNER = Address.fromString('0x0000000000000000000000000000000000000001')
+const OWNER_2 = Address.fromString('0x0000000000000000000000000000000000000002')
+const CONTRACT = Address.fromString(SNI_CONTRACT_ADDRESS)
+const INITIAL_STATUS = BigInt.fromI32(0)
+const NEW_STATUS = BigInt.fromI32(1)
+
+const ENTITY_NAME = 'SNI'
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+function mockForToken(id: BigInt): void {
+  const tokenIdParam = ethereum.Value.fromUnsignedBigInt(id)
+
+  createMockedFunction(CONTRACT, 'statusOf', 'statusOf(uint256):(uint256)')
+    .withArgs([tokenIdParam])
+    .returns([ethereum.Value.fromUnsignedBigInt(INITIAL_STATUS)])
+
+  createMockedFunction(CONTRACT, 'tokenURI', 'tokenURI(uint256):(string)')
+    .withArgs([tokenIdParam])
+    .returns([ethereum.Value.fromString(INITIAL_URI)])
+}
+
+describe('SNI Indexer', () => {
   beforeAll(() => {
-    const owner = Address.fromString(
-      '0x0000000000000000000000000000000000000001'
-    )
-    const approved = Address.fromString(
-      '0x0000000000000000000000000000000000000001'
-    )
-    const tokenId = BigInt.fromI32(234)
-    const newApprovalEvent = createApprovalEvent(owner, approved, tokenId)
-    handleApproval(newApprovalEvent)
+    mockForToken(TOKEN_ID)
+
+    const transferEvent = createTransferEvent(MINTER, OWNER, TOKEN_ID)
+    handleTransfer(transferEvent)
   })
 
-  afterAll(() => {
-    clearStore()
+  test('Sets createdAt on entity', () => {
+    const tokenId = TEMP_TOKEN_ID
+    mockForToken(tokenId)
+
+    const transferEvent = createTransferEvent(MINTER, OWNER, tokenId)
+    handleTransfer(transferEvent)
+
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId.toHex(),
+      'createdAt',
+      transferEvent.block.timestamp.toString()
+    )
+
+    store.remove(ENTITY_NAME, tokenId.toHex())
   })
 
-  // For more test scenarios, see:
-  // https://thegraph.com/docs/en/developer/matchstick/#write-a-unit-test
+  test('Sets updatedAt on entity', () => {
+    const transferEvent = createTransferEvent(OWNER, OWNER_2, TOKEN_ID)
+    handleTransfer(transferEvent)
 
-  test('ExampleEntity created and stored', () => {
-    assert.entityCount('ExampleEntity', 1)
-
-    // 0xa16081f360e3847006db660bae1c6d1b2e17ec2a is the default address used in newMockEvent() function
     assert.fieldEquals(
-      'ExampleEntity',
-      '0xa16081f360e3847006db660bae1c6d1b2e17ec2a',
-      'owner',
-      '0x0000000000000000000000000000000000000001'
+      ENTITY_NAME,
+      TOKEN_ID.toHex(),
+      'updatedAt',
+      transferEvent.block.timestamp.toString()
     )
+  })
+
+  test('Handles Transfer event', () => {
+    const transferEvent = createTransferEvent(MINTER, OWNER, TOKEN_ID)
+    handleTransfer(transferEvent)
+
+    const tokenId = TOKEN_ID.toHex()
+
+    assert.fieldEquals(ENTITY_NAME, tokenId, 'owner', OWNER.toHex())
+    assert.fieldEquals(ENTITY_NAME, tokenId, 'tokenURI', INITIAL_URI)
     assert.fieldEquals(
-      'ExampleEntity',
-      '0xa16081f360e3847006db660bae1c6d1b2e17ec2a',
-      'approved',
-      '0x0000000000000000000000000000000000000001'
+      ENTITY_NAME,
+      tokenId,
+      'status',
+      INITIAL_STATUS.toString()
     )
-    //Write proper tests
+  })
 
-    // assert.fieldEquals(
-    //   'ExampleEntity',
-    //   '0xa16081f360e3847006db660bae1c6d1b2e17ec2a',
-    //   'tokenId',
-    //   '234'
-    // )
+  test('Handles TokenURISet event', () => {
+    const tokenURISetEvent = createTokenURISetEvent(TOKEN_ID, NEW_URI)
+    handleTokenURISet(tokenURISetEvent)
 
-    // More assert options:
-    // https://thegraph.com/docs/en/developer/matchstick/#asserts
+    assert.fieldEquals(ENTITY_NAME, TOKEN_ID.toHex(), 'tokenURI', NEW_URI)
+  })
+
+  test('Handles StatusSet event', () => {
+    const statusSetEvent = createStatusSetEvent(TOKEN_ID, NEW_STATUS)
+    handleStatusSet(statusSetEvent)
+
+    assert.fieldEquals(
+      ENTITY_NAME,
+      TOKEN_ID.toHex(),
+      'status',
+      NEW_STATUS.toString()
+    )
   })
 })

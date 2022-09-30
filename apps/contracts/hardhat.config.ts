@@ -2,6 +2,7 @@ import { HardhatUserConfig } from 'hardhat/config'
 import '@nomicfoundation/hardhat-toolbox'
 import '@openzeppelin/hardhat-upgrades'
 import 'solidity-coverage'
+import 'hardhat-abi-exporter'
 import * as dotenv from 'dotenv'
 
 dotenv.config()
@@ -16,6 +17,11 @@ const config: HardhatUserConfig = {
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : []
     }
+  },
+  abiExporter: {
+    runOnCompile: true,
+    clear: true,
+    path: 'artifacts/abi'
   }
 }
 

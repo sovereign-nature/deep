@@ -203,6 +203,5 @@ export function createTransferEvent(
       ethereum.Value.fromUnsignedBigInt(tokenId)
     )
   )
-
   return transferEvent
 }

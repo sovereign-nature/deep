@@ -17,6 +17,11 @@ contract SovereignNatureIdentifier is ERC721, ERC721URIStorage, AccessControl, I
 
     Counters.Counter private _tokenIdCounter;
 
+    /**
+     * @dev Emitted when new token is minted.
+     */
+    event TokenMinted(uint256 indexed tokenId, string uri, address owner);
+
     constructor() ERC721("Sovereign Nature Identifier", "SNI") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
@@ -29,8 +34,10 @@ contract SovereignNatureIdentifier is ERC721, ERC721URIStorage, AccessControl, I
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
 
-        // Set initial status for minted token.
+        // Set initial status for minted token and emit creation event.
         setStatus(tokenId, 0);
+
+        emit TokenMinted(tokenId, uri, to);
     }
 
     // The following functions are overrides required by Solidity.
