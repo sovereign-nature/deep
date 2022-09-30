@@ -5,7 +5,6 @@ export default defineNuxtConfig({
   typescript: {
     shim: false
   },
-  'graphql-client': {},
   colorMode: {
     preference: 'system', // default theme
     dataValue: 'theme', // activate data-theme in <html> tag
@@ -21,7 +20,7 @@ export default defineNuxtConfig({
           }
         }
       },
-      mapboxToken: ''
+      mapboxToken: 'DEFINE_TOKEN_IN_ENV'
     }
   }
 })
