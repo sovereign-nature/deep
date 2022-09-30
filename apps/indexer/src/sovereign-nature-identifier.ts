@@ -12,10 +12,9 @@ import {
   Transfer
 } from '../generated/SovereignNatureIdentifier/SovereignNatureIdentifier'
 import { SNI } from '../generated/schema'
+import { SNI_CONTRACT_ADDRESS } from '@sni/constants'
 
-const CONTRACT = Address.fromString(
-  '0xB72a77d425aad2faAE3F695846b337E7d65D098e'
-)
+const CONTRACT_ADDRESS = Address.fromString(SNI_CONTRACT_ADDRESS)
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 function findEntity(id: string, blockTimestamp: BigInt): SNI {
@@ -59,7 +58,13 @@ export function handleRoleRevoked(event: RoleRevoked): void {
 }
 
 export function handleStatusSet(event: StatusSet): void {
-  console.log(event.address.toString())
+  const tokenId = event.params.tokenId
+  const status = event.params.status
+
+  const entity = findEntity(tokenId.toHex(), event.block.timestamp)
+  entity.status = status
+
+  entity.save()
 }
 
 export function handleTokenURISet(event: TokenURISet): void {
@@ -73,7 +78,7 @@ export function handleTokenURISet(event: TokenURISet): void {
 }
 
 export function handleTransfer(event: Transfer): void {
-  const contract = SovereignNatureIdentifier.bind(CONTRACT)
+  const contract = SovereignNatureIdentifier.bind(CONTRACT_ADDRESS)
 
   const tokenId = event.params.tokenId
   const owner = event.params.to

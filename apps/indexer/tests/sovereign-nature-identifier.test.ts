@@ -11,17 +11,20 @@ import {
 import { Address, BigInt, ethereum, store } from '@graphprotocol/graph-ts'
 
 import {
+  handleStatusSet,
   handleTokenURISet,
   handleTransfer
 } from '../src/sovereign-nature-identifier'
 import {
   createTokenURISetEvent,
-  createTransferEvent
+  createTransferEvent,
+  createStatusSetEvent
 } from './sovereign-nature-identifier-utils'
 
 import { SNI_CONTRACT_ADDRESS } from '@sni/constants'
 
 const INITIAL_URI = 'ipfs://initial'
+const NEW_URI = 'ipfs://new'
 const TOKEN_ID = BigInt.fromI32(0)
 const TEMP_TOKEN_ID = BigInt.fromI32(99)
 const MINTER = Address.fromString('0x0000000000000000000000000000000000000000')
@@ -29,6 +32,7 @@ const OWNER = Address.fromString('0x0000000000000000000000000000000000000001')
 const OWNER_2 = Address.fromString('0x0000000000000000000000000000000000000002')
 const CONTRACT = Address.fromString(SNI_CONTRACT_ADDRESS)
 const INITIAL_STATUS = BigInt.fromI32(0)
+const NEW_STATUS = BigInt.fromI32(1)
 
 const ENTITY_NAME = 'SNI'
 
@@ -99,9 +103,21 @@ describe('SNI Indexer', () => {
   })
 
   test('Handles TokenURISet event', () => {
-    const tokenURISetEvent = createTokenURISetEvent(TOKEN_ID, INITIAL_URI)
+    const tokenURISetEvent = createTokenURISetEvent(TOKEN_ID, NEW_URI)
     handleTokenURISet(tokenURISetEvent)
 
-    assert.fieldEquals(ENTITY_NAME, TOKEN_ID.toHex(), 'tokenURI', INITIAL_URI)
+    assert.fieldEquals(ENTITY_NAME, TOKEN_ID.toHex(), 'tokenURI', NEW_URI)
+  })
+
+  test('Handles StatusSet event', () => {
+    const statusSetEvent = createStatusSetEvent(TOKEN_ID, NEW_STATUS)
+    handleStatusSet(statusSetEvent)
+
+    assert.fieldEquals(
+      ENTITY_NAME,
+      TOKEN_ID.toHex(),
+      'status',
+      NEW_STATUS.toString()
+    )
   })
 })
