@@ -18,6 +18,6 @@ import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 const config = useRuntimeConfig()
 
-const accessToken = config.public.MAPBOX_TOKEN
+const accessToken = config.public.mapboxToken
 const location = [4.908977760292588, 52.394935398381165]
 </script>
