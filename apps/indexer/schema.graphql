@@ -1,18 +1,17 @@
 type SNI @entity {
   id: ID!
-  count: BigInt!
   owner: Bytes!
-  approved: Bytes!
 
-  status: Int!
+  tokenURI: String!
+  status: BigInt!
 
-  createdTimestamp: Int!
-  updatedTimestamp: Int
+  createdAt: BigInt
+  updatedAt: BigInt!
 
-  oracle: ID!
-  collectionName: String!
-  symbol: String!
-  name: String!
+  oracle: Bytes
+  collectionName: String
+  symbol: String
+  name: String
   description: String
   image: String
 

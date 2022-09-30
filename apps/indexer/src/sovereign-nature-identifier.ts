@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { BigInt } from '@graphprotocol/graph-ts'
+import { BigInt, Address } from '@graphprotocol/graph-ts'
 import {
   SovereignNatureIdentifier,
   Approval,
@@ -11,39 +11,46 @@ import {
   TokenURISet,
   Transfer
 } from '../generated/SovereignNatureIdentifier/SovereignNatureIdentifier'
-import { ExampleEntity } from '../generated/schema'
+import { SNI } from '../generated/schema'
 
-export function handleApproval(event: Approval): void {
-  // Entities can be loaded from the store using a string ID; this ID
-  // needs to be unique across all entities of the same type
-  let entity = ExampleEntity.load(event.transaction.from.toHex())
+const CONTRACT = Address.fromString(
+  '0xB72a77d425aad2faAE3F695846b337E7d65D098e'
+)
 
-  // Entities only exist after they have been saved to the store;
-  // `null` checks allow to create entities on demand
+function findEntity(id: string): SNI {
+  let entity = SNI.load(id)
+
   if (!entity) {
-    entity = new ExampleEntity(event.transaction.from.toHex())
+    entity = new SNI(id)
 
-    // Entity fields can be set using simple assignments
-    entity.count = BigInt.fromI32(0)
+    // entity.count = BigInt.fromI32(0)
   }
 
   // BigInt and BigDecimal math are supported
   // @ts-ignore
-  entity.count = entity.count + BigInt.fromI32(1)
+  // entity.count = entity.count + BigInt.fromI32(1)
 
-  // Entity fields can be set based on event parameters
-  entity.owner = event.params.owner
-  entity.approved = event.params.approved
+  return entity
+}
 
-  // Entities can be written to the store with `.save()`
-  entity.save()
+function test(a: number): number {
+  return a + 1
+}
 
+export function handleApproval(event: Approval): void {
+  console.log(event.address.toString())
+  // const id = event.transaction.from.toHex()
+  // const entity = findEntity(id)
+  // // Entity fields can be set based on event parameters
+  // entity.owner = event.params.owner
+  // entity.approved = event.params.approved
+  // // Entities can be written to the store with `.save()`
+  // entity.save()
   // Note: If a handler doesn't require existing field values, it is faster
   // _not_ to load the entity from the store. Instead, create it fresh with
   // `new Entity(...)`, set the fields that should be updated and save the
   // entity back to the store. Fields that were not set or unset remain
   // unchanged, allowing for partial updates to be applied.
-
   // It is also possible to access smart contracts from mappings. For
   // example, the contract that has emitted the event can be connected to
   // with:
@@ -70,8 +77,6 @@ export function handleApproval(event: Approval): void {
 }
 
 export function handleApprovalForAll(event: ApprovalForAll): void {
-  const contract = SovereignNatureIdentifier.bind(event.address)
-  console.log(contract.statusOf(BigInt.fromI32(0)).toString())
   console.log(event.address.toString())
 }
 
@@ -92,9 +97,30 @@ export function handleStatusSet(event: StatusSet): void {
 }
 
 export function handleTokenURISet(event: TokenURISet): void {
-  console.log(event.address.toString())
+  const tokenId = event.params.tokenId
+  const tokenURI = event.params.tokenURI
+
+  const entity = findEntity(tokenId.toHex())
+  entity.tokenURI = tokenURI
+
+  entity.save()
 }
 
 export function handleTransfer(event: Transfer): void {
-  console.log(event.address.toString())
+  const contract = SovereignNatureIdentifier.bind(CONTRACT)
+
+  const tokenId = event.params.tokenId
+  const owner = event.params.to
+  const status = contract.statusOf(tokenId)
+  const tokenURI = contract.tokenURI(tokenId)
+
+  const timestamp = event.block.timestamp
+
+  const entity = new SNI(tokenId.toHex())
+  entity.owner = owner
+  entity.status = status
+  entity.tokenURI = tokenURI
+  entity.updatedAt = timestamp
+
+  entity.save()
 }
