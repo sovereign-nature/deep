@@ -8,17 +8,7 @@
       :zoom="14"
       class="h-96 w-full"
     >
-      <MapboxMarker :lng-lat="location" popup>
-        <template #popup>
-          <div class="flex flex-col text-center text-base">
-            <h1 class="text-lg">De Ceuvel</h1>
-            <p class="font-bold">DCVL</p>
-          </div>
-        </template>
-        <div
-          class="block h-16 w-16 cursor-pointer rounded-full bg-deCeuvel bg-cover bg-center"
-        ></div>
-      </MapboxMarker>
+      <MapboxMarker :lng-lat="location" color="#5c7f67"> </MapboxMarker>
     </MapboxMap>
   </div>
 </template>
