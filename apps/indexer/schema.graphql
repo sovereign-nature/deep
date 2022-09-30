@@ -1,12 +1,13 @@
 type SNI @entity {
   id: ID!
   owner: Bytes!
+  count: BigInt!
 
   tokenURI: String!
   status: BigInt!
 
-  createdAt: BigInt
-  updatedAt: BigInt!
+  createdAt: BigInt!
+  updatedAt: BigInt
 
   oracle: Bytes
   collectionName: String
