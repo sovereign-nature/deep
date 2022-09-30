@@ -20,7 +20,9 @@ export default defineNuxtConfig({
             schema: './schema.gql'
           }
         }
-      }
+      },
+      MAPBOX_TOKEN:
+        'pk.eyJ1IjoiZ2lvdmFubmVndWVycmEiLCJhIjoiY2w2bTFkOHd2MGg2MjNicnVyNHR4ZG5mYiJ9.MouD-LX3BD8dH-pewUSHTw'
     }
   }
 })

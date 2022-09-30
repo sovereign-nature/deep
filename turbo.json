@@ -29,6 +29,5 @@
     "codegen": {
       "outputs": ["generated/**"]
     }
-  },
-  "globalDependencies": [".env"]
+  }
 }
