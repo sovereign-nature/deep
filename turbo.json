@@ -3,7 +3,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "env": ["GQL_HOST", "NITRO_PRESET"],
+      "env": ["GQL_HOST", "NITRO_PRESET", "NUXT_PUBLIC_MAPBOX_TOKEN"],
       "outputs": [
         "artifacts/**",
         "cache/**",
