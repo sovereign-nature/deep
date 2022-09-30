@@ -1625,7 +1625,7 @@
   resolved "https://registry.yarnpkg.com/@mapbox/jsonlint-lines-primitives/-/jsonlint-lines-primitives-2.0.2.tgz#ce56e539f83552b58d10d672ea4d6fc9adc7b234"
   integrity sha512-rY0o9A5ECsTQRVhv7tL/OyDpGAoUB4tTvLiW1DSzQGq4bvTPhNw1VpSNjDJc5GFZ2XuyOtSWSVN05qOtcD71qQ==
 
-"@mapbox/mapbox-gl-geocoder@^5.0.1":
+"@mapbox/mapbox-gl-geocoder@5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@mapbox/mapbox-gl-geocoder/-/mapbox-gl-geocoder-5.0.1.tgz#3db39280175872bfd94884275c5ee528bdff35e0"
   integrity sha512-/OUL42eh4OBaIerhcwCpa27oD+u4a2xN8V7vEdsglwd8lCplFAxJCdwT9Kprli1TH5mTYsXyONmh03FwoWBWfA==
@@ -2489,7 +2489,7 @@
   dependencies:
     antlr4ts "^0.5.0-alpha.4"
 
-"@studiometa/vue-mapbox-gl@^2.0.1":
+"@studiometa/vue-mapbox-gl@2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@studiometa/vue-mapbox-gl/-/vue-mapbox-gl-2.0.1.tgz#9c05e6500aa99fb0bb75f5b30e18c679fd7ab5f6"
   integrity sha512-XfqM/LlDf/xvUw43mnjuldPWRo3rqgh2lbbUSCC/vEpuZkF/lkO7Qpm1MVkvLjCu/pIPfYZF227aLl9AqtvSow==
@@ -8242,7 +8242,7 @@ hard-rejection@^2.1.0:
   resolved "https://registry.yarnpkg.com/hard-rejection/-/hard-rejection-2.1.0.tgz#1c6eda5c1685c63942766d79bb40ae773cecd883"
   integrity sha512-VIZB+ibDhx7ObhAe7OVtoEbuP4h/MuOTHJ+J8h/eBXotJYl0fBgR72xDFCKgIh22OJZIOVNxBMWuhAr10r8HdA==
 
-hardhat-abi-exporter@^2.10.0:
+hardhat-abi-exporter@2.10.0:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/hardhat-abi-exporter/-/hardhat-abi-exporter-2.10.0.tgz#4498982bb8942178a3b6d9368b0def8d18b49cc8"
   integrity sha512-ynYGUptkal3leyUNGP3aJ6GRYtSHed3lHcfMv6imawqEd7MERueEkeFy+X4kWH3Vf5w4k6xeeCJHJsegGBJUPA==
