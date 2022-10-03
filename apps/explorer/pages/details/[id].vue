@@ -36,4 +36,8 @@ if (error.value) {
   // eslint-disable-next-line no-console
   console.error(error.value)
 }
+
+useHead({
+  title: `Detail page - ${detail.name}`
+})
 </script>

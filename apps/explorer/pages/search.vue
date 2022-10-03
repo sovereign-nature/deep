@@ -24,4 +24,8 @@ if (error.value) {
   // eslint-disable-next-line no-console
   console.error(error.value)
 }
+
+useHead({
+  title: 'Search page'
+})
 </script>
