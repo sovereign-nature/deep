@@ -18,7 +18,6 @@ describe('Layout', async () => {
 
   it('Should display header when detail page', async () => {
     const result = await $fetch('/details/123')
-    console.log(result)
 
     expect(result).toContain('navbar-start')
   })
