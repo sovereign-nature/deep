@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="lg:px-24 lg:pb-12">
+    <div class="lg:px-24">
       <SNIFilter></SNIFilter>
       <SNITableMobile
         :data="(details as Soul[])"
@@ -48,5 +48,20 @@ if (error.value) {
   --dp-icon-color: #ffffff;
   --dp-danger-color: #e53935;
   --dp-highlight-color: rgba(0, 92, 178, 0.2);
+
+  .dp__input_wrap {
+    .dp__input {
+      border-radius: 50px;
+      border: none;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      &::placeholder {
+        color: #ffffff;
+        opacity: 1;
+        font-weight: 600;
+        font-size: 0.875rem;
+      }
+    }
+  }
 }
 </style>
