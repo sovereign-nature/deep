@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { BigInt, Address } from '@graphprotocol/graph-ts'
+import { BigInt, Address, log } from '@graphprotocol/graph-ts'
 import {
   SovereignNatureIdentifier,
   Approval,
@@ -38,23 +38,23 @@ function findEntity(id: string, blockTimestamp: BigInt): SNI {
 
 //TODO: Decide if we need approval events. Marketplace integration is not planned.
 export function handleApproval(event: Approval): void {
-  console.log(event.address.toString())
+  log.info('Approval event {}', [event.address.toString()])
 }
 
 export function handleApprovalForAll(event: ApprovalForAll): void {
-  console.log(event.address.toString())
+  log.info('Approval for all event {}', [event.address.toString()])
 }
 
 export function handleRoleAdminChanged(event: RoleAdminChanged): void {
-  console.log(event.address.toString())
+  log.info('Role admin changed event {}', [event.address.toString()])
 }
 
 export function handleRoleGranted(event: RoleGranted): void {
-  console.log(event.address.toString())
+  log.info('Role granted event {}', [event.address.toString()])
 }
 
 export function handleRoleRevoked(event: RoleRevoked): void {
-  console.log(event.address.toString())
+  log.info('Role revoked event {}', [event.address.toString()])
 }
 
 export function handleStatusSet(event: StatusSet): void {
