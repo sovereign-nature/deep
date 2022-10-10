@@ -1,8 +1,5 @@
 <template>
-  <div
-    tabindex="1"
-    class="collapse collapse-arrow bg-neutral text-white lg:hidden"
-  >
+  <div>
     <input type="checkbox" class="peer" />
     <div class="collapse-title w-full text-xl">Filters</div>
     <div class="collapse-content border-t-2">

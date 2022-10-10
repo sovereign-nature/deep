@@ -1,5 +1,5 @@
 <template>
-  <form class="hidden w-full py-12 lg:flex">
+  <form>
     <div
       class="relative mr-5 w-1/3 rounded-full border-2 border-white bg-neutral"
     >

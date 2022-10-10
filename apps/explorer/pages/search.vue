@@ -20,6 +20,8 @@ useGqlCors({ credentials: 'same-origin' })
 const { data, error } = await useAsyncGql('sniList', { sniId: '1' })
 const details = data.value.snis
 
+useSouls(details as Soul[])
+
 if (error.value) {
   // eslint-disable-next-line no-console
   console.error(error.value)
