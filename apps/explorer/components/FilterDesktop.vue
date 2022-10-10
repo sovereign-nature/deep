@@ -24,10 +24,12 @@
       </div>
       <input
         id="default-search"
-        type="search"
+        type="text"
         class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder:text-white focus:outline-none"
         placeholder="Search Name or Id..."
         required
+        :value="searchTerm"
+        @keyup="searchResult"
       />
     </div>
     <div class="flex w-full justify-end gap-2">
@@ -59,10 +61,21 @@
     </div>
   </form>
 </template>
-<script lang="ts" setup>
+<script setup lang="ts">
 import Datepicker from '@vuepic/vue-datepicker'
 
+const souls = useSouls()
+let searchTerm = $ref('')
+let filteredResults = $ref([])
 const createdDate = ref([])
 const updatedDate = ref([])
+
+function searchResult(event): void {
+  searchTerm = event.target.value
+  filteredResults = souls.value.filter((soul) =>
+    soul.id.toLocaleLowerCase().includes(searchTerm)
+  )
+  useSouls(filteredResults)
+}
 </script>
 <style lang="scss"></style>
