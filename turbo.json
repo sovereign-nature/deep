@@ -8,8 +8,6 @@
         "NITRO_PRESET",
         "NUXT_PUBLIC_MAPBOX_TOKEN",
         "PRIVATE_KEY",
-        "OWNER_ADDRESS",
-        "CONTRACT_ADDRESS",
         "NFT_STORAGE_API_KEY"
       ],
       "outputs": [
