@@ -1,7 +1,7 @@
 import { ethers } from 'hardhat'
 import { NFTStorage } from 'nft.storage'
 import fetch from '@web-std/fetch'
-import { SNI_CONTRACT_ADDRESS } from '@sni/constants'
+import { SNI_CONTRACT_ADDRESS, SNI_OWNER_ADDRESS } from '@sni/constants'
 
 async function getTestImage() {
   const imageOriginUrl =
@@ -47,10 +47,7 @@ async function main() {
 
   const metadata = await storageClient.store(nft)
 
-  const result = await sni.safeMint(
-    process.env.OWNER_ADDRESS as string,
-    metadata.url
-  )
+  const result = await sni.safeMint(SNI_OWNER_ADDRESS, metadata.url)
 
   console.log(`Successfully minted with transaction hash ${result.hash}`)
 }
