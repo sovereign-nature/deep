@@ -12,7 +12,7 @@
     "test": "graph test"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.34.0",
+    "@graphprotocol/graph-cli": "0.35.0",
     "@graphprotocol/graph-ts": "0.28.1",
     "@sni/contracts": "*",
     "@sni/constants": "*"
