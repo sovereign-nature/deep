@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.34.0",
-    "@graphprotocol/graph-ts": "0.27.0",
+    "@graphprotocol/graph-ts": "0.28.1",
     "@sni/contracts": "*",
     "@sni/constants": "*"
   },
