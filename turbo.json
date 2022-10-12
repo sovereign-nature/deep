@@ -3,7 +3,13 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "env": ["GQL_HOST", "NITRO_PRESET", "NUXT_PUBLIC_MAPBOX_TOKEN"],
+      "env": [
+        "GQL_HOST",
+        "NITRO_PRESET",
+        "NUXT_PUBLIC_MAPBOX_TOKEN",
+        "PRIVATE_KEY",
+        "NFT_STORAGE_API_KEY"
+      ],
       "outputs": [
         "artifacts/**",
         "cache/**",
@@ -12,11 +18,11 @@
         ".nuxt/**",
         ".vercel/**",
         "build/**",
-        "generated/**"
+        "generated/**",
+        "abi/**"
       ]
     },
     "lint": {
-      "env": ["PRIVATE_KEY", "OWNER_ADDRESS", "LATEST_ADDRESS"],
       "outputs": []
     },
     "dev": {
