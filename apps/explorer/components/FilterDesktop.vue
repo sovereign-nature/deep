@@ -1,7 +1,7 @@
 <template>
   <form>
     <div
-      class="relative mr-5 w-1/3 rounded-full border-2 border-white bg-neutral"
+      class="relative mr-5 w-full max-w-screen-2xl rounded-full border-2 border-white bg-neutral"
     >
       <input
         id="default-search"
