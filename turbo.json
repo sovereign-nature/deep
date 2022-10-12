@@ -18,7 +18,8 @@
         ".nuxt/**",
         ".vercel/**",
         "build/**",
-        "generated/**"
+        "generated/**",
+        "abi/**"
       ]
     },
     "lint": {
