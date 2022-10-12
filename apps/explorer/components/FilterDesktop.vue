@@ -45,43 +45,87 @@
 import Datepicker from '@vuepic/vue-datepicker'
 import { Soul } from '~~/types/soul'
 
+const router = useRouter()
 const emit = defineEmits(['searchFilter'])
 const souls = $ref(useSouls())
 const createdDate = ref([])
 const updatedDate = ref([])
 let filteredResults = $ref([])
 
+const filterParams = $ref({
+  idNameOwner: '',
+  status: null,
+  createdDate: '',
+  updatedDate: ''
+})
+
+function filter() {
+  filteredResults = souls
+
+  router.push({
+    query: {
+      idNameOwner: filterParams.idNameOwner,
+      status: filterParams.status,
+      createdDate: filterParams.createdDate,
+      updatedDate: filterParams.updatedDate
+    }
+  })
+
+  if (filterParams.idNameOwner) {
+    filteredResults = filteredResults.filter(
+      (soul) =>
+        soul.id.toLocaleLowerCase().includes(filterParams.idNameOwner) ||
+        soul.name.toLocaleLowerCase().includes(filterParams.idNameOwner) ||
+        soul.owner.toLocaleLowerCase().includes(filterParams.idNameOwner)
+    )
+  }
+
+  if (filterParams.status) {
+    filteredResults = filteredResults.filter(
+      (soul) => soul.status === +filterParams.status
+    )
+  }
+
+  if (filterParams.createdDate) {
+    filteredResults = filteredResults.filter((soul) =>
+      soul.createdTimestamp.toString().includes(filterParams.createdDate)
+    )
+  }
+
+  if (filterParams.updatedDate) {
+    filteredResults = filteredResults.filter((soul) =>
+      soul.updatedTimestamp.toString().includes(filterParams.updatedDate)
+    )
+  }
+
+  emit('searchFilter', filteredResults as Soul[])
+}
+
 function searchResultByIdOrOwnerOrName(event): void {
   const searchTerm = event.target.value
-  filteredResults = souls.filter(
-    (soul) =>
-      soul.id.toLocaleLowerCase().includes(searchTerm) ||
-      soul.name.toLocaleLowerCase().includes(searchTerm) ||
-      soul.owner.toLocaleLowerCase().includes(searchTerm)
-  )
-  emit('searchFilter', filteredResults as Soul[])
+  filterParams.idNameOwner = searchTerm
+
+  filter()
 }
 
 function searchResultByStatus(event): void {
   const searchTerm = event.target.value
-  filteredResults = souls.filter((soul) => soul.status === +searchTerm)
-  emit('searchFilter', filteredResults as Soul[])
+  filterParams.status = searchTerm
+
+  filter()
 }
 
-// TODO: Test the date with real date format
 function searchResultByCreatedDate(event): void {
   const searchTerm = event.target.value
-  filteredResults = souls.filter((soul) =>
-    soul.createdTimestamp.toString().includes(searchTerm.toString())
-  )
-  emit('searchFilter', filteredResults as Soul[])
+  filterParams.createdDate = searchTerm
+
+  filter()
 }
 function searchResultByUpdatedDate(event): void {
   const searchTerm = event.target.value
-  filteredResults = souls.filter((soul) =>
-    soul.updatedTimestamp.toString().includes(searchTerm.toString())
-  )
-  emit('searchFilter', filteredResults as Soul[])
+  filterParams.updatedDate = searchTerm
+
+  filter()
 }
 </script>
 <style lang="scss"></style>
