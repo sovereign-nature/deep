@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-full flex-col gap-6">
     <div
-      v-for="soul in data"
+      v-for="soul in results.length > 0 ? results : data"
       :key="soul.id"
       class="rounded-lg border-2 border-primary bg-base-content py-4 px-8 text-white"
     >
@@ -21,12 +21,13 @@
 </template>
 <script setup lang="ts">
 import { Soul } from '~/types/soul'
+const data = useSouls()
 
 defineProps({
-  data: {
+  results: {
     type: Array as () => Soul[],
     required: false,
-    default: () => [{}]
+    default: () => []
   }
 })
 </script>
