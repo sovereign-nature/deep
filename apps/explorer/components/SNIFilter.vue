@@ -3,12 +3,23 @@
     <FilterMobile
       tabindex="1"
       class="collapse collapse-arrow bg-neutral text-white lg:hidden"
+      @search-filter="handleSearchFilter"
     ></FilterMobile>
-    <FilterDesktop class="hidden w-full py-12 lg:flex"></FilterDesktop>
+    <FilterDesktop
+      class="hidden w-full py-12 lg:flex"
+      @search-filter="handleSearchFilter"
+    ></FilterDesktop>
   </div>
 </template>
-<script lang="ts" setup>
+<script setup lang="ts">
 import { Soul } from '~~/types/soul'
+const emit = defineEmits(['searchFilter'])
+let result = $ref([])
+
+function handleSearchFilter(s) {
+  result = s
+  emit('searchFilter', result)
+}
 
 defineProps({
   details: {

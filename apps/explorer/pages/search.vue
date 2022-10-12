@@ -1,30 +1,32 @@
 <template>
   <div>
     <div class="lg:px-24">
-      <SNIFilter></SNIFilter>
-      <SNITableMobile
-        :data="(details as Soul[])"
-        class="mx-6 py-12 lg:hidden"
-      />
+      <SNIFilter @search-filter="handleSearchFilter"></SNIFilter>
+      <SNITableMobile :results="result" class="mx-6 py-12 lg:hidden" />
       <SNITable
-        :data="(details as Soul[])"
+        :results="result"
         class="hidden lg:block lg:h-screen lg:w-full lg:py-12"
       />
     </div>
   </div>
 </template>
-<script lang="ts" setup>
+<script setup lang="ts">
 import { Soul } from '~~/types/soul'
 
 useGqlCors({ credentials: 'same-origin' })
 const { data, error } = await useAsyncGql('sniList', { sniId: '1' })
 const details = data.value.snis
+let result = $ref([] as Soul[])
 
 useSouls(details as Soul[])
 
 if (error.value) {
   // eslint-disable-next-line no-console
   console.error(error.value)
+}
+
+function handleSearchFilter(s) {
+  result = s
 }
 </script>
 <style lang="scss">
