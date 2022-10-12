@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { BigInt, Address, log } from '@graphprotocol/graph-ts'
+import { BigInt, Address, log, ipfs, json } from '@graphprotocol/graph-ts'
 import {
   SovereignNatureIdentifier,
   Approval,
@@ -92,6 +92,28 @@ export function handleTransfer(event: Transfer): void {
   entity.status = status
   entity.tokenURI = tokenURI
   entity.updatedAt = timestamp
+
+  const data = ipfs.cat(tokenURI.replace('ipfs://', ''))
+
+  if (data !== null) {
+    const metadata = json.fromBytes(data).toObject()
+
+    entity.name = metadata.mustGet('name').toString()
+    entity.description = metadata.mustGet('description').toString()
+    entity.image = metadata.mustGet('image').toString()
+
+    const properties = metadata.mustGet('properties').toObject()
+
+    entity.statusDescription = properties
+      .mustGet('statusDescription')
+      .toString()
+
+    entity.taxonId = properties.mustGet('taxonId').toString()
+    entity.conservationStatus = properties
+      .mustGet('conservationStatus')
+      .toString()
+    entity.geometry = properties.mustGet('geometry').toString()
+  }
 
   entity.save()
 }
