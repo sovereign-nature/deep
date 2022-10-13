@@ -5,31 +5,12 @@
     <div class="collapse-content border-t-2">
       <form class="mt-6">
         <div
-          class="relative w-full rounded-full border-2 border-white bg-neutral p-2"
+          class="relative w-full rounded-full border-2 border-white bg-neutral p-3"
         >
-          <div
-            class="pointer-events-none absolute inset-y-0 left-0 flex items-center rounded-full bg-inherit p-2"
-          >
-            <svg
-              aria-hidden="true"
-              class="h-5 w-5 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              ></path>
-            </svg>
-          </div>
           <input
             id="default-search"
             type="search"
-            class="block h-full w-full rounded-full bg-inherit pl-12 text-sm text-white placeholder:text-white focus:outline-none"
+            class="block h-full w-full rounded-full bg-inherit pl-4 text-sm text-white placeholder:text-white focus:outline-none"
             placeholder="Search by Id, Owner or Name..."
             required
             @input="searchResultByIdOrOwnerOrName"
@@ -69,44 +50,84 @@
 <script lang="ts" setup>
 import Datepicker from '@vuepic/vue-datepicker'
 import { Soul } from '~~/types/soul'
+import { FilterParameters } from '~~/types/filter-parameters'
 
+const router = useRouter()
 const emit = defineEmits(['searchFilter'])
 const souls = $ref(useSouls())
 const createdDate = ref([])
 const updatedDate = ref([])
 let filteredResults = $ref([])
+const filterParams = $ref({} as FilterParameters)
+
+function filterResults() {
+  filteredResults = souls
+
+  router.push({
+    query: {
+      idNameOwner: filterParams.idNameOwner,
+      status: filterParams.status,
+      createdDate: filterParams.createdDate,
+      updatedDate: filterParams.updatedDate
+    }
+  })
+
+  if (filterParams.idNameOwner) {
+    filteredResults = filteredResults.filter(
+      (soul) =>
+        soul.id.toLocaleLowerCase().includes(filterParams.idNameOwner) ||
+        soul.name.toLocaleLowerCase().includes(filterParams.idNameOwner) ||
+        soul.owner.toLocaleLowerCase().includes(filterParams.idNameOwner)
+    )
+  }
+
+  if (filterParams.status) {
+    filteredResults = filteredResults.filter(
+      (soul) => soul.status === +filterParams.status
+    )
+  }
+
+  if (filterParams.createdDate) {
+    filteredResults = filteredResults.filter((soul) =>
+      soul.createdTimestamp.toString().includes(filterParams.createdDate)
+    )
+  }
+
+  if (filterParams.updatedDate) {
+    filteredResults = filteredResults.filter((soul) =>
+      soul.updatedTimestamp.toString().includes(filterParams.updatedDate)
+    )
+  }
+
+  emit('searchFilter', filteredResults as Soul[])
+}
 
 function searchResultByIdOrOwnerOrName(event): void {
   const searchTerm = event.target.value
-  filteredResults = souls.filter(
-    (soul) =>
-      soul.id.toLocaleLowerCase().includes(searchTerm) ||
-      soul.name.toLocaleLowerCase().includes(searchTerm) ||
-      soul.owner.toLocaleLowerCase().includes(searchTerm)
-  )
-  emit('searchFilter', filteredResults as Soul[])
+  filterParams.idNameOwner = searchTerm
+
+  filterResults()
 }
 
 function searchResultByStatus(event): void {
   const searchTerm = event.target.value
-  filteredResults = souls.filter((soul) => soul.status === +searchTerm)
-  emit('searchFilter', filteredResults as Soul[])
+  filterParams.status = searchTerm
+
+  filterResults()
 }
 
-// TODO: Test the date with real date format
 function searchResultByCreatedDate(event): void {
   const searchTerm = event.target.value
-  filteredResults = souls.filter((soul) =>
-    soul.createdTimestamp.toString().includes(searchTerm.toString())
-  )
-  emit('searchFilter', filteredResults as Soul[])
+  filterParams.createdDate = searchTerm
+
+  filterResults()
 }
+
 function searchResultByUpdatedDate(event): void {
   const searchTerm = event.target.value
-  filteredResults = souls.filter((soul) =>
-    soul.updatedTimestamp.toString().includes(searchTerm.toString())
-  )
-  emit('searchFilter', filteredResults as Soul[])
+  filterParams.updatedDate = searchTerm
+
+  filterResults()
 }
 </script>
 <style lang="scss"></style>

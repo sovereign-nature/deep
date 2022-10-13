@@ -44,6 +44,7 @@
 <script setup lang="ts">
 import Datepicker from '@vuepic/vue-datepicker'
 import { Soul } from '~~/types/soul'
+import { FilterParameters } from '~~/types/filter-parameters'
 
 const router = useRouter()
 const emit = defineEmits(['searchFilter'])
@@ -51,15 +52,9 @@ const souls = $ref(useSouls())
 const createdDate = ref([])
 const updatedDate = ref([])
 let filteredResults = $ref([])
+const filterParams = $ref({} as FilterParameters)
 
-const filterParams = $ref({
-  idNameOwner: '',
-  status: null,
-  createdDate: '',
-  updatedDate: ''
-})
-
-function filter() {
+function filterResults() {
   filteredResults = souls
 
   router.push({
@@ -105,27 +100,28 @@ function searchResultByIdOrOwnerOrName(event): void {
   const searchTerm = event.target.value
   filterParams.idNameOwner = searchTerm
 
-  filter()
+  filterResults()
 }
 
 function searchResultByStatus(event): void {
   const searchTerm = event.target.value
   filterParams.status = searchTerm
 
-  filter()
+  filterResults()
 }
 
 function searchResultByCreatedDate(event): void {
   const searchTerm = event.target.value
   filterParams.createdDate = searchTerm
 
-  filter()
+  filterResults()
 }
+
 function searchResultByUpdatedDate(event): void {
   const searchTerm = event.target.value
   filterParams.updatedDate = searchTerm
 
-  filter()
+  filterResults()
 }
 </script>
 <style lang="scss"></style>

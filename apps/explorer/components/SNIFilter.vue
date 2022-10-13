@@ -9,7 +9,6 @@
       class="hidden w-full py-12 lg:flex"
       @search-filter="handleSearchFilter"
     ></FilterDesktop>
-    {{ result }}
   </div>
 </template>
 <script setup lang="ts">
