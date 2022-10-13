@@ -17,7 +17,7 @@
         class="select max-w-xs rounded-full bg-neutral text-white"
         @input="searchResultByStatus"
       >
-        <option disabled selected class="text-white" value="0">
+        <option disabled selected class="text-white">
           Conservation status
         </option>
         <option value="85">Preserved specimen</option>
@@ -52,44 +52,44 @@ const souls = $ref(useSouls())
 const createdDate = ref([])
 const updatedDate = ref([])
 let filteredResults = $ref([])
-const filterParams = $ref({} as FilterParameters)
+const filterParameters = $ref({} as FilterParameters)
 
 function filterResults() {
   filteredResults = souls
 
   router.push({
     query: {
-      idNameOwner: filterParams.idNameOwner,
-      status: filterParams.status,
-      createdDate: filterParams.createdDate,
-      updatedDate: filterParams.updatedDate
+      idNameOwner: filterParameters.idNameOwner,
+      status: filterParameters.status,
+      createdDate: filterParameters.createdDate,
+      updatedDate: filterParameters.updatedDate
     }
   })
 
-  if (filterParams.idNameOwner) {
+  if (filterParameters.idNameOwner) {
     filteredResults = filteredResults.filter(
       (soul) =>
-        soul.id.toLocaleLowerCase().includes(filterParams.idNameOwner) ||
-        soul.name.toLocaleLowerCase().includes(filterParams.idNameOwner) ||
-        soul.owner.toLocaleLowerCase().includes(filterParams.idNameOwner)
+        soul.id.toLocaleLowerCase().includes(filterParameters.idNameOwner) ||
+        soul.name.toLocaleLowerCase().includes(filterParameters.idNameOwner) ||
+        soul.owner.toLocaleLowerCase().includes(filterParameters.idNameOwner)
     )
   }
 
-  if (filterParams.status) {
+  if (filterParameters.status) {
     filteredResults = filteredResults.filter(
-      (soul) => soul.status === +filterParams.status
+      (soul) => soul.status === +filterParameters.status
     )
   }
 
-  if (filterParams.createdDate) {
+  if (filterParameters.createdDate) {
     filteredResults = filteredResults.filter((soul) =>
-      soul.createdTimestamp.toString().includes(filterParams.createdDate)
+      soul.createdTimestamp.toString().includes(filterParameters.createdDate)
     )
   }
 
-  if (filterParams.updatedDate) {
+  if (filterParameters.updatedDate) {
     filteredResults = filteredResults.filter((soul) =>
-      soul.updatedTimestamp.toString().includes(filterParams.updatedDate)
+      soul.updatedTimestamp.toString().includes(filterParameters.updatedDate)
     )
   }
 
@@ -98,28 +98,28 @@ function filterResults() {
 
 function searchResultByIdOrOwnerOrName(event): void {
   const searchTerm = event.target.value
-  filterParams.idNameOwner = searchTerm
+  filterParameters.idNameOwner = searchTerm
 
   filterResults()
 }
 
 function searchResultByStatus(event): void {
   const searchTerm = event.target.value
-  filterParams.status = searchTerm
+  filterParameters.status = searchTerm
 
   filterResults()
 }
 
 function searchResultByCreatedDate(event): void {
   const searchTerm = event.target.value
-  filterParams.createdDate = searchTerm
+  filterParameters.createdDate = searchTerm
 
   filterResults()
 }
 
 function searchResultByUpdatedDate(event): void {
   const searchTerm = event.target.value
-  filterParams.updatedDate = searchTerm
+  filterParameters.updatedDate = searchTerm
 
   filterResults()
 }

@@ -1,7 +1,7 @@
 <template>
-  <div class="flex h-full flex-col gap-6">
+  <div v-if="results && results.length > 0" class="flex h-full flex-col gap-6">
     <div
-      v-for="soul in results.length > 0 ? results : data"
+      v-for="soul in results"
       :key="soul.id"
       class="rounded-lg border-2 border-primary bg-base-content py-4 px-8 text-white"
     >
@@ -18,10 +18,14 @@
       </ul>
     </div>
   </div>
+  <div v-else class="h-screen">
+    <h2 class="text-center text-2xl text-white">
+      Sorry, no results found for your research
+    </h2>
+  </div>
 </template>
 <script setup lang="ts">
 import { Soul } from '~/types/soul'
-const data = useSouls()
 
 defineProps({
   results: {
