@@ -9,7 +9,7 @@
   "devDependencies": {
     "@vueuse/core": "9.3.0",
     "vitepress": "1.0.0-alpha.19",
-    "vue": "3.2.40",
+    "vue": "3.2.41",
     "vitepress-plugin-mermaid": "2.0.8",
     "mermaid": "9.1.7",
     "eslint": "8.25.0",
