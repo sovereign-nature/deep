@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@mapbox/mapbox-gl-geocoder": "5.0.1",
-    "@nuxt/test-utils-edge": "3.0.0-rc.12-27759433.6ef6eae",
+    "@nuxt/test-utils-edge": "3.0.0-rc.12-27765227.8f7a7ec",
     "@nuxtjs/color-mode": "3.1.8",
     "@nuxtjs/eslint-config-typescript": "11.0.0",
     "@nuxtjs/tailwindcss": "5.3.5",

@@ -2081,12 +2081,12 @@
     unimport "^0.6.7"
     untyped "^0.5.0"
 
-"@nuxt/kit@npm:@nuxt/kit-edge@3.0.0-rc.12-27759433.6ef6eae":
-  version "3.0.0-rc.12-27759433.6ef6eae"
-  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-rc.12-27759433.6ef6eae.tgz#2212ee77c6b0b6f5bf6f94d220b00a1cb01caaa9"
-  integrity sha512-SQhB6fqw5zWkTS6e5tLT7Il0CyZm5z9RMTBKzSjo8ZnP6A3vnOyDi6MYLKNBxlTCzOesJJDWMhlhfBCO8sLs0A==
+"@nuxt/kit@npm:@nuxt/kit-edge@3.0.0-rc.12-27765227.8f7a7ec":
+  version "3.0.0-rc.12-27765227.8f7a7ec"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-rc.12-27765227.8f7a7ec.tgz#4a9cfc9dad6793af822d9b8436c757a13afda4fd"
+  integrity sha512-cTdY2cdKd6qUBetIsDbp1cteIK8czu4k4bLmvvDBkxdZvI7hUctbJP6JQHUcPKRmC3AKyaEl6p7TaXx3BjEt1A==
   dependencies:
-    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-rc.12-27759433.6ef6eae"
+    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-rc.12-27765227.8f7a7ec"
     c12 "^0.2.13"
     consola "^2.15.3"
     defu "^6.1.0"
@@ -2136,10 +2136,10 @@
     ufo "^0.8.5"
     unimport "^0.6.7"
 
-"@nuxt/schema@npm:@nuxt/schema-edge@3.0.0-rc.12-27759433.6ef6eae":
-  version "3.0.0-rc.12-27759433.6ef6eae"
-  resolved "https://registry.yarnpkg.com/@nuxt/schema-edge/-/schema-edge-3.0.0-rc.12-27759433.6ef6eae.tgz#f06f0eab30e7639da5d89c964ba640e9663d8725"
-  integrity sha512-9PCqzbg2EdtVYe2oO6ozgbfBP7PkrSYXyxv2DXENuuVapPKSlThC2iekyby8h/6JlQ03k3oHnf5KKOROMsWTFA==
+"@nuxt/schema@npm:@nuxt/schema-edge@3.0.0-rc.12-27765227.8f7a7ec":
+  version "3.0.0-rc.12-27765227.8f7a7ec"
+  resolved "https://registry.yarnpkg.com/@nuxt/schema-edge/-/schema-edge-3.0.0-rc.12-27765227.8f7a7ec.tgz#f38e26f7c36cb785921c3e566f87d1e0509c6b46"
+  integrity sha512-KrnsT7vuRoPmDeWrP6qCBbypyJRGSf5SRnnDmKFUQzf3PmGgzG6A8I9i3NnOWxYiZf8Caz8hMuQKkQaG14NhPw==
   dependencies:
     c12 "^0.2.13"
     create-require "^1.1.1"
@@ -2149,8 +2149,8 @@
     pkg-types "^0.3.5"
     postcss-import-resolver "^2.0.0"
     scule "^0.3.2"
-    std-env "^3.2.1"
-    ufo "^0.8.5"
+    std-env "^3.3.0"
+    ufo "^0.8.6"
     unimport "^0.6.8"
     untyped "^0.5.0"
 
@@ -2180,13 +2180,13 @@
     rc9 "^1.2.2"
     std-env "^3.2.1"
 
-"@nuxt/test-utils-edge@3.0.0-rc.12-27759433.6ef6eae":
-  version "3.0.0-rc.12-27759433.6ef6eae"
-  resolved "https://registry.yarnpkg.com/@nuxt/test-utils-edge/-/test-utils-edge-3.0.0-rc.12-27759433.6ef6eae.tgz#fdfe75d9c7b0fa5ceec8dd1d73f550f0bbe9ba5f"
-  integrity sha512-AwJamdsqmA0KQJ1FTrcH83rS00yDtnR1Xr3O3eHlH94wWzlM/sLj2ZRA9PIVG9ptUU/zScMx6XxcADLAQh9BvQ==
+"@nuxt/test-utils-edge@3.0.0-rc.12-27765227.8f7a7ec":
+  version "3.0.0-rc.12-27765227.8f7a7ec"
+  resolved "https://registry.yarnpkg.com/@nuxt/test-utils-edge/-/test-utils-edge-3.0.0-rc.12-27765227.8f7a7ec.tgz#d3aa895140e84c49416b007d55bf6d5d1ec5a298"
+  integrity sha512-BgsVhhmoeub0AD4feK/XR+TFiLSj9BH2IPPN7zF9fHqzkkq/zlanAW/+i3iEywbzJoPomYtOjTFvnNPhZJA/Cw==
   dependencies:
-    "@nuxt/kit" "npm:@nuxt/kit-edge@3.0.0-rc.12-27759433.6ef6eae"
-    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-rc.12-27759433.6ef6eae"
+    "@nuxt/kit" "npm:@nuxt/kit-edge@3.0.0-rc.12-27765227.8f7a7ec"
+    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-rc.12-27765227.8f7a7ec"
     consola "^2.15.3"
     defu "^6.1.0"
     execa "^6.1.0"
@@ -7684,6 +7684,11 @@ fast-diff@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/fast-diff/-/fast-diff-1.2.0.tgz#73ee11982d86caaf7959828d519cfe927fac5f03"
   integrity sha512-xJuoT5+L99XlZ8twedaRf6Ax2TgQVxvgZOYoPKqZufmJib0tL2tegPBOZb1pVNgIhlqDlA0eO0c3wBvQcmzx4w==
+
+fast-fifo@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/fast-fifo/-/fast-fifo-1.1.0.tgz#17d1a3646880b9891dfa0c54e69c5fef33cad779"
+  integrity sha512-Kl29QoNbNvn4nhDsLYjyIAaIqaJB6rBx5p3sL9VjaefJ+eMFBWVZiaoguaoZfzEKr5RhAti0UgM8703akGPJ6g==
 
 fast-glob@^3.0.3, fast-glob@^3.2.11, fast-glob@^3.2.12, fast-glob@^3.2.5, fast-glob@^3.2.7, fast-glob@^3.2.9:
   version "3.2.12"
@@ -14412,6 +14417,11 @@ std-env@^3.2.1:
   resolved "https://registry.yarnpkg.com/std-env/-/std-env-3.2.1.tgz#00e260ec3901333537125f81282b9296b00d7304"
   integrity sha512-D/uYFWkI/31OrnKmXZqGAGK5GbQRPp/BWA1nuITcc6ICblhhuQUPHS5E2GSCVS7Hwhf4ciq8qsATwBUxv+lI6w==
 
+std-env@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/std-env/-/std-env-3.3.0.tgz#86b5b5d416c5744b3fdeac6893c2b98196fc1a55"
+  integrity sha512-cNNS+VYsXIs5gI6gJipO4qZ8YYT274JHvNnQ1/R/x8Q8mdP0qj0zoMchRXmBNPqp/0eOEhX+3g7g6Fgb7meLIQ==
+
 stealthy-require@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
@@ -15295,6 +15305,11 @@ ufo@^0.8.3, ufo@^0.8.5:
   version "0.8.5"
   resolved "https://registry.yarnpkg.com/ufo/-/ufo-0.8.5.tgz#e367b4205ece9d9723f2fa54f887d43ed1bce5d0"
   integrity sha512-e4+UtA5IRO+ha6hYklwj6r7BjiGMxS0O+UaSg9HbaTefg4kMkzj4tXzEBajRR+wkxf+golgAWKzLbytCUDMJAA==
+
+ufo@^0.8.6:
+  version "0.8.6"
+  resolved "https://registry.yarnpkg.com/ufo/-/ufo-0.8.6.tgz#c0ec89bc0e0c9fa59a683680feb0f28b55ec323b"
+  integrity sha512-fk6CmUgwKCfX79EzcDQQpSCMxrHstvbLswFChHS0Vump+kFkw7nJBfTZoC1j0bOGoY9I7R3n2DGek5ajbcYnOw==
 
 uglify-js@^3.1.4:
   version "3.17.1"
