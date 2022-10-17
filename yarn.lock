@@ -8660,10 +8660,10 @@ hard-rejection@^2.1.0:
   resolved "https://registry.yarnpkg.com/hard-rejection/-/hard-rejection-2.1.0.tgz#1c6eda5c1685c63942766d79bb40ae773cecd883"
   integrity sha512-VIZB+ibDhx7ObhAe7OVtoEbuP4h/MuOTHJ+J8h/eBXotJYl0fBgR72xDFCKgIh22OJZIOVNxBMWuhAr10r8HdA==
 
-hardhat-abi-exporter@2.10.0:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/hardhat-abi-exporter/-/hardhat-abi-exporter-2.10.0.tgz#4498982bb8942178a3b6d9368b0def8d18b49cc8"
-  integrity sha512-ynYGUptkal3leyUNGP3aJ6GRYtSHed3lHcfMv6imawqEd7MERueEkeFy+X4kWH3Vf5w4k6xeeCJHJsegGBJUPA==
+hardhat-abi-exporter@2.10.1:
+  version "2.10.1"
+  resolved "https://registry.yarnpkg.com/hardhat-abi-exporter/-/hardhat-abi-exporter-2.10.1.tgz#b14884e233c73fe3f43360f014ad7fd6df4b6d25"
+  integrity sha512-X8GRxUTtebMAd2k4fcPyVnCdPa6dYK4lBsrwzKP5yiSq4i+WadWPIumaLfce53TUf/o2TnLpLOduyO1ylE2NHQ==
   dependencies:
     "@ethersproject/abi" "^5.5.0"
     delete-empty "^3.0.0"
