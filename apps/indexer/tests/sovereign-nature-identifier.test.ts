@@ -156,7 +156,44 @@ describe('SNI Indexer', () => {
     const tokenURISetEvent = createTokenURISetEvent(TOKEN_ID, NEW_URI)
     handleTokenURISet(tokenURISetEvent)
 
-    assert.fieldEquals(ENTITY_NAME, TOKEN_ID.toHex(), 'tokenURI', NEW_URI)
+    const tokenId = TOKEN_ID.toHex()
+
+    // Base fields that were updated via setter.
+    assert.fieldEquals(ENTITY_NAME, tokenId, 'tokenURI', NEW_URI)
+
+    // JSON metadata fields from updated.json should be indexed as well.
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'name',
+      'Sovereign Nature Identifier #1'
+    )
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'description',
+      'Test lion identifier updated'
+    )
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'image',
+      'ipfs://bafybeihs6qouvmo4pnjozlrdmgic3b4nav6rrswc3tobgclrrvtwsa47oe/blob'
+    )
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'statusDescription',
+      "{ '0': 'Normal', '1': 'Aggressive' }"
+    )
+    assert.fieldEquals(ENTITY_NAME, tokenId, 'taxonId', 'itis:183803')
+    assert.fieldEquals(ENTITY_NAME, tokenId, 'conservationStatus', 'VU')
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'geometry',
+      'POINT(6.0000 48.0000)'
+    )
   })
 
   test('Handles StatusSet event', () => {

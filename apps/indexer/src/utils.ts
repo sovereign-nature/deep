@@ -2,8 +2,8 @@
 import { SNI } from '../generated/schema'
 import { BigInt, JSONValueKind, ipfs, json } from '@graphprotocol/graph-ts'
 
-//Find entity in database or create a new one if it's not found.
-//eslint-disable-next-line @typescript-eslint/ban-types
+// Find entity in database or create a new one if it's not found.
+// eslint-disable-next-line @typescript-eslint/ban-types
 export function findEntity(id: string, blockTimestamp: BigInt): SNI {
   let entity = SNI.load(id)
 
@@ -21,7 +21,7 @@ export function findEntity(id: string, blockTimestamp: BigInt): SNI {
   return entity
 }
 
-//Fill entity data from IPFS metadata file.
+// Fill entity data from IPFS metadata file.
 export function fillFromIPFS(entity: SNI, tokenURI: string): SNI {
   const data = ipfs.cat(tokenURI.replace('ipfs://', ''))
 
