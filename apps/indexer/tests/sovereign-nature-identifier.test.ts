@@ -26,7 +26,8 @@ import { SNI_CONTRACT_ADDRESS } from '@sni/constants'
 
 const INITIAL_URI =
   'ipfs://bafyreib564aosdw5igyfbvedtdvtz4xgrznz64iszd34b32cfvzro3rm5y/metadata.json'
-const NEW_URI = 'ipfs://new'
+const NEW_URI =
+  'ipfs://bafyreib564aosdw5igyfbvedtdvtz4xgrznz64iszd34b32cfvzro3rnew/metadata.json'
 const TOKEN_ID = BigInt.fromI32(0)
 const TEMP_TOKEN_ID = BigInt.fromI32(99)
 const MINTER = Address.fromString('0x0000000000000000000000000000000000000000')
@@ -50,9 +51,16 @@ function mockForToken(id: BigInt): void {
     .withArgs([tokenIdParam])
     .returns([ethereum.Value.fromString(INITIAL_URI)])
 
+  //Initial IPFS Metadata
   mockIpfsFile(
     'bafyreib564aosdw5igyfbvedtdvtz4xgrznz64iszd34b32cfvzro3rm5y/metadata.json',
     'tests/ipfs/initial.json'
+  )
+
+  //Updated IPFS Metadata
+  mockIpfsFile(
+    'bafyreib564aosdw5igyfbvedtdvtz4xgrznz64iszd34b32cfvzro3rnew/metadata.json',
+    'tests/ipfs/updated.json'
   )
 }
 
