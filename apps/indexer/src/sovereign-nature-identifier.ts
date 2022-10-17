@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
-  BigInt,
   Address,
   log,
   ipfs,
@@ -18,30 +17,10 @@ import {
   TokenURISet,
   Transfer
 } from '../generated/SovereignNatureIdentifier/SovereignNatureIdentifier'
-import { SNI } from '../generated/schema'
 import { SNI_CONTRACT_ADDRESS } from '@sni/constants'
+import { findEntity } from './utils'
 
 const CONTRACT_ADDRESS = Address.fromString(SNI_CONTRACT_ADDRESS)
-
-// eslint-disable-next-line @typescript-eslint/ban-types
-function findEntity(id: string, blockTimestamp: BigInt): SNI {
-  let entity = SNI.load(id)
-
-  if (!entity) {
-    entity = new SNI(id)
-    entity.createdAt = blockTimestamp
-
-    entity.count = BigInt.fromI32(0)
-  }
-
-  entity.updatedAt = blockTimestamp
-
-  // BigInt and BigDecimal math are supported
-  // @ts-ignore
-  // entity.count = entity.count + BigInt.fromI32(1)
-
-  return entity
-}
 
 //TODO: Decide if we need approval events. Marketplace integration is not planned.
 export function handleApproval(event: Approval): void {
@@ -92,13 +71,10 @@ export function handleTransfer(event: Transfer): void {
   const status = contract.statusOf(tokenId)
   const tokenURI = contract.tokenURI(tokenId)
 
-  const timestamp = event.block.timestamp
-
   const entity = findEntity(tokenId.toHex(), event.block.timestamp)
   entity.owner = owner
   entity.status = status
   entity.tokenURI = tokenURI
-  entity.updatedAt = timestamp
 
   const data = ipfs.cat(tokenURI.replace('ipfs://', ''))
 
