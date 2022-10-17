@@ -1245,16 +1245,6 @@
     "@whatwg-node/fetch" "^0.4.0"
     tslib "^2.4.0"
 
-"@graphql-tools/batch-delegate@8.4.1":
-  version "8.4.1"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/batch-delegate/-/batch-delegate-8.4.1.tgz#e4757df8cb6e985fedbd6315a7b2721190b988ef"
-  integrity sha512-kbDY3p0JKEcIUwb5lCXX647oz07lXbvdfigyzD++Goi7RChutK03MmPKvrrgQwi0SFupRKy1tIJAlExlW83STw==
-  dependencies:
-    "@graphql-tools/delegate" "9.0.8"
-    "@graphql-tools/utils" "8.12.0"
-    dataloader "2.1.0"
-    tslib "^2.4.0"
-
 "@graphql-tools/batch-execute@8.5.6":
   version "8.5.6"
   resolved "https://registry.yarnpkg.com/@graphql-tools/batch-execute/-/batch-execute-8.5.6.tgz#476c2f9af1c302567e798d63063f1a2dfaad754a"
@@ -1288,18 +1278,6 @@
     tslib "~2.4.0"
     value-or-promise "1.0.11"
 
-"@graphql-tools/delegate@9.0.8":
-  version "9.0.8"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/delegate/-/delegate-9.0.8.tgz#aa792f419a041de0c6341eaecf9694cf6f16f76f"
-  integrity sha512-h+Uce0Np0eKj7wILOvlffRQ9jEQ4KelNXfqG8A2w+2sO2P6CbKsR7bJ4ch9lcUdCBbZ4Wg6L/K+1C4NRFfzbNw==
-  dependencies:
-    "@graphql-tools/batch-execute" "8.5.6"
-    "@graphql-tools/schema" "9.0.4"
-    "@graphql-tools/utils" "8.12.0"
-    dataloader "2.1.0"
-    tslib "~2.4.0"
-    value-or-promise "1.0.11"
-
 "@graphql-tools/git-loader@^7.2.1":
   version "7.2.6"
   resolved "https://registry.yarnpkg.com/@graphql-tools/git-loader/-/git-loader-7.2.6.tgz#0227a99a6daf4fedac6d172726966110bb7299ef"
@@ -1323,7 +1301,7 @@
     "@whatwg-node/fetch" "^0.4.0"
     tslib "^2.4.0"
 
-"@graphql-tools/graphql-file-loader@^7.3.7", "@graphql-tools/graphql-file-loader@^7.5.0", "@graphql-tools/graphql-file-loader@^7.5.5":
+"@graphql-tools/graphql-file-loader@^7.3.7", "@graphql-tools/graphql-file-loader@^7.5.0":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@graphql-tools/graphql-file-loader/-/graphql-file-loader-7.5.5.tgz#d8afb391282e3dc33005df04bdec8488e4ab101d"
   integrity sha512-OL+7qO1S66TpMK7OGz8Ag2WL08HlxKxrObVSDlxzWbSubWuXM5v959XscYAKRf6daYcVpkfNvO37QjflL9mjhg==
@@ -1364,7 +1342,7 @@
     tslib "^2.4.0"
     unixify "^1.0.0"
 
-"@graphql-tools/load@^7.5.5", "@graphql-tools/load@^7.7.1", "@graphql-tools/load@^7.7.7":
+"@graphql-tools/load@^7.5.5", "@graphql-tools/load@^7.7.1":
   version "7.7.7"
   resolved "https://registry.yarnpkg.com/@graphql-tools/load/-/load-7.7.7.tgz#0d6fb0804177658f609562982a6a68e008073ca0"
   integrity sha512-IpI2672zcoAX4FLjcH5kvHc7eqjPyLP1svrIcZKQenv0GRS6dW0HI9E5UCBs0y/yy8yW6s+SvpmNsfIlkMj3Kw==
@@ -1433,20 +1411,6 @@
     tslib "^2.4.0"
     value-or-promise "1.0.11"
 
-"@graphql-tools/stitch@^8.7.13":
-  version "8.7.13"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/stitch/-/stitch-8.7.13.tgz#94f8445ae1367569d9680ad4db6738ca4d98816c"
-  integrity sha512-7bKJWT1vJJfg1GKiHd6c3GxdmCX1y4HiMw6nXKKad79wdYC9uxRSBOWFGaGbyIZBkCv4E5ptZioCn65NX+Fmkw==
-  dependencies:
-    "@graphql-tools/batch-delegate" "8.4.1"
-    "@graphql-tools/delegate" "9.0.8"
-    "@graphql-tools/merge" "8.3.6"
-    "@graphql-tools/schema" "9.0.4"
-    "@graphql-tools/utils" "8.12.0"
-    "@graphql-tools/wrap" "9.2.3"
-    tslib "^2.4.0"
-    value-or-promise "^1.0.11"
-
 "@graphql-tools/url-loader@7.16.2", "@graphql-tools/url-loader@^7.13.2", "@graphql-tools/url-loader@^7.9.7":
   version "7.16.2"
   resolved "https://registry.yarnpkg.com/@graphql-tools/url-loader/-/url-loader-7.16.2.tgz#4b4d9db94262aa405bca0f4b9ccd381012a9de12"
@@ -1480,17 +1444,6 @@
   integrity sha512-W8bzJijTZDNi8e1oM2AMG89CtvfTYaJ9lCe0dYMN+a+OPMhRfgR9+eO7ALcUa9y4MTu+YEDVjUq0ZboaSvesyA==
   dependencies:
     "@graphql-tools/delegate" "9.0.6"
-    "@graphql-tools/schema" "9.0.4"
-    "@graphql-tools/utils" "8.12.0"
-    tslib "^2.4.0"
-    value-or-promise "1.0.11"
-
-"@graphql-tools/wrap@9.2.3", "@graphql-tools/wrap@^9.2.3":
-  version "9.2.3"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/wrap/-/wrap-9.2.3.tgz#70f7602aed9781fbc860cea64a918636599883be"
-  integrity sha512-aiLjcAuUwcvA1mF25c7KFDPXEdQDpo6bTDyAMCSlFXpF4T01hoxLERmfmbRmsmy/dP80ZB31a+t70aspVdqZSA==
-  dependencies:
-    "@graphql-tools/delegate" "9.0.8"
     "@graphql-tools/schema" "9.0.4"
     "@graphql-tools/utils" "8.12.0"
     tslib "^2.4.0"
@@ -8403,9 +8356,10 @@ globrex@^0.1.2:
   resolved "https://registry.yarnpkg.com/globrex/-/globrex-0.1.2.tgz#dd5d9ec826232730cd6793a5e33a9302985e6098"
   integrity sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==
 
-"gluegun@git+https://github.com/edgeandnode/gluegun.git#v4.3.1-pin-colors-dep":
+"gluegun@https://github.com/edgeandnode/gluegun#v4.3.1-pin-colors-dep":
   version "4.3.1"
-  resolved "git+https://github.com/edgeandnode/gluegun.git#b34b9003d7bf556836da41b57ef36eb21570620a"
+  uid b34b9003d7bf556836da41b57ef36eb21570620a
+  resolved "https://github.com/edgeandnode/gluegun#b34b9003d7bf556836da41b57ef36eb21570620a"
   dependencies:
     apisauce "^1.0.1"
     app-module-path "^2.2.0"
@@ -11946,25 +11900,21 @@ nuxi@3.0.0-rc.11:
   optionalDependencies:
     fsevents "~2.3.2"
 
-nuxt-graphql-client@0.1.25:
-  version "0.1.25"
-  resolved "https://registry.yarnpkg.com/nuxt-graphql-client/-/nuxt-graphql-client-0.1.25.tgz#3e297e04546dddfc9b298380a795a931262f0936"
-  integrity sha512-s1NNVExlEVl8CB89bHLjNUZ7ZnPZuHYMkAMILIDu4MGZBVsYqmb1juYXCL6ADYge7Ri34qI/lwbmS5IxCxB/dg==
+nuxt-graphql-client@0.1.27:
+  version "0.1.27"
+  resolved "https://registry.yarnpkg.com/nuxt-graphql-client/-/nuxt-graphql-client-0.1.27.tgz#a0bed9e941590d1d46a61c9d627d89175012781b"
+  integrity sha512-Szuf51AAa9f0YcyAxS5h6Fw642XMN/np3zN87RNoMJUvroWE3XGrHWXwJfmAlnzk1nnWjBT7MzEyx/SK2Bc+AQ==
   dependencies:
     "@graphql-codegen/cli" "2.13.4"
     "@graphql-codegen/typescript" "^2.7.3"
     "@graphql-codegen/typescript-graphql-request" "^4.5.5"
     "@graphql-codegen/typescript-operations" "^2.5.3"
-    "@graphql-tools/graphql-file-loader" "^7.5.5"
-    "@graphql-tools/load" "^7.7.7"
-    "@graphql-tools/stitch" "^8.7.13"
-    "@graphql-tools/wrap" "^9.2.3"
     "@nuxt/kit" "3.0.0-rc.11"
     defu "^6.1.0"
     graphql "^16.6.0"
     graphql-request "^5.0.0"
+    knitwork "^0.1.2"
     ohash "^0.1.5"
-    ohmyfetch "^0.4.19"
     scule "^0.3.2"
 
 nuxt@3.0.0-rc.11:
