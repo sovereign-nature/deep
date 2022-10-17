@@ -16,19 +16,20 @@
           />
         </svg>
         <div>
-          <p class="font-bold">{{ error.title }}</p>
-          <p>{{ error.text }}</p>
+          <p class="font-bold">Ooops! Something went wrong</p>
+          <p>We're facing an issue with our servers, please try again</p>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-defineProps({
-  error: {
-    type: Object,
-    required: false,
-    default: Object
-  }
-})
+// TODO: Implement real messages when we have some
+// defineProps({
+//   error: {
+//     type: String,
+//     required: false,
+//     default: String
+//   }
+// })
 </script>
