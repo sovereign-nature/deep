@@ -7,7 +7,7 @@
     "serve": "vitepress serve pages"
   },
   "devDependencies": {
-    "@vueuse/core": "9.3.0",
+    "@vueuse/core": "9.3.1",
     "vitepress": "1.0.0-alpha.19",
     "vue": "3.2.40",
     "vitepress-plugin-mermaid": "2.0.8",
