@@ -1,15 +1,25 @@
 <template>
   <div>
     <div class="lg:px-24">
-      <SNIFilter></SNIFilter>
-      <SNITableMobile
-        :data="(details as Soul[])"
-        class="mx-6 py-12 lg:hidden"
-      />
-      <SNITable
-        :data="(details as Soul[])"
-        class="hidden lg:block lg:h-screen lg:w-full lg:py-12"
-      />
+      <div v-if="error" class="mx-24 mt-2 h-screen">
+        <SNIAlert
+          class="delay-700 duration-500 ease-in-out"
+          :class="{
+            'opacity-0': !isActive
+          }"
+        ></SNIAlert>
+      </div>
+      <div v-else>
+        <SNIFilter></SNIFilter>
+        <SNITableMobile
+          :data="(details as Soul[])"
+          class="mx-6 py-12 lg:hidden"
+        />
+        <SNITable
+          :data="(details as Soul[])"
+          class="hidden lg:block lg:h-screen lg:w-full lg:py-12"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -18,11 +28,22 @@ import { Soul } from '~~/types/soul'
 
 useGqlCors({ credentials: 'same-origin' })
 const { data, error } = await useAsyncGql('sniList', { sniId: '1' })
-const details = data.value.snis
+let details: Soul[] = []
+const isActive = ref(false)
 
 if (error.value) {
-  // eslint-disable-next-line no-console
-  console.error(error.value)
+  isActive.value = true
+  displayErrorMessage()
+} else {
+  details = data.value.snis as Soul[]
+}
+
+function displayErrorMessage() {
+  isActive.value = true
+
+  setTimeout(() => {
+    isActive.value = false
+  }, 5000)
 }
 </script>
 <style lang="scss">
