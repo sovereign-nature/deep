@@ -69,19 +69,19 @@ Insurance system can be used for community compensation to reduce human-wildlife
   flowchart TD;
       IOT[Smart Collars]-.->Oracle;
       CitizenScience[Ranger Patrols: Cyber Tracker]-.->Oracle;
-      Oracle((Oracle Contract))-- on-chain data -->GovernanceDAO{{Governance System / DAO }}
-      Validator1(Conservation Representative)-- index vote -->GovernanceDAO
-      Validator2(External Scientist)-- index vote -->GovernanceDAO
-      Validator3(Community Member)-- index vote -->GovernanceDAO
-      GovernanceDAO-- index / status -->SNI((SNI Contract));
+      Oracle((Oracle Contract))-- on-chain data -->Governance{{Index System}}
+      Validator1(Conservation Representative)-- index vote -->Governance
+      Validator2(External Scientist)-- index vote -->Governance
+      Validator3(Community Member)-- index vote -->Governance
+      Governance-- index / status -->SNI((Identifier Contract));
       SNI-- status -->TreasuryContract((Treasury Contract));
       SNI-- status -->Derrivatives[(Living NFTs)];
       Derrivatives--metadata-->Metaverse{{Metaverse}};
       Derrivatives--funds-->TreasuryContract
-      TreasuryContract-- initial seed funds -->GovernanceDAO
-      TreasuryContract-- insurance funds -->Community((Conservation Community))
-      TreasuryContract-- funds from investments -->GovernanceDAO
-      TreasuryContract-- investment funds -->Assets{{Low Risk Assets}}
+      TreasuryContract-- initial seed funds -->Conservation{{Grants For Conservation}}
+      TreasuryContract-- insurance funds -->Community{{Conservation Community}}
+      TreasuryContract-- funds from investments -->Conservation
+      TreasuryContract-- investment funds -->Assets[(Low Risk Assets)]
       Assets -- compound interest --> TreasuryContract
 ```
 
@@ -96,18 +96,18 @@ The seed funding can be spend on reforestation, initial fire protection, install
       IOT[Fire Sensors]-.->Oracle;
       CitizenScience[Citizen Science: Orgo]-.->Oracle;
       Satellite[Google Earth Engine]-.->Oracle;
-      Oracle((Oracle Contract))-- on-chain data -->GovernanceDAO{{Governance System / DAO }}
+      Oracle((Oracle Contract))-- on-chain data -->GovernanceDAO{{Index System }}
       Validator1(Conservation Representative)-- index vote -->GovernanceDAO
       Validator2(External Scientist)-- index vote -->GovernanceDAO
       Validator3(Community Member)-- index vote -->GovernanceDAO
-      GovernanceDAO-- index / status -->SNI((SNI Contract));
+      GovernanceDAO-- index / status -->SNI((Identifier Contract));
       SNI-- status -->TreasuryContract((Treasury Contract));
       SNI-- status -->Derrivatives[(Living NFTs)];
       Derrivatives--metadata-->Metaverse{{Metaverse}};
       Derrivatives--funds-->TreasuryContract
-      TreasuryContract-- initial seed funds -->GovernanceDAO
-      TreasuryContract-- insurance funds -->Community((Conservation Community))
-      TreasuryContract-- funds from investments -->GovernanceDAO
-      TreasuryContract-- investment funds -->Assets{{Low Risk Assets}}
+      TreasuryContract-- initial seed funds -->Conservation{{Grants For Conservation}}
+      TreasuryContract-- insurance funds -->Community{{Conservation Community}}
+      TreasuryContract-- funds from investments -->Conservation
+      TreasuryContract-- investment funds -->Assets[(Low Risk Assets)]
       Assets -- compound interest --> TreasuryContract
 ```
