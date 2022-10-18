@@ -109,6 +109,8 @@ describe('SNI Indexer', () => {
 
     // Base fields
     assert.fieldEquals(ENTITY_NAME, tokenId, 'owner', OWNER.toHex())
+    assert.fieldEquals(ENTITY_NAME, tokenId, 'tokenId', TOKEN_ID.toString())
+
     assert.fieldEquals(ENTITY_NAME, tokenId, 'tokenURI', INITIAL_URI)
     assert.fieldEquals(
       ENTITY_NAME,

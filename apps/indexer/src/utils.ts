@@ -4,18 +4,16 @@ import { BigInt, JSONValueKind, ipfs, json } from '@graphprotocol/graph-ts'
 
 // Find entity in database or create a new one if it's not found.
 // eslint-disable-next-line @typescript-eslint/ban-types
-export function findEntity(id: string, blockTimestamp: BigInt): SNI {
+export function findEntity(tokenId: BigInt, blockTimestamp: BigInt): SNI {
+  const id = tokenId.toHex()
   let entity = SNI.load(id)
 
   if (!entity) {
     entity = new SNI(id)
+    entity.tokenId = tokenId
     entity.createdAt = blockTimestamp
-
-    entity.count = BigInt.fromI32(0)
   } else {
     entity.updatedAt = blockTimestamp
-    // @ts-ignore
-    entity.count = entity.count + BigInt.fromI32(1)
   }
 
   return entity
