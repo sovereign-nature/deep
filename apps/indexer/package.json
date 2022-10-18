@@ -5,7 +5,7 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph codegen && graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ sni",
+    "deploy": "graph deploy --product hosted-service sovereign-nature/sni",
     "create-local": "graph create --node http://localhost:8020/ sni",
     "remove-local": "graph remove --node http://localhost:8020/ sni",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sni",
