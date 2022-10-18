@@ -2,10 +2,6 @@ import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', 'nuxt-graphql-client'],
-  components: {
-    global: true,
-    dirs: ['~/components']
-  },
   typescript: {
     shim: false
   },
