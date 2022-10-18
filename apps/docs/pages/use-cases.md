@@ -54,3 +54,60 @@ For Sovereign Nature Identifier usage in Internet of Things field we see it as a
 - Sovereign Nature Identifier enhanced smart collars for wildlife animals – collars that will include Sovereign Nature Identifier signatures by default with metadata that can be populated later during the identification process. Such collars can be developed together with Smart Parks.
 - Plugins for LoRaWan ChirpStack that will automate Sovereign Nature Identity metadata updates.
 - Simple Sensor Oracle – tool that will make arbitrary sensor oraclisation process simple. For example, we can easily oraclise Nature Cognita and soil sensors in De Ceuvel.
+
+## Conservation With Sovereign Nature Identifier
+
+### Endangered Species Conservation
+
+We can use Sovereign Nature Identifier to protect endangered animals using "insurance like" workflow.
+
+The seed funding can be spend on building initial infrastructure - reinforcement of bomas or other built environment, smart collars, citizen science incentives.
+
+Insurance system can be used for community compensation to reduce human-wildlife conflicts or to insure existing animals.
+
+```mermaid
+  flowchart TD;
+      IOT[Smart Collars]-.->Oracle;
+      CitizenScience[Ranger Patrols: Cyber Tracker]-.->Oracle;
+      Oracle((Oracle Contract))-- on-chain data -->GovernanceDAO{{Governance System / DAO }}
+      Validator1(Conservation Representative)-- index vote -->GovernanceDAO
+      Validator2(External Scientist)-- index vote -->GovernanceDAO
+      Validator3(Community Member)-- index vote -->GovernanceDAO
+      GovernanceDAO-- index / status -->SNI((SNI Contract));
+      SNI-- status -->TreasuryContract((Treasury Contract));
+      SNI-- status -->Derrivatives[(Living NFTs)];
+      Derrivatives--metadata-->Metaverse{{Metaverse}};
+      Derrivatives--funds-->TreasuryContract
+      TreasuryContract-- initial seed funds -->GovernanceDAO
+      TreasuryContract-- insurance funds -->Community((Conservation Community))
+      TreasuryContract-- funds from investments -->GovernanceDAO
+      TreasuryContract-- investment funds -->Assets{{Low Risk Assets}}
+      Assets -- compound interest --> TreasuryContract
+```
+
+### Forest Area Protection
+
+For forest area protection we have different datasets available for voting on, but the overall scheme keeps similar structure.
+
+The seed funding can be spend on reforestation, initial fire protection, installment of sensors in the area.
+
+```mermaid
+  flowchart TD;
+      IOT[Fire Sensors]-.->Oracle;
+      CitizenScience[Citizen Science: Orgo]-.->Oracle;
+      Satellite[Google Earth Engine]-.->Oracle;
+      Oracle((Oracle Contract))-- on-chain data -->GovernanceDAO{{Governance System / DAO }}
+      Validator1(Conservation Representative)-- index vote -->GovernanceDAO
+      Validator2(External Scientist)-- index vote -->GovernanceDAO
+      Validator3(Community Member)-- index vote -->GovernanceDAO
+      GovernanceDAO-- index / status -->SNI((SNI Contract));
+      SNI-- status -->TreasuryContract((Treasury Contract));
+      SNI-- status -->Derrivatives[(Living NFTs)];
+      Derrivatives--metadata-->Metaverse{{Metaverse}};
+      Derrivatives--funds-->TreasuryContract
+      TreasuryContract-- initial seed funds -->GovernanceDAO
+      TreasuryContract-- insurance funds -->Community((Conservation Community))
+      TreasuryContract-- funds from investments -->GovernanceDAO
+      TreasuryContract-- investment funds -->Assets{{Low Risk Assets}}
+      Assets -- compound interest --> TreasuryContract
+```
