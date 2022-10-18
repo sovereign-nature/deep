@@ -18,10 +18,12 @@
     </div>
   </div>
 </template>
-<script setup>
+<script lang="ts" setup>
+import { NuxtError } from 'nuxt/dist/app/composables/error'
+
 defineProps({
   error: {
-    type: Object,
+    type: Object as () => NuxtError,
     required: false,
     default: () => Object
   }
