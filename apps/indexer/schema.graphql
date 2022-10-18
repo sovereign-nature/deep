@@ -1,7 +1,7 @@
 type SNI @entity {
   id: ID!
   owner: Bytes!
-  count: BigInt!
+  tokenId: BigInt!
 
   tokenURI: String!
   status: BigInt!

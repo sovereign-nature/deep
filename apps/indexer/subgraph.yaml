@@ -1,4 +1,7 @@
 specVersion: 0.0.4
+description: Sovereign Nature Identifier on mbase
+features:
+  - ipfsOnEthereumContracts
 schema:
   file: ./schema.graphql
 dataSources:
