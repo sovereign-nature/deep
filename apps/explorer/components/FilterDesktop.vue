@@ -9,19 +9,19 @@
         class="block h-full w-full rounded-full bg-inherit pl-4 text-sm text-white placeholder:text-white focus:outline-none"
         placeholder="Search by Id, Owner or Name..."
         required
-        @input="searchResultByIdOrOwnerOrName"
+        @input="searchByParameter($event, 'idNameOwner')"
       />
     </div>
     <div class="flex w-full justify-end gap-2">
       <select
         class="select max-w-xs rounded-full bg-neutral text-white"
-        @input="searchResultByStatus"
+        @input="searchByParameter($event, 'status')"
       >
         <option disabled selected class="text-white">
           Conservation status
         </option>
-        <option value="85">Preserved specimen</option>
-        <option value="31">Human observation</option>
+        <option value="5">Preserved specimen</option>
+        <option value="-61">Human observation</option>
         <option value="88">Machine observation</option>
       </select>
       <Datepicker
@@ -29,14 +29,14 @@
         dark
         placeholder="Created at"
         class="relative inset-y-0 left-0 flex items-center"
-        @input="searchResultByCreatedDate"
+        @input="searchByParameter($event, 'createdDate')"
       />
       <Datepicker
         v-model="updatedDate"
         dark
         placeholder="Updated at"
         class="relative inset-y-0 left-0 flex items-center"
-        @input="searchResultByUpdatedDate"
+        @input="searchByParameter($event, 'updatedDate')"
       />
     </div>
   </form>
@@ -54,74 +54,35 @@ const updatedDate = ref([])
 let filteredResults = $ref([])
 const filterParameters = $ref({} as FilterParameters)
 
-function filterResults() {
+function filterResults(filter) {
   filteredResults = souls
 
   router.push({
     query: {
-      idNameOwner: filterParameters.idNameOwner,
-      status: filterParameters.status,
-      createdDate: filterParameters.createdDate,
-      updatedDate: filterParameters.updatedDate
+      filter: filterParameters[filter]
     }
   })
 
-  if (filterParameters.idNameOwner) {
-    filteredResults = filteredResults.filter(
-      (soul) =>
-        soul.id.toLocaleLowerCase().includes(filterParameters.idNameOwner) ||
-        soul.name.toLocaleLowerCase().includes(filterParameters.idNameOwner) ||
-        soul.owner.toLocaleLowerCase().includes(filterParameters.idNameOwner)
-    )
-  }
+  filteredResults = filteredResults.filter((soul) => {
+    if (filter === 'idNameOwner') {
+      return soul['id' || 'name' || 'owner'].includes(filterParameters[filter])
+    } else if (filter === 'createdDate' || filter === 'updatedDate') {
+      soul[filter].toString().includes(filterParameters[filter])
+    } else {
+      return soul.status === +filterParameters[filter]
+    }
 
-  if (filterParameters.status) {
-    filteredResults = filteredResults.filter(
-      (soul) => soul.status === +filterParameters.status
-    )
-  }
-
-  if (filterParameters.createdDate) {
-    filteredResults = filteredResults.filter((soul) =>
-      soul.createdTimestamp.toString().includes(filterParameters.createdDate)
-    )
-  }
-
-  if (filterParameters.updatedDate) {
-    filteredResults = filteredResults.filter((soul) =>
-      soul.updatedTimestamp.toString().includes(filterParameters.updatedDate)
-    )
-  }
+    return null
+  })
 
   emit('searchFilter', filteredResults as Soul[])
 }
 
-function searchResultByIdOrOwnerOrName(event): void {
+function searchByParameter(event, filterParam): void {
   const searchTerm = event.target.value
-  filterParameters.idNameOwner = searchTerm
+  filterParameters[filterParam] = searchTerm
 
-  filterResults()
-}
-
-function searchResultByStatus(event): void {
-  const searchTerm = event.target.value
-  filterParameters.status = searchTerm
-
-  filterResults()
-}
-
-function searchResultByCreatedDate(event): void {
-  const searchTerm = event.target.value
-  filterParameters.createdDate = searchTerm
-
-  filterResults()
-}
-
-function searchResultByUpdatedDate(event): void {
-  const searchTerm = event.target.value
-  filterParameters.updatedDate = searchTerm
-
-  filterResults()
+  filterResults(filterParam)
 }
 </script>
 <style lang="scss"></style>

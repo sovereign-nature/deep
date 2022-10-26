@@ -13,13 +13,13 @@
             class="block h-full w-full rounded-full bg-inherit pl-4 text-sm text-white placeholder:text-white focus:outline-none"
             placeholder="Search by Id, Owner or Name..."
             required
-            @input="searchResultByIdOrOwnerOrName"
+            @input="searchByParameter($event, 'idNameOwner')"
           />
         </div>
         <div class="mt-6 flex flex-col gap-4 md:flex-row">
           <select
             class="select rounded-full border-2 border-accent bg-neutral text-white"
-            @input="searchResultByStatus"
+            @input="searchByParameter($event, 'status')"
           >
             <option disabled selected class="text-white" value="0">
               Conservation status
@@ -33,14 +33,14 @@
             dark
             placeholder="Created at"
             class="rounded-full border-2 border-accent bg-neutral text-white"
-            @input="searchResultByCreatedDate"
+            @input="searchByParameter($event, 'createdDate')"
           />
           <Datepicker
             v-model="updatedDate"
             dark
             placeholder="Updated at"
             class="rounded-full border-2 border-accent bg-neutral text-white"
-            @input="searchResultByUpdatedDate"
+            @input="searchByParameter($event, 'updatedDate')"
           />
         </div>
       </form>
@@ -58,76 +58,37 @@ const souls = $ref(useSouls())
 const createdDate = ref([])
 const updatedDate = ref([])
 let filteredResults = $ref([])
-const filterParams = $ref({} as FilterParameters)
+const filterParameters = $ref({} as FilterParameters)
 
-function filterResults() {
+function filterResults(filter) {
   filteredResults = souls
 
   router.push({
     query: {
-      idNameOwner: filterParams.idNameOwner,
-      status: filterParams.status,
-      createdDate: filterParams.createdDate,
-      updatedDate: filterParams.updatedDate
+      filter: filterParameters[filter]
     }
   })
 
-  if (filterParams.idNameOwner) {
-    filteredResults = filteredResults.filter(
-      (soul) =>
-        soul.id.toLocaleLowerCase().includes(filterParams.idNameOwner) ||
-        soul.name.toLocaleLowerCase().includes(filterParams.idNameOwner) ||
-        soul.owner.toLocaleLowerCase().includes(filterParams.idNameOwner)
-    )
-  }
+  filteredResults = filteredResults.filter((soul) => {
+    if (filter === 'idNameOwner') {
+      return soul['id' || 'name' || 'owner'].includes(filterParameters[filter])
+    } else if (filter === 'createdDate' || filter === 'updatedDate') {
+      soul[filter].toString().includes(filterParameters[filter])
+    } else {
+      return soul.status === +filterParameters[filter]
+    }
 
-  if (filterParams.status) {
-    filteredResults = filteredResults.filter(
-      (soul) => soul.status === +filterParams.status
-    )
-  }
-
-  if (filterParams.createdDate) {
-    filteredResults = filteredResults.filter((soul) =>
-      soul.createdTimestamp.toString().includes(filterParams.createdDate)
-    )
-  }
-
-  if (filterParams.updatedDate) {
-    filteredResults = filteredResults.filter((soul) =>
-      soul.updatedTimestamp.toString().includes(filterParams.updatedDate)
-    )
-  }
+    return null
+  })
 
   emit('searchFilter', filteredResults as Soul[])
 }
 
-function searchResultByIdOrOwnerOrName(event): void {
+function searchByParameter(event, filterParam): void {
   const searchTerm = event.target.value
-  filterParams.idNameOwner = searchTerm
+  filterParameters[filterParam] = searchTerm
 
-  filterResults()
-}
-
-function searchResultByStatus(event): void {
-  const searchTerm = event.target.value
-  filterParams.status = searchTerm
-
-  filterResults()
-}
-
-function searchResultByCreatedDate(event): void {
-  const searchTerm = event.target.value
-  filterParams.createdDate = searchTerm
-
-  filterResults()
-}
-
-function searchResultByUpdatedDate(event): void {
-  const searchTerm = event.target.value
-  filterParams.updatedDate = searchTerm
-
-  filterResults()
+  filterResults(filterParam)
 }
 </script>
 <style lang="scss"></style>
