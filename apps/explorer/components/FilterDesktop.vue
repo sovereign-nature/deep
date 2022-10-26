@@ -59,7 +59,7 @@ function filterResults(filter) {
 
   router.push({
     query: {
-      filter: filterParameters[filter]
+      [filter]: filterParameters[filter]
     }
   })
 
