@@ -49,46 +49,16 @@
 </template>
 <script lang="ts" setup>
 import Datepicker from '@vuepic/vue-datepicker'
-import { Soul } from '~~/types/soul'
-import { FilterParameters } from '~~/types/filter-parameters'
 
-const router = useRouter()
-const emit = defineEmits(['searchFilter'])
-const souls = $ref(useSouls())
 const createdDate = ref([])
 const updatedDate = ref([])
-let filteredResults = $ref([])
-const filterParameters = $ref({} as FilterParameters)
 
-function filterResults(filter) {
-  filteredResults = souls
-
-  router.push({
-    query: {
-      [filter]: filterParameters[filter]
-    }
-  })
-
-  filteredResults = filteredResults.filter((soul) => {
-    if (filter === 'idNameOwner') {
-      return soul['id' || 'name' || 'owner'].includes(filterParameters[filter])
-    } else if (filter === 'createdDate' || filter === 'updatedDate') {
-      soul[filter].toString().includes(filterParameters[filter])
-    } else {
-      return soul.status === +filterParameters[filter]
-    }
-
-    return null
-  })
-
-  emit('searchFilter', filteredResults as Soul[])
-}
-
-function searchByParameter(event, filterParam): void {
-  const searchTerm = event.target.value
-  filterParameters[filterParam] = searchTerm
-
-  filterResults(filterParam)
-}
+defineProps({
+  searchByParameter: {
+    type: Function,
+    required: false,
+    default: () => [{}]
+  }
+})
 </script>
 <style lang="scss"></style>
