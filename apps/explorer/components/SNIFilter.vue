@@ -19,16 +19,16 @@ let filteredResults = $ref([])
 const router = useRouter()
 const souls = $ref(useSouls())
 const filterParameters = $ref({} as FilterParameters)
-// TODO: Make this works for both filter components and props
-// const createdDate = ref([])
-// const updatedDate = ref([])
 
 function filterResults(filter) {
   filteredResults = souls
 
   router.push({
     query: {
-      [filter]: filterParameters[filter]
+      idNameOwner: filterParameters.idNameOwner,
+      status: filterParameters.status,
+      createdDate: filterParameters.createdDate,
+      updatedDate: filterParameters.updatedDate
     }
   })
 
