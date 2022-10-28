@@ -2,6 +2,9 @@ import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', 'nuxt-graphql-client'],
+  experimental: {
+    reactivityTransform: true
+  },
   typescript: {
     shim: false
   },

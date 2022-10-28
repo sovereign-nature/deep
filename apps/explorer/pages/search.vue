@@ -7,35 +7,38 @@
           :class="{
             'opacity-0': !isActive
           }"
-        ></SNIAlert>
+        />
       </div>
       <div v-else>
-        <SNIFilter></SNIFilter>
+        <SNIFilter @search-filter="handleSearchFilter"></SNIFilter>
         <SNITableMobile
-          :data="(details as Soul[])"
+          :results="result ? result : souls"
           class="mx-6 py-12 lg:hidden"
         />
         <SNITable
-          :data="(details as Soul[])"
+          :results="result ? result : souls"
           class="hidden lg:block lg:h-screen lg:w-full lg:py-12"
         />
       </div>
     </div>
   </div>
 </template>
-<script lang="ts" setup>
+<script setup lang="ts">
 import { Soul } from '~~/types/soul'
 
 useGqlCors({ credentials: 'same-origin' })
 const { data, error } = await useAsyncGql('sniList', { sniId: '1' })
 let details: Soul[] = []
 const isActive = ref(false)
+let souls = ref([] as Soul[])
+let result = $ref(null as Soul[])
 
 if (error.value) {
   isActive.value = true
   displayErrorMessage()
 } else {
   details = data.value.snis as Soul[]
+  souls = useSouls(details as Soul[])
 }
 
 function displayErrorMessage() {
@@ -44,6 +47,10 @@ function displayErrorMessage() {
   setTimeout(() => {
     isActive.value = false
   }, 5000)
+}
+
+function handleSearchFilter(s) {
+  result = s
 }
 </script>
 <style lang="scss">

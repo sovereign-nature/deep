@@ -3,7 +3,7 @@
     class="grid auto-cols-fr grid-flow-col place-items-center rounded-t-lg border-b-2 border-primary bg-neutral py-3 text-white"
   >
     <div
-      v-for="(value, key) in props.data[0]"
+      v-for="(value, key) in data[0]"
       :key="key"
       class="bg-inherit font-light text-inherit"
     >
@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import { splitCamelCase } from '~/utils/index'
 
-const props = defineProps({
+defineProps({
   data: {
     type: Array as () => unknown[],
     required: false,
