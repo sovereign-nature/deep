@@ -61,7 +61,7 @@ For Sovereign Nature Identifier usage in Internet of Things field we see it as a
 
 We can use Sovereign Nature Identifier to protect endangered animals using "insurance like" workflow.
 
-The seed funding can be spend on building initial infrastructure - reinforcement of bomas or other built environment, smart collars, citizen science incentives.
+The seed funding can be spend on building initial infrastructure - reinforcement of built environment, smart collars, citizen science incentives.
 
 Insurance system can be used for community compensation to reduce human-wildlife conflicts or to insure existing animals.
 
@@ -75,9 +75,9 @@ Insurance system can be used for community compensation to reduce human-wildlife
       Validator3(Community Member)-- index vote -->Governance
       Governance-- index / status -->SNI((Identifier Contract));
       SNI-- status -->TreasuryContract((Treasury Contract));
-      SNI-- status -->Derrivatives[(Living NFTs)];
-      Derrivatives--metadata-->Metaverse{{Metaverse}};
-      Derrivatives--funds-->TreasuryContract
+      SNI-- status -->Derivatives[(Living NFTs)];
+      Derivatives--metadata-->Metaverse{{Metaverse}};
+      Derivatives--funds-->TreasuryContract
       TreasuryContract-- initial seed funds -->Conservation{{Grants For Conservation}}
       TreasuryContract-- insurance funds -->Community{{Conservation Community}}
       TreasuryContract-- funds from investments -->Conservation
@@ -94,7 +94,7 @@ The seed funding can be spend on reforestation, initial fire protection, install
 ```mermaid
   flowchart TD;
       IOT[Fire Sensors]-.->Oracle;
-      CitizenScience[Citizen Science: Orgo]-.->Oracle;
+      CitizenScience[Citizen Science: Mobile App]-.->Oracle;
       Satellite[Google Earth Engine]-.->Oracle;
       Oracle((Oracle Contract))-- on-chain data -->GovernanceDAO{{Index System }}
       Validator1(Conservation Representative)-- index vote -->GovernanceDAO
@@ -102,9 +102,9 @@ The seed funding can be spend on reforestation, initial fire protection, install
       Validator3(Community Member)-- index vote -->GovernanceDAO
       GovernanceDAO-- index / status -->SNI((Identifier Contract));
       SNI-- status -->TreasuryContract((Treasury Contract));
-      SNI-- status -->Derrivatives[(Living NFTs)];
-      Derrivatives--metadata-->Metaverse{{Metaverse}};
-      Derrivatives--funds-->TreasuryContract
+      SNI-- status -->Derivatives[(Living NFTs)];
+      Derivatives--metadata-->Metaverse{{Metaverse}};
+      Derivatives--funds-->TreasuryContract
       TreasuryContract-- initial seed funds -->Conservation{{Grants For Conservation}}
       TreasuryContract-- insurance funds -->Community{{Conservation Community}}
       TreasuryContract-- funds from investments -->Conservation
