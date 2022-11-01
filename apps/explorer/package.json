@@ -23,7 +23,7 @@
     "@types/node": "16.18.3",
     "@typescript-eslint/eslint-plugin": "5.42.0",
     "@typescript-eslint/parser": "5.42.0",
-    "@vuepic/vue-datepicker": "3.5.2",
+    "@vuepic/vue-datepicker": "3.5.3",
     "cross-env": "7.0.3",
     "daisyui": "2.37.0",
     "eslint": "8.26.0",
