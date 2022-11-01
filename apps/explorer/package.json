@@ -31,7 +31,7 @@
     "eslint-config-sni-vue": "*",
     "jsdom": "20.0.2",
     "mapbox-gl": "2.10.0",
-    "nuxt": "3.0.0-rc.11",
+    "nuxt": "3.0.0-rc.12",
     "nuxt-graphql-client": "0.2.8",
     "prettier": "2.7.1",
     "postcss-custom-properties": "12.1.10",
