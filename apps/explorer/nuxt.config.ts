@@ -18,9 +18,7 @@ export default defineNuxtConfig({
       'graphql-client': {
         clients: {
           default: {
-            clientHost:
-              'https://api.thegraph.com/subgraphs/name/sovereign-nature/sni/graphql',
-            schema: './schema.gql'
+            host: 'https://api.thegraph.com/subgraphs/name/sovereign-nature/sni'
           }
         }
       },
