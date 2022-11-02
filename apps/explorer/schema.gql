@@ -1,8 +1,24 @@
+# type SNI {
+#   id: ID!
+#   status: Int!
+#   createdTimestamp: Int!
+#   updatedTimestamp: Int
+#   owner: ID!
+#   oracle: ID!
+#   collectionName: String!
+#   symbol: String!
+#   name: String!
+#   description: String
+#   image: String
+#   properties: SNIProperties
+# }
+
 type SNI {
   id: ID!
   status: Int!
-  createdTimestamp: Int!
-  updatedTimestamp: Int
+
+  createdAt: Int!
+  updatedAt: Int!
   owner: ID!
   oracle: ID!
   collectionName: String!
@@ -10,7 +26,15 @@ type SNI {
   name: String!
   description: String
   image: String
-  properties: SNIProperties
+  statusDescription: String!
+  taxonId: String!
+  tokenId: String!
+  tokenURI: String!
+  geometry: String!
+  conservationStatus: Int!
+
+
+
 }
 
 type SNIProperties {
