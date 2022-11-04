@@ -1,11 +1,30 @@
 query sniList($sniId: ID!) {
   snis {
     id
+    owner
     status
+    createdAt
+    updatedAt
+    name
+    collectionName
   }
   sni(id: $sniId) {
     id
     status
+    name
+    createdAt
+    updatedAt
+    owner
+    oracle
+    collectionName
+    symbol
+    name
+    description
+    image
+    statusDescription
+    taxonId
+    conservationStatus
+    geometry
   }
 }
 

@@ -3,7 +3,11 @@ export function splitCamelCase(text: string) {
 }
 
 export function truncate(value, charLength): string {
-  return value.toString().length > charLength
-    ? value.toString().substring(0, charLength) + '...'
-    : value
+  if (typeof value === 'object') {
+    return value
+  } else {
+    return value.toString().length > charLength
+      ? value.toString().substring(0, charLength) + '...'
+      : value
+  }
 }

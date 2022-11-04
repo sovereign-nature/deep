@@ -1,18 +1,3 @@
-# type SNI {
-#   id: ID!
-#   status: Int!
-#   createdTimestamp: Int!
-#   updatedTimestamp: Int
-#   owner: ID!
-#   oracle: ID!
-#   collectionName: String!
-#   symbol: String!
-#   name: String!
-#   description: String
-#   image: String
-#   properties: SNIProperties
-# }
-
 type SNI {
   id: ID!
   status: Int!
@@ -32,8 +17,6 @@ type SNI {
   tokenURI: String!
   geometry: String!
   conservationStatus: Int!
-
-
 
 }
 

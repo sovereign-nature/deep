@@ -1,5 +1,3 @@
-import { SoulProperty } from '~/types/soul-property'
-
 export interface Soul {
   id: string
   status: number
@@ -9,7 +7,6 @@ export interface Soul {
   name: string
   description?: string
   image?: string
-  properties?: SoulProperty
   symbol?: string
   collectionName?: string
   oracle?: string
