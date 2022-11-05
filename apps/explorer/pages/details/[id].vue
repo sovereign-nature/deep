@@ -3,6 +3,7 @@
     <div
       class="h-64 w-full self-center rounded-lg bg-leo bg-cover bg-center bg-no-repeat md:h-96 lg:h-full"
     ></div>
+    <!-- <img :src="detail.image" :alt="detail.image" /> -->
     <div class="lg:col-span-2">
       <SNIDetails :detail="(detail as Soul)" class="my-6 lg:my-0"></SNIDetails>
       <SNIProperties
@@ -13,7 +14,10 @@
     </div>
     <div class="col-span-full">
       <h1 class="my-6 text-3xl text-white">Identification place</h1>
-      <SNIMap class="rounded-lg border-2 border-primary"></SNIMap>
+      <SNIMap
+        :geometry="geometry"
+        class="rounded-lg border-2 border-primary"
+      ></SNIMap>
     </div>
   </div>
 </template>
