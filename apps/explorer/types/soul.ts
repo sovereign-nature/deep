@@ -1,10 +1,10 @@
 export interface Soul {
   id: string
   status: number
-  createdAt: number
-  updatedAt: number
+  createdAt?: number
+  updatedAt?: number
   owner?: string
-  name: string
+  name?: string
   description?: string
   image?: string
   symbol?: string

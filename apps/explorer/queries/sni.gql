@@ -23,8 +23,9 @@ query sniList($sniId: ID!) {
     image
     statusDescription
     taxonId
-    conservationStatus
+    tokenId
+    tokenURI
     geometry
+    conservationStatus
   }
 }
-

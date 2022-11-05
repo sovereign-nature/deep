@@ -9,7 +9,7 @@
         :properties="(sniProperties as SoulProperty)"
         class="my-6 lg:mt-6"
       ></SNIProperties>
-      <SNITransactions class="my-6 lg:mt-6"></SNITransactions>
+      <!-- <SNITransactions class="my-6 lg:mt-6"></SNITransactions> -->
     </div>
     <div class="col-span-full">
       <h1 class="my-6 text-3xl text-white">Identification place</h1>
@@ -29,8 +29,25 @@ const route = useRoute()
 const { data, error } = await useAsyncGql('sniList', {
   sniId: route.params.id.toString()
 })
-const detail = data.value.sni
-const sniProperties = data.value.sni.properties
+
+const {
+  statusDescription,
+  tokenURI,
+  tokenId,
+  taxonId,
+  conservationStatus,
+  geometry,
+  ...detail
+} = data.value.sni
+
+const sniProperties = {
+  statusDescription,
+  tokenURI,
+  tokenId,
+  taxonId,
+  conservationStatus,
+  geometry
+} as SoulProperty
 
 if (error.value) {
   // eslint-disable-next-line no-console

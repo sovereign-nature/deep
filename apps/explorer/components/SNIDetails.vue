@@ -7,8 +7,9 @@
       <h1 class="mb-4 text-4xl">{{ detail.name }}</h1>
       <ul>
         <li v-for="(value, key) in detail" :key="key" class="my-2">
-          <div v-if="key !== 'properties'">
-            {{ splitCamelCase(key.toString()) }}: {{ value }}
+          <div v-if="key !== 'image'">
+            {{ splitCamelCase(key.toString()) }}:
+            {{ value ? truncate(value, 50) : '-' }}
           </div>
         </li>
       </ul>
@@ -17,7 +18,7 @@
 </template>
 <script setup lang="ts">
 import { Soul } from '~/types/soul'
-import { splitCamelCase } from '~/utils/index'
+import { splitCamelCase, truncate } from '~/utils/index'
 
 defineProps({
   detail: {
