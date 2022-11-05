@@ -12,7 +12,7 @@
       ></SNIProperties>
       <!-- <SNITransactions class="my-6 lg:mt-6"></SNITransactions> -->
     </div>
-    <div class="col-span-full">
+    <div v-if="geometry" class="col-span-full">
       <h1 class="my-6 text-3xl text-white">Identification place</h1>
       <SNIMap
         :geometry="geometry"
