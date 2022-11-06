@@ -32,7 +32,7 @@
     "jsdom": "20.0.2",
     "mapbox-gl": "2.10.0",
     "nuxt": "3.0.0-rc.13",
-    "nuxt-graphql-client": "0.2.8",
+    "nuxt-graphql-client": "0.2.10",
     "prettier": "2.7.1",
     "postcss-custom-properties": "12.1.10",
     "sass": "1.55.0",
