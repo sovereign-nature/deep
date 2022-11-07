@@ -40,7 +40,7 @@ function filterResults(filter): void {
         soul.owner?.includes(filterParameters[filter])
       )
     } else if (filter === 'createdDate' || filter === 'updatedDate') {
-      soul[filter].toString().includes(filterParameters[filter])
+      soul[filter]?.toString().includes(filterParameters[filter].getTime())
     } else if (filter === 'status') {
       return soul.status === filterParameters[filter]
     }
@@ -52,10 +52,15 @@ function filterResults(filter): void {
 }
 
 function searchByParameter(event, filterParam): void {
-  const searchTerm = event.target.value
+  const searchTerm =
+    filterParam === 'createdDate' || filterParam === 'updatedDate'
+      ? event
+      : event?.target?.value
   filterParameters[filterParam] = searchTerm
 
-  filterResults(filterParam)
+  if (event !== null) {
+    filterResults(filterParam)
+  }
 }
 </script>
 <style lang="scss"></style>

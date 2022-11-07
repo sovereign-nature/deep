@@ -26,17 +26,19 @@
       </select>
       <Datepicker
         v-model="createdDate"
+        auto-apply
         dark
         placeholder="Created at"
         class="relative inset-y-0 left-0 flex items-center"
-        @input="searchByParameter($event, 'createdDate')"
+        @internalModelChange="searchByParameter($event, 'createdDate')"
       />
       <Datepicker
         v-model="updatedDate"
+        auto-apply
         dark
         placeholder="Updated at"
         class="relative inset-y-0 left-0 flex items-center"
-        @input="searchByParameter($event, 'updatedDate')"
+        @internalModelChange="searchByParameter($event, 'updatedDate')"
       />
     </div>
   </form>

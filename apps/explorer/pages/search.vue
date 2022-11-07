@@ -38,12 +38,6 @@ if (error.value) {
   displayErrorMessage()
 } else {
   details = data.value.snis as Soul[]
-  console.log(
-    details.forEach((v) => {
-      return typeof v
-    })
-  )
-
   souls = useSouls(details as Soul[])
 }
 
