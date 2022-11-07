@@ -2,7 +2,7 @@
   <div>
     <div v-for="dt in data" :key="dt.id">
       <div
-        v-if="!(dt as Soul).name"
+        v-if="!(dt as Soul).owner"
         class="grid auto-cols-fr grid-flow-col place-items-center border-b-2 border-primary bg-neutral py-4 text-white"
       >
         <div
@@ -10,7 +10,7 @@
           :key="(li as string)"
           class="border-none bg-inherit font-light"
         >
-          {{ li }}
+          {{ truncate(li, 10) }}
         </div>
       </div>
       <NuxtLink
@@ -23,7 +23,7 @@
           :key="(li as string)"
           class="border-none bg-inherit font-light"
         >
-          {{ li }}
+          {{ truncate(li, 10) }}
         </div>
       </NuxtLink>
     </div>
@@ -32,6 +32,7 @@
 <script setup lang="ts">
 import { Soul } from '~/types/soul'
 import { Transaction } from '~/types/transaction'
+import { truncate } from '~/utils/index'
 defineProps({
   data: {
     type: Array as () => Soul[] | Transaction[],

@@ -18,9 +18,12 @@ export default defineNuxtConfig({
       'graphql-client': {
         clients: {
           default: {
-            host: 'http://localhost:4000/graphql',
-            schema: './schema.gql'
+            host: 'https://api.thegraph.com/subgraphs/name/sovereign-nature/sni'
           }
+        },
+        codegen: {
+          silent: false,
+          onlyOperationTypes: false
         }
       },
       mapboxToken: 'DEFINE_TOKEN_IN_ENV'

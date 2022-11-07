@@ -3,4 +3,6 @@ export interface SoulProperty {
   taxonId: string
   conservationStatus: string
   geometry: string
+  tokenId: string
+  tokenURI: string
 }
