@@ -20,6 +20,10 @@ export default defineNuxtConfig({
           default: {
             host: 'https://api.thegraph.com/subgraphs/name/sovereign-nature/sni'
           }
+        },
+        codegen: {
+          silent: false,
+          onlyOperationTypes: false
         }
       },
       mapboxToken: 'DEFINE_TOKEN_IN_ENV'
