@@ -30,7 +30,7 @@
         dark
         placeholder="Created at"
         class="relative inset-y-0 left-0 flex items-center"
-        @internalModelChange="searchByParameter($event, 'createdDate')"
+        @internalModelChange="searchByParameter($event, 'createdAt')"
       />
       <Datepicker
         v-model="updatedDate"
@@ -38,7 +38,7 @@
         dark
         placeholder="Updated at"
         class="relative inset-y-0 left-0 flex items-center"
-        @internalModelChange="searchByParameter($event, 'updatedDate')"
+        @internalModelChange="searchByParameter($event, 'updatedAt')"
       />
     </div>
   </form>

@@ -27,8 +27,8 @@ function filterResults(filter): void {
     query: {
       idNameOwner: filterParameters.idNameOwner,
       status: filterParameters.status,
-      createdDate: filterParameters.createdDate,
-      updatedDate: filterParameters.updatedDate
+      createdAt: filterParameters.createdAt,
+      updatedAt: filterParameters.updatedAt
     }
   })
 
@@ -39,8 +39,8 @@ function filterResults(filter): void {
         soul.name?.includes(filterParameters[filter]) ||
         soul.owner?.includes(filterParameters[filter])
       )
-    } else if (filter === 'createdDate' || filter === 'updatedDate') {
-      soul[filter]?.toString().includes(filterParameters[filter].getTime())
+    } else if (filter === 'createdAt' || filter === 'updatedAt') {
+      return +soul[filter] === filterParameters[filter].getTime()
     } else if (filter === 'status') {
       return soul.status === filterParameters[filter]
     }
@@ -53,7 +53,7 @@ function filterResults(filter): void {
 
 function searchByParameter(event, filterParam): void {
   const searchTerm =
-    filterParam === 'createdDate' || filterParam === 'updatedDate'
+    filterParam === 'createdAt' || filterParam === 'updatedAt'
       ? event
       : event?.target?.value
   filterParameters[filterParam] = searchTerm
