@@ -20,8 +20,8 @@
         <option disabled selected class="text-white">
           Conservation status
         </option>
-        <option value="5">Preserved specimen</option>
-        <option value="-61">Human observation</option>
+        <option value="0">Preserved specimen</option>
+        <option value="1">Human observation</option>
         <option value="88">Machine observation</option>
       </select>
       <Datepicker

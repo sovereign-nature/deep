@@ -20,7 +20,7 @@ const router = useRouter()
 const souls = $ref(useSouls())
 const filterParameters = $ref({} as FilterParameters)
 
-function filterResults(filter) {
+function filterResults(filter): void {
   filteredResults = souls
 
   router.push({
@@ -34,11 +34,15 @@ function filterResults(filter) {
 
   filteredResults = filteredResults.filter((soul) => {
     if (filter === 'idNameOwner') {
-      return soul['id' || 'name' || 'owner'].includes(filterParameters[filter])
+      return (
+        soul.id?.includes(filterParameters[filter]) ||
+        soul.name?.includes(filterParameters[filter]) ||
+        soul.owner?.includes(filterParameters[filter])
+      )
     } else if (filter === 'createdDate' || filter === 'updatedDate') {
       soul[filter].toString().includes(filterParameters[filter])
-    } else {
-      return soul.status === +filterParameters[filter]
+    } else if (filter === 'status') {
+      return soul.status === filterParameters[filter]
     }
 
     return null
