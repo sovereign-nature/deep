@@ -1,10 +1,14 @@
 <template>
-  <div class="grid grid-cols-1 px-8 py-12 lg:grid-cols-3 lg:gap-12 lg:p-32">
-    <div
-      class="h-64 w-full self-center rounded-lg bg-leo bg-cover bg-center bg-no-repeat md:h-96 lg:h-full"
-    ></div>
-    <!-- <img :src="detail.image" :alt="detail.image" /> -->
-    <div class="lg:col-span-2">
+  <div class="grid px-8 py-12 lg:gap-12 lg:p-32">
+    <div class="flex justify-center items-center">
+      <img
+        v-if="detail.image"
+        :src="ipfsToUrl(detail.image as string)"
+        :alt="detail.id"
+        class="rounded-lg w-1/2 lg:w-1/3"
+      />
+    </div>
+    <div>
       <SNIDetails :detail="(detail as Soul)" class="my-6 lg:my-0"></SNIDetails>
       <SNIProperties
         :properties="(sniProperties as SoulProperty)"
@@ -33,6 +37,10 @@ const route = useRoute()
 const { data, error } = await useAsyncGql('sniList', {
   sniId: route.params.id.toString()
 })
+
+function ipfsToUrl(address: string): string {
+  return `https://ipfs.io/ipfs/${address.substring(7)}`
+}
 
 const {
   statusDescription,
