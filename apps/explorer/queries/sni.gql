@@ -1,4 +1,4 @@
-query sniList($sniId: ID!) {
+query sniList {
   snis {
     id
     owner
@@ -8,6 +8,9 @@ query sniList($sniId: ID!) {
     name
     collectionName
   }
+}
+
+query sniDetail($sniId: ID!) {
   sni(id: $sniId) {
     id
     status
