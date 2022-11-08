@@ -30,7 +30,7 @@ import { SoulProperty } from '~~/types/soul-property'
 useGqlCors({ credentials: 'same-origin' })
 const route = useRoute()
 
-const { data, error } = await useAsyncGql('sniList', {
+const { data, error } = await useAsyncGql('sniDetail', {
   sniId: route.params.id.toString()
 })
 
