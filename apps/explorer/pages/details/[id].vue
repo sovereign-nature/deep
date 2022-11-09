@@ -66,4 +66,8 @@ if (error.value) {
   // eslint-disable-next-line no-console
   console.error(error.value)
 }
+
+useHead({
+  title: `SNI - Detail - ${detail.id}`
+})
 </script>

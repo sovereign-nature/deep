@@ -52,6 +52,10 @@ function displayErrorMessage() {
 function handleSearchFilter(s: Soul[]) {
   result = s
 }
+
+useHead({
+  title: 'SNI - Identifier'
+})
 </script>
 <style lang="scss">
 @import '@vuepic/vue-datepicker/src/VueDatePicker/style/main.scss';
