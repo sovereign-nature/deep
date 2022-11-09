@@ -1,7 +1,7 @@
 <template>
   <div class="px-8 py-12 lg:gap-12 lg:p-32">
     <div class="flex">
-      <div class="flex pr-20">
+      <div v-if="detail.image" class="flex pr-20">
         <img
           v-if="detail.image"
           :src="ipfsToUrl(detail.image as string)"
