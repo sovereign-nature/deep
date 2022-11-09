@@ -3,7 +3,6 @@
     <div class="flex">
       <div v-if="detail.image" class="flex pr-20">
         <img
-          v-if="detail.image"
           :src="ipfsToUrl(detail.image as string)"
           :alt="detail.id"
           class="rounded-lg"
