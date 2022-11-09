@@ -27,11 +27,11 @@
 import { Soul } from '~~/types/soul'
 
 useGqlCors({ credentials: 'same-origin' })
-const { data, error } = await useAsyncGql('sniList', { sniId: '1' })
+const { data, error } = await useAsyncGql('sniList')
 let details: Soul[] = []
 const isActive = ref(false)
 let souls = ref([] as Soul[])
-let result = $ref(null as Soul[])
+let result = $ref(null as null | Soul[])
 
 if (error.value) {
   isActive.value = true
