@@ -13,7 +13,7 @@
         {{ error.statusMessage }}
       </p>
       <button class="btn-primary btn mt-12 min-w-full" @click="handleError">
-        Go back to the search page
+        Go back to the main page
       </button>
     </div>
   </div>
@@ -28,7 +28,7 @@ defineProps({
     default: () => Object
   }
 })
-const handleError = () => clearError({ redirect: '/search' })
+const handleError = () => clearError({ redirect: '/' })
 </script>
 
 <style lang="scss" scoped></style>

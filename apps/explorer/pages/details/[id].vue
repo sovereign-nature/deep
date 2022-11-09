@@ -3,7 +3,6 @@
     <div class="flex">
       <div v-if="detail.image" class="flex pr-20">
         <img
-          v-if="detail.image"
           :src="ipfsToUrl(detail.image as string)"
           :alt="detail.id"
           class="rounded-lg"
@@ -67,4 +66,8 @@ if (error.value) {
   // eslint-disable-next-line no-console
   console.error(error.value)
 }
+
+useHead({
+  title: `SNI - Detail - ${detail.id}`
+})
 </script>
