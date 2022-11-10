@@ -6,11 +6,20 @@
         class="grid auto-cols-fr grid-flow-col place-items-center border-b-2 border-primary bg-neutral py-4 text-white"
       >
         <div
-          v-for="li in dt"
-          :key="(li as string)"
+          v-for="(val, key) in dt"
+          :key="val"
           class="border-none bg-inherit font-light"
+          :class="
+            key === 'createdAt' || key === 'updatedAt'
+              ? 'text-center'
+              : 'text-left'
+          "
         >
-          {{ truncate(li, 10) }}
+          {{
+            key === 'createdAt' || key === 'updatedAt'
+              ? convertToSimpleFormat(+val!)
+              : truncate(val, 10)
+          }}
         </div>
       </div>
       <NuxtLink
@@ -39,18 +48,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { toDate, format } from 'date-fns'
-import { truncate } from '~/utils/index'
+import { truncate, convertToSimpleFormat } from '~/utils/index'
 import { Soul } from '~/types/soul'
 import { Transaction } from '~/types/transaction'
-
-function convertToSimpleFormat(date: number): string {
-  const convertedDate = toDate(date)
-  const simpleFormatDate = format(convertedDate, 'MM/dd/yyyy')
-  const simpleFormatHour = format(convertedDate, 'HH:mm:ss')
-
-  return `${simpleFormatDate} | ${simpleFormatHour}`
-}
 
 defineProps({
   data: {
