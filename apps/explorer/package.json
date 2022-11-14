@@ -42,5 +42,7 @@
     "vite-plugin-eslint": "1.8.1",
     "vitest": "0.19.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "eslint": "8.27"
+  }
 }
