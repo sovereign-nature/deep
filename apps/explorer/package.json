@@ -26,6 +26,7 @@
     "@vuepic/vue-datepicker": "3.5.3",
     "cross-env": "7.0.3",
     "daisyui": "2.38.1",
+    "date-fns": "^2.29.3",
     "eslint": "8.27.0",
     "eslint-config-sni": "*",
     "eslint-config-sni-vue": "*",
@@ -33,13 +34,12 @@
     "mapbox-gl": "2.10.0",
     "nuxt": "3.0.0-rc.13",
     "nuxt-graphql-client": "0.2.10",
-    "prettier": "2.7.1",
     "postcss-custom-properties": "12.1.10",
+    "prettier": "2.7.1",
     "sass": "1.55.0",
     "sass-loader": "13.1.0",
     "typescript": "4.8.4",
     "vite-plugin-eslint": "1.8.1",
     "vitest": "0.19.1"
-  },
-  "dependencies": {}
+  }
 }
