@@ -9,7 +9,7 @@
         <li v-for="(value, key) in detail" :key="key" class="my-2">
           <div v-if="key !== 'image'">
             {{ splitCamelCase(key.toString()) }}:
-            {{ value ? truncate(value, 50) : '-' }}
+            {{ value ? truncate(value, 30) : '-' }}
           </div>
         </li>
       </ul>
