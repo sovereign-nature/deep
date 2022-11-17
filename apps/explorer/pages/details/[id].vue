@@ -1,13 +1,13 @@
 <template>
   <div class="px-8 py-12 lg:gap-12 lg:p-32">
-    <div class="flex">
-      <div v-if="detail.image" class="flex pr-20">
-        <img
-          :src="ipfsToUrl(detail.image as string)"
-          :alt="detail.id"
-          class="rounded-lg"
-        />
-      </div>
+    <div class="flex flex-col lg:flex-row">
+      <SNIImage
+        v-if="detail.image"
+        :image="detail.image"
+        :image-alt="detail.id"
+        :pending="pending"
+        class="justify-self-center"
+      ></SNIImage>
       <SNIDetails :detail="(detail as Soul)" class="my-6 lg:my-0"></SNIDetails>
       <!-- <SNITransactions class="my-6 lg:mt-6"></SNITransactions> -->
     </div>
@@ -31,17 +31,12 @@ import { useRoute } from 'vue-router'
 import { Soul } from '~~/types/soul'
 import { SoulProperty } from '~~/types/soul-property'
 
-// const souls = useSouls()
 useGqlCors({ credentials: 'same-origin' })
 const route = useRoute()
 
-const { data, error } = await useAsyncGql('sniDetail', {
+const { pending, data, error } = await useAsyncGql('sniDetail', {
   sniId: route.params.id.toString()
 })
-
-function ipfsToUrl(address: string): string {
-  return `https://ipfs.io/ipfs/${address.substring(7)}`
-}
 
 const {
   statusDescription,

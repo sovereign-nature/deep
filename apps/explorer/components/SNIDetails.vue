@@ -11,7 +11,7 @@
             v-if="key !== 'image' && key !== 'createdAt' && key !== 'updatedAt'"
           >
             {{ splitCamelCase(key.toString()) }}:
-            {{ value ? truncate(value, 50) : '-' }}
+            {{ value ? truncate(value, 30) : '-' }}
           </div>
           <div v-if="key === 'createdAt' || key === 'updatedAt'">
             {{ splitCamelCase(key.toString()) }}:
