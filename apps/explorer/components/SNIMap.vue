@@ -4,14 +4,11 @@
       ref="mapboxMap"
       :access-token="accessToken"
       map-style="mapbox://styles/mapbox/dark-v10"
-      :center="transformToLatitudeAndLongitude(geometry)"
+      :center="wktToGeoJson(geometry)"
       :zoom="14"
       class="h-96 w-full"
     >
-      <MapboxMarker
-        :lng-lat="transformToLatitudeAndLongitude(geometry)"
-        color="#5c7f67"
-      >
+      <MapboxMarker :lng-lat="wktToGeoJson(geometry)" color="#5c7f67">
       </MapboxMarker>
     </MapboxMap>
   </div>
@@ -19,16 +16,16 @@
 
 <script setup lang="ts">
 import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl'
+import { parseFromWK } from 'wkt-parser-helper'
 import 'mapbox-gl/dist/mapbox-gl.css'
+import { GeoJsonProperties } from 'geojson'
 const config = useRuntimeConfig()
 
 const accessToken = config.public.mapboxToken
 
-function transformToLatitudeAndLongitude(geometry): number[] {
-  return geometry
-    .substring(6, geometry.length - 1)
-    .split(' ')
-    .map((x) => +x)
+function wktToGeoJson(geometry: string): string {
+  const geoJson: GeoJsonProperties = parseFromWK(geometry)
+  return geoJson.coordinates
 }
 
 defineProps({
