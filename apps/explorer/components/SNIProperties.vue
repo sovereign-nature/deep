@@ -8,8 +8,19 @@
         <div v-for="(value, key) in properties" :key="key">
           <p>
             <span class="text-sm text-primary-content"
-              >{{ splitCamelCase(key.toString()) }}: </span
-            ><span class="mt-1 ml-2 break-words text-xl text-white">
+              >{{
+                key === 'tokenURI'
+                  ? 'Token URI'
+                  : splitCamelCase(key.toString())
+              }}:
+            </span>
+            <a
+              v-if="key === 'tokenURI'"
+              :href="ipfsToUrl(value)"
+              class="hover:underline"
+              >{{ ipfsToUrl(value) }}</a
+            >
+            <span v-else class="mt-1 ml-2 break-words text-xl text-white">
               {{ value ? value : '-' }}</span
             >
           </p>
@@ -20,7 +31,7 @@
 </template>
 <script setup lang="ts">
 import { SoulProperty } from '~~/types/soul-property'
-import { splitCamelCase } from '~/utils/index'
+import { splitCamelCase, ipfsToUrl } from '~/utils/index'
 
 defineProps({
   properties: {
