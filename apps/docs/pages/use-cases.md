@@ -75,8 +75,9 @@ Insurance system can be used for community compensation to reduce human-wildlife
       Validator3(Community Member)-- index vote -->Governance
       Governance-- index / status -->SNI((Identifier Contract));
       SNI-- status -->TreasuryContract((Treasury Contract));
-      SNI-- status -->Derivatives[(Living NFTs)];
-      Derivatives--metadata-->Metaverse{{Metaverse}};
+      SNI-- status -->Derivatives[(Metaverse Bridge)];
+      Derivatives--metadata-->Art{{Digital Art NFTs}};
+      Derivatives--metadata-->Gaming{{Gaming}};
       Derivatives--funds-->TreasuryContract
       TreasuryContract-- initial seed funds -->Conservation{{Grants For Conservation}}
       TreasuryContract-- insurance funds -->Community{{Conservation Community}}
