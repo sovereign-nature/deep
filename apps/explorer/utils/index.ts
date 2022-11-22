@@ -25,3 +25,9 @@ export function convertToSimpleFormat(date: number): string {
 
   return `${simpleFormatDate} | ${simpleFormatHour}`
 }
+
+export function isResponsive(): boolean {
+  const windowWidth = ref(window.innerWidth)
+
+  return windowWidth.value <= 780
+}
