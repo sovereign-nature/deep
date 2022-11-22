@@ -1,25 +1,20 @@
 <template>
-  <div>
-    <div class="lg:px-24">
-      <div v-if="error" class="mx-24 mt-2 h-screen">
-        <SNIAlert
-          class="delay-700 duration-500 ease-in-out"
-          :class="{
-            'opacity-0': !isActive
-          }"
-        />
-      </div>
-      <div v-else>
-        <SNIFilter @search-filter="handleSearchFilter"></SNIFilter>
-        <SNITableMobile
-          :results="result ? result : souls"
-          class="mx-6 py-12 lg:hidden"
-        />
-        <SNITable
-          :results="result ? result : souls"
-          class="hidden lg:block lg:h-screen lg:w-full lg:py-12"
-        />
-      </div>
+  <div class="flex h-full justify-center lg:h-screen">
+    <div v-if="error" class="mt-20">
+      <SNIAlert
+        class="delay-700 duration-500 ease-in-out"
+        :class="{
+          'opacity-0': !isActive
+        }"
+      />
+    </div>
+    <div v-else class="mt-10 px-10">
+      <SNIFilter @search-filter="handleSearchFilter"></SNIFilter>
+      <SNITableMobile
+        :results="result ? result : souls"
+        class="py-12 lg:hidden"
+      />
+      <SNITable :results="result ? result : souls" class="hidden lg:block" />
     </div>
   </div>
 </template>
