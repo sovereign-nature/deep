@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-full justify-center lg:h-screen">
+  <div class="flex h-full min-h-screen justify-center lg:h-screen">
     <div v-if="error" class="mt-20">
       <SNIAlert
         class="delay-700 duration-500 ease-in-out"
