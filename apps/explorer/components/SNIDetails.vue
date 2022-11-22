@@ -7,15 +7,19 @@
       <h1 class="mb-4 text-4xl">{{ detail.name }}</h1>
       <ul>
         <li v-for="(value, key) in detail" :key="key" class="my-2">
-          <div
-            v-if="key !== 'image' && key !== 'createdAt' && key !== 'updatedAt'"
-          >
-            {{ splitCamelCase(key.toString()) }}:
-            {{ value ? truncate(value, 30) : '-' }}
-          </div>
-          <div v-if="key === 'createdAt' || key === 'updatedAt'">
-            {{ splitCamelCase(key.toString()) }}:
-            {{ convertToSimpleFormat(+value!) }}
+          <div v-if="key !== 'image'">
+            <span> {{ splitCamelCase(key.toString()) }}: </span>
+            <a
+              v-if="key === 'owner'"
+              :href="`https://moonscan.io/address/${value}`"
+              target="_blank"
+              class="hover:underline"
+              >{{ isResponsive() ? truncate(value, 20) : value }}</a
+            >
+            <span v-else-if="key === 'createdAt' || key === 'updatedAt'">{{
+              convertToSimpleFormat(+value!)
+            }}</span>
+            <span v-else>{{ value ? value : '-' }}</span>
           </div>
         </li>
       </ul>
@@ -24,7 +28,12 @@
 </template>
 <script setup lang="ts">
 import { Soul } from '~/types/soul'
-import { splitCamelCase, truncate, convertToSimpleFormat } from '~/utils/index'
+import {
+  splitCamelCase,
+  truncate,
+  convertToSimpleFormat,
+  isResponsive
+} from '~/utils/index'
 
 defineProps({
   detail: {
