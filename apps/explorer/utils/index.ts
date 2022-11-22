@@ -1,4 +1,4 @@
-import { toDate, format } from 'date-fns'
+import { format, fromUnixTime, addMinutes } from 'date-fns'
 
 export function splitCamelCase(text: string) {
   return text.charAt(0).toUpperCase() + text.slice(1).replace(/[A-Z]/g, ' $&')
@@ -18,12 +18,13 @@ export function ipfsToUrl(address: string): string {
   return `https://ipfs.io/ipfs/${address.substring(7)}`
 }
 
-export function convertToSimpleFormat(date: number): string {
-  const convertedDate = toDate(date)
-  const simpleFormatDate = format(convertedDate, 'MM/dd/yyyy')
-  const simpleFormatHour = format(convertedDate, 'HH:mm:ss')
+export function convertToSimpleFormat(timestamp: number): string {
+  const date = fromUnixTime(timestamp)
+  const utcDate = addMinutes(date, date.getTimezoneOffset())
+  const simpleFormatDate = format(utcDate, 'dd/MM/yyyy')
+  const simpleFormatHour = format(utcDate, 'HH:mm:ss')
 
-  return `${simpleFormatDate} | ${simpleFormatHour}`
+  return `${simpleFormatDate} ${simpleFormatHour} UTC`
 }
 
 export function isResponsive(): boolean {
