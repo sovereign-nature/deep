@@ -28,7 +28,10 @@ export function convertToSimpleFormat(timestamp: number): string {
 }
 
 export function isResponsive(): boolean {
-  const windowWidth = ref(window.innerWidth)
+  if (typeof window !== 'undefined') {
+    const windowWidth = ref(window.innerWidth)
+    return windowWidth.value <= 780
+  }
 
-  return windowWidth.value <= 780
+  return false
 }
