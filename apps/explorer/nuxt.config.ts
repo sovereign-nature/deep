@@ -26,7 +26,9 @@ export default defineNuxtConfig({
           onlyOperationTypes: false
         }
       },
-      mapboxToken: 'DEFINE_TOKEN_IN_ENV'
+      mapboxToken: 'DEFINE_TOKEN_IN_ENV',
+      moonbase: 'DEFINE_TOKEN_IN_ENV',
+      moonscan: 'DEFINE_TOKEN_IN_ENV'
     }
   }
 })
