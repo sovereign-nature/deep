@@ -8,7 +8,11 @@
       <h1 class="mb-4 text-4xl">{{ soul.name }}</h1>
       <ul>
         <li v-for="(value, key) in soul" :key="key" class="my-2">
-          {{ key }}: {{ value }}
+          <span>{{ key }}: </span>
+          <span v-if="key === 'createdAt' || key === 'updatedAt'">{{
+            convertToSimpleFormat(+value!)
+          }}</span>
+          <span v-else>{{ value ? value : '-' }}</span>
         </li>
         <li class="my-4">
           <NuxtLink class="min-w-full" :to="{ path: `details/${soul.id}` }">
@@ -26,6 +30,7 @@
 </template>
 <script setup lang="ts">
 import { Soul } from '~/types/soul'
+import { convertToSimpleFormat } from '~/utils/index'
 
 defineProps({
   results: {
