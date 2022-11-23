@@ -11,11 +11,7 @@
             <span> {{ splitCamelCase(key.toString()) }}: </span>
             <a
               v-if="key === 'owner'"
-              :href="
-                isDev
-                  ? `${config.public.moonbase}${value}`
-                  : `${config.public.moonscan}${value}`
-              "
+              :href="`${config.public.blockExplorer}${value}`"
               target="_blank"
               class="hover:underline"
               >{{ isResponsive() ? truncate(value, 20) : value }}</a
@@ -39,7 +35,6 @@ import {
   isResponsive
 } from '~/utils/index'
 const config = useRuntimeConfig()
-const isDev = true
 
 defineProps({
   detail: {
