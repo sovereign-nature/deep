@@ -3353,17 +3353,7 @@
   dependencies:
     date-fns "^2.29.3"
 
-"@vueuse/core@9.4.0":
-  version "9.4.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-9.4.0.tgz#afb30f9494b0954e51a489526566b14f1e2c5fb3"
-  integrity sha512-JzgenGj1ZF2BHOen5rsFiAyyI9sXAv7aKhNLlm9b7SwYQeKTcxTWdhudonURCSP3Egl9NQaRBzes2lv/1JUt/Q==
-  dependencies:
-    "@types/web-bluetooth" "^0.0.16"
-    "@vueuse/metadata" "9.4.0"
-    "@vueuse/shared" "9.4.0"
-    vue-demi "*"
-
-"@vueuse/core@^9.4.0":
+"@vueuse/core@9.6.0", "@vueuse/core@^9.4.0":
   version "9.6.0"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-9.6.0.tgz#de1d4730849cdbe28a9ebcf6cad167a700919603"
   integrity sha512-qGUcjKQXHgN+jqXEgpeZGoxdCbIDCdVPz3QiF1uyecVGbMuM63o96I1GjYx5zskKgRI0FKSNsVWM7rwrRMTf6A==
@@ -3383,22 +3373,10 @@
     "@unhead/ssr" "^1.0.4"
     "@unhead/vue" "^1.0.4"
 
-"@vueuse/metadata@9.4.0":
-  version "9.4.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-9.4.0.tgz#5c8eb105a8ad9eb7b47f78a226ff993560d0bd7f"
-  integrity sha512-7GKMdGAsJyQJl35MYOz/RDpP0FxuiZBRDSN79QIPbdqYx4Sd0sVTnIC68KJ6Oln0t0SouvSUMvRHuno216Ud2Q==
-
 "@vueuse/metadata@9.6.0":
   version "9.6.0"
   resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-9.6.0.tgz#b0a73277538cebef5d477983f74fdd2aa21ce5f9"
   integrity sha512-sIC8R+kWkIdpi5X2z2Gk8TRYzmczDwHRhEFfCu2P+XW2JdPoXrziqsGpDDsN7ykBx4ilwieS7JUIweVGhvZ93w==
-
-"@vueuse/shared@9.4.0":
-  version "9.4.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-9.4.0.tgz#634022fe42b3d5ece1d81d749724966f5071c8c3"
-  integrity sha512-fTuem51KwMCnqUKkI8B57qAIMcFovtGgsCtAeqxIzH3i6nE9VYge+gVfneNHAAy7lj8twbkNfqQSygOPJTm4tQ==
-  dependencies:
-    vue-demi "*"
 
 "@vueuse/shared@9.6.0":
   version "9.6.0"
@@ -11825,12 +11803,9 @@ node-fetch@2.6.0:
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
   integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
 
-node-fetch@2.6.7, node-fetch@^2.3.0, node-fetch@^2.6.1, node-fetch@^2.6.7:
+node-fetch@2.6.7, node-fetch@^2.3.0, node-fetch@^2.6.1, node-fetch@^2.6.7, "node-fetch@https://registry.npmjs.org/@achingbrain/node-fetch/-/node-fetch-2.6.7.tgz":
   version "2.6.7"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
-  integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
-  dependencies:
-    whatwg-url "^5.0.0"
+  resolved "https://registry.npmjs.org/@achingbrain/node-fetch/-/node-fetch-2.6.7.tgz#1b5d62978f2ed07b99444f64f0df39f960a6d34d"
 
 node-fetch@^3.3.0:
   version "3.3.0"
@@ -11840,10 +11815,6 @@ node-fetch@^3.3.0:
     data-uri-to-buffer "^4.0.0"
     fetch-blob "^3.1.4"
     formdata-polyfill "^4.0.10"
-
-"node-fetch@https://registry.npmjs.org/@achingbrain/node-fetch/-/node-fetch-2.6.7.tgz":
-  version "2.6.7"
-  resolved "https://registry.npmjs.org/@achingbrain/node-fetch/-/node-fetch-2.6.7.tgz#1b5d62978f2ed07b99444f64f0df39f960a6d34d"
 
 node-forge@^0.10.0:
   version "0.10.0"
@@ -15138,11 +15109,6 @@ tr46@^3.0.0:
   dependencies:
     punycode "^2.1.1"
 
-tr46@~0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
-  integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
-
 trim-newlines@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-3.0.1.tgz#260a5d962d8b752425b32f3a7db0dcacd176c144"
@@ -16027,11 +15993,6 @@ webcrypto-core@^1.7.4:
     pvtsutils "^1.3.2"
     tslib "^2.4.0"
 
-webidl-conversions@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-3.0.1.tgz#24534275e2a7bc6be7bc86611cc16ae0a5654871"
-  integrity sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==
-
 webidl-conversions@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-7.0.0.tgz#256b4e1882be7debbf01d05f0aa2039778ea080a"
@@ -16079,14 +16040,6 @@ whatwg-url@^11.0.0:
   dependencies:
     tr46 "^3.0.0"
     webidl-conversions "^7.0.0"
-
-whatwg-url@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/whatwg-url/-/whatwg-url-5.0.0.tgz#966454e8765462e37644d3626f6742ce8b70965d"
-  integrity sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==
-  dependencies:
-    tr46 "~0.0.3"
-    webidl-conversions "^3.0.0"
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"
