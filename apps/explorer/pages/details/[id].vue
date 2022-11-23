@@ -1,7 +1,7 @@
 <template>
   <div class="px-8 py-12 lg:gap-12 lg:p-32">
     <NuxtLink to="/" class="mb-5 block text-primary hover:underline"
-      >Back to table</NuxtLink
+      >Back to main page</NuxtLink
     >
     <div class="flex flex-col lg:flex-row">
       <SNIImage

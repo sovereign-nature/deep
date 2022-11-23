@@ -15,7 +15,7 @@
           <span v-else>{{ value ? value : '-' }}</span>
         </li>
         <li class="my-4">
-          <NuxtLink class="min-w-full" :to="{ path: `details/${soul.id}` }">
+          <NuxtLink class="min-w-full" :to="`/details/${soul.id}`">
             <button class="btn-primary btn min-w-full">Details</button>
           </NuxtLink>
         </li>

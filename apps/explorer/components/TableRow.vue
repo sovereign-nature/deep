@@ -25,7 +25,7 @@
       <NuxtLink
         v-else
         class="grid auto-cols-fr grid-flow-col place-items-center border-b-2 border-primary bg-neutral p-4 text-white hover:bg-stone-800"
-        :to="{ path: `details/${dt.id}` }"
+        :to="`/details/${dt.id}`"
       >
         <div
           v-for="(val, key) in dt"
