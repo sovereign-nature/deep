@@ -26,3 +26,12 @@ export function convertToSimpleFormat(timestamp: number): string {
 
   return `${simpleFormatDate} ${simpleFormatHour} UTC`
 }
+
+export function isResponsive(): boolean {
+  if (typeof window !== 'undefined') {
+    const windowWidth = ref(window.innerWidth)
+    return windowWidth.value <= 780
+  }
+
+  return false
+}

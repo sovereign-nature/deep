@@ -2,7 +2,7 @@
   <div>
     <FilterMobile
       tabindex="1"
-      class="collapse collapse-arrow bg-neutral text-white lg:hidden"
+      class="collapse collapse-arrow rounded-lg bg-base-content text-white lg:hidden"
       :search-by-parameter="searchByParameter"
     ></FilterMobile>
     <FilterDesktop

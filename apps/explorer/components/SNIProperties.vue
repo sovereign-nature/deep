@@ -17,8 +17,13 @@
             <a
               v-if="key === 'tokenURI'"
               :href="ipfsToUrl(value)"
+              target="_blank"
               class="hover:underline"
-              >{{ ipfsToUrl(value) }}</a
+              >{{
+                isResponsive()
+                  ? truncate(ipfsToUrl(value), 30)
+                  : ipfsToUrl(value)
+              }}</a
             >
             <span v-else class="mt-1 ml-2 break-words text-xl text-white">
               {{ value ? value : '-' }}</span
@@ -31,7 +36,12 @@
 </template>
 <script setup lang="ts">
 import { SoulProperty } from '~~/types/soul-property'
-import { splitCamelCase, ipfsToUrl } from '~/utils/index'
+import {
+  splitCamelCase,
+  truncate,
+  ipfsToUrl,
+  isResponsive
+} from '~/utils/index'
 
 defineProps({
   properties: {

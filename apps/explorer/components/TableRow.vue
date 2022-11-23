@@ -11,7 +11,7 @@
           class="border-none bg-inherit font-light"
           :class="
             key === 'createdAt' || key === 'updatedAt'
-              ? 'text-center'
+              ? 'text-center break-all'
               : 'text-left'
           "
         >
@@ -33,7 +33,7 @@
           class="border-none bg-inherit font-light"
           :class="
             key === 'createdAt' || key === 'updatedAt'
-              ? 'text-center'
+              ? 'text-center max-w-[80%]'
               : 'text-left'
           "
         >

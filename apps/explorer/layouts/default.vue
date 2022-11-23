@@ -1,6 +1,6 @@
 <template>
   <div data-theme="garden" class="bg-neutral-focus">
-    <SNIHeader></SNIHeader>
+    <!-- <SNIHeader></SNIHeader> -->
     <slot />
   </div>
 </template>
