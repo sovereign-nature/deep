@@ -1,18 +1,22 @@
-query sniList($sniId: ID!) {
+query sniList {
   snis {
     id
-    status
-    createdTimestamp
-    updatedTimestamp
     owner
+    status
+    createdAt
+    updatedAt
     name
     collectionName
   }
+}
+
+query sniDetail($sniId: ID!) {
   sni(id: $sniId) {
     id
     status
-    createdTimestamp
-    updatedTimestamp
+    name
+    createdAt
+    updatedAt
     owner
     oracle
     collectionName
@@ -20,12 +24,11 @@ query sniList($sniId: ID!) {
     name
     description
     image
-    properties {
-      statusDescription
-      taxonId
-      conservationStatus
-      geometry
-    }
+    statusDescription
+    taxonId
+    tokenId
+    tokenURI
+    geometry
+    conservationStatus
   }
 }
-

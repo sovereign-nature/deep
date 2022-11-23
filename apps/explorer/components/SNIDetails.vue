@@ -7,8 +7,19 @@
       <h1 class="mb-4 text-4xl">{{ detail.name }}</h1>
       <ul>
         <li v-for="(value, key) in detail" :key="key" class="my-2">
-          <div v-if="key !== 'properties'">
-            {{ splitCamelCase(key.toString()) }}: {{ value }}
+          <div v-if="key !== 'image'">
+            <span> {{ splitCamelCase(key.toString()) }}: </span>
+            <a
+              v-if="key === 'owner'"
+              :href="`${config.public.blockExplorer}${value}`"
+              target="_blank"
+              class="hover:underline"
+              >{{ isResponsive() ? truncate(value, 20) : value }}</a
+            >
+            <span v-else-if="key === 'createdAt' || key === 'updatedAt'">{{
+              convertToSimpleFormat(+value!)
+            }}</span>
+            <span v-else>{{ value ? value : '-' }}</span>
           </div>
         </li>
       </ul>
@@ -17,7 +28,13 @@
 </template>
 <script setup lang="ts">
 import { Soul } from '~/types/soul'
-import { splitCamelCase } from '~/utils/index'
+import {
+  splitCamelCase,
+  truncate,
+  convertToSimpleFormat,
+  isResponsive
+} from '~/utils/index'
+const config = useRuntimeConfig()
 
 defineProps({
   detail: {

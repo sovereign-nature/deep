@@ -1,0 +1,11 @@
+{
+  "name": "Sovereign Nature Identifier #1",
+  "description": "Test lion identifier updated",
+  "properties": {
+    "statusDescription": "{ '0': 'Normal', '1': 'Aggressive' }",
+    "taxonId": "itis:183803",
+    "conservationStatus": "VU",
+    "geometry": "POINT(6.0000 48.0000)"
+  },
+  "image": "ipfs://bafybeihs6qouvmo4pnjozlrdmgic3b4nav6rrswc3tobgclrrvtwsa47oe/blob"
+}

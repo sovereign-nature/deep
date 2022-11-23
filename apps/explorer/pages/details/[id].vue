@@ -1,19 +1,31 @@
 <template>
-  <div class="grid grid-cols-1 px-8 py-12 lg:grid-cols-3 lg:gap-12 lg:p-32">
-    <div
-      class="h-64 w-full self-center rounded-lg bg-leo bg-cover bg-center bg-no-repeat md:h-96 lg:h-full"
-    ></div>
-    <div class="lg:col-span-2">
+  <div class="px-8 py-12 lg:gap-12 lg:p-32">
+    <NuxtLink to="/" class="mb-5 block text-primary hover:underline"
+      >Back to main page</NuxtLink
+    >
+    <div class="flex flex-col lg:flex-row">
+      <SNIImage
+        v-if="detail.image"
+        :image="detail.image"
+        :image-alt="detail.id"
+        :pending="pending"
+        class="justify-self-center"
+      ></SNIImage>
       <SNIDetails :detail="(detail as Soul)" class="my-6 lg:my-0"></SNIDetails>
+      <!-- <SNITransactions class="my-6 lg:mt-6"></SNITransactions> -->
+    </div>
+    <div v-if="sniProperties" class="col-span-full">
       <SNIProperties
         :properties="(sniProperties as SoulProperty)"
         class="my-6 lg:mt-6"
       ></SNIProperties>
-      <SNITransactions class="my-6 lg:mt-6"></SNITransactions>
     </div>
-    <div class="col-span-full">
+    <div v-if="geometry" class="col-span-full">
       <h1 class="my-6 text-3xl text-white">Identification place</h1>
-      <SNIMap class="rounded-lg border-2 border-primary"></SNIMap>
+      <SNIMap
+        :geometry="geometry"
+        class="rounded-lg border-2 border-primary"
+      ></SNIMap>
     </div>
   </div>
 </template>
@@ -22,15 +34,31 @@ import { useRoute } from 'vue-router'
 import { Soul } from '~~/types/soul'
 import { SoulProperty } from '~~/types/soul-property'
 
-// const souls = useSouls()
 useGqlCors({ credentials: 'same-origin' })
 const route = useRoute()
 
-const { data, error } = await useAsyncGql('sniList', {
+const { pending, data, error } = await useAsyncGql('sniDetail', {
   sniId: route.params.id.toString()
 })
-const detail = data.value.sni
-const sniProperties = data.value.sni.properties
+
+const {
+  statusDescription,
+  tokenURI,
+  tokenId,
+  taxonId,
+  conservationStatus,
+  geometry,
+  ...detail
+} = data.value.sni
+
+const sniProperties = {
+  statusDescription,
+  tokenURI,
+  tokenId,
+  taxonId,
+  conservationStatus,
+  geometry
+} as SoulProperty
 
 if (error.value) {
   // eslint-disable-next-line no-console
@@ -38,6 +66,6 @@ if (error.value) {
 }
 
 useHead({
-  title: `Detail page - ${detail.name}`
+  title: `SNI - Detail - ${detail.id}`
 })
 </script>

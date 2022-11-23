@@ -5,7 +5,8 @@ import {
   describe,
   test,
   beforeAll,
-  createMockedFunction
+  createMockedFunction,
+  mockIpfsFile
 } from 'matchstick-as/assembly/index'
 
 import { Address, BigInt, ethereum, store } from '@graphprotocol/graph-ts'
@@ -23,8 +24,10 @@ import {
 
 import { SNI_CONTRACT_ADDRESS } from '@sni/constants'
 
-const INITIAL_URI = 'ipfs://initial'
-const NEW_URI = 'ipfs://new'
+const INITIAL_URI =
+  'ipfs://bafyreib564aosdw5igyfbvedtdvtz4xgrznz64iszd34b32cfvzro3rm5y/metadata.json'
+const NEW_URI =
+  'ipfs://bafyreib564aosdw5igyfbvedtdvtz4xgrznz64iszd34b32cfvzro3rnew/metadata.json'
 const TOKEN_ID = BigInt.fromI32(0)
 const TEMP_TOKEN_ID = BigInt.fromI32(99)
 const MINTER = Address.fromString('0x0000000000000000000000000000000000000000')
@@ -47,6 +50,18 @@ function mockForToken(id: BigInt): void {
   createMockedFunction(CONTRACT, 'tokenURI', 'tokenURI(uint256):(string)')
     .withArgs([tokenIdParam])
     .returns([ethereum.Value.fromString(INITIAL_URI)])
+
+  //Initial IPFS Metadata
+  mockIpfsFile(
+    'bafyreib564aosdw5igyfbvedtdvtz4xgrznz64iszd34b32cfvzro3rm5y/metadata.json',
+    'tests/ipfs/initial.json'
+  )
+
+  //Updated IPFS Metadata
+  mockIpfsFile(
+    'bafyreib564aosdw5igyfbvedtdvtz4xgrznz64iszd34b32cfvzro3rnew/metadata.json',
+    'tests/ipfs/updated.json'
+  )
 }
 
 describe('SNI Indexer', () => {
@@ -92,7 +107,10 @@ describe('SNI Indexer', () => {
 
     const tokenId = TOKEN_ID.toHex()
 
+    // Base fields
     assert.fieldEquals(ENTITY_NAME, tokenId, 'owner', OWNER.toHex())
+    assert.fieldEquals(ENTITY_NAME, tokenId, 'tokenId', TOKEN_ID.toString())
+
     assert.fieldEquals(ENTITY_NAME, tokenId, 'tokenURI', INITIAL_URI)
     assert.fieldEquals(
       ENTITY_NAME,
@@ -100,13 +118,84 @@ describe('SNI Indexer', () => {
       'status',
       INITIAL_STATUS.toString()
     )
+
+    // JSON metadata fields from initial.json
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'name',
+      'Sovereign Nature Identifier #0'
+    )
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'description',
+      'Test lion identifier'
+    )
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'image',
+      'ipfs://bafybeihs6qouvmo4pnjozlrdmgic3b4nav6rrswc3tobgclrrvtwsa47oe/blob'
+    )
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'statusDescription',
+      "{ '0': 'Normal', '1': 'Aggressive' }"
+    )
+    assert.fieldEquals(ENTITY_NAME, tokenId, 'taxonId', 'itis:183803')
+    assert.fieldEquals(ENTITY_NAME, tokenId, 'conservationStatus', 'VU')
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'geometry',
+      'POINT(5.9559 47.8084)'
+    )
   })
 
   test('Handles TokenURISet event', () => {
     const tokenURISetEvent = createTokenURISetEvent(TOKEN_ID, NEW_URI)
     handleTokenURISet(tokenURISetEvent)
 
-    assert.fieldEquals(ENTITY_NAME, TOKEN_ID.toHex(), 'tokenURI', NEW_URI)
+    const tokenId = TOKEN_ID.toHex()
+
+    // Base fields that were updated via setter.
+    assert.fieldEquals(ENTITY_NAME, tokenId, 'tokenURI', NEW_URI)
+
+    // JSON metadata fields from updated.json should be indexed as well.
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'name',
+      'Sovereign Nature Identifier #1'
+    )
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'description',
+      'Test lion identifier updated'
+    )
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'image',
+      'ipfs://bafybeihs6qouvmo4pnjozlrdmgic3b4nav6rrswc3tobgclrrvtwsa47oe/blob'
+    )
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'statusDescription',
+      "{ '0': 'Normal', '1': 'Aggressive' }"
+    )
+    assert.fieldEquals(ENTITY_NAME, tokenId, 'taxonId', 'itis:183803')
+    assert.fieldEquals(ENTITY_NAME, tokenId, 'conservationStatus', 'VU')
+    assert.fieldEquals(
+      ENTITY_NAME,
+      tokenId,
+      'geometry',
+      'POINT(6.0000 48.0000)'
+    )
   })
 
   test('Handles StatusSet event', () => {

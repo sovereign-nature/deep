@@ -7,12 +7,12 @@
     "serve": "vitepress serve pages"
   },
   "devDependencies": {
-    "@vueuse/core": "9.3.0",
-    "vitepress": "1.0.0-alpha.19",
-    "vue": "3.2.40",
+    "@vueuse/core": "9.4.0",
+    "vitepress": "1.0.0-alpha.29",
+    "vue": "3.2.45",
     "vitepress-plugin-mermaid": "2.0.8",
-    "mermaid": "9.1.7",
-    "eslint": "8.24.0",
+    "mermaid": "9.2.2",
+    "eslint": "8.27.0",
     "eslint-config-sni": "*",
     "eslint-config-sni-vue": "*"
   }

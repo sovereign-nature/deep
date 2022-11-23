@@ -1,18 +1,24 @@
 <template>
   <div class="w-auto border-collapse overflow-x-auto">
-    <TableHeader :data="props.data"></TableHeader>
-    <TableRow :data="props.data"></TableRow>
+    <div v-if="results && results.length > 0">
+      <TableHeader :data="results"></TableHeader>
+      <TableRow :data="results"></TableRow>
+    </div>
+    <div v-else>
+      <h2 class="text-center text-2xl text-white">
+        Sorry, no results found for your research
+      </h2>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
-import { Transaction } from '~~/types/transaction'
-import { Soul } from '~~/types/soul'
+import { Soul } from '~/types/soul'
 
-const props = defineProps({
-  data: {
-    type: Array as () => Soul[] | Transaction[],
+defineProps({
+  results: {
+    type: Array as () => Soul[],
     required: false,
-    default: () => [{}]
+    default: () => []
   }
 })
 </script>
