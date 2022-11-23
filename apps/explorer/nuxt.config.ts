@@ -27,7 +27,7 @@ export default defineNuxtConfig({
         }
       },
       mapboxToken: 'DEFINE_TOKEN_IN_ENV',
-      blockExplorer: 'DEFINE_TOKEN_IN_ENV'
+      blockExplorer: 'https://moonbase.moonscan.io/address/'
     }
   }
 })
