@@ -27,7 +27,7 @@
     "cross-env": "7.0.3",
     "daisyui": "2.38.1",
     "date-fns": "^2.29.3",
-    "eslint": "8.27.0",
+    "eslint": "8.28.0",
     "eslint-config-sni": "*",
     "eslint-config-sni-vue": "*",
     "jsdom": "20.0.2",
