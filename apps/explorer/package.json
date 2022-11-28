@@ -30,7 +30,7 @@
     "eslint": "8.28.0",
     "eslint-config-sni": "*",
     "eslint-config-sni-vue": "*",
-    "jsdom": "20.0.2",
+    "jsdom": "20.0.3",
     "mapbox-gl": "2.10.0",
     "nuxt": "^3.0.0",
     "nuxt-graphql-client": "^0.2.14",
