@@ -1,5 +1,5 @@
 <template>
-  <div class="w-auto border-collapse overflow-x-auto">
+  <div class="w-auto border-collapse">
     <div v-if="results && results.length > 0">
       <TableHeader :data="results"></TableHeader>
       <TableRow :data="results"></TableRow>

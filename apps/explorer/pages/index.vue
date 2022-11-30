@@ -22,7 +22,7 @@
 import { Soul } from '~~/types/soul'
 
 useGqlCors({ credentials: 'same-origin' })
-const { data, error } = await useAsyncGql('sniList')
+const { data, error } = await useAsyncGql('sniListAll')
 let details: Soul[] = []
 const isActive = ref(false)
 let souls = ref([] as Soul[])
