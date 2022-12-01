@@ -32,7 +32,7 @@ function filterResults(filter): void {
     }
   })
 
-  filteredResults = filteredResults.filter((soul) => {
+  filteredResults = filteredResults.filter(soul => {
     if (filter === 'idNameOwner') {
       return (
         soul.id?.includes(filterParameters[filter]) ||

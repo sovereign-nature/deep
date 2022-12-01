@@ -2,7 +2,7 @@ import { expect } from 'chai'
 import { ethers } from 'hardhat'
 import { loadFixture } from '@nomicfoundation/hardhat-network-helpers'
 
-describe('Sovereign Nature Identifier', function () {
+describe('Sovereign Nature Identifier', function() {
   async function deploySNIFixture() {
     // Contracts are deployed using the first signer/account by default
     const [owner, oracle, otherAccount] = await ethers.getSigners()
@@ -31,14 +31,14 @@ describe('Sovereign Nature Identifier', function () {
     }
   }
 
-  describe('Minting', function () {
-    it('Should mint', async function () {
+  describe('Minting', function() {
+    it('Should mint', async function() {
       const { sni, owner, initialURI } = await loadFixture(deploySNIFixture)
 
       expect(sni.safeMint(owner.address, initialURI)).not.to.be.reverted
     })
 
-    it('Should has initial owner', async function () {
+    it('Should has initial owner', async function() {
       const { sni, owner, initialTokenId, initialURI } = await loadFixture(
         deploySNIFixture
       )
@@ -49,7 +49,7 @@ describe('Sovereign Nature Identifier', function () {
       expect(nftOwner).to.equal(owner.address)
     })
 
-    it('Should has IPFS URI', async function () {
+    it('Should has IPFS URI', async function() {
       const { sni, owner, initialTokenId, initialURI } = await loadFixture(
         deploySNIFixture
       )
@@ -59,7 +59,7 @@ describe('Sovereign Nature Identifier', function () {
       expect(initialURI).to.equal(await sni.tokenURI(initialTokenId))
     })
 
-    it('Should emit TokenMinted event', async function () {
+    it('Should emit TokenMinted event', async function() {
       const { sni, owner, initialTokenId, initialURI } = await loadFixture(
         deploySNIFixture
       )
@@ -70,10 +70,15 @@ describe('Sovereign Nature Identifier', function () {
     })
   })
 
-  describe('tokenURI Update', function () {
-    it('Should update tokenURI', async function () {
-      const { sni, owner, initialTokenId, initialURI, updatedURI } =
-        await loadFixture(deploySNIFixture)
+  describe('tokenURI Update', function() {
+    it('Should update tokenURI', async function() {
+      const {
+        sni,
+        owner,
+        initialTokenId,
+        initialURI,
+        updatedURI
+      } = await loadFixture(deploySNIFixture)
 
       await sni.safeMint(owner.address, initialURI)
 
@@ -81,9 +86,14 @@ describe('Sovereign Nature Identifier', function () {
         .reverted
     })
 
-    it('Should emit TokenURISet event with correct arguments', async function () {
-      const { sni, owner, initialTokenId, initialURI, updatedURI } =
-        await loadFixture(deploySNIFixture)
+    it('Should emit TokenURISet event with correct arguments', async function() {
+      const {
+        sni,
+        owner,
+        initialTokenId,
+        initialURI,
+        updatedURI
+      } = await loadFixture(deploySNIFixture)
 
       await sni.safeMint(owner.address, initialURI)
 
@@ -92,9 +102,14 @@ describe('Sovereign Nature Identifier', function () {
         .withArgs(initialTokenId, updatedURI)
     })
 
-    it('Should return updated tokenURI', async function () {
-      const { sni, owner, initialTokenId, initialURI, updatedURI } =
-        await loadFixture(deploySNIFixture)
+    it('Should return updated tokenURI', async function() {
+      const {
+        sni,
+        owner,
+        initialTokenId,
+        initialURI,
+        updatedURI
+      } = await loadFixture(deploySNIFixture)
 
       await sni.safeMint(owner.address, initialURI)
       await sni.setTokenURI(initialTokenId, updatedURI)
@@ -102,7 +117,7 @@ describe('Sovereign Nature Identifier', function () {
       expect(updatedURI).to.be.equal(await sni.tokenURI(initialTokenId))
     })
 
-    it('Only initial owner should be able to update tokenURI', async function () {
+    it('Only initial owner should be able to update tokenURI', async function() {
       const {
         sni,
         owner,
@@ -120,19 +135,29 @@ describe('Sovereign Nature Identifier', function () {
     })
   })
 
-  describe('Status Update', function () {
-    it('Should update status', async function () {
-      const { sni, owner, initialURI, initialTokenId, updatedStatus } =
-        await loadFixture(deploySNIFixture)
+  describe('Status Update', function() {
+    it('Should update status', async function() {
+      const {
+        sni,
+        owner,
+        initialURI,
+        initialTokenId,
+        updatedStatus
+      } = await loadFixture(deploySNIFixture)
 
       await sni.safeMint(owner.address, initialURI)
 
       expect(sni.setStatus(initialTokenId, updatedStatus)).to.be.not.reverted
     })
 
-    it('Should emit StatusSet event with correct arguments', async function () {
-      const { sni, owner, initialTokenId, initialURI, updatedStatus } =
-        await loadFixture(deploySNIFixture)
+    it('Should emit StatusSet event with correct arguments', async function() {
+      const {
+        sni,
+        owner,
+        initialTokenId,
+        initialURI,
+        updatedStatus
+      } = await loadFixture(deploySNIFixture)
 
       await sni.safeMint(owner.address, initialURI)
 
@@ -141,9 +166,14 @@ describe('Sovereign Nature Identifier', function () {
         .withArgs(initialTokenId, updatedStatus)
     })
 
-    it('Should return updated status', async function () {
-      const { sni, owner, initialTokenId, initialURI, updatedStatus } =
-        await loadFixture(deploySNIFixture)
+    it('Should return updated status', async function() {
+      const {
+        sni,
+        owner,
+        initialTokenId,
+        initialURI,
+        updatedStatus
+      } = await loadFixture(deploySNIFixture)
 
       await sni.safeMint(owner.address, initialURI)
       await sni.setStatus(initialTokenId, updatedStatus)
@@ -151,7 +181,7 @@ describe('Sovereign Nature Identifier', function () {
       expect(updatedStatus).to.be.equal(await sni.statusOf(initialTokenId))
     })
 
-    it('Only initial oracle should be able to update status', async function () {
+    it('Only initial oracle should be able to update status', async function() {
       const {
         sni,
         owner,
