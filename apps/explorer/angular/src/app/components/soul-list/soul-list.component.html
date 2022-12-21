@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Owner</th>
+    <th>Status</th>
+    <th>Created at</th>
+    <th>Updated at</th>
+    <th>Name</th>
+    <th colspan="2">Collection name</th>
+  </tr>
+  <tr *ngFor="let soul of (souls$ | async)">
+    <td>{{ soul.id }}</td>
+    <td>{{ soul.owner }}</td>
+    <td>{{ soul.status }}</td>
+    <td>{{ soul.createdAt }}</td>
+    <td>{{ soul.updatedAt }}</td>
+    <td>{{ soul.name }}</td>
+    <td>{{ soul.collectionName }}</td>
+    <td><button [routerLink]="['/details', soul.id]">Detail</button></td>
+  </tr>
+</table>

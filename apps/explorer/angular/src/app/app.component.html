@@ -1,13 +1,1 @@
 <router-outlet></router-outlet>
-
-<div *ngFor="let soul of (souls$ | async)">
-  <p>
-    <span>Id: {{ soul.id }} | </span>
-    <span>Owner: {{ soul.owner }} | </span>
-    <span>Status: {{ soul.status }} | </span>
-    <span>Created at: {{ soul.createdAt }} | </span>
-    <span>Updated at: {{ soul.updatedAt }} | </span>
-    <span>Name: {{ soul.name }} | </span>
-    <span>Collection name: {{ soul.collectionName }}</span>
-  </p>
-</div>
