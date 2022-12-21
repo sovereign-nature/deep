@@ -14,7 +14,7 @@ export const SOULS_LIST = gql`
   }
 `;
 
-export const SNI_DETAIL = gql`
+export const SOUL_DETAIL = gql`
   query sniDetail($sniId: ID!) {
     sni(id: $sniId) {
       id

@@ -1,1 +1,6 @@
-<p>soul-detail works!</p>
+<div *ngIf="(detail$ | async) as detail">
+  <div *ngFor="let item of (detail | keyvalue)">
+    <span >{{ item.key }}: </span>
+    <span>{{ item.value ? item.value : '-' }}</span>
+  </div>
+</div>
