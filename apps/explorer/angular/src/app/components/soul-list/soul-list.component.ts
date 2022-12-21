@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Soul } from 'src/app/models/soul';
 import { SoulService } from 'src/app/services/soul.service';
 
@@ -9,7 +9,7 @@ import { SoulService } from 'src/app/services/soul.service';
   styleUrls: ['./soul-list.component.scss'],
 })
 export class SoulListComponent implements OnInit {
-  souls$!: Observable<Soul[]>;
+  souls$: Observable<Soul[]> = of([]);
 
   constructor(private soulService: SoulService) {}
 
