@@ -1,8 +1,7 @@
 module.exports = {
-  semi: false,
   singleQuote: true,
-  tabWidth: 2,
-  trailingComma: 'none',
+  trailingComma: 'es5',
+  bracketSameLine: true,
   overrides: [
     {
       files: '*.sol',
@@ -12,8 +11,8 @@ module.exports = {
         useTabs: false,
         singleQuote: false,
         bracketSpacing: true,
-        explicitTypes: 'always'
-      }
-    }
-  ]
-}
+        explicitTypes: 'always',
+      },
+    },
+  ],
+};
