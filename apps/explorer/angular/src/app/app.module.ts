@@ -7,9 +7,11 @@ import { InMemoryCache } from '@apollo/client/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SoulListComponent } from './components/soul-list/soul-list.component';
+import { SoulDetailComponent } from './components/soul-detail/soul-detail.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SoulListComponent, SoulDetailComponent],
   imports: [BrowserModule, AppRoutingModule, ApolloModule, HttpClientModule],
   providers: [
     {
