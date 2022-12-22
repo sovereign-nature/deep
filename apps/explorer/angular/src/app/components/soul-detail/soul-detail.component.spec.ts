@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { of } from 'rxjs';
 import { SoulService } from 'src/app/services/soul.service';
 
 import { SoulDetailComponent } from './soul-detail.component';
