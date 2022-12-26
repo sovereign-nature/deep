@@ -12,6 +12,7 @@ import { SoulDetailComponent } from './components/soul-detail/soul-detail.compon
 import { SoulTableComponent } from './components/soul-table/soul-table.component';
 import { SoulPropertiesComponent } from './components/soul-properties/soul-properties.component';
 import { SoulImageComponent } from './components/soul-image/soul-image.component';
+import { SoulMapComponent } from './components/soul-map/soul-map.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SoulImageComponent } from './components/soul-image/soul-image.component
     SoulTableComponent,
     SoulPropertiesComponent,
     SoulImageComponent,
+    SoulMapComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ApolloModule, HttpClientModule],
   providers: [
