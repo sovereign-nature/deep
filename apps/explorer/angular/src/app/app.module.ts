@@ -11,6 +11,7 @@ import { SoulListComponent } from './components/soul-list/soul-list.component';
 import { SoulDetailComponent } from './components/soul-detail/soul-detail.component';
 import { SoulTableComponent } from './components/soul-table/soul-table.component';
 import { SoulPropertiesComponent } from './components/soul-properties/soul-properties.component';
+import { SoulImageComponent } from './components/soul-image/soul-image.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SoulPropertiesComponent } from './components/soul-properties/soul-prope
     SoulDetailComponent,
     SoulTableComponent,
     SoulPropertiesComponent,
+    SoulImageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ApolloModule, HttpClientModule],
   providers: [
