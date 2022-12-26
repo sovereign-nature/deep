@@ -30,7 +30,8 @@ export class SoulService {
         },
       })
       .valueChanges.pipe(
-        map((val) => val.data.sni),
+        map((val) => val?.data?.sni),
+        map(({ __typename, ...val }) => val),
         shareReplay()
       );
   }

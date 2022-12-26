@@ -1,0 +1,4 @@
+
+<div *ngFor="let property of (properties | keyvalue)">
+  <p><b>{{ property.key }}</b>: {{ property.value ? property.value : '-' }}</p>
+</div>
