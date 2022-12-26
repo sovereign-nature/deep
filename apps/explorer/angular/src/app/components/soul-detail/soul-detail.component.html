@@ -1,7 +1,7 @@
-<div *ngIf="(detail$ | async) as detail">
+<div *ngIf="(detail$ | async) as detail" class="details">
   <div *ngFor="let item of (detail | keyvalue)">
     <span >{{ item.key }}: </span>
     <span>{{ item.value ? item.value : '-' }}</span>
   </div>
-  <sni-soul-properties [properties]="property"></sni-soul-properties>
 </div>
+<sni-soul-properties *ngIf="(property$ | async) as properties" [properties]="properties"></sni-soul-properties>

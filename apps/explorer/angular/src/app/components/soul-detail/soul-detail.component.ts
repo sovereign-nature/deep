@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Soul, SoulProperty } from 'src/app/models/soul';
 import { SoulService } from 'src/app/services/soul.service';
 @Component({
@@ -10,7 +10,7 @@ import { SoulService } from 'src/app/services/soul.service';
 })
 export class SoulDetailComponent implements OnInit {
   detail$!: Observable<Partial<Soul>>;
-  property!: SoulProperty;
+  property$!: Observable<SoulProperty>;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,39 +19,42 @@ export class SoulDetailComponent implements OnInit {
 
   ngOnInit() {
     const soulId = this.route.snapshot.paramMap.get('soulId') ?? '';
-    this.detail$ = this.soulService.getSoulDetailsById(soulId).pipe(
-      //TODO: Refactor this to be more dynamic
-      tap((soul: Soul) => {
-        this.property = {
-          conservationStatus: soul.conservationStatus,
-          description: soul.description,
-          geometry: soul.geometry,
-          image: soul.image,
-          oracle: soul.oracle,
-          statusDescription: soul.statusDescription,
-          symbol: soul.symbol,
-          taxonId: soul.taxonId,
-          tokenId: soul.tokenId,
-          tokenURI: soul.tokenURI,
-        } as SoulProperty;
-      }),
-      map((val) => {
-        const {
-          conservationStatus,
-          description,
-          geometry,
-          image,
-          oracle,
-          statusDescription,
-          symbol,
-          taxonId,
-          tokenId,
-          tokenURI,
-          ...details
-        } = val;
 
-        return details;
-      })
-    );
+    this.detail$ = this.soulService
+      .getSoulDetailsById(soulId)
+      .pipe(
+        map(
+          ({
+            conservationStatus,
+            description,
+            geometry,
+            image,
+            oracle,
+            statusDescription,
+            symbol,
+            taxonId,
+            tokenId,
+            tokenURI,
+            ...details
+          }): Soul => details
+        )
+      );
+
+    this.property$ = this.soulService
+      .getSoulDetailsById(soulId)
+      .pipe(
+        map(
+          ({
+            collectionName,
+            createdAt,
+            id,
+            name,
+            owner,
+            status,
+            updatedAt,
+            ...properties
+          }): SoulProperty => properties as SoulProperty
+        )
+      );
   }
 }

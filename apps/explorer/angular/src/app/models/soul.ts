@@ -1,4 +1,5 @@
 export interface Soul {
+  __typename?: string;
   id: string;
   owner: string;
   status: number;
