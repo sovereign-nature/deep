@@ -1,1 +1,10 @@
-<p>soul-map works!</p>
+<ng-container *ngIf="map" >
+  <google-map height="400px"
+            width="750px"
+            [center]="wktToGeoJson(map)"
+            [zoom]="9">
+    <map-marker
+      [position]="wktToGeoJson(map)"
+      [options]="markerOptions"></map-marker>
+</google-map>
+</ng-container>

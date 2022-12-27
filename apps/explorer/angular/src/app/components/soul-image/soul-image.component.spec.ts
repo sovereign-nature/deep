@@ -28,6 +28,7 @@ describe('SoulImageComponent', () => {
         { provide: SoulService, useValue: soulsServiceSpy },
       ],
     }).compileComponents();
+
     fixture = TestBed.createComponent(SoulImageComponent);
     component = fixture.componentInstance;
     component.imageProperties = [

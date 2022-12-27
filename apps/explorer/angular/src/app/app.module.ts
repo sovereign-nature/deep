@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +25,13 @@ import { SoulMapComponent } from './components/soul-map/soul-map.component';
     SoulImageComponent,
     SoulMapComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ApolloModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ApolloModule,
+    HttpClientModule,
+    GoogleMapsModule,
+  ],
   providers: [
     {
       provide: APOLLO_OPTIONS,
