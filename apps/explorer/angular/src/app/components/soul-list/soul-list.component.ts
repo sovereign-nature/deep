@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable, of, combineLatest } from 'rxjs';
+import { map, Observable, combineLatest } from 'rxjs';
 import { format, fromUnixTime } from 'date-fns';
 import { Soul, SoulFilter } from 'src/app/models/soul';
 import { SoulService } from 'src/app/services/soul.service';
@@ -10,13 +10,11 @@ import { SoulService } from 'src/app/services/soul.service';
   styleUrls: ['./soul-list.component.scss'],
 })
 export class SoulListComponent implements OnInit {
-  souls$: Observable<Soul[]> = of([]);
   data$?: Observable<Soul[]>;
 
   constructor(private soulService: SoulService) {}
 
   ngOnInit() {
-    this.souls$ = this.soulService.getSoulsList();
     this.data$ = combineLatest([
       this.soulService.getSoulsList(),
       this.soulService.filteredSouls$,
