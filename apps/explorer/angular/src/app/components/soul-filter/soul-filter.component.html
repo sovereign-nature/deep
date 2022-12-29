@@ -1,0 +1,29 @@
+<form [formGroup]="formFilter">
+  <ng-container >
+    <label>
+      Search by Id:
+      <input formControlName="searchById">
+    </label>
+  </ng-container>
+  <ng-container>
+    <label>Status</label>
+    <select formControlName="soulStatus">
+      <option value="-1">-Select Status-</option>
+      <option value="0">Status 1</option>
+      <option value="1">Status 2</option>
+      <option value="2">Status 3</option>
+    </select>
+  </ng-container>
+  <ng-container>
+    <label>
+      Created date:
+      <input formControlName="createdDate" type="date" min="2000-01-01">
+    </label>
+  </ng-container>
+  <ng-container>
+    <label>
+      Updated date:
+      <input formControlName="updatedDate" type="date" min="2000-01-01">
+    </label>
+  </ng-container>
+</form>

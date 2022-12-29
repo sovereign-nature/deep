@@ -1,3 +1,4 @@
-<ng-container *ngIf="(souls$ | async) as souls">
+<sni-soul-filter></sni-soul-filter>
+<ng-container *ngIf="(data$ | async) as souls">
   <sni-soul-table [souls]="souls"></sni-soul-table>
 </ng-container>

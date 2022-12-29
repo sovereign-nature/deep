@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Apollo } from 'apollo-angular';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { SNIDetail, SNIList } from '../models/sni';
 import { SOULS_LIST, SOUL_DETAIL } from '../queries/sni';
@@ -8,6 +10,9 @@ import { SOULS_LIST, SOUL_DETAIL } from '../queries/sni';
   providedIn: 'root',
 })
 export class SoulService {
+  private subject = new BehaviorSubject<any>({});
+  filteredSouls$: Observable<any> = this.subject.asObservable();
+
   constructor(private apollo: Apollo) {}
 
   getSoulsList() {
@@ -34,5 +39,9 @@ export class SoulService {
         map(({ __typename, ...val }) => val),
         shareReplay()
       );
+  }
+
+  setFilterToSouls(data: any) {
+    this.subject.next(data);
   }
 }

@@ -14,6 +14,8 @@ import { SoulTableComponent } from './components/soul-table/soul-table.component
 import { SoulPropertiesComponent } from './components/soul-properties/soul-properties.component';
 import { SoulImageComponent } from './components/soul-image/soul-image.component';
 import { SoulMapComponent } from './components/soul-map/soul-map.component';
+import { SoulFilterComponent } from './components/soul-filter/soul-filter.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { SoulMapComponent } from './components/soul-map/soul-map.component';
     SoulPropertiesComponent,
     SoulImageComponent,
     SoulMapComponent,
+    SoulFilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { SoulMapComponent } from './components/soul-map/soul-map.component';
     ApolloModule,
     HttpClientModule,
     GoogleMapsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {

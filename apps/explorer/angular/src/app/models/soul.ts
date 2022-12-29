@@ -31,3 +31,9 @@ export interface SoulProperty {
   geometry: string;
   conservationStatus: number;
 }
+export interface SoulFilter {
+  searchById: string;
+  soulStatus: number;
+  createdDate: number;
+  updatedDate: number;
+}
