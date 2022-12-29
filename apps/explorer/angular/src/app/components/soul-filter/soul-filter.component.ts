@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { combineLatest, debounceTime, Observable, switchMap, tap } from 'rxjs';
-import { Soul } from 'src/app/models/soul';
+import { debounceTime } from 'rxjs';
+import { SoulFilter } from 'src/app/models/soul';
 import { SoulService } from 'src/app/services/soul.service';
 
 @Component({
@@ -19,11 +19,11 @@ export class SoulFilterComponent {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
-    this.formFilter = fb.group({
-      searchById: [''],
-      soulStatus: ['-1'],
-      createdDate: [''],
-      updatedDate: [''],
+    this.formFilter = fb.group<SoulFilter>({
+      searchById: '',
+      soulStatus: -1,
+      createdDate: 0,
+      updatedDate: 0,
     });
 
     this.formFilter.valueChanges.pipe(debounceTime(1000)).subscribe((val) => {
@@ -32,7 +32,7 @@ export class SoulFilterComponent {
     });
   }
 
-  addFilterQueryParams(form: any) {
+  addFilterQueryParams(form: FormGroup) {
     const queryParams: Params = form;
 
     this.router.navigate([], {

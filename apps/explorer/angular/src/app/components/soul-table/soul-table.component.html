@@ -12,8 +12,8 @@
     <td>{{ soul.id }}</td>
     <td>{{ soul.owner }}</td>
     <td>{{ soul.status }}</td>
-    <td>{{ soul.createdAt }}</td>
-    <td>{{ soul.updatedAt }}</td>
+    <td>{{ soul.createdAt * 1000 | date }}</td>
+    <td>{{ soul.updatedAt * 1000 | date }}</td>
     <td>{{ soul.name }}</td>
     <td>{{ soul.collectionName }}</td>
     <td><button [routerLink]="['/details', soul.id]">Detail</button></td>
