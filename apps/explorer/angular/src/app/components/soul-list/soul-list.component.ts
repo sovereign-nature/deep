@@ -29,15 +29,28 @@ export class SoulListComponent implements OnInit {
       this.soulService.filteredSouls$,
     ]).pipe(
       map(([soul, filters]) => {
-        if (Object.keys(filters).length > 0) {
-          return soul.filter((items) => {
-            return (
-              items.id === filters.searchById || items.status === filters.status
-            );
-          });
-        }
-        return soul;
+        return this.filterByField(soul, filters);
       })
     );
+  }
+
+  filterByField(soul: Soul[], filters: any) {
+    if (Object.keys(filters).length > 0) {
+      return soul.filter((items) => {
+        if (filters.searchById) {
+          return items.id.includes(filters.searchById);
+        } else if (filters.createdDate) {
+          return items.createdAt === filters.createdDate;
+        } else if (filters.updatedDate) {
+          return items.updatedAt === filters.updatedDate;
+        } else {
+          if (filters.soulStatus === '-1') {
+            return soul;
+          }
+          return items.status === filters.soulStatus;
+        }
+      });
+    }
+    return soul;
   }
 }
