@@ -1,4 +1,6 @@
-<sni-soul-filter></sni-soul-filter>
-<ng-container *ngIf="(data$ | async) as souls">
-  <sni-soul-table [souls]="souls"></sni-soul-table>
-</ng-container>
+<div class="home__container">
+  <sni-soul-filter></sni-soul-filter>
+  <ng-container *ngIf="(data$ | async) as souls">
+    <sni-soul-table [souls]="souls"></sni-soul-table>
+  </ng-container>
+</div>
