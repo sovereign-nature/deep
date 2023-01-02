@@ -4,7 +4,8 @@
     height="600px"
     width="1240px"
     [center]="wktToGeoJson(map)"
-    [zoom]="9">
+    [zoom]="9"
+    [options]="mapOptions">
     <map-marker
       [position]="wktToGeoJson(map)"
       [options]="markerOptions">
