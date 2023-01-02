@@ -1,29 +1,27 @@
-<form [formGroup]="formFilter">
-  <ng-container >
-    <label>
-      Search by Id:
-      <input formControlName="searchById">
-    </label>
-  </ng-container>
-  <ng-container>
-    <label>Status</label>
-    <select formControlName="soulStatus">
+<form [formGroup]="formFilter" class="form">
+  <div class="input-container">
+    <input id="search" class="input" type="text" formControlName="searchById" placeholder=" " />
+    <div class="cut"></div>
+    <label for="search" class="placeholder">Search</label>
+  </div>
+  <div class="input-container">
+    <select id="soulStatus" class="input" formControlName="soulStatus">
       <option value="-1">-Select Status-</option>
       <option value="0">Status 1</option>
       <option value="1">Status 2</option>
       <option value="2">Status 3</option>
     </select>
-  </ng-container>
-  <ng-container>
-    <label>
-      Created date:
-      <input formControlName="createdDate" type="date" min="2000-01-01">
-    </label>
-  </ng-container>
-  <ng-container>
-    <label>
-      Updated date:
-      <input formControlName="updatedDate" type="date" min="2000-01-01">
-    </label>
-  </ng-container>
+    <div class="cut"></div>
+    <label for="soulStatus" class="placeholder">Status</label>
+  </div>
+  <div class="input-container">
+    <input id="createdDate" class="input" type="date" min="2000-01-01" formControlName="createdDate" />
+    <div class="cut"></div>
+    <label for="createdDate" class="placeholder">Created date</label>
+  </div>
+  <div class="input-container">
+    <input id="updatedDate" class="input" type="date" min="2000-01-01" formControlName="updatedDate" />
+    <div class="cut"></div>
+    <label for="updatedDate" class="placeholder">Updated date</label>
+  </div>
 </form>
