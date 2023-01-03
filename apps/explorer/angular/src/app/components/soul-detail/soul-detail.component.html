@@ -1,7 +1,7 @@
 <div *ngIf="(property$ | async) as properties"
   class="soul"
   [ngClass]="{'--double-row': properties.geometry, '--double-col': properties.image}">
-  <div class="soul__data">
+  <div class="soul__data" [ngClass]="{'--no-image': !properties.image}">
     <ng-container *ngIf="(detail$ | async) as detail">
       <h1 class="font-secondary">Details</h1>
       <div class="soul__details">
