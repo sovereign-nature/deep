@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['sni']
-}
+  extends: ['sni'],
+};

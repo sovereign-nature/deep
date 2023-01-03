@@ -1,4 +1,4 @@
-import { MermaidMarkdown } from 'vitepress-plugin-mermaid'
+import { MermaidMarkdown } from 'vitepress-plugin-mermaid';
 
 export default {
   lang: 'en-US',
@@ -12,12 +12,12 @@ export default {
           { text: 'Identifier Structure (DID & DDO)', link: '/did-ddo' },
           { text: 'Smart Contract', link: '/smart-contract' },
           { text: 'Use Cases', link: '/use-cases' },
-          { text: 'Nature Identification', link: '/nature-identification' }
-        ]
-      }
-    ]
+          { text: 'Nature Identification', link: '/nature-identification' },
+        ],
+      },
+    ],
   },
   markdown: {
-    config: MermaidMarkdown
-  }
-}
+    config: MermaidMarkdown,
+  },
+};
