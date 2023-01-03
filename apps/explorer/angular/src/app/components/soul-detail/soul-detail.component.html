@@ -1,11 +1,18 @@
-<ng-container *ngIf="(property$ | async) as properties">
-  <div *ngIf="(detail$ | async) as detail" class="details">
-    <div *ngFor="let item of (detail | keyvalue)">
-      <span >{{ item.key }}: </span>
-      <span>{{ item.value ? item.value : '-' }}</span>
-    </div>
+<div *ngIf="(property$ | async) as properties"
+  class="soul"
+  [ngClass]="{'--double-row': properties.geometry, '--double-col': properties.image}">
+  <div class="soul__data" [ngClass]="{'--no-image': !properties.image}">
+    <ng-container *ngIf="(detail$ | async) as detail">
+      <h1 class="font-secondary">Details</h1>
+      <div class="soul__details">
+        <p *ngFor="let item of (detail | keyvalue)">
+          <span >{{ item.key }}: </span>
+          <span>{{ item.value ? item.value : '-' }}</span>
+        </p>
+      </div>
+    </ng-container>
+    <sni-soul-properties [properties]="properties" class="soul__properties"></sni-soul-properties>
   </div>
-  <sni-soul-properties [properties]="properties"></sni-soul-properties>
-  <sni-soul-image *ngIf="properties.image" [imageProperties]="[properties.image, soulId!]"></sni-soul-image>
-  <sni-soul-map *ngIf="properties.geometry" [map]="properties.geometry"></sni-soul-map>
-</ng-container>
+  <sni-soul-image class="soul__image" *ngIf="properties.image" [imageProperties]="[properties.image, soulId!]"></sni-soul-image>
+  <sni-soul-map class="soul__map" *ngIf="properties.geometry" [map]="properties.geometry"></sni-soul-map>
+</div>

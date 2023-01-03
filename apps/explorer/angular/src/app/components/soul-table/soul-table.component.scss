@@ -1,7 +1,62 @@
 table {
-  width: 100%;
+  text-align: left;
+  line-height: 40px;
+  border-collapse: separate;
+  border: 2px solid var(--color-primary);
+  width: 80vw;
+  margin: 2rem auto;
+  border-radius: .25rem;
 }
 
-table, th, td {
-  border: 1px solid;
+thead tr:first-child {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+}
+
+th {
+  font-weight: 500;
+  padding: .5rem 2rem;
+  line-height: 1.25rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+thead tr:last-child th {
+  border-bottom: 3px solid var(--color-white);
+}
+
+tbody tr {
+  vertical-align: center;
+  background-color: var(--color-gray-dark);
+  &:hover {
+    background-color: var(--color-gray-light);
+    cursor: default;
+  }
+}
+
+tbody tr:last-child td {
+  border: none;
+}
+
+tbody td {
+  border-bottom: 1px solid #ddd;
+  padding: 1rem;
+  line-height: 1.5rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+td:last-child {
+  text-align: right;
+  padding-right: 1.5rem;
+}
+
+.btn {
+  vertical-align: middle;
+  cursor: pointer;
+  background: transparent;
+  svg path {
+    fill: #AEBADB;
+  }
 }

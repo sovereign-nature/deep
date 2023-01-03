@@ -56,14 +56,14 @@ describe('SoulDetailComponent', () => {
 
   it('should have 7 properties in soul details', () => {
     const detailsEl: DebugElement[] = el.queryAll(
-      By.css('.details div span:last-child')
+      By.css('.soul__details p span:last-child')
     );
     expect(detailsEl.length).toBe(7, 'Unexpected to find 7 properties');
   });
 
   it('should have the right values in soul details', () => {
     const detailsEl: DebugElement[] = el.queryAll(
-      By.css('.details div span:last-child')
+      By.css('.soul__details p span:last-child')
     );
     console.log(detailsEl[5].nativeElement.innerHTML);
     expect(detailsEl[0].nativeElement.innerHTML).toContain(

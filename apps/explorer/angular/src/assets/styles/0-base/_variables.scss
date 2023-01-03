@@ -1,0 +1,36 @@
+:root {
+  // C O L O R S
+  --color-black: #000000;
+  --color-gray-dark: #0d0d0d;
+  --color-gray-base: #161616;
+  --color-gray-light: #262626;
+  --color-white: #ffffff;
+
+  --color-primary: #AAE4BB;
+  --color-accent: #AEBADB;
+  --color-success: #00B295;
+  --color-info: #57B8FF;
+  --color-warning: #F8BD7F;
+  --color-danger: #F03A47;
+
+  // T Y P O G R A P H Y
+  --font-primary: 'Roboto', sans-serif;
+  --font-secondary: 'VT323', monospace;
+  --text-base-size: 1em;
+  --text-scale-ratio: 1.2;
+
+  --text-xs: calc(1em / (var(--text-scale-ratio) * var(--text-scale-ratio)));
+  --text-sm: calc(1em / var(--text-scale-ratio));
+  --text-md: calc(1em * var(--text-scale-ratio));
+  --text-lg: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-xl: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-xxl: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-xxxl: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio) * var(--text-scale-ratio));
+}
+
+// @include breakpoint(md) {
+//   :root {
+//     --text-base-size: 1.25em;
+//     --text-scale-ratio: 1.25;
+//   }
+// }

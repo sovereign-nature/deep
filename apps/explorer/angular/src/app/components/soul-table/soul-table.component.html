@@ -1,21 +1,37 @@
 <table>
-  <tr>
-    <th>Id</th>
-    <th>Owner</th>
-    <th>Status</th>
-    <th>Created at</th>
-    <th>Updated at</th>
-    <th>Name</th>
-    <th colspan="2">Collection name</th>
-  </tr>
-  <tr *ngFor="let soul of souls">
-    <td>{{ soul.id }}</td>
-    <td>{{ soul.owner }}</td>
-    <td>{{ soul.status }}</td>
-    <td>{{ soul.createdAt * 1000 | date }}</td>
-    <td>{{ soul.updatedAt * 1000 | date }}</td>
-    <td>{{ soul.name }}</td>
-    <td>{{ soul.collectionName }}</td>
-    <td><button [routerLink]="['/details', soul.id]">Detail</button></td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Owner</th>
+      <th>Status</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th>Name</th>
+      <th colspan="2">Collection name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let soul of souls">
+      <td>{{ soul.id }}</td>
+      <td>{{ soul.owner }}</td>
+      <td>{{ soul.status }}</td>
+      <td>{{ soul.createdAt * 1000 | date }}</td>
+      <td>{{ soul.updatedAt * 1000 | date }}</td>
+      <td>{{ soul.name }}</td>
+      <td>{{ soul.collectionName }}</td>
+      <td><div [routerLink]="['/details', soul.id]" class="btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_111_21756)">
+          <path d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z" fill="black"/>
+          <path d="M21.8701 11.5001C21.2301 10.3901 17.7101 4.82012 11.7301 5.00012C6.20007 5.14012 3.00007 10.0001 2.13007 11.5001C2.0423 11.6521 1.99609 11.8246 1.99609 12.0001C1.99609 12.1757 2.0423 12.3481 2.13007 12.5001C2.76007 13.5901 6.13007 19.0001 12.0201 19.0001H12.2701C17.8001 18.8601 21.0101 14.0001 21.8701 12.5001C21.9578 12.3481 22.004 12.1757 22.004 12.0001C22.004 11.8246 21.9578 11.6521 21.8701 11.5001ZM12.0001 15.5001C11.3078 15.5001 10.6311 15.2948 10.0556 14.9103C9.48 14.5257 9.0314 13.979 8.76649 13.3395C8.50158 12.7 8.43227 11.9962 8.56732 11.3173C8.70237 10.6384 9.03571 10.0147 9.52519 9.52524C10.0147 9.03576 10.6383 8.70241 11.3173 8.56737C11.9962 8.43232 12.6999 8.50163 13.3395 8.76654C13.979 9.03144 14.5256 9.48005 14.9102 10.0556C15.2948 10.6312 15.5001 11.3079 15.5001 12.0001C15.5001 12.9284 15.1313 13.8186 14.4749 14.475C13.8186 15.1314 12.9283 15.5001 12.0001 15.5001Z" fill="black"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_111_21756">
+          <rect width="24" height="24" fill="white"/>
+          </clipPath>
+          </defs>
+          </svg>
+      </div></td>
+    </tr>
+  </tbody>
 </table>

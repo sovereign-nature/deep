@@ -1,10 +1,14 @@
-<ng-container *ngIf="map" >
-  <google-map height="400px"
-            width="750px"
-            [center]="wktToGeoJson(map)"
-            [zoom]="9">
+<div *ngIf="map" class="map">
+  <h1 class="font-secondary">Map</h1>
+  <google-map
+    height="600px"
+    width="1240px"
+    [center]="wktToGeoJson(map)"
+    [zoom]="9"
+    [options]="mapOptions">
     <map-marker
       [position]="wktToGeoJson(map)"
-      [options]="markerOptions"></map-marker>
-</google-map>
-</ng-container>
+      [options]="markerOptions">
+    </map-marker>
+  </google-map>
+</div>

@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { parseFromWK } from 'wkt-parser-helper';
 import { GeoJsonProperties } from 'geojson';
 
+import { mapOptions, markerOptions } from '../../models/map-properties';
+
 @Component({
   selector: 'sni-soul-map',
   templateUrl: './soul-map.component.html',
@@ -10,11 +12,9 @@ import { GeoJsonProperties } from 'geojson';
 export class SoulMapComponent {
   @Input() map?: string;
 
-  markerOptions: google.maps.MarkerOptions = {
-    draggable: false,
-    clickable: false,
-    icon: { url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png' },
-  };
+  mapOptions: google.maps.MapOptions = mapOptions;
+
+  markerOptions: google.maps.MarkerOptions = markerOptions;
 
   wktToGeoJson(geometry: string): google.maps.LatLng {
     const geoJson: GeoJsonProperties = parseFromWK(geometry);
