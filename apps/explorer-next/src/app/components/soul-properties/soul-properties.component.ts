@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SoulProperty } from 'src/app/models/soul';
+import { Soul } from 'src/app/models/soul';
 
 @Component({
   selector: 'sni-soul-properties',
@@ -7,5 +7,5 @@ import { SoulProperty } from 'src/app/models/soul';
   styleUrls: ['./soul-properties.component.scss'],
 })
 export class SoulPropertiesComponent {
-  @Input() properties?: SoulProperty;
+  @Input() properties?: Partial<Soul>;
 }
