@@ -4112,10 +4112,10 @@
   dependencies:
     antlr4ts "^0.5.0-alpha.4"
 
-"@studiometa/vue-mapbox-gl@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@studiometa/vue-mapbox-gl/-/vue-mapbox-gl-2.0.1.tgz#9c05e6500aa99fb0bb75f5b30e18c679fd7ab5f6"
-  integrity sha512-XfqM/LlDf/xvUw43mnjuldPWRo3rqgh2lbbUSCC/vEpuZkF/lkO7Qpm1MVkvLjCu/pIPfYZF227aLl9AqtvSow==
+"@studiometa/vue-mapbox-gl@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@studiometa/vue-mapbox-gl/-/vue-mapbox-gl-2.0.2.tgz#f74329b2255a4bd2d41b00129ec88b39a87b0281"
+  integrity sha512-ITJR143eKPgDRUQWFfSBCMWOWgubY6a3YyWBKrXeh3nr2grFf5ZTrzI9g7n86YwEzlMgs/EY1TqVBD4xw7DGow==
 
 "@szmarczak/http-timer@^4.0.5":
   version "4.0.6"
