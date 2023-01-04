@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "dev": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "lint": "eslint \"**/*.{vue,ts,js}\""
+    "test": "ng test --no-watch --no-progress --code-coverage --browsers=ChromeHeadless",
+    "test:dev": "ng test",
+    "lint": "eslint \"**/*.{ts,js}\"",
+    "codegen": "graphql-codegen"
   },
   "private": true,
   "dependencies": {
@@ -31,9 +33,15 @@
     "@angular/cli": "~15.0.3",
     "@angular/compiler-cli": "^15.0.0",
     "@angular/google-maps": "^15.0.3",
+    "@graphql-codegen/cli": "^2.16.2",
+    "@graphql-codegen/typescript": "^2.8.6",
+    "@graphql-codegen/typescript-apollo-angular": "^3.5.6",
+    "@graphql-codegen/typescript-operations": "^2.5.11",
+    "@sni/prettier-config": "*",
     "@types/geojson": "^7946.0.10",
     "@types/jasmine": "~4.3.0",
     "date-fns": "^2.29.3",
+    "eslint-config-sni": "*",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -42,9 +50,7 @@
     "karma-jasmine-html-reporter": "~2.0.0",
     "ngx-date-fns": "^10.0.1",
     "typescript": "~4.8.2",
-    "wkt-parser-helper": "^4.1.0",
-    "@sni/prettier-config": "*",
-    "eslint-config-sni": "*"
+    "wkt-parser-helper": "^4.1.0"
   },
   "overrides": {
     "apollo-angular": {
