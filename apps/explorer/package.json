@@ -6,7 +6,6 @@
     "build": "cross-env NITRO_PRESET=vercel nuxt build",
     "build:node": "nuxt build",
     "dev": "nuxt dev",
-    "test": "nuxt test",
     "lint": "eslint \"**/*.{vue,ts,js}\"",
     "generate": "nuxt generate",
     "preview": "nuxt preview"
