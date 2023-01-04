@@ -6,7 +6,8 @@
     "dev": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test --watch=false --browsers=ChromeHeadless",
+    "test": "ng test --no-watch --no-progress --code-coverage --browsers=ChromeHeadless",
+    "test:dev": "ng test",
     "lint": "eslint \"**/*.{ts,js}\"",
     "codegen": "graphql-codegen"
   },
