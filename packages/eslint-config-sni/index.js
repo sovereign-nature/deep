@@ -3,18 +3,18 @@ module.exports = {
     browser: true,
     es2021: true,
     mocha: true,
-    node: true
+    node: true,
   },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
-    'turbo'
+    'turbo',
   ],
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
-    sourceType: 'module'
+    sourceType: 'module',
   },
-  plugins: ['@typescript-eslint']
-}
+  plugins: ['@typescript-eslint'],
+};
