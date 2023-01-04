@@ -34,7 +34,7 @@
     "msw": "^0.47.4",
     "nuxt": "^3.0.0",
     "nuxt-graphql-client": "^0.2.14",
-    "postcss-custom-properties": "12.1.10",
+    "postcss-custom-properties": "12.1.11",
     "prettier": "2.8.0",
     "sass": "1.56.1",
     "sass-loader": "13.1.0",
