@@ -125,7 +125,6 @@ describe('SoulService', () => {
 
   it('should display soul properties', () => {
     soulService.getSoulDataById('0x2', SOUL_PROPERTY).subscribe((soul) => {
-      console.log(soul);
       expect(soul).toBeTruthy('No soul properties returned');
 
       expect(soul?.oracle).toBe('');
