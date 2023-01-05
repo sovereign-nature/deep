@@ -27,7 +27,7 @@ describe('SoulDetailComponent', () => {
   beforeEach(async () => {
     const soulsServiceSpy = jasmine.createSpyObj(
       'SoulService',
-      ['getSoulDetailsById'],
+      ['getSoulDataById'],
       [soulId]
     );
     const activatedRouteSpy = {
@@ -46,7 +46,7 @@ describe('SoulDetailComponent', () => {
     fixture = TestBed.createComponent(SoulDetailComponent);
     component = fixture.componentInstance;
     el = fixture.debugElement;
-    soulsServiceSpy.getSoulDetailsById.and.returnValue(of(details));
+    soulsServiceSpy.getSoulDataById.and.returnValue(of(details));
     fixture.detectChanges();
   });
 

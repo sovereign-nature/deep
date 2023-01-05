@@ -23,10 +23,16 @@ export const SOUL_DETAIL = gql`
       createdAt
       updatedAt
       owner
-      oracle
       collectionName
+    }
+  }
+`;
+
+export const SOUL_PROPERTY = gql`
+  query sniDetail($sniId: ID!) {
+    sni(id: $sniId) {
+      oracle
       symbol
-      name
       description
       image
       statusDescription

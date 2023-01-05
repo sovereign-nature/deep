@@ -3,6 +3,6 @@ import { Soul } from './soul';
 export interface SNIList {
   snis: Soul[];
 }
-export interface SNIDetail {
+export interface SNIData {
   sni: Soul;
 }

@@ -26,13 +26,15 @@ export class SoulFilterComponent {
       updatedDate: 0,
     });
 
-    this.formFilter.valueChanges.pipe(debounceTime(1000)).subscribe((val) => {
-      this.soulService.setFilterToSouls(val);
-      this.addFilterQueryParams(val);
-    });
+    this.formFilter.valueChanges
+      .pipe(debounceTime(1000))
+      .subscribe((val: SoulFilter) => {
+        this.soulService.setFilterToSouls(val);
+        this.addFilterQueryParams(val);
+      });
   }
 
-  addFilterQueryParams(form: FormGroup) {
+  addFilterQueryParams(form: SoulFilter) {
     const queryParams: Params = form;
 
     this.router.navigate([], {
