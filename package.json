@@ -28,7 +28,7 @@
     "@sni/prettier-config": "*",
     "prettier": "2.8.0",
     "turbo": "1.6.3",
-    "husky": "8.0.2",
+    "husky": "8.0.3",
     "lint-staged": "13.0.4",
     "turbo-ignore": "0.5.0"
   },
