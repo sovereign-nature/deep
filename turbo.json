@@ -15,11 +15,12 @@
         "cache/**",
         "typechain-types/**",
         "pages/.vitepress/dist/**",
-        ".nuxt/**",
-        ".vercel/**",
         "build/**",
         "generated/**",
-        "abi/**"
+        "abi/**",
+        "dist/**",
+        "coverage/**",
+        "graphql/**"
       ]
     },
     "lint": {
