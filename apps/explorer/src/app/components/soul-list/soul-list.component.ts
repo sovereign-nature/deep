@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable, combineLatest } from 'rxjs';
 import { format, fromUnixTime } from 'date-fns';
+import { combineLatest, map, Observable } from 'rxjs';
 import { Soul, SoulFilter } from 'src/app/models/soul';
 import { SoulService } from 'src/app/services/soul.service';
 

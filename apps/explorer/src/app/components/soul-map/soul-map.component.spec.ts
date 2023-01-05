@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { GoogleMapsModule } from '@angular/google-maps';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SoulService } from 'src/app/services/soul.service';
-import { GoogleMapsModule } from '@angular/google-maps';
 
-import { SoulMapComponent } from './soul-map.component';
 import { of } from 'rxjs';
+import { SoulMapComponent } from './soul-map.component';
 
 describe('SoulMapComponent', () => {
   const soulId = '0x2';

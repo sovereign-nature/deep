@@ -1,5 +1,5 @@
-import { ethers } from 'hardhat';
 import { SNI_CONTRACT_ADDRESS } from '@sni/constants';
+import { ethers } from 'hardhat';
 
 async function main() {
   const SovereignNatureIdentifier = await ethers.getContractFactory(
