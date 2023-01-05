@@ -10,14 +10,16 @@ This monorepo uses [turborepo](https://turborepo.org/) for tasks/caching and [np
 
 Apps:
 
-- `@sni/contracts`: Solidity contracts for Sovereign Nature Identifier built with [Hardhat](https://hardhat.org/) and [OpenZeppelin](https://www.openzeppelin.com/)
-- `@sni/explorer`: Explorer for Sovereign Nature Identifier built with [Nuxt.js](https://v3.nuxtjs.org/) and [Tailwind](https://tailwindcss.com)
+- `@sni/contracts`: Solidity contracts for Sovereign Nature Identifier built with [Hardhat](https://hardhat.org/) and [OpenZeppelin](https://www.openzeppelin.com/).
+- `@sni/explorer`: Explorer for Sovereign Nature Identifier built with Angular.
 - `@sni/docs`: documentation generator based on [Vitepress](https://vitepress.vuejs.org/).
+- `@sni/indexer`: indexer for [The Graph](https://thegraph.com/).
 
 Packages:
 
 - `eslint-config-*`: Shared `esLint` configurations.
 - `prettier-config`: Shared `prettier` configuration.
+- `constants`: Shared constants.
 
 ### Installing Dependencies
 
