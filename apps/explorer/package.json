@@ -1,5 +1,5 @@
 {
-  "name": "@sni/explorer-next",
+  "name": "@sni/explorer",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
