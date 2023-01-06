@@ -1,7 +1,7 @@
+import { SNI_CONTRACT_ADDRESS, SNI_OWNER_ADDRESS } from '@sni/constants';
+import fetch from '@web-std/fetch';
 import { ethers } from 'hardhat';
 import { NFTStorage } from 'nft.storage';
-import fetch from '@web-std/fetch';
-import { SNI_CONTRACT_ADDRESS, SNI_OWNER_ADDRESS } from '@sni/constants';
 
 async function getTestImage() {
   const imageOriginUrl =

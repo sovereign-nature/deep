@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { BigInt, ipfs, json, JSONValueKind } from '@graphprotocol/graph-ts';
 import { SNI } from '../generated/schema';
-import { BigInt, JSONValueKind, ipfs, json } from '@graphprotocol/graph-ts';
 
 // Find entity in database or create a new one if it's not found.
 // eslint-disable-next-line @typescript-eslint/ban-types

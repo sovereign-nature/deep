@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/ban-types */
+import { Address, BigInt, Bytes, ethereum } from '@graphprotocol/graph-ts';
 import { newMockEvent } from 'matchstick-as';
-import { ethereum, Address, BigInt, Bytes } from '@graphprotocol/graph-ts';
 import {
   Approval,
   ApprovalForAll,

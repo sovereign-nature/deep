@@ -2,11 +2,11 @@
 
 import {
   assert,
-  describe,
-  test,
   beforeAll,
   createMockedFunction,
+  describe,
   mockIpfsFile,
+  test,
 } from 'matchstick-as/assembly/index';
 
 import { Address, BigInt, ethereum, store } from '@graphprotocol/graph-ts';
@@ -17,9 +17,9 @@ import {
   handleTransfer,
 } from '../src/sovereign-nature-identifier';
 import {
+  createStatusSetEvent,
   createTokenURISetEvent,
   createTransferEvent,
-  createStatusSetEvent,
 } from './sovereign-nature-identifier-utils';
 
 import { SNI_CONTRACT_ADDRESS } from '@sni/constants';

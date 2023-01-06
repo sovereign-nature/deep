@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Address, log } from '@graphprotocol/graph-ts';
+import { SNI_CONTRACT_ADDRESS } from '@sni/constants';
 import {
-  SovereignNatureIdentifier,
   Approval,
   ApprovalForAll,
   RoleAdminChanged,
   RoleGranted,
   RoleRevoked,
+  SovereignNatureIdentifier,
   StatusSet,
   TokenURISet,
   Transfer,
 } from '../generated/SovereignNatureIdentifier/SovereignNatureIdentifier';
-import { SNI_CONTRACT_ADDRESS } from '@sni/constants';
 import { fillFromIPFS, findEntity } from './utils';
 
 const CONTRACT_ADDRESS = Address.fromString(SNI_CONTRACT_ADDRESS);

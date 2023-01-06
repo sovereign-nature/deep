@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import {
-  ApolloTestingModule,
   ApolloTestingController,
+  ApolloTestingModule,
 } from 'apollo-angular/testing';
 import { Soul } from '../models/soul';
 import { SOULS_LIST, SOUL_DETAIL, SOUL_PROPERTY } from '../queries/sni';

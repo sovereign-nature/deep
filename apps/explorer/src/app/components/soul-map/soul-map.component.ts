@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { parseFromWK } from 'wkt-parser-helper';
 import { GeoJsonProperties } from 'geojson';
+import { parseFromWK } from 'wkt-parser-helper';
 
 import { mapOptions, markerOptions } from '../../models/map-properties';
 

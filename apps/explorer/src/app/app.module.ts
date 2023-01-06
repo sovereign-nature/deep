@@ -1,21 +1,21 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { BrowserModule } from '@angular/platform-browser';
+import { InMemoryCache } from '@apollo/client/core';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
-import { InMemoryCache } from '@apollo/client/core';
-import { GoogleMapsModule } from '@angular/google-maps';
 
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SoulListComponent } from './components/soul-list/soul-list.component';
 import { SoulDetailComponent } from './components/soul-detail/soul-detail.component';
-import { SoulTableComponent } from './components/soul-table/soul-table.component';
-import { SoulPropertiesComponent } from './components/soul-properties/soul-properties.component';
-import { SoulImageComponent } from './components/soul-image/soul-image.component';
-import { SoulMapComponent } from './components/soul-map/soul-map.component';
 import { SoulFilterComponent } from './components/soul-filter/soul-filter.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { SoulImageComponent } from './components/soul-image/soul-image.component';
+import { SoulListComponent } from './components/soul-list/soul-list.component';
+import { SoulMapComponent } from './components/soul-map/soul-map.component';
+import { SoulPropertiesComponent } from './components/soul-properties/soul-properties.component';
+import { SoulTableComponent } from './components/soul-table/soul-table.component';
 
 @NgModule({
   declarations: [

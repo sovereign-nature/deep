@@ -1,9 +1,9 @@
-import { HardhatUserConfig } from 'hardhat/config';
 import '@nomicfoundation/hardhat-toolbox';
 import '@openzeppelin/hardhat-upgrades';
-import 'solidity-coverage';
-import 'hardhat-abi-exporter';
 import * as dotenv from 'dotenv';
+import 'hardhat-abi-exporter';
+import { HardhatUserConfig } from 'hardhat/config';
+import 'solidity-coverage';
 
 dotenv.config();
 

@@ -1,6 +1,6 @@
+import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
-import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
 
 describe('Sovereign Nature Identifier', function () {
   async function deploySNIFixture() {
