@@ -38,16 +38,24 @@ contract SovereignNatureIdentifier is
         _grantRole(ORACLE_ROLE, msg.sender);
     }
 
-    function safeMint(address to, string memory uri) public onlyRole(MINTER_ROLE) {
+    function safeMint(
+        address to,
+        string memory _tokenUri,
+        string memory _dataURI,
+        string memory _computeURI,
+        uint256 _status
+    ) public onlyRole(MINTER_ROLE) {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
-        _setTokenURI(tokenId, uri);
+        _setTokenURI(tokenId, _tokenUri);
 
         // Set initial status for minted token and emit creation event.
-        setStatus(tokenId, 0);
+        setStatus(tokenId, _status);
+        setComputeURI(tokenId, _computeURI);
+        setDataURI(tokenId, _dataURI);
 
-        emit TokenMinted(tokenId, uri, to);
+        emit TokenMinted(tokenId, _tokenUri, to);
     }
 
     // The following functions are overrides required by Solidity.

@@ -14,35 +14,59 @@ describe('Sovereign Nature Identifier', function () {
 
     const initialTokenId = 0;
 
-    const initialURI = 'ipfs://initial';
-    const updatedURI = 'ipfs://updated';
+    const initialTokenURI = 'ipfs://tokenURI-initial';
+    const updatedTokenURI = 'ipfs://tokenURI-updated';
 
-    const updatedStatus = 2;
+    const initialComputeURI = 'ipfs://computeURI-initial';
+    const updatedComputeURI = 'ipfs://computeURI-updated';
+
+    const initialDataURI = 'ipfs://dataURI-initial';
+    const updatedDataURI = 'ipfs://dataURI-updated';
+
+    const initialStatus = 0;
+    const updatedStatus = 1;
+
+    const mintInitial = () => {
+      return sni.safeMint(
+        owner.address,
+        initialTokenURI,
+        initialDataURI,
+        initialComputeURI,
+        initialStatus
+      );
+    };
 
     return {
       sni,
       initialTokenId,
-      initialURI,
-      updatedURI,
+      initialTokenURI,
+      updatedTokenURI,
+      initialComputeURI,
+      updatedComputeURI,
+      initialDataURI,
+      updatedDataURI,
+      initialStatus,
       updatedStatus,
       owner,
       oracle,
       otherAccount,
+      mintInitial,
     };
   }
 
   describe('Minting', function () {
     it('Should mint', async function () {
-      const { sni, owner, initialURI } = await loadFixture(deploySNIFixture);
+      const { mintInitial } = await loadFixture(deploySNIFixture);
 
-      expect(sni.safeMint(owner.address, initialURI)).not.to.be.reverted;
+      expect(mintInitial()).not.to.be.reverted;
     });
 
     it('Should has initial owner', async function () {
-      const { sni, owner, initialTokenId, initialURI } = await loadFixture(
+      const { sni, owner, initialTokenId, mintInitial } = await loadFixture(
         deploySNIFixture
       );
-      await sni.safeMint(owner.address, initialURI);
+
+      await mintInitial();
 
       const nftOwner = await sni.ownerOf(initialTokenId);
 
@@ -50,70 +74,67 @@ describe('Sovereign Nature Identifier', function () {
     });
 
     it('Should has IPFS URI', async function () {
-      const { sni, owner, initialTokenId, initialURI } = await loadFixture(
-        deploySNIFixture
-      );
+      const { sni, initialTokenId, initialTokenURI, mintInitial } =
+        await loadFixture(deploySNIFixture);
 
-      await sni.safeMint(owner.address, initialURI);
+      await mintInitial();
 
-      expect(initialURI).to.equal(await sni.tokenURI(initialTokenId));
+      expect(initialTokenURI).to.equal(await sni.tokenURI(initialTokenId));
     });
 
     it('Should emit TokenMinted event', async function () {
-      const { sni, owner, initialTokenId, initialURI } = await loadFixture(
-        deploySNIFixture
-      );
+      const { sni, owner, initialTokenId, initialTokenURI, mintInitial } =
+        await loadFixture(deploySNIFixture);
 
-      await expect(sni.safeMint(owner.address, initialURI))
+      await expect(mintInitial())
         .to.emit(sni, 'TokenMinted')
-        .withArgs(initialTokenId, initialURI, owner.address);
+        .withArgs(initialTokenId, initialTokenURI, owner.address);
     });
   });
 
   describe('tokenURI Update', function () {
     it('Should update tokenURI', async function () {
-      const { sni, owner, initialTokenId, initialURI, updatedURI } =
+      const { sni, initialTokenId, updatedTokenURI, mintInitial } =
         await loadFixture(deploySNIFixture);
 
-      await sni.safeMint(owner.address, initialURI);
+      await mintInitial();
 
-      expect(await sni.setTokenURI(initialTokenId, updatedURI)).not.to.be
+      expect(await sni.setTokenURI(initialTokenId, updatedTokenURI)).not.to.be
         .reverted;
     });
 
     it('Should emit TokenURISet event with correct arguments', async function () {
-      const { sni, owner, initialTokenId, initialURI, updatedURI } =
+      const { sni, initialTokenId, updatedTokenURI, mintInitial } =
         await loadFixture(deploySNIFixture);
 
-      await sni.safeMint(owner.address, initialURI);
+      await mintInitial();
 
-      await expect(sni.setTokenURI(initialTokenId, updatedURI))
+      await expect(sni.setTokenURI(initialTokenId, updatedTokenURI))
         .to.emit(sni, 'TokenURISet')
-        .withArgs(initialTokenId, updatedURI);
+        .withArgs(initialTokenId, updatedTokenURI);
     });
 
     it('Should return updated tokenURI', async function () {
-      const { sni, owner, initialTokenId, initialURI, updatedURI } =
+      const { sni, initialTokenId, updatedTokenURI, mintInitial } =
         await loadFixture(deploySNIFixture);
 
-      await sni.safeMint(owner.address, initialURI);
-      await sni.setTokenURI(initialTokenId, updatedURI);
+      await mintInitial();
+      await sni.setTokenURI(initialTokenId, updatedTokenURI);
 
-      expect(updatedURI).to.be.equal(await sni.tokenURI(initialTokenId));
+      expect(updatedTokenURI).to.be.equal(await sni.tokenURI(initialTokenId));
     });
 
     it('Only initial owner should be able to update tokenURI', async function () {
       const {
         sni,
-        owner,
         initialTokenId,
-        initialURI,
-        updatedURI,
+        updatedTokenURI,
         otherAccount,
+        mintInitial,
       } = await loadFixture(deploySNIFixture);
 
-      await sni.safeMint(owner.address, initialURI);
-      await sni.setTokenURI(initialTokenId, updatedURI);
+      await mintInitial();
+      await sni.setTokenURI(initialTokenId, updatedTokenURI);
 
       expect(sni.connect(otherAccount).setTokenURI(initialTokenId, 'test')).to
         .be.reverted;
@@ -122,19 +143,19 @@ describe('Sovereign Nature Identifier', function () {
 
   describe('Status Update', function () {
     it('Should update status', async function () {
-      const { sni, owner, initialURI, initialTokenId, updatedStatus } =
+      const { sni, initialTokenId, updatedStatus, mintInitial } =
         await loadFixture(deploySNIFixture);
 
-      await sni.safeMint(owner.address, initialURI);
+      await mintInitial();
 
       expect(sni.setStatus(initialTokenId, updatedStatus)).to.be.not.reverted;
     });
 
     it('Should emit StatusSet event with correct arguments', async function () {
-      const { sni, owner, initialTokenId, initialURI, updatedStatus } =
+      const { sni, owner, initialTokenId, updatedStatus, mintInitial } =
         await loadFixture(deploySNIFixture);
 
-      await sni.safeMint(owner.address, initialURI);
+      await mintInitial();
 
       await expect(sni.setStatus(initialTokenId, updatedStatus))
         .to.emit(sni, 'StatusSet')
@@ -142,26 +163,20 @@ describe('Sovereign Nature Identifier', function () {
     });
 
     it('Should return updated status', async function () {
-      const { sni, owner, initialTokenId, initialURI, updatedStatus } =
+      const { sni, initialTokenId, updatedStatus, mintInitial } =
         await loadFixture(deploySNIFixture);
 
-      await sni.safeMint(owner.address, initialURI);
+      await mintInitial();
       await sni.setStatus(initialTokenId, updatedStatus);
 
       expect(updatedStatus).to.be.equal(await sni.statusOf(initialTokenId));
     });
 
     it('Only initial oracle should be able to update status', async function () {
-      const {
-        sni,
-        owner,
-        initialTokenId,
-        initialURI,
-        updatedStatus,
-        otherAccount,
-      } = await loadFixture(deploySNIFixture);
+      const { sni, initialTokenId, updatedStatus, otherAccount, mintInitial } =
+        await loadFixture(deploySNIFixture);
 
-      await sni.safeMint(owner.address, initialURI);
+      await mintInitial();
       await sni.setStatus(initialTokenId, updatedStatus);
 
       expect(sni.connect(otherAccount).setStatus(initialTokenId, updatedStatus))
