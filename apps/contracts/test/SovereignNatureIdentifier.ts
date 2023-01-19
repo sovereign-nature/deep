@@ -172,6 +172,8 @@ describe('Sovereign Nature Identifier', function () {
 
       expect(updatedDataURI).to.be.equal(await sni.dataURI(initialTokenId));
     });
+
+    // TODO: Test permissions for dataURI
   });
 
   describe('coputeURI Update', function () {
@@ -205,6 +207,8 @@ describe('Sovereign Nature Identifier', function () {
 
       expect(updatedComputeURI).to.be.equal(await sni.dataURI(initialTokenId));
     });
+
+    // TODO: Test permissions for computeURI
   });
 
   describe('Status Update', function () {
