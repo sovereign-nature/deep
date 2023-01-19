@@ -15,5 +15,5 @@ interface IComputeProvenance {
     /**
      * @dev Sets identified object scompute script.
      */
-    function setComputeURI(uint256 tokenId, string memory dataURI) external;
+    function setComputeURI(uint256 tokenId, string memory computeURI) external;
 }

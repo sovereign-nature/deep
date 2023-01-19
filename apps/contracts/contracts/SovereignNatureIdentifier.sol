@@ -7,9 +7,19 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "./interfaces/IUpdatableNFT.sol";
 import "./abstracts/Oraclized.sol";
+import "./abstracts/ComputeProvenance.sol";
+import "./abstracts/DataProvenance.sol";
 
 /// @custom:security-contact vadim@sovereignnature.com
-contract SovereignNatureIdentifier is ERC721, ERC721URIStorage, AccessControl, IUpdatableNFT, Oraclized {
+contract SovereignNatureIdentifier is
+    ERC721,
+    ERC721URIStorage,
+    AccessControl,
+    IUpdatableNFT,
+    Oraclized,
+    ComputeProvenance,
+    DataProvenance
+{
     using Counters for Counters.Counter;
 
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
@@ -60,9 +70,22 @@ contract SovereignNatureIdentifier is ERC721, ERC721URIStorage, AccessControl, I
         emit TokenURISet(tokenId, _tokenURI);
     }
 
+    // Overrides for permissions control
     function setStatus(uint256 tokenId, uint256 _status) public override onlyRole(ORACLE_ROLE) {
         require(_exists(tokenId), "Status set of nonexistent token");
 
         super.setStatus(tokenId, _status);
+    }
+
+    function setComputeURI(uint256 tokenId, string memory _computeURI) public override onlyRole(ORACLE_ROLE) {
+        require(_exists(tokenId), "Status set of nonexistent token");
+
+        super.setComputeURI(tokenId, _computeURI);
+    }
+
+    function setDataURI(uint256 tokenId, string memory _dataURI) public override onlyRole(ORACLE_ROLE) {
+        require(_exists(tokenId), "Status set of nonexistent token");
+
+        super.setDataURI(tokenId, _dataURI);
     }
 }
