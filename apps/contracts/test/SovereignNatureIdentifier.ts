@@ -141,6 +141,39 @@ describe('Sovereign Nature Identifier', function () {
     });
   });
 
+  describe('dataURI Update', function () {
+    it('Should update dataURI', async function () {
+      const { sni, initialTokenId, updatedDataURI, mintInitial } =
+        await loadFixture(deploySNIFixture);
+
+      await mintInitial();
+
+      expect(await sni.setDataURI(initialTokenId, updatedDataURI)).not.to.be
+        .reverted;
+    });
+
+    it('Should emit DataURISet event with correct arguments', async function () {
+      const { sni, initialTokenId, updatedDataURI, mintInitial } =
+        await loadFixture(deploySNIFixture);
+
+      await mintInitial();
+
+      await expect(sni.setDataURI(initialTokenId, updatedDataURI))
+        .to.emit(sni, 'DataURISet')
+        .withArgs(initialTokenId, updatedDataURI);
+    });
+
+    it('Should return updated dataURI', async function () {
+      const { sni, initialTokenId, updatedDataURI, mintInitial } =
+        await loadFixture(deploySNIFixture);
+
+      await mintInitial();
+      await sni.setDataURI(initialTokenId, updatedDataURI);
+
+      expect(updatedDataURI).to.be.equal(await sni.dataURI(initialTokenId));
+    });
+  });
+
   describe('Status Update', function () {
     it('Should update status', async function () {
       const { sni, initialTokenId, updatedStatus, mintInitial } =
@@ -152,7 +185,7 @@ describe('Sovereign Nature Identifier', function () {
     });
 
     it('Should emit StatusSet event with correct arguments', async function () {
-      const { sni, owner, initialTokenId, updatedStatus, mintInitial } =
+      const { sni, initialTokenId, updatedStatus, mintInitial } =
         await loadFixture(deploySNIFixture);
 
       await mintInitial();
