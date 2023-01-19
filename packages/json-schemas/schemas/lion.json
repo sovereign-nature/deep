@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/address.schema.json",
+  "title": "Moonsama Lions",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Lion name."
+    },
+    "description": {
+      "type": "string",
+      "description": "Lion description."
+    },
+    "image": {
+      "type": "string",
+      "description": "A URI pointing to a resource with mime type image/* representing the asset to which this NFT represents. Consider making any images at a width between 320 and 1080 pixels and aspect ratio between 1.91:1 and 4:5 inclusive."
+    },
+    "properties": {
+      "type": "object",
+      "description": "Identifier properties",
+      "properties": {
+        "statusDescription": {
+          "type": "string",
+          "description": "status field states description"
+        },
+        "taxonId": {
+          "type": "string"
+        },
+        "conservationStatus": {
+          "type": "string"
+        },
+        "geometry": {
+          "type": "string"
+        }
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["trait_type", "value"],
+        "properties": {
+          "trait_type": {
+            "enum": [
+              "id",
+              "gender",
+              "birthday",
+              "coalition",
+              "prides",
+              "unique_features",
+              "whiskers_right_image_0",
+              "whiskers_right_image_1",
+              "whiskers_right_image_2",
+              "whiskers_left_image_0",
+              "whiskers_left_image_1",
+              "whiskers_left_image_2",
+              "ear_right",
+              "ear_left",
+              "face"
+            ]
+          },
+          "value": { "type": "string" }
+        }
+      },
+      "allOf": [
+        {
+          "contains": { "properties": { "trait_type": { "const": "id" } } }
+        },
+        {
+          "contains": { "properties": { "trait_type": { "const": "gender" } } }
+        },
+        {
+          "contains": {
+            "properties": { "trait_type": { "const": "birthday" } }
+          }
+        },
+        {
+          "contains": {
+            "properties": { "trait_type": { "const": "coalition" } }
+          }
+        },
+        {
+          "contains": { "properties": { "trait_type": { "const": "prides" } } }
+        },
+        {
+          "contains": {
+            "properties": { "trait_type": { "const": "unique_features" } }
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "trait_type": { "const": "whiskers_right_image_0" }
+            }
+          }
+        },
+        {
+          "contains": {
+            "properties": { "trait_type": { "const": "whiskers_left_image_0" } }
+          }
+        },
+        {
+          "contains": {
+            "properties": { "trait_type": { "const": "ear_right" } }
+          }
+        },
+        {
+          "contains": {
+            "properties": { "trait_type": { "const": "ear_left" } }
+          }
+        },
+        {
+          "contains": {
+            "properties": { "trait_type": { "const": "face" } }
+          }
+        }
+      ]
+    }
+  }
+}
