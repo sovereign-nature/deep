@@ -1,11 +1,31 @@
 {
-  "name": "Sovereign Nature Identifier #1",
+  "name": "Scarface",
   "description": "Test lion identifier updated",
   "properties": {
-    "statusDescription": "{ '0': 'Normal', '1': 'Aggressive' }",
+    "statusDescription": "{ \"0\": \"Alive\", \"1\": \"Dead\" }",
     "taxonId": "itis:183803",
     "conservationStatus": "VU",
     "geometry": "POINT(6.0000 48.0000)"
   },
+  "attributes": [
+    { "trait_type": "id", "value": "musm1" },
+    { "trait_type": "gender", "value": "male" },
+    { "trait_type": "birthday", "value": "january 2007" },
+    { "trait_type": "coalition", "value": "musketeers" },
+    {
+      "trait_type": "prides",
+      "value": "marsh pride, marsh breakaways, serena north, paradise breakaways, triangle lions, NEW PRIDE"
+    },
+    { "trait_type": "unique_features", "value": "scared face, NEW FEATURE" },
+    { "trait_type": "whiskers_right_image_0", "value": "images/1/Image5.jpg" },
+    { "trait_type": "whiskers_right_image_1", "value": "images/1/Image15.jpg" },
+    { "trait_type": "whiskers_right_image_2", "value": "images/1/Image27.jpg" },
+    { "trait_type": "whiskers_left_image_0", "value": "images/1/Image16.jpg" },
+    { "trait_type": "whiskers_left_image_1", "value": "images/1/Image17.jpg" },
+    { "trait_type": "whiskers_left_image_2", "value": "images/1/Image29.jpg" },
+    { "trait_type": "ear_right", "value": "images/1/Image24.jpg" },
+    { "trait_type": "ear_left", "value": "images/1/Image26.jpg" },
+    { "trait_type": "face", "value": "images/1/Image28.jpg" }
+  ],
   "image": "ipfs://bafybeihs6qouvmo4pnjozlrdmgic3b4nav6rrswc3tobgclrrvtwsa47oe/blob"
 }

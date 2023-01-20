@@ -122,12 +122,7 @@ describe('SNI Indexer', () => {
     );
 
     // JSON metadata fields from initial.json
-    assert.fieldEquals(
-      ENTITY_NAME,
-      tokenId,
-      'name',
-      'Sovereign Nature Identifier #0'
-    );
+    assert.fieldEquals(ENTITY_NAME, tokenId, 'name', 'Scarface');
     assert.fieldEquals(
       ENTITY_NAME,
       tokenId,
@@ -144,7 +139,7 @@ describe('SNI Indexer', () => {
       ENTITY_NAME,
       tokenId,
       'statusDescription',
-      "{ '0': 'Normal', '1': 'Aggressive' }"
+      '{ "0": "Alive", "1": "Dead" }'
     );
     assert.fieldEquals(ENTITY_NAME, tokenId, 'taxonId', 'itis:183803');
     assert.fieldEquals(ENTITY_NAME, tokenId, 'conservationStatus', 'VU');
@@ -166,12 +161,7 @@ describe('SNI Indexer', () => {
     assert.fieldEquals(ENTITY_NAME, tokenId, 'tokenURI', NEW_URI);
 
     // JSON metadata fields from updated.json should be indexed as well.
-    assert.fieldEquals(
-      ENTITY_NAME,
-      tokenId,
-      'name',
-      'Sovereign Nature Identifier #1'
-    );
+    assert.fieldEquals(ENTITY_NAME, tokenId, 'name', 'Scarface');
     assert.fieldEquals(
       ENTITY_NAME,
       tokenId,
@@ -188,7 +178,7 @@ describe('SNI Indexer', () => {
       ENTITY_NAME,
       tokenId,
       'statusDescription',
-      "{ '0': 'Normal', '1': 'Aggressive' }"
+      '{ "0": "Alive", "1": "Dead" }'
     );
     assert.fieldEquals(ENTITY_NAME, tokenId, 'taxonId', 'itis:183803');
     assert.fieldEquals(ENTITY_NAME, tokenId, 'conservationStatus', 'VU');
