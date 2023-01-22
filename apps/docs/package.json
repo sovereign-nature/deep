@@ -10,7 +10,7 @@
     "@vueuse/core": "9.10.0",
     "vitepress": "1.0.0-alpha.38",
     "vue": "3.2.45",
-    "vitepress-plugin-mermaid": "2.0.8",
+    "vitepress-plugin-mermaid": "2.0.10",
     "mermaid": "9.3.0",
     "eslint": "8.32.0",
     "eslint-config-sni": "*",

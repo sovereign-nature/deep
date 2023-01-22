@@ -15592,10 +15592,10 @@ vite@^4.0.4:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vitepress-plugin-mermaid@2.0.8:
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/vitepress-plugin-mermaid/-/vitepress-plugin-mermaid-2.0.8.tgz#7a2447d9fa5835fdc00195859d7864d35aeb19a9"
-  integrity sha512-ywWxTeg9kMv7ZPf/igCBF4ZHhWZAyRtbPnA12ICQuNK2AMp7r5IHOfnuX1EJQf8gNdsh8bcvvSvm8Ll92fdOTw==
+vitepress-plugin-mermaid@2.0.10:
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/vitepress-plugin-mermaid/-/vitepress-plugin-mermaid-2.0.10.tgz#91de3b7aec1932706e1e677a99efdb7024bd00bc"
+  integrity sha512-sujwlcuyK5vCyS9OfH3Fwq4V723nUFWlOsezDU+RcGtqO32Y8HHXpxejibIZSed5DsL9zdjTgScRmdZYG+PsSw==
 
 vitepress@1.0.0-alpha.38:
   version "1.0.0-alpha.38"
