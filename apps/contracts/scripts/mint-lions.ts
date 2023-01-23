@@ -1,4 +1,4 @@
-import { SNI_CONTRACT_ADDRESS } from '@sni/constants';
+import { SNI_CONTRACT_ADDRESS, SNI_OWNER_ADDRESS } from '@sni/constants';
 import axios from 'axios';
 import fs from 'fs';
 import { ethers } from 'hardhat';
@@ -128,21 +128,25 @@ async function mintLionData(
 
   const res = await axios.post(`${STORAGE_API_URL}/upload`, metadata);
 
-  if (res.status === 200) {
-    console.log('Successfully uploaded metadata to NFT Storage');
+  if (res.status !== 200) {
+    console.error('Error uploading metadata to NFT Storage');
 
-    const cid = res.data.value.cid;
-
-    console.log('CID: ', cid);
+    return;
   }
 
-  // await contract.safeMint(
-  //   SNI_OWNER_ADDRESS,
-  //   pinnedMetadata.url,
-  //   'some-data',
-  //   'some-compute',
-  //   0
-  // );
+  console.log('Successfully uploaded metadata to NFT Storage');
+
+  const cid = res.data.value.cid;
+  console.log('CID: ', cid);
+  const ipfsURL = `ipfs://${cid}`;
+
+  await contract.safeMint(
+    SNI_OWNER_ADDRESS,
+    ipfsURL,
+    'some-data',
+    'some-compute',
+    0
+  );
 }
 
 async function main() {
