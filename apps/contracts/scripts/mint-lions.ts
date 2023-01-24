@@ -25,6 +25,7 @@ type LionData = {
   ear_left: string;
   face: string;
   whisker_left_2: string;
+  mouth: string;
 };
 
 function getImage(path: string) {
@@ -49,6 +50,7 @@ function processLionData(data: LionData) {
     ear_left,
     ear_right,
     face,
+    mouth,
     id,
     name,
   } = data;
@@ -98,6 +100,7 @@ function processLionData(data: LionData) {
       value: ear_left ? getImage(`${ear_left}`) : '',
     },
     { trait_type: 'face', value: image },
+    { trait_type: 'mouth', value: mouth ? getImage(`${mouth}`) : '' },
   ];
 
   return {
