@@ -132,6 +132,21 @@ describe('SNI Indexer', () => {
       'tokenURI',
       INITIAL_TOKEN_URI
     );
+
+    assert.fieldEquals(
+      SUBGRAPH_ENTITY_NAME,
+      tokenId,
+      'dataURI',
+      INITIAL_DATA_URI
+    );
+
+    assert.fieldEquals(
+      SUBGRAPH_ENTITY_NAME,
+      tokenId,
+      'computeURI',
+      INITIAL_COMPUTE_URI
+    );
+
     assert.fieldEquals(
       SUBGRAPH_ENTITY_NAME,
       tokenId,
