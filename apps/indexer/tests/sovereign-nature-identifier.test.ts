@@ -12,11 +12,15 @@ import {
 import { Address, BigInt, ethereum, store } from '@graphprotocol/graph-ts';
 
 import {
+  handleComputeURISet,
+  handleDataURISet,
   handleStatusSet,
   handleTokenURISet,
   handleTransfer,
 } from '../src/sovereign-nature-identifier';
 import {
+  createComputeURISetEvent,
+  createDataURISetEvent,
   createStatusSetEvent,
   createTokenURISetEvent,
   createTransferEvent,
@@ -27,6 +31,8 @@ import {
   INITIAL_COMPUTE_URI,
   INITIAL_DATA_URI,
   INITIAL_TOKEN_URI,
+  UPDATED_COMPUTE_URI,
+  UPDATED_DATA_URI,
   UPDATED_TOKEN_URI,
 } from '@sni/constants/mocks/identifier';
 
@@ -238,6 +244,37 @@ describe('SNI Indexer', () => {
       tokenId,
       'geometry',
       'POINT(6.0000 48.0000)'
+    );
+  });
+
+  test('Handles DataURISet event', () => {
+    const dataURISetEvent = createDataURISetEvent(TOKEN_ID, UPDATED_DATA_URI);
+    handleDataURISet(dataURISetEvent);
+
+    const tokenId = TOKEN_ID.toHex();
+
+    assert.fieldEquals(
+      SUBGRAPH_ENTITY_NAME,
+      tokenId,
+      'dataURI',
+      UPDATED_DATA_URI
+    );
+  });
+
+  test('Handles ComputeURISet event', () => {
+    const computeURISetEvent = createComputeURISetEvent(
+      TOKEN_ID,
+      UPDATED_COMPUTE_URI
+    );
+    handleComputeURISet(computeURISetEvent);
+
+    const tokenId = TOKEN_ID.toHex();
+
+    assert.fieldEquals(
+      SUBGRAPH_ENTITY_NAME,
+      tokenId,
+      'computeURI',
+      UPDATED_COMPUTE_URI
     );
   });
 
