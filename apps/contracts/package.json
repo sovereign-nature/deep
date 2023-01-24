@@ -38,6 +38,7 @@
     "solhint": "3.3.8",
     "solidity-coverage": "0.8.2",
     "ts-node": "10.9.1",
-    "typechain": "8.1.1"
+    "typechain": "8.1.1",
+    "axios": "1.2.3"
   }
 }
