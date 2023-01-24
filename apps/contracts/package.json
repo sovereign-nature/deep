@@ -30,7 +30,7 @@
     "dotenv": "16.0.3",
     "eslint": "8.32.0",
     "eslint-config-sni": "*",
-    "ethers": "5.7.1",
+    "ethers": "5.7.2",
     "hardhat": "2.12.6",
     "hardhat-abi-exporter": "2.10.1",
     "hardhat-gas-reporter": "1.0.9",
