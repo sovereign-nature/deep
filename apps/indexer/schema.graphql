@@ -4,6 +4,8 @@ type SNI @entity {
   tokenId: BigInt!
 
   tokenURI: String!
+  computeURI: String!
+  dataURI: String!
   status: BigInt!
 
   createdAt: BigInt!

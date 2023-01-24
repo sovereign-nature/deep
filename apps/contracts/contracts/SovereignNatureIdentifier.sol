@@ -86,13 +86,13 @@ contract SovereignNatureIdentifier is
     }
 
     function setComputeURI(uint256 tokenId, string memory _computeURI) public override onlyRole(ORACLE_ROLE) {
-        require(_exists(tokenId), "Status set of nonexistent token");
+        require(_exists(tokenId), "Status set of nonexistent token"); // TODO: rename to "computeURI set of nonexistent token"
 
         super.setComputeURI(tokenId, _computeURI);
     }
 
     function setDataURI(uint256 tokenId, string memory _dataURI) public override onlyRole(ORACLE_ROLE) {
-        require(_exists(tokenId), "Status set of nonexistent token");
+        require(_exists(tokenId), "Status set of nonexistent token"); //TODO: rename to "dataURI set of nonexistent token"
 
         super.setDataURI(tokenId, _dataURI);
     }

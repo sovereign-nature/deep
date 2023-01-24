@@ -9,7 +9,7 @@ dataSources:
     name: SovereignNatureIdentifier
     network: mbase
     source:
-      address: '0xB72a77d425aad2faAE3F695846b337E7d65D098e'
+      address: '0xB3f7B7625136170B54a3DE448218EfE4dF5A0ad8'
       abi: SovereignNatureIdentifier
     mapping:
       kind: ethereum/events
@@ -18,6 +18,8 @@ dataSources:
       entities:
         - Approval
         - ApprovalForAll
+        - ComputeURISet
+        - DataURISet
         - RoleAdminChanged
         - RoleGranted
         - RoleRevoked
@@ -33,6 +35,10 @@ dataSources:
           handler: handleApproval
         - event: ApprovalForAll(indexed address,indexed address,bool)
           handler: handleApprovalForAll
+        - event: ComputeURISet(indexed uint256,string)
+          handler: handleComputeURISet
+        - event: DataURISet(indexed uint256,string)
+          handler: handleDataURISet
         - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
           handler: handleRoleAdminChanged
         - event: RoleGranted(indexed bytes32,indexed address,indexed address)
