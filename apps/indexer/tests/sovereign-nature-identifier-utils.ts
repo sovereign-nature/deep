@@ -5,6 +5,8 @@ import { newMockEvent } from 'matchstick-as';
 import {
   Approval,
   ApprovalForAll,
+  ComputeURISet,
+  DataURISet,
   RoleAdminChanged,
   RoleGranted,
   RoleRevoked,
@@ -179,6 +181,50 @@ export function createTokenURISetEvent(
   );
 
   return tokenUriSetEvent;
+}
+
+export function createDataURISetEvent(
+  tokenId: BigInt,
+  dataURI: string
+): DataURISet {
+  //@ts-ignore
+  const dataURISetEvent = changetype<DataURISet>(newMockEvent());
+
+  dataURISetEvent.parameters = [];
+
+  dataURISetEvent.parameters.push(
+    new ethereum.EventParam(
+      'tokenId',
+      ethereum.Value.fromUnsignedBigInt(tokenId)
+    )
+  );
+  dataURISetEvent.parameters.push(
+    new ethereum.EventParam('dataURI', ethereum.Value.fromString(dataURI))
+  );
+
+  return dataURISetEvent;
+}
+
+export function createComputeURISetEvent(
+  tokenId: BigInt,
+  computeURI: string
+): ComputeURISet {
+  //@ts-ignore
+  const computeURISetEvent = changetype<ComputeURISet>(newMockEvent());
+
+  computeURISetEvent.parameters = [];
+
+  computeURISetEvent.parameters.push(
+    new ethereum.EventParam(
+      'tokenId',
+      ethereum.Value.fromUnsignedBigInt(tokenId)
+    )
+  );
+  computeURISetEvent.parameters.push(
+    new ethereum.EventParam('computeURI', ethereum.Value.fromString(computeURI))
+  );
+
+  return computeURISetEvent;
 }
 
 export function createTransferEvent(

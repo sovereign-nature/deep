@@ -4,6 +4,8 @@ import { SNI_CONTRACT_ADDRESS } from '@sni/constants';
 import {
   Approval,
   ApprovalForAll,
+  ComputeURISet,
+  DataURISet,
   RoleAdminChanged,
   RoleGranted,
   RoleRevoked,
@@ -59,6 +61,26 @@ export function handleTokenURISet(event: TokenURISet): void {
   entity.save();
 }
 
+export function handleDataURISet(event: DataURISet): void {
+  const tokenId = event.params.tokenId;
+  const dataURI = event.params.dataURI;
+
+  const entity = findEntity(tokenId, event.block.timestamp);
+  entity.dataURI = dataURI;
+
+  entity.save();
+}
+
+export function handleComputeURISet(event: ComputeURISet): void {
+  const tokenId = event.params.tokenId;
+  const computeURI = event.params.computeURI;
+
+  const entity = findEntity(tokenId, event.block.timestamp);
+  entity.computeURI = computeURI;
+
+  entity.save();
+}
+
 export function handleTransfer(event: Transfer): void {
   const contract = SovereignNatureIdentifier.bind(CONTRACT_ADDRESS);
 
@@ -66,11 +88,15 @@ export function handleTransfer(event: Transfer): void {
   const owner = event.params.to;
   const status = contract.statusOf(tokenId);
   const tokenURI = contract.tokenURI(tokenId);
+  const dataURI = contract.dataURI(tokenId);
+  const computeURI = contract.computeURI(tokenId);
 
   const entity = findEntity(tokenId, event.block.timestamp);
   entity.owner = owner;
   entity.status = status;
   entity.tokenURI = tokenURI;
+  entity.dataURI = dataURI;
+  entity.computeURI = computeURI;
 
   fillFromIPFS(entity, tokenURI);
 
