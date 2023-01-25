@@ -11,6 +11,7 @@ import {
   RoleRevoked,
   SovereignNatureIdentifier,
   StatusSet,
+  TokenMinted,
   TokenURISet,
   Transfer,
 } from '../generated/SovereignNatureIdentifier/SovereignNatureIdentifier';
@@ -37,6 +38,10 @@ export function handleRoleGranted(event: RoleGranted): void {
 
 export function handleRoleRevoked(event: RoleRevoked): void {
   log.info('Role revoked event {}', [event.address.toHexString()]);
+}
+
+export function handleTokenMinted(event: TokenMinted): void {
+  log.info('Token minted event {}', [event.address.toHexString()]);
 }
 
 export function handleStatusSet(event: StatusSet): void {

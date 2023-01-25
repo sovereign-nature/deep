@@ -11,6 +11,7 @@ dataSources:
     source:
       address: '0xB3f7B7625136170B54a3DE448218EfE4dF5A0ad8'
       abi: SovereignNatureIdentifier
+      startBlock: 3603751
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
