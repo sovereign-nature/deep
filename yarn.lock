@@ -238,6 +238,19 @@
     ora "5.4.1"
     rxjs "6.6.7"
 
+"@angular-eslint/bundled-angular-compiler@15.2.0":
+  version "15.2.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/bundled-angular-compiler/-/bundled-angular-compiler-15.2.0.tgz#506f94c96039346f33ba92222062edbf3943543e"
+  integrity sha512-a0bfXxYyGoWJHrVQ4QER0HdRgselcTtJeyqiFPAxID2ZxF0IBGKLNTtugUTXekEmiLev8yGLX9TqAtthN57fEg==
+
+"@angular-eslint/template-parser@^15.2.0":
+  version "15.2.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/template-parser/-/template-parser-15.2.0.tgz#2b9b794f2f763725cf4d107c0fcb6e07c460ac4e"
+  integrity sha512-xnnxPfV/G0Ll3B0HGrF1ucsc/DHmNE6UhhmWxYPTERq0McbZGRiATa66hCoOZ/Rdylun4ogBfsRKAG8XxEvlvw==
+  dependencies:
+    "@angular-eslint/bundled-angular-compiler" "15.2.0"
+    eslint-scope "^7.0.0"
+
 "@angular/animations@^15.0.0":
   version "15.0.4"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-15.0.4.tgz#550ab892fc9b5bd2ce0aceae54ba0dd668163359"
@@ -3910,7 +3923,7 @@
     semver "^7.3.7"
     tsutils "^3.21.0"
 
-"@typescript-eslint/parser@5.49.0":
+"@typescript-eslint/parser@5.49.0", "@typescript-eslint/parser@^5.48.2":
   version "5.49.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.49.0.tgz#d699734b2f20e16351e117417d34a2bc9d7c4b90"
   integrity sha512-veDlZN9mUhGqU31Qiv2qEp+XrJj5fgZpJ8PW30sHU+j/8/e5ruAhLaVDAeznS7A7i4ucb/s8IozpDtt9NqCkZg==
@@ -7521,13 +7534,16 @@ eslint-config-turbo@0.0.7:
   dependencies:
     eslint-plugin-turbo "0.0.7"
 
-eslint-plugin-tailwindcss@3.8.1:
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-tailwindcss/-/eslint-plugin-tailwindcss-3.8.1.tgz#223873b7ec798f02162c75caf9a54fe731b5491c"
-  integrity sha512-b01CBIT6TrK5IhrwmjDkuLzl2di5yXUmL8RyEZV710sGtw2zesr2csyGOc7e/IuV6tb8MfuHeksgMvaBEl9qvA==
+eslint-plugin-tailwindcss@3.8.2:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-tailwindcss/-/eslint-plugin-tailwindcss-3.8.2.tgz#551e367346223e81f442bdf04c9e5bd35ece6ab8"
+  integrity sha512-99DPr//xTFNls1xjXX+1p45OEvG87B+SiNkSi0DfeatKBnckjCO5831lUfwCisXSgzXd9p//gNKQJGq1ewCLJQ==
   dependencies:
+    "@angular-eslint/template-parser" "^15.2.0"
+    "@typescript-eslint/parser" "^5.48.2"
     fast-glob "^3.2.5"
     postcss "^8.4.4"
+    vue-eslint-parser "^9.0.1"
 
 eslint-plugin-turbo@0.0.7:
   version "0.0.7"
@@ -7563,7 +7579,7 @@ eslint-scope@^4.0.3:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-scope@^7.1.1:
+eslint-scope@^7.0.0, eslint-scope@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-7.1.1.tgz#fff34894c2f65e5226d3041ac480b4513a163642"
   integrity sha512-QKQM/UXpIiHcLqJ5AOyIW7XZmzjkzQXYE54n1++wb0u9V/abW3l9uQnxX8Z5Xd18xyKIMTUAyQ0k1e8pz6LUrw==
