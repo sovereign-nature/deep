@@ -41,6 +41,8 @@ export const SOUL_PROPERTY = gql`
       tokenURI
       geometry
       conservationStatus
+      computeURI
+      dataURI
     }
   }
 `;
