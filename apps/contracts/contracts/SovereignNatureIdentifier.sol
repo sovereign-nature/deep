@@ -10,6 +10,7 @@ import "./abstracts/Oraclized.sol";
 import "./abstracts/ComputeProvenance.sol";
 import "./abstracts/DataProvenance.sol";
 import "./abstracts/TokenURISchema.sol";
+import "./abstracts/DerrivativeMetadataSchema.sol";
 
 /// @custom:security-contact vadim@sovereignnature.com
 contract SovereignNatureIdentifier is
@@ -20,7 +21,8 @@ contract SovereignNatureIdentifier is
     Oraclized,
     ComputeProvenance,
     DataProvenance,
-    TokenURISchema
+    TokenURISchema,
+    DerrivativeMetadataSchema
 {
     using Counters for Counters.Counter;
 
@@ -34,12 +36,16 @@ contract SovereignNatureIdentifier is
      */
     event TokenMinted(uint256 indexed tokenId, string uri, address owner);
 
-    constructor(string memory _tokenURISchema) ERC721("Sovereign Nature Identifier", "SNI") {
+    constructor(
+        string memory _tokenURISchema,
+        string memory _derrivativeMetadataSchema
+    ) ERC721("Sovereign Nature Identifier", "SNI") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(ORACLE_ROLE, msg.sender);
 
         setTokenURISchema(_tokenURISchema);
+        setDerrivativeMetadataSchema(_derrivativeMetadataSchema);
     }
 
     function safeMint(
