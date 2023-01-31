@@ -9,6 +9,7 @@ import "./interfaces/IUpdatableNFT.sol";
 import "./abstracts/Oraclized.sol";
 import "./abstracts/ComputeProvenance.sol";
 import "./abstracts/DataProvenance.sol";
+import "./abstracts/TokenURISchema.sol";
 
 /// @custom:security-contact vadim@sovereignnature.com
 contract SovereignNatureIdentifier is
@@ -18,7 +19,8 @@ contract SovereignNatureIdentifier is
     IUpdatableNFT,
     Oraclized,
     ComputeProvenance,
-    DataProvenance
+    DataProvenance,
+    TokenURISchema
 {
     using Counters for Counters.Counter;
 
@@ -32,10 +34,12 @@ contract SovereignNatureIdentifier is
      */
     event TokenMinted(uint256 indexed tokenId, string uri, address owner);
 
-    constructor() ERC721("Sovereign Nature Identifier", "SNI") {
+    constructor(string memory _tokenURISchema) ERC721("Sovereign Nature Identifier", "SNI") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(ORACLE_ROLE, msg.sender);
+
+        setTokenURISchema(_tokenURISchema);
     }
 
     function safeMint(
@@ -69,7 +73,7 @@ contract SovereignNatureIdentifier is
     }
 
     function supportsInterface(bytes4 interfaceId) public view override(ERC721, AccessControl) returns (bool) {
-        return super.supportsInterface(interfaceId);
+        return super.supportsInterface(interfaceId); //TODO: add missing interfaces
     }
 
     function setTokenURI(uint256 tokenId, string memory _tokenURI) external onlyRole(MINTER_ROLE) {
