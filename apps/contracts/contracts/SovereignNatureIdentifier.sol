@@ -10,7 +10,7 @@ import "./abstracts/Oraclized.sol";
 import "./abstracts/ComputeProvenance.sol";
 import "./abstracts/DataProvenance.sol";
 import "./abstracts/TokenURISchema.sol";
-import "./abstracts/DerrivativeMetadataSchemaIntegrity.sol";
+import "./abstracts/DerivativeMetadataSchemaIntegrity.sol";
 
 /// @custom:security-contact vadim@sovereignnature.com
 contract SovereignNatureIdentifier is
@@ -22,7 +22,7 @@ contract SovereignNatureIdentifier is
     ComputeProvenance,
     DataProvenance,
     TokenURISchema,
-    DerrivativeMetadataSchemaIntegrity
+    DerivativeMetadataSchemaIntegrity
 {
     using Counters for Counters.Counter;
 

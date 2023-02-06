@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-import "../interfaces/IDerrivativeMetadataSchemaIntegrity.sol";
+import "../interfaces/IDerivativeMetadataSchemaIntegrity.sol";
 
-abstract contract DerrivativeMetadataSchemaIntegrity is IDerrivativeMetadataSchemaIntegrity {
+abstract contract DerivativeMetadataSchemaIntegrity is IDerivativeMetadataSchemaIntegrity {
     string private _schemaURI;
     bytes private _schemaDigest;
     string private _hashAlgorithm = "sha256";

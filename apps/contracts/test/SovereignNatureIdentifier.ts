@@ -1,4 +1,12 @@
 import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
+import {
+  DERIVATIVE_METADATA_SCHEMA,
+  DERIVATIVE_METADATA_SCHEMA_DIGEST,
+  INITIAL_TOKEN_URI_DIGEST,
+  TOKEN_URI_SCHEMA,
+  TOKEN_URI_SCHEMA_DIGEST,
+  UPDATED_TOKEN_URI_DIGEST,
+} from '@sni/constants/mocks/identifier';
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
 
@@ -10,7 +18,12 @@ describe('Sovereign Nature Identifier', function () {
     const SovereignNatureIdentifier = await ethers.getContractFactory(
       'SovereignNatureIdentifier'
     );
-    const sni = await SovereignNatureIdentifier.deploy();
+    const sni = await SovereignNatureIdentifier.deploy(
+      TOKEN_URI_SCHEMA,
+      TOKEN_URI_SCHEMA_DIGEST,
+      DERIVATIVE_METADATA_SCHEMA,
+      DERIVATIVE_METADATA_SCHEMA_DIGEST
+    );
 
     const initialTokenId = 0;
 
@@ -30,6 +43,7 @@ describe('Sovereign Nature Identifier', function () {
       return sni.safeMint(
         owner.address,
         initialTokenURI,
+        INITIAL_TOKEN_URI_DIGEST,
         initialDataURI,
         initialComputeURI,
         initialStatus
@@ -51,6 +65,7 @@ describe('Sovereign Nature Identifier', function () {
       oracle,
       otherAccount,
       mintInitial,
+      updatedTokenURIDigest: UPDATED_TOKEN_URI_DIGEST,
     };
   }
 
@@ -94,32 +109,58 @@ describe('Sovereign Nature Identifier', function () {
 
   describe('tokenURI Update', function () {
     it('Should update tokenURI', async function () {
-      const { sni, initialTokenId, updatedTokenURI, mintInitial } =
-        await loadFixture(deploySNIFixture);
+      const {
+        sni,
+        initialTokenId,
+        updatedTokenURI,
+        updatedTokenURIDigest,
+        mintInitial,
+      } = await loadFixture(deploySNIFixture);
 
       await mintInitial();
 
-      expect(await sni.setTokenURI(initialTokenId, updatedTokenURI)).not.to.be
-        .reverted;
+      expect(
+        await sni.setTokenURI(
+          initialTokenId,
+          updatedTokenURI,
+          updatedTokenURIDigest
+        )
+      ).not.to.be.reverted;
     });
 
     it('Should emit TokenURISet event with correct arguments', async function () {
-      const { sni, initialTokenId, updatedTokenURI, mintInitial } =
-        await loadFixture(deploySNIFixture);
+      const {
+        sni,
+        initialTokenId,
+        updatedTokenURI,
+        updatedTokenURIDigest,
+        mintInitial,
+      } = await loadFixture(deploySNIFixture);
 
       await mintInitial();
 
-      await expect(sni.setTokenURI(initialTokenId, updatedTokenURI))
+      await expect(
+        sni.setTokenURI(initialTokenId, updatedTokenURI, updatedTokenURIDigest)
+      )
         .to.emit(sni, 'TokenURISet')
         .withArgs(initialTokenId, updatedTokenURI);
     });
 
     it('Should return updated tokenURI', async function () {
-      const { sni, initialTokenId, updatedTokenURI, mintInitial } =
-        await loadFixture(deploySNIFixture);
+      const {
+        sni,
+        initialTokenId,
+        updatedTokenURI,
+        updatedTokenURIDigest,
+        mintInitial,
+      } = await loadFixture(deploySNIFixture);
 
       await mintInitial();
-      await sni.setTokenURI(initialTokenId, updatedTokenURI);
+      await sni.setTokenURI(
+        initialTokenId,
+        updatedTokenURI,
+        updatedTokenURIDigest
+      );
 
       expect(updatedTokenURI).to.be.equal(await sni.tokenURI(initialTokenId));
     });
@@ -129,15 +170,21 @@ describe('Sovereign Nature Identifier', function () {
         sni,
         initialTokenId,
         updatedTokenURI,
+        updatedTokenURIDigest,
         otherAccount,
         mintInitial,
       } = await loadFixture(deploySNIFixture);
 
       await mintInitial();
-      await sni.setTokenURI(initialTokenId, updatedTokenURI);
+      await sni.setTokenURI(
+        initialTokenId,
+        updatedTokenURI,
+        updatedTokenURIDigest
+      );
 
-      expect(sni.connect(otherAccount).setTokenURI(initialTokenId, 'test')).to
-        .be.reverted;
+      expect(
+        sni.connect(otherAccount).setTokenURI(initialTokenId, 'test', '0x1234')
+      ).to.be.reverted;
     });
   });
 

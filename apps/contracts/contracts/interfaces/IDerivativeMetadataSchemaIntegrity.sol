@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-interface IDerrivativeMetadataSchemaIntegrity {
+interface IDerivativeMetadataSchemaIntegrity {
     /**
      * @dev Returns JSON schema that needs to be implemented in derrivatives.
      */
