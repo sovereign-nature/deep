@@ -5,7 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "eslint": "8.33.0",
-    "eslint-plugin-tailwindcss": "3.8.2",
+    "eslint-plugin-tailwindcss": "3.8.3",
     "eslint-plugin-vue": "9.9.0"
   },
   "publishConfig": {
