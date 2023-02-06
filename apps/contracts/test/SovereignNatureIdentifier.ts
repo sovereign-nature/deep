@@ -1,4 +1,5 @@
 import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
+import { HASH_ALGORITHM } from '@sni/constants';
 import {
   DERIVATIVE_METADATA_SCHEMA,
   DERIVATIVE_METADATA_SCHEMA_DIGEST,
@@ -157,6 +158,27 @@ describe('Sovereign Nature Identifier', function () {
       );
 
       expect(updatedTokenURI).to.be.equal(await sni.tokenURI(initialTokenId));
+    });
+
+    it('Should return updated tokenURIDigest', async function () {
+      const {
+        sni,
+        initialTokenId,
+        updatedTokenURI,
+        updatedTokenURIDigest,
+        mintInitial,
+      } = await loadFixture(deploySNIFixture);
+
+      await mintInitial();
+      await sni.setTokenURI(
+        initialTokenId,
+        updatedTokenURI,
+        updatedTokenURIDigest
+      );
+
+      expect([updatedTokenURIDigest, HASH_ALGORITHM]).to.be.deep.equal(
+        await sni.tokenURIIntegrity(initialTokenId)
+      );
     });
 
     it('Only initial owner should be able to update tokenURI', async function () {

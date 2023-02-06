@@ -8,10 +8,12 @@ export const INITIAL_COMPUTE_URI = 'ipfs://initial-compute-uri/metadata.json';
 export const UPDATED_COMPUTE_URI = 'ipfs://updated-compute-uri/metadata.json';
 
 export const TOKEN_URI_SCHEMA = 'ipfs://token-uri-schema/schema.json';
-export const TOKEN_URI_SCHEMA_DIGEST = '0x00'; //TODO: digests should be different
-export const INITIAL_TOKEN_URI_DIGEST = '0x00';
-export const UPDATED_TOKEN_URI_DIGEST = '0x00';
+export const TOKEN_URI_SCHEMA_DIGEST = '0x01';
+
+export const INITIAL_TOKEN_URI_DIGEST = '0x02';
+export const UPDATED_TOKEN_URI_DIGEST = '0x03';
 
 export const DERIVATIVE_METADATA_SCHEMA =
   'ipfs://derivative-metadata-schema/schema.json';
-export const DERIVATIVE_METADATA_SCHEMA_DIGEST = '0x00';
+
+export const DERIVATIVE_METADATA_SCHEMA_DIGEST = '0x04';
