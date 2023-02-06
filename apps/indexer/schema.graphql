@@ -11,9 +11,9 @@ type SNI @entity {
   tokenMetadataSchemaDigest: Bytes!
   tokenMetadataSchemaHashFunction: String!
 
-  derivativeSchemaURI: String!
-  derivativeSchemaDigest: Bytes!
-  derivativeSchemaHashFunction: String!
+  derivativeMetadataSchemaURI: String!
+  derivativeMetadataSchemaDigest: Bytes!
+  derivativeMetadataSchemaHashFunction: String!
 
   computeURI: String!
   dataURI: String!

@@ -92,14 +92,47 @@ export function handleTransfer(event: Transfer): void {
   const tokenId = event.params.tokenId;
   const owner = event.params.to;
   const status = contract.statusOf(tokenId);
+
   const tokenURI = contract.tokenURI(tokenId);
+  const tokenMetadataSchemaURI = contract.tokenURISchema(); //TODO: Consider refactoring methods naming in contract
+
+  const derivativeMetadataSchemaURI = contract.derivativeMetadataSchemaURI();
+
+  const tokenURIIntegrity = contract.tokenURIIntegrity(tokenId);
+  const tokenMetadataDigest = tokenURIIntegrity.value0;
+  const tokenMetadataHashFunction = tokenURIIntegrity.value1;
+
+  const tokenURISchemaIntegrity = contract.tokenURISchemaIntegrity();
+  const tokenMetadataSchemaDigest = tokenURISchemaIntegrity.value0;
+  const tokenMetadataSchemaHashFunction = tokenURISchemaIntegrity.value1;
+
+  const derivativeMetadataSchemaIntegrity =
+    contract.derivativeMetadataSchemaIntegrity();
+  const derivativeMetadataSchemaDigest =
+    derivativeMetadataSchemaIntegrity.value0;
+  const derivativeMetadataSchemaHashFunction =
+    derivativeMetadataSchemaIntegrity.value1;
+
   const dataURI = contract.dataURI(tokenId);
   const computeURI = contract.computeURI(tokenId);
 
   const entity = findEntity(tokenId, event.block.timestamp);
   entity.owner = owner;
   entity.status = status;
+
   entity.tokenURI = tokenURI;
+  entity.tokenMetadataDigest = tokenMetadataDigest;
+  entity.tokenMetadataHashFunction = tokenMetadataHashFunction;
+
+  entity.tokenMetadataSchemaURI = tokenMetadataSchemaURI;
+  entity.tokenMetadataSchemaDigest = tokenMetadataSchemaDigest;
+  entity.tokenMetadataHashFunction = tokenMetadataSchemaHashFunction;
+
+  entity.derivativeMetadataSchemaURI = derivativeMetadataSchemaURI;
+  entity.derivativeMetadataSchemaDigest = derivativeMetadataSchemaDigest;
+  entity.derivativeMetadataSchemaHashFunction =
+    derivativeMetadataSchemaHashFunction;
+
   entity.dataURI = dataURI;
   entity.computeURI = computeURI;
 
