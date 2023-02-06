@@ -61,5 +61,7 @@ export async function deploySNIFixture() {
     tokenURISchema: TOKEN_URI_SCHEMA,
     hashAlgorithm: 'sha256',
     tokenURISchemaDigest: TOKEN_URI_SCHEMA_DIGEST,
+    derivativeMetadataSchemaURI: DERIVATIVE_METADATA_SCHEMA,
+    derivativeMetadataSchemaDigest: DERIVATIVE_METADATA_SCHEMA_DIGEST,
   };
 }

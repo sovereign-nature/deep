@@ -67,6 +67,29 @@ describe('Minting', function () {
     );
   });
 
+  it('Should has derivative metadata schema URI set', async function () {
+    const { sni, derivativeMetadataSchemaURI, mintInitial } = await loadFixture(
+      deploySNIFixture
+    );
+
+    await mintInitial();
+
+    expect(derivativeMetadataSchemaURI).to.equal(
+      await sni.derivativeMetadataSchemaURI()
+    );
+  });
+
+  it('Should has derivative metadata schema integrity set', async function () {
+    const { sni, derivativeMetadataSchemaDigest, hashAlgorithm, mintInitial } =
+      await loadFixture(deploySNIFixture);
+
+    await mintInitial();
+
+    expect([derivativeMetadataSchemaDigest, hashAlgorithm]).to.be.deep.equal(
+      await sni.derivativeMetadataSchemaIntegrity()
+    );
+  });
+
   it('Should emit TokenMinted event', async function () {
     const { sni, owner, initialTokenId, initialTokenURI, mintInitial } =
       await loadFixture(deploySNIFixture);
