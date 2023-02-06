@@ -5,5 +5,3 @@ export const LEGACY_SNI_CONTRACT_ADDRESS =
   '0xB72a77d425aad2faAE3F695846b337E7d65D098e';
 
 export const SUBGRAPH_ENTITY_NAME = 'SNI';
-
-export const HASH_ALGORITHM = 'sha256';

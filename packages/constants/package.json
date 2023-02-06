@@ -2,8 +2,5 @@
   "name": "@sni/constants",
   "version": "0.0.0",
   "main": "index.ts",
-  "license": "MIT",
-  "dependencies": {
-    "ethers": "5.7.2"
-  }
+  "license": "MIT"
 }
