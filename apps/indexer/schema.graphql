@@ -4,6 +4,17 @@ type SNI @entity {
   tokenId: BigInt!
 
   tokenURI: String!
+  tokenMetadataDigest: Bytes!
+  tokenMetadataHashFunction: String!
+
+  tokenMetadataSchemaURI: String!
+  tokenMetadataSchemaDigest: Bytes!
+  tokenMetadataSchemaHashFunction: String!
+
+  derivativeSchemaURI: String!
+  derivativeSchemaDigest: Bytes!
+  derivativeSchemaHashFunction: String!
+
   computeURI: String!
   dataURI: String!
   status: BigInt!
