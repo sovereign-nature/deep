@@ -30,7 +30,7 @@
     "turbo": "1.7.3",
     "husky": "8.0.3",
     "lint-staged": "13.1.0",
-    "turbo-ignore": "1.7.2"
+    "turbo-ignore": "1.7.3"
   },
   "engines": {
     "node": ">=16.0.0"
