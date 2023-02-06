@@ -1,5 +1,4 @@
 import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
-import { HASH_ALGORITHM } from '@sni/constants';
 import { expect } from 'chai';
 import { deploySNIFixture } from './fixtures';
 
@@ -23,13 +22,50 @@ describe('Sovereign Nature Identifier', function () {
       expect(nftOwner).to.equal(owner.address);
     });
 
-    it('Should has IPFS URI', async function () {
+    it('Should has token metadata URI set', async function () {
       const { sni, initialTokenId, initialTokenURI, mintInitial } =
         await loadFixture(deploySNIFixture);
 
       await mintInitial();
 
       expect(initialTokenURI).to.equal(await sni.tokenURI(initialTokenId));
+    });
+
+    it('Should has token metadata integrity set', async function () {
+      const {
+        sni,
+        initialTokenURIDigest,
+        hashAlgorithm,
+        mintInitial,
+        initialTokenId,
+      } = await loadFixture(deploySNIFixture);
+
+      await mintInitial();
+
+      expect([initialTokenURIDigest, hashAlgorithm]).to.be.deep.equal(
+        await sni.tokenURIIntegrity(initialTokenId)
+      );
+    });
+
+    it('Should has metadata schema URI set', async function () {
+      const { sni, tokenURISchema, mintInitial } = await loadFixture(
+        deploySNIFixture
+      );
+
+      await mintInitial();
+
+      expect(tokenURISchema).to.equal(await sni.tokenURISchema());
+    });
+
+    it('Should has metadata schema integrity set', async function () {
+      const { sni, tokenURISchemaDigest, hashAlgorithm, mintInitial } =
+        await loadFixture(deploySNIFixture);
+
+      await mintInitial();
+
+      expect([tokenURISchemaDigest, hashAlgorithm]).to.be.deep.equal(
+        await sni.tokenURISchemaIntegrity()
+      );
     });
 
     it('Should emit TokenMinted event', async function () {
@@ -107,6 +143,7 @@ describe('Sovereign Nature Identifier', function () {
         updatedTokenURI,
         updatedTokenURIDigest,
         mintInitial,
+        hashAlgorithm,
       } = await loadFixture(deploySNIFixture);
 
       await mintInitial();
@@ -116,7 +153,7 @@ describe('Sovereign Nature Identifier', function () {
         updatedTokenURIDigest
       );
 
-      expect([updatedTokenURIDigest, HASH_ALGORITHM]).to.be.deep.equal(
+      expect([updatedTokenURIDigest, hashAlgorithm]).to.be.deep.equal(
         await sni.tokenURIIntegrity(initialTokenId)
       );
     });

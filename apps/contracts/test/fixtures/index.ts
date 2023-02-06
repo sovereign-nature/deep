@@ -56,6 +56,10 @@ export async function deploySNIFixture() {
     oracle,
     otherAccount,
     mintInitial,
+    initialTokenURIDigest: INITIAL_TOKEN_URI_DIGEST,
     updatedTokenURIDigest: UPDATED_TOKEN_URI_DIGEST,
+    tokenURISchema: TOKEN_URI_SCHEMA,
+    hashAlgorithm: 'sha256',
+    tokenURISchemaDigest: TOKEN_URI_SCHEMA_DIGEST,
   };
 }
