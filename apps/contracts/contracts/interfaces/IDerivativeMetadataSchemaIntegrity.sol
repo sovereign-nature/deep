@@ -5,12 +5,12 @@ interface IDerivativeMetadataSchemaIntegrity {
     /**
      * @dev Returns JSON schema that needs to be implemented in derrivatives.
      */
-    function derrivativeMetadataSchemaURI() external view returns (string memory);
+    function derivativeMetadataSchemaURI() external view returns (string memory);
 
     /**
      * @dev Returns hash and the hashing alghoritm for the derrivative schema.
      */
-    function derrivativeMetadataSchemaIntegrity()
+    function derivativeMetadataSchemaIntegrity()
         external
         view
         returns (bytes memory digest, string memory hashAlgorithm);

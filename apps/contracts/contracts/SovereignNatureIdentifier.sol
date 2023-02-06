@@ -49,8 +49,8 @@ contract SovereignNatureIdentifier is
         setTokenURISchema(_tokenURISchema);
         setTokenURISchemaDigest(_tokenURISchemaDigest);
 
-        setDerrivativeMetadataSchemaURI(_derrivativeMetadataSchemaURI);
-        setDerrivativeMetadataSchemaDigest(_derrivativeMetadataSchemaDigest);
+        setDerivativeMetadataSchemaURI(_derrivativeMetadataSchemaURI);
+        setDerivativeMetadataSchemaDigest(_derrivativeMetadataSchemaDigest);
     }
 
     function safeMint(

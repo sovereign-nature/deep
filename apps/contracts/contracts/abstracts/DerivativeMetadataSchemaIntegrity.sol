@@ -8,19 +8,19 @@ abstract contract DerivativeMetadataSchemaIntegrity is IDerivativeMetadataSchema
     bytes private _schemaDigest;
     string private _hashAlgorithm = "sha256";
 
-    function setDerrivativeMetadataSchemaURI(string memory schemaURI) internal virtual {
+    function setDerivativeMetadataSchemaURI(string memory schemaURI) internal virtual {
         _schemaURI = schemaURI;
     }
 
-    function derrivativeMetadataSchemaURI() external view virtual returns (string memory schemaURI) {
+    function derivativeMetadataSchemaURI() external view virtual returns (string memory schemaURI) {
         return _schemaURI;
     }
 
-    function setDerrivativeMetadataSchemaDigest(bytes memory digest) internal virtual {
+    function setDerivativeMetadataSchemaDigest(bytes memory digest) internal virtual {
         _schemaDigest = digest;
     }
 
-    function derrivativeMetadataSchemaIntegrity()
+    function derivativeMetadataSchemaIntegrity()
         external
         view
         virtual
