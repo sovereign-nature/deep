@@ -9,6 +9,8 @@ import "./interfaces/IUpdatableNFT.sol";
 import "./abstracts/Oraclized.sol";
 import "./abstracts/ComputeProvenance.sol";
 import "./abstracts/DataProvenance.sol";
+import "./abstracts/TokenURISchema.sol";
+import "./abstracts/DerivativeMetadataSchemaIntegrity.sol";
 
 /// @custom:security-contact vadim@sovereignnature.com
 contract SovereignNatureIdentifier is
@@ -18,7 +20,9 @@ contract SovereignNatureIdentifier is
     IUpdatableNFT,
     Oraclized,
     ComputeProvenance,
-    DataProvenance
+    DataProvenance,
+    TokenURISchema,
+    DerivativeMetadataSchemaIntegrity
 {
     using Counters for Counters.Counter;
 
@@ -32,15 +36,27 @@ contract SovereignNatureIdentifier is
      */
     event TokenMinted(uint256 indexed tokenId, string uri, address owner);
 
-    constructor() ERC721("Sovereign Nature Identifier", "SNI") {
+    constructor(
+        string memory _tokenURISchema,
+        bytes memory _tokenURISchemaDigest,
+        string memory _derrivativeMetadataSchemaURI,
+        bytes memory _derrivativeMetadataSchemaDigest
+    ) ERC721("Sovereign Nature Identifier", "SNI") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(ORACLE_ROLE, msg.sender);
+
+        setTokenURISchema(_tokenURISchema);
+        setTokenURISchemaDigest(_tokenURISchemaDigest);
+
+        setDerivativeMetadataSchemaURI(_derrivativeMetadataSchemaURI);
+        setDerivativeMetadataSchemaDigest(_derrivativeMetadataSchemaDigest);
     }
 
     function safeMint(
         address to,
-        string memory _tokenUri,
+        string memory _tokenURI,
+        bytes memory _tokenUriDigest,
         string memory _dataURI,
         string memory _computeURI,
         uint256 _status
@@ -48,14 +64,16 @@ contract SovereignNatureIdentifier is
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
-        _setTokenURI(tokenId, _tokenUri);
+        _setTokenURI(tokenId, _tokenURI);
 
         // Set initial status for minted token and emit creation event.
         setStatus(tokenId, _status);
         setComputeURI(tokenId, _computeURI);
         setDataURI(tokenId, _dataURI);
 
-        emit TokenMinted(tokenId, _tokenUri, to);
+        setTokenURIDigest(tokenId, _tokenUriDigest);
+
+        emit TokenMinted(tokenId, _tokenURI, to);
     }
 
     // The following functions are overrides required by Solidity.
@@ -69,13 +87,18 @@ contract SovereignNatureIdentifier is
     }
 
     function supportsInterface(bytes4 interfaceId) public view override(ERC721, AccessControl) returns (bool) {
-        return super.supportsInterface(interfaceId);
+        return super.supportsInterface(interfaceId); //TODO: add missing interfaces
     }
 
-    function setTokenURI(uint256 tokenId, string memory _tokenURI) external onlyRole(MINTER_ROLE) {
+    function setTokenURI(
+        uint256 tokenId,
+        string memory _tokenURI,
+        bytes memory _tokenURIDigest
+    ) external onlyRole(MINTER_ROLE) {
         _setTokenURI(tokenId, _tokenURI);
+        setTokenURIDigest(tokenId, _tokenURIDigest);
 
-        emit TokenURISet(tokenId, _tokenURI);
+        emit TokenURISet(tokenId, _tokenURI); //TODO: Emit event with digest
     }
 
     // Overrides for permissions control
@@ -86,13 +109,13 @@ contract SovereignNatureIdentifier is
     }
 
     function setComputeURI(uint256 tokenId, string memory _computeURI) public override onlyRole(ORACLE_ROLE) {
-        require(_exists(tokenId), "Status set of nonexistent token"); // TODO: rename to "computeURI set of nonexistent token"
+        require(_exists(tokenId), "computeURI set of nonexistent token");
 
         super.setComputeURI(tokenId, _computeURI);
     }
 
     function setDataURI(uint256 tokenId, string memory _dataURI) public override onlyRole(ORACLE_ROLE) {
-        require(_exists(tokenId), "Status set of nonexistent token"); //TODO: rename to "dataURI set of nonexistent token"
+        require(_exists(tokenId), "dataURI set of nonexistent token");
 
         super.setDataURI(tokenId, _dataURI);
     }

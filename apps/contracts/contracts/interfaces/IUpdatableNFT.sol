@@ -10,5 +10,5 @@ interface IUpdatableNFT {
     /**
      * @dev Sets new token URI.
      */
-    function setTokenURI(uint256 tokenId, string memory tokenURI) external;
+    function setTokenURI(uint256 tokenId, string memory tokenURI, bytes memory tokenURIDigest) external;
 }
