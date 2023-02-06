@@ -2,9 +2,15 @@ import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
 import {
   DERIVATIVE_METADATA_SCHEMA,
   DERIVATIVE_METADATA_SCHEMA_DIGEST,
+  INITIAL_COMPUTE_URI,
+  INITIAL_DATA_URI,
+  INITIAL_TOKEN_URI,
   INITIAL_TOKEN_URI_DIGEST,
   TOKEN_URI_SCHEMA,
   TOKEN_URI_SCHEMA_DIGEST,
+  UPDATED_COMPUTE_URI,
+  UPDATED_DATA_URI,
+  UPDATED_TOKEN_URI,
   UPDATED_TOKEN_URI_DIGEST,
 } from '@sni/constants/mocks/identifier';
 import { expect } from 'chai';
@@ -25,42 +31,30 @@ describe('Sovereign Nature Identifier', function () {
       DERIVATIVE_METADATA_SCHEMA_DIGEST
     );
 
-    const initialTokenId = 0;
-
-    const initialTokenURI = 'ipfs://tokenURI-initial';
-    const updatedTokenURI = 'ipfs://tokenURI-updated';
-
-    const initialComputeURI = 'ipfs://computeURI-initial';
-    const updatedComputeURI = 'ipfs://computeURI-updated';
-
-    const initialDataURI = 'ipfs://dataURI-initial';
-    const updatedDataURI = 'ipfs://dataURI-updated';
-
     const initialStatus = 0;
-    const updatedStatus = 1;
 
     const mintInitial = () => {
       return sni.safeMint(
         owner.address,
-        initialTokenURI,
+        INITIAL_TOKEN_URI,
         INITIAL_TOKEN_URI_DIGEST,
-        initialDataURI,
-        initialComputeURI,
+        INITIAL_DATA_URI,
+        INITIAL_COMPUTE_URI,
         initialStatus
       );
     };
 
     return {
       sni,
-      initialTokenId,
-      initialTokenURI,
-      updatedTokenURI,
-      initialComputeURI,
-      updatedComputeURI,
-      initialDataURI,
-      updatedDataURI,
+      initialTokenId: 0,
+      initialTokenURI: INITIAL_TOKEN_URI,
+      updatedTokenURI: UPDATED_TOKEN_URI,
+      initialComputeURI: INITIAL_COMPUTE_URI,
+      updatedComputeURI: UPDATED_COMPUTE_URI,
+      initialDataURI: INITIAL_DATA_URI,
+      updatedDataURI: UPDATED_DATA_URI,
       initialStatus,
-      updatedStatus,
+      updatedStatus: 1,
       owner,
       oracle,
       otherAccount,
