@@ -2,7 +2,7 @@ import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
 import { expect } from 'chai';
 import { deploySNIFixture } from './fixtures';
 
-describe('Minting', function () {
+describe('Token Minting', function () {
   it('Should mint', async function () {
     const { mintInitial } = await loadFixture(deploySNIFixture);
 
