@@ -95,7 +95,6 @@ export function handleTransfer(event: Transfer): void {
 
   const tokenURI = contract.tokenURI(tokenId);
   const tokenMetadataSchemaURI = contract.tokenURISchema(); //TODO: Consider refactoring methods naming in contract
-
   const derivativeMetadataSchemaURI = contract.derivativeMetadataSchemaURI();
 
   const tokenURIIntegrity = contract.tokenURIIntegrity(tokenId);
@@ -126,7 +125,7 @@ export function handleTransfer(event: Transfer): void {
 
   entity.tokenMetadataSchemaURI = tokenMetadataSchemaURI;
   entity.tokenMetadataSchemaDigest = tokenMetadataSchemaDigest;
-  entity.tokenMetadataHashFunction = tokenMetadataSchemaHashFunction;
+  entity.tokenMetadataSchemaHashFunction = tokenMetadataSchemaHashFunction;
 
   entity.derivativeMetadataSchemaURI = derivativeMetadataSchemaURI;
   entity.derivativeMetadataSchemaDigest = derivativeMetadataSchemaDigest;

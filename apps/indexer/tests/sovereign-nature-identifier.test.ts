@@ -9,7 +9,13 @@ import {
   test,
 } from 'matchstick-as/assembly/index';
 
-import { Address, BigInt, ethereum, store } from '@graphprotocol/graph-ts';
+import {
+  Address,
+  BigInt,
+  Bytes,
+  ethereum,
+  store,
+} from '@graphprotocol/graph-ts';
 
 import {
   handleComputeURISet,
@@ -26,11 +32,18 @@ import {
   createTransferEvent,
 } from './sovereign-nature-identifier-utils';
 
-import { SNI_CONTRACT_ADDRESS, SUBGRAPH_ENTITY_NAME } from '@sni/constants';
 import {
+  METADATA_HASH_FUNCTION,
+  SNI_CONTRACT_ADDRESS,
+  SUBGRAPH_ENTITY_NAME,
+} from '@sni/constants';
+import {
+  DERIVATIVE_METADATA_SCHEMA_DIGEST,
   INITIAL_COMPUTE_URI,
   INITIAL_DATA_URI,
   INITIAL_TOKEN_URI,
+  TOKEN_URI_SCHEMA,
+  TOKEN_URI_SCHEMA_DIGEST,
   UPDATED_COMPUTE_URI,
   UPDATED_DATA_URI,
   UPDATED_TOKEN_URI,
@@ -51,20 +64,63 @@ const NEW_STATUS = BigInt.fromI32(1);
 function mockForToken(id: BigInt): void {
   const tokenIdParam = ethereum.Value.fromUnsignedBigInt(id);
 
-  createMockedFunction(CONTRACT, 'statusOf', 'statusOf(uint256):(uint256)') //@ts-ignore
-    .withArgs([tokenIdParam]) //@ts-ignore
+  createMockedFunction(CONTRACT, 'statusOf', 'statusOf(uint256):(uint256)')
+    .withArgs([tokenIdParam])
     .returns([ethereum.Value.fromUnsignedBigInt(INITIAL_STATUS)]);
 
-  createMockedFunction(CONTRACT, 'tokenURI', 'tokenURI(uint256):(string)') //@ts-ignore
-    .withArgs([tokenIdParam]) //@ts-ignore
+  createMockedFunction(CONTRACT, 'tokenURI', 'tokenURI(uint256):(string)')
+    .withArgs([tokenIdParam])
     .returns([ethereum.Value.fromString(INITIAL_TOKEN_URI)]);
 
-  createMockedFunction(CONTRACT, 'dataURI', 'dataURI(uint256):(string)') //@ts-ignore
-    .withArgs([tokenIdParam]) //@ts-ignore
+  createMockedFunction(
+    CONTRACT,
+    'tokenURIIntegrity',
+    'tokenURIIntegrity(uint256):(bytes,string)'
+  )
+    .withArgs([tokenIdParam])
+    .returns([
+      ethereum.Value.fromBytes(Bytes.fromHexString(TOKEN_URI_SCHEMA_DIGEST)),
+      ethereum.Value.fromString(METADATA_HASH_FUNCTION),
+    ]);
+
+  createMockedFunction(
+    CONTRACT,
+    'tokenURISchema',
+    'tokenURISchema():(string)'
+  ).returns([ethereum.Value.fromString(TOKEN_URI_SCHEMA)]);
+
+  createMockedFunction(
+    CONTRACT,
+    'tokenURISchemaIntegrity',
+    'tokenURISchemaIntegrity():(bytes,string)'
+  ).returns([
+    ethereum.Value.fromBytes(Bytes.fromHexString(TOKEN_URI_SCHEMA_DIGEST)),
+    ethereum.Value.fromString(METADATA_HASH_FUNCTION),
+  ]);
+
+  createMockedFunction(
+    CONTRACT,
+    'derivativeMetadataSchemaURI',
+    'derivativeMetadataSchemaURI():(string)'
+  ).returns([ethereum.Value.fromString(TOKEN_URI_SCHEMA)]);
+
+  createMockedFunction(
+    CONTRACT,
+    'derivativeMetadataSchemaIntegrity',
+    'derivativeMetadataSchemaIntegrity():(bytes,string)'
+  ).returns([
+    ethereum.Value.fromBytes(
+      Bytes.fromHexString(DERIVATIVE_METADATA_SCHEMA_DIGEST)
+    ),
+    ethereum.Value.fromString(METADATA_HASH_FUNCTION),
+  ]);
+
+  createMockedFunction(CONTRACT, 'dataURI', 'dataURI(uint256):(string)')
+    .withArgs([tokenIdParam])
     .returns([ethereum.Value.fromString(INITIAL_DATA_URI)]);
 
-  createMockedFunction(CONTRACT, 'computeURI', 'computeURI(uint256):(string)') //@ts-ignore
-    .withArgs([tokenIdParam]) //@ts-ignore
+  createMockedFunction(CONTRACT, 'computeURI', 'computeURI(uint256):(string)')
+    .withArgs([tokenIdParam])
     .returns([ethereum.Value.fromString(INITIAL_COMPUTE_URI)]);
 
   //Initial IPFS Metadata
