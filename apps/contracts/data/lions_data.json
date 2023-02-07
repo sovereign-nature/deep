@@ -57,7 +57,27 @@
     "ear_left": "images/2/Image38.jpg",
     "whisker_left_2": "images/2/Image39.jpg",
     "face": "images/2/Image40.jpg",
-    "mouth": "images/2/Image41.jpg"
+    "mouth": "images/2/Image41.jpg",
+
+    "age": "old",
+    "body_size": "large",
+    "nose_color": "black",
+    "mane": "large",
+    "mane_color": "dark",
+    "left_ear": "undamaged",
+    "right_ear": "undamaged",
+    "teeth": "undamaged",
+    "skin_color": "pale_black",
+    "tail": "undefined",
+    "unusual_whiskers": "none",
+    "eyes": "damaged_right_eye",
+    "left_whisker_spots": 1,
+    "right_whisker_spots": 2,
+    "left_side_scars": "nose&cheek",
+    "right_side_scars": "unscarred",
+    "grouping": "coalition",
+    "group_name": "musketeers",
+    "prides_controlled": 5
   },
   {
     "lion_page": 3,
