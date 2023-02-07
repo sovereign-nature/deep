@@ -48,7 +48,7 @@ dataSources:
           handler: handleRoleRevoked
         - event: StatusSet(indexed uint256,uint256)
           handler: handleStatusSet
-        - event: TokenURISet(indexed uint256,string)
+        - event: TokenURISet(indexed uint256,string,bytes)
           handler: handleTokenURISet
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer

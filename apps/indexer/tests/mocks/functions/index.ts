@@ -20,9 +20,9 @@ import {
 } from '@sni/constants/mocks/identifier';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export function mockForToken(id: BigInt): void {
+export function mockForToken(tokenId: BigInt): void {
   const contract = Address.fromString(SNI_CONTRACT_ADDRESS);
-  const tokenIdParam = ethereum.Value.fromUnsignedBigInt(id);
+  const tokenIdParam = ethereum.Value.fromUnsignedBigInt(tokenId);
 
   createMockedFunction(contract, 'statusOf', 'statusOf(uint256):(uint256)')
     .withArgs([tokenIdParam])

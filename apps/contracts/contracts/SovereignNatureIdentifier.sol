@@ -98,7 +98,7 @@ contract SovereignNatureIdentifier is
         _setTokenURI(tokenId, _tokenURI);
         setTokenURIDigest(tokenId, _tokenURIDigest);
 
-        emit TokenURISet(tokenId, _tokenURI); //TODO: Emit event with digest
+        emit TokenURISet(tokenId, _tokenURI, _tokenURIDigest);
     }
 
     // Overrides for permissions control

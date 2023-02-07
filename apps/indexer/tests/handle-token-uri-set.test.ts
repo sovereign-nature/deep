@@ -1,15 +1,16 @@
 import { assert, describe, test } from 'matchstick-as/assembly/index';
 
-import { BigInt } from '@graphprotocol/graph-ts';
+import { BigInt, Bytes } from '@graphprotocol/graph-ts';
 
 import { handleTokenURISet } from '../src/sovereign-nature-identifier';
-import { createTokenURISetEvent } from './sovereign-nature-identifier-utils';
+import { createTokenURISetEvent } from './events-mocks';
 
 import { SUBGRAPH_ENTITY_NAME } from '@sni/constants';
 
 import {
   INITIAL_TOKEN_ID,
   UPDATED_TOKEN_URI,
+  UPDATED_TOKEN_URI_DIGEST,
 } from '@sni/constants/mocks/identifier';
 import { initializeMintedToken } from './fixtures';
 
@@ -21,7 +22,8 @@ describe('Handles TokenURISet event', () => {
 
     const tokenURISetEvent = createTokenURISetEvent(
       initialTokenId,
-      UPDATED_TOKEN_URI
+      UPDATED_TOKEN_URI,
+      Bytes.fromHexString(UPDATED_TOKEN_URI_DIGEST)
     );
 
     handleTokenURISet(tokenURISetEvent);
@@ -34,6 +36,14 @@ describe('Handles TokenURISet event', () => {
       tokenIdHex,
       'tokenURI',
       UPDATED_TOKEN_URI
+    );
+
+    // Base fields that were updated via setter.
+    assert.fieldEquals(
+      SUBGRAPH_ENTITY_NAME,
+      tokenIdHex,
+      'tokenMetadataDigest',
+      UPDATED_TOKEN_URI_DIGEST
     );
 
     // JSON metadata fields from updated.json should be indexed as well.

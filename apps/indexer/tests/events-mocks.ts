@@ -1,5 +1,9 @@
+//TODO: Looks like There is a bug in AssemblyScript that prevents us from moving this file to mocks folder
+
+//Linting fixes for AssemblyScript
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/ban-types */
+
 import { Address, BigInt, Bytes, ethereum } from '@graphprotocol/graph-ts';
 import { newMockEvent } from 'matchstick-as';
 import {
@@ -163,7 +167,8 @@ export function createStatusSetEvent(
 
 export function createTokenURISetEvent(
   tokenId: BigInt,
-  tokenURI: string
+  tokenURI: string,
+  digest: Bytes
 ): TokenURISet {
   //@ts-ignore
   const tokenUriSetEvent = changetype<TokenURISet>(newMockEvent());
@@ -178,6 +183,10 @@ export function createTokenURISetEvent(
   );
   tokenUriSetEvent.parameters.push(
     new ethereum.EventParam('tokenURI', ethereum.Value.fromString(tokenURI))
+  );
+
+  tokenUriSetEvent.parameters.push(
+    new ethereum.EventParam('digest', ethereum.Value.fromBytes(digest))
   );
 
   return tokenUriSetEvent;

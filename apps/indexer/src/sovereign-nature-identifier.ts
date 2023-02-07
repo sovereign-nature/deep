@@ -57,9 +57,11 @@ export function handleStatusSet(event: StatusSet): void {
 export function handleTokenURISet(event: TokenURISet): void {
   const tokenId = event.params.tokenId;
   const tokenURI = event.params.tokenURI;
+  const tokenMetadataDigest = event.params.tokenURIDigest;
 
   const entity = findEntity(tokenId, event.block.timestamp);
   entity.tokenURI = tokenURI;
+  entity.tokenMetadataDigest = tokenMetadataDigest;
 
   fillFromIPFS(entity, tokenURI);
 

@@ -3,7 +3,7 @@ import { assert, describe, test } from 'matchstick-as/assembly/index';
 import { Address, BigInt } from '@graphprotocol/graph-ts';
 
 import { handleTransfer } from '../src/sovereign-nature-identifier';
-import { createTransferEvent } from './sovereign-nature-identifier-utils';
+import { createTransferEvent } from './events-mocks';
 
 import { METADATA_HASH_FUNCTION, SUBGRAPH_ENTITY_NAME } from '@sni/constants';
 
@@ -21,7 +21,7 @@ import {
   TOKEN_URI_SCHEMA,
   TOKEN_URI_SCHEMA_DIGEST,
 } from '@sni/constants/mocks/identifier';
-import { mockForToken } from './mocks';
+import { mockForToken } from './mocks/functions';
 
 //MOCKED CONSTANTS
 const INITIAL_TOKEN_ID_INT = BigInt.fromI32(INITIAL_TOKEN_ID);

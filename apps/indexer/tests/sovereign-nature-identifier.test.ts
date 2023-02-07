@@ -20,7 +20,7 @@ import {
   createDataURISetEvent,
   createStatusSetEvent,
   createTransferEvent,
-} from './sovereign-nature-identifier-utils';
+} from './events-mocks';
 
 import { SUBGRAPH_ENTITY_NAME } from '@sni/constants';
 
@@ -36,7 +36,7 @@ import {
   UPDATED_DATA_URI,
   UPDATED_STATUS,
 } from '@sni/constants/mocks/identifier';
-import { mockForToken } from './mocks';
+import { mockForToken } from './mocks/functions';
 
 const INITIAL_TOKEN_ID_INT = BigInt.fromI32(INITIAL_TOKEN_ID);
 
