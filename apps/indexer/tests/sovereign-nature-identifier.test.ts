@@ -3,19 +3,11 @@
 import {
   assert,
   beforeAll,
-  createMockedFunction,
   describe,
-  mockIpfsFile,
   test,
 } from 'matchstick-as/assembly/index';
 
-import {
-  Address,
-  BigInt,
-  Bytes,
-  ethereum,
-  store,
-} from '@graphprotocol/graph-ts';
+import { Address, BigInt, store } from '@graphprotocol/graph-ts';
 
 import {
   handleComputeURISet,
@@ -32,14 +24,12 @@ import {
   createTransferEvent,
 } from './sovereign-nature-identifier-utils';
 
-import {
-  METADATA_HASH_FUNCTION,
-  SNI_CONTRACT_ADDRESS,
-  SUBGRAPH_ENTITY_NAME,
-} from '@sni/constants';
+import { SUBGRAPH_ENTITY_NAME } from '@sni/constants';
 
 //TODO: Refactor constants to object
+//TODO: Add URI postfix to mocked URIs
 import {
+  DERIVATIVE_METADATA_SCHEMA,
   DERIVATIVE_METADATA_SCHEMA_DIGEST,
   INITIAL_COMPUTE_URI,
   INITIAL_DATA_URI,
@@ -57,91 +47,12 @@ import {
   UPDATED_STATUS,
   UPDATED_TOKEN_URI,
 } from '@sni/constants/mocks/identifier';
+import { mockForToken } from './mocks';
 
 const INITIAL_TOKEN_ID_INT = BigInt.fromI32(INITIAL_TOKEN_ID);
 
 const MINTER = Address.fromString(MINTER_ADDRESS);
 const OWNER = Address.fromString(OWNER_ADDRESS);
-
-const CONTRACT = Address.fromString(SNI_CONTRACT_ADDRESS);
-
-// eslint-disable-next-line @typescript-eslint/ban-types
-function mockForToken(id: BigInt): void {
-  const tokenIdParam = ethereum.Value.fromUnsignedBigInt(id);
-
-  createMockedFunction(CONTRACT, 'statusOf', 'statusOf(uint256):(uint256)')
-    .withArgs([tokenIdParam])
-    .returns([
-      ethereum.Value.fromUnsignedBigInt(BigInt.fromI32(INITIAL_STATUS)),
-    ]);
-
-  createMockedFunction(CONTRACT, 'tokenURI', 'tokenURI(uint256):(string)')
-    .withArgs([tokenIdParam])
-    .returns([ethereum.Value.fromString(INITIAL_TOKEN_URI)]);
-
-  createMockedFunction(
-    CONTRACT,
-    'tokenURIIntegrity',
-    'tokenURIIntegrity(uint256):(bytes,string)'
-  )
-    .withArgs([tokenIdParam])
-    .returns([
-      ethereum.Value.fromBytes(Bytes.fromHexString(TOKEN_URI_SCHEMA_DIGEST)),
-      ethereum.Value.fromString(METADATA_HASH_FUNCTION),
-    ]);
-
-  createMockedFunction(
-    CONTRACT,
-    'tokenURISchema',
-    'tokenURISchema():(string)'
-  ).returns([ethereum.Value.fromString(TOKEN_URI_SCHEMA)]);
-
-  createMockedFunction(
-    CONTRACT,
-    'tokenURISchemaIntegrity',
-    'tokenURISchemaIntegrity():(bytes,string)'
-  ).returns([
-    ethereum.Value.fromBytes(Bytes.fromHexString(TOKEN_URI_SCHEMA_DIGEST)),
-    ethereum.Value.fromString(METADATA_HASH_FUNCTION),
-  ]);
-
-  createMockedFunction(
-    CONTRACT,
-    'derivativeMetadataSchemaURI',
-    'derivativeMetadataSchemaURI():(string)'
-  ).returns([ethereum.Value.fromString(TOKEN_URI_SCHEMA)]);
-
-  createMockedFunction(
-    CONTRACT,
-    'derivativeMetadataSchemaIntegrity',
-    'derivativeMetadataSchemaIntegrity():(bytes,string)'
-  ).returns([
-    ethereum.Value.fromBytes(
-      Bytes.fromHexString(DERIVATIVE_METADATA_SCHEMA_DIGEST)
-    ),
-    ethereum.Value.fromString(METADATA_HASH_FUNCTION),
-  ]);
-
-  createMockedFunction(CONTRACT, 'dataURI', 'dataURI(uint256):(string)')
-    .withArgs([tokenIdParam])
-    .returns([ethereum.Value.fromString(INITIAL_DATA_URI)]);
-
-  createMockedFunction(CONTRACT, 'computeURI', 'computeURI(uint256):(string)')
-    .withArgs([tokenIdParam])
-    .returns([ethereum.Value.fromString(INITIAL_COMPUTE_URI)]);
-
-  //Initial IPFS Metadata
-  mockIpfsFile(
-    INITIAL_TOKEN_URI.replace('ipfs://', ''),
-    'tests/ipfs/initial.json'
-  );
-
-  //Updated IPFS Metadata
-  mockIpfsFile(
-    UPDATED_TOKEN_URI.replace('ipfs://', ''),
-    'tests/ipfs/updated.json'
-  );
-}
 
 describe('SNI Indexer', () => {
   beforeAll(() => {
@@ -233,6 +144,34 @@ describe('SNI Indexer', () => {
       tokenId,
       'status',
       INITIAL_STATUS.toString()
+    );
+
+    assert.fieldEquals(
+      SUBGRAPH_ENTITY_NAME,
+      tokenId,
+      'tokenMetadataSchemaURI',
+      TOKEN_URI_SCHEMA
+    );
+
+    assert.fieldEquals(
+      SUBGRAPH_ENTITY_NAME,
+      tokenId,
+      'tokenMetadataSchemaDigest',
+      TOKEN_URI_SCHEMA_DIGEST
+    );
+
+    assert.fieldEquals(
+      SUBGRAPH_ENTITY_NAME,
+      tokenId,
+      'derivativeMetadataSchemaURI',
+      DERIVATIVE_METADATA_SCHEMA
+    );
+
+    assert.fieldEquals(
+      SUBGRAPH_ENTITY_NAME,
+      tokenId,
+      'derivativeMetadataSchemaDigest',
+      DERIVATIVE_METADATA_SCHEMA_DIGEST
     );
 
     // JSON metadata fields from initial.json
