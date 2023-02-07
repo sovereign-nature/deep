@@ -13,6 +13,7 @@ import {
   INITIAL_DATA_URI,
   INITIAL_STATUS,
   INITIAL_TOKEN_URI,
+  INITIAL_TOKEN_URI_DIGEST,
   TOKEN_URI_SCHEMA,
   TOKEN_URI_SCHEMA_DIGEST,
   UPDATED_TOKEN_URI,
@@ -40,7 +41,7 @@ export function mockForToken(id: BigInt): void {
   )
     .withArgs([tokenIdParam])
     .returns([
-      ethereum.Value.fromBytes(Bytes.fromHexString(TOKEN_URI_SCHEMA_DIGEST)),
+      ethereum.Value.fromBytes(Bytes.fromHexString(INITIAL_TOKEN_URI_DIGEST)),
       ethereum.Value.fromString(METADATA_HASH_FUNCTION),
     ]);
 

@@ -13,8 +13,7 @@ type SNI @entity {
 
   derivativeMetadataSchemaURI: String!
   derivativeMetadataSchemaDigest: Bytes!
-  derivativeMetadataSchemaHashFunction: String!
-
+  derivativeMetadataSchemaHashFunction: String! #TODO: We probably can store one hash function per protocol version
   computeURI: String!
   dataURI: String!
   status: BigInt!
