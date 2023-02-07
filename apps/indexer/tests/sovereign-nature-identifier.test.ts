@@ -37,28 +37,33 @@ import {
   SNI_CONTRACT_ADDRESS,
   SUBGRAPH_ENTITY_NAME,
 } from '@sni/constants';
+
+//TODO: Refactor constants to object
 import {
   DERIVATIVE_METADATA_SCHEMA_DIGEST,
   INITIAL_COMPUTE_URI,
   INITIAL_DATA_URI,
+  INITIAL_STATUS,
+  INITIAL_TOKEN_ID,
   INITIAL_TOKEN_URI,
+  MINTER_ADDRESS,
+  OWNER_ADDRESS,
+  SECOND_OWNER_ADDRESS,
+  TEMP_TOKEN_ID,
   TOKEN_URI_SCHEMA,
   TOKEN_URI_SCHEMA_DIGEST,
   UPDATED_COMPUTE_URI,
   UPDATED_DATA_URI,
+  UPDATED_STATUS,
   UPDATED_TOKEN_URI,
 } from '@sni/constants/mocks/identifier';
 
-const TOKEN_ID = BigInt.fromI32(0);
-const TEMP_TOKEN_ID = BigInt.fromI32(99);
-const MINTER = Address.fromString('0x0000000000000000000000000000000000000000');
-const OWNER = Address.fromString('0x0000000000000000000000000000000000000001');
-const OWNER_2 = Address.fromString(
-  '0x0000000000000000000000000000000000000002'
-);
+const INITIAL_TOKEN_ID_INT = BigInt.fromI32(INITIAL_TOKEN_ID);
+
+const MINTER = Address.fromString(MINTER_ADDRESS);
+const OWNER = Address.fromString(OWNER_ADDRESS);
+
 const CONTRACT = Address.fromString(SNI_CONTRACT_ADDRESS);
-const INITIAL_STATUS = BigInt.fromI32(0);
-const NEW_STATUS = BigInt.fromI32(1);
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 function mockForToken(id: BigInt): void {
@@ -66,7 +71,9 @@ function mockForToken(id: BigInt): void {
 
   createMockedFunction(CONTRACT, 'statusOf', 'statusOf(uint256):(uint256)')
     .withArgs([tokenIdParam])
-    .returns([ethereum.Value.fromUnsignedBigInt(INITIAL_STATUS)]);
+    .returns([
+      ethereum.Value.fromUnsignedBigInt(BigInt.fromI32(INITIAL_STATUS)),
+    ]);
 
   createMockedFunction(CONTRACT, 'tokenURI', 'tokenURI(uint256):(string)')
     .withArgs([tokenIdParam])
@@ -138,14 +145,18 @@ function mockForToken(id: BigInt): void {
 
 describe('SNI Indexer', () => {
   beforeAll(() => {
-    mockForToken(TOKEN_ID);
+    mockForToken(INITIAL_TOKEN_ID_INT);
 
-    const transferEvent = createTransferEvent(MINTER, OWNER, TOKEN_ID);
+    const transferEvent = createTransferEvent(
+      MINTER,
+      OWNER,
+      INITIAL_TOKEN_ID_INT
+    );
     handleTransfer(transferEvent);
   });
 
   test('Sets createdAt on entity', () => {
-    const tokenId = TEMP_TOKEN_ID;
+    const tokenId = BigInt.fromI32(TEMP_TOKEN_ID);
     mockForToken(tokenId);
 
     const transferEvent = createTransferEvent(MINTER, OWNER, tokenId);
@@ -162,22 +173,30 @@ describe('SNI Indexer', () => {
   });
 
   test('Sets updatedAt on entity', () => {
-    const transferEvent = createTransferEvent(OWNER, OWNER_2, TOKEN_ID);
+    const transferEvent = createTransferEvent(
+      OWNER,
+      Address.fromString(SECOND_OWNER_ADDRESS),
+      INITIAL_TOKEN_ID_INT
+    );
     handleTransfer(transferEvent);
 
     assert.fieldEquals(
       SUBGRAPH_ENTITY_NAME,
-      TOKEN_ID.toHex(),
+      INITIAL_TOKEN_ID_INT.toHex(),
       'updatedAt',
       transferEvent.block.timestamp.toString()
     );
   });
 
   test('Handles Transfer event', () => {
-    const transferEvent = createTransferEvent(MINTER, OWNER, TOKEN_ID);
+    const transferEvent = createTransferEvent(
+      MINTER,
+      OWNER,
+      INITIAL_TOKEN_ID_INT
+    );
     handleTransfer(transferEvent);
 
-    const tokenId = TOKEN_ID.toHex();
+    const tokenId = INITIAL_TOKEN_ID_INT.toHex();
 
     // Base fields
     assert.fieldEquals(SUBGRAPH_ENTITY_NAME, tokenId, 'owner', OWNER.toHex());
@@ -185,7 +204,7 @@ describe('SNI Indexer', () => {
       SUBGRAPH_ENTITY_NAME,
       tokenId,
       'tokenId',
-      TOKEN_ID.toString()
+      INITIAL_TOKEN_ID_INT.toString()
     );
 
     assert.fieldEquals(
@@ -253,12 +272,12 @@ describe('SNI Indexer', () => {
 
   test('Handles TokenURISet event', () => {
     const tokenURISetEvent = createTokenURISetEvent(
-      TOKEN_ID,
+      INITIAL_TOKEN_ID_INT,
       UPDATED_TOKEN_URI
     );
     handleTokenURISet(tokenURISetEvent);
 
-    const tokenId = TOKEN_ID.toHex();
+    const tokenId = INITIAL_TOKEN_ID_INT.toHex();
 
     // Base fields that were updated via setter.
     assert.fieldEquals(
@@ -304,10 +323,13 @@ describe('SNI Indexer', () => {
   });
 
   test('Handles DataURISet event', () => {
-    const dataURISetEvent = createDataURISetEvent(TOKEN_ID, UPDATED_DATA_URI);
+    const dataURISetEvent = createDataURISetEvent(
+      INITIAL_TOKEN_ID_INT,
+      UPDATED_DATA_URI
+    );
     handleDataURISet(dataURISetEvent);
 
-    const tokenId = TOKEN_ID.toHex();
+    const tokenId = INITIAL_TOKEN_ID_INT.toHex();
 
     assert.fieldEquals(
       SUBGRAPH_ENTITY_NAME,
@@ -319,12 +341,12 @@ describe('SNI Indexer', () => {
 
   test('Handles ComputeURISet event', () => {
     const computeURISetEvent = createComputeURISetEvent(
-      TOKEN_ID,
+      INITIAL_TOKEN_ID_INT,
       UPDATED_COMPUTE_URI
     );
     handleComputeURISet(computeURISetEvent);
 
-    const tokenId = TOKEN_ID.toHex();
+    const tokenId = INITIAL_TOKEN_ID_INT.toHex();
 
     assert.fieldEquals(
       SUBGRAPH_ENTITY_NAME,
@@ -335,14 +357,18 @@ describe('SNI Indexer', () => {
   });
 
   test('Handles StatusSet event', () => {
-    const statusSetEvent = createStatusSetEvent(TOKEN_ID, NEW_STATUS);
+    const newStatus = BigInt.fromI32(UPDATED_STATUS);
+    const statusSetEvent = createStatusSetEvent(
+      INITIAL_TOKEN_ID_INT,
+      newStatus
+    );
     handleStatusSet(statusSetEvent);
 
     assert.fieldEquals(
       SUBGRAPH_ENTITY_NAME,
-      TOKEN_ID.toHex(),
+      INITIAL_TOKEN_ID_INT.toHex(),
       'status',
-      NEW_STATUS.toString()
+      newStatus.toString()
     );
   });
 });
