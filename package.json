@@ -29,7 +29,7 @@
     "prettier": "2.8.3",
     "turbo": "1.7.3",
     "husky": "8.0.3",
-    "lint-staged": "13.1.0",
+    "lint-staged": "13.1.1",
     "turbo-ignore": "1.7.3"
   },
   "engines": {
