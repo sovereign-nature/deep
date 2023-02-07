@@ -109,7 +109,7 @@
     "skin_color": "golder_brown",
     "tail": "undefined",
     "unusual_whiskers": "none",
-    "eyes": "damaged_right_eye",
+    "eyes": "undamaged",
     "left_whisker_spots": 3,
     "right_whisker_spots": 2,
     "left_side_scars": "nose",
@@ -135,6 +135,26 @@
     "whisker_right_2": "images/4/Image61.jpg",
     "ear_left": "images/4/Image62.jpg",
     "whisker_left_2": "images/4/Image63.jpg",
-    "face": "images/4/Image64.jpg"
+    "face": "images/4/Image64.jpg",
+
+    "age": "old",
+    "body_size": "large",
+    "nose_color": "patchy",
+    "mane": "medium",
+    "mane_color": "light",
+    "left_ear": "notch",
+    "right_ear": "tears",
+    "teeth": "undamaged",
+    "skin_color": "golder_brown",
+    "tail": "undefined",
+    "unusual_whiskers": "none",
+    "eyes": "undamaged",
+    "left_whisker_spots": 3,
+    "right_whisker_spots": 2,
+    "left_side_scars": "unscarred",
+    "right_side_scars": "nose&cheek",
+    "grouping": "coalition",
+    "group_name": "musketeers",
+    "prides_controlled": 5
   }
 ]
