@@ -17,8 +17,5 @@
     "@graphprotocol/graph-ts": "0.29.3",
     "@sni/contracts": "*",
     "@sni/constants": "*"
-  },
-  "resolutions": {
-    "**/graph-ts": "0.29.3"
   }
 }
