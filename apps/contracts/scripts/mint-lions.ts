@@ -1,10 +1,10 @@
 import { SNI_CONTRACT_ADDRESS, SNI_OWNER_ADDRESS } from '@sni/constants';
-import axios from 'axios';
 import fs from 'fs';
 import { ethers } from 'hardhat';
 import { SovereignNatureIdentifier } from '../typechain-types';
+import { makeIpfsUrl, pinData } from './utils';
 
-const STORAGE_API_URL = 'https://api.nft.storage/';
+export const STORAGE_API_URL = 'https://api.nft.storage/';
 const IPFS_URL =
   'ipfs://bafybeihpckelcd4bgrcteg7egtckmixns4p2mhysfmlh6lpdxwghqmhmvi';
 
@@ -26,6 +26,25 @@ type LionData = {
   face: string;
   whisker_left_2: string;
   mouth: string;
+  age: string;
+  body_size: string;
+  nose_color: string;
+  mane: string;
+  mane_color: string;
+  left_ear: string;
+  right_ear: string;
+  teeth: string;
+  skin_color: string;
+  tail: string;
+  unusual_whiskers: string;
+  eyes: string;
+  left_whisker_spots: number;
+  right_whisker_spots: number;
+  left_side_scars: string;
+  right_side_scars: string;
+  grouping: string;
+  group_name: string;
+  prides_controlled: number;
 };
 
 function getImage(path: string) {
@@ -35,77 +54,36 @@ function getImage(path: string) {
 }
 
 function processLionData(data: LionData) {
-  const {
-    gender,
-    birthday,
-    coalition,
-    prides,
-    unique_features,
-    whisker_right_0,
-    whisker_right_1,
-    whisker_right_2,
-    whisker_left_0,
-    whisker_left_1,
-    whisker_left_2,
-    ear_left,
-    ear_right,
-    face,
-    mouth,
-    id,
-    name,
-  } = data;
+  const image = getImage(`${data.face}`);
 
-  const image = getImage(`${face}`);
+  const attributes = [];
+  for (const [key, value] of Object.entries(data)) {
+    let resValue;
+    if (
+      key in
+      [
+        'whisker_right_0',
+        'whisker_right_1',
+        'whisker_right_2',
+        'whisker_left_0',
+        'whisker_left_1',
+        'whisker_left_2',
+        'ear_right',
+        'ear_left',
+        'face',
+      ]
+    ) {
+      resValue = getImage(value as string);
+    } else {
+      resValue = value;
+    }
 
-  const attributes = [
-    { trait_type: 'id', value: id },
-    { trait_type: 'gender', value: gender },
-    { trait_type: 'birthday', value: birthday },
-    { trait_type: 'coalition', value: coalition },
-    {
-      trait_type: 'prides',
-      value: prides,
-    },
-    { trait_type: 'uniqueFeatures', value: unique_features },
-    {
-      trait_type: 'whiskersRightImage0',
-      value: whisker_right_0 ? getImage(`${whisker_right_0}`) : '',
-    },
-    {
-      trait_type: 'whiskersRightImage1',
-      value: whisker_right_1 ? getImage(`${whisker_right_1}`) : '',
-    },
-    {
-      trait_type: 'whiskersRightImage2',
-      value: whisker_right_2 ? getImage(`${whisker_right_2}`) : '',
-    },
-    {
-      trait_type: 'whiskersLeftImage0',
-      value: whisker_left_0 ? getImage(`${whisker_left_0}`) : '',
-    },
-    {
-      trait_type: 'whiskersLeftImage1',
-      value: whisker_left_1 ? getImage(`${whisker_left_1}`) : '',
-    },
-    {
-      trait_type: 'whiskersLeftImage2',
-      value: whisker_left_2 ? getImage(`${whisker_left_2}`) : '',
-    },
-    {
-      trait_type: 'earRight',
-      value: ear_right ? getImage(`${ear_right}`) : '',
-    },
-    {
-      trait_type: 'earLeft',
-      value: ear_left ? getImage(`${ear_left}`) : '',
-    },
-    { trait_type: 'face', value: image },
-    { trait_type: 'mouth', value: mouth ? getImage(`${mouth}`) : '' },
-  ];
+    attributes.push({ trait_type: key, value: resValue });
+  }
 
   return {
     image,
-    name,
+    name: data.name,
     attributes,
   };
 }
@@ -127,25 +105,17 @@ async function mintLionData(
 
   const metadata = { ...parsedMetadata, ...additionalMetadata };
 
-  //axios bearer token
-
-  const res = await axios.post(`${STORAGE_API_URL}/upload`, metadata);
-
-  if (res.status !== 200) {
-    console.error('Error uploading metadata to NFT Storage');
-
-    return;
-  }
+  const metadataJson = JSON.stringify(metadata);
+  const metadataHash = ethers.utils.sha256(metadataJson);
 
   console.log('Successfully uploaded metadata to NFT Storage');
 
-  const cid = res.data.value.cid;
-  console.log('CID: ', cid);
-  const ipfsURL = `ipfs://${cid}`;
+  const tokenURI = makeIpfsUrl((await pinData(metadata)).data.value.cid);
 
   await contract.safeMint(
     SNI_OWNER_ADDRESS,
-    ipfsURL,
+    tokenURI,
+    metadataHash,
     'some-data',
     'some-compute',
     0
@@ -158,10 +128,6 @@ async function main() {
   );
 
   const sni = SovereignNatureIdentifier.attach(SNI_CONTRACT_ADDRESS);
-
-  axios.defaults.headers.common[
-    'Authorization'
-  ] = `Bearer ${process.env.NFT_STORAGE_API_KEY}`;
 
   const data = fs.readFileSync('./data/lions_data.json');
   const lionsData: Array<LionData> = JSON.parse(data.toString());
