@@ -38,7 +38,7 @@ describe('Token URI updates', function () {
       sni.setTokenURI(initialTokenId, updatedTokenURI, updatedTokenURIDigest)
     )
       .to.emit(sni, 'TokenURISet')
-      .withArgs(initialTokenId, updatedTokenURI);
+      .withArgs(initialTokenId, updatedTokenURI, updatedTokenURIDigest);
   });
 
   it('Should return updated tokenURI', async function () {

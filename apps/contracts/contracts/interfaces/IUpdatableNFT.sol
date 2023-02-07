@@ -5,7 +5,7 @@ interface IUpdatableNFT {
     /**
      * @dev Emitted when `tokenURI` is updated for selected `tokenId`.
      */
-    event TokenURISet(uint256 indexed tokenId, string tokenURI);
+    event TokenURISet(uint256 indexed tokenId, string tokenURI, bytes tokenURIDigest);
 
     /**
      * @dev Sets new token URI.
