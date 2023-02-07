@@ -13,14 +13,12 @@ import {
   handleComputeURISet,
   handleDataURISet,
   handleStatusSet,
-  handleTokenURISet,
   handleTransfer,
 } from '../src/sovereign-nature-identifier';
 import {
   createComputeURISetEvent,
   createDataURISetEvent,
   createStatusSetEvent,
-  createTokenURISetEvent,
   createTransferEvent,
 } from './sovereign-nature-identifier-utils';
 
@@ -37,7 +35,6 @@ import {
   UPDATED_COMPUTE_URI,
   UPDATED_DATA_URI,
   UPDATED_STATUS,
-  UPDATED_TOKEN_URI,
 } from '@sni/constants/mocks/identifier';
 import { mockForToken } from './mocks';
 
@@ -88,58 +85,6 @@ describe('SNI Indexer', () => {
       INITIAL_TOKEN_ID_INT.toHex(),
       'updatedAt',
       transferEvent.block.timestamp.toString()
-    );
-  });
-
-  test('Handles TokenURISet event', () => {
-    const tokenURISetEvent = createTokenURISetEvent(
-      INITIAL_TOKEN_ID_INT,
-      UPDATED_TOKEN_URI
-    );
-    handleTokenURISet(tokenURISetEvent);
-
-    const tokenId = INITIAL_TOKEN_ID_INT.toHex();
-
-    // Base fields that were updated via setter.
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'tokenURI',
-      UPDATED_TOKEN_URI
-    );
-
-    // JSON metadata fields from updated.json should be indexed as well.
-    assert.fieldEquals(SUBGRAPH_ENTITY_NAME, tokenId, 'name', 'Scarface');
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'description',
-      'Test lion identifier updated'
-    );
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'image',
-      'ipfs://bafybeihs6qouvmo4pnjozlrdmgic3b4nav6rrswc3tobgclrrvtwsa47oe/blob'
-    );
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'statusDescription',
-      '{ "0": "Alive", "1": "Dead" }'
-    );
-    assert.fieldEquals(SUBGRAPH_ENTITY_NAME, tokenId, 'taxonId', 'itis:183803');
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'conservationStatus',
-      'VU'
-    );
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'geometry',
-      'POINT(6.0000 48.0000)'
     );
   });
 

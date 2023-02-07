@@ -28,8 +28,8 @@ const INITIAL_TOKEN_ID_INT = BigInt.fromI32(INITIAL_TOKEN_ID);
 const MINTER = Address.fromString(MINTER_ADDRESS);
 const OWNER = Address.fromString(OWNER_ADDRESS);
 
-describe('Handle transferTo', () => {
-  test('Handles Transfer event', () => {
+describe('Handles Transfer event', () => {
+  test('Correct state after event handling', () => {
     mockForToken(INITIAL_TOKEN_ID_INT);
 
     const transferEvent = createTransferEvent(
