@@ -1,6 +1,5 @@
 [
   {
-    "lion_page": 1,
     "id": "musm1",
     "gender": "male",
     "name": "scarface",
@@ -40,7 +39,6 @@
     "prides_controlled": 5
   },
   {
-    "lion_page": 2,
     "id": "musm3",
     "gender": "male",
     "name": "morani",
@@ -80,7 +78,6 @@
     "prides_controlled": 5
   },
   {
-    "lion_page": 3,
     "id": "musm4",
     "gender": "male",
     "name": "sikio",
@@ -119,7 +116,6 @@
     "prides_controlled": 5
   },
   {
-    "lion_page": 4,
     "id": "musm2",
     "gender": "male",
     "name": "hunter",
@@ -145,7 +141,7 @@
     "left_ear": "notch",
     "right_ear": "tears",
     "teeth": "undamaged",
-    "skin_color": "golder_brown",
+    "skin_color": "golden_brown",
     "tail": "undefined",
     "unusual_whiskers": "none",
     "eyes": "undamaged",
