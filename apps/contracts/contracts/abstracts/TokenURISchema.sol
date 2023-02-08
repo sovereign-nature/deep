@@ -7,7 +7,7 @@ abstract contract TokenURISchema is ITokenURISchema {
     string private _schemaURI;
     mapping(uint256 => bytes) private _tokenURIDigests;
     bytes private _schemaDigest;
-    string private _hashAlgorithm = "sha256";
+    string private _hashAlgorithm = "keccak256";
 
     function setTokenURISchema(string memory schemaURI) internal virtual {
         _schemaURI = schemaURI;
