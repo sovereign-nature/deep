@@ -27,6 +27,6 @@ export const moonbaseProvider = new ethers.providers.StaticJsonRpcProvider(
   'https://rpc.api.moonbase.moonbeam.network',
   {
     chainId: 1287,
-    name: 'moonbase-alphanet',
+    name: 'moonbase',
   }
 );
