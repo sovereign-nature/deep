@@ -120,6 +120,11 @@ async function mintLionData(
     `Successfully uploaded metadata to NFT Storage at ${tokenURI} for ${data.name}`
   );
 
+  // const data = await contract.safeMint(purchaserAddress);
+  // await provider.waitForTransaction(data.hash);
+  // const receipt = await provider.getTransactionReceipt(data.hash);
+  // console.log(Web3.utils.hexToNumber(receipt.logs[0].topics[3])); // This is the tokenID
+
   const tx = await contract.safeMint(
     SNI_OWNER_ADDRESS,
     tokenURI,
@@ -129,10 +134,19 @@ async function mintLionData(
     INITIAL_STATUS
   );
 
-  const receipt = await tx.wait();
+  const providerURL = 'https://rpc.api.moonbase.moonbeam.network';
+  // Define provider
+  const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
+    chainId: 1287,
+    name: 'moonbase-alphanet',
+  });
+
+  await provider.waitForTransaction(tx.hash);
+  const receipt = await provider.getTransactionReceipt(tx.hash);
+  const tokenId = parseInt(receipt.logs[0].topics[3]);
 
   console.log(
-    `Successfully minted token for ${data.name} at ${receipt.blockHash} while using ${receipt.gasUsed} gas`
+    `Successfully minted token for ${data.name} with tokenID ${tokenId} at ${receipt.blockHash} while using ${receipt.gasUsed} gas`
   );
 }
 
