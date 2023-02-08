@@ -11,7 +11,7 @@ async function main() {
     '../../packages/json-schemas/schemas/kwt-lion.json'
   );
 
-  const schemaHash = ethers.utils.id(schemaJson.toString()); //TODO: use keccak256 instead of sha256
+  const schemaHash = ethers.utils.id(schemaJson.toString());
 
   const schemaURI = makeIpfsUrl(
     (await pinData(schemaJson.toString())).data.value.cid

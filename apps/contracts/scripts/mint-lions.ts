@@ -1,4 +1,5 @@
 import { SNI_CONTRACT_ADDRESS, SNI_OWNER_ADDRESS } from '@sni/constants';
+import { INITIAL_STATUS } from '@sni/constants/mocks/identifier';
 import fs from 'fs';
 import { ethers } from 'hardhat';
 import { SovereignNatureIdentifier } from '../typechain-types';
@@ -6,6 +7,12 @@ import { makeIpfsUrl, pinData } from './utils';
 
 const IPFS_URL =
   'ipfs://bafybeihpckelcd4bgrcteg7egtckmixns4p2mhysfmlh6lpdxwghqmhmvi';
+
+const MUSKETEERS_PDF =
+  'https://www.marapredatorconservation.org/wp-content/uploads/2020/09/Muskuteers-Marsh.pdf';
+
+const MUSKETEERS_PROVENANCE =
+  'https://docs.google.com/document/d/1a9SJnL3uQlZP8R9yKv-qN4BYYfDQZakagx-O3sNw3Tg';
 
 type LionData = {
   id: string;
@@ -103,21 +110,19 @@ async function mintLionData(
   };
 
   const metadata = { ...parsedMetadata, ...additionalMetadata };
-
-  const metadataJson = JSON.stringify(metadata);
-  const metadataHash = ethers.utils.sha256(metadataJson);
-
-  console.log('Successfully uploaded metadata to NFT Storage');
+  const metadataHash = ethers.utils.id(JSON.stringify(metadata));
 
   const tokenURI = makeIpfsUrl((await pinData(metadata)).data.value.cid);
+
+  console.log('Successfully uploaded metadata to NFT Storage at ', tokenURI);
 
   await contract.safeMint(
     SNI_OWNER_ADDRESS,
     tokenURI,
     metadataHash,
-    'some-data',
-    'some-compute',
-    0
+    MUSKETEERS_PDF,
+    MUSKETEERS_PROVENANCE,
+    INITIAL_STATUS
   );
 }
 
