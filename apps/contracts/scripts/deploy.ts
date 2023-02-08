@@ -37,3 +37,5 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
+//TODO: Migrate to https://github.com/wighawag/hardhat-deploy for enterprise deployments
