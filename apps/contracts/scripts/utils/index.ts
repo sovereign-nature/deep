@@ -1,5 +1,6 @@
 import { STORAGE_API_URL } from '@sni/constants';
 import axios from 'axios';
+import { ethers } from 'hardhat';
 
 // axios.defaults.headers.common[
 //   'Authorization'
@@ -25,3 +26,11 @@ export async function pinData(data: object | string) {
 export function makeIpfsUrl(cid: string) {
   return `ipfs://${cid}`;
 }
+
+export const moonbaseProvider = new ethers.providers.StaticJsonRpcProvider(
+  'https://rpc.api.moonbase.moonbeam.network',
+  {
+    chainId: 1287,
+    name: 'moonbase-alphanet',
+  }
+);

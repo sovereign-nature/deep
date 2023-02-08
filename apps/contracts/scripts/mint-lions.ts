@@ -114,16 +114,12 @@ async function mintLionData(
   const metadata = { ...parsedMetadata, ...additionalMetadata };
   const metadataHash = ethers.utils.id(JSON.stringify(metadata));
 
-  const tokenURI = makeIpfsUrl((await pinData(metadata)).data.value.cid);
+  const cid = (await pinData(metadata)).data.value.cid;
+  const tokenURI = makeIpfsUrl(cid);
 
   console.log(
     `Successfully uploaded metadata to NFT Storage at ${tokenURI} for ${data.name}`
   );
-
-  // const data = await contract.safeMint(purchaserAddress);
-  // await provider.waitForTransaction(data.hash);
-  // const receipt = await provider.getTransactionReceipt(data.hash);
-  // console.log(Web3.utils.hexToNumber(receipt.logs[0].topics[3])); // This is the tokenID
 
   const tx = await contract.safeMint(
     SNI_OWNER_ADDRESS,
@@ -134,19 +130,10 @@ async function mintLionData(
     INITIAL_STATUS
   );
 
-  const providerURL = 'https://rpc.api.moonbase.moonbeam.network';
-  // Define provider
-  const provider = new ethers.providers.StaticJsonRpcProvider(providerURL, {
-    chainId: 1287,
-    name: 'moonbase-alphanet',
-  });
-
-  await provider.waitForTransaction(tx.hash);
-  const receipt = await provider.getTransactionReceipt(tx.hash);
-  const tokenId = parseInt(receipt.logs[0].topics[3]);
+  const receipt = await tx.wait();
 
   console.log(
-    `Successfully minted token for ${data.name} with tokenID ${tokenId} at ${receipt.blockHash} while using ${receipt.gasUsed} gas`
+    `Successfully minted token for ${data.name} at transaction ${receipt.transactionHash}`
   );
 }
 
@@ -160,7 +147,9 @@ async function main() {
   const data = fs.readFileSync('./data/lions_data.json');
   const lionsData: Array<LionData> = JSON.parse(data.toString());
 
-  lionsData.forEach((ld) => mintLionData(ld, sni));
+  for (const ld of lionsData) {
+    await mintLionData(ld, sni); //TODO: There is a strange race condition here, so we need to wait for each transaction to be mined before minting the next one
+  }
 }
 
 // We recommend this pattern to be able to use async/await everywhere
