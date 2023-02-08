@@ -14,7 +14,7 @@ async function main() {
   const schemaHash = ethers.utils.id(schemaJson.toString());
 
   const schemaURI = makeIpfsUrl(
-    (await pinData(schemaJson.toString())).data.value.cid
+    (await pinData(schemaJson.toString())).data.IpfsHash
   );
 
   console.log(`Schema URI: ${schemaURI}`);
