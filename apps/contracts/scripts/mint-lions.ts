@@ -116,7 +116,7 @@ async function mintLionData(
 
   console.log('Successfully uploaded metadata to NFT Storage at ', tokenURI);
 
-  await contract.safeMint(
+  const tx = await contract.safeMint(
     SNI_OWNER_ADDRESS,
     tokenURI,
     metadataHash,
@@ -124,6 +124,10 @@ async function mintLionData(
     MUSKETEERS_PROVENANCE,
     INITIAL_STATUS
   );
+
+  tx.wait();
+
+  console.log('Successfully minted token for ', data.name);
 }
 
 async function main() {
