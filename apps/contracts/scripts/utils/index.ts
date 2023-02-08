@@ -2,10 +2,6 @@ import { STORAGE_API_URL } from '@sni/constants';
 import axios from 'axios';
 import { ethers } from 'hardhat';
 
-// axios.defaults.headers.common[
-//   'Authorization'
-// ] = `Bearer ${process.env.NFT_STORAGE_API_KEY}`;
-
 export async function pinData(data: object | string) {
   const config = {
     headers: {
