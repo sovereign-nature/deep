@@ -4,7 +4,6 @@ import { ethers } from 'hardhat';
 import { SovereignNatureIdentifier } from '../typechain-types';
 import { makeIpfsUrl, pinData } from './utils';
 
-export const STORAGE_API_URL = 'https://api.nft.storage/';
 const IPFS_URL =
   'ipfs://bafybeihpckelcd4bgrcteg7egtckmixns4p2mhysfmlh6lpdxwghqmhmvi';
 

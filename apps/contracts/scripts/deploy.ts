@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { ethers } from 'hardhat';
-import { pinData } from './utils';
+import { makeIpfsUrl, pinData } from './utils';
 
 async function main() {
   const SovereignNatureIdentifier = await ethers.getContractFactory(
@@ -8,13 +8,16 @@ async function main() {
   );
 
   const schemaJson = fs.readFileSync(
-    '../../../../packages/schemas/kwt-lion.json'
+    '../../packages/json-schemas/schemas/kwt-lion.json'
   );
-  const schemaHash = ethers.utils.sha256(schemaJson.toString());
 
-  const schemaURI = `ipfs://${
+  const schemaHash = ethers.utils.id(schemaJson.toString()); //TODO: use keccak256 instead of sha256
+
+  const schemaURI = makeIpfsUrl(
     (await pinData(schemaJson.toString())).data.value.cid
-  }`;
+  );
+
+  console.log(`Schema URI: ${schemaURI}`);
 
   const sni = await SovereignNatureIdentifier.deploy(
     schemaURI,
@@ -22,6 +25,7 @@ async function main() {
     schemaURI,
     schemaHash
   );
+
   await sni.deployed();
 
   console.log(`SNI contract was deployed to ${sni.address}`);

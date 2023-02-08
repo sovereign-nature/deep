@@ -6,4 +6,6 @@ export const LEGACY_SNI_CONTRACT_ADDRESS =
 
 export const SUBGRAPH_ENTITY_NAME = 'SNI';
 
-export const METADATA_HASH_FUNCTION = 'sha256';
+export const METADATA_HASH_FUNCTION = 'keccak256';
+
+export const STORAGE_API_URL = 'https://api.nft.storage/';
