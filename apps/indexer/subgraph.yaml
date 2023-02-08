@@ -9,9 +9,9 @@ dataSources:
     name: SovereignNatureIdentifier
     network: mbase
     source:
-      address: '0x4Cb0e7561706b75dfEb58E28303C4b344c59ACFf'
+      address: '0x07e0ad7e038b554c9b369a927e38c2b8389d0ba0'
       abi: SovereignNatureIdentifier
-      startBlock: 3709181
+      startBlock: 3709925
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6

@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { BigInt, ipfs, json, JSONValueKind } from '@graphprotocol/graph-ts';
+import {
+  BigInt,
+  ipfs,
+  json,
+  JSONValueKind,
+  log,
+} from '@graphprotocol/graph-ts';
 import { SNI } from '../generated/schema';
 
 // Find entity in database or create a new one if it's not found.
@@ -22,6 +28,7 @@ export function findEntity(tokenId: BigInt, blockTimestamp: BigInt): SNI {
 // Fill entity data from IPFS metadata file.
 export function fillFromIPFS(entity: SNI, tokenURI: string): SNI {
   const data = ipfs.cat(tokenURI.replace('ipfs://', ''));
+  log.info('Reindexing: {}', ['1']);
 
   if (data !== null) {
     const metadata = json.fromBytes(data).toObject();
