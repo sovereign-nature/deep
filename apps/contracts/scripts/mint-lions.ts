@@ -98,6 +98,8 @@ async function mintLionData(
   data: LionData,
   contract: SovereignNatureIdentifier
 ) {
+  console.log('Minting token for ', data.name);
+
   const parsedMetadata = processLionData(data);
   const additionalMetadata = {
     description: '...',
@@ -114,7 +116,9 @@ async function mintLionData(
 
   const tokenURI = makeIpfsUrl((await pinData(metadata)).data.value.cid);
 
-  console.log('Successfully uploaded metadata to NFT Storage at ', tokenURI);
+  console.log(
+    `Successfully uploaded metadata to NFT Storage at ${tokenURI} for ${data.name}`
+  );
 
   const tx = await contract.safeMint(
     SNI_OWNER_ADDRESS,
@@ -125,9 +129,11 @@ async function mintLionData(
     INITIAL_STATUS
   );
 
-  tx.wait();
+  const receipt = await tx.wait();
 
-  console.log('Successfully minted token for ', data.name);
+  console.log(
+    `Successfully minted token for ${data.name} at ${receipt.blockHash} while using ${receipt.gasUsed} gas`
+  );
 }
 
 async function main() {
