@@ -6,7 +6,7 @@ import "../interfaces/IDerivativeMetadataSchemaIntegrity.sol";
 abstract contract DerivativeMetadataSchemaIntegrity is IDerivativeMetadataSchemaIntegrity {
     string private _schemaURI;
     bytes private _schemaDigest;
-    string private _hashAlgorithm = "sha256";
+    string private _hashAlgorithm = "keccak256";
 
     function setDerivativeMetadataSchemaURI(string memory schemaURI) internal virtual {
         _schemaURI = schemaURI;
