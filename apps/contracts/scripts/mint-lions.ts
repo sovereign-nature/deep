@@ -5,8 +5,7 @@ import { ethers } from 'hardhat';
 import { SovereignNatureIdentifier } from '../typechain-types';
 import { makeIpfsUrl, pinData } from './utils';
 
-const IPFS_URL =
-  'ipfs://bafybeihpckelcd4bgrcteg7egtckmixns4p2mhysfmlh6lpdxwghqmhmvi';
+const IPFS_URL = 'ipfs://QmdGf3N4tFQAWwTeETrW2m5LUGJgkDXWfA1cUBWrv6ozNM';
 
 const MUSKETEERS_PDF =
   'https://www.marapredatorconservation.org/wp-content/uploads/2020/09/Muskuteers-Marsh.pdf';
@@ -66,7 +65,6 @@ function processLionData(data: LionData) {
   for (const [key, value] of Object.entries(data)) {
     let resValue;
     if (
-      key in
       [
         'whisker_right_0',
         'whisker_right_1',
@@ -77,7 +75,7 @@ function processLionData(data: LionData) {
         'ear_right',
         'ear_left',
         'face',
-      ]
+      ].includes(key)
     ) {
       resValue = getImage(value as string);
     } else {
@@ -114,7 +112,7 @@ async function mintLionData(
   const metadata = { ...parsedMetadata, ...additionalMetadata };
   const metadataHash = ethers.utils.id(JSON.stringify(metadata));
 
-  const cid = (await pinData(metadata)).data.value.cid;
+  const cid = (await pinData(metadata)).data.IpfsHash;
   const tokenURI = makeIpfsUrl(cid);
 
   console.log(
