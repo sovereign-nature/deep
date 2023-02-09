@@ -1,18 +1,27 @@
-<div *ngIf="(property$ | async) as properties"
-  class="soul"
-  [ngClass]="{'--double-row': properties.geometry, '--double-col': properties.image}">
-  <div class="soul__data" [ngClass]="{'--no-image': !properties.image}">
-    <ng-container *ngIf="(detail$ | async) as detail">
-      <h1 class="font-secondary">Details</h1>
-      <div class="soul__details">
-        <p *ngFor="let item of (detail | keyvalue)">
-          <span >{{ item.key }}: </span>
-          <span>{{ item.value ? item.value : '-' }}</span>
-        </p>
-      </div>
-    </ng-container>
-    <sni-soul-properties [properties]="properties" class="soul__properties"></sni-soul-properties>
+<div *ngIf="(property$ | async) as properties" class="soul">
+  <div class="soul__link">
+    <a routerLink="/">Back to home</a>
   </div>
-  <sni-soul-image class="soul__image" *ngIf="properties.image" [imageProperties]="[properties.image, soulId!]"></sni-soul-image>
+  <div class="soul__content">
+    <sni-soul-image class="soul__image" *ngIf="properties.image" [imageProperties]="[properties.image, soulId!]"></sni-soul-image>
+    <div class="soul__data">
+      <ng-container *ngIf="(detail$ | async) as detail">
+        <h1 class="font-secondary">Details</h1>
+        <div class="soul__details">
+          <h2 *ngIf="detail.name">{{ detail.name | titlecase}}</h2>
+          <p *ngIf="detail.id"><b>Id:</b> {{ detail.id }}</p>
+          <p *ngIf="detail.owner" class="owner">
+            <b>Owner: </b>
+            <a [href]="tranformToLink(detail.owner)" target="_blank" [title]="detail.owner">{{ detail.owner }}</a>
+          </p>
+          <p *ngIf="detail.status"><b>Status:</b> {{ detail.status | status}}</p>
+          <p *ngIf="detail.collectionName"><b>Collection:</b> {{ detail.collectionName }}</p>
+          <p *ngIf="detail.createdAt"><b>Created at:</b> {{ detail.createdAt * 1000 | date}}</p>
+          <p *ngIf="detail.updatedAt"><b>Updated at:</b> {{ detail.updatedAt * 1000 | date}}</p>
+        </div>
+      </ng-container>
+      <sni-soul-properties [properties]="properties" class="soul__properties"></sni-soul-properties>
+    </div>
+  </div>
   <sni-soul-map class="soul__map" *ngIf="properties.geometry" [map]="properties.geometry"></sni-soul-map>
 </div>

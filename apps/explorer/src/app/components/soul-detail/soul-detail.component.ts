@@ -30,4 +30,8 @@ export class SoulDetailComponent implements OnInit {
       .getSoulDataById(this.soulId, SOUL_PROPERTY)
       .pipe(shareReplay());
   }
+
+  tranformToLink(owner: string): string {
+    return `https://moonbase.moonscan.io/address/${owner}`;
+  }
 }

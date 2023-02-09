@@ -16,6 +16,7 @@ export interface Soul {
   tokenURI?: string;
   geometry?: string;
   conservationStatus?: string;
+  computeURI?: string;
 }
 export interface SoulFilter {
   searchById: string;
