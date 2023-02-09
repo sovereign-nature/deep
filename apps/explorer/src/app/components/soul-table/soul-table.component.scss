@@ -6,7 +6,6 @@ table {
   width: 80vw;
   margin: 2rem auto;
   border-radius: .25rem;
-  table-layout: fixed;
 }
 
 thead tr:first-child {
@@ -65,9 +64,21 @@ td:last-child {
     fill: #AEBADB;
   }
 }
+@media only screen and (min-width: 769px) and (max-width: 1072px) {
+  table {
+    .owner {
+      width: 100%;
+      max-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
 
 @media only screen and (max-width: 768px) {
   table {
+    table-layout: fixed;
     thead {
       border: none;
       clip: rect(0 0 0 0);
@@ -114,4 +125,11 @@ td:last-child {
     }
   }
  
+}
+@media only screen and (max-width: 425px) {
+  table {
+    .owner {
+      word-break: break-all;
+    }
+  }
 }
