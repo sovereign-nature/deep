@@ -28,7 +28,7 @@ type LionData = {
   ear_right: string;
   whisker_right_2: string;
   ear_left: string;
-  face: string;
+  profile: string;
   whisker_left_2: string;
   mouth: string;
   age: string;
@@ -59,7 +59,7 @@ function getImage(path: string) {
 }
 
 function processLionData(data: LionData) {
-  const image = getImage(`${data.face}`);
+  const image = getImage(`${data.profile}`);
 
   const attributes = [];
   for (const [key, value] of Object.entries(data)) {
@@ -74,7 +74,7 @@ function processLionData(data: LionData) {
         'whisker_left_2',
         'ear_right',
         'ear_left',
-        'face',
+        'profile',
       ].includes(key)
     ) {
       resValue = getImage(value as string);

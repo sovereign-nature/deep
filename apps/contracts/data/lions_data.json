@@ -15,7 +15,7 @@
     "whisker_right_2": "images/1/Image25.jpg",
     "ear_left": "images/1/Image26.jpg",
     "whisker_left_2": "images/1/Image27.jpg",
-    "face": "images/1/Image28.jpg",
+    "profile": "images/1/Image28.jpg",
     "mouth": "images/1/Image29.jpg",
 
     "age": "old",
@@ -54,7 +54,7 @@
     "whisker_right_2": "images/2/Image37.jpg",
     "ear_left": "images/2/Image38.jpg",
     "whisker_left_2": "images/2/Image39.jpg",
-    "face": "images/2/Image40.jpg",
+    "profile": "images/2/Image40.jpg",
     "mouth": "images/2/Image41.jpg",
 
     "age": "old",
@@ -93,7 +93,7 @@
     "whisker_right_2": "images/3/Image49.jpg",
     "ear_left": "images/3/Image50.jpg",
     "whisker_left_2": "images/3/Image51.jpg",
-    "face": "images/3/Image52.jpg",
+    "profile": "images/3/Image52.jpg",
 
     "age": "old",
     "body_size": "large",
@@ -131,7 +131,7 @@
     "whisker_right_2": "images/4/Image61.jpg",
     "ear_left": "images/4/Image62.jpg",
     "whisker_left_2": "images/4/Image63.jpg",
-    "face": "images/4/Image64.jpg",
+    "profile": "images/4/Image64.jpg",
 
     "age": "old",
     "body_size": "large",
