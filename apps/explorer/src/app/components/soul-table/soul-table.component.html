@@ -13,11 +13,11 @@
   <tbody>
     <tr *ngFor="let soul of souls">
       <td>{{ soul.id }}</td>
-      <td>{{ soul.owner }}</td>
+      <td [title]="soul.owner" class="owner">{{ soul.owner.length > 10 ? (soul.owner | slice:0:10)+'...':(soul.owner)}}</td>
       <td>{{ soul.status }}</td>
       <td>{{ soul.createdAt * 1000 | date }}</td>
       <td>{{ soul.updatedAt * 1000 | date }}</td>
-      <td>{{ soul.name }}</td>
+      <td>{{ soul.name | titlecase }}</td>
       <td>{{ soul.collectionName }}</td>
       <td><div [routerLink]="['/details', soul.id]" class="btn">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
