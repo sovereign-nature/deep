@@ -1,4 +1,5 @@
 export const mapOptions = {
+  zoom: 9,
   styles: [
     {
       elementType: 'geometry',
@@ -185,6 +186,10 @@ export const mapOptions = {
       ],
     },
   ],
+  // To remove the ctrl + scroll zoom, just implement with justification
+  // options: {
+  //   gestureHandling: 'greedy'
+  // }
 };
 
 export const markerOptions = {
