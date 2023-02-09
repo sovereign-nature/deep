@@ -16,6 +16,7 @@ import { SoulListComponent } from './components/soul-list/soul-list.component';
 import { SoulMapComponent } from './components/soul-map/soul-map.component';
 import { SoulPropertiesComponent } from './components/soul-properties/soul-properties.component';
 import { SoulTableComponent } from './components/soul-table/soul-table.component';
+import { StatusPipe } from './pipes/status.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SoulTableComponent } from './components/soul-table/soul-table.component
     SoulImageComponent,
     SoulMapComponent,
     SoulFilterComponent,
+    StatusPipe,
   ],
   imports: [
     BrowserModule,
