@@ -83,5 +83,19 @@
 }
 
 .input::-webkit-inner-spin-button  {
-  background-color: red;
+  background-color: var(--color-danger);
+}
+
+@media only screen and (max-width: 1024px) {
+  .form {
+    flex-direction: column;
+  }
+  .input-container {
+    margin-top: 0;
+    width: 80%;
+
+    .input {
+      width: 100%;
+    }
+  }
 }

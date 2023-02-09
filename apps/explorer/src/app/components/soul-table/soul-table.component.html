@@ -7,19 +7,18 @@
       <th>Created at</th>
       <th>Updated at</th>
       <th>Name</th>
-      <th colspan="2">Collection name</th>
+      <th>Details</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let soul of souls">
-      <td>{{ soul.id }}</td>
-      <td>{{ soul.owner }}</td>
-      <td>{{ soul.status }}</td>
-      <td>{{ soul.createdAt * 1000 | date }}</td>
-      <td>{{ soul.updatedAt * 1000 | date }}</td>
-      <td>{{ soul.name }}</td>
-      <td>{{ soul.collectionName }}</td>
-      <td><div [routerLink]="['/details', soul.id]" class="btn">
+      <td data-label="Id:">{{ soul.id }}</td>
+      <td [title]="soul.owner" class="owner" data-label="Owner:">{{ soul.owner }}</td>
+      <td data-label="Status:">{{ soul.status | status }}</td>
+      <td data-label="Created at:">{{ soul.createdAt * 1000 | date }}</td>
+      <td data-label="Updated at:">{{ soul.updatedAt * 1000 | date }}</td>
+      <td data-label="Name:">{{ soul.name | titlecase }}</td>
+      <td data-label="Details:" class="details"><div [routerLink]="['/details', soul.id]" class="btn">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#clip0_111_21756)">
           <path d="M12 13.5C12.8284 13.5 13.5 12.8284 13.5 12C13.5 11.1716 12.8284 10.5 12 10.5C11.1716 10.5 10.5 11.1716 10.5 12C10.5 12.8284 11.1716 13.5 12 13.5Z" fill="black"/>
