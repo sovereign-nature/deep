@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "eslint": "8.33.0",
+    "eslint": "8.34.0",
     "eslint-plugin-tailwindcss": "3.8.3",
     "eslint-plugin-vue": "9.9.0"
   },
