@@ -9,19 +9,19 @@
         <h1 class="font-secondary">Details</h1>
         <div class="soul__details">
           <h2 *ngIf="detail.name">{{ detail.name | titlecase}}</h2>
-          <p *ngIf="detail.id"><b>Id:</b> {{ detail.id }}</p>
-          <p *ngIf="detail.owner" class="owner">
+          <p *ngIf="detail.id"><b>Id:</b> {{ detail.id.charAt(detail.id.length-1) }}</p>
+          <!-- <p *ngIf="detail.owner" class="owner">
             <b>Owner: </b>
             <a [href]="tranformToLink(detail.owner)" target="_blank" [title]="detail.owner">{{ detail.owner }}</a>
-          </p>
+          </p> -->
           <p *ngIf="detail.status"><b>Status:</b> {{ detail.status | status}}</p>
           <p *ngIf="detail.collectionName"><b>Collection:</b> {{ detail.collectionName }}</p>
-          <p *ngIf="detail.createdAt"><b>Created at:</b> {{ detail.createdAt * 1000 | date}}</p>
+          <p *ngIf="detail.createdAt"><b>Published date:</b> {{ detail.createdAt * 1000 | date}}</p>
           <p *ngIf="detail.updatedAt"><b>Updated at:</b> {{ detail.updatedAt * 1000 | date}}</p>
         </div>
       </ng-container>
       <sni-soul-properties [properties]="properties" class="soul__properties"></sni-soul-properties>
     </div>
   </div>
-  <sni-soul-map class="soul__map" *ngIf="properties.geometry" [map]="properties.geometry"></sni-soul-map>
+  <!-- <sni-soul-map class="soul__map" *ngIf="properties.geometry" [map]="properties.geometry"></sni-soul-map> -->
 </div>
