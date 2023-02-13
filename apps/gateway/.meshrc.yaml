@@ -15,7 +15,15 @@ sources:
             responseSchema: ./json-schemas/metadata.json
 additionalTypeDefs: |
   extend type SNI {
-    metadata: Identifier_Token_Metadata
+    metadata: Identifier_Token_Metadata @resolveTo(
+      sourceName: "Pinata",
+      sourceTypeName: "Query",
+      sourceFieldName: "ipfsMetadata",
+      requiredSelectionSet: "{ tokenURI }",
+      sourceArgs: {
+        "input.cid": "{root.tokenURI}"
+      }
+    )
   }
 transforms:
   - resolversComposition:
