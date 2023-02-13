@@ -28,7 +28,7 @@ export function findEntity(tokenId: BigInt, blockTimestamp: BigInt): SNI {
 // Fill entity data from IPFS metadata file.
 export function fillFromIPFS(entity: SNI, tokenURI: string): SNI {
   const data = ipfs.cat(tokenURI.replace('ipfs://', ''));
-  log.info('Reindexing: {}', ['1']);
+  log.info('Reindexing: {}', ['4']);
 
   if (data !== null) {
     const metadata = json.fromBytes(data).toObject();

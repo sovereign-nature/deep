@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Address, log } from '@graphprotocol/graph-ts';
-import { SNI_CONTRACT_ADDRESS } from '@sni/constants';
+import { SNI_CONTRACT_ADDRESS_STAGING } from '@sni/constants';
 import {
   Approval,
   ApprovalForAll,
@@ -17,7 +17,7 @@ import {
 } from '../generated/SovereignNatureIdentifier/SovereignNatureIdentifier';
 import { fillFromIPFS, findEntity } from './utils';
 
-const CONTRACT_ADDRESS = Address.fromString(SNI_CONTRACT_ADDRESS);
+const CONTRACT_ADDRESS = Address.fromString(SNI_CONTRACT_ADDRESS_STAGING);
 
 //TODO: Decide if we need approval events. Marketplace integration is not planned.
 export function handleApproval(event: Approval): void {
@@ -93,6 +93,7 @@ export function handleTransfer(event: Transfer): void {
 
   const tokenId = event.params.tokenId;
   const owner = event.params.to;
+  log.info('TO: ', [event.params.to.toString()]);
   const status = contract.statusOf(tokenId);
 
   const tokenURI = contract.tokenURI(tokenId);

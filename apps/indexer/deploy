@@ -1,0 +1,2 @@
+graph auth --product hosted-service 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
+graph deploy --product hosted-service sovereign-nature/sni-staging
