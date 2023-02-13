@@ -13,3 +13,13 @@ sources:
             path: /ipfs/{args.cid}
             method: GET
             responseSchema: ./json-schemas/metadata.json
+additionalTypeDefs: |
+  extend type SNI {
+    metadata: Identifier_Token_Metadata
+  }
+transforms:
+  - resolversComposition:
+      mode: bare
+      compositions:
+        - resolver: 'Query.ipfsMetadata'
+          composer: './middleware/getCid.ts'

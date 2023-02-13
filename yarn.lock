@@ -2675,6 +2675,17 @@
     lodash.get "4.4.2"
     tslib "^2.4.0"
 
+"@graphql-mesh/transform-resolvers-composition@0.13.9":
+  version "0.13.9"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-resolvers-composition/-/transform-resolvers-composition-0.13.9.tgz#a7b7ac8c7cb9e4f323a2f5fc2f471984c1b57948"
+  integrity sha512-dZEukxhq0eKTe7YgVg71qXozmkp3uBntPquT5Q9Iuqgy7mPM9oEpVaOL2Nv6o/FOr2WRTKOwNoiD99BGsrClgQ==
+  dependencies:
+    "@graphql-mesh/types" "0.91.1"
+    "@graphql-mesh/utils" "0.43.9"
+    "@graphql-tools/resolvers-composition" "6.5.17"
+    "@graphql-tools/schema" "9.0.16"
+    tslib "^2.4.0"
+
 "@graphql-mesh/types@0.91.1":
   version "0.91.1"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.91.1.tgz#587049ecbc0b5759277204c7b63ec2bcbbf0d7e5"
@@ -3171,6 +3182,16 @@
   dependencies:
     "@ardatan/relay-compiler" "12.0.0"
     "@graphql-tools/utils" "9.1.1"
+    tslib "^2.4.0"
+
+"@graphql-tools/resolvers-composition@6.5.17":
+  version "6.5.17"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/resolvers-composition/-/resolvers-composition-6.5.17.tgz#fe3444d762309a3c23726a7cb4d9d91b16161034"
+  integrity sha512-9VGQUt71wdwoKBda2Yln6X1ulTrhknIsO9G7+S1szTeadzDFnBDFXjlzTINd6/+3hmfDiUg0ps5VLzgivQwzpg==
+  dependencies:
+    "@graphql-tools/utils" "9.2.1"
+    lodash "4.17.21"
+    micromatch "^4.0.4"
     tslib "^2.4.0"
 
 "@graphql-tools/schema@9.0.10", "@graphql-tools/schema@^9.0.0":
@@ -12068,7 +12089,7 @@ lodash.xor@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.xor/-/lodash.xor-4.5.0.tgz#4d48ed7e98095b0632582ba714d3ff8ae8fb1db6"
   integrity sha512-sVN2zimthq7aZ5sPGXnSz32rZPuqcparVW50chJQe+mzTYV+IsxSsl/2gnkWWE2Of7K3myBQBqtLKOUEHJKRsQ==
 
-lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@~4.17.0:
+lodash@4.17.21, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@~4.17.0:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
