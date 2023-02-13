@@ -13,6 +13,12 @@ sources:
             path: /ipfs/{args.cid}
             method: GET
             responseSchema: ./json-schemas/metadata.json
+    transforms:
+      - resolversComposition:
+          mode: bare
+          compositions:
+            - resolver: 'Query.ipfsMetadata'
+              composer: './middleware/getCid.ts'
 additionalTypeDefs: |
   extend type SNI {
     metadata: Identifier_Token_Metadata
@@ -29,9 +35,3 @@ additionalResolvers:
       }
     sourceArgs: # What args does this need to take?
       cid: '{root.tokenURI}'
-transforms:
-  - resolversComposition:
-      mode: wrap
-      compositions:
-        - resolver: 'Query.ipfsMetadata'
-          composer: './middleware/getCid.ts'
