@@ -15,19 +15,23 @@ sources:
             responseSchema: ./json-schemas/metadata.json
 additionalTypeDefs: |
   extend type SNI {
-    metadata: Identifier_Token_Metadata @resolveTo(
-      sourceName: "Pinata",
-      sourceTypeName: "Query",
-      sourceFieldName: "ipfsMetadata",
-      requiredSelectionSet: "{ tokenURI }",
-      sourceArgs: {
-        "input.cid": "{root.tokenURI}"
-      }
-    )
+    metadata: Identifier_Token_Metadata
   }
+additionalResolvers:
+  - targetTypeName: SNI
+    targetFieldName: metadata
+    sourceName: Pinata # Which source does the target field belong to?
+    sourceTypeName: Query # Which root type does the target field belong to?
+    sourceFieldName: ipfsMetadata # What is the source field name?
+    requiredSelectionSet: |
+      {
+        tokenURI
+      }
+    sourceArgs: # What args does this need to take?
+      cid: '{root.tokenURI}'
 transforms:
   - resolversComposition:
-      mode: bare
+      mode: wrap
       compositions:
         - resolver: 'Query.ipfsMetadata'
           composer: './middleware/getCid.ts'
