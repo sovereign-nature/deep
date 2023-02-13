@@ -28,7 +28,7 @@
     "@sni/constants": "*",
     "chai": "4.3.7",
     "dotenv": "16.0.3",
-    "eslint": "8.33.0",
+    "eslint": "8.34.0",
     "eslint-config-sni": "*",
     "ethers": "5.7.2",
     "hardhat": "2.12.6",
