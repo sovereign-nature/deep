@@ -14,7 +14,7 @@
     "lint": "npm run lint:contracts && npm run lint:tests"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-chai-matchers": "1.0.5",
+    "@nomicfoundation/hardhat-chai-matchers": "1.0.6",
     "@nomicfoundation/hardhat-network-helpers": "1.0.8",
     "@nomicfoundation/hardhat-toolbox": "2.0.1",
     "@nomiclabs/hardhat-ethers": "2.2.2",
