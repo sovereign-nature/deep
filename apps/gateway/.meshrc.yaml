@@ -1,0 +1,15 @@
+sources:
+  - name: TheGraph
+    handler:
+      graphql:
+        endpoint: https://api.thegraph.com/subgraphs/name/sovereign-nature/sni
+  - name: Pinata
+    handler:
+      jsonSchema:
+        endpoint: https://gateway.pinata.cloud/
+        operations:
+          - type: Query
+            field: ipfsMetadata
+            path: /ipfs/{args.cid}
+            method: GET
+            responseSchema: ./json-schemas/metadata.json

@@ -1,0 +1,19 @@
+{
+  "name": "@sni/gateway",
+  "version": "0.0.0",
+  "description": "GraphQL API Gateway",
+  "scripts": {
+    "dev": "mesh dev",
+    "build": "mesh build"
+  },
+  "dependencies": {
+    "@graphql-mesh/cli": "0.82.16",
+    "@graphql-mesh/json-schema": "0.37.10",
+    "@graphql-mesh/graphql": "0.34.2",
+    "graphql": "16.6.0"
+  },
+  "devDependencies": {
+    "@sni/prettier-config": "*",
+    "eslint-config-sni": "*"
+  }
+}
