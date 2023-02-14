@@ -2140,10 +2140,10 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@graphprotocol/graph-cli@0.38.0":
-  version "0.38.0"
-  resolved "https://registry.yarnpkg.com/@graphprotocol/graph-cli/-/graph-cli-0.38.0.tgz#80508db59289d18ad597c9dd860c2a0158268014"
-  integrity sha512-9WiVp96iSsoQ5iJaQrGTraH+reaGteQDSfWEc1TlDTJ8UqBPLus3a8zSjbN7iAkctgujIEHTdtdBMZZXY94RlQ==
+"@graphprotocol/graph-cli@0.39.0":
+  version "0.39.0"
+  resolved "https://registry.yarnpkg.com/@graphprotocol/graph-cli/-/graph-cli-0.39.0.tgz#2ef743f6a8a8e522034305106fb2c3c01d15fdb6"
+  integrity sha512-cOaGmgDCQQM0Uh/fhGvJdijilEacjUiYMi5ixUcAMeEewNqd4ZnN6Smab+ilo4nbOECj+6h59X2n4Gmz1FZO+w==
   dependencies:
     "@float-capital/float-subgraph-uncrashable" "^0.0.0-alpha.4"
     assemblyscript "0.19.23"
@@ -2155,7 +2155,7 @@
     dockerode "2.5.8"
     fs-extra "9.0.0"
     glob "7.1.6"
-    gluegun "https://github.com/edgeandnode/gluegun#v4.3.1-pin-colors-dep"
+    gluegun "git+https://github.com/edgeandnode/gluegun.git#v4.3.1-pin-colors-dep"
     graphql "15.5.0"
     immutable "4.2.1"
     ipfs-http-client "34.0.0"
@@ -8890,9 +8890,10 @@ globby@^13.1.1:
     merge2 "^1.4.1"
     slash "^4.0.0"
 
-"gluegun@https://github.com/edgeandnode/gluegun#v4.3.1-pin-colors-dep":
+"gluegun@git+https://github.com/edgeandnode/gluegun.git#v4.3.1-pin-colors-dep":
   version "4.3.1"
-  resolved "https://github.com/edgeandnode/gluegun#b34b9003d7bf556836da41b57ef36eb21570620a"
+  uid b34b9003d7bf556836da41b57ef36eb21570620a
+  resolved "git+https://github.com/edgeandnode/gluegun.git#b34b9003d7bf556836da41b57ef36eb21570620a"
   dependencies:
     apisauce "^1.0.1"
     app-module-path "^2.2.0"
