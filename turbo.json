@@ -21,7 +21,8 @@
         "abi/**",
         "dist/**",
         "coverage/**",
-        "graphql/**"
+        "graphql/**",
+        ".mesh/**"
       ]
     },
     "lint": {
