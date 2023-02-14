@@ -8,10 +8,10 @@
     "build": "mesh build"
   },
   "dependencies": {
-    "@graphql-mesh/cli": "0.82.16",
-    "@graphql-mesh/json-schema": "0.37.10",
-    "@graphql-mesh/graphql": "0.34.2",
-    "@graphql-mesh/transform-resolvers-composition": "0.13.9",
+    "@graphql-mesh/cli": "0.82.20",
+    "@graphql-mesh/json-schema": "0.37.12",
+    "@graphql-mesh/graphql": "0.34.4",
+    "@graphql-mesh/transform-resolvers-composition": "0.13.11",
     "graphql": "16.6.0"
   },
   "devDependencies": {
