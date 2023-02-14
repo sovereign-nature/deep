@@ -1,14 +1,20 @@
 <h1 class="font-secondary">Properties</h1>
 <div class="properties">
   <p *ngIf="properties?.tokenId"><b>Token id:</b> {{ properties?.tokenId }}</p>
-  <p *ngIf="properties?.tokenURI">
+  <!-- <p *ngIf="properties?.tokenURI">
     <b>Token URI: </b>
      <a [href]="transformLinkIPFS(properties?.tokenURI ?? '')" target="_blank" [title]="properties?.computeURI">{{ properties?.tokenURI }}</a>
-  </p>
+  </p> -->
   <p *ngIf="properties?.computeURI">
     <b>Compute URI: </b>
     <a [href]="properties?.computeURI" target="_blank" [title]="properties?.computeURI">{{ properties?.computeURI }}</a>
   </p>
   <!-- <p *ngIf="properties?.conservationStatus"><b>Conservation status:</b> {{ properties?.conservationStatus }}</p> -->
   <p *ngIf="properties?.taxonId"><b>Taxon id:</b> {{ properties?.taxonId }}</p>
+  <div *ngIf="metadata$ | async as mtd" class="properties__traits">
+    <div *ngFor="let att of mtd.attributes" class="trait">
+      <p>{{ att.trait_type }}</p>
+      <h3>{{ att.value }}</h3>
+    </div>
+  </div>
 </div>
