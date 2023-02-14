@@ -2204,7 +2204,7 @@
     which "2.0.2"
     yaml "1.9.2"
 
-"@graphprotocol/graph-ts@0.29.3", "@graphprotocol/graph-ts@^0.27.0":
+"@graphprotocol/graph-ts@0.29.3":
   version "0.29.3"
   resolved "https://registry.yarnpkg.com/@graphprotocol/graph-ts/-/graph-ts-0.29.3.tgz#f0a664790e966f5fb9bce317a8861e84ec1f3394"
   integrity sha512-FXBLGlunOSwjiUXYEz1J9J/I2D/myldyib/9v0R+gn/NJaYqUkXD39UmIuRxqj9cBzB/FYojHzoHidIG5nYZDw==
@@ -5626,7 +5626,7 @@ assemblyscript@0.19.10:
     binaryen "101.0.0-nightly.20210723"
     long "^4.0.0"
 
-assemblyscript@0.19.23, assemblyscript@^0.19.20:
+assemblyscript@0.19.23:
   version "0.19.23"
   resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.19.23.tgz#16ece69f7f302161e2e736a0f6a474e6db72134c"
   integrity sha512-fwOQNZVTMga5KRsfY80g7cpOl4PsFQczMwHzdtgoqLXaYhkhavufKb0sB0l3T1DUxpAufA0KNhlbpuuhZUwxMA==
@@ -12262,13 +12262,11 @@ markdown-table@^1.1.3:
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-1.1.3.tgz#9fcb69bcfdb8717bfd0398c6ec2d93036ef8de60"
   integrity sha512-1RUZVgQlpJSPWYbFSpmudq5nHY1doEIv89gBtF0s4gW1GF2XorxcA/70M5vq7rLv0a6mhOUccRsqkwhwLCIQ2Q==
 
-matchstick-as@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/matchstick-as/-/matchstick-as-0.5.0.tgz#cdafc1ef49d670b9cbe98e933bc2a5cb7c450aeb"
-  integrity sha512-4K619YDH+so129qt4RB4JCNxaFwJJYLXPc7drpG+/mIj86Cfzg6FKs/bA91cnajmS1CLHdhHl9vt6Kd6Oqvfkg==
+matchstick-as@0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/matchstick-as/-/matchstick-as-0.5.1.tgz#dd2983811e1f346a1d7607c82a354f12a93b8e2b"
+  integrity sha512-4mClFCu+wGoKH0V7u058U2lel7IJGcAABtPuq6u1jEUmV86ATWQWNw1x6S0zNUG5GJUBuq6Ghb0qBI1Cjx+KoA==
   dependencies:
-    "@graphprotocol/graph-ts" "^0.27.0"
-    assemblyscript "^0.19.20"
     wabt "1.0.24"
 
 mcl-wasm@^0.7.1:
