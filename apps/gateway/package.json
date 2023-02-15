@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "GraphQL API Gateway",
   "scripts": {
-    "run": "mesh start",
+    "start": "mesh start",
     "dev": "mesh dev",
     "build": "mesh build"
   },
