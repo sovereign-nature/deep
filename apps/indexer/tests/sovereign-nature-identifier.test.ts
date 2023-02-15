@@ -52,6 +52,7 @@ describe('SNI Indexer', () => {
       OWNER,
       INITIAL_TOKEN_ID_INT
     );
+
     handleTransfer(transferEvent);
   });
 
@@ -60,6 +61,7 @@ describe('SNI Indexer', () => {
     mockForToken(tokenId);
 
     const transferEvent = createTransferEvent(MINTER, OWNER, tokenId);
+
     handleTransfer(transferEvent);
 
     assert.fieldEquals(
@@ -78,6 +80,7 @@ describe('SNI Indexer', () => {
       Address.fromString(SECOND_OWNER_ADDRESS),
       INITIAL_TOKEN_ID_INT
     );
+
     handleTransfer(transferEvent);
 
     assert.fieldEquals(
@@ -110,6 +113,7 @@ describe('SNI Indexer', () => {
       INITIAL_TOKEN_ID_INT,
       UPDATED_COMPUTE_URI
     );
+
     handleComputeURISet(computeURISetEvent);
 
     const tokenId = INITIAL_TOKEN_ID_INT.toHex();
