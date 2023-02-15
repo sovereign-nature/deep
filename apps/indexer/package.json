@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "license": "UNLICENSED",
   "scripts": {
-    "codegen": "graph codegen",
-    "build": "graph codegen && graph build",
+    "codegen": "yarn prepare && graph codegen",
+    "build": "yarn codegen && graph build",
     "prepare": "mustache config/prod.json subgraph.template.yaml > subgraph.yaml",
     "prepare:staging": "mustache config/staging.json subgraph.template.yaml > subgraph.yaml",
     "deploy": "graph deploy sovereign-nature/sni --product hosted-service --access-token $ACCESS_TOKEN",
