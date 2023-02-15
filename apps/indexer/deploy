@@ -1,2 +1,0 @@
-graph auth --product hosted-service <TOKEN>
-graph deploy --product hosted-service sovereign-nature/sni-staging
