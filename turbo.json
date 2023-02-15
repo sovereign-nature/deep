@@ -9,7 +9,8 @@
         "NUXT_PUBLIC_MAPBOX_TOKEN",
         "PRIVATE_KEY",
         "NFT_STORAGE_API_KEY",
-        "PINATA_API_KEY"
+        "PINATA_API_KEY",
+        "NODE_ENV"
       ],
       "outputs": [
         "artifacts/**",

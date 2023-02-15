@@ -14,5 +14,11 @@ module.exports = {
         explicitTypes: 'always',
       },
     },
+    {
+      files: '*.template.yaml',
+      options: {
+        bracketSpacing: false,
+      },
+    },
   ],
 };

@@ -1,5 +1,5 @@
 specVersion: 0.0.4
-description: Sovereign Nature Identifier on mbase
+description: {{description}}
 features:
   - ipfsOnEthereumContracts
 schema:
@@ -7,11 +7,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: SovereignNatureIdentifier
-    network: mbase
+    network: {{network}}
     source:
-      address: '0x07e0ad7e038b554c9b369a927e38c2b8389d0ba0'
+      address: '{{address}}'
       abi: SovereignNatureIdentifier
-      startBlock: 3709925
+      startBlock: {{startBlock}}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
