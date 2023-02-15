@@ -4,6 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ApolloTestingModule } from 'apollo-angular/testing';
 import { of } from 'rxjs';
 import { Soul } from 'src/app/models/soul';
+import { StatusPipe } from 'src/app/pipes/status.pipe';
 import { SoulService } from 'src/app/services/soul.service';
 import { SoulFilterComponent } from '../soul-filter/soul-filter.component';
 import { SoulTableComponent } from '../soul-table/soul-table.component';
@@ -39,6 +40,7 @@ describe('SoulListComponent', () => {
         SoulListComponent,
         SoulTableComponent,
         SoulFilterComponent,
+        StatusPipe,
       ],
       providers: [{ provide: SoulService, useValue: soulServiceSpy }],
     }).compileComponents();

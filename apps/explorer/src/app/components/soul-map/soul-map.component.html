@@ -1,10 +1,9 @@
 <div *ngIf="map" class="map">
   <h1 class="font-secondary">Map</h1>
   <google-map
-    height="600px"
-    width="1240px"
+    [height]="height"
+    [width]="width"
     [center]="wktToGeoJson(map)"
-    [zoom]="9"
     [options]="mapOptions">
     <map-marker
       [position]="wktToGeoJson(map)"

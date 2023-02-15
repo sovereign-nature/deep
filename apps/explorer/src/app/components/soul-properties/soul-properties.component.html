@@ -1,6 +1,14 @@
 <h1 class="font-secondary">Properties</h1>
 <div class="properties">
-  <ng-container *ngFor="let property of (properties | keyvalue)">
-    <p><b>{{ property.key }}</b>: {{ property.value ? property.value : '-' }}</p>
-  </ng-container>
+  <p *ngIf="properties?.tokenId"><b>Token id:</b> {{ properties?.tokenId }}</p>
+  <p *ngIf="properties?.tokenURI">
+    <b>Token URI: </b>
+     <a [href]="transformLinkIPFS(properties?.tokenURI ?? '')" target="_blank" [title]="properties?.computeURI">{{ properties?.tokenURI }}</a>
+  </p>
+  <p *ngIf="properties?.computeURI">
+    <b>Compute URI: </b>
+    <a [href]="properties?.computeURI" target="_blank" [title]="properties?.computeURI">{{ properties?.computeURI }}</a>
+  </p>
+  <p *ngIf="properties?.conservationStatus"><b>Conservation status:</b> {{ properties?.conservationStatus }}</p>
+  <p *ngIf="properties?.taxonId"><b>Taxon id:</b> {{ properties?.taxonId }}</p>
 </div>

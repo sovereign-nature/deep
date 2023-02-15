@@ -8,12 +8,12 @@
   },
   "devDependencies": {
     "@vueuse/core": "9.12.0",
-    "vitepress": "1.0.0-alpha.45",
+    "vitepress": "1.0.0-alpha.46",
     "vue": "3.2.47",
     "vitepress-plugin-mermaid": "2.0.10",
     "mermaid": "9.3.0",
     "@mermaid-js/mermaid-mindmap": "9.3.0",
-    "eslint": "8.33.0",
+    "eslint": "8.34.0",
     "eslint-config-sni": "*",
     "eslint-config-sni-vue": "*"
   }

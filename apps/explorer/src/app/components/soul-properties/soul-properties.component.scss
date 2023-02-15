@@ -11,3 +11,21 @@
     padding-bottom: .5rem;
   }
 }
+
+@media screen and (max-width: 768px){
+  .properties {
+    max-width: 26rem;
+    p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+@media screen and (max-width: 480px){
+  .properties {
+    max-width: 17rem;
+  }
+}
+

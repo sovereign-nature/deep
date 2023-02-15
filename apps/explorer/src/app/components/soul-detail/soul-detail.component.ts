@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, shareReplay, tap } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { Soul } from 'src/app/models/soul';
 import { SOUL_DETAIL, SOUL_PROPERTY } from 'src/app/queries/sni';
 import { SoulService } from 'src/app/services/soul.service';
@@ -28,9 +28,10 @@ export class SoulDetailComponent implements OnInit {
 
     this.property$ = this.soulService
       .getSoulDataById(this.soulId, SOUL_PROPERTY)
-      .pipe(
-        tap((val) => console.log(val)),
-        shareReplay()
-      );
+      .pipe(shareReplay());
+  }
+
+  tranformToLink(owner: string): string {
+    return `https://moonbase.moonscan.io/address/${owner}`;
   }
 }

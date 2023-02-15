@@ -11,11 +11,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SoulDetailComponent } from './components/soul-detail/soul-detail.component';
 import { SoulFilterComponent } from './components/soul-filter/soul-filter.component';
+import { SoulHeaderComponent } from './components/soul-header/soul-header.component';
 import { SoulImageComponent } from './components/soul-image/soul-image.component';
 import { SoulListComponent } from './components/soul-list/soul-list.component';
 import { SoulMapComponent } from './components/soul-map/soul-map.component';
 import { SoulPropertiesComponent } from './components/soul-properties/soul-properties.component';
 import { SoulTableComponent } from './components/soul-table/soul-table.component';
+import { StatusPipe } from './pipes/status.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { SoulTableComponent } from './components/soul-table/soul-table.component
     SoulImageComponent,
     SoulMapComponent,
     SoulFilterComponent,
+    StatusPipe,
+    SoulHeaderComponent,
   ],
   imports: [
     BrowserModule,
