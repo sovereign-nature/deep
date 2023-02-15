@@ -1,5 +1,5 @@
 specVersion: 0.0.4
-description: Sovereign Nature Identifier STAGING
+description: {{description}}
 features:
   - ipfsOnEthereumContracts
 schema:
@@ -7,11 +7,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: SovereignNatureIdentifier
-    network: mbase
+    network: {{network}}
     source:
-      address: '0xfd3434f66093f8007B30Bc44D3c467E660589059'
+      address: '{{address}}'
       abi: SovereignNatureIdentifier
-      startBlock: 3714469
+      startBlock: {{startBlock}}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
