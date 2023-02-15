@@ -1,4 +1,5 @@
 import {
+  SNI_CONTRACT_ADDRESS,
   SNI_CONTRACT_ADDRESS_STAGING,
   SNI_OWNER_ADDRESS,
 } from '@sni/constants';
@@ -86,6 +87,7 @@ function processLionData(rawData: LionData) {
         'ear_right',
         'ear_left',
         'profile',
+        'mouth',
       ].includes(key)
     ) {
       resValue = getImage(value as string);
@@ -151,7 +153,12 @@ async function main() {
     'SovereignNatureIdentifier'
   );
 
-  const sni = SovereignNatureIdentifier.attach(SNI_CONTRACT_ADDRESS_STAGING);
+  const contractAddress =
+    process.env.NODE_ENV === 'production'
+      ? SNI_CONTRACT_ADDRESS
+      : SNI_CONTRACT_ADDRESS_STAGING;
+
+  const sni = SovereignNatureIdentifier.attach(contractAddress);
 
   const data = fs.readFileSync('./data/lions-full.json');
   const lionsData: Array<LionData> = JSON.parse(data.toString());
