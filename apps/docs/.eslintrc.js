@@ -1,4 +1,4 @@
 module.exports = {
   root: true,
-  extends: ['sni'],
+  extends: ['sni'], //TODO: Add sni-vue
 };

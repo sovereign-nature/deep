@@ -4,18 +4,21 @@
   "description": "GraphQL API Gateway",
   "scripts": {
     "start": "mesh start",
-    "dev": "mesh dev",
-    "build": "mesh build"
+    "dev": "wrangler dev",
+    "dev:mesh": "mesh dev",
+    "build": "mesh build",
+    "deploy": "wrangler publish"
   },
   "dependencies": {
     "@graphql-mesh/cli": "0.82.20",
-    "@graphql-mesh/json-schema": "0.37.13",
     "@graphql-mesh/graphql": "0.34.4",
+    "@graphql-mesh/json-schema": "0.37.13",
     "@graphql-mesh/transform-resolvers-composition": "0.13.11",
     "graphql": "16.6.0"
   },
   "devDependencies": {
     "@sni/prettier-config": "*",
-    "eslint-config-sni": "*"
+    "eslint-config-sni": "*",
+    "wrangler": "2.9.1"
   }
 }

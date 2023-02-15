@@ -2,11 +2,11 @@ sources:
   - name: TheGraph
     handler:
       graphql:
-        endpoint: https://api.thegraph.com/subgraphs/name/sovereign-nature/sni
+        endpoint: 'https://api.thegraph.com/subgraphs/name/sovereign-nature/sni'
   - name: Pinata
     handler:
       jsonSchema:
-        endpoint: https://gateway.pinata.cloud/
+        endpoint: 'https://gateway.pinata.cloud/'
         operations:
           - type: Query
             field: ipfsMetadata
@@ -35,5 +35,3 @@ additionalResolvers:
       }
     sourceArgs:
       cid: '{root.tokenURI}'
-serve:
-  endpoint: /api/graphql
