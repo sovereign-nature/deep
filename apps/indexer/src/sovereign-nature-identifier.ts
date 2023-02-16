@@ -14,7 +14,7 @@ import {
   TokenURISet,
   Transfer,
 } from '../generated/SovereignNatureIdentifier/SovereignNatureIdentifier';
-import { fillFromIPFS, findEntity } from './utils';
+import { findEntity } from './utils';
 
 //TODO: Decide if we need approval events. Marketplace integration is not planned.
 export function handleApproval(event: Approval): void {
@@ -60,8 +60,6 @@ export function handleTokenURISet(event: TokenURISet): void {
   entity.tokenURI = tokenURI;
   entity.tokenMetadataDigest = tokenMetadataDigest;
 
-  fillFromIPFS(entity, tokenURI);
-
   entity.save();
 }
 
@@ -90,7 +88,6 @@ export function handleTransfer(event: Transfer): void {
 
   const tokenId = event.params.tokenId;
   const owner = event.params.to;
-  log.info('TO: ', [event.params.to.toString()]);
   const status = contract.statusOf(tokenId);
 
   const tokenURI = contract.tokenURI(tokenId);
@@ -134,8 +131,6 @@ export function handleTransfer(event: Transfer): void {
 
   entity.dataURI = dataURI;
   entity.computeURI = computeURI;
-
-  fillFromIPFS(entity, tokenURI);
 
   entity.save();
 }

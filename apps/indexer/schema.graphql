@@ -16,6 +16,7 @@ type SNI @entity {
   derivativeMetadataSchemaHashFunction: String! #TODO: We probably can store one hash function per protocol version
   computeURI: String!
   dataURI: String!
+
   status: BigInt!
 
   createdAt: BigInt!
@@ -24,14 +25,15 @@ type SNI @entity {
   oracle: Bytes
   collectionName: String
   symbol: String
-  name: String
-  description: String
-  image: String
+
+  # name: String
+  # description: String
+  # image: String
 
   # Properties
   # TODO: Upgrade to properties object when The Graph will support it
-  statusDescription: String
-  taxonId: String
-  conservationStatus: String
-  geometry: String
+  # statusDescription: String
+  # taxonId: String
+  # conservationStatus: String
+  # geometry: String
 }
