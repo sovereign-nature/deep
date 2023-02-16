@@ -1,12 +1,5 @@
-<script setup>
-withDefaults(
-  defineProps({
-    label: String,
-  }),
-  {
-    label: 'label',
-  }
-);
+<script setup lang="ts">
+defineProps<{ label: string }>();
 </script>
 <template>
   <li>
