@@ -9,7 +9,7 @@
     "test": "ng test --no-watch --no-progress --code-coverage --browsers=ChromeHeadless",
     "test:dev": "ng test",
     "lint": "eslint \"**/*.{ts,js}\"",
-    "codegen": "graphql-codegen"
+    "codegen:notworking": "graphql-codegen"
   },
   "private": true,
   "dependencies": {

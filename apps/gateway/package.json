@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "description": "GraphQL API Gateway",
   "scripts": {
-    "prepare": "env-cmd mustache config/production.js .meshrc.template.yaml > .meshrc.yaml",
-    "prepare:staging": "env-cmd mustache config/staging.js .meshrc.template.yaml > .meshrc.yaml",
+    "codegen": "env-cmd mustache config/production.js .meshrc.template.yaml > .meshrc.yaml",
+    "codegen:staging": "env-cmd mustache config/staging.js .meshrc.template.yaml > .meshrc.yaml",
     "start": "mesh start",
     "dev": "wrangler dev",
-    "deploy": "yarn prepare && wrangler publish",
-    "deploy:staging": "yarn prepare:staging && wrangler publish --env staging"
+    "deploy": "yarn codegen && wrangler publish",
+    "deploy:staging": "yarn codegen:staging && wrangler publish --env staging",
+    "build": "yarn codegen && wrangler build"
   },
   "dependencies": {
     "@graphql-mesh/cli": "0.82.22",
