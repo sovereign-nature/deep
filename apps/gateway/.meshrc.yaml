@@ -6,7 +6,7 @@ sources:
   - name: Pinata
     handler:
       jsonSchema:
-        endpoint: 'https://cloudflare-ipfs.com/'
+        endpoint: 'https://ipfs.io'
         operations:
           - type: Query
             field: ipfsMetadata

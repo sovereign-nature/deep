@@ -10,4 +10,4 @@ node_compat = true
 # IPFS_GATEWAY = "https://gateway.pinata.cloud/"
 
 [build]
-command = "env-cmd mesh build"
+command = "mesh build"
