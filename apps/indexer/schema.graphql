@@ -25,15 +25,4 @@ type SNI @entity {
   oracle: Bytes
   collectionName: String
   symbol: String
-
-  # name: String
-  # description: String
-  # image: String
-
-  # Properties
-  # TODO: Upgrade to properties object when The Graph will support it
-  # statusDescription: String
-  # taxonId: String
-  # conservationStatus: String
-  # geometry: String
 }
