@@ -3,7 +3,7 @@
     <a routerLink="/">Back to home</a>
   </div>
   <div class="soul__content">
-    <sni-soul-image class="soul__image" *ngIf="properties.image" [imageProperties]="[properties.image, soulId!]"></sni-soul-image>
+    <sni-soul-image class="soul__image" *ngIf="properties.image" [properties]="properties"></sni-soul-image>
     <div class="soul__data">
       <ng-container *ngIf="(detail$ | async) as detail">
         <h1 class="font-secondary">Details</h1>

@@ -37,6 +37,23 @@
       }
     }
   }
+  .prides {
+    display: flex;
+    margin-bottom: 1rem;
+    b {
+      margin-right: .5rem;;
+    }
+    &__item {
+      text-align: center;
+      text-transform: capitalize;
+      background: linear-gradient(var(--color-primary), var(--color-accent));
+      padding: .25rem .5rem;
+      margin-right: .5rem;
+      border-radius: 2rem;
+      color: var(--color-black);
+      font-weight: 600;
+    }
+  }
 }
 
 @media screen and (max-width: 768px){
@@ -46,6 +63,13 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+    .prides {
+      flex-direction: column;
+
+      b, &__item {
+        margin-bottom: .5rem;
+      }
     }
   }
 }

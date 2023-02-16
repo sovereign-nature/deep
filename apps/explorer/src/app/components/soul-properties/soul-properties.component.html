@@ -11,10 +11,13 @@
   </p>
   <!-- <p *ngIf="properties?.conservationStatus"><b>Conservation status:</b> {{ properties?.conservationStatus }}</p> -->
   <p *ngIf="properties?.taxonId"><b>Taxon id:</b> {{ properties?.taxonId }}</p>
+  <ng-container *ngIf="prides">
+    <div class="prides"><b>Prides:</b><p *ngFor="let item of prides" class="prides__item">{{item}}</p></div>
+  </ng-container>
   <div *ngIf="metadata$ | async as mtd" class="properties__traits">
-    <div *ngFor="let att of mtd.attributes" class="trait">
+    <div *ngFor="let att of filterAttributes(mtd.attributes)" class="trait">
       <p>{{ att.trait_type }}</p>
-      <h3>{{ att.value }}</h3>
+      <h3>{{ att.value.toString().replaceAll('_', ' ') }}</h3>
     </div>
   </div>
 </div>

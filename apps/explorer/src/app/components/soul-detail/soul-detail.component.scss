@@ -2,7 +2,7 @@
   &__content {
     display: flex;
     justify-content: center;
-    padding: 1rem;
+    padding: 2rem;
   }
 
   &__details {
@@ -23,7 +23,7 @@
   }
 
   &__link {
-    padding: 1rem;
+    padding: 2rem 1rem;
     a {
       transition: all .2s ease-in;
       &:hover {
