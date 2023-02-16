@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "license": "UNLICENSED",
   "scripts": {
-    "codegen": "yarn prepare && graph codegen",
+    "codegen": "mustache config/prod.json subgraph.template.yaml > subgraph.yaml && graph codegen",
+    "codegen:staging": "mustache config/staging.json subgraph.template.yaml > subgraph.yaml && graph codegen",
     "build": "yarn codegen && graph build",
-    "prepare": "mustache config/prod.json subgraph.template.yaml > subgraph.yaml",
-    "prepare:staging": "mustache config/staging.json subgraph.template.yaml > subgraph.yaml",
+    "build:staging": "yarn codegen:staging && graph build",
     "deploy": "graph deploy sovereign-nature/sni --product hosted-service --access-token $ACCESS_TOKEN",
     "deploy:staging": "graph deploy sovereign-nature/sni-staging --product hosted-service --access-token $ACCESS_TOKEN",
     "create-local": "graph create --node http://localhost:8020/ sni",
@@ -15,12 +15,11 @@
     "test": "graph test"
   },
   "devDependencies": {
-    "matchstick-as": "0.5.0",
+    "matchstick-as": "0.5.1",
     "@graphprotocol/graph-cli": "0.40.0",
     "@graphprotocol/graph-ts": "0.29.3",
     "@sni/constants": "*",
     "@sni/contracts": "*",
-    "matchstick-as": "0.5.1",
     "mustache": "4.2.0"
   }
 }

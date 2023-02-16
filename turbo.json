@@ -10,7 +10,8 @@
         "PRIVATE_KEY",
         "NFT_STORAGE_API_KEY",
         "PINATA_API_KEY",
-        "NODE_ENV"
+        "NODE_ENV",
+        "PINATA_TOKEN"
       ],
       "outputs": [
         "artifacts/**",
@@ -20,12 +21,14 @@
         ".nuxt/**",
         ".vercel/**",
         "build/**",
-        "generated/**",
         "abi/**",
         "dist/**",
         "coverage/**",
         "graphql/**",
-        ".mesh/**"
+        ".mesh/**",
+        "generated/**",
+        "subgraph.yaml",
+        ".meshrc.yaml"
       ]
     },
     "lint": {
@@ -37,9 +40,6 @@
     "test": {
       "dependsOn": ["build"],
       "outputs": []
-    },
-    "codegen": {
-      "outputs": ["generated/**"]
     }
   }
 }
