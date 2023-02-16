@@ -16,8 +16,6 @@ export class SoulImageComponent implements OnInit {
   constructor(private soulService: SoulService) {}
 
   ngOnInit(): void {
-    console.log(this.properties?.tokenURI);
-
     this.metadata$ = this.soulService.getMetadata(
       this.properties?.tokenURI?.replace('ipfs://', '') ?? ''
     );
