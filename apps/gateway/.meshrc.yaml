@@ -2,11 +2,11 @@ sources:
   - name: TheGraph
     handler:
       graphql:
-        endpoint: https://api.thegraph.com/subgraphs/name/sovereign-nature/sni
+        endpoint: 'https://api.thegraph.com/subgraphs/name/sovereign-nature/sni'
   - name: Pinata
     handler:
       jsonSchema:
-        endpoint: https://gateway.pinata.cloud/
+        endpoint: 'https://gateway.pinata.cloud/'
         operations:
           - type: Query
             field: ipfsMetadata
@@ -26,12 +26,12 @@ additionalTypeDefs: |
 additionalResolvers:
   - targetTypeName: SNI
     targetFieldName: metadata
-    sourceName: Pinata # Which source does the target field belong to?
-    sourceTypeName: Query # Which root type does the target field belong to?
-    sourceFieldName: ipfsMetadata # What is the source field name?
+    sourceName: Pinata
+    sourceTypeName: Query
+    sourceFieldName: ipfsMetadata
     requiredSelectionSet: |
       {
         tokenURI
       }
-    sourceArgs: # What args does this need to take?
+    sourceArgs:
       cid: '{root.tokenURI}'
