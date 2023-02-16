@@ -11,7 +11,7 @@ defineProps<{
   <div>
     <NuxtLink :to="pageUrl">
       <div
-        class="max-w-sm bg-white border border-gray-200 rounded-sm dark:bg-black dark:border-gray-700">
+        class="max-w-sm rounded-sm border border-gray-200 bg-white dark:border-gray-700 dark:bg-black">
         <img loading="lazy" class="rounded-t-sm" :src="imageUrl" alt="" />
         <div class="p-5">
           <h1 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">

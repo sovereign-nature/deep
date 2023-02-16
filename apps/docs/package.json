@@ -4,17 +4,19 @@
   "scripts": {
     "dev": "vitepress dev pages",
     "build": "vitepress build pages",
-    "serve": "vitepress serve pages"
+    "serve": "vitepress serve pages",
+    "lint": "eslint --ext .js,.vue,.md,.ts ."
   },
   "devDependencies": {
-    "@vueuse/core": "9.12.0",
-    "vitepress": "1.0.0-alpha.46",
-    "vue": "3.2.47",
-    "vitepress-plugin-mermaid": "2.0.10",
-    "mermaid": "9.3.0",
     "@mermaid-js/mermaid-mindmap": "9.3.0",
+    "@vueuse/core": "9.12.0",
     "eslint": "8.34.0",
     "eslint-config-sni": "*",
-    "eslint-config-sni-vue": "*"
+    "eslint-config-sni-vue": "*",
+    "eslint-plugin-markdown": "^3.0.0",
+    "mermaid": "9.3.0",
+    "vitepress": "1.0.0-alpha.46",
+    "vitepress-plugin-mermaid": "2.0.10",
+    "vue": "3.2.47"
   }
 }
