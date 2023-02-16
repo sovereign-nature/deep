@@ -16,7 +16,7 @@ onMounted(() => {
   <div
     class="w-full rounded-sm border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-black">
     <div
-      class="scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-transparent flow-root max-h-72 overflow-auto">
+      class="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-900 flow-root max-h-72 overflow-auto">
       <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
         <li
           v-for="attr in attributes || []"
