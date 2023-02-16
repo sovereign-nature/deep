@@ -1,0 +1,13 @@
+name = "graphql-gateway"
+compatibility_date = "2023-02-15"
+main = "src/index.ts"
+node_compat = true
+
+
+[vars]
+# DEBUG = "1"
+# GRAPHQL_API = "https://api.thegraph.com/subgraphs/name/sovereign-nature/sni"
+# IPFS_GATEWAY = "https://gateway.pinata.cloud/"
+
+[build]
+command = "env-cmd mesh build"
