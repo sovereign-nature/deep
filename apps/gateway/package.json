@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "description": "GraphQL API Gateway",
   "scripts": {
-    "prepare": "mustache config/production.json .meshrc.template.yaml > .meshrc.yaml",
-    "prepare:staging": "mustache config/staging.json .meshrc.template.yaml > .meshrc.yaml",
+    "prepare": "env-cmd mustache config/production.json .meshrc.template.yaml > .meshrc.yaml",
+    "prepare:staging": "env-cmd mustache config/staging.js .meshrc.template.yaml > .meshrc.yaml",
     "start": "mesh start",
-    "dev": "yarn prepare:staging && wrangler dev",
+    "dev": "wrangler dev",
     "deploy": "yarn prepare && wrangler publish",
     "deploy:staging": "yarn prepare:staging && wrangler publish --env staging"
   },
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@sni/prettier-config": "*",
+    "env-cmd": "^10.1.0",
     "eslint-config-sni": "*",
     "mustache": "4.2.0",
     "wrangler": "2.10.0"

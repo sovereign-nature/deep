@@ -6,13 +6,15 @@ sources:
   - name: Pinata
     handler:
       jsonSchema:
-        endpoint: 'https://ipfs.io'
+        endpoint: 'https://sni.mypinata.cloud/'
         operations:
           - type: Query
             field: ipfsMetadata
             path: /ipfs/{args.cid}
             method: GET
             responseSchema: ./json-schemas/metadata.json
+        operationHeaders:
+          x-pinata-gateway-token: '{{&PINATA_TOKEN}}'
     transforms:
       - resolversComposition:
           mode: bare

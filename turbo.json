@@ -10,7 +10,8 @@
         "PRIVATE_KEY",
         "NFT_STORAGE_API_KEY",
         "PINATA_API_KEY",
-        "NODE_ENV"
+        "NODE_ENV",
+        "PINATA_TOKEN"
       ],
       "outputs": [
         "artifacts/**",
