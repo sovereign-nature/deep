@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import {
   ApolloTestingController,
@@ -39,7 +40,7 @@ describe('SoulService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ApolloTestingModule],
+      imports: [ApolloTestingModule, HttpClientTestingModule],
     });
     soulService = TestBed.inject(SoulService);
     apolloController = TestBed.inject(ApolloTestingController);

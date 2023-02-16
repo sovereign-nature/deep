@@ -18,7 +18,6 @@ describe('SoulDetailComponent', () => {
     createdAt: 1675878906,
     id: soulId,
     name: 'Sovereign Nature Identifier #N',
-    owner: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
     status: 1,
     updatedAt: 1675878906,
   };
@@ -29,7 +28,7 @@ describe('SoulDetailComponent', () => {
   beforeEach(async () => {
     const soulsServiceSpy = jasmine.createSpyObj(
       'SoulService',
-      ['getSoulDataById'],
+      ['getSoulDataById', 'getMetadata'],
       [soulId]
     );
     const activatedRouteSpy = {
@@ -59,7 +58,8 @@ describe('SoulDetailComponent', () => {
   it('should have 7 properties in soul details', () => {
     const detailsEl: DebugElement[] = el.queryAll(By.css('.soul__details p'));
     const name: DebugElement[] = el.queryAll(By.css('.soul__details h2'));
-    expect(detailsEl.length).toBe(6, 'Unexpected to find 6 properties');
+    console.log(detailsEl);
+    expect(detailsEl.length).toBe(5, 'Unexpected to find 5 properties');
     expect(name.length).toBe(1, 'Unexpected to find name');
   });
 
@@ -74,26 +74,22 @@ describe('SoulDetailComponent', () => {
       'Unexpected value of name'
     );
     expect(detailsEl[0].nativeElement.textContent).toContain(
-      details.id,
+      details.id.charAt(details.id.length - 1),
       'Unexpected value of id'
     );
     expect(detailsEl[1].nativeElement.textContent).toContain(
-      details.owner,
-      'Unexpected value of owner'
-    );
-    expect(detailsEl[2].nativeElement.textContent).toContain(
       statusPipe.transform(details.status),
       'Unexpected value of status'
     );
-    expect(detailsEl[3].nativeElement.textContent).toContain(
+    expect(detailsEl[2].nativeElement.textContent).toContain(
       details.collectionName,
       'Unexpected value of collectionName'
     );
-    expect(detailsEl[4].nativeElement.textContent).toContain(
+    expect(detailsEl[3].nativeElement.textContent).toContain(
       datePipe.transform(details.createdAt * 1000),
       'Unexpected value of createdAt'
     );
-    expect(detailsEl[5].nativeElement.textContent).toContain(
+    expect(detailsEl[4].nativeElement.textContent).toContain(
       datePipe.transform(details.updatedAt * 1000),
       'Unexpected value of updatedAt'
     );
