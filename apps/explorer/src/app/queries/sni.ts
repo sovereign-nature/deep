@@ -43,6 +43,15 @@ export const SOUL_PROPERTY = gql`
       conservationStatus
       computeURI
       dataURI
+      metadata {
+        attributes {
+          trait_type
+          value
+        }
+        properties {
+          taxonId
+        }
+      }
     }
   }
 `;

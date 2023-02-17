@@ -1,3 +1,5 @@
+import { Metadata } from './metadata';
+
 export interface Soul {
   id: string;
   owner: string;
@@ -17,6 +19,7 @@ export interface Soul {
   geometry?: string;
   conservationStatus?: string;
   computeURI?: string;
+  metadata?: Metadata;
 }
 export interface SoulFilter {
   searchById: string;
