@@ -1,11 +1,16 @@
-import { SNI_CONTRACT_ADDRESS, SNI_OWNER_ADDRESS } from '@sni/constants';
+import {
+  SNI_CONTRACT_ADDRESS,
+  SNI_CONTRACT_ADDRESS_STAGING,
+  SNI_OWNER_ADDRESS,
+} from '@sni/constants';
 import { INITIAL_STATUS } from '@sni/constants/mocks/identifier';
 import fs from 'fs';
 import { ethers } from 'hardhat';
 import { SovereignNatureIdentifier } from '../typechain-types';
 import { makeIpfsUrl, pinData } from './utils';
 
-const IPFS_URL = 'ipfs://QmdGf3N4tFQAWwTeETrW2m5LUGJgkDXWfA1cUBWrv6ozNM';
+const IPFS_URL =
+  'ipfs://bafybeih5wsjm7l5oqkfcx5k5s4nn5oq2pqyhew7p6xx2wqmu3grev3sca4';
 
 const MUSKETEERS_PDF =
   'https://www.marapredatorconservation.org/wp-content/uploads/2020/09/Muskuteers-Marsh.pdf';
@@ -14,6 +19,8 @@ const MUSKETEERS_PROVENANCE =
   'https://docs.google.com/document/d/1a9SJnL3uQlZP8R9yKv-qN4BYYfDQZakagx-O3sNw3Tg';
 
 type LionData = {
+  file_uri?: string;
+  reference?: object;
   id: string;
   gender: string;
   name: string;
@@ -50,6 +57,7 @@ type LionData = {
   grouping: string;
   group_name: string;
   prides_controlled: number;
+  type: string;
 };
 
 function getImage(path: string) {
@@ -58,7 +66,11 @@ function getImage(path: string) {
   return IPFS_URL.concat(cleanedPath);
 }
 
-function processLionData(data: LionData) {
+function processLionData(rawData: LionData) {
+  const data = { ...rawData };
+  delete data.file_uri;
+  delete data.reference;
+
   const image = getImage(`${data.profile}`);
 
   const attributes = [];
@@ -75,6 +87,7 @@ function processLionData(data: LionData) {
         'ear_right',
         'ear_left',
         'profile',
+        'mouth',
       ].includes(key)
     ) {
       resValue = getImage(value as string);
@@ -140,9 +153,14 @@ async function main() {
     'SovereignNatureIdentifier'
   );
 
-  const sni = SovereignNatureIdentifier.attach(SNI_CONTRACT_ADDRESS);
+  const contractAddress =
+    process.env.NODE_ENV === 'production'
+      ? SNI_CONTRACT_ADDRESS
+      : SNI_CONTRACT_ADDRESS_STAGING;
 
-  const data = fs.readFileSync('./data/lions_data.json');
+  const sni = SovereignNatureIdentifier.attach(contractAddress);
+
+  const data = fs.readFileSync('./data/lions-full.json');
   const lionsData: Array<LionData> = JSON.parse(data.toString());
 
   for (const ld of lionsData) {

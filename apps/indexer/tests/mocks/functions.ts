@@ -5,7 +5,10 @@ import {
 
 import { Address, BigInt, Bytes, ethereum } from '@graphprotocol/graph-ts';
 
-import { METADATA_HASH_FUNCTION, SNI_CONTRACT_ADDRESS } from '@sni/constants';
+import {
+  METADATA_HASH_FUNCTION,
+  SNI_CONTRACT_ADDRESS_STAGING,
+} from '@sni/constants';
 import {
   DERIVATIVE_METADATA_SCHEMA,
   DERIVATIVE_METADATA_SCHEMA_DIGEST,
@@ -21,7 +24,7 @@ import {
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export function mockForToken(tokenId: BigInt): void {
-  const contract = Address.fromString(SNI_CONTRACT_ADDRESS);
+  const contract = Address.fromString(SNI_CONTRACT_ADDRESS_STAGING);
   const tokenIdParam = ethereum.Value.fromUnsignedBigInt(tokenId);
 
   createMockedFunction(contract, 'statusOf', 'statusOf(uint256):(uint256)')

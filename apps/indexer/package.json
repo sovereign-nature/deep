@@ -3,19 +3,23 @@
   "version": "0.0.0",
   "license": "UNLICENSED",
   "scripts": {
-    "codegen": "graph codegen",
-    "build": "graph codegen && graph build",
-    "deploy": "graph deploy --product hosted-service sovereign-nature/sni",
+    "codegen": "mustache config/prod.json subgraph.template.yaml > subgraph.yaml && graph codegen",
+    "codegen:staging": "mustache config/staging.json subgraph.template.yaml > subgraph.yaml && graph codegen",
+    "build": "yarn codegen && graph build",
+    "build:staging": "yarn codegen:staging && graph build",
+    "deploy": "graph deploy sovereign-nature/sni --product hosted-service --access-token $ACCESS_TOKEN",
+    "deploy:staging": "graph deploy sovereign-nature/sni-staging --product hosted-service --access-token $ACCESS_TOKEN",
     "create-local": "graph create --node http://localhost:8020/ sni",
     "remove-local": "graph remove --node http://localhost:8020/ sni",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sni",
     "test": "graph test"
   },
   "devDependencies": {
-    "matchstick-as": "0.5.0",
-    "@graphprotocol/graph-cli": "0.38.0",
+    "matchstick-as": "0.5.1",
+    "@graphprotocol/graph-cli": "0.40.0",
     "@graphprotocol/graph-ts": "0.29.3",
+    "@sni/constants": "*",
     "@sni/contracts": "*",
-    "@sni/constants": "*"
+    "mustache": "4.2.0"
   }
 }

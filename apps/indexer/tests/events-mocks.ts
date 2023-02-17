@@ -5,6 +5,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
 import { Address, BigInt, Bytes, ethereum } from '@graphprotocol/graph-ts';
+import { SNI_CONTRACT_ADDRESS_STAGING } from '@sni/constants';
 import { newMockEvent } from 'matchstick-as';
 import {
   Approval,
@@ -19,13 +20,20 @@ import {
   Transfer,
 } from '../generated/SovereignNatureIdentifier/SovereignNatureIdentifier';
 
+function newMockEventAddress(): ethereum.Event {
+  const event = newMockEvent();
+  event.address = Address.fromString(SNI_CONTRACT_ADDRESS_STAGING);
+
+  return event;
+}
+
 export function createApprovalEvent(
   owner: Address,
   approved: Address,
   tokenId: BigInt
 ): Approval {
   //@ts-ignore
-  const approvalEvent = changetype<Approval>(newMockEvent());
+  const approvalEvent = changetype<Approval>(newMockEventAddress());
 
   approvalEvent.parameters = [];
 
@@ -51,7 +59,7 @@ export function createApprovalForAllEvent(
   approved: boolean
 ): ApprovalForAll {
   //@ts-ignore
-  const approvalForAllEvent = changetype<ApprovalForAll>(newMockEvent());
+  const approvalForAllEvent = changetype<ApprovalForAll>(newMockEventAddress());
 
   approvalForAllEvent.parameters = [];
 
@@ -74,7 +82,9 @@ export function createRoleAdminChangedEvent(
   newAdminRole: Bytes
 ): RoleAdminChanged {
   //@ts-ignore
-  const roleAdminChangedEvent = changetype<RoleAdminChanged>(newMockEvent());
+  const roleAdminChangedEvent = changetype<RoleAdminChanged>(
+    newMockEventAddress()
+  );
 
   roleAdminChangedEvent.parameters = [];
 
@@ -103,7 +113,7 @@ export function createRoleGrantedEvent(
   sender: Address
 ): RoleGranted {
   //@ts-ignore
-  const roleGrantedEvent = changetype<RoleGranted>(newMockEvent());
+  const roleGrantedEvent = changetype<RoleGranted>(newMockEventAddress());
 
   roleGrantedEvent.parameters = [];
 
@@ -126,7 +136,7 @@ export function createRoleRevokedEvent(
   sender: Address
 ): RoleRevoked {
   //@ts-ignore
-  const roleRevokedEvent = changetype<RoleRevoked>(newMockEvent());
+  const roleRevokedEvent = changetype<RoleRevoked>(newMockEventAddress());
 
   roleRevokedEvent.parameters = [];
 
@@ -148,7 +158,7 @@ export function createStatusSetEvent(
   status: BigInt
 ): StatusSet {
   //@ts-ignore
-  const statusSetEvent = changetype<StatusSet>(newMockEvent());
+  const statusSetEvent = changetype<StatusSet>(newMockEventAddress());
 
   statusSetEvent.parameters = [];
 
@@ -171,7 +181,7 @@ export function createTokenURISetEvent(
   digest: Bytes
 ): TokenURISet {
   //@ts-ignore
-  const tokenUriSetEvent = changetype<TokenURISet>(newMockEvent());
+  const tokenUriSetEvent = changetype<TokenURISet>(newMockEventAddress());
 
   tokenUriSetEvent.parameters = [];
 
@@ -197,7 +207,7 @@ export function createDataURISetEvent(
   dataURI: string
 ): DataURISet {
   //@ts-ignore
-  const dataURISetEvent = changetype<DataURISet>(newMockEvent());
+  const dataURISetEvent = changetype<DataURISet>(newMockEventAddress());
 
   dataURISetEvent.parameters = [];
 
@@ -219,7 +229,7 @@ export function createComputeURISetEvent(
   computeURI: string
 ): ComputeURISet {
   //@ts-ignore
-  const computeURISetEvent = changetype<ComputeURISet>(newMockEvent());
+  const computeURISetEvent = changetype<ComputeURISet>(newMockEventAddress());
 
   computeURISetEvent.parameters = [];
 
@@ -242,7 +252,7 @@ export function createTransferEvent(
   tokenId: BigInt
 ): Transfer {
   //@ts-ignore
-  const transferEvent = changetype<Transfer>(newMockEvent());
+  const transferEvent = changetype<Transfer>(newMockEventAddress());
 
   transferEvent.parameters = [];
 

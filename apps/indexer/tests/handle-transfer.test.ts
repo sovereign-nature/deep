@@ -133,39 +133,5 @@ describe('Handles Transfer event', () => {
       'derivativeMetadataSchemaHashFunction',
       METADATA_HASH_FUNCTION
     );
-
-    // JSON metadata fields from initial.json
-    assert.fieldEquals(SUBGRAPH_ENTITY_NAME, tokenId, 'name', 'Scarface');
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'description',
-      'Test lion identifier'
-    );
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'image',
-      'ipfs://bafybeihs6qouvmo4pnjozlrdmgic3b4nav6rrswc3tobgclrrvtwsa47oe/blob'
-    );
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'statusDescription',
-      '{ "0": "Alive", "1": "Dead" }'
-    );
-    assert.fieldEquals(SUBGRAPH_ENTITY_NAME, tokenId, 'taxonId', 'itis:183803');
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'conservationStatus',
-      'VU'
-    );
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'geometry',
-      'POINT(5.9559 47.8084)'
-    );
   });
 });

@@ -9,19 +9,26 @@
         "NUXT_PUBLIC_MAPBOX_TOKEN",
         "PRIVATE_KEY",
         "NFT_STORAGE_API_KEY",
-        "PINATA_API_KEY"
+        "PINATA_API_KEY",
+        "NODE_ENV",
+        "PINATA_TOKEN"
       ],
       "outputs": [
         "artifacts/**",
         "cache/**",
         "typechain-types/**",
         "pages/.vitepress/dist/**",
+        ".nuxt/**",
+        ".vercel/**",
         "build/**",
-        "generated/**",
         "abi/**",
         "dist/**",
         "coverage/**",
-        "graphql/**"
+        "graphql/**",
+        ".mesh/**",
+        "generated/**",
+        "subgraph.yaml",
+        ".meshrc.yaml"
       ]
     },
     "lint": {
@@ -33,9 +40,6 @@
     "test": {
       "dependsOn": ["build"],
       "outputs": []
-    },
-    "codegen": {
-      "outputs": ["generated/**"]
     }
   }
 }

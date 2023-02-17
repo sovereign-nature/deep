@@ -1,0 +1,10 @@
+name = "graphql-gateway"
+compatibility_date = "2023-02-15"
+main = "src/index.ts"
+node_compat = true
+
+[env.staging]
+name="graphql-gateway-staging"
+
+[build]
+command = "mesh build"
