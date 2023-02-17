@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Attributes, Metadata } from 'src/app/models/metadata';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { Attributes } from 'src/app/models/metadata';
 import { Soul } from 'src/app/models/soul';
 import { SoulService } from 'src/app/services/soul.service';
 
@@ -9,29 +8,28 @@ import { SoulService } from 'src/app/services/soul.service';
   templateUrl: './soul-properties.component.html',
   styleUrls: ['./soul-properties.component.scss'],
 })
-export class SoulPropertiesComponent implements OnInit {
+export class SoulPropertiesComponent {
   @Input() properties?: Partial<Soul>;
-  metadata$?: Observable<Metadata>;
-  prides!: string[];
+  prides?: string[];
 
-  constructor(private soulService: SoulService) {}
-
-  ngOnInit(): void {
-    this.metadata$ = this.soulService.getMetadata(
-      this.properties?.tokenURI?.replace('ipfs://', '') ?? ''
-    );
-  }
+  constructor(
+    private soulService: SoulService,
+    private cdref: ChangeDetectorRef
+  ) {}
 
   filterAttributes(att: Attributes[]) {
     const attributes = this.soulService.filterByCondition(att, false);
-    this.prides = attributes
-      .filter((val) => val.trait_type === 'prides')[0]
-      .value.split(',');
-
     return attributes.filter((val) => val.trait_type !== 'prides');
   }
 
   removeUnderline(value: string): string {
     return value.replace(/_/g, ' ');
+  }
+
+  ngAfterContentChecked() {
+    this.prides = this.properties?.metadata?.attributes
+      .filter((val) => val.trait_type === 'prides')[0]
+      .value.split(',');
+    this.cdref.detectChanges();
   }
 }

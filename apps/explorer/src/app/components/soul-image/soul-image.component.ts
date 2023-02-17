@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Attributes, Metadata } from 'src/app/models/metadata';
+import { Component, Input } from '@angular/core';
+import { Attributes } from 'src/app/models/metadata';
 import { Soul } from 'src/app/models/soul';
 import { SoulService } from 'src/app/services/soul.service';
 
@@ -9,17 +8,10 @@ import { SoulService } from 'src/app/services/soul.service';
   templateUrl: './soul-image.component.html',
   styleUrls: ['./soul-image.component.scss'],
 })
-export class SoulImageComponent implements OnInit {
+export class SoulImageComponent {
   @Input() properties?: Partial<Soul>;
-  metadata$?: Observable<Metadata>;
 
   constructor(private soulService: SoulService) {}
-
-  ngOnInit(): void {
-    this.metadata$ = this.soulService.getMetadata(
-      this.properties?.tokenURI?.replace('ipfs://', '') ?? ''
-    );
-  }
 
   filterImage(att: Attributes[]) {
     return this.soulService.filterByCondition(att, true);
@@ -27,5 +19,9 @@ export class SoulImageComponent implements OnInit {
 
   ipfsToUrl(address: string): string {
     return `https://ipfs.io/ipfs/${address.replace('ipfs://', '')}`;
+  }
+
+  handleMissingImage(event: Event) {
+    (event.target as HTMLImageElement).style.display = 'none';
   }
 }

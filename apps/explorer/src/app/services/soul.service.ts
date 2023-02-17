@@ -4,7 +4,7 @@ import { Apollo } from 'apollo-angular';
 import { DocumentNode } from 'graphql';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { Attributes, Metadata } from '../models/metadata';
+import { Attributes } from '../models/metadata';
 import { SNIData, SNIList } from '../models/sni';
 import { Soul, SoulFilter } from '../models/soul';
 import { SOULS_LIST } from '../queries/sni';
@@ -62,12 +62,6 @@ export class SoulService {
         if (key === '__typename') return;
         return value;
       })
-    );
-  }
-
-  getMetadata(ipfsAddress: string): Observable<Metadata> {
-    return this.http.get<Metadata>(
-      `https://gateway.pinata.cloud/ipfs/${ipfsAddress}`
     );
   }
 
