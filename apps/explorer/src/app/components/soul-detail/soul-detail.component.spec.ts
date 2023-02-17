@@ -7,6 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { StatusPipe } from 'src/app/pipes/status.pipe';
 import { SoulService } from 'src/app/services/soul.service';
+import { SoulImageComponent } from '../soul-image/soul-image.component';
 import { SoulPropertiesComponent } from '../soul-properties/soul-properties.component';
 
 import { SoulDetailComponent } from './soul-detail.component';
@@ -18,9 +19,17 @@ describe('SoulDetailComponent', () => {
     createdAt: 1675878906,
     id: soulId,
     name: 'Sovereign Nature Identifier #N',
-    owner: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
     status: 1,
     updatedAt: 1675878906,
+    computeURI:
+      'https://docs.google.com/document/d/1a9SJnL3uQlZP8R9yKv-qN4BYYfDQZakagx-O3sNw3Tg',
+    dataURI:
+      'https://www.marapredatorconservation.org/wp-content/uploads/2020/09/Muskuteers-Marsh.pdf',
+    image:
+      'ipfs://QmdGf3N4tFQAWwTeETrW2m5LUGJgkDXWfA1cUBWrv6ozNM/3/Image52.jpg',
+    taxonId: 'itis:183803',
+    tokenId: 2,
+    tokenURI: 'ipfs://QmWcL7iVVnungvFsh5VR58NiK919VpKye62MAaDTNpsFfH',
   };
   let component: SoulDetailComponent;
   let fixture: ComponentFixture<SoulDetailComponent>;
@@ -29,7 +38,7 @@ describe('SoulDetailComponent', () => {
   beforeEach(async () => {
     const soulsServiceSpy = jasmine.createSpyObj(
       'SoulService',
-      ['getSoulDataById'],
+      ['getSoulDataById', 'getMetadata'],
       [soulId]
     );
     const activatedRouteSpy = {
@@ -38,7 +47,12 @@ describe('SoulDetailComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [SoulDetailComponent, SoulPropertiesComponent, StatusPipe],
+      declarations: [
+        SoulDetailComponent,
+        SoulImageComponent,
+        SoulPropertiesComponent,
+        StatusPipe,
+      ],
       providers: [
         { provide: ActivatedRoute, useValue: activatedRouteSpy },
         { provide: SoulService, useValue: soulsServiceSpy },
@@ -59,7 +73,7 @@ describe('SoulDetailComponent', () => {
   it('should have 7 properties in soul details', () => {
     const detailsEl: DebugElement[] = el.queryAll(By.css('.soul__details p'));
     const name: DebugElement[] = el.queryAll(By.css('.soul__details h2'));
-    expect(detailsEl.length).toBe(6, 'Unexpected to find 6 properties');
+    expect(detailsEl.length).toBe(5, 'Unexpected to find 5 properties');
     expect(name.length).toBe(1, 'Unexpected to find name');
   });
 
@@ -74,26 +88,22 @@ describe('SoulDetailComponent', () => {
       'Unexpected value of name'
     );
     expect(detailsEl[0].nativeElement.textContent).toContain(
-      details.id,
+      details.id.charAt(details.id.length - 1),
       'Unexpected value of id'
     );
     expect(detailsEl[1].nativeElement.textContent).toContain(
-      details.owner,
-      'Unexpected value of owner'
-    );
-    expect(detailsEl[2].nativeElement.textContent).toContain(
       statusPipe.transform(details.status),
       'Unexpected value of status'
     );
-    expect(detailsEl[3].nativeElement.textContent).toContain(
+    expect(detailsEl[2].nativeElement.textContent).toContain(
       details.collectionName,
       'Unexpected value of collectionName'
     );
-    expect(detailsEl[4].nativeElement.textContent).toContain(
+    expect(detailsEl[3].nativeElement.textContent).toContain(
       datePipe.transform(details.createdAt * 1000),
       'Unexpected value of createdAt'
     );
-    expect(detailsEl[5].nativeElement.textContent).toContain(
+    expect(detailsEl[4].nativeElement.textContent).toContain(
       datePipe.transform(details.updatedAt * 1000),
       'Unexpected value of updatedAt'
     );

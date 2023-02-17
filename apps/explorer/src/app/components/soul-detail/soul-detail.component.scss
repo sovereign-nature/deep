@@ -1,7 +1,8 @@
 .soul {
   &__content {
     display: flex;
-    padding: 1rem;
+    justify-content: center;
+    padding: 2rem;
   }
 
   &__details {
@@ -22,7 +23,7 @@
   }
 
   &__link {
-    padding: 1rem;
+    padding: 2rem 1rem;
     a {
       transition: all .2s ease-in;
       &:hover {

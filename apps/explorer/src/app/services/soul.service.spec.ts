@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import {
   ApolloTestingController,
@@ -33,13 +34,17 @@ describe('SoulService', () => {
           'ipfs://bafyreib564aosdw5igyfbvedtdvtz4xgrznz64iszd34b32cfvzro3rm5y/metadata.json',
         geometry: 'POINT(5.9559 47.8084)',
         conservationStatus: 'VU',
+        computeURI:
+          'https://docs.google.com/document/d/1a9SJnL3uQlZP8R9yKv-qN4BYYfDQZakagx-O3sNw3Tg',
+        dataURI:
+          'https://www.marapredatorconservation.org/wp-content/uploads/2020/09/Muskuteers-Marsh.pdf',
       },
     },
   };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ApolloTestingModule],
+      imports: [ApolloTestingModule, HttpClientTestingModule],
     });
     soulService = TestBed.inject(SoulService);
     apolloController = TestBed.inject(ApolloTestingController);

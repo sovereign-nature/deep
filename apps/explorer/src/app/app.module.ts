@@ -47,7 +47,7 @@ import { StatusPipe } from './pipes/status.pipe';
         return {
           cache: new InMemoryCache(),
           link: httpLink.create({
-            uri: 'https://api.thegraph.com/subgraphs/name/sovereign-nature/sni',
+            uri: 'https://gateway.sovereignnature.ch/graphql',
           }),
         };
       },
