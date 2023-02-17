@@ -1,8 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { DocumentNode } from 'graphql';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { Attributes, Metadata } from '../models/metadata';
 import { SNIData, SNIList } from '../models/sni';
 import { Soul, SoulFilter } from '../models/soul';
 import { SOULS_LIST } from '../queries/sni';
@@ -19,7 +21,7 @@ export class SoulService {
   });
   filteredSouls$: Observable<SoulFilter> = this.subject.asObservable();
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo, private http: HttpClient) {}
 
   getSoulsList(): Observable<Soul[]> {
     return this.apollo
@@ -60,6 +62,33 @@ export class SoulService {
         if (key === '__typename') return;
         return value;
       })
+    );
+  }
+
+  getMetadata(ipfsAddress: string): Observable<Metadata> {
+    return this.http.get<Metadata>(
+      `https://gateway.pinata.cloud/ipfs/${ipfsAddress}`
+    );
+  }
+
+  filterByCondition(atts: Attributes[], attributeSelector: boolean) {
+    const treatedImages = [
+      'whisker_right_0',
+      'whisker_right_1',
+      'whisker_right_2',
+      'whisker_left_0',
+      'whisker_left_1',
+      'whisker_left_2',
+      'ear_right',
+      'ear_left',
+      'face',
+      'mouth',
+    ];
+
+    return atts.filter((att) =>
+      attributeSelector
+        ? treatedImages.includes(att.trait_type)
+        : !treatedImages.includes(att.trait_type)
     );
   }
 }
