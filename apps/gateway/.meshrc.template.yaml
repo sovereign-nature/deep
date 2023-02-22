@@ -39,7 +39,7 @@ additionalResolvers:
       cid: '{root.tokenURI}'
 plugins:
   - responseCache:
-      ttl: 3600
+      includeExtensionMetadata: true
 cache:
   cfwKv:
     namespace: MESH
