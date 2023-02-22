@@ -37,3 +37,9 @@ additionalResolvers:
       }
     sourceArgs:
       cid: '{root.tokenURI}'
+plugins:
+  - responseCache:
+      ttl: 3600
+cache:
+  cfwKv:
+    namespace: MESH
