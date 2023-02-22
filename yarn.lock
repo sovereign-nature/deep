@@ -3079,6 +3079,15 @@
     object-inspect "1.10.3"
     tslib "^2.0.0"
 
+"@graphql-mesh/cache-cfw-kv@^0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/cache-cfw-kv/-/cache-cfw-kv-0.1.13.tgz#1bc9e755a31a21a7d4a64e9e81d4a85290791d5b"
+  integrity sha512-5C2CwRnm8yc8DZINouHRG6oDltUA5Op3A+88j0Ji238GUUw+0RqtI/AvAZxSu2/0t09aX3m2zhQGmDkcsJ9piw==
+  dependencies:
+    "@graphql-mesh/types" "0.91.5"
+    "@graphql-mesh/utils" "0.43.13"
+    tslib "^2.4.0"
+
 "@graphql-mesh/cache-localforage@0.7.13":
   version "0.7.13"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/cache-localforage/-/cache-localforage-0.7.13.tgz#17eca0f5ef1722008b7c42e00aa52e5609647081"
@@ -3233,6 +3242,19 @@
     "@graphql-tools/stitch" "8.7.41"
     "@graphql-tools/stitching-directives" "2.3.30"
     "@graphql-tools/utils" "9.2.1"
+    tslib "^2.4.0"
+
+"@graphql-mesh/plugin-response-cache@0.2.15":
+  version "0.2.15"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/plugin-response-cache/-/plugin-response-cache-0.2.15.tgz#18f7b06a422bbc038e6848c0d1ae3065d3316265"
+  integrity sha512-YSVmmXx1EL2D0YZP8XBsHRIP/trRS3PQsJWv9fXY3axIsUHCpsA0+FdC9f50DwCUEh5CXbeJeK3xZBqzSl5ZQQ==
+  dependencies:
+    "@envelop/core" "^3.0.0"
+    "@graphql-mesh/cross-helpers" "0.3.3"
+    "@graphql-mesh/string-interpolation" "0.4.2"
+    "@graphql-mesh/types" "0.91.5"
+    "@graphql-mesh/utils" "0.43.13"
+    "@graphql-yoga/plugin-response-cache" "1.6.1"
     tslib "^2.4.0"
 
 "@graphql-mesh/runtime@0.46.14":
