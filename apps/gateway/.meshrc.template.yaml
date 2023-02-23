@@ -38,8 +38,9 @@ additionalResolvers:
     sourceArgs:
       cid: '{root.tokenURI}'
 plugins:
-  - responseCache:
-      includeExtensionMetadata: true
-cache:
-  cfwKv:
-    namespace: MESH
+  # - responseCache:
+  #     includeExtensionMetadata: true
+  - httpCache:
+# cache:
+#   cfwKv:
+#     namespace: MESH
