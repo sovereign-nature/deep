@@ -33,9 +33,9 @@ yarn-error.log*
 # turbo
 .turbo
 
-# Yarn without Zero-Installs
-.pnp.*
+# Yarn with Zero-Installs
 .yarn/*
+!.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
