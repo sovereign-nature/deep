@@ -24,20 +24,16 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-sni": "*",
     "@sni/prettier-config": "*",
-    "prettier": "2.8.4",
-    "turbo": "1.8.2",
+    "eslint-config-sni": "*",
     "husky": "8.0.3",
     "lint-staged": "13.1.2",
+    "prettier": "2.8.4",
+    "turbo": "1.8.2",
     "turbo-ignore": "1.8.2"
   },
   "engines": {
     "node": ">=16.0.0"
   },
-  "dependencies": {},
-  "packageManager": "yarn@1.22.19",
-  "resolutions": {
-    "**/@graphprotocol/graph-ts": "0.29.3"
-  }
+  "packageManager": "yarn@3.4.1"
 }
