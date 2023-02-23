@@ -6410,6 +6410,7 @@ __metadata:
     "@types/jasmine": 4.3.1
     apollo-angular: 4.2.1
     date-fns: 2.29.3
+    eslint: 8.34.0
     eslint-config-sni: "*"
     graphql: 16.6.0
     jasmine-core: 4.5.0
