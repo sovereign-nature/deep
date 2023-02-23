@@ -10348,12 +10348,12 @@ eslint-config-standard@^17.0.0:
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-17.0.0.tgz#fd5b6cf1dcf6ba8d29f200c461de2e19069888cf"
   integrity sha512-/2ks1GKyqSOkH7JFvXJicu0iMpoojkwB+f5Du/1SC0PtBL+s8v30k9njRZ21pm2drKYm2342jFnGWzttxPmZVg==
 
-eslint-config-turbo@0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/eslint-config-turbo/-/eslint-config-turbo-0.0.7.tgz#1a4ef7b28df40fb168a695e34d58d1d25477aab3"
-  integrity sha512-WbrGlyfs94rOXrhombi1wjIAYGdV2iosgJRndOZtmDQeq5GLTzYmBUCJQZWtLBEBUPCj96RxZ2OL7Cn+xv/Azg==
+eslint-config-turbo@0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/eslint-config-turbo/-/eslint-config-turbo-0.0.8.tgz#f23c133d5241ec85e1ddd9c08a55c4a20915c15a"
+  integrity sha512-ijj6uv0QX2kWahg3OYnTK1/q4MueXsqY2uE4MP9yeUA5CzVhL7GU+biKlv1BfMMqPltixHUcpZoW4yyNLCnMiw==
   dependencies:
-    eslint-plugin-turbo "0.0.7"
+    eslint-plugin-turbo "0.0.8"
 
 eslint-import-resolver-node@^0.3.7:
   version "0.3.7"
@@ -10467,10 +10467,10 @@ eslint-plugin-tailwindcss@3.8.3:
     fast-glob "^3.2.5"
     postcss "^8.4.4"
 
-eslint-plugin-turbo@0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-turbo/-/eslint-plugin-turbo-0.0.7.tgz#b70155dfeddc530f2f3ca383d850145f22e92fa6"
-  integrity sha512-iajOH8eD4jha3duztGVBD1BEmvNrQBaA/y3HFHf91vMDRYRwH7BpHSDFtxydDpk5ghlhRxG299SFxz7D6z4MBQ==
+eslint-plugin-turbo@0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-turbo/-/eslint-plugin-turbo-0.0.8.tgz#aafd2a9cc97b7e85373c1c05c1e493c622d4b3bc"
+  integrity sha512-pExSCmjWw/KFKb3/0PVqxiWb30FbcwDEf6kKv3alvNBSVEzDHalyAGHc9klbLSG+nFmbkfNE3Ky/UHDryCqt8g==
 
 eslint-plugin-unicorn@^44.0.2:
   version "44.0.2"
