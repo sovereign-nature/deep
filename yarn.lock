@@ -12802,7 +12802,8 @@ __metadata:
   resolution: "eslint-config-sni-vue@workspace:packages/eslint-config-sni-vue"
   dependencies:
     eslint: 8.34.0
-    eslint-plugin-tailwindcss: 3.8.3
+    eslint-import-resolver-typescript: 3.5.3
+    eslint-plugin-tailwindcss: 3.9.0
     eslint-plugin-vue: 9.9.0
   languageName: unknown
   linkType: soft
@@ -12853,7 +12854,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-import-resolver-typescript@npm:^3.5.2":
+"eslint-import-resolver-typescript@npm:3.5.3, eslint-import-resolver-typescript@npm:^3.5.2":
   version: 3.5.3
   resolution: "eslint-import-resolver-typescript@npm:3.5.3"
   dependencies:
@@ -12986,15 +12987,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-tailwindcss@npm:3.8.3":
-  version: 3.8.3
-  resolution: "eslint-plugin-tailwindcss@npm:3.8.3"
+"eslint-plugin-tailwindcss@npm:3.9.0":
+  version: 3.9.0
+  resolution: "eslint-plugin-tailwindcss@npm:3.9.0"
   dependencies:
     fast-glob: ^3.2.5
     postcss: ^8.4.4
   peerDependencies:
     tailwindcss: ^3.2.2
-  checksum: 4c213205c020ae97c8dd39edf6696ff8791542acc536d645fbdeff1de8b4b037be87282205d30bb7374b67414b38bbb3acd528cc5a0a5296464437ba0c18c202
+  checksum: 6c69d25c649ff15d1e4b53c7d1cf4a631ba22c0d39ec0a2e36b00968e400a654482464830a803bce6828ae37ff5befe1f7a89fe3a243a2959fa4b70a9a8d8c0d
   languageName: node
   linkType: hard
 
