@@ -6444,7 +6444,7 @@ __metadata:
     eslint-config-sni: "*"
     graphql: 16.6.0
     mustache: 4.2.0
-    wrangler: 2.11.0
+    wrangler: 2.11.1
   languageName: unknown
   linkType: soft
 
@@ -26781,9 +26781,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wrangler@npm:2.11.0":
-  version: 2.11.0
-  resolution: "wrangler@npm:2.11.0"
+"wrangler@npm:2.11.1":
+  version: 2.11.1
+  resolution: "wrangler@npm:2.11.1"
   dependencies:
     "@cloudflare/kv-asset-handler": ^0.2.0
     "@esbuild-plugins/node-globals-polyfill": ^0.1.1
@@ -26807,7 +26807,7 @@ __metadata:
   bin:
     wrangler: bin/wrangler.js
     wrangler2: bin/wrangler.js
-  checksum: a1db8bfbc7a5834ab3697609bc51f0a70a2e22d4049d0dc21831e5164a5e8717a5ad96c85474f6530d1da2870c44c3a119eb38c8ec517d0d9399effd15d2465f
+  checksum: 1b282640e2db6cd7c86c7a1818e063f71cba0a9aac3c5081bf3c0974a8a725badc4ee4766e53db72ee607591766d78380e05a7e757d792d3b5aab9ccce7f494c
   languageName: node
   linkType: hard
 
