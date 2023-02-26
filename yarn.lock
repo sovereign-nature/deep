@@ -6357,7 +6357,7 @@ __metadata:
     eslint-config-sni-vue: "*"
     eslint-plugin-markdown: ^3.0.0
     mermaid: 9.3.0
-    vitepress: 1.0.0-alpha.47
+    vitepress: 1.0.0-alpha.48
     vitepress-plugin-mermaid: 2.0.10
     vue: 3.2.47
   languageName: unknown
@@ -26081,7 +26081,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^3.0.0 || ^4.0.0, vite@npm:^4.1.3, vite@npm:~4.1.2":
+"vite@npm:^3.0.0 || ^4.0.0, vite@npm:^4.1.4, vite@npm:~4.1.2":
   version: 4.1.4
   resolution: "vite@npm:4.1.4"
   dependencies:
@@ -26129,9 +26129,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitepress@npm:1.0.0-alpha.47":
-  version: 1.0.0-alpha.47
-  resolution: "vitepress@npm:1.0.0-alpha.47"
+"vitepress@npm:1.0.0-alpha.48":
+  version: 1.0.0-alpha.48
+  resolution: "vitepress@npm:1.0.0-alpha.48"
   dependencies:
     "@docsearch/css": ^3.3.3
     "@docsearch/js": ^3.3.3
@@ -26140,11 +26140,11 @@ __metadata:
     "@vueuse/core": ^9.13.0
     body-scroll-lock: 4.0.0-beta.0
     shiki: ^0.14.1
-    vite: ^4.1.3
+    vite: ^4.1.4
     vue: ^3.2.47
   bin:
     vitepress: bin/vitepress.js
-  checksum: be0292b9dd161a68d04b77855faa7bc3b94e33d2ac8dcc4bf86438cf863ab0ea123105761d54731ad71276c423b96c0c3249cda47f8b1761826b9a7cb2873ed2
+  checksum: e0c6e9b39aa0b59167e7f04140957f83781cc5fdc214dc9e35943e29423697b95aa194a8c1e1e4754d69616718e6d77d27892b3e82c33eeca17ac2ee750ed04b
   languageName: node
   linkType: hard
 
