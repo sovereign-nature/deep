@@ -41,7 +41,7 @@
     "@types/geojson": "7946.0.10",
     "@types/jasmine": "4.3.1",
     "date-fns": "2.29.3",
-    "eslint": "8.34.0",
+    "eslint": "8.35.0",
     "eslint-config-sni": "*",
     "jasmine-core": "4.5.0",
     "karma": "6.4.1",
