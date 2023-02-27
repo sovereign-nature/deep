@@ -5,6 +5,7 @@
   "scripts": {
     "compile": "hardhat compile",
     "build": "npm run compile",
+    "test": "hardhat test",
     "lint:contracts": "solhint contracts/**/*.sol",
     "lint:tests": "eslint **/*.ts",
     "lint": "npm run lint:contracts && npm run lint:tests"
