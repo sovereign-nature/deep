@@ -14928,6 +14928,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hardhat-project@workspace:apps/sample-collection":
+  version: 0.0.0-use.local
+  resolution: "hardhat-project@workspace:apps/sample-collection"
+  dependencies:
+    "@nomicfoundation/hardhat-toolbox": 2.0.1
+    hardhat: 2.12.7
+  languageName: unknown
+  linkType: soft
+
 "hardhat@npm:2.12.7":
   version: 2.12.7
   resolution: "hardhat@npm:2.12.7"

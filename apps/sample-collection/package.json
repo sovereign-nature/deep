@@ -1,0 +1,13 @@
+{
+  "name": "@sni/sample-collection",
+  "version": "0.0.0",
+  "scripts": {
+    "lint:contracts": "solhint contracts/**/*.sol",
+    "lint:tests": "eslint **/*.ts",
+    "lint": "npm run lint:contracts && npm run lint:tests"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "2.0.1",
+    "hardhat": "2.12.7"
+  }
+}
