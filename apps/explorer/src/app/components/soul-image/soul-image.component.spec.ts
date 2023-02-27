@@ -29,7 +29,7 @@ describe('SoulImageComponent', () => {
     };
     const soulsServiceSpy = jasmine.createSpyObj(
       'SoulService',
-      ['getSoulDataById', 'getMetadata'],
+      ['getSoulDataById', 'filterByCondition', 'getMetadata'],
       [soulId]
     );
     await TestBed.configureTestingModule({

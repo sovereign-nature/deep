@@ -25,6 +25,7 @@ export const SOUL_DETAIL = gql`
       }
       createdAt
       updatedAt
+      collectionName
     }
   }
 `;
