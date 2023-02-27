@@ -16,7 +16,7 @@ contract Sample is ERC721, Ownable, IDerrivative {
     constructor() ERC721("SNI-Sample", "SNI-S") {}
 
     function _baseURI() internal pure override returns (string memory) {
-        return "https://test-metadata";
+        return "https://test-metadata/";
     }
 
     function safeMint(address to) public onlyOwner {
@@ -28,7 +28,8 @@ contract Sample is ERC721, Ownable, IDerrivative {
     function identifierAddress(uint256 tokenId) external view override returns (string memory) {
         _requireMinted(tokenId);
 
-        string memory baseURI = "test-address-";
-        return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, tokenId.toString())) : "";
+        string memory baseAddress = "1287:0x06eb48572a2ef9a3b230d69ca731330793b65bdc:1";
+        return baseAddress;
+        // return bytes(baseAddress).length > 0 ? string(abi.encodePacked(baseAddress, tokenId.toString())) : "";
     }
 }
