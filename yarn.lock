@@ -5822,43 +5822,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@openzeppelin/hardhat-upgrades@npm:1.22.1":
-  version: 1.22.1
-  resolution: "@openzeppelin/hardhat-upgrades@npm:1.22.1"
-  dependencies:
-    "@openzeppelin/upgrades-core": ^1.20.0
-    chalk: ^4.1.0
-    debug: ^4.1.1
-    proper-lockfile: ^4.1.1
-  peerDependencies:
-    "@nomiclabs/hardhat-ethers": ^2.0.0
-    "@nomiclabs/hardhat-etherscan": ^3.1.0
-    ethers: ^5.0.5
-    hardhat: ^2.0.2
-  peerDependenciesMeta:
-    "@nomiclabs/harhdat-etherscan":
-      optional: true
-  bin:
-    migrate-oz-cli-project: dist/scripts/migrate-oz-cli-project.js
-  checksum: d9849e30002d41787460a6c20096c2c6a5f4672e608d3088ca927d7c2f5a14c2901b61eb94c6aafe5ed5981699c38fabbc1e7c0392d99e802eeabf32949df773
-  languageName: node
-  linkType: hard
-
-"@openzeppelin/upgrades-core@npm:^1.20.0":
-  version: 1.24.0
-  resolution: "@openzeppelin/upgrades-core@npm:1.24.0"
-  dependencies:
-    cbor: ^8.0.0
-    chalk: ^4.1.0
-    compare-versions: ^5.0.0
-    debug: ^4.1.1
-    ethereumjs-util: ^7.0.3
-    proper-lockfile: ^4.1.1
-    solidity-ast: ^0.4.15
-  checksum: 7edb61055ea887543cb4f35e6268a64e13ca02172d7161d9889cec65714d8b8f191c844ff76a29a909379ee0ab5f7cf82aa8411ae78b283f457215569d70dba1
-  languageName: node
-  linkType: hard
-
 "@parcel/watcher@npm:^2.1.0":
   version: 2.1.0
   resolution: "@parcel/watcher@npm:2.1.0"
@@ -6330,7 +6293,6 @@ __metadata:
     "@nomiclabs/hardhat-ethers": 2.2.2
     "@nomiclabs/hardhat-etherscan": 3.1.6
     "@openzeppelin/contracts": 4.8.1
-    "@openzeppelin/hardhat-upgrades": 1.22.1
     "@sni/constants": "*"
     "@typechain/ethers-v5": 10.2.0
     "@typechain/hardhat": 6.1.5
@@ -9662,7 +9624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cbor@npm:^8.0.0, cbor@npm:^8.1.0":
+"cbor@npm:^8.1.0":
   version: 8.1.0
   resolution: "cbor@npm:8.1.0"
   dependencies:
@@ -10353,13 +10315,6 @@ __metadata:
   version: 1.0.1
   resolution: "commondir@npm:1.0.1"
   checksum: 59715f2fc456a73f68826285718503340b9f0dd89bfffc42749906c5cf3d4277ef11ef1cca0350d0e79204f00f1f6d83851ececc9095dc88512a697ac0b9bdcb
-  languageName: node
-  linkType: hard
-
-"compare-versions@npm:^5.0.0":
-  version: 5.0.3
-  resolution: "compare-versions@npm:5.0.3"
-  checksum: f66a4bb6ef8ff32031cc92c04dea4bbead039e72a7f6c7df7ef05f5a42ddca9202f8875b7449add54181e73b89f039662a8760c8db0ab036c4e8f653a7cd29c1
   languageName: node
   linkType: hard
 
@@ -13275,7 +13230,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ethereumjs-util@npm:^7.0.3, ethereumjs-util@npm:^7.1.0, ethereumjs-util@npm:^7.1.4":
+"ethereumjs-util@npm:^7.1.0, ethereumjs-util@npm:^7.1.4":
   version: 7.1.5
   resolution: "ethereumjs-util@npm:7.1.5"
   dependencies:
@@ -21998,17 +21953,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"proper-lockfile@npm:^4.1.1":
-  version: 4.1.2
-  resolution: "proper-lockfile@npm:4.1.2"
-  dependencies:
-    graceful-fs: ^4.2.4
-    retry: ^0.12.0
-    signal-exit: ^3.0.2
-  checksum: 00078ee6a61c216a56a6140c7d2a98c6c733b3678503002dc073ab8beca5d50ca271de4c85fca13b9b8ee2ff546c36674d1850509b84a04a5d0363bcb8638939
-  languageName: node
-  linkType: hard
-
 "protobufjs@npm:^6.10.2":
   version: 6.11.3
   resolution: "protobufjs@npm:6.11.3"
@@ -23883,13 +23827,6 @@ __metadata:
   bin:
     solhint: solhint.js
   checksum: b99ce230e6429275e1b63a0f4e41449d8a366b31d14c034f47b42bf3062b03574ac10d375ff28f4b389f796fb3f42db99dabc701fa56dddaba310dc59004806f
-  languageName: node
-  linkType: hard
-
-"solidity-ast@npm:^0.4.15":
-  version: 0.4.46
-  resolution: "solidity-ast@npm:0.4.46"
-  checksum: 9c2ab90731fd23fdceef0e74ea626cc1810ec413daaa9b7d838f4fd9c342a63095fae0f0690ec0166db9f316ef6a06d7740a2c4f74cf5609831121389bf0cb7b
   languageName: node
   linkType: hard
 
