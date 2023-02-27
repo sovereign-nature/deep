@@ -28,7 +28,7 @@ contract Sample is ERC721, Ownable, IDerrivative {
     function identifierAddress(uint256 tokenId) external view override returns (string memory) {
         _requireMinted(tokenId);
 
-        string memory baseAddress = "1287:0x06eb48572a2ef9a3b230d69ca731330793b65bdc:1";
+        string memory baseAddress = "1287:0xfd3434f66093f8007B30Bc44D3c467E660589059:0";
         return baseAddress;
         // return bytes(baseAddress).length > 0 ? string(abi.encodePacked(baseAddress, tokenId.toString())) : "";
     }
