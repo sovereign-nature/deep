@@ -12703,7 +12703,7 @@ __metadata:
     "@typescript-eslint/parser": 5.53.0
     eslint: 8.35.0
     eslint-config-prettier: 8.6.0
-    eslint-config-turbo: 0.0.8
+    eslint-config-turbo: 0.0.9
   languageName: unknown
   linkType: soft
 
@@ -12719,14 +12719,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-turbo@npm:0.0.8":
-  version: 0.0.8
-  resolution: "eslint-config-turbo@npm:0.0.8"
+"eslint-config-turbo@npm:0.0.9":
+  version: 0.0.9
+  resolution: "eslint-config-turbo@npm:0.0.9"
   dependencies:
-    eslint-plugin-turbo: 0.0.8
+    eslint-plugin-turbo: 0.0.9
   peerDependencies:
     eslint: ">6.6.0"
-  checksum: 3de932f3c0ea42a304ac07e21293a00a078d59b01a7f5b1ad87926567c3519d71297361d94f80abceafedbc212d1064e49e32916b4a3155f1b8ab68ce40baab9
+  checksum: 694d601c2a3d1e825edbfb0f868c26923d14ef69222f4b06757d681c407fdb282a60d8719ba6440216f476a2317108a0a59108aa1115b594b9cc6e39764a864a
   languageName: node
   linkType: hard
 
@@ -12886,12 +12886,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-turbo@npm:0.0.8":
-  version: 0.0.8
-  resolution: "eslint-plugin-turbo@npm:0.0.8"
+"eslint-plugin-turbo@npm:0.0.9":
+  version: 0.0.9
+  resolution: "eslint-plugin-turbo@npm:0.0.9"
   peerDependencies:
     eslint: ">6.6.0"
-  checksum: 06c936e7a2eca3a653c1c2b02938276663dd38b7b52eaf3cfc217307449155d4642b4740bf258d6402a9f519c0cffb567424b6e0ba6ba6bd6bbfc9f4e554e622
+  checksum: bc512041a9026541dda2ba15c18f1c6d71175145a5a7724b8ecb638d5f2d1de031377c6176ad1be4750a8adc7088047010b6cfa606deac466c54fccd403b57f2
   languageName: node
   linkType: hard
 
