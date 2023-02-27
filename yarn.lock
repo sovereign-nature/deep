@@ -6308,6 +6308,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sni/configs@*, @sni/configs@workspace:packages/configs":
+  version: 0.0.0-use.local
+  resolution: "@sni/configs@workspace:packages/configs"
+  languageName: unknown
+  linkType: soft
+
 "@sni/constants@*, @sni/constants@workspace:packages/constants":
   version: 0.0.0-use.local
   resolution: "@sni/constants@workspace:packages/constants"
@@ -6474,6 +6480,24 @@ __metadata:
   dependencies:
     prettier: 2.8.4
     prettier-plugin-organize-imports: 3.2.2
+  languageName: unknown
+  linkType: soft
+
+"@sni/sample-collection@workspace:apps/sample-collection":
+  version: 0.0.0-use.local
+  resolution: "@sni/sample-collection@workspace:apps/sample-collection"
+  dependencies:
+    "@nomicfoundation/hardhat-toolbox": 2.0.1
+    "@openzeppelin/contracts": 4.8.1
+    "@sni/configs": "*"
+    "@sni/solidity-interfaces": "*"
+    hardhat: 2.12.7
+  languageName: unknown
+  linkType: soft
+
+"@sni/solidity-interfaces@*, @sni/solidity-interfaces@workspace:packages/solidity-interfaces":
+  version: 0.0.0-use.local
+  resolution: "@sni/solidity-interfaces@workspace:packages/solidity-interfaces"
   languageName: unknown
   linkType: soft
 
@@ -14927,15 +14951,6 @@ __metadata:
   checksum: 77f8f8d085ff3d9d7787f0227e5355e1800f7d6707bc70171e0567bf69706703ae7f6f53dce1be1d409e7e71e3629a434c94b546bdbbc1e4c1af47cd5d0c6776
   languageName: node
   linkType: hard
-
-"hardhat-project@workspace:apps/sample-collection":
-  version: 0.0.0-use.local
-  resolution: "hardhat-project@workspace:apps/sample-collection"
-  dependencies:
-    "@nomicfoundation/hardhat-toolbox": 2.0.1
-    hardhat: 2.12.7
-  languageName: unknown
-  linkType: soft
 
 "hardhat@npm:2.12.7":
   version: 2.12.7
