@@ -7,6 +7,7 @@ import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SoulDetailComponent } from './components/soul-detail/soul-detail.component';
@@ -47,7 +48,7 @@ import { StatusPipe } from './pipes/status.pipe';
         return {
           cache: new InMemoryCache(),
           link: httpLink.create({
-            uri: 'https://gateway.sovereignnature.ch/graphql',
+            uri: environment.apiUrl,
           }),
         };
       },
