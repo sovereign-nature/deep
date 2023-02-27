@@ -2,7 +2,6 @@
   <thead>
     <tr>
       <th>Id</th>
-      <!-- <th>Owner</th> -->
       <th>Status</th>
       <th>Created at</th>
       <th>Updated at</th>
@@ -12,12 +11,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let soul of souls">
-      <td data-label="Id:">{{ soul.id.charAt(soul.id.length-1) }}</td>
-      <!-- <td [title]="soul.owner" class="owner" data-label="Owner:">{{ soul.owner }}</td> -->
+      <td data-label="Id:">{{ soul.id.slice(2) }}</td>
       <td data-label="Status:">{{ soul.status | status }}</td>
       <td data-label="Published date:">{{ soul.createdAt * 1000 | date }}</td>
       <td data-label="Updated at:">{{ soul.updatedAt * 1000 | date }}</td>
-      <td data-label="Name:">{{ soul.name | titlecase }}</td>
+      <td data-label="Name:">{{ soul.metadata?.name || '-' | titlecase }}</td>
       <td data-label="Details:" class="details"><div [routerLink]="['/details', soul.id]" class="btn">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#clip0_111_21756)">

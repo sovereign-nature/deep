@@ -2,14 +2,15 @@ import { gql } from 'apollo-angular';
 
 export const SOULS_LIST = gql`
   query sniList {
-    snis {
+    snis(first: 10) {
       id
       owner
       status
       createdAt
       updatedAt
-      name
-      collectionName
+      metadata {
+        name
+      }
     }
   }
 `;
