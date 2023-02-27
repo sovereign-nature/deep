@@ -1,5 +1,5 @@
 <h1 class="font-secondary">Image</h1>
-<img [src]="ipfsToUrl(properties?.image!)" [alt]="properties?.tokenId"/>
+<img *ngIf="properties?.metadata?.image" [src]="ipfsToUrl(properties?.metadata?.image!)" [alt]="properties?.tokenId"/>
 <div *ngIf="properties?.metadata as mtd" class="traits">
     <div *ngFor="let att of filterImage(mtd.attributes)" class="traits__item">
         <img *ngIf="att.value" [src]="ipfsToUrl(att.value)" [alt]="att.trait_type" (error)="handleMissingImage($event)">
