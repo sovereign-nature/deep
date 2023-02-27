@@ -15496,7 +15496,7 @@ __metadata:
     lint-staged: 13.1.2
     prettier: 2.8.4
     turbo: 1.8.2
-    turbo-ignore: 1.8.2
+    turbo-ignore: 1.8.3
   languageName: unknown
   linkType: soft
 
@@ -25195,12 +25195,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo-ignore@npm:1.8.2":
-  version: 1.8.2
-  resolution: "turbo-ignore@npm:1.8.2"
+"turbo-ignore@npm:1.8.3":
+  version: 1.8.3
+  resolution: "turbo-ignore@npm:1.8.3"
   bin:
     turbo-ignore: dist/index.js
-  checksum: 016fdb7f56967920a025a4edb7bca18a58fc84318b9e7d6b35c12a530f18c17c2bf0a7e3c025917a5e2492616b149ff454346591405c498d602c100071de7852
+  checksum: 609a1fb03fa45db4bfa96b548a1a09f11318e2ed720fbb0f35072742f9c2704b8b32823c4a02ea04cda332d15bc4d1eea22916089f4b5e6925461aeb0c545837
   languageName: node
   linkType: hard
 
