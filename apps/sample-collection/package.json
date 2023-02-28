@@ -16,6 +16,7 @@
     "@openzeppelin/contracts": "4.8.1",
     "@sni/configs": "*",
     "@sni/solidity-interfaces": "*",
-    "hardhat": "2.12.7"
+    "hardhat": "2.12.7",
+    "hardhat-abi-exporter": "2.10.1"
   }
 }

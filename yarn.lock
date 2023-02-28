@@ -6367,6 +6367,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@sni/derivative-indexer@workspace:apps/derivative-indexer":
+  version: 0.0.0-use.local
+  resolution: "@sni/derivative-indexer@workspace:apps/derivative-indexer"
+  dependencies:
+    "@graphprotocol/graph-cli": 0.40.0
+    "@graphprotocol/graph-ts": 0.29.3
+    "@sni/constants": "*"
+    "@sni/sample-collection": "*"
+    matchstick-as: 0.5.1
+    mustache: 4.2.0
+  languageName: unknown
+  linkType: soft
+
 "@sni/docs@workspace:apps/docs":
   version: 0.0.0-use.local
   resolution: "@sni/docs@workspace:apps/docs"
@@ -6497,7 +6510,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sni/sample-collection@workspace:apps/sample-collection":
+"@sni/sample-collection@*, @sni/sample-collection@workspace:apps/sample-collection":
   version: 0.0.0-use.local
   resolution: "@sni/sample-collection@workspace:apps/sample-collection"
   dependencies:
@@ -6506,6 +6519,7 @@ __metadata:
     "@sni/configs": "*"
     "@sni/solidity-interfaces": "*"
     hardhat: 2.12.7
+    hardhat-abi-exporter: 2.10.1
   languageName: unknown
   linkType: soft
 
