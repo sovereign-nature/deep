@@ -6406,7 +6406,7 @@ __metadata:
     hardhat: 2.12.7
     hardhat-abi-exporter: 2.10.1
     hardhat-gas-reporter: 1.0.9
-    nft.storage: 7.0.0
+    nft.storage: 7.0.3
     solhint: 3.4.0
     solidity-coverage: 0.8.2
     ts-node: 10.9.1
@@ -19947,9 +19947,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nft.storage@npm:7.0.0":
-  version: 7.0.0
-  resolution: "nft.storage@npm:7.0.0"
+"nft.storage@npm:7.0.3":
+  version: 7.0.3
+  resolution: "nft.storage@npm:7.0.3"
   dependencies:
     "@ipld/car": ^3.2.3
     "@ipld/dag-cbor": ^6.0.13
@@ -19964,7 +19964,7 @@ __metadata:
     p-retry: ^4.6.1
     streaming-iterables: ^6.0.0
     throttled-queue: ^2.1.2
-  checksum: 0cdb915823dff6412d7836bea532b88c4b6337614faf60970582ad166d3a7546adc1cb178fc0370d5dd5746cbe45a80a91eb08e3f71556c6f7a85bbdf89506fc
+  checksum: b2f1668207a0c6bbb7aafe4b417b0b8f2715838eeed0af97ed12b8189a3a787bdd25b37fd436c214a9ff988b457f325eb0559722d7920cbcfb7431fa419c6c27
   languageName: node
   linkType: hard
 
