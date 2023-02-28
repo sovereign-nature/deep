@@ -1,5 +1,14 @@
 import { Address, BigInt } from '@graphprotocol/graph-ts';
 import {
+  INITIAL_TOKEN_ID,
+  MINTER_ADDRESS,
+  OWNER_ADDRESS,
+} from '@sni/constants/mocks/identifier';
+import {
+  BASE_URI,
+  IDENTIFIER_ADDRESS,
+} from '@sni/constants/mocks/sampleCollection';
+import {
   afterAll,
   assert,
   beforeAll,
@@ -7,56 +16,57 @@ import {
   describe,
   test,
 } from 'matchstick-as/assembly/index';
-import { handleApproval } from '../src/sample';
-import { createApprovalEvent } from './sample-utils';
+import { handleTransfer } from '../src/sample';
+import { mockForToken } from './mocks/functions';
+import { createTransferEvent } from './sample-utils';
 
-// Tests structure (matchstick-as >=0.5.0)
-// https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0
+const INITIAL_TOKEN_ID_INT = BigInt.fromI32(INITIAL_TOKEN_ID);
+const MINTER = Address.fromString(MINTER_ADDRESS);
+const OWNER = Address.fromString(OWNER_ADDRESS);
 
 describe('Describe entity assertions', () => {
   beforeAll(() => {
-    const owner = Address.fromString(
-      '0x0000000000000000000000000000000000000001'
+    mockForToken(INITIAL_TOKEN_ID_INT);
+
+    const newTransferEvent = createTransferEvent(
+      MINTER,
+      OWNER,
+      INITIAL_TOKEN_ID_INT
     );
-    const approved = Address.fromString(
-      '0x0000000000000000000000000000000000000001'
-    );
-    const tokenId = BigInt.fromI32(234);
-    const newApprovalEvent = createApprovalEvent(owner, approved, tokenId);
-    handleApproval(newApprovalEvent);
+    handleTransfer(newTransferEvent);
   });
 
   afterAll(() => {
     clearStore();
   });
 
-  // For more test scenarios, see:
-  // https://thegraph.com/docs/en/developer/matchstick/#write-a-unit-test
+  test('Transfer event handled', () => {
+    const entityName = 'Derivative';
+    const entityId = INITIAL_TOKEN_ID_INT.toHex();
 
-  test('Approval created and stored', () => {
-    assert.entityCount('Approval', 1);
+    assert.entityCount(entityName, 1);
 
-    // 0xa16081f360e3847006db660bae1c6d1b2e17ec2a is the default address used in newMockEvent() function
+    assert.fieldEquals(entityName, entityId, 'owner', OWNER.toHex());
+
     assert.fieldEquals(
-      'Approval',
-      '0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1',
-      'owner',
-      '0x0000000000000000000000000000000000000001'
-    );
-    assert.fieldEquals(
-      'Approval',
-      '0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1',
-      'approved',
-      '0x0000000000000000000000000000000000000001'
-    );
-    assert.fieldEquals(
-      'Approval',
-      '0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1',
+      entityName,
+      entityId,
       'tokenId',
-      '234'
+      INITIAL_TOKEN_ID_INT.toString()
     );
 
-    // More assert options:
-    // https://thegraph.com/docs/en/developer/matchstick/#asserts
+    assert.fieldEquals(
+      entityName,
+      entityId,
+      'tokenURI',
+      `${BASE_URI}${INITIAL_TOKEN_ID}`
+    );
+
+    assert.fieldEquals(
+      entityName,
+      entityId,
+      'identifierAddress',
+      IDENTIFIER_ADDRESS
+    );
   });
 });

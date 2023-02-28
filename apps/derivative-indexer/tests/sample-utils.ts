@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
 import { Address, BigInt, ethereum } from '@graphprotocol/graph-ts';
+import { SAMPLE_COLLECTION_ADDRESS } from '@sni/constants';
 import { newMockEvent } from 'matchstick-as';
 import {
   Approval,
@@ -10,6 +11,13 @@ import {
   OwnershipTransferred,
   Transfer,
 } from '../generated/Sample/Sample';
+
+function newMockEventAddress(): ethereum.Event {
+  const event = newMockEvent();
+  event.address = Address.fromString(SAMPLE_COLLECTION_ADDRESS);
+
+  return event;
+}
 
 export function createApprovalEvent(
   owner: Address,
@@ -90,7 +98,7 @@ export function createTransferEvent(
   tokenId: BigInt
 ): Transfer {
   //@ts-ignore
-  const transferEvent = changetype<Transfer>(newMockEvent());
+  const transferEvent = changetype<Transfer>(newMockEventAddress());
 
   transferEvent.parameters = [];
 
