@@ -1,0 +1,20 @@
+{
+  "name": "@sni/sample-collection",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "compile": "hardhat compile",
+    "build": "npm run compile",
+    "test": "hardhat test",
+    "lint:contracts": "solhint contracts/**/*.sol",
+    "lint:tests": "eslint **/*.ts",
+    "lint": "npm run lint:contracts && npm run lint:tests"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "2.0.1",
+    "@openzeppelin/contracts": "4.8.1",
+    "@sni/configs": "*",
+    "@sni/solidity-interfaces": "*",
+    "hardhat": "2.12.7"
+  }
+}
