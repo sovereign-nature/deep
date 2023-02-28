@@ -24,7 +24,7 @@ describe('Sample', function () {
     sampleContract.safeMint(owner.address);
 
     expect(await sampleContract.identifierAddress(0)).to.be.equal(
-      '1287:0x06eb48572a2ef9a3b230d69ca731330793b65bdc:1'
+      '1287:0xfd3434f66093f8007B30Bc44D3c467E660589059:0'
     );
   });
 });
