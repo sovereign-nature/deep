@@ -1,9 +1,13 @@
 sources:
-  - name: TheGraph
+  - name: subgraph-identifiers
     handler:
       graphql:
         endpoint: '{{&GRAPHQL_ENDPOINT}}'
-  - name: Pinata
+  - name: subgraph-derivatives
+    handler:
+      graphql:
+        endpoint: https://api.thegraph.com/subgraphs/name/sovereign-nature/derivatives
+  - name: ipfs-pinata
     handler:
       jsonSchema:
         endpoint: 'https://sni.mypinata.cloud/'
@@ -23,12 +27,13 @@ sources:
               composer: './middleware/getCid.ts'
 additionalTypeDefs: |
   extend type SNI {
-    metadata: Identifier_Token_Metadata
+    metadata: Identifier_Token_Metadata!,
+    derivatives: [Derivative]!
   }
 additionalResolvers:
   - targetTypeName: SNI
     targetFieldName: metadata
-    sourceName: Pinata
+    sourceName: ipfs-pinata
     sourceTypeName: Query
     sourceFieldName: ipfsMetadata
     requiredSelectionSet: |
@@ -37,10 +42,17 @@ additionalResolvers:
       }
     sourceArgs:
       cid: '{root.tokenURI}'
-plugins:
-  # - responseCache:
-  #     includeExtensionMetadata: true
-  - httpCache:
+  - targetTypeName: SNI
+    targetFieldName: derivatives
+    sourceName: subgraph-derivatives
+    sourceTypeName: Query
+    sourceFieldName: derivatives
+    sourceArgs:
+      where: '{identifierAddress_in:["1287:0xfd3434f66093f8007B30Bc44D3c467E660589059:0"]}'
+# plugins:
+# - httpCache
+# - responseCache:
+#     includeExtensionMetadata: true
 # cache:
 #   cfwKv:
 #     namespace: MESH
