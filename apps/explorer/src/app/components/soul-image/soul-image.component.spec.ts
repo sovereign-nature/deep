@@ -27,11 +27,10 @@ describe('SoulImageComponent', () => {
     const activatedRouteSpy = {
       snapshot: { paramMap: convertToParamMap({ soulId: soulId }) },
     };
-    const soulsServiceSpy = jasmine.createSpyObj(
-      'SoulService',
-      ['getSoulDataById', 'filterByCondition', 'getMetadata'],
-      [soulId]
-    );
+    const soulsServiceSpy = jasmine.createSpyObj('SoulService', [
+      'getSoulDataById',
+      'filterByCondition',
+    ]);
     await TestBed.configureTestingModule({
       imports: [ApolloTestingModule, RouterTestingModule],
       declarations: [SoulImageComponent],

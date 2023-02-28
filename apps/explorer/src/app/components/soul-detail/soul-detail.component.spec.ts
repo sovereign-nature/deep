@@ -23,9 +23,15 @@ describe('SoulDetailComponent', () => {
       image:
         'ipfs://QmdGf3N4tFQAWwTeETrW2m5LUGJgkDXWfA1cUBWrv6ozNM/3/Image52.jpg',
       attributes: [
-        { trait_type: 'Left ear', value: 'left_ear.jpg' },
-        { trait_type: 'Right ear', value: 'right_ear.jpg' },
+        { trait_type: 'name', value: 'scarface' },
+        { trait_type: 'coalition ear', value: 'musketeers' },
+        {
+          trait_type: 'prides',
+          value:
+            'marsh pride, marsh breakaways, serena north, paradise breakaways, triangle lions',
+        },
       ],
+      description: '...',
       properties: {
         taxonId: '-',
         statusDescription: '-',
@@ -54,7 +60,7 @@ describe('SoulDetailComponent', () => {
       [soulId]
     );
     const activatedRouteSpy = {
-      snapshot: { paramMap: convertToParamMap({ soulId: soulId }) },
+      snapshot: { paramMap: convertToParamMap({ soulId }) },
     };
 
     await TestBed.configureTestingModule({

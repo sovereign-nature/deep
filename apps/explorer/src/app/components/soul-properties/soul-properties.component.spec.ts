@@ -9,14 +9,15 @@ describe('SoulPropertiesComponent', () => {
   let fixture: ComponentFixture<SoulPropertiesComponent>;
 
   beforeEach(async () => {
-    const soulsServiceSpy = jasmine.createSpyObj(
-      'SoulService',
-      ['getMetadata'],
-      ['QmWcL7iVVnungvFsh5VR58NiK919VpKye62MAaDTNpsFfH']
-    );
+    const soulsServiceSpy = jasmine.createSpyObj('SoulService', [
+      'getSoulDataById',
+      'filterByCondition',
+    ]);
+
     await TestBed.configureTestingModule({
       declarations: [SoulPropertiesComponent],
       imports: [ApolloTestingModule, HttpClientTestingModule],
+
       providers: [{ provide: SoulService, useValue: soulsServiceSpy }],
     }).compileComponents();
 

@@ -19,12 +19,26 @@ describe('SoulListComponent', () => {
   const souls: Soul[] = [
     {
       id: '0x2',
-      owner: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
       status: 0,
       createdAt: 1665497178,
       updatedAt: 1665497178,
-      name: 'Sovereign Nature Identifier #N',
       collectionName: '',
+      metadata: {
+        name: 'Sovereign Nature Identifier #N',
+        image:
+          'ipfs://QmdGf3N4tFQAWwTeETrW2m5LUGJgkDXWfA1cUBWrv6ozNM/3/Image52.jpg',
+        attributes: [
+          { trait_type: 'Left ear', value: 'left_ear.jpg' },
+          { trait_type: 'Right ear', value: 'right_ear.jpg' },
+        ],
+        description: '...',
+        properties: {
+          taxonId: '-',
+          statusDescription: '-',
+          geometry: '-',
+          conservationStatus: '-',
+        },
+      },
     },
   ];
 

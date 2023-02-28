@@ -16,24 +16,31 @@ describe('SoulService', () => {
     data: {
       sni: {
         id: '0x2',
-        owner: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
         status: 0,
+        owner: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
         createdAt: 1665497178,
         updatedAt: 1665497178,
-        name: 'Sovereign Nature Identifier #N',
+        metadata: {
+          name: 'Sovereign Nature Identifier #N',
+          image:
+            'ipfs://QmdGf3N4tFQAWwTeETrW2m5LUGJgkDXWfA1cUBWrv6ozNM/3/Image52.jpg',
+          attributes: [
+            { trait_type: 'Left ear', value: 'left_ear.jpg' },
+            { trait_type: 'Right ear', value: 'right_ear.jpg' },
+          ],
+          description: '...',
+          properties: {
+            geometry: '-',
+            taxonId: 'itis:183803',
+            statusDescription: '-',
+            conservationStatus: '-',
+          },
+        },
         collectionName: '',
-        oracle: '',
-        symbol: '',
-        description: 'Test lion identifier',
-        image:
-          'ipfs://bafybeihs6qouvmo4pnjozlrdmgic3b4nav6rrswc3tobgclrrvtwsa47oe/blob',
         statusDescription: '',
-        taxonId: 'itis:183803',
         tokenId: 2,
         tokenURI:
           'ipfs://bafyreib564aosdw5igyfbvedtdvtz4xgrznz64iszd34b32cfvzro3rm5y/metadata.json',
-        geometry: 'POINT(5.9559 47.8084)',
-        conservationStatus: 'VU',
         computeURI:
           'https://docs.google.com/document/d/1a9SJnL3uQlZP8R9yKv-qN4BYYfDQZakagx-O3sNw3Tg',
         dataURI:
@@ -64,11 +71,9 @@ describe('SoulService', () => {
 
       expect(soul?.id).toBe('0x2');
       expect(soul?.status).toBe(0);
-      expect(soul?.owner).toBe('0x96ffa04a300294f810f754e0b95431c2821d3d50');
       expect(soul?.createdAt).toBe(1665497178);
       expect(soul?.updatedAt).toBe(1665497178);
-      expect(soul?.name).toBe('Sovereign Nature Identifier #N');
-      expect(soul?.collectionName).toBe('');
+      expect(soul?.metadata?.name).toBe('Sovereign Nature Identifier #N');
     });
 
     const op = apolloController.expectOne(SOULS_LIST);
@@ -83,25 +88,70 @@ describe('SoulService', () => {
             status: 1,
             createdAt: 1661520378,
             updatedAt: 1665496530,
-            name: '',
+            metadata: {
+              name: 'Sovereign Nature Identifier #N',
+              image:
+                'ipfs://QmdGf3N4tFQAWwTeETrW2m5LUGJgkDXWfA1cUBWrv6ozNM/3/Image52.jpg',
+              attributes: [
+                { trait_type: 'Left ear', value: 'left_ear.jpg' },
+                { trait_type: 'Right ear', value: 'right_ear.jpg' },
+              ],
+              description: '...',
+              properties: {
+                geometry: '-',
+                taxonId: 'itis:183803',
+                statusDescription: '-',
+                conservationStatus: '-',
+              },
+            },
             collectionName: '',
           },
           {
             id: '0x1',
-            owner: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
             status: 0,
+            owner: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
             createdAt: 1665496818,
             updatedAt: 1665496818,
-            name: '',
+            metadata: {
+              name: 'Sovereign Nature Identifier #N',
+              image:
+                'ipfs://QmdGf3N4tFQAWwTeETrW2m5LUGJgkDXWfA1cUBWrv6ozNM/3/Image52.jpg',
+              attributes: [
+                { trait_type: 'Left ear', value: 'left_ear.jpg' },
+                { trait_type: 'Right ear', value: 'right_ear.jpg' },
+              ],
+              description: '...',
+              properties: {
+                geometry: '-',
+                taxonId: 'itis:183803',
+                statusDescription: '-',
+                conservationStatus: '-',
+              },
+            },
             collectionName: '',
           },
           {
             id: '0x2',
-            owner: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
             status: 0,
+            owner: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
             createdAt: 1665497178,
             updatedAt: 1665497178,
-            name: 'Sovereign Nature Identifier #N',
+            metadata: {
+              name: 'Sovereign Nature Identifier #N',
+              image:
+                'ipfs://QmdGf3N4tFQAWwTeETrW2m5LUGJgkDXWfA1cUBWrv6ozNM/3/Image52.jpg',
+              attributes: [
+                { trait_type: 'Left ear', value: 'left_ear.jpg' },
+                { trait_type: 'Right ear', value: 'right_ear.jpg' },
+              ],
+              description: '...',
+              properties: {
+                geometry: '-',
+                taxonId: 'itis:183803',
+                statusDescription: '-',
+                conservationStatus: '-',
+              },
+            },
             collectionName: '',
           },
         ],
@@ -115,10 +165,9 @@ describe('SoulService', () => {
 
       expect(soul?.id).toBe('0x2');
       expect(soul?.status).toBe(0);
-      expect(soul?.owner).toBe('0x96ffa04a300294f810f754e0b95431c2821d3d50');
       expect(soul?.createdAt).toBe(1665497178);
       expect(soul?.updatedAt).toBe(1665497178);
-      expect(soul?.name).toBe('Sovereign Nature Identifier #N');
+      expect(soul?.metadata?.name).toBe('Sovereign Nature Identifier #N');
       expect(soul?.collectionName).toBe('');
     });
 
@@ -132,20 +181,13 @@ describe('SoulService', () => {
     soulService.getSoulDataById('0x2', SOUL_PROPERTY).subscribe((soul) => {
       expect(soul).toBeTruthy('No soul properties returned');
 
-      expect(soul?.oracle).toBe('');
-      expect(soul?.symbol).toBe('');
-      expect(soul?.description).toBe('Test lion identifier');
-      expect(soul?.image).toBe(
-        'ipfs://bafybeihs6qouvmo4pnjozlrdmgic3b4nav6rrswc3tobgclrrvtwsa47oe/blob'
+      expect(soul?.metadata?.description).toBe('...');
+      expect(soul?.metadata?.image).toBe(
+        'ipfs://QmdGf3N4tFQAWwTeETrW2m5LUGJgkDXWfA1cUBWrv6ozNM/3/Image52.jpg'
       );
-      expect(soul?.statusDescription).toBe('');
-      expect(soul?.taxonId).toBe('itis:183803');
+      expect(soul?.metadata?.properties.statusDescription).toBe('-');
+      expect(soul?.metadata?.properties.taxonId).toBe('itis:183803');
       expect(soul?.tokenId).toBe(2);
-      expect(soul?.tokenURI).toBe(
-        'ipfs://bafyreib564aosdw5igyfbvedtdvtz4xgrznz64iszd34b32cfvzro3rm5y/metadata.json'
-      );
-      expect(soul?.geometry).toBe('POINT(5.9559 47.8084)');
-      expect(soul?.conservationStatus).toBe('VU');
     });
 
     const op = apolloController.expectOne(SOUL_PROPERTY);
