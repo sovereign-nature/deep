@@ -19,7 +19,7 @@ export class SoulPropertiesComponent {
 
   filterAttributes(att: Attributes[]) {
     const attributes = this.soulService.filterByCondition(att, false);
-    return attributes.filter((val) => val.trait_type !== 'prides');
+    return attributes?.filter((val) => val.trait_type !== 'prides');
   }
 
   removeUnderline(value: string): string {

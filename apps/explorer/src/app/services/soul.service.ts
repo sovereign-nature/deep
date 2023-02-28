@@ -77,6 +77,7 @@ export class SoulService {
       'ear_left',
       'face',
       'mouth',
+      'profile',
     ];
 
     return atts.filter((att) =>

@@ -49,7 +49,21 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -62,6 +76,9 @@
             },
             "development": {
               "browserTarget": "angular:build:development"
+            },
+            "staging": {
+              "browserTarget": "angular:build:staging"
             }
           },
           "defaultConfiguration": "development"

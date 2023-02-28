@@ -2,14 +2,15 @@ import { gql } from 'apollo-angular';
 
 export const SOULS_LIST = gql`
   query sniList {
-    snis {
+    snis(first: 10) {
       id
       owner
       status
       createdAt
       updatedAt
-      name
-      collectionName
+      metadata {
+        name
+      }
     }
   }
 `;
@@ -19,10 +20,11 @@ export const SOUL_DETAIL = gql`
     sni(id: $sniId) {
       id
       status
-      name
+      metadata {
+        name
+      }
       createdAt
       updatedAt
-      owner
       collectionName
     }
   }
@@ -31,25 +33,21 @@ export const SOUL_DETAIL = gql`
 export const SOUL_PROPERTY = gql`
   query sniDetail($sniId: ID!) {
     sni(id: $sniId) {
-      oracle
-      symbol
-      description
-      image
-      statusDescription
-      taxonId
       tokenId
-      tokenURI
-      geometry
-      conservationStatus
       computeURI
       dataURI
       metadata {
+        description
+        image
         attributes {
           trait_type
           value
         }
         properties {
           taxonId
+          statusDescription
+          geometry
+          conservationStatus
         }
       }
     }

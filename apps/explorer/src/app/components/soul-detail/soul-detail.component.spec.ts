@@ -18,15 +18,33 @@ describe('SoulDetailComponent', () => {
     collectionName: '-',
     createdAt: 1675878906,
     id: soulId,
-    name: 'Sovereign Nature Identifier #N',
+    metadata: {
+      name: 'Sovereign Nature Identifier #N',
+      image:
+        'ipfs://QmdGf3N4tFQAWwTeETrW2m5LUGJgkDXWfA1cUBWrv6ozNM/3/Image52.jpg',
+      attributes: [
+        { trait_type: 'name', value: 'scarface' },
+        { trait_type: 'coalition ear', value: 'musketeers' },
+        {
+          trait_type: 'prides',
+          value:
+            'marsh pride, marsh breakaways, serena north, paradise breakaways, triangle lions',
+        },
+      ],
+      description: '...',
+      properties: {
+        taxonId: '-',
+        statusDescription: '-',
+        geometry: '-',
+        conservationStatus: '-',
+      },
+    },
     status: 1,
     updatedAt: 1675878906,
     computeURI:
       'https://docs.google.com/document/d/1a9SJnL3uQlZP8R9yKv-qN4BYYfDQZakagx-O3sNw3Tg',
     dataURI:
       'https://www.marapredatorconservation.org/wp-content/uploads/2020/09/Muskuteers-Marsh.pdf',
-    image:
-      'ipfs://QmdGf3N4tFQAWwTeETrW2m5LUGJgkDXWfA1cUBWrv6ozNM/3/Image52.jpg',
     taxonId: 'itis:183803',
     tokenId: 2,
     tokenURI: 'ipfs://QmWcL7iVVnungvFsh5VR58NiK919VpKye62MAaDTNpsFfH',
@@ -38,11 +56,11 @@ describe('SoulDetailComponent', () => {
   beforeEach(async () => {
     const soulsServiceSpy = jasmine.createSpyObj(
       'SoulService',
-      ['getSoulDataById', 'getMetadata'],
+      ['getSoulDataById', 'getMetadata', 'filterByCondition'],
       [soulId]
     );
     const activatedRouteSpy = {
-      snapshot: { paramMap: convertToParamMap({ soulId: soulId }) },
+      snapshot: { paramMap: convertToParamMap({ soulId }) },
     };
 
     await TestBed.configureTestingModule({
@@ -72,7 +90,7 @@ describe('SoulDetailComponent', () => {
 
   it('should have 7 properties in soul details', () => {
     const detailsEl: DebugElement[] = el.queryAll(By.css('.soul__details p'));
-    const name: DebugElement[] = el.queryAll(By.css('.soul__details h2'));
+    const name: DebugElement[] = el.queryAll(By.css('.soul__details'));
     expect(detailsEl.length).toBe(5, 'Unexpected to find 5 properties');
     expect(name.length).toBe(1, 'Unexpected to find name');
   });
@@ -84,7 +102,7 @@ describe('SoulDetailComponent', () => {
     const statusPipe = new StatusPipe();
 
     expect(name[0].nativeElement.innerHTML).toContain(
-      details.name,
+      details.metadata.name,
       'Unexpected value of name'
     );
     expect(detailsEl[0].nativeElement.textContent).toContain(

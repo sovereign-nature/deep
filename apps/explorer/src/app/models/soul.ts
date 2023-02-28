@@ -2,11 +2,10 @@ import { Metadata } from './metadata';
 
 export interface Soul {
   id: string;
-  owner: string;
+  owner?: string;
   status: number;
   createdAt: number;
   updatedAt: number;
-  name: string;
   collectionName: string;
   description?: string;
   image?: string;
@@ -16,8 +15,6 @@ export interface Soul {
   taxonId?: string;
   tokenId?: number;
   tokenURI?: string;
-  geometry?: string;
-  conservationStatus?: string;
   computeURI?: string;
   metadata?: Metadata;
 }
