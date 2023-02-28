@@ -6376,9 +6376,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sni/derrivative-indexer@workspace:apps/derrivative-indexer":
+"@sni/derrivative-indexer@workspace:apps/derivative-indexer":
   version: 0.0.0-use.local
-  resolution: "@sni/derrivative-indexer@workspace:apps/derrivative-indexer"
+  resolution: "@sni/derrivative-indexer@workspace:apps/derivative-indexer"
   dependencies:
     "@graphprotocol/graph-cli": 0.40.0
     "@graphprotocol/graph-ts": 0.29.3

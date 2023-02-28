@@ -1,73 +1,42 @@
+import { log } from '@graphprotocol/graph-ts';
 import {
   Approval as ApprovalEvent,
   ApprovalForAll as ApprovalForAllEvent,
   OwnershipTransferred as OwnershipTransferredEvent,
+  Sample,
   Transfer as TransferEvent,
 } from '../generated/Sample/Sample';
-import {
-  Approval,
-  ApprovalForAll,
-  OwnershipTransferred,
-  Transfer,
-} from '../generated/schema';
+import { findEntity } from './utils';
 
 export function handleApproval(event: ApprovalEvent): void {
-  const entity = new Approval(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  );
-  entity.owner = event.params.owner;
-  entity.approved = event.params.approved;
-  entity.tokenId = event.params.tokenId;
-
-  entity.blockNumber = event.block.number;
-  entity.blockTimestamp = event.block.timestamp;
-  entity.transactionHash = event.transaction.hash;
-
-  entity.save();
+  log.info('Approval event {}', [event.address.toHexString()]);
 }
 
 export function handleApprovalForAll(event: ApprovalForAllEvent): void {
-  const entity = new ApprovalForAll(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  );
-  entity.owner = event.params.owner;
-  entity.operator = event.params.operator;
-  entity.approved = event.params.approved;
-
-  entity.blockNumber = event.block.number;
-  entity.blockTimestamp = event.block.timestamp;
-  entity.transactionHash = event.transaction.hash;
-
-  entity.save();
+  log.info('Approval for all event {}', [event.address.toHexString()]);
 }
 
 export function handleOwnershipTransferred(
   event: OwnershipTransferredEvent
 ): void {
-  const entity = new OwnershipTransferred(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  );
-  entity.previousOwner = event.params.previousOwner;
-  entity.newOwner = event.params.newOwner;
-
-  entity.blockNumber = event.block.number;
-  entity.blockTimestamp = event.block.timestamp;
-  entity.transactionHash = event.transaction.hash;
-
-  entity.save();
+  log.info('Ownership transferred event {}', [event.address.toHexString()]);
 }
 
 export function handleTransfer(event: TransferEvent): void {
-  const entity = new Transfer(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  );
-  entity.from = event.params.from;
-  entity.to = event.params.to;
-  entity.tokenId = event.params.tokenId;
+  const sampleContract = Sample.bind(event.address);
 
-  entity.blockNumber = event.block.number;
-  entity.blockTimestamp = event.block.timestamp;
-  entity.transactionHash = event.transaction.hash;
+  const tokenId = event.params.tokenId;
+  const owner = event.params.to;
+
+  const tokenURI = sampleContract.tokenURI(tokenId);
+  const identifierAddress = sampleContract.identifierAddress(tokenId);
+
+  const entity = findEntity(tokenId, event.block.timestamp);
+  entity.owner = owner;
+  entity.tokenURI = tokenURI;
+  entity.collectionName = sampleContract.name();
+  entity.symbol = sampleContract.symbol();
+  entity.identifierAddress = identifierAddress;
 
   entity.save();
 }
