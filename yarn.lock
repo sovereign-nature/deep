@@ -6501,6 +6501,7 @@ __metadata:
     karma-jasmine: 5.1.0
     karma-jasmine-html-reporter: 2.0.0
     ngx-date-fns: 10.0.1
+    ngx-infinite-scroll: ^15.0.0
     rxjs: 7.8.0
     tslib: 2.5.0
     typescript: 4.9.5
@@ -19978,6 +19979,18 @@ __metadata:
     "@angular/core": ">=14"
     date-fns: ">=2"
   checksum: 754b2df709c15e86c2e00722c34b5077ec7de2898772e69ae56a31c192109ef09314c622b28be052919871fa9166e4802347641956282f3c5b5c357a5651bc03
+  languageName: node
+  linkType: hard
+
+"ngx-infinite-scroll@npm:^15.0.0":
+  version: 15.0.0
+  resolution: "ngx-infinite-scroll@npm:15.0.0"
+  dependencies:
+    tslib: ^2.3.0
+  peerDependencies:
+    "@angular/common": ">=15.0.0 <16.0.0"
+    "@angular/core": ">=15.0.0 <16.0.0"
+  checksum: 50f7bcbce95c686387d05cca7d540ea91508f4703a9ccf5b6a4bd7d21aeca0d21ae9e12555292a7ddc55df12bd74c53a35acef40a2430e59e9dcffae5f44649b
   languageName: node
   linkType: hard
 

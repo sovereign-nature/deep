@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QueryRef } from 'apollo-angular';
 import { format, fromUnixTime } from 'date-fns';
 import { combineLatest, map, Observable } from 'rxjs';
 import { Soul, SoulFilter } from 'src/app/models/soul';
@@ -10,19 +11,32 @@ import { SoulService } from 'src/app/services/soul.service';
   styleUrls: ['./soul-list.component.scss'],
 })
 export class SoulListComponent implements OnInit {
+  soulListQuery?: QueryRef<Soul[]>;
   data$?: Observable<Soul[]>;
+  soulList?: Soul[];
+  selector = '.home';
 
   constructor(private soulService: SoulService) {}
 
   ngOnInit() {
     this.data$ = combineLatest([
-      this.soulService.getSoulsList(),
+      this.soulService.getSoulsList(''),
       this.soulService.filteredSouls$,
     ]).pipe(
-      map(([soul, filters]) => {
-        return this.filterByField(soul, filters);
+      map(([souls, filters]) => {
+        this.soulList = souls;
+        return this.filterByField(souls, filters);
       })
     );
+  }
+
+  onScroll() {
+    const last = this.soulList?.at(-1);
+    if (last) {
+      this.soulService.getSoulsList(last.id).subscribe((souls) => {
+        this.soulList = this.soulList?.concat(souls);
+      });
+    }
   }
 
   filterByField(soul: Soul[], filters: SoulFilter) {

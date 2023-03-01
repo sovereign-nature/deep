@@ -7,6 +7,7 @@ import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +41,7 @@ import { StatusPipe } from './pipes/status.pipe';
     HttpClientModule,
     GoogleMapsModule,
     ReactiveFormsModule,
+    InfiniteScrollModule,
   ],
   providers: [
     {
