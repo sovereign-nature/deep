@@ -62,7 +62,7 @@ describe('SoulService', () => {
   });
 
   it('should display souls list', () => {
-    soulService.getSoulsList().subscribe((souls) => {
+    soulService.getSoulsList('').subscribe((souls) => {
       expect(souls).toBeTruthy('No souls returned');
 
       expect(souls.length).toBe(3, 'Incorrect number of courses');
