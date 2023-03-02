@@ -4,9 +4,7 @@ This is a Sovereign Nature Identifier monorepo.
 
 ## What's inside?
 
-This monorepo uses [turborepo](https://turborepo.org/) for tasks/caching and [npm](https://www.npmjs.com/) as a package manager. It includes the following packages/apps:
-
-### Apps and Packages
+This monorepo uses [turborepo](https://turborepo.org/) for tasks/caching and yarn as a package manager. It includes the following packages/apps:
 
 Apps:
 
@@ -14,18 +12,37 @@ Apps:
 - `@sni/explorer`: Explorer for Sovereign Nature Identifier built with Angular.
 - `@sni/docs`: documentation generator based on [Vitepress](https://vitepress.vuejs.org/).
 - `@sni/indexer`: indexer for [The Graph](https://thegraph.com/).
+- `@sni/gateway`: GraphQL gateway built with [GraphQL Mesh](https://the-guild.dev/graphql/mesh)
+- `@sni/sample-collection`: Sample NFT derivatives connected to deployed Identifier contracts.
+- `@sni/derivative-indexer`: The Graph indexer for derivative contracts.
 
 Packages:
 
 - `eslint-config-*`: Shared `esLint` configurations.
-- `prettier-config`: Shared `prettier` configuration.
-- `constants`: Shared constants.
+- `@sni/prettier-config`: Shared `prettier` configuration.
+- `@sni/constants`: Shared constants.
+- `@sni/configs`: Shared configs.
+- `@sni/json-schemas`: Shared JSON schemas.
+- `@sni/solidity-interfaces`: Shared Solidity interfaces, like IDerivative.
 
-### Installing Dependencies
+## Identifier Core Services Architecture
 
-To install dependencies for whole monorepo run `yarn install` from the root repo dirrectory.
+```mermaid
+  flowchart TD;
+      IPFSData{{IPFS Data}}-->IPFSGateway
+      DerivativeContracts{{Derivatives Contracts}}-->DerivativesIndexer
+      IdentifierContracts{{Identifier Contracts}}-->IdentifiersIndexer
+      IdentifiersIndexer[Identifiers GraphQL Indexer API]-->Gateway((GraphQL Mesh Gateway));
+      DerivativesIndexer[Derivatives GraphQL Indexer API]-->Gateway;
+      IPFSGateway[Pinata IPFS Gateway]-->Gateway
+      Gateway--GraphQL API-->UI(Web UI)
+```
 
-### Build
+## Installing Dependencies
+
+To install dependencies for whole monorepo run `yarn install` from the root repo directory.
+
+## Build
 
 To build all apps and packages, run the following command:
 
@@ -44,16 +61,16 @@ yarn dev
 To develop specific package run:
 
 ```shell
-npx turbo run dev --filter <PACKAGE_NAME>
+yarn dev --filter <PACKAGE_NAME>
 ```
 
 For example, to develop explorer, run:
 
 ```shell
-npx turbo run dev --filter @sni/explorer
+yarn dev --filter @sni/explorer
 ```
 
-### Remote Caching
+## Remote Caching
 
 Turborepo can use a technique known as [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
