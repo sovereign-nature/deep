@@ -4,9 +4,9 @@
   "scripts": {
     "ng": "ng",
     "dev": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration=${NODE_ENV:-production}",
     "build:staging": "ng build --configuration=staging",
-    "watch": "ng build --watch --configuration development",
+    "watch": "ng build --watch --configuration=development",
     "test": "ng test --no-watch --no-progress --code-coverage --browsers=ChromeHeadless",
     "test:dev": "ng test",
     "lint": "eslint \"**/*.{ts,js}\"",
