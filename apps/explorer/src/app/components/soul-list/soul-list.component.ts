@@ -14,7 +14,6 @@ export class SoulListComponent implements OnInit {
   soulListQuery?: QueryRef<Soul[]>;
   data$?: Observable<Soul[]>;
   soulList?: Soul[];
-  selector = '.home';
 
   constructor(private soulService: SoulService) {}
 
