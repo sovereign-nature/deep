@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ApolloTestingModule } from 'apollo-angular/testing';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { of } from 'rxjs';
 import { Soul } from 'src/app/models/soul';
 import { StatusPipe } from 'src/app/pipes/status.pipe';
@@ -49,6 +50,7 @@ describe('SoulListComponent', () => {
         ApolloTestingModule,
         FormsModule,
         ReactiveFormsModule,
+        InfiniteScrollModule,
       ],
       declarations: [
         SoulListComponent,
@@ -70,7 +72,7 @@ describe('SoulListComponent', () => {
 
   it('should contain table', () => {
     component.data$ = of(souls);
-
+    component.soulList = souls;
     fixture.detectChanges();
     const table = fixture.nativeElement.querySelector('table');
 

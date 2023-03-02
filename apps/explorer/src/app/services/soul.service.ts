@@ -23,10 +23,13 @@ export class SoulService {
 
   constructor(private apollo: Apollo, private http: HttpClient) {}
 
-  getSoulsList(): Observable<Soul[]> {
+  getSoulsList(lastId: string): Observable<Soul[]> {
     return this.apollo
       .watchQuery<SNIList>({
         query: SOULS_LIST,
+        variables: {
+          offset: lastId,
+        },
       })
       .valueChanges.pipe(
         map((val) => val.data.snis),
