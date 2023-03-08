@@ -19,8 +19,8 @@ export interface Soul {
   metadata?: Metadata;
 }
 export interface SoulFilter {
-  searchById: string;
-  soulStatus: number;
-  createdDate: number;
-  updatedDate: number;
+  searchById?: number;
+  soulStatus?: number;
+  createdDate?: number;
+  updatedDate?: number;
 }

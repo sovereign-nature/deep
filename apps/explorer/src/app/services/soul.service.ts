@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { DocumentNode } from 'graphql';
@@ -14,21 +13,31 @@ import { SOULS_LIST } from '../queries/sni';
 })
 export class SoulService {
   private subject = new BehaviorSubject<SoulFilter>({
-    searchById: '',
-    soulStatus: -1,
+    searchById: undefined,
+    soulStatus: undefined,
     createdDate: 0,
     updatedDate: 0,
   });
   filteredSouls$: Observable<SoulFilter> = this.subject.asObservable();
 
-  constructor(private apollo: Apollo, private http: HttpClient) {}
+  constructor(private apollo: Apollo) {}
 
-  getSoulsList(lastId: string): Observable<Soul[]> {
+  getSoulsList(
+    lastId?: string,
+    status?: number,
+    createdAt?: number,
+    updatedAt?: number,
+    tokenId?: number
+  ): Observable<Soul[]> {
     return this.apollo
       .watchQuery<SNIList>({
         query: SOULS_LIST,
         variables: {
           offset: lastId,
+          status,
+          createdAt,
+          updatedAt,
+          tokenId,
         },
       })
       .valueChanges.pipe(
@@ -80,7 +89,6 @@ export class SoulService {
       'ear_left',
       'face',
       'mouth',
-      'profile',
     ];
 
     return atts.filter((att) =>

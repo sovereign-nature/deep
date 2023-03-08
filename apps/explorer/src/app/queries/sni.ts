@@ -1,10 +1,25 @@
 import { gql } from 'apollo-angular';
 
 export const SOULS_LIST = gql`
-  query sniList($offset: ID) {
-    snis(first: 15, where: { id_gt: $offset }) {
+  query sniList(
+    $offset: ID
+    $status: BigInt
+    $createdAt: BigInt
+    $updatedAt: BigInt
+    $tokenId: BigInt
+  ) {
+    snis(
+      first: 15
+      orderBy: tokenId
+      where: {
+        id_gt: $offset
+        status: $status
+        createdAt_gte: $createdAt
+        updatedAt_gte: $updatedAt
+        tokenId: $tokenId
+      }
+    ) {
       id
-      owner
       status
       createdAt
       updatedAt

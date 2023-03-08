@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { debounceTime } from 'rxjs';
+import { debounceTime, map } from 'rxjs';
 import { SoulFilter } from 'src/app/models/soul';
 import { SoulService } from 'src/app/services/soul.service';
 
@@ -20,18 +20,48 @@ export class SoulFilterComponent {
     private activatedRoute: ActivatedRoute
   ) {
     this.formFilter = fb.group<SoulFilter>({
-      searchById: '',
+      searchById: undefined,
       soulStatus: -1,
-      createdDate: 0,
-      updatedDate: 0,
+      createdDate: undefined,
+      updatedDate: undefined,
     });
 
     this.formFilter.valueChanges
-      .pipe(debounceTime(1000))
-      .subscribe((val: SoulFilter) => {
-        this.soulService.setFilterToSouls(val);
-        this.addFilterQueryParams(val);
+      .pipe(
+        map((filtersData: SoulFilter) => {
+          filtersData.searchById
+            ? +filtersData.searchById
+            : (filtersData.searchById = undefined);
+          filtersData.soulStatus == -1
+            ? (filtersData.soulStatus = undefined)
+            : filtersData.soulStatus;
+          filtersData.createdDate
+            ? (filtersData.createdDate = this.formatDateToUnix(
+                filtersData.createdDate
+              ))
+            : (filtersData.createdDate = 0);
+          filtersData.updatedDate
+            ? (filtersData.updatedDate = this.formatDateToUnix(
+                filtersData.updatedDate
+              ))
+            : (filtersData.updatedDate = 0);
+
+          return filtersData;
+        }),
+        debounceTime(1000)
+      )
+      .subscribe((filters: SoulFilter) => {
+        this.soulService.setFilterToSouls(filters);
+        this.addFilterQueryParams(filters);
       });
+  }
+
+  formatDateToUnix(date: number | undefined): number | undefined {
+    return (
+      Math.floor(
+        new Date(date?.toString().replaceAll('-', '/') + ' 00:00:00').getTime()
+      ) / 1000
+    );
   }
 
   addFilterQueryParams(form: SoulFilter) {
