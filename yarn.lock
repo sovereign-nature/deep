@@ -6438,7 +6438,7 @@ __metadata:
     eslint-config-sni-vue: "*"
     eslint-plugin-markdown: ^3.0.0
     mermaid: 9.3.0
-    vitepress: 1.0.0-alpha.49
+    vitepress: 1.0.0-alpha.50
     vitepress-plugin-mermaid: 2.0.10
     vue: 3.2.47
   languageName: unknown
@@ -26406,9 +26406,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitepress@npm:1.0.0-alpha.49":
-  version: 1.0.0-alpha.49
-  resolution: "vitepress@npm:1.0.0-alpha.49"
+"vitepress@npm:1.0.0-alpha.50":
+  version: 1.0.0-alpha.50
+  resolution: "vitepress@npm:1.0.0-alpha.50"
   dependencies:
     "@docsearch/css": ^3.3.3
     "@docsearch/js": ^3.3.3
@@ -26421,7 +26421,7 @@ __metadata:
     vue: ^3.2.47
   bin:
     vitepress: bin/vitepress.js
-  checksum: 392706ddb79321aac6160008083487251a526038e0f29966cd4d56b4ff609ed19ec939a54236db08a41156011ba00cfb301db721525c609c8ef498e17ae6da2e
+  checksum: 1e3dc30e8de05a18158fd330ff588229ef41db119f12773a764b4e93df30594adbfbb73c05e05cf40fcbb5aa2cde8d320d169d4a9a724b4ce8a217d8b9d686d9
   languageName: node
   linkType: hard
 
