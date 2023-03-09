@@ -30,8 +30,8 @@
     "zone.js": "0.13.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "15.2.1",
-    "@angular/cli": "15.2.1",
+    "@angular-devkit/build-angular": "15.2.2",
+    "@angular/cli": "15.2.2",
     "@angular/compiler-cli": "15.2.1",
     "@angular/google-maps": "15.2.2",
     "@graphql-codegen/cli": "3.2.1",
