@@ -500,7 +500,43 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apollo/client@npm:3.7.9, @apollo/client@npm:^3.7.1":
+"@apollo/client@npm:3.7.10":
+  version: 3.7.10
+  resolution: "@apollo/client@npm:3.7.10"
+  dependencies:
+    "@graphql-typed-document-node/core": ^3.1.1
+    "@wry/context": ^0.7.0
+    "@wry/equality": ^0.5.0
+    "@wry/trie": ^0.3.0
+    graphql-tag: ^2.12.6
+    hoist-non-react-statics: ^3.3.2
+    optimism: ^0.16.1
+    prop-types: ^15.7.2
+    response-iterator: ^0.2.6
+    symbol-observable: ^4.0.0
+    ts-invariant: ^0.10.3
+    tslib: ^2.3.0
+    zen-observable-ts: ^1.2.5
+  peerDependencies:
+    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+    graphql-ws: ^5.5.5
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    subscriptions-transport-ws: ^0.9.0 || ^0.11.0
+  peerDependenciesMeta:
+    graphql-ws:
+      optional: true
+    react:
+      optional: true
+    react-dom:
+      optional: true
+    subscriptions-transport-ws:
+      optional: true
+  checksum: d74a68f8042e76e3a81990c79a89aefc07c8899d354f3b469591356508001005106bba0fa953652c3ec19756d44bdec6730ac98f62fa836bd76acbcb7eff42ce
+  languageName: node
+  linkType: hard
+
+"@apollo/client@npm:^3.7.1":
   version: 3.7.9
   resolution: "@apollo/client@npm:3.7.9"
   dependencies:
@@ -6515,7 +6551,7 @@ __metadata:
     "@angular/platform-browser": 15.2.2
     "@angular/platform-browser-dynamic": 15.2.2
     "@angular/router": 15.2.2
-    "@apollo/client": 3.7.9
+    "@apollo/client": 3.7.10
     "@graphql-codegen/cli": 3.2.2
     "@graphql-codegen/typescript": 3.0.2
     "@graphql-codegen/typescript-apollo-angular": ^3.5.6
