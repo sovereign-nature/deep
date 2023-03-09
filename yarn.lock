@@ -442,9 +442,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/google-maps@npm:15.2.1":
-  version: 15.2.1
-  resolution: "@angular/google-maps@npm:15.2.1"
+"@angular/google-maps@npm:15.2.2":
+  version: 15.2.2
+  resolution: "@angular/google-maps@npm:15.2.2"
   dependencies:
     "@types/google.maps": ^3.45.6
     tslib: ^2.3.0
@@ -452,7 +452,7 @@ __metadata:
     "@angular/common": ^15.0.0 || ^16.0.0
     "@angular/core": ^15.0.0 || ^16.0.0
     rxjs: ^6.5.3 || ^7.4.0
-  checksum: d365530ee375a77f8c8c08fef04bde0ccc91056f61eff479fcf3b7250295853b94a833d26fdd4573c786a9d5c3fb0f5eec1b0751a8dcc515eff7e0f4193e3449
+  checksum: 72187b14ae1608462fd1a9157e8db44a18702e1fbd07c7214ccb2ec8bd1c1305429820edaab56daa53a8b71a805986b74ad29856f3f2ab8f92a99149c1bb9af7
   languageName: node
   linkType: hard
 
@@ -6477,7 +6477,7 @@ __metadata:
     "@angular/compiler-cli": 15.2.1
     "@angular/core": 15.2.1
     "@angular/forms": 15.2.1
-    "@angular/google-maps": 15.2.1
+    "@angular/google-maps": 15.2.2
     "@angular/platform-browser": 15.2.1
     "@angular/platform-browser-dynamic": 15.2.1
     "@angular/router": 15.2.1
