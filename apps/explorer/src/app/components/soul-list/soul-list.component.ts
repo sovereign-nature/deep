@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { combineLatest, map, Observable, tap } from 'rxjs';
-import { Soul, SoulFilter } from 'src/app/models/soul';
+import { Soul } from 'src/app/models/soul';
 import { SoulService } from 'src/app/services/soul.service';
 
 @Component({
@@ -10,10 +10,7 @@ import { SoulService } from 'src/app/services/soul.service';
 })
 export class SoulListComponent implements OnInit {
   data$?: Observable<Soul[]>;
-  soulList$?: Observable<Soul[]>;
   soulList?: Soul[];
-  nextSouls?: Observable<Soul[]>;
-  soulFilter?: SoulFilter;
 
   constructor(private soulService: SoulService) {}
 
@@ -45,7 +42,6 @@ export class SoulListComponent implements OnInit {
   }
 
   onScroll() {
-    console.log('scroll');
     const last = this.soulList?.at(-1);
     if (last) {
       this.soulService.getSoulsList(last.id).subscribe((souls) => {
