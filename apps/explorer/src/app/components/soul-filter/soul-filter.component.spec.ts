@@ -17,10 +17,10 @@ describe('SoulFilterComponent', () => {
   ]);
 
   const form: SoulFilter = {
-    searchById: '',
+    searchById: undefined,
     soulStatus: -1,
-    createdDate: 0,
-    updatedDate: 0,
+    createdDate: undefined,
+    updatedDate: undefined,
   };
 
   beforeEach(async () => {
