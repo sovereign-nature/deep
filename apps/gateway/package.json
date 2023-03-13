@@ -12,13 +12,13 @@
     "build": "yarn codegen && wrangler publish --dry-run --outdir=dist"
   },
   "dependencies": {
-    "@graphql-mesh/cache-cfw-kv": "0.1.14",
-    "@graphql-mesh/cli": "0.82.24",
-    "@graphql-mesh/graphql": "0.34.7",
-    "@graphql-mesh/json-schema": "0.37.16",
-    "@graphql-mesh/plugin-http-cache": "0.1.15",
-    "@graphql-mesh/plugin-response-cache": "0.2.16",
-    "@graphql-mesh/transform-resolvers-composition": "0.13.14",
+    "@graphql-mesh/cache-cfw-kv": "0.1.15",
+    "@graphql-mesh/cli": "0.82.25",
+    "@graphql-mesh/graphql": "0.34.8",
+    "@graphql-mesh/json-schema": "0.37.19",
+    "@graphql-mesh/plugin-http-cache": "0.1.16",
+    "@graphql-mesh/plugin-response-cache": "0.2.17",
+    "@graphql-mesh/transform-resolvers-composition": "0.13.15",
     "graphql": "16.6.0"
   },
   "devDependencies": {
