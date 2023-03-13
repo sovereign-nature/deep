@@ -6471,7 +6471,7 @@ __metadata:
     eslint-config-sni: "*"
     eslint-config-sni-vue: "*"
     eslint-plugin-markdown: ^3.0.0
-    mermaid: 9.3.0
+    mermaid: 9.4.3
     vitepress: 1.0.0-alpha.56
     vitepress-plugin-mermaid: 2.0.10
     vue: 3.2.47
@@ -11508,7 +11508,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3@npm:^7.0.0, d3@npm:^7.7.0":
+"d3@npm:^7.0.0, d3@npm:^7.4.0, d3@npm:^7.8.2":
   version: 7.8.2
   resolution: "d3@npm:7.8.2"
   dependencies:
@@ -11546,13 +11546,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dagre-d3-es@npm:7.0.6":
-  version: 7.0.6
-  resolution: "dagre-d3-es@npm:7.0.6"
+"dagre-d3-es@npm:7.0.9":
+  version: 7.0.9
+  resolution: "dagre-d3-es@npm:7.0.9"
   dependencies:
-    d3: ^7.7.0
+    d3: ^7.8.2
     lodash-es: ^4.17.21
-  checksum: c3ef31eda7f616e53fdc77d5c92615cbb6b97f5c3d5d5dd344321a0c48fc34605ca57354aa9d64775537756bc48c889af9a69bf64889f929a7918e5ba3f0f4cb
+  checksum: 5f24ad9558e84066e70cfa6979320d93079979ac8b0a3b033e5330742aeeba74e205f66794ab6e0a82354b061a4e29c10a291590d7b2cf82b5780fab5443f5ba
   languageName: node
   linkType: hard
 
@@ -11600,7 +11600,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:1.11.7":
+"dayjs@npm:1.11.7, dayjs@npm:^1.11.7":
   version: 1.11.7
   resolution: "dayjs@npm:1.11.7"
   checksum: 5003a7c1dd9ed51385beb658231c3548700b82d3548c0cfbe549d85f2d08e90e972510282b7506941452c58d32136d6362f009c77ca55381a09c704e9f177ebb
@@ -12113,10 +12113,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:2.4.1":
-  version: 2.4.1
-  resolution: "dompurify@npm:2.4.1"
-  checksum: 1169177465b3cbb25a44322937fba549f6c4e1a91b83245d144471be26619c835cccf0f8e20aa78c25ac11a06efd17cc1b9db9cacadceb78a4c08a1029eafee5
+"dompurify@npm:2.4.3":
+  version: 2.4.3
+  resolution: "dompurify@npm:2.4.3"
+  checksum: b440981f2a38cada2085759cc3d1e2f94571afc34343d011a8a6aa1ad91ae6abf651adbfa4994b0e2283f0ce81f7891cdb04b67d0b234c8d190cb70e9691f026
   languageName: node
   linkType: hard
 
@@ -12249,6 +12249,13 @@ __metadata:
   version: 1.4.308
   resolution: "electron-to-chromium@npm:1.4.308"
   checksum: 6e49a6c0e0ae2c4be3d5acd76ba6d497383a1ceb224cada6cdbba83aa95952336f96aa742cbf3697dd39d091624b53a912c0015fe5a30a8d6138e14287a0a9ad
+  languageName: node
+  linkType: hard
+
+"elkjs@npm:^0.8.2":
+  version: 0.8.2
+  resolution: "elkjs@npm:0.8.2"
+  checksum: ed615c485fa4ac1e858af509df24fdc9f61f2c6576df5f79f6a31c733fda69f235f53cd36af037aa9d2b8a935cb4f823fbd89d784b67f6e51be5100306ea1b39
   languageName: node
   linkType: hard
 
@@ -18971,21 +18978,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mermaid@npm:9.3.0":
-  version: 9.3.0
-  resolution: "mermaid@npm:9.3.0"
+"mermaid@npm:9.4.3":
+  version: 9.4.3
+  resolution: "mermaid@npm:9.4.3"
   dependencies:
     "@braintree/sanitize-url": ^6.0.0
-    d3: ^7.0.0
-    dagre-d3-es: 7.0.6
-    dompurify: 2.4.1
+    cytoscape: ^3.23.0
+    cytoscape-cose-bilkent: ^4.1.0
+    cytoscape-fcose: ^2.1.0
+    d3: ^7.4.0
+    dagre-d3-es: 7.0.9
+    dayjs: ^1.11.7
+    dompurify: 2.4.3
+    elkjs: ^0.8.2
     khroma: ^2.0.0
     lodash-es: ^4.17.21
-    moment-mini: ^2.24.0
     non-layered-tidy-tree-layout: ^2.0.2
     stylis: ^4.1.2
+    ts-dedent: ^2.2.0
     uuid: ^9.0.0
-  checksum: 5b310deeac6180b7a1d602c67dc1bd7674a49fc6a6a4b3187f5f457a130b9b2d16ac9f7e1c96042ceeeaa18725df8fe0bfd91108a25cc2c181ac913ec5e9f5c4
+    web-worker: ^1.2.0
+  checksum: 9e29177f289cc268ea4a2ca7a45ec0ca06f678007eae15a7cd54c682148a71367e861d2c9c0afa9f7474da154d9920524e59722186820e9bc0d79989305a7064
   languageName: node
   linkType: hard
 
@@ -19559,13 +19572,6 @@ __metadata:
   version: 1.0.2
   resolution: "module-error@npm:1.0.2"
   checksum: 5d653e35bd55b3e95f8aee2cdac108082ea892e71b8f651be92cde43e4ee86abee4fa8bd7fc3fe5e68b63926d42f63c54cd17b87a560c31f18739295575a3962
-  languageName: node
-  linkType: hard
-
-"moment-mini@npm:^2.24.0":
-  version: 2.29.4
-  resolution: "moment-mini@npm:2.29.4"
-  checksum: 5d386872d04202c36653442a65f0e06a4e33cf3b25cef4e9df17877a8e76e93f218a1dfd4ccc0946c228815a4e1e53d79ae340de82791ffce90007769eb85120
   languageName: node
   linkType: hard
 
@@ -25312,6 +25318,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ts-dedent@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "ts-dedent@npm:2.2.0"
+  checksum: 93ed8f7878b6d5ed3c08d99b740010eede6bccfe64bce61c5a4da06a2c17d6ddbb80a8c49c2d15251de7594a4f93ffa21dd10e7be75ef66a4dc9951b4a94e2af
+  languageName: node
+  linkType: hard
+
 "ts-essentials@npm:^7.0.1":
   version: 7.0.3
   resolution: "ts-essentials@npm:7.0.3"
@@ -26672,6 +26685,13 @@ __metadata:
   version: 3.2.1
   resolution: "web-streams-polyfill@npm:3.2.1"
   checksum: b119c78574b6d65935e35098c2afdcd752b84268e18746606af149e3c424e15621b6f1ff0b42b2676dc012fc4f0d313f964b41a4b5031e525faa03997457da02
+  languageName: node
+  linkType: hard
+
+"web-worker@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "web-worker@npm:1.2.0"
+  checksum: 1bb28348ddcf9b2e7c62c5fd02e49a84098795856cd905456de957271bba288e9618941cf69d8960f0a7ae81f5dfb74b427c0634be47ec69e3e955c4ec5213be
   languageName: node
   linkType: hard
 
