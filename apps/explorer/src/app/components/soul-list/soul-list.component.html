@@ -1,9 +1,8 @@
 <div class="home">
   <sni-soul-filter class="filter"></sni-soul-filter>
-  <div *ngIf="(data$ | async)"
-  infiniteScroll 
-  [infiniteScrollDistance]="3"
-  [infiniteScrollThrottle]="50"
+  <div infiniteScroll 
+  [infiniteScrollDistance]="0.5"
+  [infiniteScrollThrottle]="5"
   [fromRoot]="true"
   (scrolled)="onScroll()">
     <sni-soul-table *ngIf="soulList" [souls]="soulList"></sni-soul-table>

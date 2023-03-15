@@ -12,13 +12,13 @@ import { SOULS_LIST } from '../queries/sni';
   providedIn: 'root',
 })
 export class SoulService {
-  private subject = new BehaviorSubject<SoulFilter>({
+  private filters = new BehaviorSubject<SoulFilter>({
     searchById: undefined,
     soulStatus: undefined,
     createdDate: 0,
     updatedDate: 0,
   });
-  filteredSouls$: Observable<SoulFilter> = this.subject.asObservable();
+  filteredSouls$: Observable<SoulFilter> = this.filters.asObservable();
 
   constructor(private apollo: Apollo) {}
 
@@ -65,7 +65,7 @@ export class SoulService {
   }
 
   setFilterToSouls(data: SoulFilter) {
-    this.subject.next(data);
+    this.filters.next(data);
   }
 
   removeTypeName(data: Soul) {

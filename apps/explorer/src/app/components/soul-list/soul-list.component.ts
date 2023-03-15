@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { combineLatest, map, Observable, tap } from 'rxjs';
+import { combineLatest, Observable, switchMap } from 'rxjs';
 import { Soul } from 'src/app/models/soul';
 import { SoulService } from 'src/app/services/soul.service';
 
@@ -19,26 +19,17 @@ export class SoulListComponent implements OnInit {
       this.soulService.getSoulsList(),
       this.soulService.filteredSouls$,
     ]).pipe(
-      map(([souls, filters]) => {
-        this.soulService
-          .getSoulsList(
-            '',
-            filters.soulStatus,
-            filters.createdDate,
-            filters.updatedDate,
-            filters.searchById
-          )
-          .pipe(
-            tap((filteredSouls) => {
-              filters
-                ? (this.soulList = filteredSouls)
-                : (this.soulList = souls);
-            })
-          )
-          .subscribe();
-        return souls;
+      switchMap(([_, filters]) => {
+        return this.soulService.getSoulsList(
+          '',
+          filters.soulStatus,
+          filters.createdDate,
+          filters.updatedDate,
+          filters.searchById
+        );
       })
     );
+    this.data$.subscribe((souls) => (this.soulList = souls));
   }
 
   onScroll() {
