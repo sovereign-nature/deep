@@ -14,7 +14,7 @@
     "eslint-config-sni": "*",
     "eslint-config-sni-vue": "*",
     "eslint-plugin-markdown": "^3.0.0",
-    "mermaid": "9.3.0",
+    "mermaid": "10.3.0",
     "vitepress": "1.0.0-alpha.56",
     "vitepress-plugin-mermaid": "2.0.10",
     "vue": "3.2.47"
