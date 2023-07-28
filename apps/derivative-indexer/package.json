@@ -8,11 +8,11 @@
     "test": "graph test"
   },
   "devDependencies": {
-    "@graphprotocol/graph-cli": "0.40.0",
-    "@graphprotocol/graph-ts": "0.29.3",
+    "@graphprotocol/graph-cli": "0.53.0",
+    "@graphprotocol/graph-ts": "0.31.0",
     "@sni/constants": "*",
     "@sni/sample-collection": "*",
-    "matchstick-as": "0.5.1",
+    "matchstick-as": "0.5.2",
     "mustache": "4.2.0"
   }
 }

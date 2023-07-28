@@ -1,0 +1,24 @@
+{
+  "name": "@sni/verification-portal",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxthq/ui": "2.6.0",
+    "@types/node": "18.17.1",
+    "mapbox-gl": "2.15.0",
+    "nuxt": "3.6.3",
+    "nuxt-mapbox": "1.4.2",
+    "vue": "3.3.4",
+    "eslint": "8.45.0",
+    "eslint-config-sni": "*",
+    "eslint-config-sni-vue": "*",
+    "@nuxtjs/eslint-config-typescript": "12.0.0",
+    "@sni/prettier-config": "*"
+  }
+}

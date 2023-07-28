@@ -2,10 +2,6 @@
   "name": "identifier",
   "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
     "build": "turbo run build --no-daemon",
     "dev": "turbo run dev --parallel --no-daemon",
@@ -34,6 +30,5 @@
   },
   "engines": {
     "node": ">=16.0.0"
-  },
-  "packageManager": "yarn@3.4.1"
+  }
 }
