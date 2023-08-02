@@ -1,63 +1,63 @@
 <script setup lang="ts">
-  export let data;
-  </script>
+	import Info from '$lib/containers/Info.svelte';
+	import Header from '$lib/typography/Header.svelte';
+	import Property from '$lib/typography/Property.svelte';
+	import Subheader from '$lib/typography/Subheader.svelte';
 
-<div class="flex flex-row">
-  <div class="basis-1/3">
-    <h1 class="text-xl text-white">Linked Animal { data.slug }</h1>
-    <p>{ data.apiData.createdAt }</p>
+	export let data;
+</script>
 
-    <div
-      class="inline-flex h-[30px] w-[111px] items-center justify-center gap-2 rounded-[5px] bg-emerald-200 px-[107px] py-[11px]">
-      <div class="text-center text-sm font-semibold text-black">Support</div>
-    </div>
-    <div class="relative h-1 w-[239px]">
-      <div
-        class="absolute left-0 top-0 h-1 w-[239px] rounded-[26px] bg-zinc-800"></div>
-      <div
-        class="absolute left-0 top-0 h-1 w-[97px] rounded-[26px] bg-gradient-to-l from-emerald-200 to-indigo-300"></div>
-    </div>
-    <img
-      class="h-10 w-10 rounded-full"
-      src="https://via.placeholder.com/27x29" />
-    <p class="text-white">
-      Lorem Ipsum is simply dummy text of the printing and typesetting
-      industry. Lorem Ipsum has been the industry's standard dummy text ever
-      since the 1500s, when an unknown printer took a galley of type and
-      scrambled it to make a type specimen book. It has survived not only five
-      centuries, but also the leap into electronic typesetting, remaining
-      essentially unchanged. It was popularised in the 1960s with the release
-      of Letraset sheets containing Lorem Ipsum passages, and more recently
-      with desktop publishing software like Aldus PageMaker including versions
-      of Lorem Ipsum.
-    </p>
-  </div>
-  <div class="basis-1/3">
-    <h1 class="text-xl">Funds Generated</h1>
-    <p class="text-white">
-      Lorem Ipsum is simply dummy text of the printing and typesetting
-      industry. Lorem Ipsum has been the industry's standard dummy text ever
-      since the 1500s, when an unknown printer took a galley of type and
-      scrambled it to make a type specimen book. It has survived not only five
-      centuries, but also the leap into electronic typesetting, remaining
-      essentially unchanged. It was popularised in the 1960s with the release
-      of Letraset sheets containing Lorem Ipsum passages, and more recently
-      with desktop publishing software like Aldus PageMaker including versions
-      of Lorem Ipsum.
-    </p>
-  </div>
-  <div class="basis-1/3">
-    <h1 class="text-xl">Conservation Information</h1>
-    <p class="text-white">
-      Lorem Ipsum is simply dummy text of the printing and typesetting
-      industry. Lorem Ipsum has been the industry's standard dummy text ever
-      since the 1500s, when an unknown printer took a galley of type and
-      scrambled it to make a type specimen book. It has survived not only five
-      centuries, but also the leap into electronic typesetting, remaining
-      essentially unchanged. It was popularised in the 1960s with the release
-      of Letraset sheets containing Lorem Ipsum passages, and more recently
-      with desktop publishing software like Aldus PageMaker including versions
-      of Lorem Ipsum.
-    </p>
-  </div>
+<div class="lg:flex lg:flex-row lg:p-5">
+	<!-- <div> -->
+	<Info>
+		<Header>Verified Asset:</Header>
+		<Subheader>{data.slug}</Subheader>
+		<img class="p-2" src="https://placehold.co/600x400" alt="Item visualization" />
+		<h2 class="text-xl text-white p-2">Metadata:</h2>
+		<Property name="Game">
+			<p>Hotel Hideaway</p>
+		</Property>
+		<Property name="ID">
+			<p>0x7688x8s8</p>
+		</Property>
+		<Property name="Link Address">
+			<p>0x068647392974</p>
+		</Property>
+		<Property name="Copies Sold">
+			<p>2</p>
+		</Property>
+	</Info>
+	<Info>
+		<Header>Collecting Funds For:</Header>
+		<Subheader>North Of Upemba</Subheader>
+		<img class="p-2" src="https://placehold.co/600x400" alt="Item visualization" />
+		<h2 class="text-xl text-white p-2">Funds Collected:</h2>
+		<Property name="ID">
+			<p>x150</p>
+		</Property>
+		<Property name="Zebras Spotted">
+			<p>10</p>
+		</Property>
+		<Property name="Elephants Spotted">
+			<p>100</p>
+		</Property>
+		<Property name="Rangers Patrolling">
+			<p>1000</p>
+		</Property>
+	</Info>
+	<Info>
+		<Header>Campaign Info:</Header>
+		<Subheader>Upemba National Park</Subheader>
+		<img class="p-2" src="https://placehold.co/600x400" alt="Item visualization" />
+		<h2 class="text-xl text-white p-2">Funds Collected:</h2>
+		<Property name="By this item">
+			<p>10 $</p>
+		</Property>
+		<Property name="By all copies of this item">
+			<p>10000 $</p>
+		</Property>
+		<Property name="Total By Campaign">
+			<p>1000 000 $</p>
+		</Property>
+	</Info>
 </div>
