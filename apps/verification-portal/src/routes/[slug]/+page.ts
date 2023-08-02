@@ -1,7 +1,5 @@
-import type { Load } from '@sveltejs/kit';
-
-export const load: Load = async ({ params }) => {
-	const slug = params.slug;
+export async function load(event) {
+	const slug = event.params.slug;
 
 	type TestData = {
 		id: string;
@@ -18,4 +16,4 @@ export const load: Load = async ({ params }) => {
 	const apiData: TestData = await res.json();
 
 	return { slug, apiData };
-};
+}

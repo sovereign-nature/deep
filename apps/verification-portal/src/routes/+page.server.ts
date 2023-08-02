@@ -1,6 +1,6 @@
-import { redirect, type Actions } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 
-export const actions: Actions = {
+export const actions = {
 	default: async (event) => {
 		const data = await event.request.formData();
 
