@@ -16,7 +16,9 @@
 	poster="https://modelviewer.dev/shared-assets/models/NeilArmstrong.webp"
 	ar
 	shadow-intensity="1"
+	auto-rotate
 	camera-controls
+	disable-zoom
 	touch-action="pan-y"
 	class="w-full h-full"
 />
