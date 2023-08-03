@@ -1,4 +1,5 @@
 <script setup lang="ts">
+	import ModelViewer from '$lib/components/ModelViewer.svelte';
 	import SimpleMap from '$lib/components/SimpleMap.svelte';
 	import Info from '$lib/containers/Info.svelte';
 	import Header from '$lib/typography/Header.svelte';
@@ -32,8 +33,8 @@
 		<Header>Collecting Funds For:</Header>
 		<Subheader>North Of Upemba</Subheader>
 		<img src="https://placehold.co/600x400" alt="Item visualization" class="pb-2" />
+		<div class="aspect-square pb-2"><ModelViewer /></div>
 		<div class="aspect-square pb-2"><SimpleMap /></div>
-
 		<h2 class="text-xl text-white pb-2">Info:</h2>
 		<Property name="ID">
 			<p>x150</p>
