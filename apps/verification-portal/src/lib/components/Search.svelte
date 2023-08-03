@@ -9,7 +9,7 @@
 	<div class="relative">
 		<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
 			<svg
-				class="h-4 w-4 text-gray-500 dark:text-gray-400"
+				class="h-4 w-4 text-gray-200"
 				aria-hidden="true"
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -28,7 +28,7 @@
 			id="default-search"
 			name="search"
 			type="search"
-			class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+			class="block border-white w-full border p-4 pl-10 text-sm text-gray-200 focus:border-white focus:ring-white dark:placeholder:text-gray-400 bg-black"
 			placeholder="Search by Asset Name, Address or ID"
 			required
 		/>
