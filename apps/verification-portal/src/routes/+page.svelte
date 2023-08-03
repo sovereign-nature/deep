@@ -1,5 +1,5 @@
 <script>
-	import Search from '$lib/Search.svelte';
+	import Search from '$lib/components/Search.svelte';
 </script>
 
 <div class="flex h-screen w-full items-center">

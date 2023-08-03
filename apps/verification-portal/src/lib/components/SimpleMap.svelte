@@ -10,20 +10,18 @@
 		if (browser) {
 			const leaflet = await import('leaflet');
 
-			map = leaflet.map(mapElement).setView([51.505, -0.09], 13);
-
-			leaflet
-				.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
-					attribution:
-						'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			map = leaflet
+				.map(mapElement, {
+					zoomControl: false,
+					attributionControl: false,
+					scrollWheelZoom: false,
+					dragging: false
 				})
-				.addTo(map);
+				.setView([51.505, -0.09], 13);
 
 			leaflet
-				.marker([51.5, -0.09])
-				.addTo(map)
-				.bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-				.openPopup();
+				.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png')
+				.addTo(map);
 		}
 	});
 
@@ -35,11 +33,8 @@
 	});
 </script>
 
-<div bind:this={mapElement} />
+<div bind:this={mapElement} class="h-full" />
 
 <style>
 	@import 'leaflet/dist/leaflet.css';
-	div {
-		height: 800px;
-	}
 </style>

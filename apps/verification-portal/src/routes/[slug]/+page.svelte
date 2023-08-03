@@ -1,4 +1,5 @@
 <script setup lang="ts">
+	import SimpleMap from '$lib/components/SimpleMap.svelte';
 	import Info from '$lib/containers/Info.svelte';
 	import Header from '$lib/typography/Header.svelte';
 	import Property from '$lib/typography/Property.svelte';
@@ -12,8 +13,8 @@
 	<Info>
 		<Header>Verified Asset:</Header>
 		<Subheader>{data.slug}</Subheader>
-		<img class="p-2" src="https://placehold.co/600x400" alt="Item visualization" />
-		<h2 class="text-xl text-white p-2">Metadata:</h2>
+		<img class="pb-2" src="https://placehold.co/600x400" alt="Item visualization" />
+		<h2 class="text-xl text-white pb-2">Asset Metadata:</h2>
 		<Property name="Game">
 			<p>Hotel Hideaway</p>
 		</Property>
@@ -30,8 +31,10 @@
 	<Info>
 		<Header>Collecting Funds For:</Header>
 		<Subheader>North Of Upemba</Subheader>
-		<img class="p-2" src="https://placehold.co/600x400" alt="Item visualization" />
-		<h2 class="text-xl text-white p-2">Funds Collected:</h2>
+		<img src="https://placehold.co/600x400" alt="Item visualization" class="pb-2" />
+		<div class="aspect-square pb-2"><SimpleMap /></div>
+
+		<h2 class="text-xl text-white pb-2">Info:</h2>
 		<Property name="ID">
 			<p>x150</p>
 		</Property>
@@ -48,8 +51,10 @@
 	<Info>
 		<Header>Campaign Info:</Header>
 		<Subheader>Upemba National Park</Subheader>
-		<img class="p-2" src="https://placehold.co/600x400" alt="Item visualization" />
-		<h2 class="text-xl text-white p-2">Funds Collected:</h2>
+		<img class="pb-2" src="https://placehold.co/600x400" alt="Item visualization" />
+		<div class="aspect-square pb-2"><SimpleMap /></div>
+		<h2 class="text-xl text-white pb-2">Funds Collected:</h2>
+
 		<Property name="By this item">
 			<p>10 $</p>
 		</Property>
