@@ -8,8 +8,7 @@
     "dbaeumer.vscode-eslint",
     "editorconfig.editorconfig",
     "bradlc.vscode-tailwindcss",
-    "wix.vscode-import-cost",
-    "angular.ng-template"
+    "wix.vscode-import-cost"
   ],
   // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
   "unwantedRecommendations": []

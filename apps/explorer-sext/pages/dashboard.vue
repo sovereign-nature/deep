@@ -1,3 +1,0 @@
-<template>
-  <DashboardTable />
-</template>
