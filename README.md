@@ -1,6 +1,6 @@
-# Sovereign Nature Identifier Monorepo
+# **WARNING: This repo is under heavy refactoring, a lot of things might be broken and changed.**
 
-This is a Sovereign Nature Identifier monorepo.
+# DEEP Protocol Monorepo
 
 ## What's inside?
 
