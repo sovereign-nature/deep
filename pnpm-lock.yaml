@@ -111,27 +111,6 @@ importers:
         specifier: 8.1.1
         version: 8.1.1(typescript@5.1.6)
 
-  apps/derivative-indexer:
-    devDependencies:
-      '@graphprotocol/graph-cli':
-        specifier: 0.53.0
-        version: 0.53.0(@types/node@18.17.1)(node-fetch@3.3.2)(typescript@5.1.6)
-      '@graphprotocol/graph-ts':
-        specifier: 0.31.0
-        version: 0.31.0
-      '@sni/constants':
-        specifier: '*'
-        version: link:../../packages/constants
-      '@sni/sample-collection':
-        specifier: '*'
-        version: link:../sample-collection
-      matchstick-as:
-        specifier: 0.5.2
-        version: 0.5.2
-      mustache:
-        specifier: 4.2.0
-        version: 4.2.0
-
   apps/gateway:
     dependencies:
       '@graphql-mesh/cache-cfw-kv':
@@ -195,27 +174,6 @@ importers:
       mustache:
         specifier: 4.2.0
         version: 4.2.0
-
-  apps/sample-collection:
-    devDependencies:
-      '@nomicfoundation/hardhat-toolbox':
-        specifier: 2.0.1
-        version: 2.0.1(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2)(@nomicfoundation/hardhat-chai-matchers@1.0.6)(@nomicfoundation/hardhat-network-helpers@1.0.8)(@nomiclabs/hardhat-ethers@2.2.2)(@nomiclabs/hardhat-etherscan@3.1.6)(@typechain/ethers-v5@10.2.0)(@typechain/hardhat@6.1.5)(@types/chai@4.3.5)(@types/mocha@10.0.1)(@types/node@18.17.1)(chai@4.3.7)(ethers@5.7.2)(hardhat-gas-reporter@1.0.9)(hardhat@2.12.7)(solidity-coverage@0.8.2)(ts-node@10.9.1)(typechain@8.1.1)(typescript@5.1.6)
-      '@openzeppelin/contracts':
-        specifier: 4.8.2
-        version: 4.8.2
-      '@sni/configs':
-        specifier: '*'
-        version: link:../../packages/configs
-      '@sni/solidity-interfaces':
-        specifier: '*'
-        version: link:../../packages/solidity-interfaces
-      hardhat:
-        specifier: 2.12.7
-        version: 2.12.7(ts-node@10.9.1)(typescript@5.1.6)
-      hardhat-abi-exporter:
-        specifier: 2.10.1
-        version: 2.10.1(hardhat@2.12.7)
 
   apps/verification-portal:
     devDependencies:
