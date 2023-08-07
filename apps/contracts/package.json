@@ -1,6 +1,7 @@
 {
   "name": "@sni/contracts",
   "version": "0.0.0",
+  "prettier": "@sni/prettier-config",
   "scripts": {
     "compile": "hardhat compile",
     "build": "npm run compile",
@@ -22,6 +23,7 @@
     "@openzeppelin/contracts": "4.8.2",
     "@openzeppelin/hardhat-upgrades": "1.22.1",
     "@sni/constants": "*",
+    "@sni/prettier-config": "*",
     "@typechain/ethers-v5": "10.2.0",
     "@typechain/hardhat": "6.1.5",
     "@types/mocha": "10.0.1",
@@ -29,7 +31,6 @@
     "axios": "1.3.4",
     "chai": "4.3.7",
     "dotenv": "16.0.3",
-    "eslint": "8.35.0",
     "eslint-config-sni": "*",
     "ethers": "5.7.2",
     "hardhat": "2.12.7",
