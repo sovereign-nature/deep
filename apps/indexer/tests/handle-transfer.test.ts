@@ -5,7 +5,10 @@ import { Address, BigInt } from '@graphprotocol/graph-ts';
 import { handleTransfer } from '../src/sovereign-nature-identifier';
 import { createTransferEvent } from './events-mocks';
 
-import { METADATA_HASH_FUNCTION, SUBGRAPH_ENTITY_NAME } from '@sni/constants';
+import {
+  METADATA_HASH_FUNCTION,
+  SUBGRAPH_ENTITY_NAME,
+} from '../../../packages/constants';
 
 import {
   DERIVATIVE_METADATA_SCHEMA,
@@ -20,7 +23,7 @@ import {
   OWNER_ADDRESS,
   TOKEN_URI_SCHEMA,
   TOKEN_URI_SCHEMA_DIGEST,
-} from '@sni/constants/mocks/identifier';
+} from '../../../packages/constants/mocks/identifier';
 import { mockForToken } from './mocks/functions';
 
 //MOCKED CONSTANTS

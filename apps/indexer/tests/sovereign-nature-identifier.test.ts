@@ -22,7 +22,7 @@ import {
   createTransferEvent,
 } from './events-mocks';
 
-import { SUBGRAPH_ENTITY_NAME } from '@sni/constants';
+import { SUBGRAPH_ENTITY_NAME } from '../../../packages/constants';
 
 //TODO: Refactor constants to object
 //TODO: Add URI postfix to mocked URIs
@@ -35,7 +35,7 @@ import {
   UPDATED_COMPUTE_URI,
   UPDATED_DATA_URI,
   UPDATED_STATUS,
-} from '@sni/constants/mocks/identifier';
+} from '../../../packages/constants/mocks/identifier';
 import { mockForToken } from './mocks/functions';
 
 const INITIAL_TOKEN_ID_INT = BigInt.fromI32(INITIAL_TOKEN_ID);

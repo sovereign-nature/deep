@@ -5,8 +5,8 @@
   "scripts": {
     "codegen": "mustache config/prod.json subgraph.template.yaml > subgraph.yaml && graph codegen",
     "codegen:staging": "mustache config/staging.json subgraph.template.yaml > subgraph.yaml && graph codegen",
-    "build": "yarn codegen && graph build",
-    "build:staging": "yarn codegen:staging && graph build",
+    "build": "pnpm codegen && graph build",
+    "build:staging": "pnpm codegen:staging && graph build",
     "deploy": "graph deploy sovereign-nature/sni --product hosted-service --access-token $ACCESS_TOKEN",
     "deploy:staging": "graph deploy sovereign-nature/sni-staging --product hosted-service --access-token $ACCESS_TOKEN",
     "create-local": "graph create --node http://localhost:8020/ sni",
@@ -15,7 +15,7 @@
     "test": "graph test"
   },
   "devDependencies": {
-    "@graphprotocol/graph-cli": "0.53.0",
+    "@graphprotocol/graph-cli": "0.54.0",
     "@graphprotocol/graph-ts": "0.31.0",
     "@sni/constants": "*",
     "@sni/contracts": "*",
