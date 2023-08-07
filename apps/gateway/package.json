@@ -2,6 +2,7 @@
   "name": "@sni/gateway",
   "version": "0.0.0",
   "description": "GraphQL API Gateway",
+  "prettier": "@sni/prettier-config",
   "scripts": {
     "codegen": "mustache config/production.js .meshrc.template.yaml > .meshrc.yaml",
     "codegen:staging": "env-cmd mustache config/staging.js .meshrc.template.yaml > .meshrc.yaml",
@@ -12,20 +13,20 @@
     "build": "yarn codegen && wrangler publish --dry-run --outdir=dist"
   },
   "dependencies": {
-    "@graphql-mesh/cache-cfw-kv": "0.1.15",
-    "@graphql-mesh/cli": "0.82.25",
-    "@graphql-mesh/graphql": "0.34.8",
-    "@graphql-mesh/json-schema": "0.37.19",
-    "@graphql-mesh/plugin-http-cache": "0.1.16",
-    "@graphql-mesh/plugin-response-cache": "0.2.17",
-    "@graphql-mesh/transform-resolvers-composition": "0.13.15",
-    "graphql": "16.6.0"
+    "@graphql-mesh/cache-cfw-kv": "0.95.1",
+    "@graphql-mesh/cli": "0.87.0",
+    "@graphql-mesh/graphql": "0.95.1",
+    "@graphql-mesh/json-schema": "0.95.1",
+    "@graphql-mesh/plugin-http-cache": "0.95.1",
+    "@graphql-mesh/plugin-response-cache": "0.95.1",
+    "@graphql-mesh/transform-resolvers-composition": "0.95.1",
+    "graphql": "16.7.1"
   },
   "devDependencies": {
     "@sni/prettier-config": "*",
-    "env-cmd": "^10.1.0",
+    "env-cmd": "10.1.0",
     "eslint-config-sni": "*",
     "mustache": "4.2.0",
-    "wrangler": "2.12.2"
+    "wrangler": "3.4.0"
   }
 }
