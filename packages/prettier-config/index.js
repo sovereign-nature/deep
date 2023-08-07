@@ -2,6 +2,7 @@ module.exports = {
   singleQuote: true,
   trailingComma: 'es5',
   bracketSameLine: true,
+  plugins: ['prettier-plugin-organize-imports'],
   overrides: [
     {
       files: '*.sol',
