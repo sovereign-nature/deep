@@ -48,8 +48,8 @@ importers:
         specifier: 3.1.6
         version: 3.1.6(hardhat@2.12.7)
       '@openzeppelin/contracts':
-        specifier: 4.8.2
-        version: 4.8.2
+        specifier: 4.9.2
+        version: 4.9.2
       '@openzeppelin/hardhat-upgrades':
         specifier: 1.22.1
         version: 1.22.1(@nomiclabs/hardhat-ethers@2.2.2)(@nomiclabs/hardhat-etherscan@3.1.6)(ethers@5.7.2)(hardhat@2.12.7)
@@ -4608,8 +4608,8 @@ packages:
       - react-native-windows
     dev: false
 
-  /@openzeppelin/contracts@4.8.2:
-    resolution: {integrity: sha512-kEUOgPQszC0fSYWpbh2kT94ltOJwj1qfT2DWo+zVttmGmf97JZ99LspePNaeeaLhCImaHVeBbjaQFZQn7+Zc5g==}
+  /@openzeppelin/contracts@4.9.2:
+    resolution: {integrity: sha512-mO+y6JaqXjWeMh9glYVzVu8HYPGknAAnWyxTRhGeckOruyXQMNnlcW6w/Dx9ftLeIQk6N+ZJFuVmTwF7lEIFrg==}
     dev: true
 
   /@openzeppelin/hardhat-upgrades@1.22.1(@nomiclabs/hardhat-ethers@2.2.2)(@nomiclabs/hardhat-etherscan@3.1.6)(ethers@5.7.2)(hardhat@2.12.7):
