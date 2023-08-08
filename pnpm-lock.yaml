@@ -69,8 +69,8 @@ importers:
         specifier: 10.0.1
         version: 10.0.1
       '@web-std/fetch':
-        specifier: 4.1.0
-        version: 4.1.0
+        specifier: 4.1.2
+        version: 4.1.2
       axios:
         specifier: 1.3.4
         version: 1.3.4
@@ -5789,8 +5789,8 @@ packages:
       data-uri-to-buffer: 3.0.1
     dev: true
 
-  /@web-std/fetch@4.1.0:
-    resolution: {integrity: sha512-ZRizMcP8YyuRlhIsRYNFD9x/w28K7kbUhNGmKM9hDy4qeQ5xMTk//wA89EF+Clbl6EP4ksmCcN+4TqBMSRL8Zw==}
+  /@web-std/fetch@4.1.2:
+    resolution: {integrity: sha512-NUX+nnCTjC6URLtFC2O9dX9FtzCS5nlbF/vZwkPlheq5h6+rQxluH/aO+ORbLjGY4z4iQOulfEGoHcXwx5GFUQ==}
     engines: {node: ^10.17 || >=12.3}
     dependencies:
       '@web-std/blob': 3.0.4
