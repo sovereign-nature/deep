@@ -24,11 +24,11 @@ importers:
         specifier: 3.0.1
         version: 3.0.1
       turbo:
-        specifier: 1.8.3
-        version: 1.8.3
+        specifier: 1.10.12
+        version: 1.10.12
       turbo-ignore:
-        specifier: 1.8.3
-        version: 1.8.3
+        specifier: 1.10.12
+        version: 1.10.12
 
   apps/contracts:
     devDependencies:
@@ -111,27 +111,6 @@ importers:
         specifier: 8.1.1
         version: 8.1.1(typescript@5.1.6)
 
-  apps/derivative-indexer:
-    devDependencies:
-      '@graphprotocol/graph-cli':
-        specifier: 0.53.0
-        version: 0.53.0(@types/node@18.17.1)(node-fetch@3.3.2)(typescript@5.1.6)
-      '@graphprotocol/graph-ts':
-        specifier: 0.31.0
-        version: 0.31.0
-      '@sni/constants':
-        specifier: '*'
-        version: link:../../packages/constants
-      '@sni/sample-collection':
-        specifier: '*'
-        version: link:../sample-collection
-      matchstick-as:
-        specifier: 0.5.2
-        version: 0.5.2
-      mustache:
-        specifier: 4.2.0
-        version: 4.2.0
-
   apps/gateway:
     dependencies:
       '@graphql-mesh/cache-cfw-kv':
@@ -178,8 +157,8 @@ importers:
   apps/indexer:
     devDependencies:
       '@graphprotocol/graph-cli':
-        specifier: 0.53.0
-        version: 0.53.0(@types/node@18.17.1)(node-fetch@3.3.2)(typescript@5.1.6)
+        specifier: 0.54.0
+        version: 0.54.0(@types/node@18.17.1)(node-fetch@3.3.2)(typescript@5.1.6)
       '@graphprotocol/graph-ts':
         specifier: 0.31.0
         version: 0.31.0
@@ -195,27 +174,6 @@ importers:
       mustache:
         specifier: 4.2.0
         version: 4.2.0
-
-  apps/sample-collection:
-    devDependencies:
-      '@nomicfoundation/hardhat-toolbox':
-        specifier: 2.0.1
-        version: 2.0.1(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2)(@nomicfoundation/hardhat-chai-matchers@1.0.6)(@nomicfoundation/hardhat-network-helpers@1.0.8)(@nomiclabs/hardhat-ethers@2.2.2)(@nomiclabs/hardhat-etherscan@3.1.6)(@typechain/ethers-v5@10.2.0)(@typechain/hardhat@6.1.5)(@types/chai@4.3.5)(@types/mocha@10.0.1)(@types/node@18.17.1)(chai@4.3.7)(ethers@5.7.2)(hardhat-gas-reporter@1.0.9)(hardhat@2.12.7)(solidity-coverage@0.8.2)(ts-node@10.9.1)(typechain@8.1.1)(typescript@5.1.6)
-      '@openzeppelin/contracts':
-        specifier: 4.8.2
-        version: 4.8.2
-      '@sni/configs':
-        specifier: '*'
-        version: link:../../packages/configs
-      '@sni/solidity-interfaces':
-        specifier: '*'
-        version: link:../../packages/solidity-interfaces
-      hardhat:
-        specifier: 2.12.7
-        version: 2.12.7(ts-node@10.9.1)(typescript@5.1.6)
-      hardhat-abi-exporter:
-        specifier: 2.10.1
-        version: 2.10.1(hardhat@2.12.7)
 
   apps/verification-portal:
     devDependencies:
@@ -2758,8 +2716,8 @@ packages:
       three: 0.154.0
     dev: true
 
-  /@graphprotocol/graph-cli@0.53.0(@types/node@18.17.1)(node-fetch@3.3.2)(typescript@5.1.6):
-    resolution: {integrity: sha512-K6mvEgaHrNlldbNfAL7DKQhJnp8mSuHkDwBXZm4tbdEbwKneItRObjIOEtgAcfK+Gei1mT6pTO4I+8N7tIg9XA==}
+  /@graphprotocol/graph-cli@0.54.0(@types/node@18.17.1)(node-fetch@3.3.2)(typescript@5.1.6):
+    resolution: {integrity: sha512-Q9dJZgjNHToJ+6DqoxU9WPwITjN6EHoONh05z5/atzrj1QTNqWQT0TYrVGX/Lvm9eqa6R+Knof1jiseBLJ43tg==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
@@ -15263,70 +15221,70 @@ packages:
       safe-buffer: 5.2.1
     dev: true
 
-  /turbo-darwin-64@1.8.3:
-    resolution: {integrity: sha512-bLM084Wr17VAAY/EvCWj7+OwYHvI9s/NdsvlqGp8iT5HEYVimcornCHespgJS/yvZDfC+mX9EQkn3V2JmYgGGw==}
+  /turbo-darwin-64@1.10.12:
+    resolution: {integrity: sha512-vmDfGVPl5/aFenAbOj3eOx3ePNcWVUyZwYr7taRl0ZBbmv2TzjRiFotO4vrKCiTVnbqjQqAFQWY2ugbqCI1kOQ==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-darwin-arm64@1.8.3:
-    resolution: {integrity: sha512-4oZjXtzakopMK110kue3z/hqu3WLv+eDLZOX1NGdo49gqca9BeD8GbH+sXpAp6tqyeuzpss+PIliVYuyt7LgbA==}
+  /turbo-darwin-arm64@1.10.12:
+    resolution: {integrity: sha512-3JliEESLNX2s7g54SOBqqkqJ7UhcOGkS0ywMr5SNuvF6kWVTbuUq7uBU/sVbGq8RwvK1ONlhPvJne5MUqBCTCQ==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-ignore@1.8.3:
-    resolution: {integrity: sha512-xbk9GwGnvOyG2XN9JxzTey8jwxxy2yk+YsNv64kOIf4uTvtoWethJ/j8HISHr5C7zxk+t21D2Ci0+XD9pl0Q6w==}
+  /turbo-ignore@1.10.12:
+    resolution: {integrity: sha512-0qHUnQmP2Xo09Op5lq+Ev6ihWCNjMlSPywtdA8Hc6m09I1kr/WyTLdVMgajsuL6/pCsrqyvUB6iKi4OSKYIdgA==}
     hasBin: true
     dev: true
 
-  /turbo-linux-64@1.8.3:
-    resolution: {integrity: sha512-uvX2VKotf5PU14FCxJA5iHItPQno2JWzerMd+g3/h/Asay6dvxvtVjc39MQeGT0H5njSvzVKFkT+3/5q8lgOEg==}
+  /turbo-linux-64@1.10.12:
+    resolution: {integrity: sha512-siYhgeX0DidIfHSgCR95b8xPee9enKSOjCzx7EjTLmPqPaCiVebRYvbOIYdQWRqiaKh9yfhUtFmtMOMScUf1gg==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-arm64@1.8.3:
-    resolution: {integrity: sha512-E1p+oH3XKMaPS4rqWhYsL4j2Pzc0d/9P5KU7Kn1kqVLo2T3iRA7n2KVULEieUNE0nTH+aIJPXYXOpqCI5wFJaA==}
+  /turbo-linux-arm64@1.10.12:
+    resolution: {integrity: sha512-K/ZhvD9l4SslclaMkTiIrnfcACgos79YcAo4kwc8bnMQaKuUeRpM15sxLpZp3xDjDg8EY93vsKyjaOhdFG2UbA==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-64@1.8.3:
-    resolution: {integrity: sha512-cnzAytHtoLXd0J7aNzRpZFpL/GTjcBmkvAPlbOdf/Pl1iwS4qzGrudZQ+OM1lmLgLIfBPIavsGHBknTwTNib4A==}
+  /turbo-windows-64@1.10.12:
+    resolution: {integrity: sha512-7FSgSwvktWDNOqV65l9AbZwcoueAILeE4L7JvjauNASAjjbuzXGCEq5uN8AQU3U5BOFj4TdXrVmO2dX+lLu8Zg==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-arm64@1.8.3:
-    resolution: {integrity: sha512-ulIiItNm2w/zYJdD5/oAzjzNns1IjbpweRzpsE8tLXaWwo6+fnXXkyloUug0IUhcd2k6fJXfoiDZfygqpOVuXg==}
+  /turbo-windows-arm64@1.10.12:
+    resolution: {integrity: sha512-gCNXF52dwom1HLY9ry/cneBPOKTBHhzpqhMylcyvJP0vp9zeMQQkt6yjYv+6QdnmELC92CtKNp2FsNZo+z0pyw==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo@1.8.3:
-    resolution: {integrity: sha512-zGrkU1EuNFmkq6iky6LcMqD4h0OLE8XysVFxQWRIZbcTNnf0XAycbsbeEyiJpiWeqb7qtg2bVuY9EYcNoNhVuQ==}
+  /turbo@1.10.12:
+    resolution: {integrity: sha512-WM3+jTfQWnB9W208pmP4oeehZcC6JQNlydb/ZHMRrhmQa+htGhWLCzd6Q9rLe0MwZLPpSPFV2/bN5egCLyoKjQ==}
     hasBin: true
     requiresBuild: true
     optionalDependencies:
-      turbo-darwin-64: 1.8.3
-      turbo-darwin-arm64: 1.8.3
-      turbo-linux-64: 1.8.3
-      turbo-linux-arm64: 1.8.3
-      turbo-windows-64: 1.8.3
-      turbo-windows-arm64: 1.8.3
+      turbo-darwin-64: 1.10.12
+      turbo-darwin-arm64: 1.10.12
+      turbo-linux-64: 1.10.12
+      turbo-linux-arm64: 1.10.12
+      turbo-windows-64: 1.10.12
+      turbo-windows-arm64: 1.10.12
     dev: true
 
   /tweetnacl-util@0.15.1:

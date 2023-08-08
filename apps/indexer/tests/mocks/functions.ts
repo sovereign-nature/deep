@@ -8,7 +8,7 @@ import { Address, BigInt, Bytes, ethereum } from '@graphprotocol/graph-ts';
 import {
   METADATA_HASH_FUNCTION,
   SNI_CONTRACT_ADDRESS_STAGING,
-} from '@sni/constants';
+} from '../../../../packages/constants';
 import {
   DERIVATIVE_METADATA_SCHEMA,
   DERIVATIVE_METADATA_SCHEMA_DIGEST,
@@ -20,7 +20,7 @@ import {
   TOKEN_URI_SCHEMA,
   TOKEN_URI_SCHEMA_DIGEST,
   UPDATED_TOKEN_URI,
-} from '@sni/constants/mocks/identifier';
+} from '../../../../packages/constants/mocks/identifier';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export function mockForToken(tokenId: BigInt): void {

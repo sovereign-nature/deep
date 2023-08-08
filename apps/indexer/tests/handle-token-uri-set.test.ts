@@ -5,13 +5,13 @@ import { BigInt, Bytes } from '@graphprotocol/graph-ts';
 import { handleTokenURISet } from '../src/sovereign-nature-identifier';
 import { createTokenURISetEvent } from './events-mocks';
 
-import { SUBGRAPH_ENTITY_NAME } from '@sni/constants';
+import { SUBGRAPH_ENTITY_NAME } from '../../../packages/constants';
 
 import {
   INITIAL_TOKEN_ID,
   UPDATED_TOKEN_URI,
   UPDATED_TOKEN_URI_DIGEST,
-} from '@sni/constants/mocks/identifier';
+} from '../../../packages/constants/mocks/identifier';
 import { initializeMintedToken } from './fixtures';
 
 describe('Handles TokenURISet event', () => {

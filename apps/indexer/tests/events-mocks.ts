@@ -5,8 +5,8 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
 import { Address, BigInt, Bytes, ethereum } from '@graphprotocol/graph-ts';
-import { SNI_CONTRACT_ADDRESS_STAGING } from '@sni/constants';
 import { newMockEvent } from 'matchstick-as';
+import { SNI_CONTRACT_ADDRESS_STAGING } from '../../../packages/constants';
 import {
   Approval,
   ApprovalForAll,
