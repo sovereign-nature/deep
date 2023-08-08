@@ -28,3 +28,6 @@ export const SECOND_OWNER_ADDRESS =
 
 export const INITIAL_STATUS = 0;
 export const UPDATED_STATUS = 1;
+
+export const INITIAL_ELEMENT_ID = 'lion-128';
+export const INITIAL_CONSERVATION_ID = 'kwt';
