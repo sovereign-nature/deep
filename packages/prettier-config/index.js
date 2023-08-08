@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import("prettier").Options} */
+const config = {
   singleQuote: true,
   trailingComma: 'es5',
   bracketSameLine: true,
@@ -23,3 +24,5 @@ module.exports = {
     },
   ],
 };
+
+module.exports = config;

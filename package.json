@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@8.6.11",
+  "prettier": "@sni/prettier-config",
   "scripts": {
     "build": "turbo run build --no-daemon",
     "dev": "turbo run dev --parallel --no-daemon",
@@ -30,6 +31,6 @@
     "turbo-ignore": "1.10.12"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   }
 }
