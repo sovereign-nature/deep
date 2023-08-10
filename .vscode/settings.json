@@ -4,6 +4,7 @@
     { "directory": "apps/explorer", "!cwd": false }
   ],
   "cSpell.words": [
+    "assemblyscript",
     "Ceuvel",
     "changetype",
     "codegen",

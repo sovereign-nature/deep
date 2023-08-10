@@ -2,6 +2,7 @@
   "name": "@sni/indexer",
   "version": "0.0.0",
   "license": "UNLICENSED",
+  "private": true,
   "scripts": {
     "codegen": "mustache config/prod.json subgraph.template.yaml > subgraph.yaml && graph codegen",
     "codegen:staging": "mustache config/staging.json subgraph.template.yaml > subgraph.yaml && graph codegen",
@@ -17,8 +18,8 @@
   "devDependencies": {
     "@graphprotocol/graph-cli": "0.54.0",
     "@graphprotocol/graph-ts": "0.31.0",
-    "@sni/constants": "*",
-    "@sni/contracts": "*",
+    "@sni/constants": "workspace:*",
+    "@sni/contracts": "workspace:*",
     "matchstick-as": "0.5.2",
     "mustache": "4.2.0"
   }
