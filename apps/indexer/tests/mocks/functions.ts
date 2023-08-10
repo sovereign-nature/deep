@@ -36,7 +36,7 @@ export function mockForToken(tokenId: BigInt): void {
     ethereum.Value.fromString(NAME),
   ]);
 
-  createMockedFunction(contract, 'symbol', 'name():(string)').returns([
+  createMockedFunction(contract, 'symbol', 'symbol():(string)').returns([
     ethereum.Value.fromString(SYMBOL),
   ]);
 }
