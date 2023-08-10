@@ -1,28 +1,16 @@
-type SNI @entity {
+type DeepLink @entity {
   id: ID!
   owner: Bytes!
   tokenId: BigInt!
 
   tokenURI: String!
-  tokenMetadataDigest: Bytes!
-  tokenMetadataHashFunction: String!
 
-  tokenMetadataSchemaURI: String!
-  tokenMetadataSchemaDigest: Bytes!
-  tokenMetadataSchemaHashFunction: String!
-
-  derivativeMetadataSchemaURI: String!
-  derivativeMetadataSchemaDigest: Bytes!
-  derivativeMetadataSchemaHashFunction: String! #TODO: We probably can store one hash function per protocol version
-  computeURI: String!
-  dataURI: String!
-
-  status: BigInt!
+  elementId: String!
+  conservationId: String!
 
   createdAt: BigInt!
   updatedAt: BigInt
 
-  oracle: Bytes
-  collectionName: String
+  name: String
   symbol: String
 }
