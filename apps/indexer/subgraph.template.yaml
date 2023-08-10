@@ -6,11 +6,11 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: SovereignNatureIdentifier
+    name: DeepLink
     network: {{network}}
     source:
       address: '{{address}}'
-      abi: SovereignNatureIdentifier
+      abi: DeepLink
       startBlock: {{startBlock}}
     mapping:
       kind: ethereum/events
@@ -19,39 +19,15 @@ dataSources:
       entities:
         - Approval
         - ApprovalForAll
-        - ComputeURISet
-        - DataURISet
-        - RoleAdminChanged
-        - RoleGranted
-        - RoleRevoked
-        - StatusSet
-        - TokenURISet
         - Transfer
-        - TokenMinted
       abis:
-        - name: SovereignNatureIdentifier
-          file: ../contracts/abi/contracts/SovereignNatureIdentifier.sol/SovereignNatureIdentifier.json
+        - name: DeepLink
+          file: ../contracts/abi/contracts/DeepLink.sol/DeepLink.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,indexed uint256)
           handler: handleApproval
         - event: ApprovalForAll(indexed address,indexed address,bool)
           handler: handleApprovalForAll
-        - event: ComputeURISet(indexed uint256,string)
-          handler: handleComputeURISet
-        - event: DataURISet(indexed uint256,string)
-          handler: handleDataURISet
-        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
-          handler: handleRoleAdminChanged
-        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
-          handler: handleRoleGranted
-        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
-          handler: handleRoleRevoked
-        - event: StatusSet(indexed uint256,uint256)
-          handler: handleStatusSet
-        - event: TokenURISet(indexed uint256,string,bytes)
-          handler: handleTokenURISet
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
-        - event: TokenMinted(indexed uint256,string,address)
-          handler: handleTokenMinted
-      file: ./src/sovereign-nature-identifier.ts
+      file: ./src/deep-link.ts

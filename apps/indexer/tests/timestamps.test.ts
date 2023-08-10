@@ -9,33 +9,19 @@ import {
 
 import { Address, BigInt, store } from '@graphprotocol/graph-ts';
 
-import {
-  handleComputeURISet,
-  handleDataURISet,
-  handleStatusSet,
-  handleTransfer,
-} from '../src/sovereign-nature-identifier';
-import {
-  createComputeURISetEvent,
-  createDataURISetEvent,
-  createStatusSetEvent,
-  createTransferEvent,
-} from './events-mocks';
+import { handleTransfer } from '../src/deep-link';
+import { createTransferEvent } from './events-mocks';
 
 import { SUBGRAPH_ENTITY_NAME } from '../../../packages/constants';
 
 //TODO: Refactor constants to object
-//TODO: Add URI postfix to mocked URIs
 import {
   INITIAL_TOKEN_ID,
   MINTER_ADDRESS,
   OWNER_ADDRESS,
   SECOND_OWNER_ADDRESS,
   TEMP_TOKEN_ID,
-  UPDATED_COMPUTE_URI,
-  UPDATED_DATA_URI,
-  UPDATED_STATUS,
-} from '../../../packages/constants/mocks/identifier';
+} from '../../../packages/constants/mocks/deep-link';
 import { mockForToken } from './mocks/functions';
 
 const INITIAL_TOKEN_ID_INT = BigInt.fromI32(INITIAL_TOKEN_ID);
@@ -43,7 +29,7 @@ const INITIAL_TOKEN_ID_INT = BigInt.fromI32(INITIAL_TOKEN_ID);
 const MINTER = Address.fromString(MINTER_ADDRESS);
 const OWNER = Address.fromString(OWNER_ADDRESS);
 
-describe('SNI Indexer', () => {
+describe('Handles timestamps properly', () => {
   beforeAll(() => {
     mockForToken(INITIAL_TOKEN_ID_INT);
 
@@ -74,6 +60,7 @@ describe('SNI Indexer', () => {
     store.remove(SUBGRAPH_ENTITY_NAME, tokenId.toHex());
   });
 
+  //TODO: updatedAt is equal to createdAt on first transfer
   test('Sets updatedAt on entity', () => {
     const transferEvent = createTransferEvent(
       OWNER,
@@ -88,57 +75,6 @@ describe('SNI Indexer', () => {
       INITIAL_TOKEN_ID_INT.toHex(),
       'updatedAt',
       transferEvent.block.timestamp.toString()
-    );
-  });
-
-  test('Handles DataURISet event', () => {
-    const dataURISetEvent = createDataURISetEvent(
-      INITIAL_TOKEN_ID_INT,
-      UPDATED_DATA_URI
-    );
-    handleDataURISet(dataURISetEvent);
-
-    const tokenId = INITIAL_TOKEN_ID_INT.toHex();
-
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'dataURI',
-      UPDATED_DATA_URI
-    );
-  });
-
-  test('Handles ComputeURISet event', () => {
-    const computeURISetEvent = createComputeURISetEvent(
-      INITIAL_TOKEN_ID_INT,
-      UPDATED_COMPUTE_URI
-    );
-
-    handleComputeURISet(computeURISetEvent);
-
-    const tokenId = INITIAL_TOKEN_ID_INT.toHex();
-
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'computeURI',
-      UPDATED_COMPUTE_URI
-    );
-  });
-
-  test('Handles StatusSet event', () => {
-    const newStatus = BigInt.fromI32(UPDATED_STATUS);
-    const statusSetEvent = createStatusSetEvent(
-      INITIAL_TOKEN_ID_INT,
-      newStatus
-    );
-    handleStatusSet(statusSetEvent);
-
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      INITIAL_TOKEN_ID_INT.toHex(),
-      'status',
-      newStatus.toString()
     );
   });
 });

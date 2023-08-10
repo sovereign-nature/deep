@@ -1,8 +1,8 @@
 import {
-  INITIAL_CONSERVATION_ID,
-  INITIAL_ELEMENT_ID,
+  CONSERVATION_ID,
+  ELEMENT_ID,
   INITIAL_TOKEN_ID,
-} from '@sni/constants/mocks/identifier';
+} from '@sni/constants/mocks/deep-link';
 import { ethers } from 'hardhat';
 
 export async function deployDeepLinkFixture() {
@@ -16,8 +16,8 @@ export async function deployDeepLinkFixture() {
     return deepLink.safeMint(
       owner.address,
       INITIAL_TOKEN_ID,
-      INITIAL_ELEMENT_ID,
-      INITIAL_CONSERVATION_ID
+      ELEMENT_ID,
+      CONSERVATION_ID
     );
   };
 
@@ -25,8 +25,8 @@ export async function deployDeepLinkFixture() {
     deepLink,
     mintInitial,
     initialTokenId: INITIAL_TOKEN_ID,
-    initialElementId: INITIAL_ELEMENT_ID,
-    initialConservationId: INITIAL_CONSERVATION_ID,
+    initialElementId: ELEMENT_ID,
+    initialConservationId: CONSERVATION_ID,
     owner,
   };
 }
