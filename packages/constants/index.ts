@@ -15,9 +15,7 @@ export const LEGACY_SNI_CONTRACT_ADDRESS_V2 =
 export const LEGACY_SNI_CONTRACT_ADDRESS_V3 =
   '0x4Cb0e7561706b75dfEb58E28303C4b344c59ACFf';
 
-export const SUBGRAPH_ENTITY_NAME = 'SNI';
-
-export const METADATA_HASH_FUNCTION = 'keccak256';
+export const SUBGRAPH_ENTITY_NAME = 'DeepLink';
 
 export const NFT_STORAGE_API_URL = 'https://api.nft.storage/upload';
 export const PINATA_API_URL = 'https://api.pinata.cloud/pinning/pinJSONToIPFS';

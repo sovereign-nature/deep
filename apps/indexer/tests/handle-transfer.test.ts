@@ -2,28 +2,21 @@ import { assert, describe, test } from 'matchstick-as/assembly/index';
 
 import { Address, BigInt } from '@graphprotocol/graph-ts';
 
-import { handleTransfer } from '../src/sovereign-nature-identifier';
+import { handleTransfer } from '../src/deep-link';
 import { createTransferEvent } from './events-mocks';
 
-import {
-  METADATA_HASH_FUNCTION,
-  SUBGRAPH_ENTITY_NAME,
-} from '../../../packages/constants';
+import { SUBGRAPH_ENTITY_NAME } from '../../../packages/constants';
 
 import {
-  DERIVATIVE_METADATA_SCHEMA,
-  DERIVATIVE_METADATA_SCHEMA_DIGEST,
-  INITIAL_COMPUTE_URI,
-  INITIAL_DATA_URI,
-  INITIAL_STATUS,
+  CONSERVATION_ID,
+  ELEMENT_ID,
   INITIAL_TOKEN_ID,
-  INITIAL_TOKEN_URI,
-  INITIAL_TOKEN_URI_DIGEST,
   MINTER_ADDRESS,
+  NAME,
   OWNER_ADDRESS,
-  TOKEN_URI_SCHEMA,
-  TOKEN_URI_SCHEMA_DIGEST,
-} from '../../../packages/constants/mocks/identifier';
+  SYMBOL,
+  TOKEN_URI,
+} from '../../../packages/constants/mocks/deep-link';
 import { mockForToken } from './mocks/functions';
 
 //MOCKED CONSTANTS
@@ -46,6 +39,7 @@ describe('Handles Transfer event', () => {
 
     // Base fields
     assert.fieldEquals(SUBGRAPH_ENTITY_NAME, tokenId, 'owner', OWNER.toHex());
+
     assert.fieldEquals(
       SUBGRAPH_ENTITY_NAME,
       tokenId,
@@ -53,88 +47,17 @@ describe('Handles Transfer event', () => {
       INITIAL_TOKEN_ID_INT.toString()
     );
 
+    assert.fieldEquals(SUBGRAPH_ENTITY_NAME, tokenId, 'name', NAME);
+    assert.fieldEquals(SUBGRAPH_ENTITY_NAME, tokenId, 'symbol', SYMBOL);
+
+    assert.fieldEquals(SUBGRAPH_ENTITY_NAME, tokenId, 'elementId', ELEMENT_ID);
     assert.fieldEquals(
       SUBGRAPH_ENTITY_NAME,
       tokenId,
-      'tokenURI',
-      INITIAL_TOKEN_URI
+      'conservationId',
+      CONSERVATION_ID
     );
 
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'tokenMetadataDigest',
-      INITIAL_TOKEN_URI_DIGEST
-    );
-
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'tokenMetadataSchemaHashFunction',
-      METADATA_HASH_FUNCTION
-    );
-
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'tokenMetadataSchemaURI',
-      TOKEN_URI_SCHEMA
-    );
-
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'tokenMetadataSchemaDigest',
-      TOKEN_URI_SCHEMA_DIGEST
-    );
-
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'tokenMetadataSchemaHashFunction',
-      METADATA_HASH_FUNCTION
-    );
-
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'dataURI',
-      INITIAL_DATA_URI
-    );
-
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'computeURI',
-      INITIAL_COMPUTE_URI
-    );
-
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'status',
-      INITIAL_STATUS.toString()
-    );
-
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'derivativeMetadataSchemaURI',
-      DERIVATIVE_METADATA_SCHEMA
-    );
-
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'derivativeMetadataSchemaDigest',
-      DERIVATIVE_METADATA_SCHEMA_DIGEST
-    );
-
-    assert.fieldEquals(
-      SUBGRAPH_ENTITY_NAME,
-      tokenId,
-      'derivativeMetadataSchemaHashFunction',
-      METADATA_HASH_FUNCTION
-    );
+    assert.fieldEquals(SUBGRAPH_ENTITY_NAME, tokenId, 'tokenURI', TOKEN_URI);
   });
 });

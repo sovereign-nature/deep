@@ -2,8 +2,8 @@ import { Address, BigInt } from '@graphprotocol/graph-ts';
 import {
   MINTER_ADDRESS,
   OWNER_ADDRESS,
-} from '../../../../packages/constants/mocks/identifier';
-import { handleTransfer } from '../../src/sovereign-nature-identifier';
+} from '../../../../packages/constants/mocks/deep-link';
+import { handleTransfer } from '../../src/deep-link';
 import { createTransferEvent } from '../events-mocks';
 import { mockForToken } from '../mocks/functions';
 
