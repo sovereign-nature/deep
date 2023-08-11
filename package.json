@@ -8,7 +8,7 @@
     "lint": "eslint --cache .",
     "test": "turbo run test --no-daemon",
     "codegen": "turbo run codegen --no-daemon",
-    "format": "prettier --cache --write \"**/*.{js,ts,svelte,md}\"",
+    "format": "prettier --cache --write .",
     "prepare": "husky install"
   },
   "lint-staged": {
