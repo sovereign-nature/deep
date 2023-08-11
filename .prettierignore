@@ -4,3 +4,7 @@ node_modules/
 dist/
 typechain-types/
 .vercel/
+
+.svelte-kit/
+.mesh/
+generated/
