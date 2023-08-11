@@ -1,7 +1,7 @@
 <script>
-	import '../app.postcss';
+  import '../app.postcss';
 </script>
 
 <div class="h-screen">
-	<slot />
+  <slot />
 </div>

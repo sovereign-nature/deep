@@ -4,7 +4,7 @@
 
   onMount(async () => {
     if (browser) {
-      const modelViewer = await import('@google/model-viewer');
+      await import('@google/model-viewer');
     }
   });
 </script>
@@ -20,4 +20,5 @@
   camera-controls
   disable-zoom
   touch-action="pan-y"
-  class="w-full h-full" />
+  class="w-full h-full"
+/>

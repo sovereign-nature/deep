@@ -5,10 +5,10 @@
   "scripts": {
     "build": "turbo run build --no-daemon",
     "dev": "turbo run dev --parallel --no-daemon",
-    "lint": "turbo run lint --no-daemon",
+    "lint": "eslint --cache .",
     "test": "turbo run test --no-daemon",
     "codegen": "turbo run codegen --no-daemon",
-    "format": "prettier --write \"**/*.{js,ts,vue,md}\"",
+    "format": "prettier --cache --write \"**/*.{js,ts,svelte,md}\"",
     "prepare": "husky install"
   },
   "lint-staged": {

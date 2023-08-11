@@ -8,11 +8,6 @@ node_modules
 # testing
 coverage
 
-# next.js
-.next/
-out/
-build
-
 # misc
 .DS_Store
 *.pem
@@ -33,11 +28,7 @@ yarn-error.log*
 # turbo
 .turbo
 
-# Yarn with Zero-Installs
-.yarn/*
-!.yarn/cache
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+# Optional eslint cache
+.eslintcache
+
+build/
