@@ -1,6 +1,7 @@
 import '@nomicfoundation/hardhat-toolbox';
 import * as dotenv from 'dotenv';
 import 'hardhat-abi-exporter';
+import 'hardhat-gas-reporter';
 import { HardhatUserConfig } from 'hardhat/config';
 import 'solidity-coverage';
 
@@ -21,6 +22,9 @@ const config: HardhatUserConfig = {
     runOnCompile: true,
     clear: true,
     path: './abi',
+  },
+  gasReporter: {
+    enabled: true,
   },
 };
 
