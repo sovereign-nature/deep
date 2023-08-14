@@ -2,7 +2,6 @@
 const config = {
   singleQuote: true,
   trailingComma: 'es5',
-  bracketSameLine: true,
   plugins: ['prettier-plugin-organize-imports'],
   overrides: [
     {
@@ -21,6 +20,10 @@ const config = {
       options: {
         bracketSpacing: false,
       },
+    },
+    {
+      files: '*.svelte',
+      options: { parser: 'svelte', plugins: ['prettier-plugin-svelte'] },
     },
   ],
 };

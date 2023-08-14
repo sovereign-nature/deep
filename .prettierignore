@@ -4,3 +4,16 @@ node_modules/
 dist/
 typechain-types/
 .vercel/
+
+.svelte-kit/
+.mesh/
+generated/
+
+.vscode/
+
+# Contracts
+abi/ #TODO: Move to generated folder
+artifacts/
+cache/
+
+pnpm-lock.yaml

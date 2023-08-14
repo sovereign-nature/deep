@@ -1,7 +1,7 @@
 {
   "name": "@sni/contracts",
   "version": "0.0.0",
-  "prettier": "@sni/prettier-config",
+  "private": true,
   "scripts": {
     "compile": "hardhat compile",
     "build": "npm run compile",
@@ -17,12 +17,10 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "3.0.0",
     "@openzeppelin/contracts": "4.9.3",
-    "@sni/constants": "*",
-    "@sni/prettier-config": "*",
+    "@sni/constants": "workspace:*",
     "@web-std/fetch": "4.1.2",
     "axios": "1.4.0",
     "dotenv": "16.3.1",
-    "eslint-config-sni": "*",
     "hardhat": "2.17.1",
     "hardhat-abi-exporter": "2.10.1",
     "hardhat-gas-reporter": "1.0.9",

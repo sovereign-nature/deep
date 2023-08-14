@@ -2,15 +2,15 @@
   "name": "@sni/gateway",
   "version": "0.0.0",
   "description": "GraphQL API Gateway",
-  "prettier": "@sni/prettier-config",
+  "private": true,
   "scripts": {
     "codegen": "mustache config/production.js .meshrc.template.yaml > .meshrc.yaml",
     "codegen:staging": "env-cmd mustache config/staging.js .meshrc.template.yaml > .meshrc.yaml",
     "start": "mesh start",
-    "dev": "yarn codegen:staging && wrangler dev",
-    "deploy": "yarn codegen && wrangler publish",
-    "deploy:staging": "yarn codegen:staging && wrangler publish --env staging",
-    "build": "yarn codegen && wrangler publish --dry-run --outdir=dist"
+    "dev": "pnpm codegen:staging && wrangler dev",
+    "deploy": "pnpm codegen && wrangler publish",
+    "deploy:staging": "pnpm codegen:staging && wrangler publish --env staging",
+    "build": "pnpm codegen && wrangler publish --dry-run --outdir=dist"
   },
   "dependencies": {
     "@graphql-mesh/cache-cfw-kv": "0.95.1",
@@ -23,9 +23,7 @@
     "graphql": "16.7.1"
   },
   "devDependencies": {
-    "@sni/prettier-config": "*",
     "env-cmd": "10.1.0",
-    "eslint-config-sni": "*",
     "mustache": "4.2.0",
     "wrangler": "3.4.0"
   }

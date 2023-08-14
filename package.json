@@ -1,16 +1,14 @@
 {
-  "name": "identifier",
-  "version": "0.0.0",
+  "name": "deep-monorepo",
   "private": true,
   "packageManager": "pnpm@8.6.11",
-  "prettier": "@sni/prettier-config",
   "scripts": {
     "build": "turbo run build --no-daemon",
     "dev": "turbo run dev --parallel --no-daemon",
-    "lint": "turbo run lint --no-daemon",
+    "lint": "eslint --cache .",
     "test": "turbo run test --no-daemon",
     "codegen": "turbo run codegen --no-daemon",
-    "format": "prettier --write \"**/*.{js,ts,vue,md}\"",
+    "format": "prettier --cache --write .",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -22,15 +20,21 @@
     ]
   },
   "devDependencies": {
-    "@sni/prettier-config": "*",
-    "eslint-config-sni": "*",
     "husky": "8.0.3",
     "lint-staged": "13.2.3",
-    "prettier": "3.0.1",
     "turbo": "1.10.12",
-    "turbo-ignore": "1.10.12"
+    "turbo-ignore": "1.10.12",
+    "prettier": "3.0.1",
+    "prettier-plugin-organize-imports": "3.2.3",
+    "prettier-plugin-svelte": "3.0.3",
+    "@typescript-eslint/eslint-plugin": "6.3.0",
+    "@typescript-eslint/parser": "6.3.0",
+    "eslint": "8.46.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-config-turbo": "1.10.12"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0",
+    "pnpm": "~8.6.0"
   }
 }
