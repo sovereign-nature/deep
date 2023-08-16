@@ -33,14 +33,14 @@ importers:
         specifier: 14.0.0
         version: 14.0.0
       prettier:
-        specifier: 3.0.1
-        version: 3.0.1
+        specifier: 3.0.2
+        version: 3.0.2
       prettier-plugin-organize-imports:
         specifier: 3.2.3
-        version: 3.2.3(prettier@3.0.1)(typescript@5.1.6)
+        version: 3.2.3(prettier@3.0.2)(typescript@5.1.6)
       prettier-plugin-svelte:
         specifier: 3.0.3
-        version: 3.0.3(prettier@3.0.1)(svelte@4.0.5)
+        version: 3.0.3(prettier@3.0.2)(svelte@4.0.5)
       turbo:
         specifier: 1.10.12
         version: 1.10.12
@@ -12880,7 +12880,7 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-organize-imports@3.2.3(prettier@3.0.1)(typescript@5.1.6):
+  /prettier-plugin-organize-imports@3.2.3(prettier@3.0.2)(typescript@5.1.6):
     resolution: {integrity: sha512-KFvk8C/zGyvUaE3RvxN2MhCLwzV6OBbFSkwZ2OamCrs9ZY4i5L77jQ/w4UmUr+lqX8qbaqVq6bZZkApn+IgJSg==}
     peerDependencies:
       '@volar/vue-language-plugin-pug': ^1.0.4
@@ -12893,17 +12893,17 @@ packages:
       '@volar/vue-typescript':
         optional: true
     dependencies:
-      prettier: 3.0.1
+      prettier: 3.0.2
       typescript: 5.1.6
     dev: true
 
-  /prettier-plugin-svelte@3.0.3(prettier@3.0.1)(svelte@4.0.5):
+  /prettier-plugin-svelte@3.0.3(prettier@3.0.2)(svelte@4.0.5):
     resolution: {integrity: sha512-dLhieh4obJEK1hnZ6koxF+tMUrZbV5YGvRpf2+OADyanjya5j0z1Llo8iGwiHmFWZVG/hLEw/AJD5chXd9r3XA==}
     peerDependencies:
       prettier: ^3.0.0
       svelte: ^3.2.0 || ^4.0.0-next.0
     dependencies:
-      prettier: 3.0.1
+      prettier: 3.0.2
       svelte: 4.0.5
     dev: true
 
@@ -12919,8 +12919,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier@3.0.1:
-    resolution: {integrity: sha512-fcOWSnnpCrovBsmFZIGIy9UqK2FaI7Hqax+DIO0A9UxeVoY4iweyaFjS5TavZN97Hfehph0nhsZnjlVKzEQSrQ==}
+  /prettier@3.0.2:
+    resolution: {integrity: sha512-o2YR9qtniXvwEZlOKbveKfDQVyqxbEIWn48Z8m3ZJjBjcCmUy3xZGIv+7AkaeuaTr6yPXJjwv07ZWlsWbEy1rQ==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
