@@ -172,8 +172,8 @@ importers:
         specifier: 1.8.1
         version: 1.8.1
       flowbite-svelte:
-        specifier: 0.43.1
-        version: 0.43.1(svelte@4.0.5)
+        specifier: 0.43.2
+        version: 0.43.2(svelte@4.0.5)
       leaflet:
         specifier: 1.9.4
         version: 1.9.4
@@ -8558,8 +8558,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: false
 
-  /flowbite-svelte@0.43.1(svelte@4.0.5):
-    resolution: {integrity: sha512-01ofjsHi7YRNx/MvmjpULQ5L6ar8El7yqWD3aJJupyaXRvTyPb5CHPUP5fT1rOJA11oeZDnPRTdJ27aDuTXpZQ==}
+  /flowbite-svelte@0.43.2(svelte@4.0.5):
+    resolution: {integrity: sha512-RbxrGjFJM/D+4OyQJw/VA8UXpDavf+lgBiGJSgxQSfKMVQwnE8s3azkSB9ix1YzZjUNgL0o2yZsVMgHxcUJczA==}
     engines: {node: '>=16.0.0', npm: '>=7.0.0'}
     peerDependencies:
       svelte: ^3.55.1 || ^4.0.0
