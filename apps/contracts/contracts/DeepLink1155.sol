@@ -14,7 +14,17 @@ contract DeepLink1155 is ERC1155, Ownable, ERC1155Burnable, Linkable {
         _setURI(newuri);
     }
 
-    function mint(address account, uint256 id, uint256 amount, bytes memory data) public onlyOwner {
+    function mint(
+        address account,
+        uint256 id,
+        uint256 amount,
+        string memory elementId,
+        string memory conservationId,
+        bytes memory data
+    ) public onlyOwner {
+        _elementIds[id] = elementId;
+        _conservationIds[id] = conservationId;
+
         _mint(account, id, amount, data);
     }
 

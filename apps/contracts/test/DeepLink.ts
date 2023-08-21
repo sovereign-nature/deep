@@ -2,11 +2,11 @@ import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
 import { expect } from 'chai';
 import { deployDeepLinkFixture } from './fixtures';
 
-describe('DeepLink Token Minting', function () {
+describe('DeepLink721 Token Minting', function () {
   it('Should mint', async function () {
     const { mintInitial } = await loadFixture(deployDeepLinkFixture);
 
-    expect(mintInitial()).not.to.be.reverted;
+    expect(await mintInitial()).not.to.be.reverted;
   });
 
   it('Should has initial owner', async function () {
