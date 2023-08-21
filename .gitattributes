@@ -1,3 +1,4 @@
 *.jpg filter=lfs diff=lfs merge=lfs -text
 /.yarn/releases/** binary
 /.yarn/plugins/** binary
+*.glb filter=lfs diff=lfs merge=lfs -text
