@@ -6,14 +6,16 @@
   import Property from '$lib/typography/Property.svelte';
   import Subheader from '$lib/typography/Subheader.svelte';
 
+  import modelUrl from '$lib/assets/Lion_golden_GLB_04.glb';
+
   export let data;
 </script>
 
 <div class="lg:flex lg:flex-row lg:p-5">
-  <!-- <div> -->
   <Info>
     <Header>Verified Asset:</Header>
     <Subheader>{data.slug}</Subheader>
+    <Subheader>{data.data.id}</Subheader>
     <img
       class="pb-2"
       src="https://placehold.co/600x400"
@@ -35,8 +37,8 @@
   </Info>
   <Info>
     <Header>Collecting Funds For:</Header>
-    <Subheader>North Of Upemba</Subheader>
-    <div class="aspect-square pb-2"><ModelViewer /></div>
+    <Subheader>Morani</Subheader>
+    <div class="aspect-square pb-2"><ModelViewer {modelUrl} /></div>
     <div class="aspect-square pb-2"><SimpleMap /></div>
     <h2 class="text-xl text-white pb-2">Info:</h2>
     <Property name="ID">

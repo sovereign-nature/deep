@@ -13,9 +13,9 @@ export async function load(event) {
   };
 
   const res = await fetch(
-    `https://64b80f7e21b9aa6eb07980f8.mockapi.io/links/${slug}`
+    `https://directus.sovereignnature.com/items/aimm_dolphins/${slug}`
   );
-  const apiData: TestData = await res.json();
+  const { data }: { data: TestData } = await res.json();
 
-  return { slug, apiData };
+  return { slug, data };
 }

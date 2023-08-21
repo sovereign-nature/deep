@@ -2,6 +2,8 @@
   import { browser } from '$app/environment';
   import { onMount } from 'svelte';
 
+  export let modelUrl: string;
+
   onMount(async () => {
     if (browser) {
       await import('@google/model-viewer');
@@ -11,9 +13,8 @@
 
 <model-viewer
   alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum"
-  src="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb"
+  src={modelUrl}
   environment-image="https://modelviewer.dev/shared-assets/environments/moon_1k.hdr"
-  poster="https://modelviewer.dev/shared-assets/models/NeilArmstrong.webp"
   ar
   shadow-intensity="1"
   auto-rotate
