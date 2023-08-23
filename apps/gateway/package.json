@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "GraphQL API Gateway",
   "private": true,
+  "license": "GPL-3.0",
   "scripts": {
     "codegen": "mustache config/production.js .meshrc.template.yaml > .meshrc.yaml",
     "codegen:staging": "env-cmd mustache config/staging.js .meshrc.template.yaml > .meshrc.yaml",

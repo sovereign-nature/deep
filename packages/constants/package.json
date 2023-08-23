@@ -2,5 +2,5 @@
   "name": "@sni/constants",
   "version": "0.0.0",
   "main": "index.ts",
-  "license": "MIT"
+  "license": "GPL-3.0"
 }

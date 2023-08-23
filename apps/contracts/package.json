@@ -2,6 +2,7 @@
   "name": "@sni/contracts",
   "version": "0.0.0",
   "private": true,
+  "license": "GPL-3.0",
   "scripts": {
     "compile": "hardhat compile",
     "build": "npm run compile",

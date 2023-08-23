@@ -1,8 +1,8 @@
 {
   "name": "@sni/indexer",
   "version": "0.0.0",
-  "license": "UNLICENSED",
   "private": true,
+  "license": "GPL-3.0",
   "scripts": {
     "codegen": "mustache config/prod.json subgraph.template.yaml > subgraph.yaml && graph codegen",
     "codegen:staging": "mustache config/staging.json subgraph.template.yaml > subgraph.yaml && graph codegen",
