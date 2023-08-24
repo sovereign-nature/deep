@@ -93,8 +93,8 @@ importers:
         specifier: 0.95.2
         version: 0.95.2(@graphql-mesh/types@0.95.2)(@graphql-mesh/utils@0.95.2)(graphql@16.8.0)(tslib@2.6.2)
       '@graphql-mesh/cli':
-        specifier: 0.87.2
-        version: 0.87.2(@types/node@18.17.1)(graphql-tag@2.12.6)(graphql-yoga@4.0.4)(graphql@16.8.0)(react-native@0.72.3)
+        specifier: 0.87.3
+        version: 0.87.3(@types/node@18.17.1)(graphql-tag@2.12.6)(graphql-yoga@4.0.4)(graphql@16.8.0)(react-native@0.72.3)
       '@graphql-mesh/graphql':
         specifier: 0.95.2
         version: 0.95.2(@graphql-mesh/cross-helpers@0.4.0)(@graphql-mesh/store@0.95.2)(@graphql-mesh/types@0.95.2)(@graphql-mesh/utils@0.95.2)(@graphql-tools/utils@10.0.4)(@types/node@18.17.1)(graphql@16.8.0)(react@18.2.0)(tslib@2.6.2)
@@ -2977,8 +2977,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@graphql-mesh/cli@0.87.2(@types/node@18.17.1)(graphql-tag@2.12.6)(graphql-yoga@4.0.4)(graphql@16.8.0)(react-native@0.72.3):
-    resolution: {integrity: sha512-qebIOW8sXREybl3FmM5a/zUdaLbrfnG98IGCfgGuwOJYNLdg1HEn8O4z5ybg1nV2cFqNgC/D4CA8c1h7VCrACQ==}
+  /@graphql-mesh/cli@0.87.3(@types/node@18.17.1)(graphql-tag@2.12.6)(graphql-yoga@4.0.4)(graphql@16.8.0)(react-native@0.72.3):
+    resolution: {integrity: sha512-LHHSBGLITqEeM5uOZ1L1zhxAJmQpc2ftCsUQSy0Ep+fYsuSM5zQhk30Qqaek3Ae9Z97sDyu+yglv4DUgFiYehw==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     peerDependencies:
@@ -2990,7 +2990,7 @@ packages:
       '@graphql-codegen/typescript-generic-sdk': 3.1.0(graphql-tag@2.12.6)(graphql@16.8.0)
       '@graphql-codegen/typescript-operations': 4.0.1(graphql@16.8.0)
       '@graphql-codegen/typescript-resolvers': 4.0.1(graphql@16.8.0)
-      '@graphql-mesh/config': 0.97.3(@graphql-mesh/cross-helpers@0.4.0)(@graphql-mesh/runtime@0.96.2)(@graphql-mesh/store@0.95.2)(@graphql-mesh/types@0.95.2)(@graphql-mesh/utils@0.95.2)(@graphql-tools/utils@10.0.4)(graphql-yoga@4.0.4)(graphql@16.8.0)(tslib@2.6.2)
+      '@graphql-mesh/config': 0.97.4(@graphql-mesh/cross-helpers@0.4.0)(@graphql-mesh/runtime@0.96.2)(@graphql-mesh/store@0.95.2)(@graphql-mesh/types@0.95.2)(@graphql-mesh/utils@0.95.2)(@graphql-tools/utils@10.0.4)(graphql-yoga@4.0.4)(graphql@16.8.0)(tslib@2.6.2)
       '@graphql-mesh/cross-helpers': 0.4.0(@graphql-tools/utils@10.0.4)(graphql@16.8.0)(react-native@0.72.3)
       '@graphql-mesh/http': 0.96.3(@graphql-mesh/cross-helpers@0.4.0)(@graphql-mesh/runtime@0.96.2)(@graphql-mesh/types@0.95.2)(@graphql-mesh/utils@0.95.2)(graphql@16.8.0)(tslib@2.6.2)
       '@graphql-mesh/runtime': 0.96.2(@graphql-mesh/cross-helpers@0.4.0)(@graphql-mesh/types@0.95.2)(@graphql-mesh/utils@0.95.2)(@graphql-tools/utils@10.0.4)(graphql@16.8.0)(tslib@2.6.2)
@@ -3032,8 +3032,8 @@ packages:
       - supports-color
     dev: false
 
-  /@graphql-mesh/config@0.97.3(@graphql-mesh/cross-helpers@0.4.0)(@graphql-mesh/runtime@0.96.2)(@graphql-mesh/store@0.95.2)(@graphql-mesh/types@0.95.2)(@graphql-mesh/utils@0.95.2)(@graphql-tools/utils@10.0.4)(graphql-yoga@4.0.4)(graphql@16.8.0)(tslib@2.6.2):
-    resolution: {integrity: sha512-VkckWlINvruEagZQh0eljBxIYbHpPDuDtjZJuQ3V1cHKcAtTyMsKLp2p9QZEf7Ki7slJYQqSEoR0CNgR8yQ7QA==}
+  /@graphql-mesh/config@0.97.4(@graphql-mesh/cross-helpers@0.4.0)(@graphql-mesh/runtime@0.96.2)(@graphql-mesh/store@0.95.2)(@graphql-mesh/types@0.95.2)(@graphql-mesh/utils@0.95.2)(@graphql-tools/utils@10.0.4)(graphql-yoga@4.0.4)(graphql@16.8.0)(tslib@2.6.2):
+    resolution: {integrity: sha512-ooAiboCfsr+droPiGzsbE31X9KgSIGHRsxguNCDfbjbgDTy5OgC+N+yLQpEyuR4ol9B3UJ8iQk/t7SWcvwV/dw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@graphql-mesh/cross-helpers': ^0.4.0
