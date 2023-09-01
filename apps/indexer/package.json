@@ -16,7 +16,7 @@
     "test": "graph test"
   },
   "devDependencies": {
-    "@graphprotocol/graph-cli": "0.55.0",
+    "@graphprotocol/graph-cli": "0.56.0",
     "@graphprotocol/graph-ts": "0.31.0",
     "@sni/constants": "workspace:*",
     "@sni/contracts": "workspace:*",
