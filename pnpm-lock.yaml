@@ -60,8 +60,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/constants
       '@web-std/fetch':
-        specifier: 4.1.2
-        version: 4.1.2
+        specifier: 4.2.1
+        version: 4.2.1
       axios:
         specifier: 1.5.0
         version: 1.5.0
@@ -5532,14 +5532,16 @@ packages:
       web-encoding: 1.1.5
     dev: true
 
-  /@web-std/fetch@4.1.2:
-    resolution: {integrity: sha512-NUX+nnCTjC6URLtFC2O9dX9FtzCS5nlbF/vZwkPlheq5h6+rQxluH/aO+ORbLjGY4z4iQOulfEGoHcXwx5GFUQ==}
+  /@web-std/fetch@4.2.1:
+    resolution: {integrity: sha512-M6sgHDgKegcjuVsq8J6jb/4XvhPGui8uwp3EIoADGXUnBl9vKzKLk9H9iFzrPJ6fSV6zZzFWXPyziBJp9hxzBA==}
     engines: {node: ^10.17 || >=12.3}
     dependencies:
       '@web-std/blob': 3.0.4
+      '@web-std/file': 3.0.2
       '@web-std/form-data': 3.0.2
       '@web-std/stream': 1.0.1
       '@web3-storage/multipart-parser': 1.0.0
+      abort-controller: 3.0.0
       data-uri-to-buffer: 3.0.1
       mrmime: 1.0.1
     dev: true
@@ -11983,7 +11985,7 @@ packages:
       '@ipld/car': 3.2.4
       '@ipld/dag-cbor': 6.0.15
       '@web-std/blob': 3.0.4
-      '@web-std/fetch': 4.1.2
+      '@web-std/fetch': 4.2.1
       '@web-std/file': 3.0.2
       '@web-std/form-data': 3.0.2
       carbites: 1.0.6
