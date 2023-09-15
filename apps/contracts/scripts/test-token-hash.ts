@@ -1,3 +1,6 @@
+//Based on:
+//https://docs.ens.domains/contract-api-reference/name-processing#namehash
+
 import { ethers } from 'hardhat';
 
 //Asset DID spec https://github.com/KILTprotocol/spec-asset-did
