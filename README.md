@@ -9,23 +9,18 @@ This monorepo uses [turborepo](https://turborepo.org/) for tasks/caching and yar
 Apps:
 
 - `@sni/contracts`: Solidity contracts for Sovereign Nature Identifier built with [Hardhat](https://hardhat.org/) and [OpenZeppelin](https://www.openzeppelin.com/).
-- `@sni/explorer`: Explorer for Sovereign Nature Identifier built with Angular.
-- `@sni/docs`: documentation generator based on [Vitepress](https://vitepress.vuejs.org/).
 - `@sni/indexer`: indexer for [The Graph](https://thegraph.com/).
 - `@sni/gateway`: GraphQL gateway built with [GraphQL Mesh](https://the-guild.dev/graphql/mesh)
-- `@sni/sample-collection`: Sample NFT derivatives connected to deployed Identifier contracts.
-- `@sni/derivative-indexer`: The Graph indexer for derivative contracts.
+- `@sni/verification-portal`: DEEP Link verification UI.
 
 Packages:
 
-- `eslint-config-*`: Shared `esLint` configurations.
-- `@sni/prettier-config`: Shared `prettier` configuration.
 - `@sni/constants`: Shared constants.
 - `@sni/configs`: Shared configs.
 - `@sni/json-schemas`: Shared JSON schemas.
 - `@sni/solidity-interfaces`: Shared Solidity interfaces, like IDerivative.
 
-## Identifier Core Services Architecture
+## Identifier Core Services Architecture (Outdated)
 
 ```mermaid
   flowchart TD;
@@ -40,14 +35,14 @@ Packages:
 
 ## Installing Dependencies
 
-To install dependencies for whole monorepo run `yarn install` from the root repo directory.
+To install dependencies for whole monorepo run `pnpm i` from the root repo directory.
 
 ## Build
 
 To build all apps and packages, run the following command:
 
 ```shell
-yan build
+pnpm build
 ```
 
 ### Develop
@@ -55,19 +50,19 @@ yan build
 To develop all apps and packages, run the following command:
 
 ```shell
-yarn dev
+pnpm dev
 ```
 
 To develop specific package run:
 
 ```shell
-yarn dev --filter <PACKAGE_NAME>
+pnpm dev --filter <PACKAGE_NAME>
 ```
 
-For example, to develop explorer, run:
+For example, to develop verification portal, run:
 
 ```shell
-yarn dev --filter @sni/explorer
+pnpm dev --filter @sni/verification-portal
 ```
 
 ## Remote Caching
