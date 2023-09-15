@@ -14,8 +14,8 @@
 <div class="lg:flex lg:flex-row lg:p-5">
   <Info>
     <Header>Verified Asset:</Header>
-    <Subheader>{data.slug}</Subheader>
-    <Subheader>{data.data.id}</Subheader>
+    <Subheader>{data.assetAddress}</Subheader>
+    <!-- <Subheader>{data.data.id}</Subheader> -->
     <img
       class="pb-2"
       src="https://placehold.co/600x400"
