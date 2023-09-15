@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@google/model-viewer": "3.2.1",
-    "@playwright/test": "1.37.1",
+    "@playwright/test": "1.38.0",
     "@popperjs/core": "2.11.8",
     "@sveltejs/adapter-auto": "2.1.0",
     "@sveltejs/kit": "1.25.0",
