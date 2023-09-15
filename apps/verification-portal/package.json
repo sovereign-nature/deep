@@ -26,8 +26,6 @@
     "autoprefixer": "10.4.15",
     "flowbite": "1.8.1",
     "flowbite-svelte": "0.44.15",
-    "houdini": "^1.2.9",
-    "houdini-svelte": "^1.2.9",
     "leaflet": "1.9.4",
     "postcss": "8.4.29",
     "postcss-load-config": "4.0.1",
