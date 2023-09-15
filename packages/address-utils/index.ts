@@ -6,6 +6,24 @@ export function stringToId(input: string): string {
   return BigInt(hash).toString();
 }
 
+export function parseAddress(address: string) {
+  const [chainId, assetAddress] = address.split('.');
+  const [chainNamespace, chainReference] = chainId.split(':');
+  const [assetNamespace, assetReference, tokenId] = assetAddress.split(':');
+
+  return {
+    chain: {
+      namespace: chainNamespace,
+      reference: chainReference,
+    },
+    asset: {
+      namespace: assetNamespace,
+      reference: assetReference,
+      identifier: Number(tokenId),
+    },
+  };
+}
+
 //standard:vendorId.assetType:assetID
 //deep:hh.asset:african-elephant-mask
 export function getOffChainAssetAddress(
