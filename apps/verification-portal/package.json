@@ -28,7 +28,7 @@
     "flowbite-svelte": "0.44.15",
     "graphql-request": "^6.1.0",
     "leaflet": "1.9.4",
-    "postcss": "8.4.29",
+    "postcss": "8.4.30",
     "postcss-load-config": "4.0.1",
     "svelte": "^4.0.5",
     "svelte-check": "3.5.1",
