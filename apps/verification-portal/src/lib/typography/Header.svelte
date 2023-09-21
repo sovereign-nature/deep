@@ -1,1 +1,1 @@
-<h1 class="text-3xl font-light text-white pb-2"><slot /></h1>
+<h1 class="text-3xl font-medium dark:text-white pb-2 font-serif"><slot /></h1>
