@@ -13,6 +13,7 @@ export const getNftById = gql`
         name
         description
         image
+        animation_url: animationUrl
       }
     }
   }

@@ -28,7 +28,7 @@ export const entityResponse = {
     steward: {
       id: 'aimm',
       date_created: '2023-09-14T14:15:18.462Z',
-      date_updated: '2023-09-19T11:40:20.069Z',
+      date_updated: '2023-09-22T13:10:16.589Z',
       name: 'AIMM',
       description:
         'Established in 2010, AIMM is a Portuguese NGO committed to marine conservation and research, primarily in the Algarve and the Atlantic, with the goal of cultivating a sustainable environment for marine life.\nIts mission encompasses protecting marine species through scientific research, conservation, and public education to foster a greater understanding of the marine environment. AIMM is a global player in marine conservation, advocating for effective conservation measures, fostering responsible tourism related to cetaceans, and supplying scientific data to shape marine management policies and programs.\n',
@@ -93,18 +93,6 @@ export const entityResponse = {
           },
         ],
       },
-      images: [
-        {
-          id: 1,
-          stewards_id: 'aimm',
-          directus_files_id: '6be334b2-1d8c-4f49-b933-253f57217b2d',
-        },
-        {
-          id: 2,
-          stewards_id: 'aimm',
-          directus_files_id: '1e47bd60-c4f7-452e-bf37-141fe5ec2ca0',
-        },
-      ],
     },
   },
 };
@@ -182,22 +170,37 @@ export const stewardResponse = {
 };
 
 export const polkadotNftResponse = {
-  data: {
-    nftEntity: {
-      id: 'u-8-262',
-      sn: '262',
-      collection: {
-        id: 'u-8',
-        name: 'Copenhagen Premium Waifus',
-      },
-      meta: {
-        name: 'Copenhagen Premium Waifus',
-        description:
-          'Enjoy first NFT drop on Polkadot at [KodaDot](https://kodadot.xyz). Owner of this item has **access to $50 voucher**, which can be claimed in [KodaShop](https://shop.kodadot.xyz). KodaMerch is then shipped right to your door step.',
-        image:
-          'ipfs://ipfs/bafybeieacobvvgo53y6nllhd2bxc2zwkq4ucqllr4pkqarkvibejembijm',
-        animation_url: null,
-      },
+  nftEntity: {
+    id: 'u-8-262',
+    sn: '262',
+    collection: {
+      id: 'u-8',
+      name: 'Copenhagen Premium Waifus',
+    },
+    meta: {
+      name: 'Copenhagen Premium Waifus',
+      description:
+        'Enjoy first NFT drop on Polkadot at [KodaDot](https://kodadot.xyz). Owner of this item has **access to $50 voucher**, which can be claimed in [KodaShop](https://shop.kodadot.xyz). KodaMerch is then shipped right to your door step.',
+      image:
+        'ipfs://ipfs/bafybeieacobvvgo53y6nllhd2bxc2zwkq4ucqllr4pkqarkvibejembijm',
+      animation_url: null,
+    },
+  },
+};
+
+export const kusamaNftResponse = {
+  nftEntity: {
+    id: '91-10',
+    sn: '10',
+    collection: {
+      id: '91',
+      name: 'PBA 2023 x Nonceptualism',
+    },
+    meta: {
+      name: 'KUSAMOID',
+      description: 'A unique NFT of Nonceptualism',
+      image: 'ipfs://ipfs/QmYMwinNpZCTx28bfDvPerKEiBPp34HDU1R9Q1HZX55za1',
+      animation_url: null,
     },
   },
 };

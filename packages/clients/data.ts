@@ -13,5 +13,5 @@ export function getEntity(
 }
 
 export function getSteward(id: string, config: AxiosRequestConfig = {}) {
-  return axios.get(`${SNI_API_URL}/stewards/${id}`, config);
+  return axios.get(`${SNI_API_URL}/items/stewards/${id}`, config);
 }

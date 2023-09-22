@@ -4,47 +4,48 @@ import { getLinkByAddress, getLinkById } from '../link';
 import { getNftData } from '../nft';
 import {
   entityResponse,
+  kusamaNftResponse,
   linkResponse,
   polkadotNftResponse,
   stewardResponse,
 } from './responses';
 
-test('getLinkById', () => {
-  getLinkById(
+test('getLinkById', async () => {
+  const response = await getLinkById(
     '31537534386950388023491254677150515860389712061535283602024150019331823461691'
-  ).then((response) => {
-    expect(response).toBe(linkResponse);
-  });
-});
-
-test('getLinkByAddress', () => {
-  getLinkByAddress('did:asset:deep:polkadot.asset-hub:u-8:262').then(
-    (response) => {
-      expect(response).toBe(linkResponse);
-    }
   );
+
+  expect(response.data).toStrictEqual(linkResponse);
 });
 
-test('getEntity', () => {
-  getEntity('aimm_minke_whales', 'ba_alg_001').then((response) => {
-    expect(response).toBe(entityResponse);
-  });
+test('getLinkByAddress', async () => {
+  const response = await getLinkByAddress(
+    'did:asset:deep:polkadot.asset-hub:u-8:262'
+  );
+
+  expect(response.data).toStrictEqual(linkResponse);
 });
 
-test('getSteward', () => {
-  getSteward('aimm').then((response) => {
-    expect(response).toBe(stewardResponse);
-  });
+test('getEntity', async () => {
+  const response = await getEntity('aimm_minke_whales', 'ba_alg_001');
+
+  expect(response.data).toStrictEqual(entityResponse);
 });
 
-test('getNFTData from Polkadot', () => {
-  getNftData('polkadot', 'u-8', '262')?.then((response) => {
-    expect(response).toBe(polkadotNftResponse);
-  });
+test('getSteward', async () => {
+  const response = await getSteward('aimm');
+
+  expect(response.data).toStrictEqual(stewardResponse);
 });
 
-test('getNFTData from Kusama', () => {
-  getNftData('polkadot', '91', '10')?.then((response) => {
-    expect(response).toMatchObject(polkadotNftResponse);
-  });
+test('getNFTData from Polkadot', async () => {
+  const response = await getNftData('polkadot', 'u-8', '262');
+
+  expect(response).toStrictEqual(polkadotNftResponse);
+});
+
+test('getNFTData from Kusama', async () => {
+  const response = await getNftData('kusama', '91', '10');
+
+  expect(response).toStrictEqual(kusamaNftResponse);
 });
