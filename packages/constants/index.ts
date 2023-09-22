@@ -19,3 +19,5 @@ export const SUBGRAPH_ENTITY_NAME = 'DeepLink';
 
 export const NFT_STORAGE_API_URL = 'https://api.nft.storage/upload';
 export const PINATA_API_URL = 'https://api.pinata.cloud/pinning/pinJSONToIPFS';
+
+export const SNI_API_URL = 'https://directus.sovereignnature.com';
