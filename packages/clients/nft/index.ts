@@ -4,27 +4,27 @@ import { getNftById } from './queries/polkadot';
 const POLKADOT_NFT_API = 'https://squid.subsquid.io/speck/v/v3/graphql';
 const KUSAMA_NFT_API = 'https://squid.subsquid.io/stick/graphql';
 
-function getPolkadotNFT(id: string) {
+function getPolkadotNft(id: string) {
   return request(POLKADOT_NFT_API, getNftById, {
     id,
   });
 }
 
-function getKusamaNFT(id: string) {
+function getKusamaNft(id: string) {
   return request(KUSAMA_NFT_API, getNftById, {
     id,
   });
 }
 
-export function getNFTData(
+export function getNftData(
   network: string,
   collectionAddress: string,
   tokenId: string
 ) {
   switch (network) {
     case 'polkadot':
-      return getPolkadotNFT(`${collectionAddress}-${tokenId}`);
+      return getPolkadotNft(`${collectionAddress}-${tokenId}`);
     case 'kusama':
-      return getKusamaNFT(`${collectionAddress}-${tokenId}`);
+      return getKusamaNft(`${collectionAddress}-${tokenId}`);
   }
 }

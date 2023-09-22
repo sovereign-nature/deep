@@ -1,7 +1,13 @@
 import { expect, test } from 'vitest';
 import { getEntity, getSteward } from '../data';
 import { getLinkByAddress, getLinkById } from '../link';
-import { entityResponse, linkResponse, stewardResponse } from './responses';
+import { getNftData } from '../nft';
+import {
+  entityResponse,
+  linkResponse,
+  polkadotNftResponse,
+  stewardResponse,
+} from './responses';
 
 test('getLinkById', () => {
   getLinkById(
@@ -28,5 +34,17 @@ test('getEntity', () => {
 test('getSteward', () => {
   getSteward('aimm').then((response) => {
     expect(response).toBe(stewardResponse);
+  });
+});
+
+test('getNFTData from Polkadot', () => {
+  getNftData('polkadot', 'u-8', '262')?.then((response) => {
+    expect(response).toBe(polkadotNftResponse);
+  });
+});
+
+test('getNFTData from Kusama', () => {
+  getNftData('polkadot', '91', '10')?.then((response) => {
+    expect(response).toMatchObject(polkadotNftResponse);
   });
 });

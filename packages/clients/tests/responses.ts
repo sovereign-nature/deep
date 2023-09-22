@@ -180,3 +180,24 @@ export const stewardResponse = {
     },
   },
 };
+
+export const polkadotNftResponse = {
+  data: {
+    nftEntity: {
+      id: 'u-8-262',
+      sn: '262',
+      collection: {
+        id: 'u-8',
+        name: 'Copenhagen Premium Waifus',
+      },
+      meta: {
+        name: 'Copenhagen Premium Waifus',
+        description:
+          'Enjoy first NFT drop on Polkadot at [KodaDot](https://kodadot.xyz). Owner of this item has **access to $50 voucher**, which can be claimed in [KodaShop](https://shop.kodadot.xyz). KodaMerch is then shipped right to your door step.',
+        image:
+          'ipfs://ipfs/bafybeieacobvvgo53y6nllhd2bxc2zwkq4ucqllr4pkqarkvibejembijm',
+        animation_url: null,
+      },
+    },
+  },
+};
