@@ -6,7 +6,10 @@ export function getEntity(
   id: string,
   config: AxiosRequestConfig = {}
 ) {
-  return axios.get(`${SNI_API_URL}/${collection}/${id}`, config);
+  return axios.get(
+    `${SNI_API_URL}/items/${collection}/${id}?fields=*,images.*,steward.*.*`,
+    config
+  );
 }
 
 export function getSteward(id: string, config: AxiosRequestConfig = {}) {
