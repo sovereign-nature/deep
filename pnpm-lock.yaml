@@ -52,7 +52,7 @@ importers:
     devDependencies:
       '@nomicfoundation/hardhat-toolbox':
         specifier: 3.0.0
-        version: 3.0.0(@nomicfoundation/hardhat-chai-matchers@2.0.1)(@nomicfoundation/hardhat-ethers@3.0.4)(@nomicfoundation/hardhat-network-helpers@1.0.8)(@nomicfoundation/hardhat-verify@1.1.0)(@typechain/ethers-v6@0.4.3)(@typechain/hardhat@8.0.3)(@types/chai@4.3.5)(@types/mocha@10.0.1)(@types/node@18.17.1)(chai@4.3.7)(ethers@6.7.1)(hardhat-gas-reporter@1.0.9)(hardhat@2.17.3)(solidity-coverage@0.8.4)(ts-node@10.9.1)(typechain@8.3.1)(typescript@5.2.2)
+        version: 3.0.0(@nomicfoundation/hardhat-chai-matchers@2.0.1)(@nomicfoundation/hardhat-ethers@3.0.4)(@nomicfoundation/hardhat-network-helpers@1.0.8)(@nomicfoundation/hardhat-verify@1.1.0)(@typechain/ethers-v6@0.4.3)(@typechain/hardhat@8.0.3)(@types/chai@4.3.5)(@types/mocha@10.0.1)(@types/node@18.17.1)(chai@4.3.7)(ethers@6.7.1)(hardhat-gas-reporter@1.0.9)(hardhat@2.17.3)(solidity-coverage@0.8.5)(ts-node@10.9.1)(typechain@8.3.1)(typescript@5.2.2)
       '@openzeppelin/contracts':
         specifier: 4.9.3
         version: 4.9.3
@@ -84,8 +84,8 @@ importers:
         specifier: 3.6.2
         version: 3.6.2
       solidity-coverage:
-        specifier: 0.8.4
-        version: 0.8.4(hardhat@2.17.3)
+        specifier: 0.8.5
+        version: 0.8.5(hardhat@2.17.3)
 
   apps/gateway:
     dependencies:
@@ -4328,7 +4328,7 @@ packages:
       hardhat: 2.17.3(ts-node@10.9.1)(typescript@5.2.2)
     dev: true
 
-  /@nomicfoundation/hardhat-toolbox@3.0.0(@nomicfoundation/hardhat-chai-matchers@2.0.1)(@nomicfoundation/hardhat-ethers@3.0.4)(@nomicfoundation/hardhat-network-helpers@1.0.8)(@nomicfoundation/hardhat-verify@1.1.0)(@typechain/ethers-v6@0.4.3)(@typechain/hardhat@8.0.3)(@types/chai@4.3.5)(@types/mocha@10.0.1)(@types/node@18.17.1)(chai@4.3.7)(ethers@6.7.1)(hardhat-gas-reporter@1.0.9)(hardhat@2.17.3)(solidity-coverage@0.8.4)(ts-node@10.9.1)(typechain@8.3.1)(typescript@5.2.2):
+  /@nomicfoundation/hardhat-toolbox@3.0.0(@nomicfoundation/hardhat-chai-matchers@2.0.1)(@nomicfoundation/hardhat-ethers@3.0.4)(@nomicfoundation/hardhat-network-helpers@1.0.8)(@nomicfoundation/hardhat-verify@1.1.0)(@typechain/ethers-v6@0.4.3)(@typechain/hardhat@8.0.3)(@types/chai@4.3.5)(@types/mocha@10.0.1)(@types/node@18.17.1)(chai@4.3.7)(ethers@6.7.1)(hardhat-gas-reporter@1.0.9)(hardhat@2.17.3)(solidity-coverage@0.8.5)(ts-node@10.9.1)(typechain@8.3.1)(typescript@5.2.2):
     resolution: {integrity: sha512-MsteDXd0UagMksqm9KvcFG6gNKYNa3GGNCy73iQ6bEasEgg2v8Qjl6XA5hjs8o5UD5A3153B6W2BIVJ8SxYUtA==}
     peerDependencies:
       '@nomicfoundation/hardhat-chai-matchers': ^2.0.0
@@ -4362,7 +4362,7 @@ packages:
       ethers: 6.7.1
       hardhat: 2.17.3(ts-node@10.9.1)(typescript@5.2.2)
       hardhat-gas-reporter: 1.0.9(hardhat@2.17.3)
-      solidity-coverage: 0.8.4(hardhat@2.17.3)
+      solidity-coverage: 0.8.5(hardhat@2.17.3)
       ts-node: 10.9.1(@types/node@18.17.1)(typescript@5.2.2)
       typechain: 8.3.1(typescript@5.2.2)
       typescript: 5.2.2
@@ -11958,37 +11958,6 @@ packages:
       yargs-unparser: 2.0.0
     dev: true
 
-  /mocha@7.1.2:
-    resolution: {integrity: sha512-o96kdRKMKI3E8U0bjnfqW4QMk12MwZ4mhdBTf+B5a1q9+aq2HRnj+3ZdJu0B/ZhJeK78MgYuv6L8d/rA5AeBJA==}
-    engines: {node: '>= 8.10.0'}
-    hasBin: true
-    dependencies:
-      ansi-colors: 3.2.3
-      browser-stdout: 1.3.1
-      chokidar: 3.3.0
-      debug: 3.2.6(supports-color@6.0.0)
-      diff: 3.5.0
-      escape-string-regexp: 1.0.5
-      find-up: 3.0.0
-      glob: 7.1.3
-      growl: 1.10.5
-      he: 1.2.0
-      js-yaml: 3.13.1
-      log-symbols: 3.0.0
-      minimatch: 3.0.4
-      mkdirp: 0.5.5
-      ms: 2.1.1
-      node-environment-flags: 1.0.6
-      object.assign: 4.1.0
-      strip-json-comments: 2.0.1
-      supports-color: 6.0.0
-      which: 1.3.1
-      wide-align: 1.1.3
-      yargs: 13.3.2
-      yargs-parser: 13.1.2
-      yargs-unparser: 1.6.0
-    dev: true
-
   /mocha@7.2.0:
     resolution: {integrity: sha512-O9CIypScywTVpNaRrCAgoUnJgozpIofjKUYmJhiCIJMiuYnLI6otcb1/kpW9/n/tJODHGZ7i8aLQoDVsMtOKQQ==}
     engines: {node: '>= 8.10.0'}
@@ -14251,8 +14220,8 @@ packages:
       prettier: 2.8.4
     dev: true
 
-  /solidity-coverage@0.8.4(hardhat@2.17.3):
-    resolution: {integrity: sha512-xeHOfBOjdMF6hWTbt42iH4x+7j1Atmrf5OldDPMxI+i/COdExUxszOswD9qqvcBTaLGiOrrpnh9UZjSpt4rBsg==}
+  /solidity-coverage@0.8.5(hardhat@2.17.3):
+    resolution: {integrity: sha512-6C6N6OV2O8FQA0FWA95FdzVH+L16HU94iFgg5wAFZ29UpLFkgNI/DRR2HotG1bC0F4gAc/OMs2BJI44Q/DYlKQ==}
     hasBin: true
     peerDependencies:
       hardhat: ^2.11.0
@@ -14270,7 +14239,7 @@ packages:
       hardhat: 2.17.3(ts-node@10.9.1)(typescript@5.2.2)
       jsonschema: 1.4.1
       lodash: 4.17.21
-      mocha: 7.1.2
+      mocha: 10.2.0
       node-emoji: 1.11.0
       pify: 4.0.1
       recursive-readdir: 2.2.3
