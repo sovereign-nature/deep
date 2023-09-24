@@ -8,27 +8,30 @@
     DropdownItem,
     Radio,
   } from 'flowbite-svelte';
-  let network = 'Sub0';
+  let network = 'polkadot';
   import { ChevronDownSolid, SearchOutline } from 'flowbite-svelte-icons';
 </script>
 
 <form method="POST" use:enhance>
+  <!-- Dropdown menu doesn't persist on closed state, bind network value to hidden field before DOM persistance config is available -->
+  <input name="network" value={network} type="text" readonly hidden />
   <ButtonGroup class="w-full h-20">
     <!-- network select -->
     <Button
       color="none"
       class=" flex-shrink-0 flex justify-between  w-32 lg:w-60 text-xl !border-none text-slate-600 bg-gray-100  hover:bg-gray-200 focus:ring-gray-300  "
     >
-      <span class="ps-4">{network}</span>
+      <span class="ps-4 capitalize">{network}</span>
       <ChevronDownSolid class="w-3 h-3 " />
     </Button>
+
     <Dropdown containerClass="overflow-hidden relative " class="p-0 w-48">
       <DropdownItem class="p-0">
-        <Radio custom name="network" bind:group={network} value={'Sub0'}>
+        <Radio custom name="network" bind:group={network} value={'polkadot'}>
           <span
             class="inline-flex p-4 w-full text-gray-500 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-primary-500 peer-checked:border-primary-600 peer-checked:text-primary-600 hover:text-gray-600 dark:text-gray-400"
           >
-            Sub0
+            Polkadot
           </span>
         </Radio>
       </DropdownItem>
@@ -37,14 +40,14 @@
           custom
           name="network"
           bind:group={network}
-          value={'Hotel Hideaway'}
+          value={'kusama'}
           disabled
           class="cursor-not-allowed opacity-50"
         >
           <span
             class="inline-flex p-4 w-full text-gray-500 dark:border-gray-700 dark:peer-checked:text-primary-500 peer-checked:border-primary-600 peer-checked:text-primary-600 dark:text-gray-500"
           >
-            Hotel Hideaway
+            Kusama
           </span>
         </Radio>
       </DropdownItem>
