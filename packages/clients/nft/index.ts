@@ -19,7 +19,7 @@ function getKusamaNft(id: string) {
 export function getNftData(
   network: string,
   collectionAddress: string,
-  tokenId: string
+  tokenId: number
 ) {
   switch (network) {
     case 'polkadot':
