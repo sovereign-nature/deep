@@ -31,6 +31,7 @@ export async function load(event) {
       throw new Error();
     }
     nftData = nftDataResponse.nftEntity;
+    console.log(nftData);
   } catch (e) {
     throw error(404, notFoundMessage);
   }
