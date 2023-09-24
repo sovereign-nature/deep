@@ -21,6 +21,7 @@
     "@playwright/test": "1.38.1",
     "@popperjs/core": "2.11.8",
     "@sni/address-utils": "workspace:*",
+    "@sni/clients": "workspace:*",
     "@sveltejs/adapter-auto": "2.1.0",
     "@sveltejs/kit": "1.25.0",
     "@types/leaflet": "1.9.4",

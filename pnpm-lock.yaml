@@ -159,6 +159,9 @@ importers:
       '@sni/address-utils':
         specifier: workspace:*
         version: link:../../packages/address-utils
+      '@sni/clients':
+        specifier: workspace:*
+        version: link:../../packages/clients
       '@sveltejs/adapter-auto':
         specifier: 2.1.0
         version: 2.1.0(@sveltejs/kit@1.25.0)
