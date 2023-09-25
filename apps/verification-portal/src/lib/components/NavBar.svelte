@@ -5,10 +5,10 @@
   import logo from '$lib/assets/brand/sni_logo_round.svg';
 </script>
 
-<Navbar color="none" class="my-6 container lg:px-0">
+<Navbar color="none" class="my-6 container px-4">
   <NavBrand href="/">
-    <img src={logo} class="mr-9 h-12 sm:h-20" alt="SNI Logo" />
-    <span class="ms-2 text-2xl font-serif dark:text-white">
+    <img src={logo} class="mr-4 xl:mr-9 h-10 lg:h-12 sm:h-20" alt="SNI Logo" />
+    <span class="ms-2 text-xl md:text-2xl font-serif dark:text-white">
       <strong>Sovereign Nature</strong>
       <span class="font-light">Initiative</span>
     </span>
