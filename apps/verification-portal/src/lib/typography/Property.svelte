@@ -3,6 +3,6 @@
 </script>
 
 <div class="flex flex-row">
-  <p class="text-white font-thin text-md">{name}::</p>
-  <p class="text-white px-2 text-md"><slot /></p>
+  <p class="dark:text-white text-sm font-light">{name}:</p>
+  <p class="dark:text-white px-2 text-sm"><slot /></p>
 </div>

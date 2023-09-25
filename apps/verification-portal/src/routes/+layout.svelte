@@ -10,7 +10,7 @@
     crossorigin="anonymous"
   />
   <link
-    href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap"
     rel="stylesheet"
   />
 </svelte:head>
