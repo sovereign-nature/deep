@@ -63,16 +63,13 @@
     <div class="grid lg:grid-cols-2 gap-5">
       <div>
         <Property name="Source">
-          <p>Hotel Hideaway</p>
+          <p>sub0</p>
         </Property>
-        <Property name="ID">
-          <p>0x7688x8s8</p>
+        <Property name="Token ID">
+          <p>{data.nftData.sn}</p>
         </Property>
-        <Property name="Link Address">
+        <Property name="Asset Address">
           <p>{data.assetAddress}</p>
-        </Property>
-        <Property name="Copies Sold">
-          <p>2</p>
         </Property>
       </div>
 
@@ -96,7 +93,7 @@
     >
       <Subheader
         className="text-black dark:text-white xl:!text-black md:pt-8 xl:pt-0 flex justify-start md:justify-center xl:justify-start "
-        >Funds generated so far</Subheader
+        >Funds generated so far:</Subheader
       >
       <FundsDashboard></FundsDashboard>
     </div>
@@ -106,7 +103,7 @@
       class="Animal-Data md:mb-4 xl:mb-0 min-h-100 bg-deep-green dark:bg-primary-500 md:rounded-xl xl:rounded-b-none text-white overflow-hidden"
     >
       <div class="px-4 md:px-8 pt-8 mb-8">
-        <Subheader>Collecting funds for</Subheader>
+        <Subheader>Collecting funds for:</Subheader>
         <h3 class="text-5xl">{data.deepData?.id}</h3>
       </div>
       <div class="w-full">
