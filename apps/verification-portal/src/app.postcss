@@ -37,6 +37,17 @@ h6 {
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Aeonik';
+  src: local('Aeonik'), local('aeonik'), url('/fonts/Aeonik-Regular.otf');
+  font-weight: medium;
+  font-display: swap;
+}
+
+.font-aeonik {
+  font-family: 'Aeonik' !important;
+}
+
 img.leaflet-tile,
 img.leaflet-marker-icon,
 img.leaflet-marker-shadow {
@@ -44,4 +55,53 @@ img.leaflet-marker-shadow {
   outline: 2px solid transparent;
   /* work-around from here: https://bugs.chromium.org/p/chromium/issues/detail?id=600120 */
   mix-blend-mode: plus-lighter;
+}
+
+.bg-Sni-img {
+  background: url('images/bg_img.jpg') no-repeat fixed center / cover;
+}
+
+/* custom scroll bar  */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+}
+
+* {
+  scrollbar-color: #006546 #dfe9eb;
+}
+.dark * {
+  scrollbar-color: #006546 #001512;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+.dark *::-webkit-scrollbar-track {
+  border-radius: 5px;
+  @apply bg-deep-green-900;
+}
+
+.dark *::-webkit-scrollbar-track:hover {
+  @apply bg-deep-green-800;
+}
+
+.dark *::-webkit-scrollbar-track:active {
+  @apply bg-deep-green-800;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  @apply bg-primary-500;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-400;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  @apply bg-primary-400;
 }
