@@ -11,11 +11,12 @@ const config = {
 };
 
 let nftData: NftAsset;
-let verifiedStatus: boolean = false;
+
 let deepData: object = {};
 const notFoundMessage = 'We’re sorry but that page can’t be found.';
 
 export async function load(event) {
+  let verifiedStatus: boolean = false;
   const assetAddress = event.params.assetAddress;
   try {
     // Fetch NFT data
@@ -46,7 +47,6 @@ export async function load(event) {
       }
       return response.data.data;
     });
-
     if (verifiedStatus) {
       // Fetch deep entity data
       const { data: entityResponse } = await getEntity(
