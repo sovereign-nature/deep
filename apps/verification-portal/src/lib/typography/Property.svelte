@@ -2,7 +2,7 @@
   export let name: string;
 </script>
 
-<div class="flex flex-row">
-  <p class="text-white font-thin text-md">{name}::</p>
-  <p class="text-white px-2 text-md"><slot /></p>
+<div class="flex">
+  <span class="dark:text-white text-sm font-thin">{name}:</span>
+  <span class="dark:text-white px-2 text-sm"><slot /></span>
 </div>

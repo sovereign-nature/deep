@@ -1,78 +1,255 @@
 <script setup lang="ts">
-  import ModelViewer from '$lib/components/ModelViewer.svelte';
-  import SimpleMap from '$lib/components/SimpleMap.svelte';
-  import Info from '$lib/containers/Info.svelte';
-  import Header from '$lib/typography/Header.svelte';
   import Property from '$lib/typography/Property.svelte';
   import Subheader from '$lib/typography/Subheader.svelte';
+  import IPFSimage from '$lib/components/IPFSimage.svelte';
+  import ImageSrcSet from '$lib/components/ImageSrcSet.svelte';
+  import SocialShare from '$lib/components/SocialShare.svelte';
+  import FundsDashboard from '$lib/components/FundsDashboard.svelte';
+  import ModelViewer from '$lib/components/ModelViewer.svelte';
+  import SimpleMap from '$lib/components/SimpleMap.svelte';
+
+  import { page } from '$app/stores';
 
   import modelUrl from '$lib/assets/Lion_golden_GLB_04.glb';
+
+  import placeholderAnimal from '$lib/assets/images/placeholderAnimal.jpg';
+  import placeholderCamp from '$lib/assets/images/placeholderCamp.jpg';
+
+  $: currentPath = $page.url.toString();
+
+  const ontologyData = {
+    ecSteward: {
+      title: 'Ecological Steward',
+      description:
+        'Ecological Steward (ES): an identified conservation/restoration group, being an organisation (e.g. KWT) or a community, group of stakeholders who has also the mandate to manage the funds raised',
+    },
+    ecEntity: {
+      title: 'Ecological Entity',
+      description:
+        'Ecological Entity: an identified piece of ecology the Ecological Steward (ES) focuses on, that being a specific species population (predators of the Maasai Mara) or an ecosystem (the Upemba National Park)',
+    },
+  };
 
   export let data;
 </script>
 
-<div class="lg:flex lg:flex-row lg:p-5">
-  <Info>
-    <Header>Verified Asset:</Header>
-    <Subheader>{data.assetAddress}</Subheader>
-    <!-- <Subheader>{data.data.id}</Subheader> -->
-    <img
-      class="pb-2"
-      src="https://placehold.co/600x400"
-      alt="Item visualization"
+<!-- Header -->
+<div
+  class="grid grid-cols-1 lg:grid-cols-12 lg:gap-5 mb-16 px-4 md:px-8 xl:px-0"
+>
+  <div
+    class="col-span-1 lg:col-span-4 xl:col-start-2 xl:col-span-3 flex justify-center w-100 mb-8 lg:mb-4"
+  >
+    <IPFSimage
+      ipfsImageUrl={data.nftData.meta?.image}
+      alt={data.nftData.meta?.name}
     />
-    <h2 class="text-xl text-white pb-2">Asset Metadata:</h2>
-    <Property name="Game">
-      <p>Hotel Hideaway</p>
-    </Property>
-    <Property name="ID">
-      <p>0x7688x8s8</p>
-    </Property>
-    <Property name="Link Address">
-      <p>0x068647392974</p>
-    </Property>
-    <Property name="Copies Sold">
-      <p>2</p>
-    </Property>
-  </Info>
-  <Info>
-    <Header>Collecting Funds For:</Header>
-    <Subheader>Morani</Subheader>
-    <div class="aspect-square pb-2"><ModelViewer {modelUrl} /></div>
-    <div class="aspect-square pb-2"><SimpleMap /></div>
-    <h2 class="text-xl text-white pb-2">Info:</h2>
-    <Property name="ID">
-      <p>x150</p>
-    </Property>
-    <Property name="Zebras Spotted">
-      <p>10</p>
-    </Property>
-    <Property name="Elephants Spotted">
-      <p>100</p>
-    </Property>
-    <Property name="Rangers Patrolling">
-      <p>1000</p>
-    </Property>
-  </Info>
-  <Info>
-    <Header>Campaign Info:</Header>
-    <Subheader>Upemba National Park</Subheader>
-    <img
-      class="pb-2"
-      src="https://placehold.co/600x400"
-      alt="Item visualization"
-    />
-    <div class="aspect-square pb-2"><SimpleMap /></div>
-    <h2 class="text-xl text-white pb-2">Funds Collected:</h2>
+  </div>
+  <div class="lg:col-span-8 xl:col-span-7 dark:text-white">
+    <div>
+      <h1
+        class="dark:text-white text-2xl md:text-3xl lg:text-4xl leading-tight mb-6"
+      >
+        {#if data.verifiedStatus}
+          <span class="text-primary-300">Verified:</span>
+        {/if}
+        <span class="font-aeonik">
+          {data.nftData.meta?.name}
+        </span>
+      </h1>
+      {#if data.nftData.meta?.description}
+        <p class=" text-sm mb-6">
+          {data.nftData.meta?.description}
+        </p>
+      {/if}
+    </div>
+    <div class="grid lg:grid-cols-2 gap-5">
+      <div>
+        <Property name="Source">
+          <p>Hotel Hideaway</p>
+        </Property>
+        <Property name="ID">
+          <p>0x7688x8s8</p>
+        </Property>
+        <Property name="Link Address">
+          <p>{data.assetAddress}</p>
+        </Property>
+        <Property name="Copies Sold">
+          <p>2</p>
+        </Property>
+      </div>
 
-    <Property name="By this item">
-      <p>10 $</p>
-    </Property>
-    <Property name="By all copies of this item">
-      <p>10000 $</p>
-    </Property>
-    <Property name="Total By Campaign">
-      <p>1000 000 $</p>
-    </Property>
-  </Info>
+      <div>
+        <span class="text-sm">Share your asset</span>
+        <SocialShare shareUrl={currentPath} />
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- /header -->
+
+{#if data.verifiedStatus}
+  <div
+    class="container-grid text-white md:mx-4 xl:mx-0 grid grid-cols-1 gap-4 md:gap-8 xl:grid-cols-3"
+  >
+    <!-- Fund Data -->
+    <div
+      class="Fund-Data mb-8 px-4 md:px-8 xl:dark:bg-primary-100 xl:bg-primary-500 xl:rounded-xl xl:py-8"
+    >
+      <Subheader
+        className="text-black dark:text-white xl:!text-black md:pt-8 xl:pt-0 flex justify-start md:justify-center xl:justify-start "
+        >Funds generated so far</Subheader
+      >
+      <FundsDashboard></FundsDashboard>
+    </div>
+
+    <!-- Animal Data -->
+    <div
+      class="Animal-Data md:mb-4 xl:mb-0 min-h-100 bg-deep-green dark:bg-primary-500 md:rounded-xl xl:rounded-b-none text-white overflow-hidden"
+    >
+      <div class="px-4 md:px-8 pt-8 mb-8">
+        <Subheader>Collecting funds for</Subheader>
+        <h3 class="text-5xl">{data.deepData?.id}</h3>
+      </div>
+      <div class="w-full">
+        {#if data.deepData?.images?.length > 0}
+          {#each data.deepData?.images as image}
+            <ImageSrcSet
+              assetID={image.directus_files_id}
+              altText={data.deepData?.id}
+            />
+          {/each}
+        {:else}
+          <img
+            style="width:inherit"
+            src={placeholderAnimal}
+            alt="Not Available"
+          />
+        {/if}
+      </div>
+    </div>
+
+    <!-- Animal Data Map -->
+    <div
+      class="Animal-Data-Map bg-deep-green dark:bg-primary-50 h-64 text-white md:rounded-xl xl:rounded-t-none overflow-hidden relative z-20"
+    >
+      <SimpleMap />
+    </div>
+
+    <!-- Animal Data Continued -->
+    <div
+      class="Animal-Data-Continued bg-transparent px-4 md:px-8 py-16 text-black dark:text-white"
+    >
+      <Subheader info={ontologyData.ecEntity.description}
+        >{ontologyData.ecEntity.title}</Subheader
+      >
+      <h3 class="text-2xl">Lorem Ipsum</h3>
+
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae
+        corrupti natus reiciendis quo nam ipsam, animi repellat ullam
+        perspiciatis? Hic amet adipisci voluptatum maxime repudiandae iusto quia
+        eveniet similique officiis.
+      </p>
+    </div>
+
+    <!-- Steward Data -->
+    <div
+      class="Steward-Data bg-primary-100 dark:bg-deep-green text-black dark:text-white md:rounded-xl overflow-hidden"
+    >
+      <div class="px-4 md:px-8 pt-8 pb-8">
+        <Subheader info={ontologyData.ecSteward?.description}
+          >{ontologyData.ecSteward?.title}</Subheader
+        >
+        <h3 class="text-2xl">{data.deepData?.steward?.name}</h3>
+        <p>
+          {data.deepData?.steward?.description}
+        </p>
+      </div>
+
+      <div class="w-full">
+        {#if data.deepData?.steward?.images?.length > 0}
+          {#each data.deepData?.steward?.images as image}
+            <ImageSrcSet
+              assetID={image.directus_files_id}
+              altText={data.deepData?.steward?.name}
+            />
+          {/each}
+        {:else}
+          <img
+            style="width:inherit"
+            src={placeholderCamp}
+            alt="Not Available"
+          />
+        {/if}
+      </div>
+      <div class="w-full min-h-64">
+        <SimpleMap />
+      </div>
+    </div>
+  </div>
+{/if}
+
+<style>
+  .container-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0em 2em;
+    grid-auto-flow: row;
+  }
+  .container-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content max-content max-content max-content max-content;
+    grid-template-areas:
+      'Fund-Data'
+      'Animal-Data'
+      'Animal-Data-Map'
+      'Animal-Data-Continued'
+      'Steward-Data';
+  }
+  @media (min-width: 1024px) {
+    .container-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: max-content max-content max-content max-content max-content;
+      grid-template-areas:
+        'Animal-Data Animal-Data Fund-Data'
+        'Animal-Data Animal-Data Fund-Data'
+        'Animal-Data-Map Animal-Data-Map Animal-Data-Map'
+        'Animal-Data-Continued Animal-Data-Continued Animal-Data-Continued'
+        'Steward-Data Steward-Data Steward-Data';
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: max-content max-content max-content max-content max-content;
+      grid-template-areas:
+        'Animal-Data Fund-Data'
+        'Animal-Data Steward-Data'
+        'Animal-Data-Map Steward-Data'
+        'Animal-Data-Continued Steward-Data'
+        'Animal-Data-Continued Steward-Data';
+    }
+  }
+
+  .Fund-Data {
+    grid-area: Fund-Data;
+  }
+
+  .Animal-Data {
+    grid-area: Animal-Data;
+  }
+  .Animal-Data-Map {
+    grid-area: Animal-Data-Map;
+  }
+
+  .Steward-Data {
+    grid-area: Steward-Data;
+  }
+
+  .Animal-Data-Continued {
+    grid-area: Animal-Data-Continued;
+  }
+</style>
