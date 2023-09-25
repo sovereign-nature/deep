@@ -37,7 +37,7 @@
   {#if !isError}
     <img
       src={imageUrl}
-      class="object-cover"
+      class="object-cover w-56 h-56 md:h-64 md:w-64"
       {alt}
       on:error={handleImageError}
     />

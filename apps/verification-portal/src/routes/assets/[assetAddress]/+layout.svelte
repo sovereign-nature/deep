@@ -9,7 +9,7 @@
     <SearchSm></SearchSm>
   </NavBar>
   <div class="w-full m-auto">
-    <div class="container mx-auto py-8">
+    <div class="container mx-auto py-8 px-4">
       <slot />
     </div>
   </div>
