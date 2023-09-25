@@ -32,7 +32,7 @@
 
 <!-- Header -->
 <div
-  class="grid grid-cols-1 lg:grid-cols-12 lg:gap-5 mb-16 px-4 md:px-8 xl:px-0"
+  class="grid grid-cols-1 lg:grid-cols-12 lg:gap-5 mb-4 xl:mb-16 px-4 md:px-8 xl:px-0"
 >
   <div
     class="col-span-1 lg:col-span-4 xl:col-start-2 xl:col-span-3 flex justify-center w-100 mb-8 lg:mb-4"
@@ -126,9 +126,11 @@
 
     <!-- Animal Data Map -->
     <div
-      class="Animal-Data-Map bg-deep-green dark:bg-primary-50 h-64 text-white md:rounded-xl xl:rounded-t-none overflow-hidden relative z-20"
+      class="Animal-Data-Map bg-deep-green dark:bg-primary-50 text-white md:rounded-xl xl:rounded-t-none overflow-hidden relative z-20"
     >
-      <SimpleMap />
+      <div class="w-full aspect-video">
+        <SimpleMap />
+      </div>
     </div>
 
     <!-- Animal Data Continued -->
@@ -161,7 +163,9 @@
           {data.deepData?.steward?.description}
         </p>
       </div>
-
+      <div class="w-full aspect-video">
+        <SimpleMap geoJSONData={data.deepData?.steward?.area} />
+      </div>
       <div class="w-full">
         {#if data.deepData?.steward?.images?.length > 0}
           {#each data.deepData?.steward?.images as image}
@@ -177,9 +181,6 @@
             alt="Not Available"
           />
         {/if}
-      </div>
-      <div class="w-full min-h-64">
-        <SimpleMap />
       </div>
     </div>
   </div>
@@ -205,7 +206,7 @@
   @media (min-width: 1024px) {
     .container-grid {
       grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: max-content max-content max-content max-content max-content;
+      grid-template-rows: min-content min-content min-content min-content 1fr;
       grid-template-areas:
         'Animal-Data Animal-Data Fund-Data'
         'Animal-Data Animal-Data Fund-Data'
@@ -218,12 +219,11 @@
   @media (min-width: 1280px) {
     .container-grid {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: max-content max-content max-content max-content max-content;
+      grid-template-rows: min-content min-content min-content 1fr;
       grid-template-areas:
         'Animal-Data Fund-Data'
         'Animal-Data Steward-Data'
         'Animal-Data-Map Steward-Data'
-        'Animal-Data-Continued Steward-Data'
         'Animal-Data-Continued Steward-Data';
     }
   }
