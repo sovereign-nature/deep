@@ -5,12 +5,9 @@
   import ImageSrcSet from '$lib/components/ImageSrcSet.svelte';
   import SocialShare from '$lib/components/SocialShare.svelte';
   import FundsDashboard from '$lib/components/FundsDashboard.svelte';
-  import ModelViewer from '$lib/components/ModelViewer.svelte';
   import SimpleMap from '$lib/components/SimpleMap.svelte';
 
   import { page } from '$app/stores';
-
-  import modelUrl from '$lib/assets/Lion_golden_GLB_04.glb';
 
   import placeholderAnimal from '$lib/assets/images/placeholderAnimal.jpg';
   import placeholderCamp from '$lib/assets/images/placeholderCamp.jpg';
