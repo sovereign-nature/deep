@@ -23,7 +23,7 @@
     "@sni/address-utils": "workspace:*",
     "@sveltejs/adapter-auto": "2.1.0",
     "@sveltejs/kit": "1.25.1",
-    "@types/leaflet": "1.9.4",
+    "@types/leaflet": "1.9.6",
     "autoprefixer": "10.4.16",
     "flowbite": "1.8.1",
     "flowbite-svelte": "0.44.15",
