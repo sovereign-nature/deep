@@ -22,6 +22,7 @@
     "@popperjs/core": "2.11.8",
     "@sni/address-utils": "workspace:*",
     "@sveltejs/adapter-auto": "2.1.0",
+    "@sveltejs/adapter-vercel": "^3.0.3",
     "@sveltejs/kit": "1.25.1",
     "@types/leaflet": "1.9.6",
     "autoprefixer": "10.4.16",
