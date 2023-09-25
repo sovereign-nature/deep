@@ -28,7 +28,8 @@
         ".mesh/**",
         "generated/**",
         "subgraph.yaml",
-        ".meshrc.yaml"
+        ".meshrc.yaml",
+        ".svelte-kit/**"
       ]
     },
     "lint": {
