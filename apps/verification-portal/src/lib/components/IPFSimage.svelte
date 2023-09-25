@@ -31,7 +31,9 @@
     'Sorry, the NFT image failed to load. Please try again later';
 </script>
 
-<div class="bg-gray-200 w-64 h-64 rounded-lg mb-2 overflow-hidden text-center">
+<div
+  class="bg-gray-200 w-56 h-56 md:h-64 md:w-64 rounded-lg mb-2 overflow-hidden text-center"
+>
   {#if !isError}
     <img
       src={imageUrl}
