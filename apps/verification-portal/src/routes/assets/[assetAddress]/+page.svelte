@@ -24,14 +24,15 @@
       },
       ecSteward: {
         title: 'Ecological Steward',
+        url: 'https://www.aimmportugal.org/',
         description:
           'Ecological Steward (ES): an identified conservation/restoration group, being an organisation (e.g. KWT) or a community, group of stakeholders who has also the mandate to manage the funds raised',
       },
       ecEntity: {
         cardTitle: 'Collecting funds for:',
         title: 'Ecological Entity',
-        description:
-          'Ecological Entity: an identified piece of ecology the Ecological Steward (ES) focuses on, that being a specific species population (predators of the Maasai Mara) or an ecosystem (the Upemba National Park)',
+        //description:
+        // 'Ecological Entity: an identified piece of ecology the Ecological Steward (ES) focuses on, that being a specific species population (predators of the Maasai Mara) or an ecosystem (the Upemba National Park)',
       },
     },
   };
@@ -64,7 +65,7 @@
         </span>
       </h1>
       {#if data.nftData.meta?.description}
-        <p class=" text-sm mb-6">
+        <p class="mb-6">
           <!-- {data.nftData.meta?.description} -->
           {content.intro}
         </p>
@@ -102,10 +103,10 @@
       class="Fund-Data mb-8 px-4 md:px-8 xl:dark:bg-primary-100 xl:bg-primary-500 xl:rounded-xl xl:py-8"
     >
       <Subheader
-        className="!text-base text-black dark:text-white xl:!text-black md:pt-8 xl:pt-0 flex justify-start md:justify-center xl:justify-start "
+        className="!text-base text-black dark:text-white xl:text-white xl:dark:!text-black md:pt-8 xl:pt-0 flex justify-start md:justify-center xl:justify-start "
         >{content.page.funds.cardTitle}</Subheader
       >
-      <FundsDashboard totalFunds={data.deepData.steward?.funds_raised}
+      <FundsDashboard totalFunds={data.deepData?.steward?.funds_raised}
       ></FundsDashboard>
     </div>
 
@@ -118,7 +119,6 @@
           >{content.page.ecEntity.cardTitle}</Subheader
         >
         <h3 class="text-5xl">{data.deepData?.id}</h3>
-        <p>{data.deepData?.description}</p>
       </div>
       <div class="w-full">
         {#if data.deepData?.images?.length > 0}
@@ -155,14 +155,9 @@
       <Subheader info={content.page?.ecEntity?.description}
         >{content.page?.ecEntity?.title}</Subheader
       >
-      <h3 class="text-2xl">Lorem Ipsum</h3>
+      <!-- <h3 class="text-2xl mb-3">Lorem Ipsum</h3> -->
 
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae
-        corrupti natus reiciendis quo nam ipsam, animi repellat ullam
-        perspiciatis? Hic amet adipisci voluptatum maxime repudiandae iusto quia
-        eveniet similique officiis.
-      </p>
+      <p class="card-description">{data.deepData?.description}</p>
     </div>
 
     <!-- Steward Data -->
@@ -170,11 +165,13 @@
       class="Steward-Data bg-primary-100 dark:bg-deep-green text-black dark:text-white md:rounded-xl overflow-hidden"
     >
       <div class="px-4 md:px-8 pt-8 pb-8">
-        <Subheader info={content.page?.ecSteward?.description}
+        <Subheader
+          info={`Visit ${data.deepData?.steward?.name}`}
+          url={content.page?.ecSteward?.url}
           >{content.page?.ecSteward?.title}</Subheader
         >
-        <h3 class="text-2xl">{data.deepData?.steward?.name}</h3>
-        <p>
+        <h3 class="text-2xl mb-3">{data.deepData?.steward?.name}</h3>
+        <p class="card-description">
           {data.deepData?.steward?.description}
         </p>
       </div>
@@ -203,6 +200,9 @@
 {/if}
 
 <style>
+  .card-description {
+    line-height: 28px;
+  }
   .container-grid {
     display: grid;
     grid-template-columns: 1fr;
