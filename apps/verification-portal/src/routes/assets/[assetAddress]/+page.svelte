@@ -120,10 +120,11 @@
         <h3 class="text-5xl">{data.deepData?.id}</h3>
         <p>{data.deepData?.description}</p>
       </div>
-      <div class="w-full flex flex-col gap-1 mb-1 md:mb-0 xl:mb-1">
+      <div class="w-full">
         {#if data.deepData?.images?.length > 0}
-          {#each data.deepData?.images as image}
+          {#each data.deepData?.images as image, index}
             <ImageSrcSet
+              className={index > 0 ? 'border-t-2 dark:border-deep-green' : ''}
               assetID={image.directus_files_id}
               altText={data.deepData?.id}
             />
@@ -140,7 +141,7 @@
 
     <!-- Animal Data Map -->
     <div
-      class="Animal-Data-Map bg-deep-green dark:bg-primary-50 text-white md:rounded-xl xl:rounded-t-none overflow-hidden relative z-20"
+      class="Animal-Data-Map bg-deep-green dark:bg-primary-500 text-white md:rounded-xl xl:rounded-t-none overflow-hidden relative z-20 border-t-2 md:border-t-none xl:border-t-2 dark:border-deep-green"
     >
       <div class="w-full aspect-video">
         <SimpleMap geoJSONData={data.deepData?.location} />
@@ -177,13 +178,14 @@
           {data.deepData?.steward?.description}
         </p>
       </div>
-      <div class="w-full aspect-video mb-1">
+      <div class="w-full aspect-video">
         <SimpleMap geoJSONData={data.deepData?.steward?.area} />
       </div>
-      <div class="w-full flex flex-col gap-1">
+      <div class="w-full flex flex-col">
         {#if data.deepData?.steward?.images?.length > 0}
           {#each data.deepData?.steward?.images as image}
             <ImageSrcSet
+              className="border-t-2 dark:border-deep-green"
               assetID={image.directus_files_id}
               altText={data.deepData?.steward?.name}
             />
