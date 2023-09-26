@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Hexagon from './icons/Hexagon.svelte';
+  import HexagonIcon from './icons/HexagonIcon.svelte';
 
   export let shareUrl: string = '';
   //@TODO shorten twitter text
@@ -32,7 +32,7 @@
 
 <div class="flex gap-2 my-4">
   <button class="social-button" on:click={shareOnTwitter} title="Twitter">
-    <Hexagon className="absolute text-white dark:text-black z-0" />
+    <HexagonIcon className="absolute text-white dark:text-black z-0" />
     <svg
       class="w-5 h-5 icon"
       xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@
     </svg>
   </button>
   <button class="social-button" on:click={shareOnTelegram} title="Telegram">
-    <Hexagon className="absolute text-white dark:text-black z-0" />
+    <HexagonIcon className="absolute text-white dark:text-black z-0" />
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="w-5 h-5 icon"
