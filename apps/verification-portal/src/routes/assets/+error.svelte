@@ -6,7 +6,7 @@
 
 <div class="dark w-full flex flex-col min-h-screen content-center bg-Sni-img">
   <NavBar></NavBar>
-  <div class="container px-5">
+  <div class="container px-5 min-h-screen">
     <div class="w-full lg:w-4/5 mx-auto pt-12 md:pt-40">
       <h1
         class="text-3xl text-white mb-8 md:text-left text-center sm:text-4xl lg:text-5xl"

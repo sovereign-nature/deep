@@ -1,7 +1,7 @@
 <script>
   import { enhance } from '$app/forms';
   import { Input, ButtonGroup, Button } from 'flowbite-svelte';
-  import { SearchOutline } from 'flowbite-svelte-icons';
+  import SearchIcon from './icons/SearchIcon.svelte';
 </script>
 
 <form class="w-full" method="POST" use:enhance>
@@ -18,11 +18,12 @@
     />
     <Button
       color="none"
-      class="bg-primary-500 w-16 border-none !rounded-e-sm"
+      class="bg-gray-200 dark:bg-primary-500 w-16 border-none !rounded-e-sm"
       type="submit"
       formaction="/?/formSearch"
     >
-      <SearchOutline class="w-4 h-4" />
+      <SearchIcon className="h-4 w-4 text-white dark:text-deep-green"
+      ></SearchIcon>
     </Button>
   </ButtonGroup>
 </form>

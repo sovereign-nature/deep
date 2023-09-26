@@ -1,7 +1,8 @@
 <script>
   import { DarkMode } from 'flowbite-svelte';
-  import { SunSolid, MoonSolid } from 'flowbite-svelte-icons';
   import { Navbar, NavBrand } from 'flowbite-svelte';
+  import MoonIcon from './icons/MoonIcon.svelte';
+  import SunIcon from './icons/SunIcon.svelte';
   import logo from '$lib/assets/brand/sni_logo_round.svg';
 </script>
 
@@ -15,28 +16,30 @@
       <span class="font-light">Initiative</span>
     </span>
   </NavBrand>
-  <DarkMode class="md:hidden" btnClass="text-green-800 text-sm pe-4 ">
+  <DarkMode
+    class="md:hidden"
+    btnClass="text-gray-300 dark:text-primary-500 text-sm pe-4 opacity-50 hover:opacity-100 active:opacity-100"
+  >
     <svelte:fragment slot="lightIcon">
-      <SunSolid />
+      <SunIcon className="w-4 h-4" />
     </svelte:fragment>
     <svelte:fragment slot="darkIcon">
-      <MoonSolid />
+      <MoonIcon className="w-4 h-4" />
     </svelte:fragment>
   </DarkMode>
   <div
     class="flex md:order-2 md:justify-end content-center w-full md:w-1/2 px-2 pt-4 lg:pt-0"
   >
     <slot />
-    <!-- @TODO Remove before launch  -->
     <DarkMode
       class="ms-4 hidden md:block"
-      btnClass="text-green-800 text-sm pe-4"
+      btnClass="text-gray-300 dark:text-primary-500 text-sm pe-4 opacity-50 hover:opacity-100 active:opacity-100"
     >
       <svelte:fragment slot="lightIcon">
-        <SunSolid />
+        <SunIcon className="w-4 h-4" />
       </svelte:fragment>
       <svelte:fragment slot="darkIcon">
-        <MoonSolid />
+        <MoonIcon className="w-4 h-4" />
       </svelte:fragment>
     </DarkMode>
   </div>

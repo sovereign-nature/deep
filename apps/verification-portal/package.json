@@ -30,7 +30,6 @@
     "autoprefixer": "10.4.16",
     "flowbite": "1.8.1",
     "flowbite-svelte": "0.44.17",
-    "flowbite-svelte-icons": "^0.4.3",
     "graphql-request": "^6.1.0",
     "leaflet": "1.9.4",
     "postcss": "8.4.30",
