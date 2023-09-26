@@ -14,16 +14,25 @@
 
   $: currentPath = $page.url.toString();
 
-  const ontologyData = {
-    ecSteward: {
-      title: 'Ecological Steward',
-      description:
-        'Ecological Steward (ES): an identified conservation/restoration group, being an organisation (e.g. KWT) or a community, group of stakeholders who has also the mandate to manage the funds raised',
-    },
-    ecEntity: {
-      title: 'Ecological Entity',
-      description:
-        'Ecological Entity: an identified piece of ecology the Ecological Steward (ES) focuses on, that being a specific species population (predators of the Maasai Mara) or an ecosystem (the Upemba National Park)',
+  const content = {
+    intro:
+      'Welcome to the Polkadot sub0 biodiversity collection. Your contribution makes a REAL difference. Connect with the marine biodiversity served by the organisation AIMM Portugal.',
+    shareText: 'Share your asset',
+    page: {
+      funds: {
+        cardTitle: 'Funds generated so far:',
+      },
+      ecSteward: {
+        title: 'Ecological Steward',
+        description:
+          'Ecological Steward (ES): an identified conservation/restoration group, being an organisation (e.g. KWT) or a community, group of stakeholders who has also the mandate to manage the funds raised',
+      },
+      ecEntity: {
+        cardTitle: 'Collecting funds for:',
+        title: 'Ecological Entity',
+        description:
+          'Ecological Entity: an identified piece of ecology the Ecological Steward (ES) focuses on, that being a specific species population (predators of the Maasai Mara) or an ecosystem (the Upemba National Park)',
+      },
     },
   };
 
@@ -56,7 +65,8 @@
       </h1>
       {#if data.nftData.meta?.description}
         <p class=" text-sm mb-6">
-          {data.nftData.meta?.description}
+          <!-- {data.nftData.meta?.description} -->
+          {content.intro}
         </p>
       {/if}
     </div>
@@ -74,7 +84,7 @@
       </div>
 
       <div>
-        <span class="text-sm">Share your asset</span>
+        <span class="text-sm">{content.shareText}</span>
         <SocialShare shareUrl={currentPath} />
       </div>
     </div>
@@ -92,10 +102,11 @@
       class="Fund-Data mb-8 px-4 md:px-8 xl:dark:bg-primary-100 xl:bg-primary-500 xl:rounded-xl xl:py-8"
     >
       <Subheader
-        className="text-black dark:text-white xl:!text-black md:pt-8 xl:pt-0 flex justify-start md:justify-center xl:justify-start "
-        >Funds generated so far:</Subheader
+        className="!text-base text-black dark:text-white xl:!text-black md:pt-8 xl:pt-0 flex justify-start md:justify-center xl:justify-start "
+        >{content.page.funds.cardTitle}</Subheader
       >
-      <FundsDashboard></FundsDashboard>
+      <FundsDashboard totalFunds={data.deepData.steward?.funds_raised}
+      ></FundsDashboard>
     </div>
 
     <!-- Animal Data -->
@@ -103,10 +114,13 @@
       class="Animal-Data md:mb-4 xl:mb-0 min-h-100 bg-deep-green dark:bg-primary-500 md:rounded-xl xl:rounded-b-none text-white overflow-hidden"
     >
       <div class="px-4 md:px-8 pt-8 mb-8">
-        <Subheader>Collecting funds for:</Subheader>
+        <Subheader className="!text-base"
+          >{content.page.ecEntity.cardTitle}</Subheader
+        >
         <h3 class="text-5xl">{data.deepData?.id}</h3>
+        <p>{data.deepData?.description}</p>
       </div>
-      <div class="w-full">
+      <div class="w-full flex flex-col gap-1 mb-1 md:mb-0 xl:mb-1">
         {#if data.deepData?.images?.length > 0}
           {#each data.deepData?.images as image}
             <ImageSrcSet
@@ -129,7 +143,7 @@
       class="Animal-Data-Map bg-deep-green dark:bg-primary-50 text-white md:rounded-xl xl:rounded-t-none overflow-hidden relative z-20"
     >
       <div class="w-full aspect-video">
-        <SimpleMap />
+        <SimpleMap geoJSONData={data.deepData?.location} />
       </div>
     </div>
 
@@ -137,8 +151,8 @@
     <div
       class="Animal-Data-Continued bg-transparent px-4 md:px-8 py-16 text-black dark:text-white"
     >
-      <Subheader info={ontologyData.ecEntity.description}
-        >{ontologyData.ecEntity.title}</Subheader
+      <Subheader info={content.page?.ecEntity?.description}
+        >{content.page?.ecEntity?.title}</Subheader
       >
       <h3 class="text-2xl">Lorem Ipsum</h3>
 
@@ -155,18 +169,18 @@
       class="Steward-Data bg-primary-100 dark:bg-deep-green text-black dark:text-white md:rounded-xl overflow-hidden"
     >
       <div class="px-4 md:px-8 pt-8 pb-8">
-        <Subheader info={ontologyData.ecSteward?.description}
-          >{ontologyData.ecSteward?.title}</Subheader
+        <Subheader info={content.page?.ecSteward?.description}
+          >{content.page?.ecSteward?.title}</Subheader
         >
         <h3 class="text-2xl">{data.deepData?.steward?.name}</h3>
         <p>
           {data.deepData?.steward?.description}
         </p>
       </div>
-      <div class="w-full aspect-video">
+      <div class="w-full aspect-video mb-1">
         <SimpleMap geoJSONData={data.deepData?.steward?.area} />
       </div>
-      <div class="w-full">
+      <div class="w-full flex flex-col gap-1">
         {#if data.deepData?.steward?.images?.length > 0}
           {#each data.deepData?.steward?.images as image}
             <ImageSrcSet
