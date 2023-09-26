@@ -1,8 +1,12 @@
 <script lang="ts">
   import Hexagon from './icons/Hexagon.svelte';
 
-  export let title: string = 'Check out this NFT';
   export let shareUrl: string = '';
+  //@TODO shorten twitter text
+  const twitterPrefix =
+    '#NFTs supporting verified #BiodiversityConservation?! Count me in! 🐬 \n \nThanks @sovereignnature for bringing REAL data of bottlenose dolphins and minke whales monitored by @AIMMPortugal onchain. Glad my @Polkadot #sub0 attendance supports this wild cause! 🐋';
+  const telegramPrefix =
+    'NFTs supporting verified biodiversity conservation?! Count me in! 🐬 \n \nThanks Sovereign Nature Initiative for bringing REAL data of bottlenose dolphins and minke whales monitored by AIMM Portugal onchain. Glad my Polkadot sub0 attendance supports this wild cause! 🐋';
 
   // Function to share on Twitter
   function shareOnTwitter() {
@@ -10,7 +14,7 @@
     window.open(
       `https://twitter.com/intent/tweet?url=${encodeURIComponent(
         shareUrl
-      )}&text=${encodeURIComponent(title)}`,
+      )}&text=${encodeURIComponent(twitterPrefix)}`,
       '_blank'
     );
   }
@@ -18,7 +22,9 @@
   function shareOnTelegram() {
     // Replace with your Telegram sharing logic
     window.open(
-      `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}`,
+      `https://t.me/share/url?url=${encodeURIComponent(
+        shareUrl
+      )}&text=${encodeURIComponent(telegramPrefix)}`,
       '_blank'
     );
   }
