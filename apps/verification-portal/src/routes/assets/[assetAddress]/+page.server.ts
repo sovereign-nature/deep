@@ -1,4 +1,5 @@
 import { DIRECTUS_API_KEY } from '$env/static/private';
+
 import { parseAddress } from '@sni/address-utils';
 import { getEntity } from '@sni/clients/data.js';
 import { getLinkByAddress } from '@sni/clients/link.js';
@@ -11,7 +12,6 @@ const config = {
 };
 
 let nftData: NftAsset;
-
 let deepData: object = {};
 const notFoundMessage = 'We’re sorry but that page can’t be found.';
 

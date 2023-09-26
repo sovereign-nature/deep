@@ -8,7 +8,7 @@
     DropdownItem,
     Radio,
   } from 'flowbite-svelte';
-  let network = 'polkadot';
+  let network = 'Sub0';
   import { ChevronDownSolid, SearchOutline } from 'flowbite-svelte-icons';
 </script>
 
@@ -25,17 +25,17 @@
       <ChevronDownSolid class="w-3 h-3 " />
     </Button>
 
-    <Dropdown containerClass="overflow-hidden relative " class="p-0 w-48">
+    <Dropdown containerClass="overflow-hidden relative " class="p-0 w-64">
       <DropdownItem class="p-0">
-        <Radio custom name="network" bind:group={network} value={'polkadot'}>
+        <Radio custom name="network" bind:group={network} value={'Sub0'}>
           <span
             class="inline-flex p-4 w-full text-gray-500 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-primary-500 peer-checked:border-primary-600 peer-checked:text-primary-600 hover:text-gray-600 dark:text-gray-400"
           >
-            Polkadot
+            Sub0
           </span>
         </Radio>
       </DropdownItem>
-      <DropdownItem class="p-0 "
+      <!-- <DropdownItem class="p-0 "
         ><Radio
           custom
           name="network"
@@ -50,7 +50,7 @@
             Kusama
           </span>
         </Radio>
-      </DropdownItem>
+      </DropdownItem> -->
     </Dropdown>
     <!-- end network select -->
 
@@ -67,6 +67,7 @@
       color="none"
       class="bg-primary-400 w-28 border-none !p-2.5"
       type="submit"
+      formaction="/?/formSearch"
     >
       <SearchOutline class="w-8 h-8" />
     </Button>
