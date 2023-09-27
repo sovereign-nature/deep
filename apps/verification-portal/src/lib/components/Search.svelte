@@ -10,7 +10,7 @@
     DropdownItem,
     Radio,
   } from 'flowbite-svelte';
-  let network = 'Sub0';
+  let network = 'sub0';
 </script>
 
 <form method="POST" use:enhance>
@@ -30,11 +30,11 @@
 
     <Dropdown containerClass="overflow-hidden relative " class="p-0 w-64">
       <DropdownItem class="p-0">
-        <Radio custom name="network" bind:group={network} value={'Sub0'}>
+        <Radio custom name="network" bind:group={network} value={'sub0'}>
           <span
             class="inline-flex p-4 w-full text-gray-500 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-primary-500 peer-checked:border-primary-600 peer-checked:text-primary-600 hover:text-gray-600 dark:text-gray-400"
           >
-            Sub0
+            sub0
           </span>
         </Radio>
       </DropdownItem>
