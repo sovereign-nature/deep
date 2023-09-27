@@ -41,7 +41,7 @@
   export let data;
 
   // Define specific share card data for a page
-  let pageTitle = `SNI | ${data.nftData.meta?.name}`;
+  let pageTitle = `REAL by SNI | ${data.nftData.meta?.name}`;
   let pageDescription = `${content.intro}`;
   //@TODO custom page cards can eventually be generated for each page
   // let pageImage = 'nft';
@@ -54,7 +54,7 @@
   class="grid grid-cols-1 lg:grid-cols-12 lg:gap-5 mb-4 xl:mb-16 px-4 md:px-8 xl:px-0"
 >
   <div
-    class="col-span-1 lg:col-span-4 xl:col-start-2 xl:col-span-3 flex justify-center w-100 mb-8 lg:mb-4"
+    class="col-span-1 lg:col-span-4 xl:col-start-2 xl:col-span-3 flex justify-center w-100 mb-8 lg:mb-4 relative z-10"
   >
     <IPFSimage
       ipfsImageUrl={data.nftData.meta?.image}
@@ -135,7 +135,9 @@
         {#if data.deepData?.images?.length > 0}
           {#each data.deepData?.images as image, index}
             <ImageSrcSet
-              className={index > 0 ? 'border-t-2 dark:border-deep-green' : ''}
+              classNameImage={index > 0
+                ? 'border-t-2 dark:border-deep-green '
+                : ''}
               assetID={image.directus_files_id}
               altText={data.deepData?.id}
             />
@@ -166,7 +168,7 @@
       <Subheader info={content.page?.ecEntity?.description}
         >{content.page?.ecEntity?.title}</Subheader
       >
-      <!-- <h3 class="text-2xl mb-3">Lorem Ipsum</h3> -->
+      <h3 class="text-2xl mb-3">{data.deepData?.name}</h3>
 
       <p class="card-description">{data.deepData?.description}</p>
     </div>
@@ -193,7 +195,7 @@
         {#if data.deepData?.steward?.images?.length > 0}
           {#each data.deepData?.steward?.images as image}
             <ImageSrcSet
-              className="border-t-2 dark:border-deep-green"
+              classNameImage="border-t-2 dark:border-deep-green"
               assetID={image.directus_files_id}
               altText={data.deepData?.steward?.name}
             />
