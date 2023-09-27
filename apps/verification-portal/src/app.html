@@ -1,25 +1,38 @@
 <!doctype html>
 <html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="%sveltekit.assets%/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="%sveltekit.assets%/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="%sveltekit.assets%/favicon-16x16.png"
+    />
+    <link rel="manifest" href="%sveltekit.assets%/site.webmanifest" />
 
-<head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="%sveltekit.assets%/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="%sveltekit.assets%/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="%sveltekit.assets%/favicon-16x16.png">
-  <link rel="manifest" href="%sveltekit.assets%/site.webmanifest">
+    <meta name="viewport" content="width=device-width" />
+    <!-- meta block -->
+    <title>REAL by Sovereign Nature Initiative</title>
+    %sveltekit.head%
+    <!-- end meta block -->
+  </head>
 
-  <meta name="viewport" content="width=device-width" />
-  <!-- meta block -->
-  <title>Sovereign Nature Initiative </title>
-  %sveltekit.head%
-  <!-- end meta block -->
-</head>
-
-<body
-  class="min-h-screen bg-fixed bg-gradient-to-b from-[#F5F5F5] from-30% to-[#DEDEDE] dark:from-deep-green-900 dark:to-deep-blue-800"
-  data-sveltekit-preload-data="hover">
-  <div style="display: contents">%sveltekit.body%</div>
-</body>
-
+  <body
+    class="min-h-screen bg-fixed bg-gradient-to-b from-[#F5F5F5] from-30% to-[#DEDEDE] dark:from-deep-green-900 dark:to-deep-blue-800"
+    data-sveltekit-preload-data="hover"
+  >
+    <div style="display: contents">%sveltekit.body%</div>
+  </body>
 </html>
