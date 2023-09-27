@@ -1,6 +1,15 @@
 <script lang="ts">
+  import { dev } from '$app/environment';
+  import { SNI_IPFS_GATEWAY } from '@sni/constants';
+
   export let ipfsImageUrl: string;
   export let alt: string;
+
+  let ipfsGateway = SNI_IPFS_GATEWAY;
+
+  if (dev) {
+    ipfsGateway = 'https://ipfs.io';
+  }
 
   // Function to parse the IPFS URL and get the CID
   function getCID(url: string): string {
@@ -16,7 +25,7 @@
       return '';
     }
     const cid = getCID(ipfsUrl);
-    return `https://ipfs.io/ipfs/${cid}`;
+    return `${ipfsGateway}/ipfs/${cid}`;
   }
 
   // Function to handle image loading errors

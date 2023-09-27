@@ -1,27 +1,25 @@
 <script lang="ts">
   import { Tooltip } from 'flowbite-svelte';
+  import InfoIcon from '$lib/components/icons/InfoIcon.svelte';
   export let className: string = '';
   export let info: string = '';
+  export let url: string = '';
 </script>
 
 <h2 class={`${className} text-sm font-sans mb-4 flex items-center`}>
   <slot />
-  {#if info}
-    <svg
-      class="w-3 h-3 ms-2 opacity-80"
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 20 20"
+
+  {#if url}
+    <a
+      class="opacity-80 hover:opacity-100"
+      href={url}
+      target="_blank"
+      title={info}
     >
-      <path
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M8 9h2v5m-2 0h4M9.408 5.5h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-      />
-    </svg>
+      <InfoIcon className="w-3 h-3 ms-2 " />
+    </a>
+  {:else if info}
+    <InfoIcon className="w-3 h-3 ms-2 opacity-80 hover:opacity-100" />
     <Tooltip class="w-64 text-center p-4 z-50">{info}</Tooltip>
   {/if}
 </h2>

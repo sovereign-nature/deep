@@ -186,9 +186,6 @@ importers:
       flowbite-svelte:
         specifier: 0.44.17
         version: 0.44.17(svelte@4.0.5)
-      flowbite-svelte-icons:
-        specifier: ^0.4.3
-        version: 0.4.4(svelte@4.0.5)(tailwind-merge@1.14.0)(tailwindcss@3.3.3)
       graphql-request:
         specifier: ^6.1.0
         version: 6.1.0(graphql@16.8.1)
@@ -8727,18 +8724,6 @@ packages:
     resolution: {integrity: sha512-HVzoK3r6Vsg+lKvlIZzaWNBVai+FXTX1wdYhz/wVlH13tb/gOdLXmlTqy6odmTBhT5UoWUbq0k8263Qhr9d88w==}
     engines: {node: '>=0.4.0'}
     dev: false
-
-  /flowbite-svelte-icons@0.4.4(svelte@4.0.5)(tailwind-merge@1.14.0)(tailwindcss@3.3.3):
-    resolution: {integrity: sha512-fOZri6HYYyo13olXQzvoid19hlYR/HjzQobpzBPkj8QseCJ9R1uWR7bNlhPl5vFCElqcfm3UooYiwT4rKKiqzQ==}
-    peerDependencies:
-      svelte: ^3.54.0 || ^4.0.0
-      tailwind-merge: ^1.13.2
-      tailwindcss: ^3.3.2
-    dependencies:
-      svelte: 4.0.5
-      tailwind-merge: 1.14.0
-      tailwindcss: 3.3.3
-    dev: true
 
   /flowbite-svelte@0.44.17(svelte@4.0.5):
     resolution: {integrity: sha512-Ig7K/obOQ/6uwR2zkg0NT4u5dvcqAXcM0ZkMWVGBkfCD5refnvGsS2q6lflefN+cFxXaDi9J/Rorgp6KwP9JPw==}

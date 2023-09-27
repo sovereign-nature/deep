@@ -1,8 +1,12 @@
 <script lang="ts">
-  import Hexagon from './icons/Hexagon.svelte';
+  import HexagonIcon from './icons/HexagonIcon.svelte';
 
-  export let title: string = 'Check out this NFT';
   export let shareUrl: string = '';
+  //@TODO shorten twitter text
+  const twitterPrefix =
+    '#NFTs supporting verified #BiodiversityConservation?! Count me in! 🐬 \n \nThanks @sovereignnature for bringing REAL data of bottlenose dolphins and minke whales monitored by @AIMMPortugal onchain. Glad my @Polkadot #sub0 attendance supports this wild cause! 🐋';
+  const telegramPrefix =
+    'NFTs supporting verified biodiversity conservation?! Count me in! 🐬 \n \nThanks Sovereign Nature Initiative for bringing REAL data of bottlenose dolphins and minke whales monitored by AIMM Portugal onchain. Glad my Polkadot sub0 attendance supports this wild cause! 🐋';
 
   // Function to share on Twitter
   function shareOnTwitter() {
@@ -10,7 +14,7 @@
     window.open(
       `https://twitter.com/intent/tweet?url=${encodeURIComponent(
         shareUrl
-      )}&text=${encodeURIComponent(title)}`,
+      )}&text=${encodeURIComponent(twitterPrefix)}`,
       '_blank'
     );
   }
@@ -18,7 +22,9 @@
   function shareOnTelegram() {
     // Replace with your Telegram sharing logic
     window.open(
-      `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}`,
+      `https://t.me/share/url?url=${encodeURIComponent(
+        shareUrl
+      )}&text=${encodeURIComponent(telegramPrefix)}`,
       '_blank'
     );
   }
@@ -26,7 +32,7 @@
 
 <div class="flex gap-2 my-4">
   <button class="social-button" on:click={shareOnTwitter} title="Twitter">
-    <Hexagon className="absolute text-white dark:text-black z-0" />
+    <HexagonIcon className="absolute text-white dark:text-black z-0" />
     <svg
       class="w-5 h-5 icon"
       xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +45,7 @@
     </svg>
   </button>
   <button class="social-button" on:click={shareOnTelegram} title="Telegram">
-    <Hexagon className="absolute text-white dark:text-black z-0" />
+    <HexagonIcon className="absolute text-white dark:text-black z-0" />
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="w-5 h-5 icon"
