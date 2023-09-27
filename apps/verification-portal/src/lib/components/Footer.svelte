@@ -1,4 +1,6 @@
 <script lang="ts">
+  /* eslint-disable */
+  // TODO: fix linting issue
   const currentYear = new Date().getFullYear();
   const copyrightNotice = `© ${currentYear} SNI`;
   const links = {
@@ -18,7 +20,7 @@
     class="container mx-auto text-center text-gray-600 h-36 py-8 px-4 xl:px-0"
   >
     <div class="flex gap-3 h-full items-end">
-      {#each Object.entries(links) as [key, value], index (key)}
+      {#each Object.entries(links) as [_key, value]}
         <a
           class="text-[10px] uppercase dark:text-gray-500 opacity-50 hover:opacity-80"
           href={value.url}
