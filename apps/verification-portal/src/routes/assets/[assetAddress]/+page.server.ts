@@ -56,6 +56,7 @@ export async function load(event) {
       );
 
       deepData = entityResponse.data;
+      deepData.link = verifiedData;
     }
   } catch (e) {
     // @TODO Enable error handling once API responds correctly
