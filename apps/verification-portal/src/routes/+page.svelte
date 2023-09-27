@@ -1,7 +1,10 @@
 <script>
   import NavBar from '$lib/components/NavBar.svelte';
   import Search from '$lib/components/Search.svelte';
+  import ShareCard from '$lib/components/ShareCard.svelte';
 </script>
+
+<ShareCard />
 
 <div class="dark w-full flex flex-col min-h-screen content-center bg-Sni-img">
   <NavBar></NavBar>

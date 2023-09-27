@@ -17,7 +17,7 @@
   <!-- Dropdown menu doesn't persist on closed state, bind network value to hidden field before DOM persistance config is available -->
   <input name="network" value={network} type="text" readonly hidden />
   <ButtonGroup
-    divClass="flex flex-col sm:flex-row sm:inline-flex h-20 w-full justify-items-stretch gap-4"
+    divClass="flex flex-col sm:flex-row sm:inline-flex h-20 w-full justify-items-stretch gap-y-4"
   >
     <!-- network select -->
     <Button

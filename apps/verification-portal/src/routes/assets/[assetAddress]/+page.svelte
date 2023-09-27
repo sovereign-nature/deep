@@ -6,6 +6,7 @@
   import SocialShare from '$lib/components/SocialShare.svelte';
   import FundsDashboard from '$lib/components/FundsDashboard.svelte';
   import SimpleMap from '$lib/components/SimpleMap.svelte';
+  import ShareCard from '$lib/components/ShareCard.svelte';
 
   import { page } from '$app/stores';
 
@@ -38,7 +39,15 @@
   };
 
   export let data;
+
+  // Define specific share card data for a page
+  let pageTitle = `SNI | ${data.nftData.meta?.name}`;
+  let pageDescription = `${content.intro}`;
+  //@TODO custom page cards can eventually be generated for each page
+  // let pageImage = 'nft';
 </script>
+
+<ShareCard bind:title={pageTitle} bind:description={pageDescription} />
 
 <!-- Header -->
 <div
