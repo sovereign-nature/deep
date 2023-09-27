@@ -5,7 +5,7 @@
 </script>
 
 <div class="dark w-full flex flex-col min-h-screen content-center bg-Sni-img">
-  <NavBar></NavBar>
+  <NavBar themeSwitch={false}></NavBar>
   <div class="container px-5 min-h-screen">
     <div class="w-full lg:w-4/5 mx-auto pt-12 md:pt-40">
       <h1
