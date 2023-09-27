@@ -4,7 +4,7 @@
   export let shareUrl: string = '';
   //@TODO shorten twitter text
   const twitterPrefix =
-    '#NFTs supporting verified #BiodiversityConservation?! Count me in! 🐬 \n \nThanks @sovereignnature for bringing REAL data of bottlenose dolphins & minke whales monitored by @AIMMPortugal onchain. Glad my @Polkadot #sub0 attendance supports this wild cause! 🐋';
+    '#NFTs supporting verified #BiodiversityConservation?! Count me in! 🐬\n\nThanks @sovereignnature for bringing REAL data of bottlenose dolphins & minke whales monitored by @AIMMPortugal onchain. Glad my @Polkadot #sub0 attendance supports this wild cause! 🐋';
   const telegramPrefix =
     'NFTs supporting verified biodiversity conservation?! Count me in! 🐬 \n \nThanks Sovereign Nature Initiative for bringing REAL data of bottlenose dolphins and minke whales monitored by AIMM Portugal onchain. Glad my Polkadot sub0 attendance supports this wild cause! 🐋';
 
