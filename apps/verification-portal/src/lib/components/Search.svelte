@@ -10,7 +10,7 @@
     DropdownItem,
     Radio,
   } from 'flowbite-svelte';
-  let network = 'sub0';
+  let network = 'Sub0';
 </script>
 
 <form method="POST" use:enhance>
@@ -24,17 +24,17 @@
       color="none"
       class=" flex-shrink-0 flex justify-between  rounded-lg sm:rounded-e-none h-18 sm:h-20 sm:w-32 lg:w-60 text-xl !border-none text-slate-600 bg-gray-100  hover:bg-gray-200 focus:ring-gray-300  "
     >
-      <span class="ps-4">{network}</span>
+      <span class="ps-4 capitalize">{network}</span>
       <ChevronDownIcon className="w-3 h-3 " />
     </Button>
 
     <Dropdown containerClass="overflow-hidden relative " class="p-0 w-64">
       <DropdownItem class="p-0">
-        <Radio custom name="network" bind:group={network} value={'sub0'}>
+        <Radio custom name="network" bind:group={network} value={'Sub0'}>
           <span
             class="inline-flex p-4 w-full text-gray-500 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-primary-500 peer-checked:border-primary-600 peer-checked:text-primary-600 hover:text-gray-600 dark:text-gray-400"
           >
-            sub0
+            Sub0
           </span>
         </Radio>
       </DropdownItem>
@@ -54,6 +54,7 @@
       color="none"
       class="bg-primary-400 sm:w-28 border-none !p-2.5 rounded-lg sm:rounded-s-none h-18 sm:h-20 ms-auto"
       type="submit"
+      aria-label="search"
       formaction="/?/formSearch"
     >
       <SearchIcon className="h-4 w-4 sm:h-8 sm:w-8" />

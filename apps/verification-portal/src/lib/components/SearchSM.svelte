@@ -20,6 +20,7 @@
       color="none"
       class="bg-gray-200 dark:bg-primary-500 w-16 border-none !rounded-e-sm"
       type="submit"
+      aria-label="search"
       formaction="/?/formSearch"
     >
       <SearchIcon className="h-4 w-4 text-white dark:text-deep-green"
