@@ -24,7 +24,7 @@
       color="none"
       class=" flex-shrink-0 flex justify-between  rounded-lg sm:rounded-e-none h-18 sm:h-20 sm:w-32 lg:w-60 text-xl !border-none text-slate-600 bg-gray-100  hover:bg-gray-200 focus:ring-gray-300  "
     >
-      <span class="ps-4 capitalize">{network}</span>
+      <span class="ps-4">{network}</span>
       <ChevronDownIcon className="w-3 h-3 " />
     </Button>
 
