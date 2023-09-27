@@ -49,6 +49,7 @@
       class="object-cover w-56 h-56 md:h-64 md:w-64"
       {alt}
       on:error={handleImageError}
+      crossorigin="anonymous"
     />
   {:else}
     <p class="px-4 py-24">{errorMsg}</p>
