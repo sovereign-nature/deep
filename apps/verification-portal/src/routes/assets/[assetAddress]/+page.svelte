@@ -106,7 +106,9 @@
         className="!text-base text-black dark:text-white xl:text-white xl:dark:!text-black md:pt-8 xl:pt-0 flex justify-start md:justify-center xl:justify-start "
         >{content.page.funds.cardTitle}</Subheader
       >
-      <FundsDashboard totalFunds={data.deepData?.steward?.funds_raised}
+      <FundsDashboard
+        totalFunds={data.deepData?.steward?.funds_raised}
+        assetFunds={data.deepData?.link?.funds_raised}
       ></FundsDashboard>
     </div>
 
