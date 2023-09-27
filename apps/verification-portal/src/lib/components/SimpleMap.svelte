@@ -15,16 +15,16 @@
       map = leaflet
         .map(mapElement, {
           zoomControl: true,
-          attributionControl: false,
+          attributionControl: true,
           scrollWheelZoom: false,
           dragging: false,
         })
         .setView([51.505, -0.09], 13);
       leaflet
-        .tileLayer(
-          //'https://cartocdn_{s}.global.ssl.fastly.net/base-eco/{z}/{x}/{y}.png'
-          'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png'
-        )
+        .tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> ',
+        })
         .addTo(map);
 
       // Load GeoJSON data
@@ -43,7 +43,7 @@
   });
 </script>
 
-<div bind:this={mapElement} class="h-full" />
+<div bind:this={mapElement} class="min-h-inherit h-full" />
 
 <style>
   @import 'leaflet/dist/leaflet.css';
