@@ -56,11 +56,13 @@
   <div
     class="col-span-1 lg:col-span-4 xl:col-start-1 xl:col-span-4 flex justify-center w-100 mb-8 lg:mb-4 relative z-10"
   >
-    <IPFSimage
-      verified={data.verifiedStatus}
-      ipfsImageUrl={data.nftData.meta?.image}
-      alt={data.nftData.meta?.name}
-    />
+    {#key data}
+      <IPFSimage
+        verified={data.verifiedStatus}
+        ipfsImageUrl={data.nftData.meta?.image}
+        alt={data.nftData.meta?.name}
+      />
+    {/key}
   </div>
   <div class="lg:col-span-8 xl:col-span-8 dark:text-white">
     <div>
@@ -74,12 +76,17 @@
           {data.nftData.meta?.name}
         </span>
       </h1>
-      {#if data.nftData.meta?.description}
-        <p class="mb-6">
-          <!-- {data.nftData.meta?.description} -->
-          {content.intro}
-        </p>
-      {/if}
+      <div class="mb-6">
+        {#if data.verifiedStatus}
+          <p>{content.intro}</p>
+        {/if}
+
+        {#if data.nftData.meta?.description}
+          <span class="text-sm block pt-2">
+            {data.nftData.meta?.description}</span
+          >
+        {/if}
+      </div>
     </div>
     <div class="grid lg:grid-cols-6 gap-x-1 gap-y-5">
       <div class="col-span-4">
@@ -133,23 +140,25 @@
         <h3 class="text-5xl">{data.deepData?.id}</h3>
       </div>
       <div class="w-full">
-        {#if data.deepData?.images?.length > 0}
-          {#each data.deepData?.images as image, index}
-            <ImageSrcSet
-              classNameImage={index > 0
-                ? 'border-t-2 dark:border-deep-green '
-                : ''}
-              assetID={image.directus_files_id}
-              altText={data.deepData?.id}
+        {#key data.deepData}
+          {#if data.deepData?.images?.length > 0}
+            {#each data.deepData?.images as image, index}
+              <ImageSrcSet
+                classNameImage={index > 0
+                  ? 'border-t-2 dark:border-deep-green '
+                  : ''}
+                assetID={image.directus_files_id}
+                altText={data.deepData?.id}
+              />
+            {/each}
+          {:else}
+            <img
+              style="width:inherit"
+              src={placeholderAnimal}
+              alt="Not Available"
             />
-          {/each}
-        {:else}
-          <img
-            style="width:inherit"
-            src={placeholderAnimal}
-            alt="Not Available"
-          />
-        {/if}
+          {/if}
+        {/key}
       </div>
     </div>
 
@@ -249,6 +258,7 @@
   @media (min-width: 1280px) {
     .container-grid {
       grid-template-columns: 1fr 1fr;
+      place-content: start;
       grid-template-rows: min-content min-content min-content 1fr;
       grid-template-areas:
         'Animal-Data Fund-Data'
@@ -264,16 +274,22 @@
 
   .Animal-Data {
     grid-area: Animal-Data;
+    isolation: isolate;
   }
   .Animal-Data-Map {
     grid-area: Animal-Data-Map;
+    isolation: isolate;
   }
 
   .Steward-Data {
     grid-area: Steward-Data;
+    isolation: isolate;
+    place-self: start;
   }
 
   .Animal-Data-Continued {
     grid-area: Animal-Data-Continued;
+    place-self: start;
+    min-height: 12rem;
   }
 </style>

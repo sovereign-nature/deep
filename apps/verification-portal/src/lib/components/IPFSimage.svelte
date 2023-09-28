@@ -66,7 +66,7 @@
   {/if}
 
   <div
-    class="bg-gray-200 dark:bg-primary-800 dark:text-gray-200 w-56 h-56 md:h-64 md:w-64 rounded-[41px] md:rounded-[52px] mb-2 overflow-hidden text-center"
+    class="bg-gray-200 dark:bg-primary-800 dark:text-gray-200 w-56 h-56 md:h-64 md:w-64 rounded-lg mb-2 overflow-hidden text-center"
   >
     <!-- Loading placeholder  -->
     {#if isLoading && !isError}
@@ -83,7 +83,7 @@
       <img
         src={imageUrl}
         {alt}
-        class="object-cover w-56 h-56 md:h-64 md:w-64 rounded-[41px] md:rounded-[52px] fade-from-none"
+        class="object-cover w-56 h-56 md:h-64 md:w-64 rounded-lg fade-from-none"
         on:error={handleImageError}
         on:load={handleImageLoad}
       />
