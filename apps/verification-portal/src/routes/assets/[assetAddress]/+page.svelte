@@ -202,23 +202,21 @@
         <SimpleMap geoJSONData={data.deepData?.steward?.area} />
       </div>
       <div class="w-full flex flex-col">
-        {#key data.deepData}
-          {#if data.deepData?.steward?.images?.length > 0}
-            {#each data.deepData?.steward?.images as image}
-              <ImageSrcSet
-                classNameImage="border-t-2 dark:border-deep-green"
-                assetID={image.directus_files_id}
-                altText={data.deepData?.steward?.name}
-              />
-            {/each}
-          {:else}
-            <img
-              style="width:inherit"
-              src={placeholderCamp}
-              alt="Not Available"
+        {#if data.deepData?.steward?.images?.length > 0}
+          {#each data.deepData?.steward?.images as image}
+            <ImageSrcSet
+              classNameImage="border-t-2 dark:border-deep-green"
+              assetID={image.directus_files_id}
+              altText={data.deepData?.steward?.name}
             />
-          {/if}
-        {/key}
+          {/each}
+        {:else}
+          <img
+            style="width:inherit"
+            src={placeholderCamp}
+            alt="Not Available"
+          />
+        {/if}
       </div>
     </div>
   </div>
