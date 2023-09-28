@@ -270,13 +270,16 @@
 
   .Animal-Data {
     grid-area: Animal-Data;
+    isolation: isolate;
   }
   .Animal-Data-Map {
     grid-area: Animal-Data-Map;
+    isolation: isolate;
   }
 
   .Steward-Data {
     grid-area: Steward-Data;
+    isolation: isolate;
     place-self: start;
   }
 
