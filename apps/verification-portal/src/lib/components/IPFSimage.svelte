@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { CLOUDFLARE_IPFS_GATEWAY } from '@sni/constants';
+  import { PARITY_IPFS_GATEWAY } from '@sni/constants';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import VerifiedIcon from '$lib/components/icons/VerifiedIcon.svelte';
 
@@ -8,7 +8,7 @@
   export let alt: string;
   export let verified = false;
 
-  let ipfsGateway = CLOUDFLARE_IPFS_GATEWAY;
+  let ipfsGateway = PARITY_IPFS_GATEWAY;
 
   let isMounted = false;
   let isError = false;
