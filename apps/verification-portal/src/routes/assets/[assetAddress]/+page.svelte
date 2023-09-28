@@ -249,6 +249,7 @@
   @media (min-width: 1280px) {
     .container-grid {
       grid-template-columns: 1fr 1fr;
+      place-content: start;
       grid-template-rows: min-content min-content min-content 1fr;
       grid-template-areas:
         'Animal-Data Fund-Data'
@@ -271,9 +272,12 @@
 
   .Steward-Data {
     grid-area: Steward-Data;
+    place-self: start;
   }
 
   .Animal-Data-Continued {
     grid-area: Animal-Data-Continued;
+    place-self: start;
+    min-height: 12rem;
   }
 </style>
