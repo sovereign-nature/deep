@@ -167,7 +167,9 @@
       class="Animal-Data-Map bg-deep-green dark:bg-primary-500 text-white md:rounded-xl xl:rounded-t-none overflow-hidden relative z-20 border-t-2 md:border-t-none xl:border-t-2 dark:border-deep-green"
     >
       <div class="w-full aspect-video">
-        <SimpleMap geoJSONData={data.deepData?.location} />
+        {#key data.deepData}
+          <SimpleMap geoJSONData={data.deepData?.location} />
+        {/key}
       </div>
     </div>
 
