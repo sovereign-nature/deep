@@ -19,7 +19,7 @@
   let isError = false;
   let isLoading = true;
   let errorMsg = `
-    Oops! The NFT image couldn't make it to the habitat.🐾 </br></br>
+    Oops! The NFT image couldn't make it to the habitat.🐾 \n
     Please try again later.
   `;
   let imageUrl: string;
@@ -74,9 +74,9 @@
       ></ImagePlaceholder>
     {:else if isError}
       <!-- Display error message when there's an error loading the image -->
-      <!--  eslint-disable svelte/no-at-html-tags -->
-      <!--TODO: Fix the html security vulnerability before connecting the wallets-->
-      <p class="px-10 py-20 text-sm font-thin">{@html errorMsg}</p>
+      <p class="px-10 py-20 text-sm font-thin whitespace-pre-line">
+        {errorMsg}
+      </p>
     {/if}
     {#if isMounted && !isError}
       <!-- Render the image when it's loaded -->
