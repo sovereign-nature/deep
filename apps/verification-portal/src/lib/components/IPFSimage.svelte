@@ -75,6 +75,7 @@
     {:else if isError}
       <!-- Display error message when there's an error loading the image -->
       <!--  eslint-disable svelte/no-at-html-tags -->
+      <!--TODO: Fix the html security vulnerability before connecting the wallets-->
       <p class="px-10 py-20 text-sm font-thin">{@html errorMsg}</p>
     {/if}
     {#if isMounted && !isError}
