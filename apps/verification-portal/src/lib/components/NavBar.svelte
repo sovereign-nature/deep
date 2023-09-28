@@ -4,6 +4,8 @@
   import MoonIcon from './icons/MoonIcon.svelte';
   import SunIcon from './icons/SunIcon.svelte';
   import logo from '$lib/assets/brand/sni_logo_round.svg';
+
+  export let themeSwitch = true;
 </script>
 
 <Navbar color="none" class="my-6 container px-4">
@@ -16,6 +18,7 @@
       <span class="font-light">Initiative</span>
     </span>
   </NavBrand>
+  {#if themeSwitch}
   <DarkMode
     class="md:hidden"
     btnClass="text-gray-300 dark:text-primary-500 text-sm pe-4 opacity-50 hover:opacity-100 active:opacity-100"
@@ -27,10 +30,12 @@
       <MoonIcon className="w-4 h-4" />
     </svelte:fragment>
   </DarkMode>
+  {/if}
   <div
     class="flex md:order-2 md:justify-end content-center w-full md:w-1/2 px-2 pt-4 lg:pt-0"
   >
     <slot />
+    {#if themeSwitch}
     <DarkMode
       class="ms-4 hidden md:block"
       btnClass="text-gray-300 dark:text-primary-500 text-sm pe-4 opacity-50 hover:opacity-100 active:opacity-100"
@@ -42,5 +47,6 @@
         <MoonIcon className="w-4 h-4" />
       </svelte:fragment>
     </DarkMode>
+    {/if}
   </div>
 </Navbar>

@@ -41,7 +41,7 @@
   export let data;
 
   // Define specific share card data for a page
-  let pageTitle = `SNI | ${data.nftData.meta?.name}`;
+  let pageTitle = `REAL by SNI | ${data.nftData.meta?.name}`;
   let pageDescription = `${content.intro}`;
   //@TODO custom page cards can eventually be generated for each page
   // let pageImage = 'nft';
@@ -51,17 +51,18 @@
 
 <!-- Header -->
 <div
-  class="grid grid-cols-1 lg:grid-cols-12 lg:gap-5 mb-4 xl:mb-16 px-4 md:px-8 xl:px-0"
+  class="grid grid-cols-1 lg:grid-cols-12 lg:gap-5 mb-4 lg:mb-10 xl:mb-16 px-4 lg:px-4 xl:px-16"
 >
   <div
-    class="col-span-1 lg:col-span-4 xl:col-start-2 xl:col-span-3 flex justify-center w-100 mb-8 lg:mb-4"
+    class="col-span-1 lg:col-span-4 xl:col-start-1 xl:col-span-4 flex justify-center w-100 mb-8 lg:mb-4 relative z-10"
   >
     <IPFSimage
+      verified={data.verifiedStatus}
       ipfsImageUrl={data.nftData.meta?.image}
       alt={data.nftData.meta?.name}
     />
   </div>
-  <div class="lg:col-span-8 xl:col-span-7 dark:text-white">
+  <div class="lg:col-span-8 xl:col-span-8 dark:text-white">
     <div>
       <h1
         class="dark:text-white text-2xl md:text-3xl lg:text-4xl leading-tight mb-6"
@@ -80,8 +81,8 @@
         </p>
       {/if}
     </div>
-    <div class="grid lg:grid-cols-2 gap-5">
-      <div>
+    <div class="grid lg:grid-cols-6 gap-x-1 gap-y-5">
+      <div class="col-span-4">
         <Property name="Source">
           <p>sub0</p>
         </Property>
@@ -93,7 +94,7 @@
         </Property>
       </div>
 
-      <div>
+      <div class="col-span-2">
         <span class="text-sm">{content.shareText}</span>
         <SocialShare shareUrl={currentPath} />
       </div>
@@ -112,7 +113,7 @@
       class="Fund-Data mb-8 px-4 md:px-8 xl:dark:bg-primary-100 xl:bg-primary-500 xl:rounded-xl xl:py-8"
     >
       <Subheader
-        className="!text-base text-black dark:text-white xl:text-white xl:dark:!text-black md:pt-8 xl:pt-0 flex justify-start md:justify-center xl:justify-start "
+        className="!text-base text-black dark:text-white xl:text-white xl:dark:!text-black md:pt-8 xl:pt-0 flex justify-start lg:justify-center xl:justify-start "
         >{content.page.funds.cardTitle}</Subheader
       >
       <FundsDashboard
@@ -135,7 +136,9 @@
         {#if data.deepData?.images?.length > 0}
           {#each data.deepData?.images as image, index}
             <ImageSrcSet
-              className={index > 0 ? 'border-t-2 dark:border-deep-green' : ''}
+              classNameImage={index > 0
+                ? 'border-t-2 dark:border-deep-green '
+                : ''}
               assetID={image.directus_files_id}
               altText={data.deepData?.id}
             />
@@ -166,7 +169,7 @@
       <Subheader info={content.page?.ecEntity?.description}
         >{content.page?.ecEntity?.title}</Subheader
       >
-      <!-- <h3 class="text-2xl mb-3">Lorem Ipsum</h3> -->
+      <h3 class="text-2xl mb-3">{data.deepData?.name}</h3>
 
       <p class="card-description">{data.deepData?.description}</p>
     </div>
@@ -193,7 +196,7 @@
         {#if data.deepData?.steward?.images?.length > 0}
           {#each data.deepData?.steward?.images as image}
             <ImageSrcSet
-              className="border-t-2 dark:border-deep-green"
+              classNameImage="border-t-2 dark:border-deep-green"
               assetID={image.directus_files_id}
               altText={data.deepData?.steward?.name}
             />

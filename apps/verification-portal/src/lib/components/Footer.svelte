@@ -12,24 +12,33 @@
       url: 'https://sovereignnature.com/privacy-policy',
       title: 'Privacy Policy',
     },
+    mailing: {
+      class: 'md:col-span-4 md:text-center',
+      url: 'https://sovereignnature.com/#subscribe',
+      title: 'Subscribe to our mailing list',
+    },
+    copyright: {
+      class: 'md:col-span-4 md:text-end',
+      url: 'https://sovereignnature.com/',
+      title: copyrightNotice,
+    },
   };
 </script>
 
 <div class="w-full mt-8 mb-8">
   <div
-    class="container mx-auto text-center text-gray-600 h-36 py-8 px-4 xl:px-0"
+    class="container mx-auto md:text-center text-gray-600 h-36 py-8 px-4 xl:px-0"
   >
-    <div class="flex gap-3 h-full items-end">
+    <div class="grid md:grid-cols-12 gap-3 h-full">
       {#each Object.entries(links) as [_key, value]}
-        <a
-          class="text-[10px] uppercase dark:text-gray-500 opacity-50 hover:opacity-80"
-          href={value.url}
-          target="_blank">{value.title}</a
-        >
+        <div class="{value.class} md:col-span-2">
+          <a
+            class=" text-[10px] uppercase dark:text-gray-500 opacity-50 hover:opacity-80"
+            href={value.url}
+            target="_blank">{value.title}</a
+          >
+        </div>
       {/each}
-      <span class="text-[10px] uppercase dark:text-gray-500 opacity-50 ms-auto"
-        >{copyrightNotice}</span
-      >
     </div>
   </div>
 </div>
