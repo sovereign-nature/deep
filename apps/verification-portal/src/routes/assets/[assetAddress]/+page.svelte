@@ -74,12 +74,17 @@
           {data.nftData.meta?.name}
         </span>
       </h1>
-      {#if data.nftData.meta?.description}
-        <p class="mb-6">
-          <!-- {data.nftData.meta?.description} -->
-          {content.intro}
-        </p>
-      {/if}
+      <div class="mb-6">
+        {#if data.verifiedStatus}
+          <p>{content.intro}</p>
+        {/if}
+
+        {#if data.nftData.meta?.description}
+          <span class="text-sm block pt-2">
+            {data.nftData.meta?.description}</span
+          >
+        {/if}
+      </div>
     </div>
     <div class="grid lg:grid-cols-6 gap-x-1 gap-y-5">
       <div class="col-span-4">
