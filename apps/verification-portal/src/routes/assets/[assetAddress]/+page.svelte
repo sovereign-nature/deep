@@ -56,11 +56,13 @@
   <div
     class="col-span-1 lg:col-span-4 xl:col-start-1 xl:col-span-4 flex justify-center w-100 mb-8 lg:mb-4 relative z-10"
   >
-    <IPFSimage
-      verified={data.verifiedStatus}
-      ipfsImageUrl={data.nftData.meta?.image}
-      alt={data.nftData.meta?.name}
-    />
+    {#key data}
+      <IPFSimage
+        verified={data.verifiedStatus}
+        ipfsImageUrl={data.nftData.meta?.image}
+        alt={data.nftData.meta?.name}
+      />
+    {/key}
   </div>
   <div class="lg:col-span-8 xl:col-span-8 dark:text-white">
     <div>
@@ -138,23 +140,25 @@
         <h3 class="text-5xl">{data.deepData?.id}</h3>
       </div>
       <div class="w-full">
-        {#if data.deepData?.images?.length > 0}
-          {#each data.deepData?.images as image, index}
-            <ImageSrcSet
-              classNameImage={index > 0
-                ? 'border-t-2 dark:border-deep-green '
-                : ''}
-              assetID={image.directus_files_id}
-              altText={data.deepData?.id}
+        {#key data.deepData}
+          {#if data.deepData?.images?.length > 0}
+            {#each data.deepData?.images as image, index}
+              <ImageSrcSet
+                classNameImage={index > 0
+                  ? 'border-t-2 dark:border-deep-green '
+                  : ''}
+                assetID={image.directus_files_id}
+                altText={data.deepData?.id}
+              />
+            {/each}
+          {:else}
+            <img
+              style="width:inherit"
+              src={placeholderAnimal}
+              alt="Not Available"
             />
-          {/each}
-        {:else}
-          <img
-            style="width:inherit"
-            src={placeholderAnimal}
-            alt="Not Available"
-          />
-        {/if}
+          {/if}
+        {/key}
       </div>
     </div>
 
@@ -198,21 +202,23 @@
         <SimpleMap geoJSONData={data.deepData?.steward?.area} />
       </div>
       <div class="w-full flex flex-col">
-        {#if data.deepData?.steward?.images?.length > 0}
-          {#each data.deepData?.steward?.images as image}
-            <ImageSrcSet
-              classNameImage="border-t-2 dark:border-deep-green"
-              assetID={image.directus_files_id}
-              altText={data.deepData?.steward?.name}
+        {#key data.deepData}
+          {#if data.deepData?.steward?.images?.length > 0}
+            {#each data.deepData?.steward?.images as image}
+              <ImageSrcSet
+                classNameImage="border-t-2 dark:border-deep-green"
+                assetID={image.directus_files_id}
+                altText={data.deepData?.steward?.name}
+              />
+            {/each}
+          {:else}
+            <img
+              style="width:inherit"
+              src={placeholderCamp}
+              alt="Not Available"
             />
-          {/each}
-        {:else}
-          <img
-            style="width:inherit"
-            src={placeholderCamp}
-            alt="Not Available"
-          />
-        {/if}
+          {/if}
+        {/key}
       </div>
     </div>
   </div>
