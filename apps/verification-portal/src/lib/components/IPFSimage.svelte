@@ -74,6 +74,7 @@
       ></ImagePlaceholder>
     {:else if isError}
       <!-- Display error message when there's an error loading the image -->
+      <!--  eslint-disable svelte/no-at-html-tags -->
       <p class="px-10 py-20 text-sm font-thin">{@html errorMsg}</p>
     {/if}
     {#if isMounted && !isError}
