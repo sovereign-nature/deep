@@ -4,7 +4,7 @@
   export let title = 'REAL by Sovereign Nature Initiative'; //max 40 characters
   export let description =
     'The eco-data pipeline to connect real life ecology with the digital world.'; //max 200 characters
-  export let image = '/images/social_share_card.jpg';
+  export let image = '/images/social_share_card.jpg?t=2021-10-20';
   export let twitterSite = '@sovereignnature';
 </script>
 
@@ -14,6 +14,7 @@
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={image} />
+  <meta name="twitter:image:alt" content="NFT Preview" />
   <meta name="twitter:site" content={twitterSite} />
 
   <!-- Facebook Open Graph -->
