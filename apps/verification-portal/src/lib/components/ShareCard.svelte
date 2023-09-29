@@ -4,7 +4,8 @@
   export let title = 'REAL by Sovereign Nature Initiative'; //max 40 characters
   export let description =
     'The eco-data pipeline to connect real life ecology with the digital world.'; //max 200 characters
-  export let image = '/images/social_share_card.jpg';
+  export let image =
+    'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/b72060a5-e585-48bc-97b1-f73358d7ec00/public';
   export let twitterSite = '@sovereignnature';
 </script>
 
