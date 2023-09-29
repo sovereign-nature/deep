@@ -4,8 +4,8 @@
   export let title = 'REAL by Sovereign Nature Initiative'; //max 40 characters
   export let description =
     'The eco-data pipeline to connect real life ecology with the digital world.'; //max 200 characters
-  export let image = '/images/social_share_card.jpg';
-  export let twitterSite = '@sovereignnature';
+  export let image = window.location.href + '/images/social_share_card.jpg';
+  export let twitterSite = 'sovereignnature';
 </script>
 
 <svelte:head>
