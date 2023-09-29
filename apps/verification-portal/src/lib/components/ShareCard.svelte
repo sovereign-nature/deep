@@ -12,20 +12,20 @@
 <svelte:head>
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
+  <!-- <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} /> -->
   <meta
     name="twitter:image"
-    content="https://ephemera.one/media/site/64c1903981-1677661765/04-02-1200x675-crop-1-q80.jpg"
+    content="https://ephemera.one/media/site/64c1903981-1677661765/04-02-1200x675-crop-1-q80.jpg?t=1620120000"
   />
   <meta name="twitter:image:alt" content="NFT Preview" />
   <!-- <meta name="twitter:site" content={twitterSite} /> -->
 
   <!-- Facebook Open Graph -->
-  <meta property="og:title" content={title} />
+  <!-- <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={image} />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="website" /> -->
 
   <!-- Fallback Data -->
   <title>{title}</title>
