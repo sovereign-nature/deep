@@ -187,8 +187,8 @@ importers:
         specifier: 1.8.1
         version: 1.8.1
       flowbite-svelte:
-        specifier: 0.44.17
-        version: 0.44.17(svelte@4.0.5)
+        specifier: 0.44.18
+        version: 0.44.18(svelte@4.0.5)
       graphql-request:
         specifier: ^6.1.0
         version: 6.1.0(graphql@16.8.1)
@@ -7197,8 +7197,8 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
-  /flowbite-svelte@0.44.17(svelte@4.0.5):
-    resolution: {integrity: sha512-Ig7K/obOQ/6uwR2zkg0NT4u5dvcqAXcM0ZkMWVGBkfCD5refnvGsS2q6lflefN+cFxXaDi9J/Rorgp6KwP9JPw==}
+  /flowbite-svelte@0.44.18(svelte@4.0.5):
+    resolution: {integrity: sha512-vCRuzO4Ltz+8qyYP1b8yZPre4fWeRnVwg7C8uQ3a6UgLPruPAACCbqO+i/RkzD7CFU7ygziee9OfPgVoMr8aWA==}
     engines: {node: '>=16.0.0', npm: '>=7.0.0'}
     peerDependencies:
       svelte: ^4.0.0
