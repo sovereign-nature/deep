@@ -59,7 +59,7 @@
   </button>
 </div>
 
-<style>
+<style lang="postcss">
   .social-button {
     @apply text-center text-primary-400 w-12 h-12 cursor-pointer flex items-center justify-center transition-colors;
   }
