@@ -12,6 +12,7 @@
   onMount(async () => {
     if (browser) {
       const leaflet = await import('leaflet');
+
       map = leaflet
         .map(mapElement, {
           zoomControl: true,
@@ -20,6 +21,9 @@
           dragging: false,
         })
         .setView([51.505, -0.09], 13);
+
+      map.attributionControl.setPrefix(false);
+
       leaflet
         .tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution:
