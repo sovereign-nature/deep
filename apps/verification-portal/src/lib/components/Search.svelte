@@ -46,7 +46,7 @@
       class="block border-none w-full border p-4 pl-10 text-xl text-gray-200 focus:border-white focus:ring-white dark:placeholder:text-primary-400 dark:bg-gray-900 rounded-lg sm:rounded-none h-18 sm:h-20 ms-auto"
       name="search"
       type="search"
-      placeholder="Search by token ID"
+      placeholder="Search by token ID (1-1466)"
       required
     />
 
