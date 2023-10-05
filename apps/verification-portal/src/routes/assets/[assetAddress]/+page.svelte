@@ -32,8 +32,8 @@
       ecEntity: {
         cardTitle: 'Collecting funds for:',
         title: 'Ecological Entity',
-        //description:
-        // 'Ecological Entity: an identified piece of ecology the Ecological Steward (ES) focuses on, that being a specific species population (predators of the Maasai Mara) or an ecosystem (the Upemba National Park)',
+        description:
+          'Ecological Entity: an identified piece of ecology the Ecological Steward (ES) focuses on, that being a specific species population (predators of the Maasai Mara) or an ecosystem (the Upemba National Park)',
       },
     },
   };
@@ -124,8 +124,8 @@
         >{content.page.funds.cardTitle}</Subheader
       >
       <FundsDashboard
-        totalFunds={data.deepData?.steward?.funds_raised}
-        assetFunds={data.deepData?.link?.funds_raised}
+        totalFunds={data.deepData?.steward?.funds_raised.toString()}
+        assetFunds={data.deepData?.link?.funds_raised.toString()}
       ></FundsDashboard>
     </div>
 
@@ -177,9 +177,11 @@
     <div
       class="Animal-Data-Continued bg-transparent px-4 md:px-8 py-16 text-black dark:text-white"
     >
-      <Subheader info={content.page?.ecEntity?.description}
+      <!-- <Subheader info={content.page?.ecEntity?.description}
         >{content.page?.ecEntity?.title}</Subheader
-      >
+      > -->
+      <!-- TODO: Restore info after text fix -->
+      <Subheader>{content.page?.ecEntity?.title}</Subheader>
       <h3 class="text-2xl mb-3">{data.deepData?.name}</h3>
 
       <p class="card-description">{data.deepData?.description}</p>

@@ -46,7 +46,7 @@
   {/if}
 </div>
 
-<style>
+<style lang="postcss">
   .funds-widget-container {
     @apply text-center;
   }
