@@ -5,14 +5,19 @@ import { getEntity } from '@sni/clients/data.js';
 import { getLinkByAddress } from '@sni/clients/link.js';
 import { getNftData } from '@sni/clients/nft';
 import { error } from '@sveltejs/kit';
-import type { NftAsset, NftResponse, VerifiedResponse } from './types'; //@TODO better way to standardize types
+import type {
+  DeepData,
+  NftAsset,
+  NftResponse,
+  VerifiedResponse,
+} from './types'; //@TODO better way to standardize types
 
 const config = {
   headers: { Authorization: `Bearer ${DIRECTUS_API_KEY}` },
 };
 
 let nftData: NftAsset;
-let deepData: object = {};
+let deepData: DeepData = {};
 const notFoundMessage = 'We’re sorry but that page can’t be found.';
 
 export async function load(event) {
@@ -20,12 +25,12 @@ export async function load(event) {
   const assetAddress = event.params.assetAddress;
   try {
     // Fetch NFT data
-    const { reference, identifier } = await parseAddress(assetAddress).asset;
-    const nftDataResponse: NftResponse = await getNftData(
+    const { reference, identifier } = parseAddress(assetAddress).asset;
+    const nftDataResponse: NftResponse = (await getNftData(
       'polkadot',
       reference,
       identifier
-    );
+    )) as NftResponse;
 
     // Check if NFT data exists
     if (!nftDataResponse.nftEntity) {
