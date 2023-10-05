@@ -1,10 +1,10 @@
+import type { ServerLoadEvent } from '@sveltejs/kit';
 import { redirect } from '@sveltejs/kit';
-/** @type {import('./$types').Actions} */
 
 export const formSearch = {
-  formSearch: async (event) => {
+  formSearch: async (event: ServerLoadEvent) => {
     const form = await event.request.formData();
-    const search = form.get('search');
+    const search = form.get('search') as string;
     const prefix = 'did:asset:deep:polkadot.asset-hub:13:';
     const regex = new RegExp(`^${prefix}`);
     const isMatch = regex.test(search);
