@@ -32,9 +32,11 @@
   >
     <div class="grid md:grid-cols-12 gap-3 h-full">
       {#each Object.entries(links) as [_key, value]}
-        <div class="{value?.class} md:col-span-2">
+        <div class="{'class' in value ? value?.class : ''} md:col-span-2">
           <a
-            class="{value?.linkClass} text-[10px] uppercase dark:text-gray-500 opacity-50 hover:opacity-80"
+            class="{'linkClass' in value
+              ? value?.linkClass
+              : ''} text-[10px] uppercase dark:text-gray-500 opacity-50 hover:opacity-80"
             href={value.url}
             target="_blank">{value.title}</a
           >
