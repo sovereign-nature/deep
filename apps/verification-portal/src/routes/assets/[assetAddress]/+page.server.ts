@@ -17,7 +17,7 @@ const config = {
 };
 
 let nftData: NftAsset;
-let deepData: DeepData = {};
+let deepData: DeepData;
 const notFoundMessage = 'We’re sorry but that page can’t be found.';
 
 export async function load(event) {
