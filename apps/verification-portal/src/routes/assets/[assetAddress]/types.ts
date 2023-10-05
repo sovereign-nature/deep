@@ -1,5 +1,5 @@
 import type { GeoJsonObject } from 'geojson';
-
+//TODO: Try to autogenerate this file from the API
 export type DirectusImage = {
   directus_files_id: string;
 };
