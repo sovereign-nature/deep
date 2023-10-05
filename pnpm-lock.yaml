@@ -54,8 +54,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0(@nomicfoundation/hardhat-chai-matchers@2.0.1)(@nomicfoundation/hardhat-ethers@3.0.4)(@nomicfoundation/hardhat-network-helpers@1.0.8)(@nomicfoundation/hardhat-verify@1.1.0)(@typechain/ethers-v6@0.4.3)(@typechain/hardhat@8.0.3)(@types/chai@4.3.5)(@types/mocha@10.0.1)(@types/node@18.17.1)(chai@4.3.10)(ethers@6.7.1)(hardhat-gas-reporter@1.0.9)(hardhat@2.18.0)(solidity-coverage@0.8.5)(ts-node@10.9.1)(typechain@8.3.1)(typescript@5.2.2)
       '@openzeppelin/contracts':
-        specifier: 4.9.3
-        version: 4.9.3
+        specifier: 5.0.0
+        version: 5.0.0
       '@sni/constants':
         specifier: workspace:*
         version: link:../../packages/constants
@@ -3713,8 +3713,8 @@ packages:
       url-join: 4.0.1
     dev: false
 
-  /@openzeppelin/contracts@4.9.3:
-    resolution: {integrity: sha512-He3LieZ1pP2TNt5JbkPA4PNT9WC3gOTOlDcFGJW4Le4QKqwmiNJCRt44APfxMxvq7OugU/cqYuPcSBzOw38DAg==}
+  /@openzeppelin/contracts@5.0.0:
+    resolution: {integrity: sha512-bv2sdS6LKqVVMLI5+zqnNrNU/CA+6z6CmwFXm/MzmOPBRSO5reEJN7z0Gbzvs0/bv/MZZXNklubpwy3v2+azsw==}
     dev: true
 
   /@peculiar/asn1-schema@2.3.6:
