@@ -12,7 +12,7 @@
       id="default-search"
       name="search"
       type="search"
-      placeholder="Search by token ID"
+      placeholder="Search by token ID (1-1466)"
       required
       class="block !rounded-s-sm border-none w-full border p-2 pl-10 text-sm text-gray-200 focus:border-white focus:ring-white dark:placeholder:text-gray-500 dark:bg-primary-800"
     />
