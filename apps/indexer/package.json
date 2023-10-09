@@ -20,7 +20,7 @@
     "@graphprotocol/graph-ts": "0.31.0",
     "@sni/constants": "workspace:*",
     "@sni/contracts": "workspace:*",
-    "matchstick-as": "0.5.2",
+    "matchstick-as": "0.6.0",
     "mustache": "4.2.0"
   }
 }
