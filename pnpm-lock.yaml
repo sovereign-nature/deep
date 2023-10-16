@@ -53,6 +53,9 @@ importers:
       '@sni/clients':
         specifier: workspace:*
         version: link:../../packages/clients
+      '@sni/constants':
+        specifier: workspace:*
+        version: link:../../packages/constants
       hono:
         specifier: 3.7.6
         version: 3.7.6
