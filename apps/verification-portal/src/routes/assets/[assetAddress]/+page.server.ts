@@ -1,7 +1,8 @@
 // import { VITE_VERCEL_URL } from '$env/static/private';
 import { DIRECTUS_API_KEY } from '$env/static/private';
 
-const absoluteURL = '';
+const absoluteURL =
+  'https://deep-real-git-feature-rea-9-dynamic-soc-154de8-sovereign-nature.vercel.app';
 
 import { parseAddress } from '@sni/address-utils';
 import { getEntity } from '@sni/clients/data.js';
