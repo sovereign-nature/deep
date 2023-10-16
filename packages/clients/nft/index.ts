@@ -1,17 +1,21 @@
-import request from 'graphql-request';
+import { GraphQLClient } from 'graphql-request';
+
 import { getNftById } from './queries/polkadot';
 
 const POLKADOT_NFT_API = 'https://squid.subsquid.io/speck/graphql';
 const KUSAMA_NFT_API = 'https://squid.subsquid.io/stick/graphql';
 
-function getPolkadotNft(id: string) {
-  return request(POLKADOT_NFT_API, getNftById, {
+const polkadotClient = new GraphQLClient(POLKADOT_NFT_API, { fetch });
+const kusamaClient = new GraphQLClient(KUSAMA_NFT_API, { fetch });
+
+export function getPolkadotNft(id: string) {
+  return polkadotClient.request(getNftById, {
     id,
   });
 }
 
-function getKusamaNft(id: string) {
-  return request(KUSAMA_NFT_API, getNftById, {
+export function getKusamaNft(id: string) {
+  return kusamaClient.request(getNftById, {
     id,
   });
 }
