@@ -1,0 +1,19 @@
+{
+  "name": "@sni/assets-gateway",
+  "version": "0.0.0",
+  "description": "Assets API Gateway",
+  "private": true,
+  "license": "GPL-3.0",
+  "scripts": {
+    "dev": "pnpm codegen:staging && wrangler dev",
+    "deploy": "pnpm codegen && wrangler publish",
+    "build": "pnpm codegen && wrangler publish --dry-run --outdir=dist"
+  },
+  "dependencies": {
+    "hono": "3.7.6"
+  },
+  "devDependencies": {
+    "env-cmd": "10.1.0",
+    "wrangler": "3.13.1"
+  }
+}

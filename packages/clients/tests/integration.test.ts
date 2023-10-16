@@ -2,8 +2,10 @@ import { expect, test } from 'vitest';
 import { getEntity, getSteward } from '../data';
 import { getLinkByAddress, getLinkById } from '../link';
 import { getNftData } from '../nft';
+import { getWeb2Asset } from '../web2';
 import {
   entityResponse,
+  hotelHideawayResponse,
   kusamaNftResponse,
   linkResponse,
   polkadotNftResponse,
@@ -39,13 +41,22 @@ test('getSteward', async () => {
 });
 
 test('getNFTData from Polkadot', async () => {
-  const response = await getNftData('polkadot', 'u-8', '262');
+  const response = await getNftData('polkadot', 'u-8', 262);
 
   expect(response).toStrictEqual(polkadotNftResponse);
 });
 
 test('getNFTData from Kusama', async () => {
-  const response = await getNftData('kusama', '91', '10');
+  const response = await getNftData('kusama', '91', 10);
 
   expect(response).toStrictEqual(kusamaNftResponse);
+});
+
+test('getWeb2Asset from Hotel Hideaway', async () => {
+  const response = await getWeb2Asset(
+    'hotel-hideaway',
+    'congolese-elephant-headwrap'
+  );
+
+  expect(response.data).toStrictEqual(hotelHideawayResponse);
 });
