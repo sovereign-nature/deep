@@ -204,3 +204,14 @@ export const kusamaNftResponse = {
     },
   },
 };
+
+export const hotelHideawayResponse = {
+  data: {
+    id: 'congolese-elephant-headwrap',
+    date_created: '2023-10-16T10:43:19.636Z',
+    date_updated: null,
+    name: 'Congolese Elephant Headwrap',
+    description: null,
+    image: 'a62cc6db-7c48-4907-a600-674a132ec3f2',
+  },
+};
