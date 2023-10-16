@@ -1,16 +1,12 @@
 import { SNI_API_URL } from '@sni/constants';
-import type { AxiosRequestConfig, AxiosResponse } from 'axios';
-import axios from 'axios';
+import type { AxiosRequestConfig } from 'axios';
 
-function getHotelHideawayAsset(id: string, config: AxiosRequestConfig = {}) {
+export function getHotelHideawayAsset(id: string) {
   console.log(id);
-  return axios.get(`${SNI_API_URL}/items/hotel_hideaway/${id}`, config);
+  return fetch(`${SNI_API_URL}/items/hotel_hideaway/${id}`);
 }
 
-function getFortniteAsset(
-  assetId: string,
-  config: AxiosRequestConfig = {}
-): Promise<AxiosResponse> {
+function getFortniteAsset(assetId: string, config: AxiosRequestConfig = {}) {
   console.log('getFortniteAsset', assetId);
   console.log('config', config);
   throw new Error('Not implemented');
@@ -20,10 +16,10 @@ export function getWeb2Asset(
   gameId: string,
   assetId: string,
   config: AxiosRequestConfig = {}
-): Promise<AxiosResponse> {
+) {
   switch (gameId) {
     case 'hotel-hideaway':
-      return getHotelHideawayAsset(assetId, config);
+      return getHotelHideawayAsset(assetId);
     case 'fortnite':
       return getFortniteAsset(assetId, config);
     default:
