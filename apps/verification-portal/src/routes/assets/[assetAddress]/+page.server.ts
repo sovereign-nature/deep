@@ -1,5 +1,7 @@
-import { DIRECTUS_API_KEY, VITE_VERCEL_URL } from '$env/static/private';
-const absoluteURL = VITE_VERCEL_URL || '';
+// import { VITE_VERCEL_URL } from '$env/static/private';
+import { DIRECTUS_API_KEY } from '$env/static/private';
+
+const absoluteURL = '';
 
 import { parseAddress } from '@sni/address-utils';
 import { getEntity } from '@sni/clients/data.js';
