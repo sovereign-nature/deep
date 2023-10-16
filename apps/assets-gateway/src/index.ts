@@ -36,8 +36,6 @@ function directusFormatter(assetData: any) {
   const fullImageUrl = `${SNI_API_URL}/assets/${data.image}`;
   data.image = fullImageUrl;
 
-  data.collection = { name: 'SNI x Upemba National Park' };
-
   return data;
 }
 
