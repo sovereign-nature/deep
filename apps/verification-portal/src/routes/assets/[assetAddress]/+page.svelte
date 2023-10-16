@@ -14,6 +14,7 @@
   import placeholderCamp from '$lib/assets/images/placeholderCamp.jpg';
 
   $: currentPath = $page.url.toString();
+  $: pageTitle = `REAL by SNI | ${data.nftData.meta?.name}`;
 
   const content = {
     intro:
@@ -41,13 +42,26 @@
   export let data;
 
   // Define specific share card data for a page
-  let pageTitle = `REAL by SNI | ${data.nftData.meta?.name}`;
-  let pageDescription = `${content.intro}`;
-  //@TODO custom page cards can eventually be generated for each page
-  // let pageImage = 'nft';
+  $: pageDescription = `${content.intro}`;
+  $: name = data.nftData.meta?.name || '';
+  $: funds = data.deepData?.link?.funds_raised || 0;
+  $: tokenID = data.nftData.id || '';
+  $: source = ''; // @TODO replace with source
+  $: image = ''; // @TODO replace with image path
+  $: pageImage = `${data.absoluteURL}/og?title=${encodeURIComponent(
+    name
+  )}&funds=${encodeURIComponent(funds.toString())}&tokenID=${encodeURIComponent(
+    tokenID
+  )}&image=${encodeURIComponent(image)}&source=${encodeURIComponent(source)}`;
 </script>
 
-<ShareCard bind:title={pageTitle} bind:description={pageDescription} />
+{#key data}
+  <ShareCard
+    title={pageTitle}
+    description={pageDescription}
+    image={pageImage}
+  />
+{/key}
 
 <!-- Header -->
 <div
@@ -73,7 +87,7 @@
           <span class="text-primary-300">Verified:</span>
         {/if}
         <span class="font-aeonik">
-          {data.nftData.meta?.name}
+          {name}
         </span>
       </h1>
       <div class="mb-6">

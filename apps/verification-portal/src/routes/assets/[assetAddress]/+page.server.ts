@@ -1,10 +1,12 @@
-import { DIRECTUS_API_KEY } from '$env/static/private';
+import { DIRECTUS_API_KEY, VITE_VERCEL_URL } from '$env/static/private';
+const absoluteURL = VITE_VERCEL_URL || '';
 
 import { parseAddress } from '@sni/address-utils';
 import { getEntity } from '@sni/clients/data.js';
 import { getLinkByAddress } from '@sni/clients/link.js';
 import { getNftData } from '@sni/clients/nft';
 import { error } from '@sveltejs/kit';
+
 import type {
   DeepData,
   NftAsset,
@@ -68,5 +70,5 @@ export async function load(event) {
     // throw error(500, 'Oops, something went wrong');
   }
 
-  return { assetAddress, nftData, verifiedStatus, deepData };
+  return { assetAddress, nftData, verifiedStatus, deepData, absoluteURL };
 }
