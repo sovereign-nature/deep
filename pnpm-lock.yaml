@@ -275,9 +275,6 @@ importers:
       '@sni/address-utils':
         specifier: workspace:*
         version: link:../address-utils
-      '@sni/clients':
-        specifier: workspace:*
-        version: 'link:'
       '@sni/constants':
         specifier: workspace:*
         version: link:../constants
