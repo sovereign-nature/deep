@@ -4,7 +4,7 @@ import { SNI_API_URL } from '@sni/constants';
 import { Hono } from 'hono';
 const app = new Hono();
 
-app.get('/', (c) => c.text('Hello Cloudflare Workers!'));
+app.get('/', (c) => c.text('DEEP Assets Gateway'));
 
 app.get('/:networkId/:assetId', async (c) => {
   const assetId = c.req.param('assetId');
