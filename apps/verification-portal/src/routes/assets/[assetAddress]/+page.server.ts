@@ -1,3 +1,4 @@
+import { env } from '$env/dynamic/private';
 import { DIRECTUS_API_KEY } from '$env/static/private';
 
 import { parseAddress } from '@sni/address-utils';
@@ -12,6 +13,8 @@ import type {
   NftResponse,
   VerifiedResponse,
 } from './types'; //@TODO better way to standardize types
+
+console.log(env.VITE_VERCEL_URL);
 
 const config = {
   headers: { Authorization: `Bearer ${DIRECTUS_API_KEY}` },
