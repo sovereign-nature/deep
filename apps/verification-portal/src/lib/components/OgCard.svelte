@@ -4,7 +4,7 @@
   export let tokenId = '';
   export let funds = '';
   export let source = '';
-  export let img = '/placeholder';
+  export const img = '/placeholder';
 </script>
 
 <div
