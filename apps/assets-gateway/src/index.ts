@@ -27,6 +27,7 @@ function polkadotFormatter(assetData: any) {
   const nftEntity = assetData.nftEntity;
   return {
     id: nftEntity.id,
+    tokenId: nftEntity.sn,
     name: nftEntity.meta.name,
     description: nftEntity.meta.description,
     image: nftEntity.meta.image,

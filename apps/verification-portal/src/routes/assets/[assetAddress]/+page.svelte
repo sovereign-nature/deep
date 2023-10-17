@@ -41,7 +41,7 @@
   export let data;
 
   // Define specific share card data for a page
-  let pageTitle = `REAL by SNI | ${data.nftData.meta?.name}`;
+  let pageTitle = `REAL by SNI | ${data.nftData.name}`;
   let pageDescription = `${content.intro}`;
   //@TODO custom page cards can eventually be generated for each page
   // let pageImage = 'nft';
@@ -59,8 +59,8 @@
     {#key data}
       <IPFSimage
         verified={data.verifiedStatus}
-        ipfsImageUrl={data.nftData.meta?.image}
-        alt={data.nftData.meta?.name}
+        ipfsImageUrl={data.nftData.image}
+        alt={data.nftData.name}
       />
     {/key}
   </div>
@@ -73,7 +73,7 @@
           <span class="text-primary-300">Verified:</span>
         {/if}
         <span class="font-aeonik">
-          {data.nftData.meta?.name}
+          {data.nftData.name}
         </span>
       </h1>
       <div class="mb-6">
@@ -81,10 +81,8 @@
           <p>{content.intro}</p>
         {/if}
 
-        {#if data.nftData.meta?.description}
-          <span class="text-sm block pt-2">
-            {data.nftData.meta?.description}</span
-          >
+        {#if data.nftData.description}
+          <span class="text-sm block pt-2"> {data.nftData.description}</span>
         {/if}
       </div>
     </div>
@@ -94,7 +92,7 @@
           <p>sub0</p>
         </Property>
         <Property name="Token ID">
-          <p>{data.nftData.sn}</p>
+          <p>{data.nftData.tokenId}</p>
         </Property>
         <Property name="Asset Address">
           <p>{data.assetAddress}</p>
