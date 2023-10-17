@@ -1,5 +1,4 @@
-import { env } from '$env/dynamic/private';
-import { DIRECTUS_API_KEY } from '$env/static/private';
+import { DIRECTUS_API_KEY, VITE_VERCEL_URL } from '$env/static/private';
 
 import { parseAddress } from '@sni/address-utils';
 import { getEntity } from '@sni/clients/data.js';
@@ -14,7 +13,7 @@ import type {
   VerifiedResponse,
 } from './types'; //@TODO better way to standardize types
 
-console.log(`Vercel URL:${env.VITE_VERCEL_URL}`);
+console.log(`Vercel URL:${VITE_VERCEL_URL}`);
 
 const config = {
   headers: { Authorization: `Bearer ${DIRECTUS_API_KEY}` },
