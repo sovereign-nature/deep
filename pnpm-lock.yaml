@@ -50,6 +50,9 @@ importers:
 
   apps/assets-gateway:
     dependencies:
+      '@sni/address-utils':
+        specifier: workspace:*
+        version: link:../../packages/address-utils
       '@sni/clients':
         specifier: workspace:*
         version: link:../../packages/clients
