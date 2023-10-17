@@ -26,3 +26,5 @@ export const SNI_IPFS_GATEWAY = 'https://sni.mypinata.cloud';
 export const PARITY_IPFS_GATEWAY =
   'https://bronze-sophisticated-mongoose-117.mypinata.cloud';
 export const CLOUDFLARE_IPFS_GATEWAY = 'https://cloudflare-ipfs.com';
+export const DEEP_ASSETS_GATEWAY =
+  'https://assets-gateway.sovereign.workers.dev';

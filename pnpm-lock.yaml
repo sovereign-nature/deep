@@ -50,6 +50,9 @@ importers:
 
   apps/assets-gateway:
     dependencies:
+      '@sni/address-utils':
+        specifier: workspace:*
+        version: link:../../packages/address-utils
       '@sni/clients':
         specifier: workspace:*
         version: link:../../packages/clients
@@ -57,12 +60,12 @@ importers:
         specifier: workspace:*
         version: link:../../packages/constants
       hono:
-        specifier: 3.7.6
-        version: 3.7.6
+        specifier: 3.8.0
+        version: 3.8.0
     devDependencies:
       '@cloudflare/workers-types':
-        specifier: 4.20231010.0
-        version: 4.20231010.0
+        specifier: 4.20231016.0
+        version: 4.20231016.0
       env-cmd:
         specifier: 10.1.0
         version: 10.1.0
@@ -1031,8 +1034,8 @@ packages:
     dev: true
     optional: true
 
-  /@cloudflare/workers-types@4.20231010.0:
-    resolution: {integrity: sha512-Jscqg52ScJMTMRHHVeoUvXYYiXPT4V59NKaClQVju9B6oPAzuePFYHwi5PLQ5Yr+xEbJ6+bHuq1aYV/69z6L0w==}
+  /@cloudflare/workers-types@4.20231016.0:
+    resolution: {integrity: sha512-eGB0cRVyoJpeyGJx2re5sbd9R316a61sY73xwnqm4cwGpb+OxCK2gc651RxGiN7H4w6LY1RpysUgeGLmj5B3+g==}
     dev: true
 
   /@cspotcode/source-map-support@0.8.1:
@@ -8397,8 +8400,8 @@ packages:
     dev: false
     optional: true
 
-  /hono@3.7.6:
-    resolution: {integrity: sha512-nuLNH9+nV6ojXK6b9I0RGZgdMuLTOXeQPs6xsIw/G5iyT8j8m7Nnx8pTxQprmSmCaEYIPv91rCcq45PQNfW68A==}
+  /hono@3.8.0:
+    resolution: {integrity: sha512-lTkcFzm9abmsYiaX82r707kG7Qo9y/nSuO75VWaI6xRK46yxylMUG10Njy6SS5CcLRAg+0mw8NvPaMPbgV17Gg==}
     engines: {node: '>=16.0.0'}
     dev: false
 

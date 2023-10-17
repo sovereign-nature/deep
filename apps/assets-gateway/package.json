@@ -6,16 +6,17 @@
   "license": "GPL-3.0",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler publish",
+    "deploy": "wrangler deploy",
     "build": "wrangler publish --dry-run --outdir=dist"
   },
   "dependencies": {
-    "hono": "3.7.6",
+    "hono": "3.8.0",
     "@sni/clients": "workspace:*",
-    "@sni/constants": "workspace:*"
+    "@sni/constants": "workspace:*",
+    "@sni/address-utils": "workspace:*"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20231010.0",
+    "@cloudflare/workers-types": "4.20231016.0",
     "env-cmd": "10.1.0",
     "wrangler": "3.13.1"
   }

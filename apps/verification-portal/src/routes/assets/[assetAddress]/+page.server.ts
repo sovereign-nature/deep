@@ -1,17 +1,11 @@
 import { DIRECTUS_API_KEY, VERCEL_URL } from '$env/static/private';
 
-import { parseAddress } from '@sni/address-utils';
 import { getEntity } from '@sni/clients/data.js';
 import { getLinkByAddress } from '@sni/clients/link.js';
-import { getNftData } from '@sni/clients/nft';
+import { DEEP_ASSETS_GATEWAY } from '@sni/constants';
 import { error } from '@sveltejs/kit';
 
-import type {
-  DeepData,
-  NftAsset,
-  NftResponse,
-  VerifiedResponse,
-} from './types'; //@TODO better way to standardize types
+import type { Asset, DeepData, VerifiedResponse } from './types'; //@TODO better way to standardize types
 
 console.log(`Vercel URL:${VERCEL_URL}`);
 
@@ -19,7 +13,7 @@ const config = {
   headers: { Authorization: `Bearer ${DIRECTUS_API_KEY}` },
 };
 
-let nftData: NftAsset;
+let assetData: Asset;
 let deepData: DeepData;
 const notFoundMessage = 'We’re sorry but that page can’t be found.';
 
@@ -27,19 +21,17 @@ export async function load(event) {
   let verifiedStatus: boolean = false;
   const assetAddress = event.params.assetAddress;
   try {
-    // Fetch NFT data
-    const { reference, identifier } = parseAddress(assetAddress).asset;
-    const nftDataResponse: NftResponse = (await getNftData(
-      'polkadot',
-      reference,
-      identifier
-    )) as NftResponse;
+    // Fetch Asset data
+    const fetchedAsset: Asset = await (
+      await fetch(`${DEEP_ASSETS_GATEWAY}/${assetAddress}`)
+    ).json();
 
     // Check if NFT data exists
-    if (!nftDataResponse.nftEntity) {
+    if (!fetchedAsset) {
       throw new Error();
     }
-    nftData = nftDataResponse.nftEntity;
+
+    assetData = fetchedAsset;
   } catch (e) {
     throw error(404, notFoundMessage);
   }
@@ -71,5 +63,5 @@ export async function load(event) {
     // throw error(500, 'Oops, something went wrong');
   }
 
-  return { assetAddress, nftData, verifiedStatus, deepData };
+  return { assetAddress, nftData: assetData, verifiedStatus, deepData };
 }
