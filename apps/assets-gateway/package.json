@@ -1,0 +1,22 @@
+{
+  "name": "@sni/assets-gateway",
+  "version": "0.0.0",
+  "description": "Assets API Gateway",
+  "private": true,
+  "license": "GPL-3.0",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler publish",
+    "build": "wrangler publish --dry-run --outdir=dist"
+  },
+  "dependencies": {
+    "hono": "3.7.6",
+    "@sni/clients": "workspace:*",
+    "@sni/constants": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "4.20231010.0",
+    "env-cmd": "10.1.0",
+    "wrangler": "3.13.1"
+  }
+}
