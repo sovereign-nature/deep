@@ -1,10 +1,11 @@
 <script setup lang="ts">
   import Property from '$lib/typography/Property.svelte';
   import Subheader from '$lib/typography/Subheader.svelte';
+  import { getBaseUrl } from '$lib/utils.js';
   import IPFSimage from '$lib/components/IPFSimage.svelte';
   import ImageSrcSet from '$lib/components/ImageSrcSet.svelte';
   import SocialShare from '$lib/components/SocialShare.svelte';
-  import FundsDashboard from '$lib/components/FundsDashboard.svelte';
+  import FundsDashboard from '$lib/components/dashboard/FundsDashboard.svelte';
   import SimpleMap from '$lib/components/SimpleMap.svelte';
   import ShareCard from '$lib/components/ShareCard.svelte';
 
@@ -14,7 +15,7 @@
   import placeholderCamp from '$lib/assets/images/placeholderCamp.jpg';
 
   $: currentPath = $page.url.toString();
-  const baseUrl = `${$page.url.protocol}//${$page.url.host}`; //@TODO preferably replace with  Vercel env var
+  const baseUrl = getBaseUrl($page); //@TODO preferably replace with  Vercel env var
 
   $: pageTitle = `REAL by SNI | ${data.nftData.meta?.name}`;
 
@@ -52,7 +53,7 @@
   $: image = ''; // @TODO replace with image path
   $: pageImage = `${baseUrl}/og?title=${encodeURIComponent(
     name
-  )}&funds=${encodeURIComponent(funds.toString())}&tokenID=${encodeURIComponent(
+  )}&funds=${encodeURIComponent(funds.toString())}&tokenId=${encodeURIComponent(
     tokenID
   )}&image=${encodeURIComponent(image)}&source=${encodeURIComponent(source)}`;
 </script>
