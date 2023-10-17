@@ -1,4 +1,4 @@
-import { DIRECTUS_API_KEY, VERCEL_URL } from '$env/static/private';
+import { DIRECTUS_API_KEY, VERCEL_BRANCH_URL } from '$env/static/private';
 
 import { getEntity } from '@sni/clients/data.js';
 import { getLinkByAddress } from '@sni/clients/link.js';
@@ -7,8 +7,8 @@ import { error } from '@sveltejs/kit';
 
 import type { Asset, DeepData, VerifiedResponse } from './types'; //@TODO better way to standardize types
 
-console.log(`Vercel URL:${VERCEL_URL}`);
-const baseUrl = VERCEL_URL;
+console.log(`Vercel URL:${VERCEL_BRANCH_URL}`);
+const baseUrl = VERCEL_BRANCH_URL;
 
 const config = {
   headers: { Authorization: `Bearer ${DIRECTUS_API_KEY}` },
