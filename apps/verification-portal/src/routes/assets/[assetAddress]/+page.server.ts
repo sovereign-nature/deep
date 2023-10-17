@@ -14,7 +14,7 @@ import type {
   VerifiedResponse,
 } from './types'; //@TODO better way to standardize types
 
-console.log(env.VITE_VERCEL_URL);
+console.log(`Vercel URL:${env.VITE_VERCEL_URL}`);
 
 const config = {
   headers: { Authorization: `Bearer ${DIRECTUS_API_KEY}` },
