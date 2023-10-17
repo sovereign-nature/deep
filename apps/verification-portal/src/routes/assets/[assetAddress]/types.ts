@@ -12,15 +12,13 @@ export type VerifiedResponse = {
   funds_raised: number;
 };
 
-export type NftAsset = {
+export type Asset = {
   id: string;
-  sn: string;
-  collection: object;
-  meta: { name: string; image: string; description: string };
-};
-
-export type NftResponse = {
-  nftEntity?: NftAsset | null;
+  tokenId: number;
+  name: string;
+  description: string;
+  image: string;
+  collection: { id: string; name: string; description: string };
 };
 
 export type DeepData = {

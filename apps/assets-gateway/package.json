@@ -6,7 +6,7 @@
   "license": "GPL-3.0",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler publish",
+    "deploy": "wrangler deploy",
     "build": "wrangler publish --dry-run --outdir=dist"
   },
   "dependencies": {
