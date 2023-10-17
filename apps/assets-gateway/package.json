@@ -10,7 +10,7 @@
     "build": "wrangler publish --dry-run --outdir=dist"
   },
   "dependencies": {
-    "hono": "3.7.6",
+    "hono": "3.8.0",
     "@sni/clients": "workspace:*",
     "@sni/constants": "workspace:*"
   },
