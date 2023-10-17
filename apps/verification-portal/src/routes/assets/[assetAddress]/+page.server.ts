@@ -1,10 +1,5 @@
 import { DIRECTUS_API_KEY } from '$env/static/private';
 
-const APP_BASE = import.meta.env.VITE_VERCEL_URL;
-
-const absoluteURL = APP_BASE || '';
-//'https://deep-real-git-feature-rea-9-dynamic-soc-154de8-sovereign-nature.vercel.app';
-
 import { parseAddress } from '@sni/address-utils';
 import { getEntity } from '@sni/clients/data.js';
 import { getLinkByAddress } from '@sni/clients/link.js';
@@ -74,5 +69,5 @@ export async function load(event) {
     // throw error(500, 'Oops, something went wrong');
   }
 
-  return { assetAddress, nftData, verifiedStatus, deepData, absoluteURL };
+  return { assetAddress, nftData, verifiedStatus, deepData };
 }

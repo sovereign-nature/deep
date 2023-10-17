@@ -48,11 +48,16 @@
   $: tokenID = data.nftData.id || '';
   $: source = ''; // @TODO replace with source
   $: image = ''; // @TODO replace with image path
-  $: pageImage = `${data.absoluteURL}/og?title=${encodeURIComponent(
+  $: pageImage = `${getBaseUrl()}/og?title=${encodeURIComponent(
     name
   )}&funds=${encodeURIComponent(funds.toString())}&tokenID=${encodeURIComponent(
     tokenID
   )}&image=${encodeURIComponent(image)}&source=${encodeURIComponent(source)}`;
+
+  //@TODO preferably replace with  Vercel env var
+  function getBaseUrl() {
+    return typeof window !== 'undefined' ? window.location.origin : '';
+  }
 </script>
 
 {#key data}
