@@ -1,14 +1,12 @@
 <script lang="ts">
+  import { generateIPFSImageUrl, isIPFSUrl } from '$lib/utils';
   import { onMount } from 'svelte';
-  import { PARITY_IPFS_GATEWAY } from '@sni/constants';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import VerifiedIcon from '$lib/components/icons/VerifiedIcon.svelte';
 
-  export let ipfsImageUrl: string;
+  export let url: string;
   export let alt: string;
   export let verified = false;
-
-  let ipfsGateway = PARITY_IPFS_GATEWAY;
 
   let isMounted = false;
   let isError = false;
@@ -17,24 +15,9 @@
     Oops! The NFT image couldn't make it to the habitat.🐾 \n
     Please try again later.
   `;
-  let imageUrl: string;
-  $: imageUrl = getImageUrl(ipfsImageUrl);
 
-  // Function to parse the IPFS URL and get the CID
-  function getCID(url: string): string {
-    const parts = url.split('/');
-    return parts[parts.length - 1];
-  }
-
-  // Function to generate the actual IPFS image URL
-  function getImageUrl(ipfsUrl: string): string {
-    if (!ipfsUrl) {
-      isError = true;
-      return '';
-    }
-    const cid = getCID(ipfsUrl);
-    return `${ipfsGateway}/ipfs/${cid}`;
-  }
+  let imageUrl: string | null;
+  $: imageUrl = isIPFSUrl(url) ? generateIPFSImageUrl(url) : url;
 
   // Function to handle image loading errors
   function handleImageError() {

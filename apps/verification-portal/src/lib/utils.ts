@@ -37,3 +37,23 @@ export function getBaseUrl(page: Page) {
   const { protocol, host } = page.url;
   return `${protocol}//${host}`;
 }
+
+import { PARITY_IPFS_GATEWAY } from '@sni/constants';
+
+export function generateIPFSImageUrl(ipfsUrl: string): string | null {
+  const ipfsGateway = PARITY_IPFS_GATEWAY;
+  if (!ipfsUrl) {
+    return null;
+  }
+  const cid = getCID(ipfsUrl);
+  return `${ipfsGateway}/ipfs/${cid}`;
+}
+
+function getCID(url: string): string {
+  const parts = url.split('/');
+  return parts[parts.length - 1];
+}
+
+export function isIPFSUrl(url: string): boolean {
+  return url.startsWith('ipfs://');
+}

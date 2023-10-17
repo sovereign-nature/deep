@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isLongTitle } from '$lib/utils';
+  import { generateIPFSImageUrl, isIPFSUrl, isLongTitle } from '$lib/utils';
   import Logo from '$lib/components/icons/Logo.svelte';
   import FundsWidget from '$lib/components/dashboard/FundsWidget.svelte';
   export let title = '';
@@ -9,6 +9,7 @@
   export let img =
     'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/b72060a5-e585-48bc-97b1-f73358d7ec00/public';
   const resizeTitle = isLongTitle(title);
+  $: imageUrl = isIPFSUrl(img) ? generateIPFSImageUrl(img) : img;
 </script>
 
 <div
@@ -18,11 +19,10 @@
 >
   <img
     class="absolute h-899px w-899px rounded-full right-0 -top-132px left-490px"
-    src={`${img}`}
+    src={`${imageUrl}`}
     style="object-fit: cover;"
     alt="asset img"
   />
-
   <Logo className="absolute top-65px left-58px w-96px h-96px text-white" />
   <div class="flex flex-col absolute w-1/3 left-58px top-208px">
     <h1

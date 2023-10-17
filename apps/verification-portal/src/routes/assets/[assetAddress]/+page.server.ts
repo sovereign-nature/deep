@@ -8,6 +8,7 @@ import { error } from '@sveltejs/kit';
 import type { Asset, DeepData, VerifiedResponse } from './types'; //@TODO better way to standardize types
 
 console.log(`Vercel URL:${VERCEL_URL}`);
+const baseUrl = VERCEL_URL;
 
 const config = {
   headers: { Authorization: `Bearer ${DIRECTUS_API_KEY}` },
@@ -63,5 +64,11 @@ export async function load(event) {
     // throw error(500, 'Oops, something went wrong');
   }
 
-  return { assetAddress, nftData: assetData, verifiedStatus, deepData };
+  return {
+    assetAddress,
+    nftData: assetData,
+    verifiedStatus,
+    deepData,
+    baseUrl,
+  };
 }

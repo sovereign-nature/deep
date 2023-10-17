@@ -18,7 +18,6 @@ export const GET: RequestHandler = async ({ url }) => {
   const tokenId = decodeQueryParam(url.searchParams.get('tokenId'));
   const img = decodeQueryParam(url.searchParams.get('img'));
   const source = decodeQueryParam(url.searchParams.get('source'));
-
   return componentToImageResponse(
     OgCard,
     {

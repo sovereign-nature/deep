@@ -1,8 +1,7 @@
 <script setup lang="ts">
   import Property from '$lib/typography/Property.svelte';
   import Subheader from '$lib/typography/Subheader.svelte';
-  import { getBaseUrl } from '$lib/utils.js';
-  import IPFSimage from '$lib/components/IPFSimage.svelte';
+  import NFTImage from '$lib/components/NFTImage.svelte';
   import ImageSrcSet from '$lib/components/ImageSrcSet.svelte';
   import SocialShare from '$lib/components/SocialShare.svelte';
   import FundsDashboard from '$lib/components/dashboard/FundsDashboard.svelte';
@@ -15,8 +14,6 @@
   import placeholderCamp from '$lib/assets/images/placeholderCamp.jpg';
 
   $: currentPath = $page.url.toString();
-  const baseUrl = getBaseUrl($page); //@TODO preferably replace with  Vercel env var
-
   $: pageTitle = `REAL by SNI | ${data.nftData.name}`;
 
   const content = {
@@ -50,12 +47,12 @@
   $: funds = data.deepData?.link?.funds_raised || 0;
   $: tokenID = data.nftData.id || '';
   $: source = ''; // @TODO replace with source
-  $: image = ''; // @TODO replace with image path
-  $: pageImage = `${baseUrl}/og?title=${encodeURIComponent(
+  $: image = data.nftData.image;
+  $: pageImage = `${data.baseUrl}/og?title=${encodeURIComponent(
     name
   )}&funds=${encodeURIComponent(funds.toString())}&tokenId=${encodeURIComponent(
     tokenID
-  )}&image=${encodeURIComponent(image)}&source=${encodeURIComponent(source)}`;
+  )}&img=${encodeURIComponent(image)}&source=${encodeURIComponent(source)}`;
 </script>
 
 {#key data}
@@ -74,9 +71,9 @@
     class="col-span-1 lg:col-span-4 xl:col-start-1 xl:col-span-4 flex justify-center w-100 mb-8 lg:mb-4 relative z-10"
   >
     {#key data}
-      <IPFSimage
+      <NFTImage
         verified={data.verifiedStatus}
-        ipfsImageUrl={data.nftData.image}
+        url={data.nftData.image}
         alt={data.nftData.name}
       />
     {/key}
