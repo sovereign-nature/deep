@@ -1,10 +1,10 @@
 <script setup lang="ts">
   import Property from '$lib/typography/Property.svelte';
   import Subheader from '$lib/typography/Subheader.svelte';
-  import IPFSimage from '$lib/components/IPFSimage.svelte';
+  import NFTImage from '$lib/components/NFTImage.svelte';
   import ImageSrcSet from '$lib/components/ImageSrcSet.svelte';
   import SocialShare from '$lib/components/SocialShare.svelte';
-  import FundsDashboard from '$lib/components/FundsDashboard.svelte';
+  import FundsDashboard from '$lib/components/dashboard/FundsDashboard.svelte';
   import SimpleMap from '$lib/components/SimpleMap.svelte';
   import ShareCard from '$lib/components/ShareCard.svelte';
 
@@ -14,6 +14,7 @@
   import placeholderCamp from '$lib/assets/images/placeholderCamp.jpg';
 
   $: currentPath = $page.url.toString();
+  $: pageTitle = `REAL by SNI | ${data.nftData.name}`;
 
   const content = {
     intro:
@@ -41,13 +42,25 @@
   export let data;
 
   // Define specific share card data for a page
-  let pageTitle = `REAL by SNI | ${data.nftData.name}`;
-  let pageDescription = `${content.intro}`;
-  //@TODO custom page cards can eventually be generated for each page
-  // let pageImage = 'nft';
+  $: pageDescription = `${content.intro}`;
+  $: name = data.nftData.name || '';
+  $: funds = data.deepData?.link?.funds_raised || 0;
+  $: source = 'sub0'; // @TODO replace with dynamic source
+  $: image = data.nftData.image;
+  $: pageImage = `${data.baseUrl}/og?title=${encodeURIComponent(
+    name
+  )}&funds=${encodeURIComponent(funds.toString())}&img=${encodeURIComponent(
+    image
+  )}&source=${encodeURIComponent(source)}`;
 </script>
 
-<ShareCard bind:title={pageTitle} bind:description={pageDescription} />
+{#key data}
+  <ShareCard
+    title={pageTitle}
+    description={pageDescription}
+    image={pageImage}
+  />
+{/key}
 
 <!-- Header -->
 <div
@@ -57,9 +70,9 @@
     class="col-span-1 lg:col-span-4 xl:col-start-1 xl:col-span-4 flex justify-center w-100 mb-8 lg:mb-4 relative z-10"
   >
     {#key data}
-      <IPFSimage
+      <NFTImage
         verified={data.verifiedStatus}
-        ipfsImageUrl={data.nftData.image}
+        url={data.nftData.image}
         alt={data.nftData.name}
       />
     {/key}

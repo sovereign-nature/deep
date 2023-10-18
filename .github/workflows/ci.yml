@@ -12,6 +12,7 @@ jobs:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
       DIRECTUS_API_KEY: ${{ secrets.DIRECTUS_API_KEY }}
+      VERCEL_URL: 'empty'
       TURBO_REMOTE_ONLY: true
     steps:
       - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4

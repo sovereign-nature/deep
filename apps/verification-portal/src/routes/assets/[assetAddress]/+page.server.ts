@@ -1,10 +1,15 @@
-import { DIRECTUS_API_KEY } from '$env/static/private';
+import { DIRECTUS_API_KEY, VERCEL_URL } from '$env/static/private';
 
 import { getEntity } from '@sni/clients/data.js';
 import { getLinkByAddress } from '@sni/clients/link.js';
 import { DEEP_ASSETS_GATEWAY } from '@sni/constants';
 import { error } from '@sveltejs/kit';
+
 import type { Asset, DeepData, VerifiedResponse } from './types'; //@TODO better way to standardize types
+
+console.log(`Vercel URL:${VERCEL_URL}`);
+const protocol = 'https://';
+const baseUrl = VERCEL_URL ? `${protocol}${VERCEL_URL}` : '';
 
 const config = {
   headers: { Authorization: `Bearer ${DIRECTUS_API_KEY}` },
@@ -60,5 +65,11 @@ export async function load(event) {
     // throw error(500, 'Oops, something went wrong');
   }
 
-  return { assetAddress, nftData: assetData, verifiedStatus, deepData };
+  return {
+    assetAddress,
+    nftData: assetData,
+    verifiedStatus,
+    deepData,
+    baseUrl,
+  };
 }
