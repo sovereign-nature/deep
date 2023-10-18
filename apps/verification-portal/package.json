@@ -46,7 +46,7 @@
     "typescript": "5.2.2",
     "vite": "4.4.11",
     "vitest": "0.34.6",
-    "@sentry/sveltekit": "7.74.0"
+    "@sentry/sveltekit": "7.74.1"
   },
   "type": "module"
 }
