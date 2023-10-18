@@ -8,7 +8,16 @@
   export let source = '';
   export let img =
     'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/b72060a5-e585-48bc-97b1-f73358d7ec00/public';
-  const resizeTitle = isLongTitle(title);
+  const mediumTitle = isLongTitle(title);
+  const smallTitle = isLongTitle(title, 9, 3);
+
+  let fontSizeClass = 'text-72px'; // Default font size
+
+  if (smallTitle) {
+    fontSizeClass = 'text-50px'; // Small font size
+  } else if (mediumTitle) {
+    fontSizeClass = 'text-62px'; // Medium font size
+  }
   $: imageUrl = isIPFSUrl(img) ? generateIPFSImageUrl(img) : img;
 </script>
 
@@ -26,9 +35,7 @@
   <Logo className="absolute top-65px left-58px w-96px h-96px text-white" />
   <div class="flex flex-col absolute w-1/3 left-58px top-208px">
     <h1
-      class="font-serif text-white capitalize leading-snug max-h-192px max-w-352px overflow-hidden break-all {resizeTitle
-        ? 'text-62px'
-        : 'text-72px '}"
+      class="font-serif text-white capitalize leading-snug max-h-198px max-w-352px overflow-hidden break-all {fontSizeClass}"
     >
       {title}
     </h1>
