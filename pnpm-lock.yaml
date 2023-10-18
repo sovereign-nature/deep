@@ -60,8 +60,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/constants
       hono:
-        specifier: 3.8.0
-        version: 3.8.0
+        specifier: 3.8.1
+        version: 3.8.1
     devDependencies:
       '@cloudflare/workers-types':
         specifier: 4.20231016.0
@@ -8400,8 +8400,8 @@ packages:
     dev: false
     optional: true
 
-  /hono@3.8.0:
-    resolution: {integrity: sha512-lTkcFzm9abmsYiaX82r707kG7Qo9y/nSuO75VWaI6xRK46yxylMUG10Njy6SS5CcLRAg+0mw8NvPaMPbgV17Gg==}
+  /hono@3.8.1:
+    resolution: {integrity: sha512-im5K3bEyb6iMQP5Tfei5vfoHLnIKrsAqT/GNJJ4lxS75MvNaecUbPX0Xgi0ibTIos31lA5oYevMDGNNXhHJ9wA==}
     engines: {node: '>=16.0.0'}
     dev: false
 
