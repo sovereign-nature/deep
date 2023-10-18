@@ -14,7 +14,7 @@ export function shortenMoneyValue(value: string): string {
 export function isLongTitle(
   title: string,
   maxLength: number = 9,
-  maxWords: number = 3
+  maxWords: number = 2
 ): boolean {
   const words = title.split(' ');
 

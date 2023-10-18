@@ -12,9 +12,9 @@
     const sizeClasses = {
       sm: 'h-28 w-28 text-4xl',
       lg: 'h-36 w-36 text-4xl',
-      xl: 'h-231px w-231px text-66px',
+      xl: 'h-231px w-231px',
     };
-    widgetClass = `${baseClass} ${className} ${sizeClasses[size]}`;
+    widgetClass = `${baseClass} ${sizeClasses[size]} ${className}`;
   }
 </script>
 

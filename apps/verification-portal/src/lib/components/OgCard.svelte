@@ -9,6 +9,7 @@
   export let img =
     'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/b72060a5-e585-48bc-97b1-f73358d7ec00/public';
   const resizeTitle = isLongTitle(title);
+  const resizeFunds = isLongTitle(funds, 4);
   $: imageUrl = isIPFSUrl(img) ? generateIPFSImageUrl(img) : img;
 </script>
 
@@ -26,34 +27,34 @@
   <Logo className="absolute top-65px left-58px w-96px h-96px text-white" />
   <div class="flex flex-col absolute w-1/3 left-58px top-208px">
     <h1
-      class="font-serif text-white capitalize leading-snug max-h-190px max-w-350px overflow-hidden {resizeTitle
+      class="font-serif text-white capitalize leading-snug max-h-192px max-w-352px overflow-hidden break-all {resizeTitle
         ? 'text-62px'
-        : 'text-70px '}"
+        : 'text-72px '}"
     >
       {title}
     </h1>
     {#if source}
       <div
         class="flex items-start text-white text-21px mb-2"
-        style="font-family: Roboto; font-weight:500"
+        style="font-family: Roboto; font-weight:400"
       >
-        <span>Source:</span>
+        <strong>Source:</strong>
         <span class="text-[#00C67E] ml-2">{source}</span>
       </div>
     {/if}
     {#if tokenId}
       <div
         class="flex items-start text-white text-21px"
-        style="font-family: Roboto; font-weight:500;"
+        style="font-family: Roboto; font-weight:400;"
       >
-        <span>TokenID:</span>
+        <strong>Token ID:</strong>
         <span class="text-[#00C67E] ml-2">{tokenId}</span>
       </div>
     {/if}
   </div>
   <span
-    class="absolute left-58px top-520px text-[#00C67E] text-21px"
-    style="font-family: Roboto; font-weight:500"
+    class="absolute left-58px top-510px text-[#00C67E] text-21px"
+    style="font-family: Roboto; font-weight:400"
     >Total funds generated to date:</span
   >
 
@@ -61,7 +62,9 @@
     <FundsWidget
       size="xl"
       {funds}
-      className="bg-[#002727] text-[#08FFA6] left-375px top-353px absolute"
+      className="bg-[#002727] text-[#08FFA6] left-375px top-353px absolute {resizeFunds
+        ? 'text-59px'
+        : 'text-77px'}"
     ></FundsWidget>
   {/if}
 </div>

@@ -9,7 +9,7 @@ import type { Asset, DeepData, VerifiedResponse } from './types'; //@TODO better
 
 console.log(`Vercel URL:${VERCEL_URL}`);
 const protocol = 'https://';
-const baseUrl = `${protocol}${VERCEL_URL}`;
+const baseUrl = VERCEL_URL ? `${protocol}${VERCEL_URL}` : '';
 
 const config = {
   headers: { Authorization: `Bearer ${DIRECTUS_API_KEY}` },
