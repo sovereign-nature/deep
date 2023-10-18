@@ -45,14 +45,13 @@
   $: pageDescription = `${content.intro}`;
   $: name = data.nftData.name || '';
   $: funds = data.deepData?.link?.funds_raised || 0;
-  $: tokenID = data.nftData.id || '';
-  $: source = ''; // @TODO replace with source
+  $: source = 'sub0'; // @TODO replace with dynamic source
   $: image = data.nftData.image;
   $: pageImage = `${data.baseUrl}/og?title=${encodeURIComponent(
     name
-  )}&funds=${encodeURIComponent(funds.toString())}&tokenId=${encodeURIComponent(
-    tokenID
-  )}&img=${encodeURIComponent(image)}&source=${encodeURIComponent(source)}`;
+  )}&funds=${encodeURIComponent(funds.toString())}&img=${encodeURIComponent(
+    image
+  )}&source=${encodeURIComponent(source)}`;
 </script>
 
 {#key data}

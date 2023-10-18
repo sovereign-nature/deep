@@ -58,13 +58,12 @@
       </div>
     {/if}
   </div>
-  <span
-    class="absolute left-58px top-510px text-[#00C67E] text-21px"
-    style="font-family: Roboto; font-weight:400"
-    >Total funds generated to date:</span
-  >
-
   {#if funds}
+    <span
+      class="absolute left-58px top-510px text-[#00C67E] text-21px"
+      style="font-family: Roboto; font-weight:400"
+      >Total funds generated to date:</span
+    >
     <FundsWidget
       size="xl"
       {funds}
