@@ -9,7 +9,6 @@
   export let img =
     'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/b72060a5-e585-48bc-97b1-f73358d7ec00/public';
   const resizeTitle = isLongTitle(title);
-  const resizeFunds = isLongTitle(funds, 4);
   $: imageUrl = isIPFSUrl(img) ? generateIPFSImageUrl(img) : img;
 </script>
 
@@ -62,9 +61,7 @@
     <FundsWidget
       size="xl"
       {funds}
-      className="bg-[#002727] text-[#08FFA6] left-375px top-353px absolute {resizeFunds
-        ? 'text-59px'
-        : 'text-77px'}"
+      className="bg-[#002727] text-[#08FFA6] left-375px top-353px absolute"
     ></FundsWidget>
   {/if}
 </div>

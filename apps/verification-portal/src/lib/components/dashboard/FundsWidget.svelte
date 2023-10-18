@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { shortenMoneyValue } from '$lib/utils';
+  import { shortenMoneyValue, isLongTitle } from '$lib/utils';
 
   export let funds: string;
   export let className: string;
@@ -7,19 +7,21 @@
 
   let baseClass = 'funds-widget';
   let widgetClass: string;
+  $: fundsShortened = shortenMoneyValue(funds);
+  $: resizeFunds = isLongTitle(fundsShortened, 4);
 
   $: {
     const sizeClasses = {
       sm: 'h-28 w-28 text-4xl',
       lg: 'h-36 w-36 text-4xl',
-      xl: 'h-231px w-231px',
+      xl: `h-231px w-231px ${resizeFunds ? 'text-59px' : 'text-77px'}`,
     };
     widgetClass = `${baseClass} ${sizeClasses[size]} ${className}`;
   }
 </script>
 
 <span class={widgetClass}>
-  {shortenMoneyValue(funds)}$
+  {fundsShortened}$
 </span>
 
 <style lang="postcss">
