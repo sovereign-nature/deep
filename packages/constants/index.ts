@@ -23,6 +23,7 @@ export const PINATA_API_URL = 'https://api.pinata.cloud/pinning/pinJSONToIPFS';
 export const SNI_API_URL = 'https://directus.sovereignnature.com';
 
 export const SNI_IPFS_GATEWAY = 'https://sni.mypinata.cloud';
+export const SNI_IPFS_CACHE = 'https://image.sovereign.workers.dev';
 export const PARITY_IPFS_GATEWAY =
   'https://bronze-sophisticated-mongoose-117.mypinata.cloud';
 export const CLOUDFLARE_IPFS_GATEWAY = 'https://cloudflare-ipfs.com';

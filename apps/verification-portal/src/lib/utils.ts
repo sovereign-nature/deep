@@ -38,10 +38,10 @@ export function getBaseUrl(page: Page) {
   return `${protocol}//${host}`;
 }
 
-import { PARITY_IPFS_GATEWAY } from '@sni/constants';
+import { SNI_IPFS_CACHE } from '@sni/constants';
 
 export function generateIPFSImageUrl(ipfsUrl: string): string | null {
-  const ipfsGateway = PARITY_IPFS_GATEWAY;
+  const ipfsGateway = SNI_IPFS_CACHE;
   if (!ipfsUrl) {
     return null;
   }
