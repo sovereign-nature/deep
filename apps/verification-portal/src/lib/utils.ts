@@ -57,3 +57,15 @@ function getCID(url: string): string {
 export function isIPFSUrl(url: string): boolean {
   return url.startsWith('ipfs://');
 }
+
+import { SNI_API_URL } from '@sni/constants';
+
+const API_BASE_URL = SNI_API_URL;
+const imageRequestConfig = '?format=auto&withoutEnlargement&quality=80';
+
+export function generateAssetURL(
+  assetID: string,
+  width: number = 1000
+): string {
+  return `${API_BASE_URL}/assets/${assetID}${imageRequestConfig}&width=${width}`;
+}

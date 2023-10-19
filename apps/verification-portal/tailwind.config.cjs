@@ -37,6 +37,7 @@ const config = {
           DEFAULT: '#002727',
           800: '#002727', //dark bg
           900: '#001512',
+          950: '#050D0C',
         },
         primary: {
           DEFAULT: '#08FFA6',
