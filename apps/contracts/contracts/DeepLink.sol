@@ -8,7 +8,7 @@ import "./abstracts/Linkable.sol";
 
 /// @custom:security-contact vadim@sovereignnature.com
 contract DeepLink is ERC721, ERC721Burnable, Ownable, Linkable {
-    constructor() ERC721("DeepLink", "DLK") {}
+    constructor(address initialOwner) ERC721("DeepLink", "DLK") Ownable(initialOwner) {}
 
     function _baseURI() internal pure override returns (string memory) {
         return "https://link.sovereignnature.com/api/";

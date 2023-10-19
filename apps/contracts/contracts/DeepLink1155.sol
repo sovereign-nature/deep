@@ -8,7 +8,7 @@ import "./abstracts/Linkable.sol";
 
 /// @custom:security-contact vadim@sovereignnature.com
 contract DeepLink1155 is ERC1155, Ownable, ERC1155Burnable, Linkable {
-    constructor() ERC1155("https://link.sovereignnature.com/api/") {}
+    constructor(address initialOwner) ERC1155("https://link.sovereignnature.com/api/") Ownable(initialOwner) {}
 
     function setURI(string memory newuri) public onlyOwner {
         _setURI(newuri);
