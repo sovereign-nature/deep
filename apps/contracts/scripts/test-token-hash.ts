@@ -4,7 +4,8 @@
 import { ethers } from 'hardhat';
 
 //Asset DID spec https://github.com/KILTprotocol/spec-asset-did
-const assetAddress = 'did:asset:deep:polkadot.asset-hub:u-8:262';
+const assetAddress =
+  'did:asset:deep:hotel-hideaway.asset:african-elephant-backpack';
 // const normalized = ethers.utils.nameprep(input);
 // const hashed = ethers.utils.namehash(normalized);
 
