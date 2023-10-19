@@ -28,7 +28,7 @@
     "@sveltejs/kit": "1.25.2",
     "@types/leaflet": "1.9.7",
     "@vercel/analytics": "1.1.1",
-    "@vercel/og": "0.5.18",
+    "@vercel/og": "0.5.19",
     "autoprefixer": "10.4.16",
     "flowbite": "1.8.1",
     "flowbite-svelte": "0.44.18",
