@@ -70,8 +70,8 @@ importers:
         specifier: 10.1.0
         version: 10.1.0
       wrangler:
-        specifier: 3.13.2
-        version: 3.13.2
+        specifier: 3.14.0
+        version: 3.14.0
 
   apps/contracts:
     devDependencies:
@@ -146,8 +146,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0
       wrangler:
-        specifier: 3.13.2
-        version: 3.13.2
+        specifier: 3.14.0
+        version: 3.14.0
 
   apps/indexer:
     devDependencies:
@@ -3506,7 +3506,7 @@ packages:
       lodash.clonedeep: 4.5.0
       semver: 6.3.1
       table: 6.8.1
-      undici: 5.25.2
+      undici: 5.26.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -10037,7 +10037,7 @@ packages:
       glob-to-regexp: 0.4.1
       source-map-support: 0.5.21
       stoppable: 1.1.0
-      undici: 5.25.2
+      undici: 5.26.4
       workerd: 1.20231016.0
       ws: 8.13.0
       youch: 3.2.3
@@ -13918,8 +13918,8 @@ packages:
     resolution: {integrity: sha512-ILEIE97kDZvF9Wb9f6h5aXK4swSlKGUcOEGiIYb2OOu/IrDU9iwj0fD//SsA6E5ibwJxpEvhullJY4Sl4GcpAw==}
     dev: true
 
-  /wrangler@3.13.2:
-    resolution: {integrity: sha512-Z/ZrAL2mJc7E4ialOV9c3wGry0qagp9DfPl5XVd67vtlFPeTSR+1pemtZ5+qI2BXi59kP3OGHBKrrIyG0d9csg==}
+  /wrangler@3.14.0:
+    resolution: {integrity: sha512-4vzw11yG1/KXpYKbumvRJ61Iyhm/yKXb/ayOw/2xiIRdKdpsfN9/796d2l525+CDaGwZWswpLENe6ZMS0p/Ghg==}
     engines: {node: '>=16.13.0'}
     hasBin: true
     dependencies:
