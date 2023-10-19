@@ -183,7 +183,7 @@ importers:
         version: 2.11.8
       '@sentry/sveltekit':
         specifier: 7.74.1
-        version: 7.74.1(@sveltejs/kit@1.25.2)(svelte@4.0.5)
+        version: 7.74.1(@sveltejs/kit@1.26.0)(svelte@4.0.5)
       '@sni/address-utils':
         specifier: workspace:*
         version: link:../../packages/address-utils
@@ -195,13 +195,13 @@ importers:
         version: link:../../packages/constants
       '@sveltejs/adapter-auto':
         specifier: 2.1.0
-        version: 2.1.0(@sveltejs/kit@1.25.2)
+        version: 2.1.0(@sveltejs/kit@1.26.0)
       '@sveltejs/adapter-vercel':
         specifier: ^3.0.3
-        version: 3.0.3(@sveltejs/kit@1.25.2)
+        version: 3.0.3(@sveltejs/kit@1.26.0)
       '@sveltejs/kit':
-        specifier: 1.25.2
-        version: 1.25.2(svelte@4.0.5)(vite@4.5.0)
+        specifier: 1.26.0
+        version: 1.26.0(svelte@4.0.5)(vite@4.5.0)
       '@types/leaflet':
         specifier: 1.9.7
         version: 1.9.7
@@ -1880,6 +1880,11 @@ packages:
       '@ethersproject/logger': 5.7.0
       '@ethersproject/properties': 5.7.0
       '@ethersproject/strings': 5.7.0
+    dev: true
+
+  /@fastify/busboy@2.0.0:
+    resolution: {integrity: sha512-JUFJad5lv7jxj926GPgymrWQxxjPYuJNiNjNMzqT+HiuP6Vl3dk5xzG+8sTX96np0ZAluvaMzPsjhHZ5rNuNQQ==}
+    engines: {node: '>=14'}
     dev: true
 
   /@float-capital/float-subgraph-uncrashable@0.0.0-internal-testing.5:
@@ -4084,7 +4089,7 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@sentry/sveltekit@7.74.1(@sveltejs/kit@1.25.2)(svelte@4.0.5):
+  /@sentry/sveltekit@7.74.1(@sveltejs/kit@1.26.0)(svelte@4.0.5):
     resolution: {integrity: sha512-CkXh8U5M5k02DmWCvzPNVFsDwUwK2xzTjE3R/y1OHk0AWInJUx0uhU/zhlj+GqENMSf6+jPXNOSYj0Z4Df84fQ==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -4098,7 +4103,7 @@ packages:
       '@sentry/types': 7.74.1
       '@sentry/utils': 7.74.1
       '@sentry/vite-plugin': 0.6.1
-      '@sveltejs/kit': 1.25.2(svelte@4.0.5)(vite@4.5.0)
+      '@sveltejs/kit': 1.26.0(svelte@4.0.5)(vite@4.5.0)
       magicast: 0.2.8
       sorcery: 0.11.0
     transitivePeerDependencies:
@@ -4199,21 +4204,21 @@ packages:
       antlr4ts: 0.5.0-alpha.4
     dev: true
 
-  /@sveltejs/adapter-auto@2.1.0(@sveltejs/kit@1.25.2):
+  /@sveltejs/adapter-auto@2.1.0(@sveltejs/kit@1.26.0):
     resolution: {integrity: sha512-o2pZCfATFtA/Gw/BB0Xm7k4EYaekXxaPGER3xGSY3FvzFJGTlJlZjBseaXwYSM94lZ0HniOjTokN3cWaLX6fow==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sveltejs/kit': 1.25.2(svelte@4.0.5)(vite@4.5.0)
+      '@sveltejs/kit': 1.26.0(svelte@4.0.5)(vite@4.5.0)
       import-meta-resolve: 3.0.0
     dev: true
 
-  /@sveltejs/adapter-vercel@3.0.3(@sveltejs/kit@1.25.2):
+  /@sveltejs/adapter-vercel@3.0.3(@sveltejs/kit@1.26.0):
     resolution: {integrity: sha512-0FQMjR6klW4627ewdclSr0lUe/DqiiyOaRTfgb5cXgNbVMsZMOA2fQ77TYQnJdvMfSEWe6y8uznV48XqKh9+vA==}
     peerDependencies:
       '@sveltejs/kit': ^1.5.0
     dependencies:
-      '@sveltejs/kit': 1.25.2(svelte@4.0.5)(vite@4.5.0)
+      '@sveltejs/kit': 1.26.0(svelte@4.0.5)(vite@4.5.0)
       '@vercel/nft': 0.23.1
       esbuild: 0.18.17
     transitivePeerDependencies:
@@ -4221,8 +4226,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit@1.25.2(svelte@4.0.5)(vite@4.5.0):
-    resolution: {integrity: sha512-USuuSpdAPFDiLi58N2Pwd/TG9bcUSPAlzE5iaAXaLyCTWa3l36HDKH6nV5NqBybwfeux1ZwgtIeITLZJDJ6HDg==}
+  /@sveltejs/kit@1.26.0(svelte@4.0.5)(vite@4.5.0):
+    resolution: {integrity: sha512-CV/AlTziC05yrz7UjVqEd0pH6+2dnrbmcnHGr2d3jXtmOgzNnlDkXtX8g3BfJ6nntsPD+0jtS2PzhvRHblRz4A==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -4237,13 +4242,13 @@ packages:
       esm-env: 1.0.0
       kleur: 4.1.5
       magic-string: 0.30.2
-      mime: 3.0.0
+      mrmime: 1.0.1
       sade: 1.8.1
       set-cookie-parser: 2.6.0
       sirv: 2.0.3
       svelte: 4.0.5
       tiny-glob: 0.2.9
-      undici: 5.25.2
+      undici: 5.26.4
       vite: 4.5.0(@types/node@18.17.1)
     transitivePeerDependencies:
       - supports-color
@@ -13397,6 +13402,13 @@ packages:
     engines: {node: '>=14.0'}
     dependencies:
       busboy: 1.6.0
+    dev: true
+
+  /undici@5.26.4:
+    resolution: {integrity: sha512-OG+QOf0fTLtazL9P9X7yqWxQ+Z0395Wk6DSkyTxtaq3wQEjIroVe7Y4asCX/vcCxYpNGMnwz8F0qbRYUoaQVMw==}
+    engines: {node: '>=14.0'}
+    dependencies:
+      '@fastify/busboy': 2.0.0
     dev: true
 
   /unicode-trie@2.0.0:
