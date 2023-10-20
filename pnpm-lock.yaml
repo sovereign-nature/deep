@@ -209,8 +209,8 @@ importers:
         specifier: 1.1.1
         version: 1.1.1
       '@vercel/og':
-        specifier: 0.5.19
-        version: 0.5.19
+        specifier: 0.5.20
+        version: 0.5.20
       autoprefixer:
         specifier: 10.4.16
         version: 10.4.16(postcss@8.4.31)
@@ -3506,7 +3506,7 @@ packages:
       lodash.clonedeep: 4.5.0
       semver: 6.3.1
       table: 6.8.1
-      undici: 5.25.2
+      undici: 5.26.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3878,8 +3878,8 @@ packages:
     resolution: {integrity: sha512-zGzFsgtZ44mgL4Xef2gOy1hrRVdrs9mcxCOOKZrIPsmbZW14yTkaF591GXxpQvjXiHtgZ/iA9qLyWH6oSReIxQ==}
     dev: true
 
-  /@resvg/resvg-wasm@2.5.0:
-    resolution: {integrity: sha512-jM0zG54ykoGFiMMVvRxzHFVXhxCdQTGp+okLCWGIXt8bN2GLlsWpjvyU0vZJWkTsd+qLmy2dmYcPU02zC0IVMQ==}
+  /@resvg/resvg-wasm@2.6.0:
+    resolution: {integrity: sha512-iDkBM6Ivex8nULtBu8cX670/lfsGxq8U1cuqE+qS9xFpPQP1enPdVm/33Kq3+B+bAldA+AHNZnCgpmlHo/fZrQ==}
     engines: {node: '>= 10'}
     dev: true
 
@@ -4680,11 +4680,11 @@ packages:
       - supports-color
     dev: true
 
-  /@vercel/og@0.5.19:
-    resolution: {integrity: sha512-U/Oi+5/eCZ1YPZxSObSoiyDqqZnNJIjCd6qs9BlCHscrwP2OTfbs88hkT5qMT3HanK1lDFquONjlnrE696fgxA==}
+  /@vercel/og@0.5.20:
+    resolution: {integrity: sha512-zi+ZXSx/peXA+1lq7s/5Vzmm/TTfTSf/5P1qNYnh42+7X+pZmahWoXt0i7SWiq3WagfsNUNA4hUDapDiHRoXqA==}
     engines: {node: '>=16'}
     dependencies:
-      '@resvg/resvg-wasm': 2.5.0
+      '@resvg/resvg-wasm': 2.6.0
       satori: 0.10.9
       yoga-wasm-web: 0.3.3
     dev: true
