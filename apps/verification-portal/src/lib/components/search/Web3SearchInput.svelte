@@ -1,7 +1,7 @@
 <script>
   import { enhance } from '$app/forms';
-  import SearchIcon from './icons/SearchIcon.svelte';
-  import ArrowRight from './icons/ArrowRight.svelte';
+  import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
+  import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
   import { Input, ButtonGroup, Button } from 'flowbite-svelte';
   export let network = 'sub0';
   export let placeholder = 'Enter the token ID (1-1466)';

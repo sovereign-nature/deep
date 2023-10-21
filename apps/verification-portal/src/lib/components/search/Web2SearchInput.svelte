@@ -1,17 +1,23 @@
-<script>
-  import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
-  import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
-  import { createEventDispatcher } from 'svelte';
+<script lang="ts">
+  import { getContext } from 'svelte';
+  import type { Writable } from 'svelte/store';
   import { Input, ButtonGroup, Button } from 'flowbite-svelte';
-  const dispatch = createEventDispatcher();
-  let inputValue = '';
-  export let network = 'sub0';
-  export let placeholder = 'Enter the token ID (1-1466)';
-  export let goIcon = false;
+  import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
+  import { updateQueryParams } from '$lib/utils';
+
+  export let placeholder = 'Search)';
   export let inputmode = 'search';
+
+  // Retrieve user store from context
+  const search: Writable<string> = getContext('search');
+
+  function updateParams() {
+    updateQueryParams('search', $search);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch('search', inputValue);
+    //@TODO add focus
   }
 </script>
 
@@ -21,8 +27,8 @@
   >
     <Input
       id="default-search"
-      bind:value={inputValue}
-      on:input={handleSubmit}
+      bind:value={$search}
+      on:input={updateParams}
       class="block border-none w-full border p-4 pl-10 text-base font-aeonik text-gray-200 focus:border-white focus:ring-white dark:placeholder:text-primary-400 dark:bg-deep-green-950 rounded-lg sm:rounded-none h-18 sm:h-20 ms-auto"
       {placeholder}
       type="search"
@@ -36,11 +42,7 @@
       class="bg-primary-400 sm:w-28 border-none !p-2.5 rounded-lg sm:rounded-s-none h-18 sm:h-20 ms-auto"
       aria-label="search"
     >
-      {#if goIcon}
-        <ArrowRight className="h-4 w-4 sm:h-8 sm:w-8" />
-      {:else}
-        <SearchIcon className="h-4 w-4 sm:h-8 sm:w-8" />
-      {/if}
+      <SearchIcon className="h-4 w-4 sm:h-8 sm:w-8" />
     </Button>
   </ButtonGroup>
 </form>

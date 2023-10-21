@@ -1,27 +1,36 @@
 <script lang="ts">
+  import { updateQueryParams } from '$lib/utils';
   import { Tabs, TabItem } from 'flowbite-svelte';
-  import Search from '../components/Search.svelte';
-  import SearchContainer from './SearchContainer.svelte';
   import { onMount } from 'svelte';
+  import { page } from '$app/stores';
+  import Web2SearchContainer from '$lib/containers/Web2SearchContainer.svelte';
+  import Web2SearchInput from '$lib/components/search/Web2SearchInput.svelte';
+  import Web3SearchInput from '$lib/components/search/Web3SearchInput.svelte';
+  import SearchResults from '$lib/components/search/SearchResults.svelte';
+
+  const url = $page.url;
 
   let activeTab = 'hh';
 
+  // tab classes
+  let classDefault =
+    'font-aeonik text-gray-400 py-2 px-4 rounded-xl w-40 transition';
+  let classInactive =
+    'bg-gray-50 bg-opacity-10 hover:bg-opacity-60 hover:text-black';
+  let classActive = 'bg-gray-50 ';
+
   function handleTabClick(tab: string) {
     activeTab = tab;
-    updateQueryParam('q', tab);
-  }
-
-  function updateQueryParam(param: string, value: string) {
-    const queryParams = new URLSearchParams(window.location.search);
-    queryParams.set(param, value);
-    const newUrl = `${window.location.pathname}?${queryParams.toString()}`;
-    window.history.replaceState({}, '', newUrl);
+    if (activeTab === 'hh') {
+      updateQueryParams('q', tab, true);
+    } else {
+      updateQueryParams('q', tab);
+    }
   }
 
   onMount(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('q')) {
-      const qValue = urlParams.get('q');
+    const qValue = url.searchParams.get('q');
+    if (qValue) {
       activeTab = qValue === 'sub0' ? 'sub0' : 'hh';
     }
   });
@@ -31,22 +40,25 @@
   <TabItem
     title="Hotel Hideway"
     open={activeTab === 'hh'}
-    defaultClass="font-aeonik text-gray-400 py-2 px-4 rounded-xl w-40 transition"
-    inactiveClasses="bg-gray-50 bg-opacity-10 hover:bg-opacity-60 hover:text-black"
-    activeClasses="bg-gray-50 "
+    class="pb-3"
+    defaultClass={classDefault}
+    inactiveClasses={classInactive}
+    activeClasses={classActive}
     on:click={() => handleTabClick('hh')}
   >
-    <SearchContainer></SearchContainer>
+    <Web2SearchContainer campaign="hotel_hideaway">
+      <Web2SearchInput placeholder="Type the asset name" />
+      <SearchResults />
+    </Web2SearchContainer>
   </TabItem>
   <TabItem
     title="sub0"
     open={activeTab === 'sub0'}
-    class="pb-3"
-    defaultClass="font-aeonik text-gray-400 py-2 px-4 rounded-xl w-40 transition"
-    inactiveClasses="bg-gray-50 bg-opacity-10 hover:bg-opacity-60 hover:text-black"
-    activeClasses="bg-gray-50 "
+    defaultClass={classDefault}
+    inactiveClasses={classInactive}
+    activeClasses={classActive}
     on:click={() => handleTabClick('sub0')}
   >
-    <Search network="sub0" goIcon inputmode="numeric" />
+    <Web3SearchInput network="sub0" goIcon inputmode="numeric" />
   </TabItem>
 </Tabs>

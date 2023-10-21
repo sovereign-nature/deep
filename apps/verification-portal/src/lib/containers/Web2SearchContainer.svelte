@@ -1,0 +1,90 @@
+<script lang="ts">
+  import axios from 'axios';
+  import type { AxiosResponse } from 'axios';
+  import Fuse from 'fuse.js';
+  import { writable } from 'svelte/store';
+  import { setContext, onMount } from 'svelte';
+  import { page } from '$app/stores';
+  import { SNI_API_URL } from '@sni/constants';
+  export const campaign = 'hotel_hideaway';
+  type Web2DataState = {
+    data: {}[];
+    loaded: boolean;
+    error: boolean;
+  };
+
+  const url = $page.url;
+  const searchParams = url.searchParams.get('search') || '';
+
+  const fuseOptions = {
+    keys: ['id', 'name', 'collection'],
+  };
+  const fuseSearch = new Fuse([], fuseOptions);
+
+  const web2DataState: Web2DataState = {
+    data: [],
+    loaded: false,
+    error: false,
+  };
+
+  // Create a store
+  const web2Data = writable(web2DataState);
+  const results = writable([]);
+  const search = writable(searchParams);
+
+  // Make them available to child components
+  setContext('web2data', web2Data);
+  setContext('search', search);
+  setContext('results', results);
+
+  //whenever the search is updated, run necessary function
+  $: $search, handleSearch();
+
+  // handle initial data load & initize search via Fuse
+  function handleDataLoaded(data: [], error = false) {
+    if (!error) {
+      web2Data.set({ data, loaded: true, error: false });
+      console.log(data);
+      fuseSearch.setCollection($web2Data.data);
+      updateResults();
+    } else {
+      web2Data.set({ data, loaded: true, error: true });
+    }
+  }
+
+  function handleSearch() {
+    if (!$web2Data.loaded) return;
+    updateResults();
+  }
+  function updateResults() {
+    let getFuseResults: [] = fuseSearch.search($search);
+    results.update(() => getFuseResults);
+  }
+
+  onMount(async () => {
+    try {
+      const { data: response }: AxiosResponse = await axios.get(
+        `${SNI_API_URL}/items/${campaign}?search`
+      );
+      handleDataLoaded(response.data);
+    } catch (error) {
+      handleDataLoaded([], true);
+      //@TODO add Sentry
+      if (axios.isAxiosError(error)) {
+        // Axios error (e.g., network error, timeout)
+        if (error.code === 'ECONNABORTED') {
+          // Timeout error
+          console.error('Request timed out');
+        } else {
+          // Other Axios errors
+          console.error('Axios error:', error.message);
+        }
+      } else {
+        // Non-Axios error (e.g., server error)
+        console.error('Error:', error.message);
+      }
+    }
+  });
+</script>
+
+<slot />

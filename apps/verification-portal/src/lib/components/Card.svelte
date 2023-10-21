@@ -6,7 +6,8 @@
     image,
     source = 'Hotel Hideaway',
     id,
-    prefix = 'did:asset:deep:hotel-hideaway.asset:';
+    collection,
+    prefix;
   export let isList = false; // Set to false for horizontal layout
   const imgUrl = generateAssetURL(image, 90);
   const did = `${prefix}${id}`;
@@ -25,7 +26,7 @@
     hover:bg-opacity-60
     flex items-center
     p-4
-    rounded-lg text-white"
+    rounded-lg text-white overflow-hidden"
     class:card-square={!isList}
     class:card-horizontal={isList}
   >
@@ -40,7 +41,10 @@
             <span class="font-bold whitespace-nowrap">Source:</span>
             {source}
           </div>
-          <div class="text-primary-200">{did}</div>
+          <div class="mr-2 whitespace-nowrap">
+            <span class="font-bold whitespace-nowrap">Collection:</span>
+            {collection}
+          </div>
         </div>
       </div>
     {/if}
@@ -52,14 +56,13 @@
         <div class="text-xl font-aeonic">{name}</div>
         <div class="flex flex-col lg:flex-row text-sm lg:gap-2 opacity-50">
           <div class="whitespace-nowrap">
-            <span class="">Source:</span>
+            <span class="font-bold whitespace-nowrap">Source:</span>
             {source}
           </div>
           <span class="hidden lg:block">|</span>
-          <div
-            class="text-primary-200 whitespace-nowrap truncate w-64 md:w-full"
-          >
-            {did}
+          <div class="mr-2 whitespace-nowrap">
+            <span class="font-bold whitespace-nowrap">Collection:</span>
+            {collection}
           </div>
         </div>
       </div>
