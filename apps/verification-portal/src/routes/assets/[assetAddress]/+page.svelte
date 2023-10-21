@@ -14,7 +14,7 @@
   import placeholderCamp from '$lib/assets/images/placeholderCamp.jpg';
 
   $: currentPath = $page.url.toString();
-  $: pageTitle = `REAL by SNI | ${data.nftData.name}`;
+  $: pageTitle = `REAL by SNI | ${nftData.name}`;
 
   const content = {
     intro:
@@ -40,21 +40,22 @@
   };
 
   export let data;
+  const { nftData, verifiedStatus, deepData, baseUrl, assetAddress } = data;
 
   // Define specific share card data for a page
   $: pageDescription = `${content.intro}`;
-  $: name = data.nftData.name || '';
-  $: funds = data.deepData?.link?.funds_raised || 0;
+  $: name = nftData.name || '';
+  $: funds = deepData?.link?.funds_raised || 0;
   $: source = 'sub0'; // @TODO replace with dynamic source
-  $: image = data.nftData.image;
-  $: pageImage = `${data.baseUrl}/og?title=${encodeURIComponent(
+  $: image = nftData.image;
+  $: pageImage = `${baseUrl}/og?title=${encodeURIComponent(
     name
   )}&funds=${encodeURIComponent(funds.toString())}&img=${encodeURIComponent(
     image
   )}&source=${encodeURIComponent(source)}`;
 </script>
 
-{#key data}
+{#key nftData}
   <ShareCard
     title={pageTitle}
     description={pageDescription}
@@ -69,11 +70,11 @@
   <div
     class="col-span-1 lg:col-span-4 xl:col-start-1 xl:col-span-4 flex justify-center w-100 mb-8 lg:mb-4 relative z-10"
   >
-    {#key data}
+    {#key nftData}
       <NFTImage
-        verified={data.verifiedStatus}
-        url={data.nftData.image}
-        alt={data.nftData.name}
+        verified={verifiedStatus}
+        url={nftData.image}
+        alt={nftData.name}
       />
     {/key}
   </div>
@@ -82,20 +83,20 @@
       <h1
         class="dark:text-white text-2xl md:text-3xl lg:text-4xl leading-tight mb-6"
       >
-        {#if data.verifiedStatus}
+        {#if verifiedStatus}
           <span class="text-primary-300">Verified:</span>
         {/if}
         <span class="font-aeonik">
-          {data.nftData.name}
+          {nftData.name}
         </span>
       </h1>
       <div class="mb-6">
-        {#if data.verifiedStatus}
+        {#if verifiedStatus}
           <p>{content.intro}</p>
         {/if}
 
-        {#if data.nftData.description}
-          <span class="text-sm block pt-2"> {data.nftData.description}</span>
+        {#if nftData.description}
+          <span class="text-sm block pt-2"> {nftData.description}</span>
         {/if}
       </div>
     </div>
@@ -105,10 +106,10 @@
           <p>sub0</p>
         </Property>
         <Property name="Token ID">
-          <p>{data.nftData.tokenId}</p>
+          <p>{nftData.tokenId}</p>
         </Property>
         <Property name="Asset Address">
-          <p>{data.assetAddress}</p>
+          <p>{assetAddress}</p>
         </Property>
       </div>
 
@@ -122,7 +123,7 @@
 
 <!-- /header -->
 
-{#if data.verifiedStatus}
+{#if verifiedStatus}
   <div
     class="container-grid text-white md:mx-4 xl:mx-0 grid grid-cols-1 gap-4 md:gap-8 xl:grid-cols-3"
   >
@@ -135,8 +136,8 @@
         >{content.page.funds.cardTitle}</Subheader
       >
       <FundsDashboard
-        totalFunds={data.deepData?.steward?.funds_raised.toString()}
-        assetFunds={data.deepData?.link?.funds_raised.toString()}
+        totalFunds={deepData.steward?.funds_raised.toString()}
+        assetFunds={deepData.link?.funds_raised.toString()}
       ></FundsDashboard>
     </div>
 
@@ -148,18 +149,18 @@
         <Subheader className="!text-base"
           >{content.page.ecEntity.cardTitle}</Subheader
         >
-        <h3 class="text-5xl">{data.deepData?.id}</h3>
+        <h3 class="text-5xl">{deepData?.id}</h3>
       </div>
       <div class="w-full">
-        {#key data.deepData}
-          {#if data.deepData?.images?.length > 0}
-            {#each data.deepData?.images as image, index}
+        {#key deepData}
+          {#if deepData.images?.length > 0}
+            {#each deepData?.images as image, index}
               <ImageSrcSet
                 classNameImage={index > 0
                   ? 'border-t-2 dark:border-deep-green '
                   : ''}
                 assetID={image.directus_files_id}
-                altText={data.deepData?.id}
+                altText={deepData?.id}
               />
             {/each}
           {:else}
@@ -178,8 +179,8 @@
       class="Animal-Data-Map bg-deep-green dark:bg-primary-500 text-white md:rounded-xl xl:rounded-t-none overflow-hidden relative z-20 border-t-2 md:border-t-none xl:border-t-2 dark:border-deep-green"
     >
       <div class="w-full aspect-video">
-        {#key data.deepData}
-          <SimpleMap geoJSONData={data.deepData?.location} />
+        {#key deepData.location}
+          <SimpleMap geoJSONData={deepData.location} />
         {/key}
       </div>
     </div>
@@ -193,47 +194,48 @@
       > -->
       <!-- TODO: Restore info after text fix -->
       <Subheader>{content.page?.ecEntity?.title}</Subheader>
-      <h3 class="text-2xl mb-3">{data.deepData?.name}</h3>
+      <h3 class="text-2xl mb-3">{deepData?.name}</h3>
 
-      <p class="card-description">{data.deepData?.description}</p>
+      <p class="card-description">{deepData.description}</p>
     </div>
-
-    <!-- Steward Data -->
-    <div
-      class="Steward-Data bg-primary-100 dark:bg-deep-green text-black dark:text-white md:rounded-xl overflow-hidden"
-    >
-      <div class="px-4 md:px-8 pt-8 pb-8">
-        <Subheader
-          info={`Visit ${data.deepData?.steward?.name}`}
-          url={content.page?.ecSteward?.url}
-          >{content.page?.ecSteward?.title}</Subheader
-        >
-        <h3 class="text-2xl mb-3">{data.deepData?.steward?.name}</h3>
-        <p class="card-description">
-          {data.deepData?.steward?.description}
-        </p>
-      </div>
-      <div class="w-full aspect-video">
-        <SimpleMap geoJSONData={data.deepData?.steward?.area} />
-      </div>
-      <div class="w-full flex flex-col">
-        {#if data.deepData?.steward?.images?.length > 0}
-          {#each data.deepData?.steward?.images as image}
-            <ImageSrcSet
-              classNameImage="border-t-2 dark:border-deep-green"
-              assetID={image.directus_files_id}
-              altText={data.deepData?.steward?.name}
+    {#key deepData.steward}
+      <!-- Steward Data -->
+      <div
+        class="Steward-Data bg-primary-100 dark:bg-deep-green text-black dark:text-white md:rounded-xl overflow-hidden"
+      >
+        <div class="px-4 md:px-8 pt-8 pb-8">
+          <Subheader
+            info={`Visit ${deepData.steward?.name}`}
+            url={content.page?.ecSteward?.url}
+            >{content.page?.ecSteward?.title}</Subheader
+          >
+          <h3 class="text-2xl mb-3">{deepData.steward?.name}</h3>
+          <p class="card-description">
+            {deepData.steward?.description}
+          </p>
+        </div>
+        <div class="w-full aspect-video">
+          <SimpleMap geoJSONData={deepData?.steward?.area} />
+        </div>
+        <div class="w-full flex flex-col">
+          {#if deepData.steward?.images?.length > 0}
+            {#each deepData.steward?.images as image}
+              <ImageSrcSet
+                classNameImage="border-t-2 dark:border-deep-green"
+                assetID={image.directus_files_id}
+                altText={deepData?.steward?.name}
+              />
+            {/each}
+          {:else}
+            <img
+              style="width:inherit"
+              src={placeholderCamp}
+              alt="Not Available"
             />
-          {/each}
-        {:else}
-          <img
-            style="width:inherit"
-            src={placeholderCamp}
-            alt="Not Available"
-          />
-        {/if}
+          {/if}
+        </div>
       </div>
-    </div>
+    {/key}
   </div>
 {/if}
 

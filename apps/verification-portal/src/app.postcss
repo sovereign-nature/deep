@@ -9,15 +9,16 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-serif;
+  @apply font-serif font-normal;
 }
 
+/* //@TODO Move to cdn, get aeonik med varioation */
 @font-face {
   font-family: 'Clearface Serial';
   src: local('Clearface Serial'), local('Clearface-Serial'),
     local('clearface serial'), local('clearface-serial'),
-    url('/fonts/Clearface-Serial-Med.woff');
-  font-weight: medium;
+    url('/fonts/Clearface-Serial-Reg.woff');
+  font-weight: normal;
   font-display: swap;
 }
 @font-face {
@@ -26,6 +27,14 @@ h6 {
     local('clearface serial'), local('clearface-serial'),
     url('/fonts/Clearface-Serial-Bol.woff');
   font-weight: bold;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Clearface Serial';
+  src: local('Clearface Serial'), local('Clearface-Serial'),
+    local('clearface serial'), local('clearface-serial'),
+    url('/fonts/Clearface-Serial-Med.woff');
+  font-weight: medium;
   font-display: swap;
 }
 @font-face {

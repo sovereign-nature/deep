@@ -7,7 +7,6 @@ import { error } from '@sveltejs/kit';
 
 import type { Asset, DeepData, VerifiedResponse } from './types'; //@TODO better way to standardize types
 
-console.log(`Vercel URL:${VERCEL_URL}`);
 const protocol = 'https://';
 const baseUrl = VERCEL_URL ? `${protocol}${VERCEL_URL}` : '';
 
@@ -27,7 +26,6 @@ export async function load(event) {
     const fetchedAsset: Asset = await (
       await fetch(`${DEEP_ASSETS_GATEWAY}/${assetAddress}`)
     ).json();
-
     // Check if NFT data exists
     if (!fetchedAsset) {
       throw new Error();
@@ -56,7 +54,6 @@ export async function load(event) {
         verifiedData.entity_id,
         config
       );
-
       deepData = entityResponse.data;
       deepData.link = verifiedData;
     }
