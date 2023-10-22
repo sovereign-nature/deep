@@ -14,10 +14,10 @@
 
   // tab classes
   let classDefault =
-    'font-aeonik text-gray-400 py-2 px-4 rounded-xl w-40 transition';
+    'font-serif text-sm sm:text-2xl text-gray-400 bg-black py-4 px-6 rounded transition mb-2 mt-0';
   let classInactive =
-    'bg-gray-50 bg-opacity-10 hover:bg-opacity-60 hover:text-black';
-  let classActive = 'bg-gray-50 ';
+    'bg-black bg-opacity-20 hover:bg-opacity-40 hover:text-primary-300';
+  let classActive = 'text-primary-200 bg-opacity-60 transition';
 
   function handleTabClick(tab: string) {
     activeTab = tab;
@@ -36,11 +36,15 @@
   });
 </script>
 
-<Tabs style="pill" contentClass="bg-transparent" divider={false}>
+<Tabs
+  style="pill"
+  contentClass="bg-black p-6 md:p-12 bg-opacity-60 rounded-lg"
+  divider={false}
+>
   <TabItem
     title="Hotel Hideway"
     open={activeTab === 'hh'}
-    class="pb-3"
+    class="sm:pb-3"
     defaultClass={classDefault}
     inactiveClasses={classInactive}
     activeClasses={classActive}
@@ -52,8 +56,9 @@
     </Web2SearchContainer>
   </TabItem>
   <TabItem
-    title="sub0"
+    title="sub0 Biodiversity"
     open={activeTab === 'sub0'}
+    class="!ml-0 sm:!ml-3 sm:pb-3"
     defaultClass={classDefault}
     inactiveClasses={classInactive}
     activeClasses={classActive}

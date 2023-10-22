@@ -9,7 +9,7 @@
     collection,
     prefix;
   export let isList = false; // Set to false for horizontal layout
-  const imgUrl = generateAssetURL(image, 90);
+  const imgUrl = generateAssetURL(image, 120);
   const did = `${prefix}${id}`;
 </script>
 
@@ -21,11 +21,9 @@
     transition duration-300
     bg-[#2C2C2C]
     bg-opacity-40
-    opacity-60
     hover:opacity-100
     hover:bg-opacity-60
     flex items-center
-    p-4
     rounded-lg text-white overflow-hidden"
     class:card-square={!isList}
     class:card-horizontal={isList}
@@ -36,7 +34,7 @@
       </div>
       <div class="flex-1 flex flex-col">
         <div class="text-xl font-semibold mb-2">{name}</div>
-        <div class="flex mb-2 text-sm">
+        <div class="flex mb-2 text-xs">
           <div class="mr-2 whitespace-nowrap">
             <span class="font-bold whitespace-nowrap">Source:</span>
             {source}
@@ -50,11 +48,11 @@
     {/if}
     {#if isList}
       <div class="mr-4 flex-shrink-0">
-        <img class="w-[90px] h-[90px] rounded-full" src={imgUrl} alt="Avatar" />
+        <img class="w-[120px] h-[120px]" src={imgUrl} alt="Avatar" />
       </div>
-      <div class="flex-1 flex flex-col">
-        <div class="text-xl font-aeonic">{name}</div>
-        <div class="flex flex-col lg:flex-row text-sm lg:gap-2 opacity-50">
+      <div class="flex-1 flex flex-col my-4">
+        <div class="text-xl font-serif">{name}</div>
+        <div class="flex flex-col lg:flex-row text-xs lg:gap-2 opacity-50">
           <div class="whitespace-nowrap">
             <span class="font-bold whitespace-nowrap">Source:</span>
             {source}
@@ -66,7 +64,7 @@
           </div>
         </div>
       </div>
-      <div class="flex-1 flex justify-end items-center">
+      <div class="flex-1 flex justify-end items-center p-4">
         <span class="me-6 text-primary-300 show-on-hover hidden"> Select </span>
         <div
           class="asset-card-arrow transition-bg flex justify-center items-center rounded-full h-12 w-12 bg-black text-primary-300"

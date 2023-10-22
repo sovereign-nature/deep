@@ -7,13 +7,13 @@
 <ShareCard />
 
 <LayoutLanding>
-  <div class="text-white mb-20 md:text-left text-center">
-    <h1 class="  text-3xl sm:text-4xl lg:text-[45px] font-regular">
-      Welcome to our <span class="font-aeonik font-bold text-primary-300"
+  <div class="text-white mb-6 sm:mb-12 md:mb-20 md:text-left text-center">
+    <h1 class="  text-2xl sm:text-3xl lg:text-[45px] font-regular lg:mb-4">
+      Welcome to our <span class="font-aeonik font-bold text-primary-200"
         >REAL</span
       > Verification Portal.
     </h1>
-    <span class="font-serif text-[22px]"
+    <span class="font-serif text-sm md:text-[22px]"
       >Learn how your NFT is helping real-world conservation efforts around the
       globe.
     </span>

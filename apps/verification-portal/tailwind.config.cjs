@@ -15,6 +15,7 @@ const config = {
       serif: ['Clearface Serial', 'serif'],
     },
     fontSize: {
+      xs: '0.6875rem', // 11px
       sm: '0.8125rem', // 13px
       base: '1.125rem', // 18px
       xl: '1.25rem', // 20px
@@ -35,6 +36,7 @@ const config = {
         },
         'deep-green': {
           DEFAULT: '#002727',
+          700: '#071E1B',
           800: '#002727', //dark bg
           900: '#001512',
           950: '#050D0C',

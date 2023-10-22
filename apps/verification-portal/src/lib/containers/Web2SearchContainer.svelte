@@ -44,7 +44,6 @@
   function handleDataLoaded(data: [], error = false) {
     if (!error) {
       web2Data.set({ data, loaded: true, error: false });
-      console.log(data);
       fuseSearch.setCollection($web2Data.data);
       updateResults();
     } else {

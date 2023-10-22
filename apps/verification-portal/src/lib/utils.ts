@@ -88,6 +88,7 @@ export function updateQueryParams(
     goto(`?${queryParams.toString()}`, {
       replaceState: true,
       keepFocus: true,
+      noScroll: true,
     });
   }
 }

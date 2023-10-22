@@ -23,10 +23,11 @@
     rel="stylesheet"
   />
 </svelte:head>
+
 {#if isLoading}
   <!-- <div class="absolute z-60 top-0 left-0 w-full h-1 bg-primary-300 block"></div> -->
   <div
-    class="fixed top-0 left-0 h-1 bg-primary-300 w-0 animate-loading-bar"
+    class="fixed top-0 left-0 sm:h-1 h-3 bg-primary-300 w-0 animate-loading-bar z-50"
   ></div>
 {/if}
 

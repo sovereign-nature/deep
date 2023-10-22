@@ -10,39 +10,68 @@
 
   // Retrieve user store from context
   const search: Writable<string> = getContext('search');
+  const results: Writable<string> = getContext('results');
 
   function updateParams() {
     updateQueryParams('search', $search);
   }
+  // Replace 'your-element-id' with the actual ID of the element you want to focus on
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    //@TODO add focus
+  function focusElement() {
+    let elementId = 'search-results';
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+      });
+    } else {
+      console.log(`Element with ID '${elementId}' not found.`);
+    }
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    focusElement();
+  }
+  function onEnter(e) {
+    if (e.key === 'Enter') {
+      e.target.blur();
+    }
   }
 </script>
 
 <form on:submit={handleSubmit}>
-  <ButtonGroup
-    divClass="flex flex-col sm:flex-row sm:inline-flex h-20 w-full justify-items-stretch gap-y-4"
+  <div
+    class="flex flex-col sm:flex-row items-center gap-3 lg:px-16 pt-4 sm:pt-6"
   >
-    <Input
-      id="default-search"
-      bind:value={$search}
-      on:input={updateParams}
-      class="block border-none w-full border p-4 pl-10 text-base font-aeonik text-gray-200 focus:border-white focus:ring-white dark:placeholder:text-primary-400 dark:bg-deep-green-950 rounded-lg sm:rounded-none h-18 sm:h-20 ms-auto"
-      {placeholder}
-      type="search"
-      {inputmode}
-      required
-    />
-
-    <Button
-      type="submit"
-      color="none"
-      class="bg-primary-400 sm:w-28 border-none !p-2.5 rounded-lg sm:rounded-s-none h-18 sm:h-20 ms-auto"
-      aria-label="search"
+    <span
+      class="text-white whitespace-nowrap mr-auto text-sm sm:text-base w-full sm:w-auto"
+      >Search for your asset <span class="float-right sm:hidden"
+        >{$results.length} results</span
+      >
+    </span>
+    <ButtonGroup
+      divClass="flex flex-col sm:flex-row sm:inline-flex  w-full justify-items-stretch gap-y-4  "
     >
-      <SearchIcon className="h-4 w-4 sm:h-8 sm:w-8" />
-    </Button>
-  </ButtonGroup>
+      <Input
+        id="web2-search"
+        bind:value={$search}
+        on:input={updateParams}
+        on:keyup={onEnter}
+        class="block border-none w-full border p-4 pl-10 text-base font-aeonik text-gray-200 focus:border-white focus:ring-white dark:placeholder:text-primary-400 dark:bg-deep-green-700 rounded-sm !rounded-l-sm sm:rounded-none  ms-auto"
+        {placeholder}
+        type="search"
+        required
+      />
+
+      <Button
+        type="submit"
+        color="none"
+        class="bg-primary-300 sm:w-28 border-none !p-2.5 rounded-lg sm:rounded-s-none  ms-auto sm:!rounded-r-sm"
+        aria-label="search"
+      >
+        <SearchIcon className="h-4 w-4 sm:h-8 sm:w-8" />
+      </Button>
+    </ButtonGroup>
+  </div>
 </form>
