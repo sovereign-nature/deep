@@ -32,6 +32,7 @@
       },
       ecEntity: {
         cardTitle: 'Collecting funds for:',
+        propsTitle: 'Animal stats:',
         title: 'Ecological Entity',
         description:
           'Ecological Entity: an identified piece of ecology the Ecological Steward (ES) focuses on, that being a specific species population (predators of the Maasai Mara) or an ecosystem (the Upemba National Park)',
@@ -40,7 +41,14 @@
   };
 
   export let data;
-  const { nftData, verifiedStatus, deepData, baseUrl, assetAddress } = data;
+  const {
+    nftData,
+    verifiedStatus,
+    deepData,
+    baseUrl,
+    assetAddress,
+    properties,
+  } = data;
 
   // Define specific share card data for a page
   $: pageDescription = `${content.intro}`;
@@ -56,6 +64,7 @@
 
   // styling
   const cardHeaderClass = 'px-4 pt-6 sm:px-8 sm:pt-8 md:px-11 md:pt-11';
+  console.log(data.deepData);
 </script>
 
 {#key nftData}
@@ -190,13 +199,38 @@
 
     <!-- Animal Data Continued -->
     <div
-      class="Animal-Data-Continued bg-transparent text-black dark:text-white"
+      class="Animal-Data-Continued bg-transparent text-black dark:text-white mb-5"
     >
-      <div class={`${cardHeaderClass} mb-8`}>
+      <div class={`${cardHeaderClass} mb-5`}>
         <Subheader>{content.page?.ecEntity?.title}</Subheader>
         <h3 class="text-2xl mb-3">{deepData?.name}</h3>
         <p class="card-description">{deepData.description}</p>
       </div>
+      {#key properties}
+        {#if Object.keys(properties).length > 0}
+          <div
+            class="p-11 bg-gray-300 dark:bg-black rounded-lg mx-6 dark:text-gray-300"
+          >
+            <Subheader>{content.page.ecEntity.propsTitle}</Subheader>
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2"
+            >
+              {#each Object.keys(properties) as property}
+                {#if properties[property] > 0}
+                  <div
+                    class="font-serif font-light text-[22px] capitalize col-span-1"
+                  >
+                    {property}:
+                    <span class="text-primary-400 dark:text-primary-300"
+                      >{properties[property]}</span
+                    >
+                  </div>
+                {/if}
+              {/each}
+            </div>
+          </div>
+        {/if}
+      {/key}
     </div>
     {#key deepData.steward}
       <!-- Steward Data -->

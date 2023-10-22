@@ -62,11 +62,31 @@ export async function load(event) {
     // throw error(500, 'Oops, something went wrong');
   }
 
+  //@TODO maybe should be done API side?
+  // Regular expression to match properties ending with 'traces_recorded'
+  const regex = /(.+)_traces_recorded$/;
+
+  const extractedProperties = {};
+
+  if (deepData) {
+    // Iterate through object properties
+    for (const key in deepData) {
+      // Check if the property matches the regular expression
+      const match = key.match(regex);
+      if (match) {
+        const name = match[1].replace(/_/g, ' '); // Remove underscores and replace with space
+        const value = deepData[key];
+        extractedProperties[name] = value;
+      }
+    }
+  }
+
   return {
     assetAddress,
     nftData: assetData,
     verifiedStatus,
     deepData,
     baseUrl,
+    properties: extractedProperties,
   };
 }
