@@ -6,7 +6,7 @@
   import { setContext, onMount } from 'svelte';
   import { page } from '$app/stores';
   import { SNI_API_URL } from '@sni/constants';
-  export const campaign = 'hotel_hideaway';
+  export let campaign = 'hotel_hideaway';
   type Web2DataState = {
     data: {}[];
     loaded: boolean;
@@ -63,7 +63,7 @@
   onMount(async () => {
     try {
       const { data: response }: AxiosResponse = await axios.get(
-        `${SNI_API_URL}/items/${campaign}?search`
+        `${SNI_API_URL}/items/${campaign}`
       );
       handleDataLoaded(response.data);
     } catch (error) {

@@ -66,4 +66,19 @@
   >
     <Web3SearchInput network="sub0" goIcon inputmode="numeric" />
   </TabItem>
+
+  <!-- <TabItem
+    title="Other Campaign Example"
+    open={activeTab === 'mink'}
+    class="sm:pb-3"
+    defaultClass={classDefault}
+    inactiveClasses={classInactive}
+    activeClasses={classActive}
+    on:click={() => handleTabClick('mink')}
+  >
+    <Web2SearchContainer campaign="aimm_minke_whales">
+      <Web2SearchInput placeholder="Type the asset name" />
+      <SearchResults />
+    </Web2SearchContainer>
+  </TabItem> -->
 </Tabs>
