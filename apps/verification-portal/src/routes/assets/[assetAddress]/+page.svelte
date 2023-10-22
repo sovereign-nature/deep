@@ -53,6 +53,9 @@
   )}&funds=${encodeURIComponent(funds.toString())}&img=${encodeURIComponent(
     image
   )}&source=${encodeURIComponent(source)}`;
+
+  // styling
+  const cardHeaderClass = 'px-4 pt-6 sm:px-8 sm:pt-8 md:px-11 md:pt-11';
 </script>
 
 {#key nftData}
@@ -125,11 +128,11 @@
 
 {#if verifiedStatus}
   <div
-    class="container-grid text-white md:mx-4 xl:mx-0 grid grid-cols-1 gap-4 md:gap-8 xl:grid-cols-3"
+    class="container-grid text-white md:mx-4 xl:mx-0 grid grid-cols-1 xl:grid-cols-3"
   >
     <!-- Fund Data -->
     <div
-      class="Fund-Data mb-8 px-4 md:px-8 xl:dark:bg-primary-100 xl:bg-primary-500 xl:rounded-xl xl:py-8"
+      class="Fund-Data mb-5 px-4 sm:px-8 md:px-11 xl:pt-11 xl:dark:bg-primary-100 xl:bg-primary-500 xl:rounded-lg xl:py-8"
     >
       <Subheader
         className="!text-base text-black dark:text-white xl:text-white xl:dark:!text-black md:pt-8 xl:pt-0 flex justify-start lg:justify-center xl:justify-start "
@@ -143,9 +146,9 @@
 
     <!-- Animal Data -->
     <div
-      class="Animal-Data md:mb-4 xl:mb-0 min-h-100 bg-deep-green dark:bg-primary-500 md:rounded-xl xl:rounded-b-none text-white overflow-hidden"
+      class="Animal-Data md:mb-4 xl:mb-0 min-h-100 bg-deep-green dark:bg-primary-500 sm:rounded-lg xl:rounded-b-none text-white overflow-hidden"
     >
-      <div class="px-4 md:px-8 pt-8 mb-8">
+      <div class={`${cardHeaderClass} mb-8`}>
         <Subheader className="!text-base"
           >{content.page.ecEntity.cardTitle}</Subheader
         >
@@ -176,7 +179,7 @@
 
     <!-- Animal Data Map -->
     <div
-      class="Animal-Data-Map bg-deep-green dark:bg-primary-500 text-white md:rounded-xl xl:rounded-t-none overflow-hidden relative z-20 border-t-2 md:border-t-none xl:border-t-2 dark:border-deep-green"
+      class="Animal-Data-Map bg-deep-green dark:bg-primary-500 text-white sm:rounded-lg xl:rounded-t-none overflow-hidden relative z-20 border-t-2 md:border-t-none xl:border-t-2 dark:border-deep-green"
     >
       <div class="w-full aspect-video">
         {#key deepData.location}
@@ -187,23 +190,20 @@
 
     <!-- Animal Data Continued -->
     <div
-      class="Animal-Data-Continued bg-transparent px-4 md:px-8 py-16 text-black dark:text-white"
+      class="Animal-Data-Continued bg-transparent text-black dark:text-white"
     >
-      <!-- <Subheader info={content.page?.ecEntity?.description}
-        >{content.page?.ecEntity?.title}</Subheader
-      > -->
-      <!-- TODO: Restore info after text fix -->
-      <Subheader>{content.page?.ecEntity?.title}</Subheader>
-      <h3 class="text-2xl mb-3">{deepData?.name}</h3>
-
-      <p class="card-description">{deepData.description}</p>
+      <div class={`${cardHeaderClass} mb-8`}>
+        <Subheader>{content.page?.ecEntity?.title}</Subheader>
+        <h3 class="text-2xl mb-3">{deepData?.name}</h3>
+        <p class="card-description">{deepData.description}</p>
+      </div>
     </div>
     {#key deepData.steward}
       <!-- Steward Data -->
       <div
-        class="Steward-Data bg-primary-100 dark:bg-deep-green text-black dark:text-white md:rounded-xl overflow-hidden"
+        class="Steward-Data bg-primary-100 dark:bg-deep-green text-black dark:text-white sm:rounded-lg overflow-hidden"
       >
-        <div class="px-4 md:px-8 pt-8 pb-8">
+        <div class={`${cardHeaderClass} mb-8`}>
           <Subheader
             info={`Visit ${deepData.steward?.name}`}
             url={content.page?.ecSteward?.url}
@@ -246,7 +246,7 @@
   .container-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0em 2em;
+    gap: 0em 1.25em;
     grid-auto-flow: row;
   }
   .container-grid {
