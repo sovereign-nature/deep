@@ -10,7 +10,6 @@ export const formSearch = {
     const isMatch = regex.test(search);
 
     const assetAddress = isMatch ? search : `${prefix}${search}`;
-    // const network = form.get('network');
 
     throw redirect(307, `/assets/${assetAddress}`);
   },

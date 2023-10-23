@@ -1,6 +1,5 @@
 <script lang="ts">
   import { shortenMoneyValue, isLongTitle } from '$lib/utils';
-
   export let funds: string;
   export let className: string;
   export let size: 'sm' | 'lg' | 'xl' = 'sm';
@@ -21,7 +20,11 @@
 </script>
 
 <span class={widgetClass}>
-  {fundsShortened}$
+  {#if fundsShortened !== '0'}
+    {fundsShortened}$
+  {:else}
+    TBA
+  {/if}
 </span>
 
 <style lang="postcss">
