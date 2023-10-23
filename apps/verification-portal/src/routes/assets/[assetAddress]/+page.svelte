@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import Property from '$lib/typography/Property.svelte';
+  import Info from '$lib/typography/Info.svelte';
   import Subheader from '$lib/typography/Subheader.svelte';
   import NFTImage from '$lib/components/NFTImage.svelte';
   import ImageSrcSet from '$lib/components/ImageSrcSet.svelte';
@@ -14,11 +15,27 @@
   import placeholderCamp from '$lib/assets/images/placeholderCamp.jpg';
 
   $: currentPath = $page.url.toString();
-  $: pageTitle = `REAL by SNI | ${data.nftData.name}`;
+  $: pageTitle = `REAL by SNI | ${nftData.name}`;
+
+  export let data;
+  const {
+    nftData,
+    verifiedStatus,
+    deepData,
+    baseUrl,
+    assetAddress,
+    addressDetails,
+    properties,
+  } = data;
+
+  const isSub0 = addressDetails?.chain?.reference == 'polkadot';
+
+  const introText = isSub0
+    ? 'Welcome to the Polkadot sub0 biodiversity collection. Your contribution makes a REAL difference. Connect with the marine biodiversity served by the organisation AIMM Portugal.'
+    : `Welcome to the SNI x Upemba National Park`;
 
   const content = {
-    intro:
-      'Welcome to the Polkadot sub0 biodiversity collection. Your contribution makes a REAL difference. Connect with the marine biodiversity served by the organisation AIMM Portugal.',
+    intro: introText,
     shareText: 'Share your asset',
     page: {
       funds: {
@@ -26,12 +43,12 @@
       },
       ecSteward: {
         title: 'Ecological Steward',
-        url: 'https://www.aimmportugal.org/',
         description:
           'Ecological Steward (ES): an identified conservation/restoration group, being an organisation (e.g. KWT) or a community, group of stakeholders who has also the mandate to manage the funds raised',
       },
       ecEntity: {
         cardTitle: 'Collecting funds for:',
+        propsTitle: 'Animal stats:',
         title: 'Ecological Entity',
         description:
           'Ecological Entity: an identified piece of ecology the Ecological Steward (ES) focuses on, that being a specific species population (predators of the Maasai Mara) or an ecosystem (the Upemba National Park)',
@@ -39,22 +56,23 @@
     },
   };
 
-  export let data;
-
   // Define specific share card data for a page
   $: pageDescription = `${content.intro}`;
-  $: name = data.nftData.name || '';
-  $: funds = data.deepData?.link?.funds_raised || 0;
-  $: source = 'sub0'; // @TODO replace with dynamic source
-  $: image = data.nftData.image;
-  $: pageImage = `${data.baseUrl}/og?title=${encodeURIComponent(
+  $: name = nftData.name || '';
+  $: funds = deepData?.link?.funds_raised || 0;
+  $: source = isSub0 ? 'sub0' : 'Hotel Hideaway'; // @TODO replace with dynamic source
+  $: image = nftData.image;
+  $: pageImage = `${baseUrl}/og?title=${encodeURIComponent(
     name
   )}&funds=${encodeURIComponent(funds.toString())}&img=${encodeURIComponent(
     image
   )}&source=${encodeURIComponent(source)}`;
+
+  // styling
+  const cardHeaderClass = 'px-4 pt-6 sm:px-8 sm:pt-8 md:px-11 md:pt-11';
 </script>
 
-{#key data}
+{#key nftData}
   <ShareCard
     title={pageTitle}
     description={pageDescription}
@@ -69,11 +87,11 @@
   <div
     class="col-span-1 lg:col-span-4 xl:col-start-1 xl:col-span-4 flex justify-center w-100 mb-8 lg:mb-4 relative z-10"
   >
-    {#key data}
+    {#key nftData}
       <NFTImage
-        verified={data.verifiedStatus}
-        url={data.nftData.image}
-        alt={data.nftData.name}
+        verified={verifiedStatus}
+        url={nftData.image}
+        alt={nftData.name}
       />
     {/key}
   </div>
@@ -82,34 +100,42 @@
       <h1
         class="dark:text-white text-2xl md:text-3xl lg:text-4xl leading-tight mb-6"
       >
-        {#if data.verifiedStatus}
+        {#if verifiedStatus}
           <span class="text-primary-300">Verified:</span>
         {/if}
         <span class="font-aeonik">
-          {data.nftData.name}
+          {nftData.name}
         </span>
       </h1>
       <div class="mb-6">
-        {#if data.verifiedStatus}
+        {#if verifiedStatus}
           <p>{content.intro}</p>
         {/if}
 
-        {#if data.nftData.description}
-          <span class="text-sm block pt-2"> {data.nftData.description}</span>
+        {#if nftData.description}
+          <span class="text-sm block pt-2"> {nftData.description}</span>
         {/if}
       </div>
     </div>
     <div class="grid lg:grid-cols-6 gap-x-1 gap-y-5">
       <div class="col-span-4">
         <Property name="Source">
-          <p>sub0</p>
+          <p>{source}</p>
         </Property>
-        <Property name="Token ID">
-          <p>{data.nftData.tokenId}</p>
-        </Property>
-        <Property name="Asset Address">
-          <p>{data.assetAddress}</p>
-        </Property>
+        {#if nftData.tokenId}
+          <Property name="Token ID">
+            <p>{nftData.tokenId}</p>
+          </Property>
+        {/if}
+        {#if isSub0}
+          <Property name="Asset Address">
+            <p>{assetAddress}</p>
+          </Property>
+        {:else}
+          <Property name="Asset Address">
+            <Info>{assetAddress}</Info>
+          </Property>
+        {/if}
       </div>
 
       <div class="col-span-2">
@@ -122,44 +148,44 @@
 
 <!-- /header -->
 
-{#if data.verifiedStatus}
+{#if verifiedStatus}
   <div
-    class="container-grid text-white md:mx-4 xl:mx-0 grid grid-cols-1 gap-4 md:gap-8 xl:grid-cols-3"
+    class="container-grid text-white md:mx-4 xl:mx-0 grid grid-cols-1 xl:grid-cols-3"
   >
     <!-- Fund Data -->
     <div
-      class="Fund-Data mb-8 px-4 md:px-8 xl:dark:bg-primary-100 xl:bg-primary-500 xl:rounded-xl xl:py-8"
+      class="Fund-Data mb-5 px-4 sm:px-8 md:px-11 xl:pt-11 xl:dark:bg-primary-100 xl:bg-primary-500 xl:rounded-lg xl:py-8"
     >
       <Subheader
-        className="!text-base text-black dark:text-white xl:text-white xl:dark:!text-black md:pt-8 xl:pt-0 flex justify-start lg:justify-center xl:justify-start "
+        className="!text-base font-normal text-black dark:text-white xl:text-white xl:dark:!text-black md:pt-8 xl:pt-0 flex justify-start lg:justify-center xl:justify-start "
         >{content.page.funds.cardTitle}</Subheader
       >
       <FundsDashboard
-        totalFunds={data.deepData?.steward?.funds_raised.toString()}
-        assetFunds={data.deepData?.link?.funds_raised.toString()}
+        totalFunds={deepData.steward?.funds_raised.toString()}
+        assetFunds={deepData.link?.funds_raised.toString()}
       ></FundsDashboard>
     </div>
 
     <!-- Animal Data -->
     <div
-      class="Animal-Data md:mb-4 xl:mb-0 min-h-100 bg-deep-green dark:bg-primary-500 md:rounded-xl xl:rounded-b-none text-white overflow-hidden"
+      class="Animal-Data md:mb-4 xl:mb-0 min-h-100 bg-deep-green dark:bg-primary-500 sm:rounded-lg xl:rounded-b-none text-white overflow-hidden"
     >
-      <div class="px-4 md:px-8 pt-8 mb-8">
-        <Subheader className="!text-base"
+      <div class={`${cardHeaderClass} mb-8`}>
+        <Subheader className="!text-base font-normal"
           >{content.page.ecEntity.cardTitle}</Subheader
         >
-        <h3 class="text-5xl">{data.deepData?.id}</h3>
+        <h3 class="text-5xl">{deepData?.id}</h3>
       </div>
       <div class="w-full">
-        {#key data.deepData}
-          {#if data.deepData?.images?.length > 0}
-            {#each data.deepData?.images as image, index}
+        {#key deepData}
+          {#if deepData.images?.length > 0}
+            {#each deepData?.images as image, index}
               <ImageSrcSet
                 classNameImage={index > 0
                   ? 'border-t-2 dark:border-deep-green '
                   : ''}
                 assetID={image.directus_files_id}
-                altText={data.deepData?.id}
+                altText={deepData?.id}
               />
             {/each}
           {:else}
@@ -175,65 +201,90 @@
 
     <!-- Animal Data Map -->
     <div
-      class="Animal-Data-Map bg-deep-green dark:bg-primary-500 text-white md:rounded-xl xl:rounded-t-none overflow-hidden relative z-20 border-t-2 md:border-t-none xl:border-t-2 dark:border-deep-green"
+      class="Animal-Data-Map bg-deep-green dark:bg-primary-500 text-white sm:rounded-lg xl:rounded-t-none overflow-hidden relative z-20 border-t-2 md:border-t-none xl:border-t-2 dark:border-deep-green"
     >
       <div class="w-full aspect-video">
-        {#key data.deepData}
-          <SimpleMap geoJSONData={data.deepData?.location} />
+        {#key deepData.location}
+          <SimpleMap geoJSONData={deepData.location} />
         {/key}
       </div>
     </div>
 
     <!-- Animal Data Continued -->
     <div
-      class="Animal-Data-Continued bg-transparent px-4 md:px-8 py-16 text-black dark:text-white"
+      class="Animal-Data-Continued bg-transparent text-black dark:text-white mb-5"
     >
-      <!-- <Subheader info={content.page?.ecEntity?.description}
-        >{content.page?.ecEntity?.title}</Subheader
-      > -->
-      <!-- TODO: Restore info after text fix -->
-      <Subheader>{content.page?.ecEntity?.title}</Subheader>
-      <h3 class="text-2xl mb-3">{data.deepData?.name}</h3>
-
-      <p class="card-description">{data.deepData?.description}</p>
-    </div>
-
-    <!-- Steward Data -->
-    <div
-      class="Steward-Data bg-primary-100 dark:bg-deep-green text-black dark:text-white md:rounded-xl overflow-hidden"
-    >
-      <div class="px-4 md:px-8 pt-8 pb-8">
-        <Subheader
-          info={`Visit ${data.deepData?.steward?.name}`}
-          url={content.page?.ecSteward?.url}
-          >{content.page?.ecSteward?.title}</Subheader
-        >
-        <h3 class="text-2xl mb-3">{data.deepData?.steward?.name}</h3>
-        <p class="card-description">
-          {data.deepData?.steward?.description}
-        </p>
+      <div class={`${cardHeaderClass} mb-5`}>
+        <Subheader>{content.page?.ecEntity?.title}</Subheader>
+        <h3 class="text-2xl mb-3">{deepData?.name}</h3>
+        <p class="card-description">{deepData.description}</p>
       </div>
-      <div class="w-full aspect-video">
-        <SimpleMap geoJSONData={data.deepData?.steward?.area} />
-      </div>
-      <div class="w-full flex flex-col">
-        {#if data.deepData?.steward?.images?.length > 0}
-          {#each data.deepData?.steward?.images as image}
-            <ImageSrcSet
-              classNameImage="border-t-2 dark:border-deep-green"
-              assetID={image.directus_files_id}
-              altText={data.deepData?.steward?.name}
-            />
-          {/each}
-        {:else}
-          <img
-            style="width:inherit"
-            src={placeholderCamp}
-            alt="Not Available"
-          />
+      {#key properties}
+        {#if Object.keys(properties).length > 0 && Object.keys(properties.traces_recorded).length > 0}
+          <div
+            class="p-11 bg-gray-300 dark:bg-black rounded-lg mx-6 dark:text-gray-300"
+          >
+            <Subheader>{content.page.ecEntity.propsTitle}</Subheader>
+
+            {#if Object.keys(properties.traces_recorded).length > 0}
+              <div class="font-serif text-[22px] mb-2">Traces Recorded</div>
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2"
+              >
+                {#each Object.keys(properties.traces_recorded) as property}
+                  {#if properties.traces_recorded[property] > 0}
+                    <div class="font-serif font-light col-span-1">
+                      From {property}:
+                      <span class="text-primary-400 dark:text-primary-300"
+                        >{properties.traces_recorded[property]}</span
+                      >
+                    </div>
+                  {/if}
+                {/each}
+              </div>
+            {/if}
+          </div>
         {/if}
-      </div>
+      {/key}
     </div>
+    {#key deepData.steward}
+      <!-- Steward Data -->
+      <div
+        class="Steward-Data bg-primary-100 dark:bg-deep-green text-black dark:text-white sm:rounded-lg overflow-hidden"
+      >
+        <div class={`${cardHeaderClass} mb-8`}>
+          <Subheader
+            info={`Visit ${deepData.steward?.name}`}
+            url={content.page?.ecSteward?.url}
+            >{content.page?.ecSteward?.title}</Subheader
+          >
+          <h3 class="text-2xl mb-3">{deepData.steward?.name}</h3>
+          <p class="card-description">
+            {deepData.steward?.description}
+          </p>
+        </div>
+        <div class="w-full aspect-video">
+          <SimpleMap geoJSONData={deepData?.steward?.area} />
+        </div>
+        <div class="w-full flex flex-col">
+          {#if deepData.steward?.images?.length > 0}
+            {#each deepData.steward?.images as image}
+              <ImageSrcSet
+                classNameImage="border-t-2 dark:border-deep-green"
+                assetID={image.directus_files_id}
+                altText={deepData?.steward?.name}
+              />
+            {/each}
+          {:else}
+            <img
+              style="width:inherit"
+              src={placeholderCamp}
+              alt="Not Available"
+            />
+          {/if}
+        </div>
+      </div>
+    {/key}
   </div>
 {/if}
 
@@ -244,7 +295,7 @@
   .container-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0em 2em;
+    gap: 0em 1.25em;
     grid-auto-flow: row;
   }
   .container-grid {

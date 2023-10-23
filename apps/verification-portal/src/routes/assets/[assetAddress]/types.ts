@@ -36,3 +36,17 @@ export type DeepData = {
   description: string;
   name: string;
 };
+
+export type Address = {
+  scheme: string;
+  didMethod: string;
+  chain: {
+    namespace: string;
+    reference: string;
+  };
+  asset: {
+    namespace: string;
+    reference: string;
+    identifier: number;
+  };
+};

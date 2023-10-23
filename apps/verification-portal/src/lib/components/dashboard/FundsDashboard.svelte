@@ -39,7 +39,4 @@
   .funds-widget-container {
     @apply text-center;
   }
-  .funds-widget {
-    @apply rounded-full mb-2 font-serif flex justify-center items-center;
-  }
 </style>

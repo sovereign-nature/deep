@@ -3,21 +3,26 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  @apply font-serif;
+  @apply font-serif font-normal;
 }
 
+/* //@TODO Move to cdn, get aeonik med varioation */
 @font-face {
   font-family: 'Clearface Serial';
   src: local('Clearface Serial'), local('Clearface-Serial'),
     local('clearface serial'), local('clearface-serial'),
-    url('/fonts/Clearface-Serial-Med.woff');
-  font-weight: medium;
+    url('/fonts/Clearface-Serial-Reg.woff');
+  font-weight: normal;
   font-display: swap;
 }
 @font-face {
@@ -26,6 +31,14 @@ h6 {
     local('clearface serial'), local('clearface-serial'),
     url('/fonts/Clearface-Serial-Bol.woff');
   font-weight: bold;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Clearface Serial';
+  src: local('Clearface Serial'), local('Clearface-Serial'),
+    local('clearface serial'), local('clearface-serial'),
+    url('/fonts/Clearface-Serial-Med.woff');
+  font-weight: medium;
   font-display: swap;
 }
 @font-face {
@@ -58,8 +71,14 @@ img.leaflet-marker-shadow {
 }
 
 .bg-Sni-img {
-  background: url('https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/b6f6866d-e330-4966-9047-dd08199cfe00/public')
-    no-repeat fixed center / cover;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  background:
+    url('https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/b6f6866d-e330-4966-9047-dd08199cfe00/public')
+      no-repeat scroll center / cover,
+    linear-gradient(180deg, #001512 50.24%, #000c15 93.49%);
 }
 
 /* custom scroll bar  */

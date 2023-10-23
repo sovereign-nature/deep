@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import Search from '$lib/components/Search.svelte';
+  import SearchTabs from '$lib/containers/SearchTabs.svelte';
   import LayoutLanding from '$lib/containers/LayoutLanding.svelte';
 </script>
 
@@ -17,5 +17,5 @@
   >
     Try searching for another asset...
   </h2>
-  <Search />
+  <SearchTabs />
 </LayoutLanding>

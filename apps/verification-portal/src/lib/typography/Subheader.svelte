@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { Tooltip } from 'flowbite-svelte';
   import InfoIcon from '$lib/components/icons/InfoIcon.svelte';
+  import Info from '$lib/typography/Info.svelte';
   export let className: string = '';
   export let info: string = '';
   export let url: string = '';
 </script>
 
-<h2 class={`${className} text-sm font-sans mb-4 flex items-center`}>
+<h2 class={`${className} text-sm font-sans font-light mb-4 flex items-center`}>
   <slot />
 
   {#if url}
@@ -19,7 +19,8 @@
       <InfoIcon className="w-3 h-3 ms-2 " />
     </a>
   {:else if info}
-    <InfoIcon className="w-3 h-3 ms-2 opacity-80 hover:opacity-100" />
-    <Tooltip class="w-64 text-center p-4 z-50">{info}</Tooltip>
+    <Info className="ms-2">
+      {info}
+    </Info>
   {/if}
 </h2>
