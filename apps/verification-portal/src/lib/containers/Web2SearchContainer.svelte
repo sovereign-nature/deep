@@ -8,7 +8,7 @@
   import { SNI_API_URL } from '@sni/constants';
   export let campaign = 'hotel_hideaway';
   type Web2DataState = {
-    data: {}[];
+    data: object[];
     loaded: boolean;
     error: boolean;
   };
