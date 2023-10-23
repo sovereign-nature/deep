@@ -1,5 +1,6 @@
 <script lang="ts">
   import { shortenMoneyValue, isLongTitle } from '$lib/utils';
+  import { TabItem } from 'flowbite-svelte';
 
   export let funds: string;
   export let className: string;
@@ -21,7 +22,11 @@
 </script>
 
 <span class={widgetClass}>
-  {fundsShortened}$
+  {#if fundsShortened !== '0'}
+    {fundsShortened}$
+  {:else}
+    TBA
+  {/if}
 </span>
 
 <style lang="postcss">
