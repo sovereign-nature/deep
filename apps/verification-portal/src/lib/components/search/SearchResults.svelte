@@ -2,6 +2,7 @@
   import { getContext } from 'svelte';
   import type { Writable } from 'svelte/store';
   import Card from '$lib/components/Card.svelte';
+  import { flip } from 'svelte/animate';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
 
   // Retrieve user store from context
@@ -22,24 +23,28 @@
       <ImagePlaceholder className="h-20" />
     </div>
   {:else if $search && $web2data.loaded && !$web2data.error}
-    <div class="flex justify-between mt-16 text-white">
+    <div
+      class="flex flex-row flex-wrap sm:flew-nowrap justify-between mt-16 text-white text-xs sm:text-sm"
+    >
       <span class="light">Showing results for <strong>"{$search}"</strong></span
       >
       <span class="italic">{$results.length} results</span>
     </div>
-    <div class="mt-8">
+    <div class="mt-5 sm:mt-8">
       {#if $results.length > 0}
         <div class="flex flex-col gap-4">
           {#each $results as result (result.item.id)}
-            <Card
-              id={result.item.id}
-              name={result.item.name}
-              image={result.item.image}
-              collection={result.item.collection}
-              source="Hotel Hideaway"
-              prefix="did:asset:deep:hotel-hideaway.asset:"
-              isList
-            />
+            <div animate:flip={{ duration: 250 }}>
+              <Card
+                id={result.item.id}
+                name={result.item.name}
+                image={result.item.image}
+                collection={result.item.collection}
+                source="Hotel Hideaway"
+                prefix="did:asset:deep:hotel-hideaway.asset:"
+                isList
+              />
+            </div>
           {/each}
         </div>
       {:else if $results.length == 0}

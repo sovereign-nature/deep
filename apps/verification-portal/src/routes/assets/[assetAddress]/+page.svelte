@@ -64,7 +64,6 @@
 
   // styling
   const cardHeaderClass = 'px-4 pt-6 sm:px-8 sm:pt-8 md:px-11 md:pt-11';
-  console.log(data.deepData);
 </script>
 
 {#key nftData}

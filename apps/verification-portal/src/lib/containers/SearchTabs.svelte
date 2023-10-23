@@ -14,7 +14,7 @@
 
   // tab classes
   let classDefault =
-    'font-serif text-sm sm:text-2xl text-gray-400 bg-black py-4 px-6 rounded transition mb-2 mt-0';
+    'font-serif text-sm sm:text-base lg:text-xl xl:text-2xl text-gray-400 bg-black py-4 px-6 rounded transition mb-2 mt-0';
   let classInactive =
     'bg-black bg-opacity-20 hover:bg-opacity-40 hover:text-primary-300';
   let classActive = 'text-primary-200 bg-opacity-60 transition';
@@ -44,14 +44,14 @@
   <TabItem
     title="Hotel Hideway"
     open={activeTab === 'hh'}
-    class="sm:pb-3"
+    class="sm:pb-3 mr-2 sm:mr-0"
     defaultClass={classDefault}
     inactiveClasses={classInactive}
     activeClasses={classActive}
     on:click={() => handleTabClick('hh')}
   >
     <Web2SearchContainer campaign="hotel_hideaway">
-      <Web2SearchInput placeholder="Type the asset name" />
+      <Web2SearchInput placeholder="Name, address or collection" />
       <SearchResults />
     </Web2SearchContainer>
   </TabItem>

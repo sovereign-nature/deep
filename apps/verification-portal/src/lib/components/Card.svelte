@@ -24,6 +24,7 @@
     hover:opacity-100
     hover:bg-opacity-60
     flex items-center
+    max-h-[120px]
     rounded-lg text-white overflow-hidden"
     class:card-square={!isList}
     class:card-horizontal={isList}
@@ -48,11 +49,19 @@
     {/if}
     {#if isList}
       <div class="mr-4 flex-shrink-0">
-        <img class="w-[120px] h-[120px]" src={imgUrl} alt="Avatar" />
+        <img
+          class="w-[90px] h-[120px] sm:w-[120px] sm:h-[120px] object-cover"
+          src={imgUrl}
+          alt="Avatar"
+        />
       </div>
       <div class="flex-1 flex flex-col my-4">
-        <div class="text-xl font-serif">{name}</div>
-        <div class="flex flex-col lg:flex-row text-xs lg:gap-2 opacity-50">
+        <div class="sm:text-xl font-serif leading-snug pe-2 sm:pe-0">
+          {name}
+        </div>
+        <div
+          class="flex flex-col lg:flex-row text-xs lg:gap-2 opacity-50 relative"
+        >
           <div class="whitespace-nowrap">
             <span class="font-bold whitespace-nowrap">Source:</span>
             {source}
@@ -62,9 +71,16 @@
             <span class="font-bold whitespace-nowrap">Collection:</span>
             {collection}
           </div>
+          <!-- mobile select -->
+          <div class="mt-2 whitespace-nowrap">
+            <span
+              class="fwhitespace-nowrap text-primary-200 sm:hidden float-right me-4"
+              >Select<ArrowRight className="h-2 inline-block" />
+            </span>
+          </div>
         </div>
       </div>
-      <div class="flex-1 flex justify-end items-center p-4">
+      <div class="xl:flex-1 sm:flex justify-end items-center p-4 hidden">
         <span class="me-6 text-primary-300 show-on-hover hidden"> Select </span>
         <div
           class="asset-card-arrow transition-bg flex justify-center items-center rounded-full h-12 w-12 bg-black text-primary-300"
@@ -77,8 +93,10 @@
 </a>
 
 <style>
-  .asset-card:hover .show-on-hover {
-    display: block;
+  @media (min-width: 1024px) {
+    .asset-card:hover .show-on-hover {
+      display: block;
+    }
   }
   .asset-card:hover .asset-card-arrow {
     @apply bg-primary-200 text-black;

@@ -19,25 +19,8 @@
     </span>
   </NavBrand>
   {#if themeSwitch}
-  <DarkMode
-    class="md:hidden"
-    btnClass="text-gray-300 dark:text-primary-500 text-sm pe-4 opacity-50 hover:opacity-100 active:opacity-100"
-  >
-    <svelte:fragment slot="lightIcon">
-      <SunIcon className="w-4 h-4" />
-    </svelte:fragment>
-    <svelte:fragment slot="darkIcon">
-      <MoonIcon className="w-4 h-4" />
-    </svelte:fragment>
-  </DarkMode>
-  {/if}
-  <div
-    class="flex md:order-2 md:justify-end content-center w-full md:w-1/2 px-2 pt-4 lg:pt-0"
-  >
-    <slot />
-    {#if themeSwitch}
     <DarkMode
-      class="ms-4 hidden md:block"
+      class="md:hidden"
       btnClass="text-gray-300 dark:text-primary-500 text-sm pe-4 opacity-50 hover:opacity-100 active:opacity-100"
     >
       <svelte:fragment slot="lightIcon">
@@ -47,6 +30,23 @@
         <MoonIcon className="w-4 h-4" />
       </svelte:fragment>
     </DarkMode>
+  {/if}
+  <div
+    class="flex md:order-2 md:justify-end content-center w-full md:w-1/2 px-2 pt-4 lg:pt-0"
+  >
+    <slot />
+    {#if themeSwitch}
+      <DarkMode
+        class="ms-4 hidden md:block"
+        btnClass="text-gray-300 dark:text-primary-500 text-sm pe-4 opacity-50 hover:opacity-100 active:opacity-100"
+      >
+        <svelte:fragment slot="lightIcon">
+          <SunIcon className="w-4 h-4" />
+        </svelte:fragment>
+        <svelte:fragment slot="darkIcon">
+          <MoonIcon className="w-4 h-4" />
+        </svelte:fragment>
+      </DarkMode>
     {/if}
   </div>
 </Navbar>
