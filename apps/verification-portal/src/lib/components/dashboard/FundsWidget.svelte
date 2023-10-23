@@ -1,7 +1,5 @@
 <script lang="ts">
   import { shortenMoneyValue, isLongTitle } from '$lib/utils';
-  import { TabItem } from 'flowbite-svelte';
-
   export let funds: string;
   export let className: string;
   export let size: 'sm' | 'lg' | 'xl' = 'sm';
