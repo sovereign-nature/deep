@@ -211,22 +211,24 @@
             class="p-11 bg-gray-300 dark:bg-black rounded-lg mx-6 dark:text-gray-300"
           >
             <Subheader>{content.page.ecEntity.propsTitle}</Subheader>
-            <div
-              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2"
-            >
-              {#each Object.keys(properties) as property}
-                {#if properties[property] > 0}
-                  <div
-                    class="font-serif font-light text-[22px] capitalize col-span-1"
-                  >
-                    {property}:
-                    <span class="text-primary-400 dark:text-primary-300"
-                      >{properties[property]}</span
-                    >
-                  </div>
-                {/if}
-              {/each}
-            </div>
+
+            {#if properties.traces_recorded}
+              <div class="font-serif text-[22px] mb-2">Traces Recorded</div>
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2"
+              >
+                {#each Object.keys(properties.traces_recorded) as property}
+                  {#if properties.traces_recorded[property] > 0}
+                    <div class="font-serif font-light col-span-1">
+                      From {property}:
+                      <span class="text-primary-400 dark:text-primary-300"
+                        >{properties.traces_recorded[property]}</span
+                      >
+                    </div>
+                  {/if}
+                {/each}
+              </div>
+            {/if}
           </div>
         {/if}
       {/key}
