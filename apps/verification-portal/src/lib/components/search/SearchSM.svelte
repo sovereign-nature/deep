@@ -10,7 +10,13 @@
 <div
   class="w-full"
   on:click={() => (defaultModal = true)}
-  ARIA="open search modal"
+  on:keydown={(e) => {
+    if (e.key === 'Enter') {
+      defaultModal = true;
+    }
+  }}
+  role="searchbox"
+  tabindex="0"
 >
   <ButtonGroup
     class="w-full opacity-50 hover:opacity-100 active:opacity-100 transition-opacity"

@@ -6,7 +6,7 @@
   import { updateQueryParams } from '$lib/utils';
 
   export let placeholder = 'Search)';
-  export let inputmode = 'search';
+  export const inputmode = 'search';
 
   // Retrieve user store from context
   const search: Writable<string> = getContext('search');

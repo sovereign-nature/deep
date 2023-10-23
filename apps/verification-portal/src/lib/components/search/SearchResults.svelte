@@ -7,7 +7,7 @@
   // Retrieve user store from context
   const results: Writable<[]> = getContext('results');
   const search: Writable<string> = getContext('search');
-  const web2data: Writable<{}> = getContext('web2data');
+  const web2data: Writable<object> = getContext('web2data');
 </script>
 
 <div id="search-results" class="min-h-[300px]">
