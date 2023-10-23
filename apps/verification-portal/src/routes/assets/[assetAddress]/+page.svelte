@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import Property from '$lib/typography/Property.svelte';
+  import Info from '$lib/typography/Info.svelte';
   import Subheader from '$lib/typography/Subheader.svelte';
   import NFTImage from '$lib/components/NFTImage.svelte';
   import ImageSrcSet from '$lib/components/ImageSrcSet.svelte';
@@ -16,9 +17,25 @@
   $: currentPath = $page.url.toString();
   $: pageTitle = `REAL by SNI | ${nftData.name}`;
 
+  export let data;
+  const {
+    nftData,
+    verifiedStatus,
+    deepData,
+    baseUrl,
+    assetAddress,
+    addressDetails,
+    properties,
+  } = data;
+
+  const isSub0 = addressDetails?.chain?.reference == 'polkadot';
+
+  const introText = isSub0
+    ? 'Welcome to the Polkadot sub0 biodiversity collection. Your contribution makes a REAL difference. Connect with the marine biodiversity served by the organisation AIMM Portugal.'
+    : `Welcome to the SNI x Upemba National Park`;
+
   const content = {
-    intro:
-      'Welcome to the Polkadot sub0 biodiversity collection. Your contribution makes a REAL difference. Connect with the marine biodiversity served by the organisation AIMM Portugal.',
+    intro: introText,
     shareText: 'Share your asset',
     page: {
       funds: {
@@ -26,7 +43,6 @@
       },
       ecSteward: {
         title: 'Ecological Steward',
-        url: 'https://www.aimmportugal.org/',
         description:
           'Ecological Steward (ES): an identified conservation/restoration group, being an organisation (e.g. KWT) or a community, group of stakeholders who has also the mandate to manage the funds raised',
       },
@@ -40,21 +56,11 @@
     },
   };
 
-  export let data;
-  const {
-    nftData,
-    verifiedStatus,
-    deepData,
-    baseUrl,
-    assetAddress,
-    properties,
-  } = data;
-
   // Define specific share card data for a page
   $: pageDescription = `${content.intro}`;
   $: name = nftData.name || '';
   $: funds = deepData?.link?.funds_raised || 0;
-  $: source = 'sub0'; // @TODO replace with dynamic source
+  $: source = isSub0 ? 'sub0' : 'Hotel Hideaway'; // @TODO replace with dynamic source
   $: image = nftData.image;
   $: pageImage = `${baseUrl}/og?title=${encodeURIComponent(
     name
@@ -114,14 +120,22 @@
     <div class="grid lg:grid-cols-6 gap-x-1 gap-y-5">
       <div class="col-span-4">
         <Property name="Source">
-          <p>sub0</p>
+          <p>{source}</p>
         </Property>
-        <Property name="Token ID">
-          <p>{nftData.tokenId}</p>
-        </Property>
-        <Property name="Asset Address">
-          <p>{assetAddress}</p>
-        </Property>
+        {#if nftData.tokenId}
+          <Property name="Token ID">
+            <p>{nftData.tokenId}</p>
+          </Property>
+        {/if}
+        {#if isSub0}
+          <Property name="Asset Address">
+            <p>{assetAddress}</p>
+          </Property>
+        {:else}
+          <Property name="Asset Address">
+            <Info>{assetAddress}</Info>
+          </Property>
+        {/if}
       </div>
 
       <div class="col-span-2">
@@ -143,7 +157,7 @@
       class="Fund-Data mb-5 px-4 sm:px-8 md:px-11 xl:pt-11 xl:dark:bg-primary-100 xl:bg-primary-500 xl:rounded-lg xl:py-8"
     >
       <Subheader
-        className="!text-base text-black dark:text-white xl:text-white xl:dark:!text-black md:pt-8 xl:pt-0 flex justify-start lg:justify-center xl:justify-start "
+        className="!text-base font-normal text-black dark:text-white xl:text-white xl:dark:!text-black md:pt-8 xl:pt-0 flex justify-start lg:justify-center xl:justify-start "
         >{content.page.funds.cardTitle}</Subheader
       >
       <FundsDashboard
@@ -157,7 +171,7 @@
       class="Animal-Data md:mb-4 xl:mb-0 min-h-100 bg-deep-green dark:bg-primary-500 sm:rounded-lg xl:rounded-b-none text-white overflow-hidden"
     >
       <div class={`${cardHeaderClass} mb-8`}>
-        <Subheader className="!text-base"
+        <Subheader className="!text-base font-normal"
           >{content.page.ecEntity.cardTitle}</Subheader
         >
         <h3 class="text-5xl">{deepData?.id}</h3>
@@ -206,13 +220,13 @@
         <p class="card-description">{deepData.description}</p>
       </div>
       {#key properties}
-        {#if Object.keys(properties).length > 0}
+        {#if Object.keys(properties).length > 0 && Object.keys(properties.traces_recorded).length > 0}
           <div
             class="p-11 bg-gray-300 dark:bg-black rounded-lg mx-6 dark:text-gray-300"
           >
             <Subheader>{content.page.ecEntity.propsTitle}</Subheader>
 
-            {#if properties.traces_recorded}
+            {#if Object.keys(properties.traces_recorded).length > 0}
               <div class="font-serif text-[22px] mb-2">Traces Recorded</div>
               <div
                 class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2"

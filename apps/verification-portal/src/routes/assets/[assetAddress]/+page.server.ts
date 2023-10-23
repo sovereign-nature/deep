@@ -1,11 +1,11 @@
 import { DIRECTUS_API_KEY, VERCEL_URL } from '$env/static/private';
-
+import { parseAddress } from '@sni/address-utils';
 import { getEntity } from '@sni/clients/data.js';
 import { getLinkByAddress } from '@sni/clients/link.js';
 import { DEEP_ASSETS_GATEWAY } from '@sni/constants';
 import { error } from '@sveltejs/kit';
 
-import type { Asset, DeepData, VerifiedResponse } from './types'; //@TODO better way to standardize types
+import type { Address, Asset, DeepData, VerifiedResponse } from './types'; //@TODO better way to standardize types
 
 const protocol = 'https://';
 const baseUrl = VERCEL_URL ? `${protocol}${VERCEL_URL}` : '';
@@ -16,11 +16,13 @@ const config = {
 
 let assetData: Asset;
 let deepData: DeepData;
+let addressDetails: Address;
 const notFoundMessage = 'We’re sorry but that page can’t be found.';
 
 export async function load(event) {
   let verifiedStatus: boolean = false;
-  const assetAddress = event.params.assetAddress;
+  const assetAddress: string = event.params.assetAddress;
+
   try {
     // Fetch Asset data
     const fetchedAsset: Asset = await (
@@ -32,6 +34,7 @@ export async function load(event) {
     }
 
     assetData = fetchedAsset;
+    addressDetails = parseAddress(assetAddress);
   } catch (e) {
     throw error(404, notFoundMessage);
   }
@@ -94,6 +97,7 @@ export async function load(event) {
 
   return {
     assetAddress,
+    addressDetails,
     nftData: assetData,
     verifiedStatus,
     deepData,

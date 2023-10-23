@@ -2,7 +2,7 @@
   export let name: string;
 </script>
 
-<div class="flex">
+<div class="flex items-center gap-2">
   <span class="dark:text-white text-sm font-thin">{name}:</span>
-  <span class="dark:text-white px-2 text-sm"><slot /></span>
+  <span class="dark:text-white text-sm"><slot /></span>
 </div>
