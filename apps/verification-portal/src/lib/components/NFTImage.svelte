@@ -12,7 +12,7 @@
   let isError = false;
   let isLoading = true;
   let errorMsg = `
-    Oops! The NFT image couldn't make it to the habitat.🐾 \n
+    Oops! The asset image couldn't make it to the habitat.🐾 \n
     Please try again later.
   `;
 
