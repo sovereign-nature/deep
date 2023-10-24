@@ -1,5 +1,5 @@
 <script lang="ts">
-  import NavBar from '$lib/components/NavBar.svelte';
+  import NavBar from '$lib/components/navbar/index.svelte';
 </script>
 
 <div class="bg-Sni-img z-0"></div>
