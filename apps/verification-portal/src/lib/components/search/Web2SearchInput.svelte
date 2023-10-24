@@ -28,14 +28,17 @@
       console.log(`Element with ID '${elementId}' not found.`);
     }
   }
-  function handleSubmit(e) {
+  function handleSubmit(e: Event) {
     e.preventDefault();
 
     focusElement();
   }
-  function onEnter(e) {
+  function onEnter(e: KeyboardEvent) {
     if (e.key === 'Enter') {
-      e.target.blur();
+      const inputElement = e.target as HTMLInputElement;
+      if (inputElement) {
+        inputElement.blur();
+      }
     }
   }
 </script>

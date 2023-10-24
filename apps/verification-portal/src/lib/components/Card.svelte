@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
   import { generateAssetURL } from '$lib/utils';
 
-  export let name,
+  export let name: string,
     image,
     source = 'Hotel Hideaway',
     id,
-    collection,
+    collection: string,
     prefix;
   export let isList = false; // Set to false for horizontal layout
   const imgUrl = generateAssetURL(image, 120);

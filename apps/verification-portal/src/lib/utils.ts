@@ -80,15 +80,24 @@ export function updateQueryParams(
   queryParams.set(param, value);
   const newUrl = `${window.location.pathname}?${queryParams.toString()}`;
   if (navigate) {
-    goto(newUrl, { replaceState: true, keepFocus: true });
+    goto(newUrl, { replaceState: true, keepFocus: true, noScroll: true });
   } else {
     // Replace the history state with the new URL
-    //window.history.replaceState(null, '', newUrl);
-    //@TODO find workaround for goto triggering reload of dynamic assets
     goto(`?${queryParams.toString()}`, {
       replaceState: true,
       keepFocus: true,
       noScroll: true,
     });
   }
+}
+
+import type { AssetFeatured } from '$lib/types';
+
+// Function to shuffle array randomly
+export function shuffleArray(array: AssetFeatured[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }

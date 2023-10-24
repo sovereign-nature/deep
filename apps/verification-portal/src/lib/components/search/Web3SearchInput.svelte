@@ -15,7 +15,7 @@
     class="flex flex-col md:flex-row md:items-center gap-3 lg:px-16 pt-4 sm:pt-6"
   >
     <div
-      class="flex gap-2 items-baseline text-white whitespace-nowrap mr-auto text-sm sm:text-base w-full sm:w-auto pe-5 mb-3 md:mb-0"
+      class="flex gap-2 items-baseline text-white whitespace-nowrap mr-auto text-sm sm:text-base w-full sm:w-auto pe-5 mb-3 md:mb-0 truncate"
     >
       Ether <Button color="none" size="sm" class="bg-primary-300" disabled
         >connect <ConnectIcon className="h-4 w-4 ms-2" /></Button
