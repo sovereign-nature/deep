@@ -2,6 +2,7 @@
   import Property from '$lib/typography/Property.svelte';
   import Info from '$lib/typography/Info.svelte';
   import Subheader from '$lib/typography/Subheader.svelte';
+  import CardHeader from '$lib/typography/CardHeader.svelte';
   import NFTImage from '$lib/components/NFTImage.svelte';
   import ImageSrcSet from '$lib/components/ImageSrcSet.svelte';
   import SocialShare from '$lib/components/SocialShare.svelte';
@@ -117,8 +118,8 @@
         {/if}
       </div>
     </div>
-    <div class="grid lg:grid-cols-6 gap-x-1 gap-y-5">
-      <div class="col-span-4">
+    <div class="grid lg:grid-cols-5 gap-x-1 gap-y-5">
+      <div class="col-span-3">
         <Property name="Source">
           <p>{source}</p>
         </Property>
@@ -138,7 +139,9 @@
         {/if}
       </div>
 
-      <div class="col-span-2">
+      <div
+        class="col-span-2 flex flex-col lg:flex-row lg:items-center gap-5 pb-4 lg:pb-0"
+      >
         <span class="text-sm">{content.shareText}</span>
         <SocialShare shareUrl={currentPath} />
       </div>
@@ -216,7 +219,7 @@
     >
       <div class={`${cardHeaderClass} mb-5`}>
         <Subheader>{content.page?.ecEntity?.title}</Subheader>
-        <h3 class="text-2xl mb-3">{deepData?.name}</h3>
+        <CardHeader title={deepData?.name} />
         <p class="card-description">{deepData.description}</p>
       </div>
       {#key properties}
@@ -253,12 +256,11 @@
         class="Steward-Data bg-primary-100 dark:bg-deep-green text-black dark:text-white sm:rounded-lg overflow-hidden"
       >
         <div class={`${cardHeaderClass} mb-8`}>
-          <Subheader
-            info={`Visit ${deepData.steward?.name}`}
-            url={content.page?.ecSteward?.url}
-            >{content.page?.ecSteward?.title}</Subheader
-          >
-          <h3 class="text-2xl mb-3">{deepData.steward?.name}</h3>
+          <Subheader>{content.page?.ecSteward?.title}</Subheader>
+          <CardHeader
+            title={deepData.steward?.name}
+            url={deepData.steward?.website}
+          />
           <p class="card-description">
             {deepData.steward?.description}
           </p>
