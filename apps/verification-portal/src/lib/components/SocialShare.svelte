@@ -30,7 +30,7 @@
   }
 </script>
 
-<div class="flex gap-2 my-4">
+<div class="flex gap-2">
   <button class="social-button" on:click={shareOnTwitter} title="Twitter">
     <HexagonIcon className="absolute text-white dark:text-black z-0" />
     <svg
