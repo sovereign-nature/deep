@@ -14,8 +14,8 @@
       > Verification Portal.
     </h1>
     <span class="font-serif text-sm md:text-[22px]"
-      >Learn how your NFT is helping real-world conservation efforts around the
-      globe.
+      >Learn how your asset is helping real-world conservation efforts around
+      the globe.
     </span>
   </div>
   <SearchTabs />
