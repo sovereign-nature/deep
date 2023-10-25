@@ -56,7 +56,8 @@
   function setFeatured() {
     if ($web2Data.data.length > 0) {
       try {
-        let randomItems = shuffleArray($web2Data.data).slice(0, 3);
+        let itemsCopy = [...$web2Data.data];
+        let randomItems = shuffleArray(itemsCopy).slice(0, 3);
         featured.set(addAddressToItems(randomItems));
       } catch (e) {
         console.log('did load featured');
