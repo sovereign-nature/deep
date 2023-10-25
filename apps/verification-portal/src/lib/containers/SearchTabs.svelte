@@ -54,7 +54,7 @@
       activeClasses={classActive}
       on:click={() => handleTabClick('hh')}
     >
-      <Web2SearchInput placeholder="Name, address or collection" />
+      <Web2SearchInput placeholder="Asset name" />
       <SearchResults />
     </TabItem>
   </Web2SearchContainer>
