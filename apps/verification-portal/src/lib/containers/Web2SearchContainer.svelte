@@ -7,11 +7,8 @@
   import { page } from '$app/stores';
   import { SNI_API_URL } from '@sni/constants';
   export let campaign = 'hotel_hideaway';
-  type Web2DataState = {
-    data: object[];
-    loaded: boolean;
-    error: boolean;
-  };
+  import type { Web2DataState, AssetFeatured } from '$lib/types';
+  import { shuffleArray } from '$lib/utils';
 
   const url = $page.url;
   const searchParams = url.searchParams.get('search') || '';
@@ -31,11 +28,13 @@
   const web2Data = writable(web2DataState);
   const results = writable([]);
   const search = writable(searchParams);
+  const featured = writable();
 
   // Make them available to child components
   setContext('web2data', web2Data);
   setContext('search', search);
   setContext('results', results);
+  setContext('featured', featured);
 
   //whenever the search is updated, run necessary function
   $: $search, handleSearch();
@@ -45,9 +44,23 @@
     if (!error) {
       web2Data.set({ data, loaded: true, error: false });
       fuseSearch.setCollection($web2Data.data);
-      updateResults();
+      setFeatured();
+      if ($search) {
+        updateResults();
+      }
     } else {
       web2Data.set({ data, loaded: true, error: true });
+    }
+  }
+
+  function setFeatured() {
+    if ($web2Data.data.length > 0) {
+      try {
+        let randomItems = shuffleArray($web2Data.data).slice(0, 3);
+        featured.set(addAddressToItems(randomItems));
+      } catch (e) {
+        console.log('did load featured');
+      }
     }
   }
 
@@ -58,6 +71,13 @@
   function updateResults() {
     let getFuseResults: [] = fuseSearch.search($search);
     results.update(() => getFuseResults);
+  }
+  function addAddressToItems(items: AssetFeatured[]): AssetFeatured[] {
+    const updatedItems = items.map((item) => {
+      const address = `did:asset:deep:hotel-hideaway.asset:${item.id}`; // Combine the string with existing id
+      return { ...item, address }; // Create a new object with the updated address property
+    });
+    return updatedItems;
   }
 
   onMount(async () => {
