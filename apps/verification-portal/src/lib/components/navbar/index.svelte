@@ -20,8 +20,8 @@
   });
 </script>
 
-<Navbar color="none" class="my-6 container px-4">
-  <NavBrand href="/">
+<Navbar color="none" class=" my-6 container px-4">
+  <NavBrand href="/" class="dark">
     <img src={logo} class="mr-2 sm:mr-4 xl:mr-9 h-10 lg:h-20" alt="SNI Logo" />
     <span
       class="ms-2 text-base sm:text-xl lg:text-2xl font-serif dark:text-white"

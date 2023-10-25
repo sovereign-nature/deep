@@ -15,10 +15,11 @@
 
   // tab classes
   let classDefault =
-    'font-serif text-sm sm:text-base lg:text-xl xl:text-2xl text-gray-400 bg-black py-4 px-6 rounded transition mb-2 mt-0';
+    'font-serif text-sm sm:text-base lg:text-xl xl:text-2xl text-gray-400 dark:text-gray-400 bg-gray-50 dark:bg-black py-4 px-6 rounded transition mb-2 mt-0';
   let classInactive =
-    'bg-black bg-opacity-20 hover:bg-opacity-40 hover:text-primary-300';
-  let classActive = 'text-primary-200 bg-opacity-60 transition';
+    'bg-gray-50 dark:bg-black bg-opacity-5 dark:bg-opacity-20 hover:bg-opacity-40 hover:text-primary-300';
+  let classActive =
+    'text-primary-200 bg-opacity-20 dark:bg-opacity-60 transition';
 
   function handleTabClick(tab: string) {
     activeTab = tab;
@@ -40,7 +41,7 @@
 <h2 class="text-gray-400 mb-2">Collection:</h2>
 <Tabs
   style="pill"
-  contentClass="bg-black p-6 md:p-12 bg-opacity-60 rounded-lg"
+  contentClass="bg-gray-50 dark:bg-black p-6 md:p-12 bg-opacity-10 dark:bg-opacity-60 rounded-lg"
   divider={false}
 >
   <Web2SearchContainer campaign="hotel_hideaway">
