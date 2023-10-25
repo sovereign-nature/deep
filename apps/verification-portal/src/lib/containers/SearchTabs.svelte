@@ -45,7 +45,7 @@
 >
   <Web2SearchContainer campaign="hotel_hideaway">
     <TabItem
-      title="Hotel Hideway"
+      title="Hotel Hideaway"
       open={activeTab === 'hh'}
       class="sm:pb-3 mr-2 sm:mr-0"
       defaultClass={classDefault}
