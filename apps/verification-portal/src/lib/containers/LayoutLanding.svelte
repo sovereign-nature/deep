@@ -2,7 +2,6 @@
   import NavBar from '$lib/components/navbar/index.svelte';
 </script>
 
-<div class="bg-Sni-img z-0"></div>
 <div class="w-full flex flex-col min-h-screen content-center relative z-1">
   <NavBar></NavBar>
   <div

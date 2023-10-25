@@ -6,7 +6,6 @@
 
   import logo from '$lib/assets/brand/sni_logo_round.svg';
 
-  export let themeSwitch = true;
   onMount(() => {
     window
       .matchMedia('(prefers-color-scheme: dark)')
@@ -21,7 +20,7 @@
 </script>
 
 <Navbar color="none" class=" my-6 container px-4">
-  <NavBrand href="/" class="dark">
+  <NavBrand href="/">
     <img src={logo} class="mr-2 sm:mr-4 xl:mr-9 h-10 lg:h-20" alt="SNI Logo" />
     <span
       class="ms-2 text-base sm:text-xl lg:text-2xl font-serif dark:text-white"
@@ -33,8 +32,7 @@
 
   <div class="flex justify-end content-center md:w-1/2 lg:pt-0">
     <slot />
-    {#if themeSwitch}
-      <ThemeSwitch className="ms-4 "></ThemeSwitch>
-    {/if}
+
+    <ThemeSwitch className="ms-4 "></ThemeSwitch>
   </div>
 </Navbar>

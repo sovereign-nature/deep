@@ -19,13 +19,16 @@
     asset-card
     cursor-pointer
     transition duration-300
-    bg-[#2C2C2C]
-    bg-opacity-40
+    bg-gray-100
+    dark:bg-[#2C2C2C]
+    bg-opacity-90
+    dark:bg-opacity-10
     hover:opacity-100
-    hover:bg-opacity-60
+    hover:bg-opacity-100
+    hover:dark:bg-opacity-20
     flex items-center
     max-h-[120px]
-    rounded-lg text-white overflow-hidden"
+    rounded-lg dark:text-white overflow-hidden"
     class:card-square={!isList}
     class:card-horizontal={isList}
   >
@@ -74,7 +77,7 @@
           <!-- mobile select -->
           <div class="mt-2 whitespace-nowrap">
             <span
-              class="fwhitespace-nowrap text-primary-200 sm:hidden float-right me-4"
+              class="whitespace-nowrap dark:text-primary-200 text-primary-400 sm:hidden float-right me-4"
               >Select<ArrowRight className="h-2 inline-block" />
             </span>
           </div>
@@ -83,7 +86,7 @@
       <div class="xl:flex-1 sm:flex justify-end items-center p-4 hidden">
         <span class="me-6 text-primary-300 show-on-hover hidden"> Select </span>
         <div
-          class="asset-card-arrow transition-bg flex justify-center items-center rounded-full h-12 w-12 bg-black text-primary-300"
+          class="asset-card-arrow transition flex justify-center items-center rounded-full h-12 w-12 bg-deep-green dark:bg-black text-primary-300 dark:text-primary-200"
         >
           <ArrowRight />
         </div>
@@ -99,6 +102,9 @@
     }
   }
   .asset-card:hover .asset-card-arrow {
+    @apply bg-primary-300 text-deep-green;
+  }
+  .dark .asset-card:hover .asset-card-arrow {
     @apply bg-primary-200 text-black;
   }
   .card-link {

@@ -7,8 +7,7 @@
 </script>
 
 <DarkMode
-  class={className}
-  btnClass="text-gray-300 dark:text-primary-500 text-sm pe-4 opacity-50 hover:opacity-100 active:opacity-100"
+  btnClass={`${className} text-gray-300 dark:text-primary-500 text-sm pe-4 opacity-50 hover:opacity-100 active:opacity-100`}
 >
   <svelte:fragment slot="system">
     <SystemIcon className="w-4 h-4" />

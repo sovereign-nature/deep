@@ -14,7 +14,7 @@
   export let size = '300';
   export let imgClass = 'object-cover w-full h-full rounded-lg fade-from-none';
   export let containerClass =
-    'w-56 h-56 md:h-64 md:w-64 rounded-lg mb-2 overflow-hidden text-center bg-deep-green';
+    'w-56 h-56 md:h-64 md:w-64 rounded-lg mb-2 overflow-hidden text-center bg-gray-400 dark:bg-deep-green';
   export let imgPlaceholderClass = 'w-56 h-56 md:h-64 md:w-64';
 
   let isMounted = false;
