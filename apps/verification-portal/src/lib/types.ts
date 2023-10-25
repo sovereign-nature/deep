@@ -14,11 +14,20 @@ export type VerifiedResponse = {
 
 export type Asset = {
   id: string;
-  tokenId: number;
+  tokenId: number | string;
   name: string;
   description: string;
   image: string;
   collection: { id: string; name: string; description: string };
+};
+export type AssetFeatured = {
+  id: string;
+  tokenId: number | string;
+  name: string;
+  description: string;
+  image: string;
+  collection: { id: string; name: string };
+  address: string;
 };
 
 export type DeepData = {
@@ -29,6 +38,7 @@ export type DeepData = {
     description: string;
     area: GeoJsonObject;
     images: Array<DirectusImage>;
+    website: string;
   };
   images: Array<DirectusImage>;
   id: string;
@@ -50,3 +60,11 @@ export type Address = {
     identifier: number;
   };
 };
+
+export type Web2DataState = {
+  data: [];
+  loaded: boolean;
+  error: boolean;
+};
+
+export type CollectionKey = 'sub0' | 'hh';

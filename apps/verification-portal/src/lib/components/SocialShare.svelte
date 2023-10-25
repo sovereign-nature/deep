@@ -1,12 +1,38 @@
 <script lang="ts">
   import HexagonIcon from './icons/HexagonIcon.svelte';
+  import type { CollectionKey } from '$lib/types';
 
   export let shareUrl: string = '';
+
+  export let collection: CollectionKey;
+
+  const collectionContent: Record<
+    CollectionKey,
+    { twitterPrefix: string; telegramPrefix: string }
+  > = {
+    sub0: {
+      twitterPrefix:
+        '#NFTs supporting verified #BiodiversityConservation?! Count me in! 🐬\n\nThanks @sovereignnature for bringing REAL data of bottlenose dolphins & minke whales monitored by @AIMMPortugal onchain. Glad my @Polkadot #sub0 attendance supports this wild cause! 🐋',
+      telegramPrefix:
+        'NFTs supporting verified biodiversity conservation?! Count me in! 🐬 \n \nThanks Sovereign Nature Initiative for bringing REAL data of bottlenose dolphins and minke whales monitored by AIMM Portugal onchain. Glad my Polkadot sub0 attendance supports this wild cause! 🐋',
+    },
+    hh: {
+      twitterPrefix:
+        'Just discovered the Upemba National Park room in #HotelHideaway, and it is WILD! 🐘🦓\n\nFor example, this item I purchased directly supports @forgottenparksF’s #BiodiversityConservation efforts thanks to @sovereignnature. Check out the details below!',
+      telegramPrefix:
+        'Just discovered the Upemba National Park room in Hotel Hideaway, and it is WILD! 🐘🦓\n\nFor example, this item I purchased directly supports @forgottenparksF’s biodiversity conservation efforts thanks to the Sovereign Nature Initiative. Check out the details below!',
+    },
+  };
+
   //@TODO shorten twitter text
-  const twitterPrefix =
-    '#NFTs supporting verified #BiodiversityConservation?! Count me in! 🐬\n\nThanks @sovereignnature for bringing REAL data of bottlenose dolphins & minke whales monitored by @AIMMPortugal onchain. Glad my @Polkadot #sub0 attendance supports this wild cause! 🐋';
-  const telegramPrefix =
-    'NFTs supporting verified biodiversity conservation?! Count me in! 🐬 \n \nThanks Sovereign Nature Initiative for bringing REAL data of bottlenose dolphins and minke whales monitored by AIMM Portugal onchain. Glad my Polkadot sub0 attendance supports this wild cause! 🐋';
+  const twitterPrefix: string =
+    collection && collectionContent[collection]
+      ? collectionContent[collection].twitterPrefix
+      : '';
+  const telegramPrefix: string =
+    collection && collectionContent[collection]
+      ? collectionContent[collection].telegramPrefix
+      : '';
 
   // Function to share on Twitter
   function shareOnTwitter() {
@@ -30,7 +56,7 @@
   }
 </script>
 
-<div class="flex gap-2 my-4">
+<div class="flex gap-2">
   <button class="social-button" on:click={shareOnTwitter} title="Twitter">
     <HexagonIcon className="absolute text-white dark:text-black z-0" />
     <svg

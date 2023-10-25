@@ -4,14 +4,22 @@
   import Card from '$lib/components/Card.svelte';
   import { flip } from 'svelte/animate';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
+  import type { Web2DataState, AssetFeatured } from '$lib/types';
+  import FeaturedContainer from '$lib/containers/FeaturedContainer.svelte';
 
   // Retrieve user store from context
   const results: Writable<[]> = getContext('results');
   const search: Writable<string> = getContext('search');
-  const web2data: Writable<object> = getContext('web2data');
+  const web2data: Writable<Web2DataState> = getContext('web2data');
+  const featured: Writable<AssetFeatured[]> = getContext('featured');
+  const prefix = 'did:asset:deep:hotel-hideaway.asset:';
 </script>
 
-<div id="search-results" class="min-h-[300px]">
+{#if !$search && $web2data.loaded && $featured.length > 0}
+  <FeaturedContainer featuredItems={$featured} />
+{/if}
+
+<div id="search-results" class="">
   {#if $search && !$web2data.loaded}
     <div class="flex flex-row justify-between mt-16 text-white">
       <ImagePlaceholder className="h-4 !w-36" />
@@ -41,7 +49,7 @@
                 image={result.item.image}
                 collection={result.item.collection}
                 source="Hotel Hideaway"
-                prefix="did:asset:deep:hotel-hideaway.asset:"
+                {prefix}
                 isList
               />
             </div>

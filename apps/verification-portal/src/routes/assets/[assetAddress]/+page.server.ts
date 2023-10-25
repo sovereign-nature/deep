@@ -5,7 +5,7 @@ import { getLinkByAddress } from '@sni/clients/link.js';
 import { DEEP_ASSETS_GATEWAY } from '@sni/constants';
 import { error } from '@sveltejs/kit';
 
-import type { Address, Asset, DeepData, VerifiedResponse } from './types'; //@TODO better way to standardize types
+import type { Address, Asset, DeepData, VerifiedResponse } from '$lib/types'; //@TODO better way to standardize types
 
 const protocol = 'https://';
 const baseUrl = VERCEL_URL ? `${protocol}${VERCEL_URL}` : '';

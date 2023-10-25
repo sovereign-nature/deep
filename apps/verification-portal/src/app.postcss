@@ -162,3 +162,30 @@ input[type='search']::-webkit-search-cancel-button {
     opacity: 1;
   }
 }
+.card-higlight .img-container {
+  transform: translateX(-50%);
+  left: 50%;
+  top: 0;
+  width: 101%;
+  transition: all 0.7s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.card-higlight:hover .img-container {
+  width: 105%;
+}
+.card-higlight:hover .card-title {
+  @apply text-black;
+}
+.card-higlight:hover .arrow-link {
+  @apply right-5;
+}
+
+.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: '';
+}

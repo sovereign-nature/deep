@@ -1,5 +1,9 @@
 <script lang="ts">
-  import { generateIPFSImageUrl, isIPFSUrl } from '$lib/utils';
+  import {
+    generateIPFSImageUrl,
+    isIPFSUrl,
+    generateAssetURL,
+  } from '$lib/utils';
   import { onMount } from 'svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import VerifiedIcon from '$lib/components/icons/VerifiedIcon.svelte';
@@ -7,6 +11,11 @@
   export let url: string;
   export let alt: string;
   export let verified = false;
+  export let size = '300';
+  export let imgClass = 'object-cover w-full h-full rounded-lg fade-from-none';
+  export let containerClass =
+    'w-56 h-56 md:h-64 md:w-64 rounded-lg mb-2 overflow-hidden text-center bg-deep-green';
+  export let imgPlaceholderClass = 'w-56 h-56 md:h-64 md:w-64';
 
   let isMounted = false;
   let isError = false;
@@ -17,8 +26,19 @@
   `;
 
   let imageUrl: string | null;
-  $: imageUrl = isIPFSUrl(url) ? generateIPFSImageUrl(url) : url;
+  $: imageUrl = isIPFSUrl(url)
+    ? generateIPFSImageUrl(url)
+    : isUrl(url)
+    ? url
+    : generateAssetURL(url, size);
 
+  //check if id or url
+  function isUrl(url: string): boolean {
+    return (
+      url.toLowerCase().startsWith('https://') ||
+      url.toLowerCase().startsWith('http://')
+    );
+  }
   // Function to handle image loading errors
   function handleImageError() {
     isError = true;
@@ -43,13 +63,10 @@
     />
   {/if}
 
-  <div
-    class="bg-gray-200 dark:bg-primary-800 dark:text-gray-200 w-56 h-56 md:h-64 md:w-64 rounded-lg mb-2 overflow-hidden text-center"
-  >
+  <div class={containerClass}>
     <!-- Loading placeholder  -->
     {#if isLoading && !isError}
-      <ImagePlaceholder className="w-56 h-56 md:h-64 md:w-64"
-      ></ImagePlaceholder>
+      <ImagePlaceholder className={imgPlaceholderClass}></ImagePlaceholder>
     {:else if isError}
       <!-- Display error message when there's an error loading the image -->
       <p class="px-10 py-20 text-sm font-thin whitespace-pre-line">
@@ -61,7 +78,7 @@
       <img
         src={imageUrl}
         {alt}
-        class="object-cover w-56 h-56 md:h-64 md:w-64 rounded-lg fade-from-none"
+        class={imgClass}
         on:error={handleImageError}
         on:load={handleImageLoad}
       />
