@@ -34,7 +34,7 @@
 
   const introText = isSub0
     ? 'Welcome to the Polkadot sub0 biodiversity collection. Your contribution makes a REAL difference. Connect with the marine biodiversity served by the organisation AIMM Portugal.'
-    : `Welcome to the SNI x Upemba National Park`;
+    : nftData?.collection?.description;
 
   const content = {
     intro: introText,
