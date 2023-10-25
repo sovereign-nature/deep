@@ -38,6 +38,7 @@ export type DeepData = {
     description: string;
     area: GeoJsonObject;
     images: Array<DirectusImage>;
+    website: string;
   };
   images: Array<DirectusImage>;
   id: string;
@@ -65,3 +66,5 @@ export type Web2DataState = {
   loaded: boolean;
   error: boolean;
 };
+
+export type CollectionKey = 'sub0' | 'hh';

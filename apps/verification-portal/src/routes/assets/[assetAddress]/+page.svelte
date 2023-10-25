@@ -9,6 +9,7 @@
   import FundsDashboard from '$lib/components/dashboard/FundsDashboard.svelte';
   import SimpleMap from '$lib/components/SimpleMap.svelte';
   import ShareCard from '$lib/components/ShareCard.svelte';
+  import type { CollectionKey } from '$lib/types';
 
   import { page } from '$app/stores';
 
@@ -68,9 +69,9 @@
   )}&funds=${encodeURIComponent(funds.toString())}&img=${encodeURIComponent(
     image
   )}&source=${encodeURIComponent(source)}`;
-
   // styling
   const cardHeaderClass = 'px-4 pt-6 sm:px-8 sm:pt-8 md:px-11 md:pt-11';
+  const collectionId: CollectionKey = isSub0 ? 'sub0' : 'hh';
 </script>
 
 {#key nftData}
@@ -143,7 +144,7 @@
         class="col-span-2 flex flex-col lg:flex-row lg:items-center gap-5 pb-4 lg:pb-0"
       >
         <span class="text-sm">{content.shareText}</span>
-        <SocialShare shareUrl={currentPath} />
+        <SocialShare shareUrl={currentPath} collection={collectionId} />
       </div>
     </div>
   </div>
