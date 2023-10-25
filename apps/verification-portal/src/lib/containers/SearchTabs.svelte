@@ -7,6 +7,7 @@
   import Web2SearchInput from '$lib/components/search/Web2SearchInput.svelte';
   import Web3SearchInput from '$lib/components/search/Web3SearchInput.svelte';
   import SearchResults from '$lib/components/search/SearchResults.svelte';
+  import Web3Featured from '$lib/containers/Web3Featured.svelte';
 
   const url = $page.url;
 
@@ -36,25 +37,26 @@
   });
 </script>
 
+<h2 class="text-gray-400 mb-2">Collection:</h2>
 <Tabs
   style="pill"
   contentClass="bg-black p-6 md:p-12 bg-opacity-60 rounded-lg"
   divider={false}
 >
-  <TabItem
-    title="Hotel Hideway"
-    open={activeTab === 'hh'}
-    class="sm:pb-3 mr-2 sm:mr-0"
-    defaultClass={classDefault}
-    inactiveClasses={classInactive}
-    activeClasses={classActive}
-    on:click={() => handleTabClick('hh')}
-  >
-    <Web2SearchContainer campaign="hotel_hideaway">
+  <Web2SearchContainer campaign="hotel_hideaway">
+    <TabItem
+      title="Hotel Hideway"
+      open={activeTab === 'hh'}
+      class="sm:pb-3 mr-2 sm:mr-0"
+      defaultClass={classDefault}
+      inactiveClasses={classInactive}
+      activeClasses={classActive}
+      on:click={() => handleTabClick('hh')}
+    >
       <Web2SearchInput placeholder="Name, address or collection" />
       <SearchResults />
-    </Web2SearchContainer>
-  </TabItem>
+    </TabItem>
+  </Web2SearchContainer>
   <TabItem
     title="sub0 Biodiversity"
     open={activeTab === 'sub0'}
@@ -65,20 +67,6 @@
     on:click={() => handleTabClick('sub0')}
   >
     <Web3SearchInput network="sub0" goIcon inputmode="numeric" />
+    <Web3Featured />
   </TabItem>
-
-  <!-- <TabItem
-    title="Other Campaign Example"
-    open={activeTab === 'mink'}
-    class="sm:pb-3"
-    defaultClass={classDefault}
-    inactiveClasses={classInactive}
-    activeClasses={classActive}
-    on:click={() => handleTabClick('mink')}
-  >
-    <Web2SearchContainer campaign="aimm_minke_whales">
-      <Web2SearchInput placeholder="Type the asset name" />
-      <SearchResults />
-    </Web2SearchContainer>
-  </TabItem> -->
 </Tabs>
