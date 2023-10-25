@@ -1,5 +1,5 @@
 <script lang="ts">
-  import NavBar from '$lib/components/NavBar.svelte';
+  import NavBar from '$lib/components/navbar/index.svelte';
   import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
   // import SearchSm from '$lib/components/search/SearchSM.svelte';
   import Footer from '$lib/components/Footer.svelte';
