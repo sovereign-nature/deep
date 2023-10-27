@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -8,7 +8,7 @@ import "./abstracts/Linkable.sol";
 
 /// @custom:security-contact vadim@sovereignnature.com
 contract DeepLink1155 is ERC1155, Ownable, ERC1155Burnable, Linkable {
-    constructor() ERC1155("https://link.sovereignnature.com/api/") {}
+    constructor(address initialOwner) ERC1155("https://link.sovereignnature.com/api/") Ownable(initialOwner) {}
 
     function setURI(string memory newuri) public onlyOwner {
         _setURI(newuri);

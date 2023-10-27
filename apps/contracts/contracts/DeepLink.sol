@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
@@ -8,7 +8,7 @@ import "./abstracts/Linkable.sol";
 
 /// @custom:security-contact vadim@sovereignnature.com
 contract DeepLink is ERC721, ERC721Burnable, Ownable, Linkable {
-    constructor() ERC721("DeepLink", "DLK") {}
+    constructor(address initialOwner) ERC721("DeepLink", "DLK") Ownable(initialOwner) {}
 
     function _baseURI() internal pure override returns (string memory) {
         return "https://link.sovereignnature.com/api/";
