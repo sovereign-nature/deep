@@ -74,9 +74,7 @@ export async function load(event) {
 
   function processDeepData(deepData: DeepData): ExtractedProperties {
     const tracesRecorded: ExtractedProperties['traces_recorded'] = {};
-    console.log(deepData);
-
-    if (deepData) {
+    if (deepData && deepData.statistics) {
       // Iterate through statistics and extract traces_recorded
       deepData.statistics.forEach((kv) => {
         const name = kv.name.replace('traces_recorded', '').replace(/_/g, ' '); // Remove underscores and replace with space;
