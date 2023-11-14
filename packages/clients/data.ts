@@ -8,7 +8,7 @@ export function getEntity(
   config: AxiosRequestConfig = {}
 ) {
   return axios.get(
-    `${SNI_API_URL}/items/${collection}/${id}?fields=*,images.*,steward.*.*`,
+    `${SNI_API_URL}/items/${collection}/${id}?fields=*,images.*,steward.*.*,statistics.*.*`,
     config
   );
 }

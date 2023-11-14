@@ -72,22 +72,15 @@ export async function load(event) {
     };
   }
 
-  // Regular expression to match properties ending with 'traces_recorded'
-  const regex: RegExp = /(.+)_traces_recorded$/;
   function processDeepData(deepData: DeepData): ExtractedProperties {
     const tracesRecorded: ExtractedProperties['traces_recorded'] = {};
+    console.log(deepData);
 
     if (deepData) {
-      // Iterate through object properties
-      for (const key in deepData) {
-        // Check if the property matches the regular expression
-        const match: RegExpExecArray | null = regex.exec(key);
-        if (match) {
-          const name: string = match[1].replace(/_/g, ' '); // Remove underscores and replace with space
-          const value: number = deepData[key];
-          tracesRecorded[name] = value;
-        }
-      }
+      // Iterate through statistics and extract traces_recorded
+      deepData.statistics.forEach((kv) => {
+        tracesRecorded[kv.name] = kv.value;
+      });
     }
 
     return { traces_recorded: tracesRecorded };
