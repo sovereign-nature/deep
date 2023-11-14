@@ -88,8 +88,8 @@ importers:
         specifier: 4.2.1
         version: 4.2.1
       axios:
-        specifier: 1.6.1
-        version: 1.6.1
+        specifier: 1.6.2
+        version: 1.6.2
       dotenv:
         specifier: 16.3.1
         version: 16.3.1
@@ -288,8 +288,8 @@ importers:
         specifier: workspace:*
         version: link:../constants
       axios:
-        specifier: 1.6.1
-        version: 1.6.1
+        specifier: 1.6.2
+        version: 1.6.2
       graphql-request:
         specifier: 6.1.0
         version: 6.1.0(graphql@16.8.1)
@@ -6101,8 +6101,8 @@ packages:
       - debug
     dev: true
 
-  /axios@1.6.1:
-    resolution: {integrity: sha512-vfBmhDpKafglh0EldBEbVuoe7DyAavGSLWhuSm5ZSEKQnHhBf0xAAwybbNH1IkrJNGnS/VG4I5yxig1pCEXE4g==}
+  /axios@1.6.2:
+    resolution: {integrity: sha512-7i24Ri4pmDRfJTR7LDBhsOTtcm+9kjX5WiY1X3wIisx6G9So3pfMkEiU7emUBe46oceVImccTEM3k6C5dbVW8A==}
     dependencies:
       follow-redirects: 1.15.2(debug@4.3.4)
       form-data: 4.0.0
