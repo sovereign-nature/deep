@@ -30,6 +30,8 @@ export type AssetFeatured = {
   address: string;
 };
 
+export type NameValue = { name: string; value: number };
+
 export type DeepData = {
   link?: VerifiedResponse;
   steward: {
@@ -45,6 +47,7 @@ export type DeepData = {
   location: GeoJsonObject;
   description: string;
   name: string;
+  statistics: Array<NameValue>;
 };
 
 export type Address = {
