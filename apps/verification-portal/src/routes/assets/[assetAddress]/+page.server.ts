@@ -79,7 +79,8 @@ export async function load(event) {
     if (deepData) {
       // Iterate through statistics and extract traces_recorded
       deepData.statistics.forEach((kv) => {
-        tracesRecorded[kv.name] = kv.value;
+        const name = kv.name.replace('traces_recorded', '').replace(/_/g, ' '); // Remove underscores and replace with space;
+        tracesRecorded[name] = kv.value;
       });
     }
 
