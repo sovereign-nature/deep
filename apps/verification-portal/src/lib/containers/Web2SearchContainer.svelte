@@ -84,7 +84,7 @@
   onMount(async () => {
     try {
       const { data: response }: AxiosResponse = await axios.get(
-        `${SNI_API_URL}/items/${campaign}`
+        `${SNI_API_URL}/items/${campaign}?filter[status][_eq]=published`
       );
       handleDataLoaded(response.data);
     } catch (error) {
