@@ -14,6 +14,8 @@
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
     "format": "prettier --plugin-search-dir . --write .",
     "test:integration": "playwright test",
+    "test:integration:dev": "playwright test --config=playwright.dev.config.ts",
+    "test:integration:dev:ui": "playwright test --config=playwright.dev.config.ts --ui ",
     "test:unit": "vitest"
   },
   "devDependencies": {
