@@ -5,3 +5,4 @@ dist/
 # Ignore generated files
 generated/
 formatters.ts
+i18n-*.ts

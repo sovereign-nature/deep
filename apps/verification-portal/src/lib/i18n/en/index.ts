@@ -8,12 +8,14 @@ const en: BaseTranslation = {
   },
   subtitle:
     'Learn how your asset is helping real-world conservation efforts around the globe.',
+  collection: 'Collection:',
+  highlights: 'Latest Highlights',
   results: {
     resultsFor: 'Showing results for',
     nrResults: '{0} result{{s}}',
     noResults: 'No results found',
     errorMessage:
-      ' Uh-oh! It looks like a hiccup in the wild! 🐾 \n Please lend a paw by refreshing the page and trying again.',
+      'Uh-oh! It looks like a hiccup in the wild! 🐾 \n Please lend a paw by refreshing the page and trying again.',
   },
 } satisfies BaseTranslation;
 
