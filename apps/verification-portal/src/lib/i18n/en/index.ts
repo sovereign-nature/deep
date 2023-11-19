@@ -17,6 +17,12 @@ const en: BaseTranslation = {
     errorMessage:
       'Uh-oh! It looks like a hiccup in the wild! 🐾 \n Please lend a paw by refreshing the page and trying again.',
   },
+  web2: {
+    search: {
+      label: 'Search for your asset',
+      placeholder: 'Asset name',
+    },
+  },
 } satisfies BaseTranslation;
 
 export default en;

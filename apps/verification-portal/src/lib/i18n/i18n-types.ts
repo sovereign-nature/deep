@@ -59,6 +59,18 @@ type RootTranslation = {
 		 */
 		errorMessage: string
 	}
+	web2: {
+		search: {
+			/**
+			 * S​e​a​r​c​h​ ​f​o​r​ ​y​o​u​r​ ​a​s​s​e​t
+			 */
+			label: string
+			/**
+			 * A​s​s​e​t​ ​n​a​m​e
+			 */
+			placeholder: string
+		}
+	}
 }
 
 export type TranslationFunctions = {
@@ -106,6 +118,18 @@ export type TranslationFunctions = {
 	 Please lend a paw by refreshing the page and trying again.
 		 */
 		errorMessage: () => LocalizedString
+	}
+	web2: {
+		search: {
+			/**
+			 * Search for your asset
+			 */
+			label: () => LocalizedString
+			/**
+			 * Asset name
+			 */
+			placeholder: () => LocalizedString
+		}
 	}
 }
 
