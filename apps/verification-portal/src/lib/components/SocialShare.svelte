@@ -1,6 +1,7 @@
 <script lang="ts">
   import HexagonIcon from './icons/HexagonIcon.svelte';
   import type { CollectionKey } from '$lib/types';
+  import LL from '$lib/i18n/i18n-svelte';
 
   export let shareUrl: string = '';
 
@@ -11,16 +12,12 @@
     { twitterPrefix: string; telegramPrefix: string }
   > = {
     sub0: {
-      twitterPrefix:
-        '#NFTs supporting verified #BiodiversityConservation?! Count me in! 🐬\n\nThanks @sovereignnature for bringing REAL data of bottlenose dolphins & minke whales monitored by @AIMMPortugal onchain. Glad my @Polkadot #sub0 attendance supports this wild cause! 🐋',
-      telegramPrefix:
-        'NFTs supporting verified biodiversity conservation?! Count me in! 🐬 \n \nThanks Sovereign Nature Initiative for bringing REAL data of bottlenose dolphins and minke whales monitored by AIMM Portugal onchain. Glad my Polkadot sub0 attendance supports this wild cause! 🐋',
+      twitterPrefix: $LL.social.sub0.twitterPrefix(),
+      telegramPrefix: $LL.social.sub0.telegramPrefix(),
     },
     hh: {
-      twitterPrefix:
-        'Just discovered the Upemba National Park room in #HotelHideaway, and it is WILD! 🐘🦓\n\nFor example, this item I purchased directly supports @forgottenparksF’s #BiodiversityConservation efforts thanks to @sovereignnature. Check out the details below!',
-      telegramPrefix:
-        'Just discovered the Upemba National Park room in Hotel Hideaway, and it is WILD! 🐘🦓\n\nFor example, this item I purchased directly supports @forgottenparksF’s biodiversity conservation efforts thanks to the Sovereign Nature Initiative. Check out the details below!',
+      twitterPrefix: $LL.social.hh.twitterPrefix(),
+      telegramPrefix: $LL.social.hh.telegramPrefix(),
     },
   };
 

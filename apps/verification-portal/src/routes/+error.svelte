@@ -2,6 +2,7 @@
   import { page } from '$app/stores';
   import SearchTabs from '$lib/containers/SearchTabs.svelte';
   import LayoutLanding from '$lib/containers/LayoutLanding.svelte';
+  import LL from '$lib/i18n/i18n-svelte';
 </script>
 
 <LayoutLanding>
@@ -15,7 +16,7 @@
   <h2
     class="text-base sm:text-2xl lg:text-3xl text-white md:text-left text-center mb-8"
   >
-    Search for your asset to verify
+    {$LL.errors.errorPageTitle()}
   </h2>
   <SearchTabs />
 </LayoutLanding>

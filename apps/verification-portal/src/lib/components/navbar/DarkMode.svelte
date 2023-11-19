@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Dropdown, DropdownItem, Radio } from 'flowbite-svelte';
   import { browser } from '$app/environment';
+  import LL from '$lib/i18n/i18n-svelte';
 
   export let btnClass: string =
     'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700  text-sm cursor-pointer ';
@@ -66,7 +67,7 @@
       value={'system'}
     >
       <slot name="system" />
-      <span class="ms-1 text-xs"> Auto </span>
+      <span class="ms-1 text-xs"> {$LL.colorTheme.auto()} </span>
     </Radio>
   </DropdownItem>
   <DropdownItem class={itemClass}>
@@ -78,7 +79,7 @@
       value={'light'}
     >
       <slot name="light" />
-      <span class="ms-1 text-xs"> Light</span>
+      <span class="ms-1 text-xs"> {$LL.colorTheme.light()} </span>
     </Radio>
   </DropdownItem>
   <DropdownItem class={itemClass}>
@@ -90,7 +91,7 @@
       value={'dark'}
     >
       <slot name="dark" />
-      <span class="ms-1 text-xs"> Dark</span>
+      <span class="ms-1 text-xs"> {$LL.colorTheme.dark()} </span>
     </Radio>
   </DropdownItem>
 </Dropdown>

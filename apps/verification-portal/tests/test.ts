@@ -54,6 +54,8 @@ test.describe('REAL asset page ', () => {
     await page.goto(
       '/assets/did:asset:deep:hotel-hideaway.asset:african-elephant-onesie-hood'
     );
+    // add a delay to make sure all async data is loaded
+    await page.waitForTimeout(2000);
     await expect(page).toHaveScreenshot({ maxDiffPixels: 100, fullPage: true });
   });
 });
