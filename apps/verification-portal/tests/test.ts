@@ -51,7 +51,9 @@ test.describe('REAL is rendering correct landing page content', () => {
 test.describe('REAL asset page ', () => {
   test('should render the right content', async ({ page }) => {
     // We visit the page. This waits for the "load" event by default.
-    await page.goto('/assets/did:asset:deep:polkadot.asset-hub:13:1');
+    await page.goto(
+      '/assets/did:asset:deep:hotel-hideaway.asset:african-elephant-onesie-hood'
+    );
     await expect(page).toHaveScreenshot({ maxDiffPixels: 100, fullPage: true });
   });
 });
