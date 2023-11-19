@@ -1,5 +1,7 @@
-node_modules/*
+node_modules; /*
 .github
 .vercel
 dist/
+# Ignore generated files
 generated/
+formatters.ts
