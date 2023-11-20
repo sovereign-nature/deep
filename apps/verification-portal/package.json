@@ -40,7 +40,7 @@
     "graphql-request": "^6.1.0",
     "leaflet": "1.9.4",
     "postcss": "8.4.31",
-    "postcss-load-config": "4.0.1",
+    "postcss-load-config": "4.0.2",
     "satori": "0.10.9",
     "satori-html": "0.3.2",
     "svelte": "^4.0.5",
