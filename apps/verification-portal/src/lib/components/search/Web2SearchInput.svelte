@@ -4,8 +4,9 @@
   import { Input, ButtonGroup, Button } from 'flowbite-svelte';
   import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
   import { updateQueryParams } from '$lib/utils';
+  import { LL } from '$lib/i18n/i18n-svelte';
 
-  export let placeholder = 'Search)';
+  export let placeholder = $LL.web2.search.placeholder();
   export const inputmode = 'search';
 
   // Retrieve user store from context
@@ -49,9 +50,12 @@
   >
     <span
       class="text-white whitespace-nowrap mr-auto text-sm sm:text-base w-full sm:w-auto pe-5"
-      >Search for your asset
+    >
+      {$LL.web2.search.label()}
       {#if $search.length > 0}
-        <span class="float-right sm:hidden">{$results.length} results</span>
+        <span class="float-right sm:hidden"
+          >{$LL.results.nrResults($results.length)}</span
+        >
       {/if}
     </span>
 

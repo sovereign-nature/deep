@@ -4,19 +4,20 @@
   const currentYear = new Date().getFullYear();
   const copyrightNotice = `© ${currentYear} SNI`;
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
+  import LL from '$lib/i18n/i18n-svelte';
 
   const links = {
     mailing: {
       url: 'https://sovereignnature.com/#subscribe',
-      title: 'Subscribe to our mailing list',
+      title: $LL.footer.mailing(),
     },
     terms: {
       url: 'https://sovereignnature.com/terms-conditions',
-      title: 'Terms & Conditions',
+      title: $LL.footer.terms(),
     },
     privacy: {
       url: 'https://sovereignnature.com/privacy-policy',
-      title: 'Privacy Policy',
+      title: $LL.footer.privacy(),
     },
     copyright: {
       url: 'https://sovereignnature.com/',

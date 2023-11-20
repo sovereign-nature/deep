@@ -4,8 +4,8 @@
   "private": true,
   "license": "GPL-3.0",
   "scripts": {
-    "dev": "vite dev",
-    "serve": "vite dev --host",
+    "dev": "vite dev & typesafe-i18n",
+    "serve": "vite dev --host & typesafe-i18n",
     "build": "vite build",
     "preview": "vite preview",
     "test": "npm run test:unit",
@@ -14,7 +14,10 @@
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
     "format": "prettier --plugin-search-dir . --write .",
     "test:integration": "playwright test",
-    "test:unit": "vitest"
+    "test:integration:dev": "playwright test --config=playwright.dev.config.ts",
+    "test:integration:dev:ui": "playwright test --config=playwright.dev.config.ts --ui ",
+    "test:unit": "vitest",
+    "typesafe-i18n": "typesafe-i18n"
   },
   "devDependencies": {
     "@google/model-viewer": "3.3.0",
@@ -46,6 +49,7 @@
     "tailwindcss": "3.3.5",
     "tslib": "2.6.2",
     "typescript": "5.2.2",
+    "typesafe-i18n": "5.26.2",
     "vite": "4.5.0",
     "vitest": "0.34.6",
     "@sentry/sveltekit": "7.80.1"

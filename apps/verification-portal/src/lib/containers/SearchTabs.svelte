@@ -8,6 +8,7 @@
   import Web3SearchInput from '$lib/components/search/Web3SearchInput.svelte';
   import SearchResults from '$lib/components/search/SearchResults.svelte';
   import Web3Featured from '$lib/containers/Web3Featured.svelte';
+  import { LL } from '$lib/i18n/i18n-svelte';
 
   const url = $page.url;
 
@@ -38,7 +39,7 @@
   });
 </script>
 
-<h2 class="text-gray-400 mb-2">Collection:</h2>
+<h2 class="text-gray-400 mb-2">{$LL.collection()}</h2>
 <Tabs
   style="pill"
   contentClass="bg-deep-green dark:bg-black p-6 md:p-12 bg-opacity-100 dark:bg-opacity-60 rounded-lg"
@@ -54,7 +55,7 @@
       activeClasses={classActive}
       on:click={() => handleTabClick('hh')}
     >
-      <Web2SearchInput placeholder="Asset name" />
+      <Web2SearchInput placeholder={$LL.web2.search.placeholder()} />
       <SearchResults />
     </TabItem>
   </Web2SearchContainer>

@@ -9,6 +9,7 @@
   import FundsDashboard from '$lib/components/dashboard/FundsDashboard.svelte';
   import SimpleMap from '$lib/components/SimpleMap.svelte';
   import ShareCard from '$lib/components/ShareCard.svelte';
+  import LL from '$lib/i18n/i18n-svelte.js';
   import type { CollectionKey } from '$lib/types';
 
   import { page } from '$app/stores';
@@ -17,7 +18,7 @@
   import placeholderCamp from '$lib/assets/images/placeholderCamp.jpg';
 
   $: currentPath = $page.url.toString();
-  $: pageTitle = `REAL by SNI | ${nftData.name}`;
+  $: pageTitle = `${$LL.assets.title({ assetName: nftData.name })}`;
 
   export let data;
   const {
@@ -33,33 +34,11 @@
   const isSub0 = addressDetails?.chain?.reference == 'polkadot';
 
   const introText = isSub0
-    ? 'Welcome to the Polkadot sub0 biodiversity collection. Your contribution makes a REAL difference. Connect with the marine biodiversity served by the organisation AIMM Portugal.'
+    ? $LL.assets.intro.sub0()
     : nftData?.collection?.description;
 
-  const content = {
-    intro: introText,
-    shareText: 'Share your asset',
-    page: {
-      funds: {
-        cardTitle: 'Funds generated so far:',
-      },
-      ecSteward: {
-        title: 'Ecological Steward',
-        description:
-          'Ecological Steward (ES): an identified conservation/restoration group, being an organisation (e.g. KWT) or a community, group of stakeholders who has also the mandate to manage the funds raised',
-      },
-      ecEntity: {
-        cardTitle: 'Collecting funds for:',
-        propsTitle: 'Animal stats:',
-        title: 'Ecological Entity',
-        description:
-          'Ecological Entity: an identified piece of ecology the Ecological Steward (ES) focuses on, that being a specific species population (predators of the Maasai Mara) or an ecosystem (the Upemba National Park)',
-      },
-    },
-  };
-
   // Define specific share card data for a page
-  $: pageDescription = `${content.intro}`;
+  $: pageDescription = `${introText}`;
   $: name = nftData.name || '';
   $: funds = deepData?.link?.funds_raised || 0;
   $: source = isSub0 ? 'sub0' : 'Hotel Hideaway'; // @TODO replace with dynamic source
@@ -103,7 +82,7 @@
         class="dark:text-white text-2xl md:text-3xl lg:text-4xl leading-tight mb-6"
       >
         {#if verifiedStatus}
-          <span class="text-primary-300">Verified:</span>
+          <span class="text-primary-300">{$LL.assets.verified()}</span>
         {/if}
         <span class="font-aeonik">
           {nftData.name}
@@ -111,7 +90,7 @@
       </h1>
       <div class="mb-6">
         {#if verifiedStatus}
-          <p>{content.intro}</p>
+          <p>{introText}</p>
         {/if}
 
         {#if nftData.description}
@@ -143,7 +122,7 @@
       <div
         class="col-span-2 flex flex-col lg:flex-row lg:items-center gap-5 pb-4 lg:pb-0"
       >
-        <span class="text-sm">{content.shareText}</span>
+        <span class="text-sm">{$LL.assets.shareText()}</span>
         <SocialShare shareUrl={currentPath} collection={collectionId} />
       </div>
     </div>
@@ -162,11 +141,13 @@
     >
       <Subheader
         className="!text-base font-normal text-black dark:text-white xl:text-white xl:dark:!text-black md:pt-8 xl:pt-0 flex justify-start lg:justify-center xl:justify-start "
-        >{content.page.funds.cardTitle}</Subheader
+        >{$LL.assets.funds.cardTitle()}</Subheader
       >
       <FundsDashboard
         totalFunds={deepData.steward?.funds_raised.toString()}
+        totalFundsSubtitle={$LL.assets.funds.labelTotal()}
         assetFunds={deepData.link?.funds_raised.toString()}
+        assetFundsSubtitle={$LL.assets.funds.labelAsset()}
       ></FundsDashboard>
     </div>
 
@@ -176,7 +157,7 @@
     >
       <div class={`${cardHeaderClass} mb-8`}>
         <Subheader className="!text-base font-normal"
-          >{content.page.ecEntity.cardTitle}</Subheader
+          >{$LL.assets.ecEntity.cardTitle()}</Subheader
         >
         <h3 class="text-5xl">{deepData?.id}</h3>
       </div>
@@ -219,7 +200,7 @@
       class="Animal-Data-Continued bg-transparent text-black dark:text-white mb-5"
     >
       <div class={`${cardHeaderClass} mb-5`}>
-        <Subheader>{content.page?.ecEntity?.title}</Subheader>
+        <Subheader>{$LL.assets.ecEntity.title()}</Subheader>
         <CardHeader title={deepData?.name} />
         <p class="card-description">{deepData.description}</p>
       </div>
@@ -228,10 +209,12 @@
           <div
             class="p-11 bg-gray-300 dark:bg-black rounded-lg mx-6 dark:text-gray-300"
           >
-            <Subheader>{content.page.ecEntity.propsTitle}</Subheader>
+            <Subheader>{$LL.assets.ecEntity.propsTitle()}</Subheader>
 
             {#if Object.keys(properties.traces_recorded).length > 0}
-              <div class="font-serif text-[22px] mb-2">Traces Recorded</div>
+              <div class="font-serif text-[22px] mb-2">
+                {$LL.assets.ecEntity.traces()}
+              </div>
               <div
                 class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2"
               >
@@ -257,7 +240,7 @@
         class="Steward-Data bg-primary-100 dark:bg-deep-green text-black dark:text-white sm:rounded-lg overflow-hidden"
       >
         <div class={`${cardHeaderClass} mb-8`}>
-          <Subheader>{content.page?.ecSteward?.title}</Subheader>
+          <Subheader>{$LL.assets.ecSteward.title()}</Subheader>
           <CardHeader
             title={deepData.steward?.name}
             url={deepData.steward?.website}

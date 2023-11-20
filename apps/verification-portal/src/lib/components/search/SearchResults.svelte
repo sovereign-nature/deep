@@ -6,6 +6,7 @@
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import type { Web2DataState, AssetFeatured } from '$lib/types';
   import FeaturedContainer from '$lib/containers/FeaturedContainer.svelte';
+  import { LL } from '$lib/i18n/i18n-svelte';
 
   // Retrieve user store from context
   const results: Writable<[]> = getContext('results');
@@ -34,9 +35,10 @@
     <div
       class="flex flex-row flex-wrap sm:flew-nowrap justify-between mt-16 text-white text-xs sm:text-sm"
     >
-      <span class="light">Showing results for <strong>"{$search}"</strong></span
+      <span class="light"
+        >{$LL.results.resultsFor()} <strong>"{$search}"</strong></span
       >
-      <span class="italic">{$results.length} results</span>
+      <span class="italic">{$LL.results.nrResults($results.length)}</span>
     </div>
     <div class="mt-5 sm:mt-8">
       {#if $results.length > 0}
@@ -56,14 +58,13 @@
           {/each}
         </div>
       {:else if $results.length == 0}
-        <p class="text-xl text-center text-white">No results found.</p>
+        <p class="text-xl text-center text-white">{$LL.results.noResults()}</p>
       {/if}
     </div>
   {:else if $search && $web2data.error}
     <div class="mt-24">
-      <p class="text-xl text-center text-white">
-        Uh-oh! It looks like a hiccup in the wild! 🐾 <br /> Please lend a paw by
-        refreshing the page and trying again.
+      <p class="text-xl text-center text-white whitespace-pre-line">
+        {$LL.results.errorMessage()}
       </p>
     </div>
   {/if}

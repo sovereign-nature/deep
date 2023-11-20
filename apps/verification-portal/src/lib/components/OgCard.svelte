@@ -2,6 +2,7 @@
   import { generateIPFSImageUrl, isIPFSUrl, isLongTitle } from '$lib/utils';
   import Logo from '$lib/components/icons/Logo.svelte';
   import FundsWidget from '$lib/components/dashboard/FundsWidget.svelte';
+  import LL from '$lib/i18n/i18n-svelte';
   export let title = '';
   export let tokenId = '';
   export let funds = '';
@@ -44,7 +45,7 @@
         class="flex items-start text-white text-21px mb-2"
         style="font-family: Roboto; font-weight:400"
       >
-        <strong>Source:</strong>
+        <strong>{$LL.social.og.source()}</strong>
         <span class="text-[#00C67E] ml-2">{source}</span>
       </div>
     {/if}
@@ -53,7 +54,7 @@
         class="flex items-start text-white text-21px"
         style="font-family: Roboto; font-weight:400;"
       >
-        <strong>Token ID:</strong>
+        <strong>{$LL.social.og.token()}</strong>
         <span class="text-[#00C67E] ml-2">{tokenId}</span>
       </div>
     {/if}
@@ -62,7 +63,7 @@
     <span
       class="absolute left-58px top-510px text-[#00C67E] text-21px"
       style="font-family: Roboto; font-weight:400"
-      >Total funds generated to date:</span
+      >{$LL.social.og.fundsGenerated()}</span
     >
     <FundsWidget
       size="xl"

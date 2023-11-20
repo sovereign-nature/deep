@@ -7,6 +7,7 @@
   import { onMount } from 'svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import VerifiedIcon from '$lib/components/icons/VerifiedIcon.svelte';
+  import LL from '$lib/i18n/i18n-svelte';
 
   export let url: string;
   export let alt: string;
@@ -20,10 +21,7 @@
   let isMounted = false;
   let isError = false;
   let isLoading = true;
-  let errorMsg = `
-    Oops! The asset image couldn't make it to the habitat.🐾 \n
-    Please try again later.
-  `;
+  let errorMsg = $LL.errors.image();
 
   let imageUrl: string | null;
   $: imageUrl = isIPFSUrl(url)
