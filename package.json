@@ -27,7 +27,7 @@
     "turbo-ignore": "1.10.16",
     "prettier": "3.1.0",
     "prettier-plugin-organize-imports": "3.2.4",
-    "prettier-plugin-svelte": "3.1.0",
+    "prettier-plugin-svelte": "3.1.1",
     "@typescript-eslint/eslint-plugin": "6.11.0",
     "@typescript-eslint/parser": "6.11.0",
     "eslint": "8.54.0",
