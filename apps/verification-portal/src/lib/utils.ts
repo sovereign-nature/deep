@@ -102,9 +102,13 @@ export function shuffleArray(array: AssetFeatured[]) {
   return array;
 }
 
+import { browser } from '$app/environment';
+
 export function isDarkModePreferred() {
-  return (
-    window.matchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  );
+  if (browser) {
+    return (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    );
+  }
 }

@@ -14,9 +14,9 @@
   const theme = getContext('theme');
 
   $: $theme, modalHandleTheme($theme);
+  initializeModal();
 
   onMount(async () => {
-    initializeModal();
     modalHandleTheme($theme);
   });
 

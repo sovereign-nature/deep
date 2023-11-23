@@ -1,7 +1,6 @@
 <script>
   import { enhance } from '$app/forms';
   import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
-  import ConnectIcon from '$lib/components/icons/ConnectIcon.svelte';
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
   import { Input, ButtonGroup, Button } from 'flowbite-svelte';
   export let network = 'sub0';
