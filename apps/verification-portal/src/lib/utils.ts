@@ -50,8 +50,7 @@ export function generateIPFSImageUrl(ipfsUrl: string): string | null {
 }
 
 function getCID(url: string): string {
-  const parts = url.split('/');
-  return parts[parts.length - 1];
+  return url.substring(7); // 'ipfs://'.length === 7
 }
 
 export function isIPFSUrl(url: string): boolean {
