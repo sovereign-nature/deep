@@ -30,9 +30,10 @@
     </span>
   </NavBrand>
 
-  <div class="flex justify-end content-center md:w-1/2 lg:pt-0">
+  <div
+    class="flex justify-end items-center content-center md:w-1/2 lg:pt-0 gap-x-2"
+  >
     <slot />
-
-    <ThemeSwitch className="ms-4 "></ThemeSwitch>
+    <ThemeSwitch className=""></ThemeSwitch>
   </div>
 </Navbar>

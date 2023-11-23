@@ -1,12 +1,24 @@
-<script>
+<script lang="ts">
   import '../app.postcss';
   import { fade } from 'svelte/transition';
   import { beforeNavigate, afterNavigate } from '$app/navigation';
-
+  import { initializeModal, modalHandleTheme } from '$lib/web3Modal';
+  import { initThemeContext } from '$lib/themeContext';
+  import { getContext, onMount } from 'svelte';
   let isLoading = false;
 
   beforeNavigate(() => (isLoading = true));
   afterNavigate(() => (isLoading = false));
+
+  initThemeContext();
+  const theme = getContext('theme');
+
+  $: $theme, modalHandleTheme($theme);
+
+  onMount(async () => {
+    initializeModal();
+    modalHandleTheme($theme);
+  });
 
   export let data;
 </script>

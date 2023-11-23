@@ -8,6 +8,13 @@
   export let placeholder = 'Enter the token ID (1-1466)';
   export let goIcon = false;
   export let inputmode = 'search';
+  import { onMount } from 'svelte';
+
+  let showButton = false;
+
+  onMount(() => {
+    showButton = true;
+  });
 </script>
 
 <form method="POST" use:enhance>
@@ -17,9 +24,14 @@
     <div
       class="flex gap-2 items-baseline text-white whitespace-nowrap mr-auto text-sm sm:text-base w-full sm:w-auto pe-5 mb-3 md:mb-0"
     >
-      Wallet <Button color="none" size="sm" class="bg-primary-300" disabled
+      <!-- Wallet <Button color="none" size="sm" class="bg-primary-300" disabled
         >connect <ConnectIcon className="h-4 w-4 ms-2" /></Button
-      > <span>coming soon</span>
+      > <span>coming soon</span> -->
+      <!--- render wallet button client side only-->
+
+      {#if showButton}
+        <w3m-button size="sm"> </w3m-button>
+      {/if}
     </div>
     <input name="network" value={network} type="text" readonly hidden />
     <ButtonGroup

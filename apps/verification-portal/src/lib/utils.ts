@@ -101,3 +101,10 @@ export function shuffleArray(array: AssetFeatured[]) {
   }
   return array;
 }
+
+export function isDarkModePreferred() {
+  return (
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+  );
+}

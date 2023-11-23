@@ -8,6 +8,12 @@
 <div class="w-full flex flex-col min-h-screen content-center justify-center">
   <NavBar>
     <!-- <SearchSm></SearchSm> -->
+    <w3m-button
+      size="sm"
+      class="text-gray-300 dark:text-primary-500 text-sm pe-1 opacity-50 hover:opacity-100 active:opacity-100"
+    >
+    </w3m-button>
+
     <a
       href="/"
       class="text-gray-300 dark:text-primary-500 text-sm pe-1 opacity-50 hover:opacity-100 active:opacity-100"

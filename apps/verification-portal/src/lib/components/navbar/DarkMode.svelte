@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Dropdown, DropdownItem, Radio } from 'flowbite-svelte';
-  import { browser } from '$app/environment';
+  import { getContext } from 'svelte';
   import LL from '$lib/i18n/i18n-svelte';
 
   export let btnClass: string =
@@ -10,30 +10,17 @@
     'p-0 flex justify-start items-baseline gap-2 dark:hover:bg-transparent cursor-pointer';
   export let ariaLabel: string = 'Dark mode';
 
-  let selectedTheme: string =
-    browser && localStorage.getItem('color-theme')
-      ? localStorage.getItem('color-theme')
-      : 'system';
+  const theme = getContext('theme');
+  let selectedTheme: string;
+  theme.subscribe((value) => {
+    selectedTheme = value;
+  });
 
   let dropdownOpen = false;
 
   const handleThemeChange = () => {
-    if (selectedTheme === 'system') {
-      localStorage?.removeItem('color-theme');
-      window.document.documentElement.classList.toggle(
-        'dark',
-        window.matchMedia('(prefers-color-scheme: dark)').matches
-      );
-    } else {
-      localStorage?.setItem('color-theme', selectedTheme);
-      toggleTheme(selectedTheme);
-    }
+    theme.setTheme(selectedTheme);
     dropdownOpen = false;
-  };
-
-  const toggleTheme = (theme: string) => {
-    const isDark = theme === 'dark';
-    window.document.documentElement.classList.toggle('dark', isDark);
   };
 </script>
 
