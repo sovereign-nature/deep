@@ -36,14 +36,8 @@
             Polygon
           {:else if $web3ChainId == 80001}
             Mumbai
-          {:else if $web3ChainId == 4}
-            Rinkeby
-          {:else if $web3ChainId == 3}
-            Ropsten
-          {:else if $web3ChainId == 5}
-            Goerli
-          {:else if $web3ChainId == 42}
-            Kovan
+          {:else if $web3ChainId == 11155111}
+            Sepolia
           {:else if $web3ChainId == 1}
             Mainnet
           {:else}

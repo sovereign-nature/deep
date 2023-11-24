@@ -11,8 +11,6 @@
   let web3Connected = getContext('web3Connected');
   let web3Address = getContext('web3Address');
 
-  console.log(web3Items);
-
   // Reactively update web3 assets when web3Connected or web3Address changes
   $: $web3Connected, getWeb3Assets();
   $: $web3Address, getWeb3Assets();
