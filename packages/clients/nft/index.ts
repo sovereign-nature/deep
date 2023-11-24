@@ -33,13 +33,15 @@ export async function getOpenSeaTestNetNft(
 
 export function getNftData(
   network: string,
-  collectionAddress: string,
+  contractAddress: string,
   tokenId: number
 ) {
   switch (network) {
     case 'polkadot':
-      return getPolkadotNft(`${collectionAddress}-${tokenId}`);
+      return getPolkadotNft(`${contractAddress}-${tokenId}`);
     case 'kusama':
-      return getKusamaNft(`${collectionAddress}-${tokenId}`);
+      return getKusamaNft(`${contractAddress}-${tokenId}`);
+    case 'sepolia':
+      return getOpenSeaTestNetNft(contractAddress, tokenId);
   }
 }
