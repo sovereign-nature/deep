@@ -20,6 +20,16 @@ export function getKusamaNft(id: string) {
   });
 }
 
+export async function getOpenSeaTestNetNft(
+  contractAddress: string,
+  tokenId: number
+) {
+  const res = await fetch(
+    `https://testnets-api.opensea.io/api/v1/asset/${contractAddress}/${tokenId}/`
+  );
+  return await res.json();
+}
+
 export function getNftData(
   network: string,
   collectionAddress: string,
