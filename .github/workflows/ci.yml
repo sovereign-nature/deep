@@ -12,6 +12,7 @@ jobs:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
       DIRECTUS_API_KEY: ${{ secrets.DIRECTUS_API_KEY }}
+      PUBLIC_VITE_PROJECT_ID: ${{ secrets.PUBLIC_VITE_PROJECT_ID }}
       VERCEL_URL: 'empty'
       TURBO_REMOTE_ONLY: true
     steps:
