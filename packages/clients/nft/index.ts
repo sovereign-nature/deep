@@ -27,6 +27,7 @@ export async function getOpenSeaTestNetNft(
   const res = await fetch(
     `https://testnets-api.opensea.io/api/v1/asset/${contractAddress}/${tokenId}/`
   );
+
   return await res.json();
 }
 
