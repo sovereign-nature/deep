@@ -7,12 +7,36 @@ const app = new Hono();
 
 app.get('/', (c) => c.text('DEEP Assets Gateway'));
 
+// TODO: Move methods to library, cover with tests
+function eip155ToName(chainId: number): string {
+  switch (chainId) {
+    case 1:
+      return 'ethereum';
+    case 11155111:
+      return 'sepolia';
+    default:
+      return 'unknown';
+  }
+}
+
+function getNetworkId(chainNamespace: string, chainId: string): string {
+  switch (chainNamespace) {
+    case 'eip155':
+      return eip155ToName(parseInt(chainId));
+    case 'deep':
+      return chainId;
+    default:
+      return 'unknown';
+  }
+}
+
 app.get('/:assetDID', async (c) => {
   const assetDID = c.req.param('assetDID');
 
   const { chain, asset } = parseAddress(assetDID);
 
-  const networkId = chain.reference;
+  //TODO: Handle unknown chains
+  const networkId = getNetworkId(chain.namespace, chain.reference);
 
   const assetId = asset.reference;
   const tokenId = asset.identifier;
