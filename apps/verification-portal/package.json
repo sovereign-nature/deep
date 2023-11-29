@@ -35,7 +35,7 @@
     "@vercel/og": "0.5.20",
     "autoprefixer": "10.4.16",
     "flowbite": "1.8.1",
-    "flowbite-svelte": "0.44.19",
+    "flowbite-svelte": "0.44.20",
     "fuse.js": "6.6.2",
     "graphql-request": "^6.1.0",
     "leaflet": "1.9.4",
