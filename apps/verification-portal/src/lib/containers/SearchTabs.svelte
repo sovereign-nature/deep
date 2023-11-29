@@ -3,12 +3,14 @@
   import { Tabs, TabItem } from 'flowbite-svelte';
   import { onMount } from 'svelte';
   import { page } from '$app/stores';
-  import Web2SearchContainer from '$lib/containers/Web2SearchContainer.svelte';
-  import Web2SearchInput from '$lib/components/search/Web2SearchInput.svelte';
-  import Web3SearchInput from '$lib/components/search/Web3SearchInput.svelte';
-  import SearchResults from '$lib/components/search/SearchResults.svelte';
-  import Web3Featured from '$lib/containers/Web3Featured.svelte';
   import { LL } from '$lib/i18n/i18n-svelte';
+
+  import SearchResults from '$lib/components/search/Web2SearchResults.svelte';
+  import Web2SearchContainer from '$lib/containers/context/Web2Search.svelte';
+  import Web2SearchInput from '$lib/components/search/Web2SearchInput.svelte';
+  import Web3SearchContainer from '$lib/containers/context/Web3Search.svelte';
+  import Web3SearchInput from '$lib/components/search/Web3SearchInput.svelte';
+  import Web3Assets from '$lib/components/web3/Web3AssetsContainer.svelte';
 
   const url = $page.url;
 
@@ -34,7 +36,7 @@
   onMount(() => {
     const qValue = url.searchParams.get('q');
     if (qValue) {
-      activeTab = qValue === 'sub0' ? 'sub0' : 'hh';
+      activeTab = ['hh', 'sub0', 'new'].includes(qValue) ? qValue : 'hh';
     }
   });
 </script>
@@ -60,7 +62,7 @@
     </TabItem>
   </Web2SearchContainer>
   <TabItem
-    title="sub0 Biodiversity"
+    title="{$LL.sub0.collectionName()} "
     open={activeTab === 'sub0'}
     class="!ml-0 sm:!ml-3 sm:pb-3"
     defaultClass={classDefault}
@@ -68,7 +70,32 @@
     activeClasses={classActive}
     on:click={() => handleTabClick('sub0')}
   >
-    <Web3SearchInput network="sub0" goIcon inputmode="numeric" />
-    <Web3Featured />
+    <Web3SearchInput
+      network="sub0"
+      goIcon
+      inputmode="numeric"
+      placeholder={$LL.sub0.placeholder()}
+    />
+    <Web3Assets collectionName={$LL.sub0.collectionName()} />
   </TabItem>
+  <Web3SearchContainer collectionId="real-test-1">
+    <TabItem
+      title="{$LL.newCol.collectionName()} "
+      open={activeTab === 'new'}
+      class="!ml-0 sm:!ml-3 sm:pb-3"
+      defaultClass={classDefault}
+      inactiveClasses={classInactive}
+      activeClasses={classActive}
+      on:click={() => handleTabClick('new')}
+    >
+      <Web3SearchInput
+        web3enabled
+        network="eip155"
+        goIcon
+        inputmode="numeric"
+        placeholder={$LL.newCol.placeholder()}
+      />
+      <Web3Assets collectionName={$LL.newCol.collectionName()} web3enabled />
+    </TabItem>
+  </Web3SearchContainer>
 </Tabs>

@@ -1,15 +1,17 @@
 <script lang="ts">
   import { getWeb3Modal } from '$lib/web3Modal';
   import { getContext } from 'svelte';
+  import type { Writable } from 'svelte/store';
   import ConnectIcon from '$lib/components/icons/ConnectIcon.svelte';
   import ArbitrumIcon from '$lib/components/icons/ArbitrumIcon.svelte';
+  import { getChainName } from '@sni/address-utils';
   import { onMount } from 'svelte';
   const web3Modal = getWeb3Modal();
   let isLoaded = false;
 
-  const web3Connected = getContext('web3Connected');
-  const web3Address = getContext('web3Address');
-  const web3ChainId = getContext('web3ChainId');
+  const web3Connected: Writable<boolean> = getContext('web3Connected');
+  const web3Address: Writable<string> = getContext('web3Address');
+  const web3ChainId: Writable<number> = getContext('web3ChainId');
 
   function openModal() {
     web3Modal.open();
@@ -32,16 +34,8 @@
           {#if $web3ChainId == 42161}
             <ArbitrumIcon className="h-4 w-4" />
             <span class="sr-only">Arbitrum</span>
-          {:else if $web3ChainId == 137}
-            Polygon
-          {:else if $web3ChainId == 80001}
-            Mumbai
-          {:else if $web3ChainId == 11155111}
-            Sepolia
-          {:else if $web3ChainId == 1}
-            Mainnet
           {:else}
-            Unknown
+            {getChainName($web3ChainId)}
           {/if}
         {/key}
         {shortenAddress($web3Address)}

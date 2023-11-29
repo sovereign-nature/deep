@@ -1,5 +1,6 @@
 <script>
   import { enhance } from '$app/forms';
+  import ConnectIcon from '$lib/components/icons/ConnectIcon.svelte';
   import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
   import { Input, ButtonGroup, Button } from 'flowbite-svelte';
@@ -7,6 +8,8 @@
   export let placeholder = 'Enter the token ID (1-1466)';
   export let goIcon = false;
   export let inputmode = 'search';
+  export let web3enabled = false;
+
   import { onMount } from 'svelte';
 
   let showButton = false;
@@ -21,20 +24,21 @@
     class="flex flex-col md:flex-row md:items-center gap-3 lg:px-16 pt-4 sm:pt-6"
   >
     <div
-      class="flex gap-2 items-baseline text-white whitespace-nowrap mr-auto text-sm sm:text-base w-full sm:w-auto pe-5 mb-3 md:mb-0"
+      class="flex gap-2 items-baseline text-white whitespace-nowrap mr-auto text-sm sm:text-base w-full sm:w-auto md:w-1/2 pe-5 mb-3 md:mb-0"
     >
-      <!-- Wallet <Button color="none" size="sm" class="bg-primary-300" disabled
-        >connect <ConnectIcon className="h-4 w-4 ms-2" /></Button
-      > <span>coming soon</span> -->
-      <!--- render wallet button client side only-->
-
-      {#if showButton}
-        <w3m-button size="sm"> </w3m-button>
+      {#if web3enabled}
+        {#if showButton}
+          <w3m-button size="sm"> </w3m-button>
+        {/if}
+      {:else}
+        Wallet <Button color="none" size="sm" class="bg-primary-300" disabled
+          >connect <ConnectIcon className="h-4 w-4 ms-2" /></Button
+        > <span>coming soon</span>
       {/if}
     </div>
     <input name="network" value={network} type="text" readonly hidden />
     <ButtonGroup
-      divClass="flex flex-col sm:flex-row sm:inline-flex  w-full justify-items-stretch gap-y-4  "
+      divClass="flex flex-col sm:flex-row sm:inline-flex  w-full sm:w-auto md:w-1/2 justify-items-stretch gap-y-4  "
     >
       <Input
         id="default-search"

@@ -3,7 +3,7 @@
   import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
   // import SearchSm from '$lib/components/search/SearchSM.svelte';
   import Footer from '$lib/components/Footer.svelte';
-  import BtnWeb3Connect from '$lib/components/web3/BtnWeb3Connect.svelte';
+  import BtnWeb3Connect from '$lib/components/web3/Web3ConnectBtn.svelte';
 </script>
 
 <div class="w-full flex flex-col min-h-screen content-center justify-center">

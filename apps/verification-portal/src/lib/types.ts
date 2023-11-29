@@ -69,5 +69,9 @@ export type Web2DataState = {
   loaded: boolean;
   error: boolean;
 };
+export type Web3DataState = {
+  loaded: boolean;
+  error: boolean;
+};
 
 export type CollectionKey = 'sub0' | 'hh';
