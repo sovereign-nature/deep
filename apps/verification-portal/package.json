@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@google/model-viewer": "3.3.0",
-    "@playwright/test": "1.40.0",
+    "@playwright/test": "1.40.1",
     "@popperjs/core": "2.11.8",
     "@sni/address-utils": "workspace:*",
     "@sni/clients": "workspace:*",
