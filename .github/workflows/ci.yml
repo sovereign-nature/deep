@@ -13,6 +13,7 @@ jobs:
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
       DIRECTUS_API_KEY: ${{ secrets.DIRECTUS_API_KEY }}
       PUBLIC_VITE_PROJECT_ID: ${{ secrets.PUBLIC_VITE_PROJECT_ID }}
+      OPEN_SEA_API_KEY: ${{ secrets.OPEN_SEA_API_KEY }}
       VERCEL_URL: 'empty'
       TURBO_REMOTE_ONLY: true
     steps:
