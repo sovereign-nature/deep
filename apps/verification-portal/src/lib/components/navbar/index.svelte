@@ -1,7 +1,11 @@
 <script>
   import { onMount } from 'svelte';
-
+  import BtnWeb3Connect from '$lib/components/web3/Web3ConnectBtn.svelte';
+  import Web3Notifications from '$lib/components/web3/Web3Notifications.svelte';
   import ThemeSwitch from '$lib/components/navbar/ThemeSwitch.svelte';
+  import { Dropdown, DropdownItem } from 'flowbite-svelte';
+  let dropdownOpen = false;
+
   import { Navbar, NavBrand } from 'flowbite-svelte';
 
   import logo from '$lib/assets/brand/sni_logo_round.svg';
@@ -19,7 +23,7 @@
   });
 </script>
 
-<Navbar color="none" class=" my-6 container px-4">
+<Navbar color="none" class=" my-6 container px-4 ">
   <NavBrand href="/">
     <img src={logo} class="mr-2 sm:mr-4 xl:mr-9 h-10 lg:h-20" alt="SNI Logo" />
     <span
@@ -30,10 +34,38 @@
     </span>
   </NavBrand>
 
+  <button class="nav-hamburger md:hidden dark:text-white"> &#9776;</button>
   <div
-    class="flex justify-end items-center content-center md:w-1/2 lg:pt-0 gap-x-2"
+    class="hidden md:flex flex-col sm:flex-row justify-end items-start sm:items-center content-center md:w-1/2 lg:pt-0 gap-x-4"
   >
+    <BtnWeb3Connect></BtnWeb3Connect>
+
+    <Web3Notifications></Web3Notifications>
     <slot />
-    <ThemeSwitch className=""></ThemeSwitch>
+    <ThemeSwitch></ThemeSwitch>
   </div>
+
+  <Dropdown
+    triggeredBy=".nav-hamburger"
+    bind:open={dropdownOpen}
+    containerClass="md:hidden min-h-[300px] z-50 relative dark:bg-deep-green-700 dark:text-white"
+  >
+    <DropdownItem
+      class=" h-12 py-3 flex justify-end hover:dark:bg-transparent hover:bg-transparent"
+    >
+      <BtnWeb3Connect></BtnWeb3Connect>
+    </DropdownItem>
+
+    <DropdownItem
+      class=" py-3 flex justify-end hover:dark:bg-transparent hover:bg-transparent"
+    >
+      <Web3Notifications></Web3Notifications>
+    </DropdownItem>
+
+    <DropdownItem
+      class=" py-3 flex justify-end hover:dark:bg-transparent hover:bg-transparent"
+    >
+      <ThemeSwitch></ThemeSwitch>
+    </DropdownItem>
+  </Dropdown>
 </Navbar>

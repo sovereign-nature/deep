@@ -1,13 +1,15 @@
 <script lang="ts">
-  import { getWeb3Modal } from '$lib/web3Modal';
-  import { getContext } from 'svelte';
-  import type { Writable } from 'svelte/store';
-  import ConnectIcon from '$lib/components/icons/ConnectIcon.svelte';
+  import RolloverBtn from '$lib/components/RolloverBtn.svelte';
   import ArbitrumIcon from '$lib/components/icons/ArbitrumIcon.svelte';
+  import ConnectIcon from '$lib/components/icons/ConnectIcon.svelte';
   import { getChainName } from '@sni/address-utils';
-  import { onMount } from 'svelte';
+  import { getWeb3Modal } from '$lib/web3Modal';
+  import { getContext, onMount } from 'svelte';
+  import type { Writable } from 'svelte/store';
+
   const web3Modal = getWeb3Modal();
   let isLoaded = false;
+  export let alwaysOpen = false;
 
   const web3Connected: Writable<boolean> = getContext('web3Connected');
   const web3Address: Writable<string> = getContext('web3Address');
@@ -28,7 +30,7 @@
   {#if $web3Connected}
     {#key $web3Address || $web3ChainId}
       <button
-        class="text-gray-300 dark:text-primary-500 text-sm pe-1 opacity-80 hover:opacity-100 active:opacity-100 flex items-center gap-2"
+        class=" dark:text-primary-200 pe-1 opacity-80 hover:opacity-100 active:opacity-100 flex items-center gap-2"
         on:click={openModal}
         >{#key $web3ChainId}
           {#if $web3ChainId == 42161}
@@ -38,15 +40,16 @@
             {getChainName($web3ChainId)}
           {/if}
         {/key}
-        {shortenAddress($web3Address)}
+        <span class="flex items-center gap-2">
+          <span class="rounded-full h-3 w-3 block bg-primary-300"></span>
+          {shortenAddress($web3Address)}
+        </span>
       </button>
     {/key}
   {:else}
-    <button
-      class="bg-primary-400 rounded-full text-white text-sm opacity-50 hover:opacity-100 active:opacity-100 w-8 h-8 flex justify-center items-center"
-      on:click={openModal}
-    >
-      <ConnectIcon className="h-4 w-4" />
-    </button>
+    <RolloverBtn type="primary" keepOpen={alwaysOpen} on:click={openModal}>
+      Connect your wallet
+      <ConnectIcon slot="icon" className="h-4 w-4 mx-1" />
+    </RolloverBtn>
   {/if}
 {/if}

@@ -8,7 +8,7 @@
   import SearchResults from '$lib/components/search/Web2SearchResults.svelte';
   import Web2SearchContainer from '$lib/containers/context/Web2Search.svelte';
   import Web2SearchInput from '$lib/components/search/Web2SearchInput.svelte';
-  import Web3SearchContainer from '$lib/containers/context/Web3Search.svelte';
+  import Web3Connection from '$lib/containers/context/Web3Connection.svelte';
   import Web3SearchInput from '$lib/components/search/Web3SearchInput.svelte';
   import Web3Assets from '$lib/components/web3/Web3AssetsContainer.svelte';
 
@@ -41,12 +41,18 @@
   });
 </script>
 
-<h2 class="text-gray-400 mb-2">{$LL.collection()}</h2>
+<h2 class="text-gray-400 lg:hidden mb-2">
+  {$LL.collection()}
+</h2>
 <Tabs
   style="pill"
   contentClass="bg-deep-green dark:bg-black p-6 md:p-12 bg-opacity-100 dark:bg-opacity-60 rounded-lg"
   divider={false}
 >
+  <h2 class="hidden lg:flex text-gray-400 me-2 py-4 mb-5 items-center">
+    {$LL.collection()}
+  </h2>
+
   <Web2SearchContainer campaign="hotel_hideaway">
     <TabItem
       title="Hotel Hideaway"
@@ -78,7 +84,7 @@
     />
     <Web3Assets collectionName={$LL.sub0.collectionName()} />
   </TabItem>
-  <Web3SearchContainer collectionId="real-test-1">
+  <Web3Connection collectionId="real-test-1">
     <TabItem
       title="{$LL.newCol.collectionName()} "
       open={activeTab === 'new'}
@@ -97,5 +103,5 @@
       />
       <Web3Assets collectionName={$LL.newCol.collectionName()} web3enabled />
     </TabItem>
-  </Web3SearchContainer>
+  </Web3Connection>
 </Tabs>

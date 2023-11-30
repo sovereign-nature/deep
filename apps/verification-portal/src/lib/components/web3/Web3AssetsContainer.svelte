@@ -7,6 +7,7 @@
   import type { AssetFeatured, Web3DataState } from '$lib/types';
   import FeaturedContainer from '$lib/components/featured/Web3Featured.svelte';
   import { LL } from '$lib/i18n/i18n-svelte';
+  import Web3Subscribe from '$lib/components/web3/Web3Subscribe.svelte';
 
   export let web3enabled = false;
   export let collectionName: string;
@@ -30,7 +31,21 @@
         </div>
       {:else if $web3Connected && $web3Response.loaded && !$web3Response.error}
         <div
-          class="flex flex-row flex-wrap sm:flew-nowrap justify-between mt-16 text-white text-xs sm:text-sm"
+          class="flex flex-row flex-wrap sm:flew-nowrap items-end justify-between mt-16 text-white text-xs sm:text-sm"
+        >
+          <h2 class="text-2xl">
+            {$LL.wallet.myAssets({
+              collection: collectionName,
+              nrOfAssets: $web3Items.length,
+            })}
+          </h2>
+          <div class="flex">
+            <Web3Subscribe placeholder={$LL.notifications.subscribeCollection()}
+            ></Web3Subscribe>
+          </div>
+        </div>
+        <!-- <div
+          class="flex flex-row flex-wrap sm:flew-nowrap justify-between mt-5 text-white text-xs sm:text-sm"
         >
           <span class="light"
             >{$LL.wallet.assetsFor()}
@@ -40,8 +55,10 @@
               })}</strong
             ></span
           >
-          <span class="italic">{$LL.wallet.nrAssets($web3Items.length)}</span>
-        </div>
+          <div class="flex">
+            <span class="italic">{$LL.wallet.nrAssets($web3Items.length)}</span>
+          </div>
+        </div> -->
         <div class="mt-5 sm:mt-8">
           {#if $web3Items.length > 0}
             <div class="flex flex-col gap-4">
