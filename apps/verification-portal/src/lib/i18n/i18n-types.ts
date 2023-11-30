@@ -75,7 +75,7 @@ type RootTranslation = {
 		 */
 		collectionName: string
 		/**
-		 * G​o​ ​t​o​ ​t​o​k​e​n​ ​I​D​ ​(​1​-​1​9​9​9​)
+		 * E​x​p​l​o​r​e​ ​b​y​ ​t​o​k​e​n​ ​I​D​ ​(​1​-​1​9​9​9​)
 		 */
 		placeholder: string
 	}
@@ -90,6 +90,12 @@ type RootTranslation = {
 		 */
 		assetsFor_pt2: RequiredParams<'collection'>
 		/**
+		 * Y​o​u​ ​o​w​n​ ​{​n​r​O​f​A​s​s​e​t​s​}​ ​{​c​o​l​l​e​c​t​i​o​n​}​ ​a​s​s​e​t​{​{​s​}​}
+		 * @param {string} collection
+		 * @param {number} nrOfAssets
+		 */
+		myAssets: RequiredParams<'collection' | 'nrOfAssets'>
+		/**
 		 * {​0​}​ ​a​s​s​e​t​{​{​s​}​}​ ​f​o​u​n​d
 		 * @param {string | number | boolean} 0
 		 */
@@ -103,6 +109,25 @@ type RootTranslation = {
 	​ ​P​l​e​a​s​e​ ​l​e​n​d​ ​a​ ​p​a​w​ ​b​y​ ​r​e​f​r​e​s​h​i​n​g​ ​t​h​e​ ​p​a​g​e​ ​a​n​d​ ​t​r​y​i​n​g​ ​a​g​a​i​n​.
 		 */
 		errorMessage: string
+	}
+	notifications: {
+		/**
+		 * S​e​e​ ​a​l​l​ ​n​o​t​i​f​i​c​a​t​i​o​n​s
+		 */
+		seeAll: string
+		/**
+		 * S​u​b​s​c​r​i​b​e​ ​t​o​ ​u​p​d​a​t​e​s
+		 */
+		subscribe: string
+		/**
+		 * S​u​b​s​c​r​i​b​e​ ​t​o​ ​c​o​l​l​e​c​t​i​o​n
+		 */
+		subscribeCollection: string
+		/**
+		 * Y​o​u​ ​h​a​v​e​ ​{​n​r​O​f​N​o​t​i​f​i​c​a​t​i​o​n​s​}​ ​n​e​w​ ​n​o​t​i​f​i​c​a​t​i​o​n​{​{​s​}​}
+		 * @param {number} nrOfNotifications
+		 */
+		newNotifications: RequiredParams<'nrOfNotifications'>
 	}
 	web2: {
 		search: {
@@ -257,11 +282,11 @@ type RootTranslation = {
 		 */
 		auto: string
 		/**
-		 * L​i​g​h​t
+		 * L​i​g​h​t​ ​M​o​d​e
 		 */
 		light: string
 		/**
-		 * D​a​r​k
+		 * N​i​g​h​t​ ​M​o​d​e
 		 */
 		dark: string
 	}
@@ -344,7 +369,7 @@ export type TranslationFunctions = {
 		 */
 		collectionName: () => LocalizedString
 		/**
-		 * Go to token ID (1-1999)
+		 * Explore by token ID (1-1999)
 		 */
 		placeholder: () => LocalizedString
 	}
@@ -358,6 +383,10 @@ export type TranslationFunctions = {
 		 */
 		assetsFor_pt2: (arg: { collection: string }) => LocalizedString
 		/**
+		 * You own {nrOfAssets} {collection} asset{{s}}
+		 */
+		myAssets: (arg: { collection: string, nrOfAssets: number }) => LocalizedString
+		/**
 		 * {0} asset{{s}} found
 		 */
 		nrAssets: (arg0: string | number | boolean) => LocalizedString
@@ -370,6 +399,24 @@ export type TranslationFunctions = {
 	 Please lend a paw by refreshing the page and trying again.
 		 */
 		errorMessage: () => LocalizedString
+	}
+	notifications: {
+		/**
+		 * See all notifications
+		 */
+		seeAll: () => LocalizedString
+		/**
+		 * Subscribe to updates
+		 */
+		subscribe: () => LocalizedString
+		/**
+		 * Subscribe to collection
+		 */
+		subscribeCollection: () => LocalizedString
+		/**
+		 * You have {nrOfNotifications} new notification{{s}}
+		 */
+		newNotifications: (arg: { nrOfNotifications: number }) => LocalizedString
 	}
 	web2: {
 		search: {
@@ -523,11 +570,11 @@ export type TranslationFunctions = {
 		 */
 		auto: () => LocalizedString
 		/**
-		 * Light
+		 * Light Mode
 		 */
 		light: () => LocalizedString
 		/**
-		 * Dark
+		 * Night Mode
 		 */
 		dark: () => LocalizedString
 	}
