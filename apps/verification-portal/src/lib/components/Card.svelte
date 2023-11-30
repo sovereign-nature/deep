@@ -102,10 +102,4 @@
     text-decoration: none;
     color: inherit;
   }
-  .card-square {
-    @apply flex-col aspect-square min-h-full;
-  }
-  .card-horizontal {
-    @apply flex-row;
-  }
 </style>
