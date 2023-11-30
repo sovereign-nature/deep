@@ -32,10 +32,19 @@ export function initializeModal() {
   setContext('web3Address', web3Address);
   setContext('web3ChainId', web3ChainId);
 
-  web3Modal.subscribeProvider(({ isConnected, address, chainId }) => {
+  web3Modal.subscribeProvider(async ({ isConnected, address, chainId }) => {
     web3Connected.set(isConnected);
     web3Address.set(address);
     web3ChainId.set(chainId);
+    // Check if the correct chain is connected
+    // if (isConnected && chainId !== '0xaa36a7') {
+    // If not, switch to the correct chain
+    // try {
+    //   await switchChain('0xaa36a7'); // Sepolia testnet
+    // } catch (error) {
+    //   console.error('Failed to switch to Sepolia:', error);
+    // }
+    // }
   });
 }
 
@@ -59,4 +68,13 @@ export function modalHandleTheme(theme: string) {
 
 export function getWeb3Modal() {
   return getContext('web3Modal') as Web3Modal;
+}
+export async function switchChain(id: string) {
+  const provider = web3Modal.getWalletProvider();
+  console.log('provider', provider);
+  try {
+    await provider.send('wallet_switchEthereumChain', [{ chainId: id }]);
+  } catch (error) {
+    console.error('Failed to switch chain:', error);
+  }
 }

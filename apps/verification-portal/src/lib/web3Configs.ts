@@ -15,6 +15,14 @@ export const chains = [
     explorerUrl: 'https://arbiscan.io',
     rpcUrl: 'https://arb1.arbitrum.io/rpc',
   },
+  {
+    chainId: 11155111,
+    name: 'Sepolia',
+    currency: 'ETH',
+    explorerUrl: 'https://sepolia.etherscan.io/',
+
+    rpcUrl: 'https://rpc.sepolia.dev',
+  },
 ];
 // 3. Create modal
 export const metadata = {
