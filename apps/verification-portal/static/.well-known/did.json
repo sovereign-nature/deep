@@ -1,0 +1,33 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/suites/jws-2020/v1"
+  ],
+  "id": "did:web:real.sovereignnature.com",
+  "verificationMethod": [
+    {
+      "id": "did:web:real.sovereignnature.com#wc-notify-subscribe-key",
+      "type": "JsonWebKey2020",
+      "controller": "did:web:real.sovereignnature.com",
+      "publicKeyJwk": {
+        "kty": "OKP",
+        "crv": "X25519",
+        "x": "W2mYYOEnDw_CNlmxRaeYLEXlhh960Na9-y7npn6LFmM"
+      }
+    },
+    {
+      "id": "did:web:real.sovereignnature.com#wc-notify-authentication-key",
+      "type": "JsonWebKey2020",
+      "controller": "did:web:real.sovereignnature.com",
+      "publicKeyJwk": {
+        "kty": "OKP",
+        "crv": "Ed25519",
+        "x": "ZRF8z2n92TdnPazKmc8yRcNFV9IiD6qNTR2Y72OpMIg"
+      }
+    }
+  ],
+  "keyAgreement": ["did:web:real.sovereignnature.com#wc-notify-subscribe-key"],
+  "authentication": [
+    "did:web:real.sovereignnature.com#wc-notify-authentication-key"
+  ]
+}
