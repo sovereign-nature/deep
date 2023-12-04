@@ -2,6 +2,7 @@ import { parseAddress } from '@sni/address-utils';
 import { getNftData } from '@sni/clients/nft';
 import { getHotelHideawayAsset } from '@sni/clients/web2';
 import { SNI_API_URL } from '@sni/constants';
+import { DeepAsset } from '@sni/types';
 import { Hono } from 'hono';
 const app = new Hono();
 
@@ -15,7 +16,7 @@ function eip155ToName(chainId: number): string {
     case 11155111:
       return 'sepolia';
     default:
-      return 'unknown';
+      throw new Error(`Unknown chainId: ${chainId}`);
   }
 }
 
@@ -26,7 +27,7 @@ function getNetworkId(chainNamespace: string, chainId: string): string {
     case 'deep':
       return chainId;
     default:
-      return 'unknown';
+      throw new Error(`Unknown namespace: ${chainNamespace}`);
   }
 }
 
@@ -48,7 +49,7 @@ app.get('/:assetDID', async (c) => {
 
 //TODO: Proper typing
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function polkadotFormatter(assetData: any) {
+function polkadotFormatter(assetData: any): DeepAsset {
   const nftEntity = assetData.nftEntity;
   return {
     id: nftEntity.id,
@@ -64,7 +65,7 @@ function polkadotFormatter(assetData: any) {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function openSeaFormatter(assetData: any) {
+function openSeaFormatter(assetData: any): DeepAsset {
   //TODO: Proper typing for formatted data and assetData
   return {
     id: assetData.id,
@@ -80,7 +81,7 @@ function openSeaFormatter(assetData: any) {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function directusFormatter(assetData: any) {
+function directusFormatter(assetData: any): DeepAsset {
   //TODO: Proper typing for data
   const data = assetData.data;
 
@@ -90,7 +91,11 @@ function directusFormatter(assetData: any) {
   return data;
 }
 
-async function getAsset(networkId: string, assetId: string, tokenId: number) {
+async function getAsset(
+  networkId: string,
+  assetId: string,
+  tokenId: number
+): Promise<DeepAsset> {
   switch (networkId) {
     case 'polkadot':
     case 'kusama':
@@ -103,6 +108,8 @@ async function getAsset(networkId: string, assetId: string, tokenId: number) {
       return directusFormatter(
         await (await getHotelHideawayAsset(assetId)).json()
       );
+    default:
+      throw new Error(`Unknown networkId: ${networkId}`);
   }
 }
 

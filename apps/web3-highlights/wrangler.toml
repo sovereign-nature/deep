@@ -1,0 +1,6 @@
+name = "web3-highlights"
+main = "src/index.ts"
+compatibility_date = "2023-10-10"
+services = [
+  { binding = "assets", service = "assets-gateway" },
+]
