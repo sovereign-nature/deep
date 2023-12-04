@@ -59,6 +59,9 @@ importers:
       '@sni/constants':
         specifier: workspace:*
         version: link:../../packages/constants
+      '@sni/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       hono:
         specifier: 3.10.3
         version: 3.10.3
@@ -272,6 +275,34 @@ importers:
         specifier: 0.34.6
         version: 0.34.6
 
+  apps/web3-highlights:
+    dependencies:
+      '@sni/address-utils':
+        specifier: workspace:*
+        version: link:../../packages/address-utils
+      '@sni/clients':
+        specifier: workspace:*
+        version: link:../../packages/clients
+      '@sni/constants':
+        specifier: workspace:*
+        version: link:../../packages/constants
+      '@sni/types':
+        specifier: workspace:*
+        version: link:../../packages/types
+      hono:
+        specifier: 3.10.3
+        version: 3.10.3
+    devDependencies:
+      '@cloudflare/workers-types':
+        specifier: 4.20231121.0
+        version: 4.20231121.0
+      env-cmd:
+        specifier: 10.1.0
+        version: 10.1.0
+      wrangler:
+        specifier: 3.18.0
+        version: 3.18.0
+
   packages/address-utils:
     dependencies:
       ethers:
@@ -308,6 +339,8 @@ importers:
   packages/json-schemas: {}
 
   packages/solidity-interfaces: {}
+
+  packages/types: {}
 
 packages:
 
