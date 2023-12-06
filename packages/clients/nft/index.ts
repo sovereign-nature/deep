@@ -20,15 +20,28 @@ export function getKusamaNft(id: string) {
   });
 }
 
+export async function getOpenSeaTestNetNft(
+  contractAddress: string,
+  tokenId: number
+) {
+  const res = await fetch(
+    `https://testnets-api.opensea.io/api/v1/asset/${contractAddress}/${tokenId}/`
+  );
+
+  return await res.json();
+}
+
 export function getNftData(
   network: string,
-  collectionAddress: string,
+  contractAddress: string,
   tokenId: number
 ) {
   switch (network) {
     case 'polkadot':
-      return getPolkadotNft(`${collectionAddress}-${tokenId}`);
+      return getPolkadotNft(`${contractAddress}-${tokenId}`);
     case 'kusama':
-      return getKusamaNft(`${collectionAddress}-${tokenId}`);
+      return getKusamaNft(`${contractAddress}-${tokenId}`);
+    case 'sepolia':
+      return getOpenSeaTestNetNft(contractAddress, tokenId);
   }
 }

@@ -1,6 +1,6 @@
 # **WARNING: This repo is under heavy refactoring, a lot of things might be broken and changed.**
 
-# DEEP Protocol Monorepo
+# DEEP Protocol
 
 ## Services Status
 
@@ -9,6 +9,7 @@
 ![](https://api.checklyhq.com/v1/badges/checks/6e0413c0-cbf6-4510-bb04-57e3248f2cdc?style=flat&theme=default&responseTime=true)
 ![](https://api.checklyhq.com/v1/badges/checks/717a7099-bb01-42ae-ada0-d92936c2770f?style=flat&theme=default&responseTime=true)
 ![](https://api.checklyhq.com/v1/badges/checks/1c935243-e4b7-45e1-a54c-0c0b9474ed7b?style=flat&theme=default&responseTime=true)
+![](https://api.checklyhq.com/v1/badges/checks/af187fc8-5280-4f81-9b13-dba3d43f091d?style=flat&theme=default&responseTime=true)
 
 ## What's inside?
 

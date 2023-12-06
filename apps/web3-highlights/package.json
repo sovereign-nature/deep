@@ -1,7 +1,7 @@
 {
-  "name": "@sni/assets-gateway",
+  "name": "@sni/web3-highlights",
   "version": "0.0.0",
-  "description": "Assets API Gateway",
+  "description": "Web3 Highlights API",
   "private": true,
   "license": "GPL-3.0",
   "scripts": {
