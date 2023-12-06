@@ -1,4 +1,4 @@
-import { isDarkModePreferred } from '$lib/utils';
+import { isDarkModePreferred, isFeatureEnabled } from '$lib/utils';
 import { getContext, setContext } from 'svelte';
 import { writable } from 'svelte/store';
 
@@ -47,20 +47,22 @@ export function initializeModal() {
 }
 
 export function modalHandleTheme(theme: string) {
-  if (!web3Modal) return;
-  if (theme === 'system') {
-    web3Modal.setThemeMode(undefined);
-    if (isDarkModePreferred()) {
+  if (isFeatureEnabled('walletEnabled')) {
+    if (!web3Modal) return;
+    if (theme === 'system') {
+      web3Modal.setThemeMode(undefined);
+      if (isDarkModePreferred()) {
+        web3Modal.setThemeVariables(themeVariablesDark);
+      } else {
+        web3Modal.setThemeVariables(themeVariablesLight);
+      }
+    } else if (theme === 'dark') {
+      web3Modal.setThemeMode('dark');
       web3Modal.setThemeVariables(themeVariablesDark);
     } else {
+      web3Modal.setThemeMode('light');
       web3Modal.setThemeVariables(themeVariablesLight);
     }
-  } else if (theme === 'dark') {
-    web3Modal.setThemeMode('dark');
-    web3Modal.setThemeVariables(themeVariablesDark);
-  } else {
-    web3Modal.setThemeMode('light');
-    web3Modal.setThemeVariables(themeVariablesLight);
   }
 }
 

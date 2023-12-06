@@ -6,6 +6,7 @@
   import { initThemeContext } from '$lib/themeContext';
   import { getContext, onMount } from 'svelte';
   let isLoading = false;
+  import { isFeatureEnabled } from '$lib/utils';
 
   beforeNavigate(() => (isLoading = true));
   afterNavigate(() => (isLoading = false));
@@ -14,7 +15,10 @@
   const theme = getContext('theme');
 
   $: $theme, modalHandleTheme($theme);
-  initializeModal();
+
+  if (isFeatureEnabled('walletEnabled')) {
+    initializeModal();
+  }
 
   onMount(async () => {
     modalHandleTheme($theme);
