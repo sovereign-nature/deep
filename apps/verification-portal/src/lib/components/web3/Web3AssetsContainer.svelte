@@ -31,7 +31,7 @@
         </div>
       {:else if $web3Connected && $web3Response.loaded && !$web3Response.error}
         <div
-          class="flex flex-row flex-wrap sm:flew-nowrap items-end justify-between mt-16 text-white text-xs sm:text-sm"
+          class="flex flex-col-reverse gap-y-3 md:flex-row flex-wrap md:flew-nowrap md:items-end justify-between mt-16 text-white text-xs sm:text-sm"
         >
           <h2 class="text-2xl">
             {$LL.wallet.myAssets({

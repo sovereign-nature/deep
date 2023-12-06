@@ -1,4 +1,5 @@
 import { PUBLIC_VITE_PROJECT_ID } from '$env/static/public';
+import config from '$lib/config/siteConfigs';
 import { defaultConfig } from '@web3modal/ethers5';
 
 if (!PUBLIC_VITE_PROJECT_ID) {
@@ -21,27 +22,18 @@ export const chains = [
     currency: 'ETH',
     explorerUrl: 'https://sepolia.etherscan.io/',
 
-    rpcUrl: 'https://rpc.sepolia.dev',
+    rpcUrl: 'https://ethereum-sepolia.publicnode.com',
   },
 ];
 // 3. Create modal
 export const metadata = {
-  name: 'My Website',
-  description: 'My Website description',
-  url: 'https://mywebsite.com',
+  name: config.siteName,
+  description: config.siteDescription,
+  url: 'https://real.sovereignnature.com/',
   icons: ['/android-chrome-192x192.png', '/android-chrome-512x512.png'],
 };
 
-export const ethersConfig = defaultConfig({
-  metadata: {
-    name: 'Web3Modal',
-    description: 'Web3Modal Laboratory',
-    url: 'https://web3modal.com',
-    icons: ['https://avatars.githubusercontent.com/u/37784886'],
-  },
-  defaultChainId: 1,
-  rpcUrl: 'https://cloudflare-eth.com',
-});
+export const ethersConfig = defaultConfig({ metadata, defaultChainId: 42161 });
 
 export const themeVariablesDark = {
   '--w3m-font-family': 'Roboto, sans-serif',

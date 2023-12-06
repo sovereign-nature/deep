@@ -5,11 +5,10 @@ import { writable } from 'svelte/store';
 import {
   chains,
   ethersConfig,
-  metadata,
   projectId,
   themeVariablesDark,
   themeVariablesLight,
-} from '$lib/web3Configs';
+} from '$lib/config/web3Configs';
 import { createWeb3Modal } from '@web3modal/ethers5';
 import type { Web3Modal } from '@web3modal/ethers5/dist/types/src/client';
 
@@ -20,7 +19,6 @@ const web3ChainId = writable();
 
 export function initializeModal() {
   web3Modal = createWeb3Modal({
-    metadata,
     ethersConfig,
     projectId,
     chains,

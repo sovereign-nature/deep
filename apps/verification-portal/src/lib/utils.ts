@@ -111,3 +111,30 @@ export function isDarkModePreferred() {
     );
   }
 }
+
+import config from '$lib/config/siteConfigs';
+export function isFeatureEnabled(feature) {
+  let isEnabled = false;
+
+  if (feature in config.feature) {
+    isEnabled = config.feature[feature]; // Use the value in the config if it exists
+  } else {
+    console.log(`Feature flag ${feature} not found in config`);
+  }
+
+  if (browser) {
+    const featureFlagCookie = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('feature_flag'));
+    if (featureFlagCookie) {
+      const featureState = JSON.parse(
+        decodeURIComponent(featureFlagCookie.split('=')[1])
+      );
+      if (feature in featureState) {
+        isEnabled = featureState[feature]; // Override with the value in the cookie
+      }
+    }
+  }
+
+  return isEnabled;
+}

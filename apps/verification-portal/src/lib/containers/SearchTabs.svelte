@@ -11,7 +11,7 @@
   import Web3Connection from '$lib/containers/context/Web3Connection.svelte';
   import Web3SearchInput from '$lib/components/search/Web3SearchInput.svelte';
   import Web3Assets from '$lib/components/web3/Web3AssetsContainer.svelte';
-
+  import { isFeatureEnabled } from '$lib/utils';
   const url = $page.url;
 
   let activeTab = 'hh';
@@ -84,24 +84,26 @@
     />
     <Web3Assets collectionName={$LL.sub0.collectionName()} />
   </TabItem>
-  <Web3Connection collectionId="real-test-1">
-    <TabItem
-      title="{$LL.newCol.collectionName()} "
-      open={activeTab === 'new'}
-      class="!ml-0 sm:!ml-3 sm:pb-3"
-      defaultClass={classDefault}
-      inactiveClasses={classInactive}
-      activeClasses={classActive}
-      on:click={() => handleTabClick('new')}
-    >
-      <Web3SearchInput
-        web3enabled
-        network="eip155"
-        goIcon
-        inputmode="numeric"
-        placeholder={$LL.newCol.placeholder()}
-      />
-      <Web3Assets collectionName={$LL.newCol.collectionName()} web3enabled />
-    </TabItem>
-  </Web3Connection>
+  {#if isFeatureEnabled('POCTabEnabled')}
+    <Web3Connection collectionId="real-test-1">
+      <TabItem
+        title="{$LL.newCol.collectionName()} "
+        open={activeTab === 'new'}
+        class="!ml-0 sm:!ml-3 sm:pb-3"
+        defaultClass={classDefault}
+        inactiveClasses={classInactive}
+        activeClasses={classActive}
+        on:click={() => handleTabClick('new')}
+      >
+        <Web3SearchInput
+          web3enabled
+          network="eip155"
+          goIcon
+          inputmode="numeric"
+          placeholder={$LL.newCol.placeholder()}
+        />
+        <Web3Assets collectionName={$LL.newCol.collectionName()} web3enabled />
+      </TabItem>
+    </Web3Connection>
+  {/if}
 </Tabs>
