@@ -12,18 +12,19 @@
   let autoplay = true;
 
   let index = 0;
-  if (dev) {
-    publishedNews = newsData;
-  } else {
-    publishedNews = newsData.filter((item) => item.status === 'published');
-  }
+  // if (dev) {
+  //   publishedNews = newsData;
+  // } else {
+  //   publishedNews = newsData.filter((item) => item.status === 'published');
+  // }
+  publishedNews = newsData;
 
   let images = publishedNews.map((item, index) => ({
     index,
     date: format(parseISO(item.date_created), 'd MMM yyyy'),
     src: generateAssetURL(item.image),
-    title: item.title,
-    content: item.content,
+    title: item?.title,
+    content: item?.content,
   }));
 
   function updateSlide(slide: number) {
@@ -37,58 +38,60 @@
   }
 </script>
 
-<div
-  class="max-w-full space-y-4 backface-visibility-none pb-11"
-  on:mouseenter={() => (autoplay = false)}
-  on:mouseleave={() => (autoplay = true)}
-  role="tablist"
-  aria-label="News carousel"
-  tabindex="0"
->
-  <Carousel
-    {images}
-    {index}
-    duration={autoplay && !expanded ? 5000 : undefined}
-    transition={null}
-    on:change={({ detail }) => (index = detail.index)}
-    class="rounded-b-none"
+{#if images.length > 0}
+  <div
+    class="max-w-full space-y-4 backface-visibility-none pb-11"
+    on:mouseenter={() => (autoplay = false)}
+    on:mouseleave={() => (autoplay = true)}
+    role="tablist"
+    aria-label="News carousel"
+    tabindex="0"
   >
-    <div class={`${cardHeaderClass} mb-5 w-full`}>
-      <Subheader>{images[index].date}</Subheader>
-      <CardHeader title={images[index].title} />
-      <p class={`card-description ${expanded ? 'expanded' : 'collapsed'}`}>
-        {images[index].content.length > 300
-          ? expanded
-            ? images[index].content
-            : `${images[index].content.substring(0, 300)}...`
-          : images[index].content}
-      </p>
-      <div class="flex flex-row justify-end">
-        {#if images[index].content.length > 300}
-          <button
-            class="text-primary-400 text-sm me-6 mt-3"
-            on:click={toggleExpanded}
-          >
-            {expanded ? 'Close' : 'Read More'}
-          </button>
-        {/if}
+    <Carousel
+      {images}
+      {index}
+      duration={autoplay && !expanded ? 5000 : undefined}
+      transition={null}
+      on:change={({ detail }) => (index = detail.index)}
+      class="rounded-b-none"
+    >
+      <div class={`${cardHeaderClass} mb-5 w-full`}>
+        <Subheader>{images[index]?.date}</Subheader>
+        <CardHeader title={images[index]?.title} />
+        <p class={`card-description ${expanded ? 'expanded' : 'collapsed'}`}>
+          {images[index]?.content.length > 300
+            ? expanded
+              ? images[index]?.content
+              : `${images[index]?.content.substring(0, 300)}...`
+            : images[index]?.content}
+        </p>
+        <div class="flex flex-row justify-end">
+          {#if images[index]?.content.length > 300}
+            <button
+              class="text-primary-400 text-sm me-6 mt-3"
+              on:click={toggleExpanded}
+            >
+              {expanded ? 'Close' : 'Read More'}
+            </button>
+          {/if}
+        </div>
       </div>
-    </div>
-  </Carousel>
+    </Carousel>
 
-  {#if images.length > 1}
-    <div class="flex justify-start space-x-2 px-4 sm:px-8 md:px-11">
-      {#each images as image, i}
-        <button
-          class="w-3 h-3 rounded-full border block border-white {i === index
-            ? 'bg-primary-400'
-            : 'bg-gray-300'}"
-          on:click={() => updateSlide(i)}
-        ></button>
-      {/each}
-    </div>
-  {/if}
-</div>
+    {#if images.length > 1}
+      <div class="flex justify-start space-x-2 px-4 sm:px-8 md:px-11">
+        {#each images as image, i}
+          <button
+            class="w-3 h-3 rounded-full border block border-white {i === index
+              ? 'bg-primary-400'
+              : 'bg-gray-300'}"
+            on:click={() => updateSlide(i)}
+          ></button>
+        {/each}
+      </div>
+    {/if}
+  </div>
+{/if}
 
 <style>
   .card-description {
