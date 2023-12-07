@@ -1,12 +1,12 @@
-import { PUBLIC_VITE_PROJECT_ID } from '$env/static/public';
+import { PUBLIC_WALLET_CONNECT_PROJECT_ID } from '$env/static/public';
 import config from '$lib/config/siteConfigs';
 import { defaultConfig } from '@web3modal/ethers5';
 
-if (!PUBLIC_VITE_PROJECT_ID) {
+if (!PUBLIC_WALLET_CONNECT_PROJECT_ID) {
   throw new Error('VITE_PROJECT_ID is not set');
 }
 
-export const projectId = PUBLIC_VITE_PROJECT_ID;
+export const projectId = PUBLIC_WALLET_CONNECT_PROJECT_ID;
 
 export const chains = [
   {
