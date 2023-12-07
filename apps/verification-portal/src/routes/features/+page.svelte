@@ -3,8 +3,9 @@
   import { browser } from '$app/environment';
   import config from '$lib/config/siteConfigs';
   import { Toggle } from 'flowbite-svelte';
+  import type { FeaturesConfig } from '$lib/types';
 
-  let featureState = {};
+  let featureState: FeaturesConfig = {};
 
   function setFeatureStateCookie() {
     const date = new Date();
@@ -36,7 +37,7 @@
     }
   });
 
-  function toggleFeature(feature) {
+  function toggleFeature(feature: string) {
     featureState[feature] = !featureState[feature];
     setFeatureStateCookie();
   }
@@ -47,7 +48,10 @@
 >
   <div>
     <h2 class="text-xl font-semibold">Enabled Features</h2>
-    <a href="/" class="text-sm text-primary-400 hover:text-primary-200"
+    <a
+      data-sveltekit-reload
+      href="/"
+      class="text-sm text-primary-400 hover:text-primary-200"
       >&#x2302; back to overview
     </a>
     <hr class="my-4" />
