@@ -27,6 +27,9 @@ const config = {
     },
 
     extend: {
+      height: {
+        11: '44px',
+      },
       colors: {
         //SNI
         'deep-blue': {
@@ -36,6 +39,7 @@ const config = {
         },
         'deep-green': {
           DEFAULT: '#002727',
+          600: '#183C37',
           700: '#071E1B',
           800: '#002727', //dark bg
           900: '#001512',
@@ -65,6 +69,13 @@ const config = {
           700: '#081620',
           800: '#000C15',
           900: '#010510',
+        },
+        orange: {
+          DEFAULT: '#FFA500',
+          400: '#CD5B23',
+          500: '#BE4104',
+          600: '#772700',
+          700: '#5D1E00',
         },
       },
       borderRadius: {

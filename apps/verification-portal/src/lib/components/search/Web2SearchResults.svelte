@@ -5,7 +5,7 @@
   import { flip } from 'svelte/animate';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import type { Web2DataState, AssetFeatured } from '$lib/types';
-  import FeaturedContainer from '$lib/containers/FeaturedContainer.svelte';
+  import FeaturedContainer from '$lib/components/featured/Web2Featured.svelte';
   import { LL } from '$lib/i18n/i18n-svelte';
 
   // Retrieve user store from context
@@ -17,7 +17,7 @@
 </script>
 
 {#if !$search && $web2data.loaded && $featured.length > 0}
-  <FeaturedContainer featuredItems={$featured} />
+  <FeaturedContainer />
 {/if}
 
 <div id="search-results" class="">

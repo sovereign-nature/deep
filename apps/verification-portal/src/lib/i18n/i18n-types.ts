@@ -59,6 +59,76 @@ type RootTranslation = {
 		 */
 		errorMessage: string
 	}
+	sub0: {
+		/**
+		 * s​u​b​0​ ​B​i​o​d​i​v​e​r​s​i​t​y
+		 */
+		collectionName: string
+		/**
+		 * E​n​t​e​r​ ​t​o​k​e​n​ ​I​D​ ​(​1​-​1​9​9​9​)
+		 */
+		placeholder: string
+	}
+	newCol: {
+		/**
+		 * N​e​w​ ​C​o​l​l​e​c​t​i​o​n
+		 */
+		collectionName: string
+		/**
+		 * E​x​p​l​o​r​e​ ​b​y​ ​t​o​k​e​n​ ​I​D​ ​(​1​-​1​9​9​9​)
+		 */
+		placeholder: string
+	}
+	wallet: {
+		/**
+		 * S​h​o​w​i​n​g​ ​y​o​u​r​ 
+		 */
+		assetsFor: string
+		/**
+		 * {​c​o​l​l​e​c​t​i​o​n​}​ ​a​s​s​e​t​s
+		 * @param {string} collection
+		 */
+		assetsFor_pt2: RequiredParams<'collection'>
+		/**
+		 * Y​o​u​ ​o​w​n​ ​{​n​r​O​f​A​s​s​e​t​s​}​ ​{​c​o​l​l​e​c​t​i​o​n​}​ ​a​s​s​e​t​{​{​s​}​}
+		 * @param {string} collection
+		 * @param {number} nrOfAssets
+		 */
+		myAssets: RequiredParams<'collection' | 'nrOfAssets'>
+		/**
+		 * {​0​}​ ​a​s​s​e​t​{​{​s​}​}​ ​f​o​u​n​d
+		 * @param {string | number | boolean} 0
+		 */
+		nrAssets: RequiredParams<'0'>
+		/**
+		 * N​o​ ​a​s​s​e​t​s​ ​f​o​u​n​d
+		 */
+		noAssets: string
+		/**
+		 * U​h​-​o​h​!​ ​I​t​ ​l​o​o​k​s​ ​l​i​k​e​ ​a​ ​h​i​c​c​u​p​ ​i​n​ ​t​h​e​ ​w​i​l​d​!​ ​�​�​ ​
+	​ ​P​l​e​a​s​e​ ​l​e​n​d​ ​a​ ​p​a​w​ ​b​y​ ​r​e​f​r​e​s​h​i​n​g​ ​t​h​e​ ​p​a​g​e​ ​a​n​d​ ​t​r​y​i​n​g​ ​a​g​a​i​n​.
+		 */
+		errorMessage: string
+	}
+	notifications: {
+		/**
+		 * S​e​e​ ​a​l​l​ ​n​o​t​i​f​i​c​a​t​i​o​n​s
+		 */
+		seeAll: string
+		/**
+		 * S​u​b​s​c​r​i​b​e​ ​t​o​ ​u​p​d​a​t​e​s
+		 */
+		subscribe: string
+		/**
+		 * S​u​b​s​c​r​i​b​e​ ​t​o​ ​c​o​l​l​e​c​t​i​o​n
+		 */
+		subscribeCollection: string
+		/**
+		 * Y​o​u​ ​h​a​v​e​ ​{​n​r​O​f​N​o​t​i​f​i​c​a​t​i​o​n​s​}​ ​n​e​w​ ​n​o​t​i​f​i​c​a​t​i​o​n​{​{​s​}​}
+		 * @param {number} nrOfNotifications
+		 */
+		newNotifications: RequiredParams<'nrOfNotifications'>
+	}
 	web2: {
 		search: {
 			/**
@@ -212,11 +282,11 @@ type RootTranslation = {
 		 */
 		auto: string
 		/**
-		 * L​i​g​h​t
+		 * L​i​g​h​t​ ​M​o​d​e
 		 */
 		light: string
 		/**
-		 * D​a​r​k
+		 * N​i​g​h​t​ ​M​o​d​e
 		 */
 		dark: string
 	}
@@ -282,6 +352,71 @@ export type TranslationFunctions = {
 	 Please lend a paw by refreshing the page and trying again.
 		 */
 		errorMessage: () => LocalizedString
+	}
+	sub0: {
+		/**
+		 * sub0 Biodiversity
+		 */
+		collectionName: () => LocalizedString
+		/**
+		 * Enter token ID (1-1999)
+		 */
+		placeholder: () => LocalizedString
+	}
+	newCol: {
+		/**
+		 * New Collection
+		 */
+		collectionName: () => LocalizedString
+		/**
+		 * Explore by token ID (1-1999)
+		 */
+		placeholder: () => LocalizedString
+	}
+	wallet: {
+		/**
+		 * Showing your 
+		 */
+		assetsFor: () => LocalizedString
+		/**
+		 * {collection} assets
+		 */
+		assetsFor_pt2: (arg: { collection: string }) => LocalizedString
+		/**
+		 * You own {nrOfAssets} {collection} asset{{s}}
+		 */
+		myAssets: (arg: { collection: string, nrOfAssets: number }) => LocalizedString
+		/**
+		 * {0} asset{{s}} found
+		 */
+		nrAssets: (arg0: string | number | boolean) => LocalizedString
+		/**
+		 * No assets found
+		 */
+		noAssets: () => LocalizedString
+		/**
+		 * Uh-oh! It looks like a hiccup in the wild! 🐾 
+	 Please lend a paw by refreshing the page and trying again.
+		 */
+		errorMessage: () => LocalizedString
+	}
+	notifications: {
+		/**
+		 * See all notifications
+		 */
+		seeAll: () => LocalizedString
+		/**
+		 * Subscribe to updates
+		 */
+		subscribe: () => LocalizedString
+		/**
+		 * Subscribe to collection
+		 */
+		subscribeCollection: () => LocalizedString
+		/**
+		 * You have {nrOfNotifications} new notification{{s}}
+		 */
+		newNotifications: (arg: { nrOfNotifications: number }) => LocalizedString
 	}
 	web2: {
 		search: {
@@ -435,11 +570,11 @@ export type TranslationFunctions = {
 		 */
 		auto: () => LocalizedString
 		/**
-		 * Light
+		 * Light Mode
 		 */
 		light: () => LocalizedString
 		/**
-		 * Dark
+		 * Night Mode
 		 */
 		dark: () => LocalizedString
 	}

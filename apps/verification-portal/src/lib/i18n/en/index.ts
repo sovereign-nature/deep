@@ -17,6 +17,32 @@ const en: BaseTranslation = {
     errorMessage:
       'Uh-oh! It looks like a hiccup in the wild! 🐾 \n Please lend a paw by refreshing the page and trying again.',
   },
+
+  sub0: {
+    collectionName: 'sub0 Biodiversity',
+    placeholder: 'Enter token ID (1-1999)',
+  },
+  newCol: {
+    collectionName: 'New Collection',
+    placeholder: 'Explore by token ID (1-1999)',
+  },
+  wallet: {
+    assetsFor: 'Showing your ',
+    assetsFor_pt2: '{collection: string} assets',
+    myAssets:
+      'You own {nrOfAssets: number} {collection: string} asset{{nrOfAssets:s}}',
+    nrAssets: '{0} asset{{s}} found',
+    noAssets: 'No assets found',
+    errorMessage:
+      'Uh-oh! It looks like a hiccup in the wild! 🐾 \n Please lend a paw by refreshing the page and trying again.',
+  },
+  notifications: {
+    seeAll: 'See all notifications',
+    subscribe: 'Subscribe to updates',
+    subscribeCollection: 'Subscribe to collection',
+    newNotifications:
+      'You have {nrOfNotifications: number} new notification{{nrOfNotifications:s}}',
+  },
   web2: {
     search: {
       label: 'Search for your asset',
@@ -80,8 +106,8 @@ const en: BaseTranslation = {
   },
   colorTheme: {
     auto: 'Auto',
-    light: 'Light',
-    dark: 'Dark',
+    light: 'Light Mode',
+    dark: 'Night Mode',
   },
   errors: {
     image:

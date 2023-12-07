@@ -27,8 +27,8 @@
   $: imageUrl = isIPFSUrl(url)
     ? generateIPFSImageUrl(url)
     : isUrl(url)
-    ? url
-    : generateAssetURL(url, size);
+      ? url
+      : generateAssetURL(url, size);
 
   //check if id or url
   function isUrl(url: string): boolean {

@@ -50,8 +50,7 @@ export function generateIPFSImageUrl(ipfsUrl: string): string | null {
 }
 
 function getCID(url: string): string {
-  const parts = url.split('/');
-  return parts[parts.length - 1];
+  return url.substring(7); // 'ipfs://'.length === 7
 }
 
 export function isIPFSUrl(url: string): boolean {
@@ -100,4 +99,42 @@ export function shuffleArray(array: AssetFeatured[]) {
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
+}
+
+import { browser } from '$app/environment';
+
+export function isDarkModePreferred() {
+  if (browser) {
+    return (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    );
+  }
+}
+
+import config from '$lib/config/siteConfigs';
+export function isFeatureEnabled(feature) {
+  let isEnabled = false;
+
+  if (feature in config.feature) {
+    isEnabled = config.feature[feature]; // Use the value in the config if it exists
+  } else {
+    console.log(`Feature flag ${feature} not found in config`);
+  }
+
+  if (browser) {
+    const featureFlagCookie = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('feature_flag'));
+    if (featureFlagCookie) {
+      const featureState = JSON.parse(
+        decodeURIComponent(featureFlagCookie.split('=')[1])
+      );
+      if (feature in featureState) {
+        isEnabled = featureState[feature]; // Override with the value in the cookie
+      }
+    }
+  }
+
+  return isEnabled;
 }

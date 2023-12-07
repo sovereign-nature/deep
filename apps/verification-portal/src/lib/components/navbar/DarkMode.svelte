@@ -1,97 +1,113 @@
 <script lang="ts">
   import { Dropdown, DropdownItem, Radio } from 'flowbite-svelte';
-  import { browser } from '$app/environment';
+  import { getContext } from 'svelte';
   import LL from '$lib/i18n/i18n-svelte';
-
-  export let btnClass: string =
-    'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700  text-sm cursor-pointer ';
+  import RolloverBtn from '$lib/components/RolloverBtn.svelte';
+  export const btnClass: string =
+    ' text-gray-500 dark:text-gray-400  hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700  cursor-pointer ';
 
   export let itemClass =
-    'p-0 flex justify-start items-baseline gap-2 dark:hover:bg-transparent cursor-pointer';
-  export let ariaLabel: string = 'Dark mode';
-
-  let selectedTheme: string =
-    browser && localStorage.getItem('color-theme')
-      ? localStorage.getItem('color-theme')
-      : 'system';
+    'dark:bg-transparent p-0 mb-1 flex w-full items-baseline gap-2 dark:hover:bg-primary-400 bg-gray-100 dark:bg-primary-800 w-44 cursor-pointer px-2  rounded-full';
+  const radioClass = ' m-0 p-0 px-2 py-2 w-full text-base bg-transparent]';
+  const theme = getContext('theme');
+  let selectedTheme: string;
+  theme.subscribe((value) => {
+    selectedTheme = value;
+  });
 
   let dropdownOpen = false;
 
   const handleThemeChange = () => {
-    if (selectedTheme === 'system') {
-      localStorage?.removeItem('color-theme');
-      window.document.documentElement.classList.toggle(
-        'dark',
-        window.matchMedia('(prefers-color-scheme: dark)').matches
-      );
-    } else {
-      localStorage?.setItem('color-theme', selectedTheme);
-      toggleTheme(selectedTheme);
-    }
+    theme.setTheme(selectedTheme);
     dropdownOpen = false;
-  };
-
-  const toggleTheme = (theme: string) => {
-    const isDark = theme === 'dark';
-    window.document.documentElement.classList.toggle('dark', isDark);
   };
 </script>
 
-<button
-  aria-label={ariaLabel}
-  type="button"
-  {...$$restProps}
-  class={`${btnClass} px-2`}
+<RolloverBtn
+  type="secondary"
+  keepOpen={dropdownOpen}
+  customBtnClass={`theme-rollover  flex items-center `}
+  customLabelClass="w-28 text-start"
 >
   {#key selectedTheme}
     {#if selectedTheme === 'system'}
-      <slot name="system" />
+      {$LL.colorTheme.auto()}
     {:else if selectedTheme === 'dark'}
-      <slot name="dark" />
+      {$LL.colorTheme.dark()}
     {:else}
-      <slot name="light" />
+      {$LL.colorTheme.light()}
     {/if}
   {/key}
-</button>
+  <span slot="icon">
+    {#key selectedTheme}
+      {#if selectedTheme === 'system'}
+        <slot name="system" />
+      {:else if selectedTheme === 'dark'}
+        <slot name="dark" />
+      {:else}
+        <slot name="light" />
+      {/if}
+    {/key}
+  </span>
+</RolloverBtn>
 
 <Dropdown
+  triggeredBy=".theme-rollover"
   bind:open={dropdownOpen}
-  containerClass="rounded-sm dark:bg-deep-green  dark:shadow-lg"
+  class="bg-transparent"
+  containerClass="rounded-sm bg-transparent dark:bg-transparent shadow-none dark:shadow-none"
 >
-  <DropdownItem class={itemClass}>
+  <DropdownItem
+    id="dropdownAuto"
+    class={`${itemClass} ${selectedTheme === 'system' ? 'hidden' : ''}`}
+  >
     <Radio
       custom
-      class={`${btnClass} m-0 p-0 px-2 py-1`}
+      class={radioClass}
       bind:group={selectedTheme}
       on:change={handleThemeChange}
       value={'system'}
     >
+      <span class="me-auto whitespace-nowrap">
+        {$LL.colorTheme.auto()}
+      </span>
       <slot name="system" />
-      <span class="ms-1 text-xs"> {$LL.colorTheme.auto()} </span>
     </Radio>
   </DropdownItem>
-  <DropdownItem class={itemClass}>
+
+  <DropdownItem
+    id="dropdownLight"
+    class={`${itemClass} ${selectedTheme === 'light' ? 'hidden' : ''}`}
+  >
     <Radio
       custom
-      class={`${btnClass} m-0 p-0 px-2 py-1`}
+      class={radioClass}
       bind:group={selectedTheme}
       on:change={handleThemeChange}
       value={'light'}
     >
+      <span class="me-auto whitespace-nowrap">
+        {$LL.colorTheme.light()}
+      </span>
       <slot name="light" />
-      <span class="ms-1 text-xs"> {$LL.colorTheme.light()} </span>
     </Radio>
   </DropdownItem>
-  <DropdownItem class={itemClass}>
+
+  <DropdownItem
+    id="dropdownDark"
+    class={`${itemClass} ${selectedTheme === 'dark' ? 'hidden' : ''}`}
+  >
     <Radio
       custom
-      class={`${btnClass} m-0 p-0 px-2 py-1`}
+      class={radioClass}
       bind:group={selectedTheme}
       on:change={handleThemeChange}
       value={'dark'}
     >
+      <span class="me-auto whitespace-nowrap">
+        {$LL.colorTheme.dark()}
+      </span>
       <slot name="dark" />
-      <span class="ms-1 text-xs"> {$LL.colorTheme.dark()} </span>
     </Radio>
   </DropdownItem>
 </Dropdown>

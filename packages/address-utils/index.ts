@@ -83,3 +83,52 @@ export function getPolkadotAssetId(
 ): string {
   return stringToId(getPolkadotAssetHubAddress(chainId, collectionId, tokenId));
 }
+
+type ChainNameToId = {
+  [key: string]: number;
+};
+
+const chainNameToId: ChainNameToId = {
+  mainnet: 1,
+  ropsten: 3,
+  rinkeby: 4,
+  goerli: 5,
+  kovan: 42,
+  sepolia: 11155111,
+  matic: 137,
+  mumbai: 80001,
+  xdai: 100,
+  bsc: 56,
+  bsctest: 97,
+  avalanche: 43114,
+  fuji: 43113,
+  fantom: 250,
+  fantomtest: 4002,
+  heco: 128,
+  hecotest: 256,
+  harmony: 1666600000,
+  harmonytest: 1666700000,
+  okex: 66,
+  okextest: 65,
+  arbitrum: 42161,
+  arbitrumtest: 421611,
+};
+
+export function getChainId(chainName: string): number {
+  if (typeof chainName === 'string') {
+    return chainNameToId[chainName.toLowerCase()] || 0;
+  }
+  return 0;
+}
+
+export function getChainName(chainId: number): string {
+  const idToChainName: { [key: number]: string } = {};
+
+  // Reverse the chainNameToId mapping
+  for (const chainName in chainNameToId) {
+    const id = chainNameToId[chainName];
+    idToChainName[id] = chainName;
+  }
+
+  return idToChainName[chainId] || '';
+}

@@ -1,16 +1,19 @@
 <script lang="ts">
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
   import { generateAssetURL } from '$lib/utils';
+  import NFTImage from '$lib/components/NFTImage.svelte';
 
   export let name: string,
-    image,
+    image: string,
+    nftImage = false,
     source = 'Hotel Hideaway',
     id,
     collection: string,
-    prefix;
-  export let isList = false; // Set to false for horizontal layout
+    prefix,
+    address: string | undefined;
+
   const imgUrl = generateAssetURL(image, 120);
-  const did = `${prefix}${id}`;
+  const did = address ? address : `${prefix}${id}`;
 </script>
 
 <a href={`/assets/${did}`} class="card-link">
@@ -29,69 +32,57 @@
     flex items-center
     max-h-[120px]
     rounded-lg dark:text-white overflow-hidden"
-    class:card-square={!isList}
-    class:card-horizontal={isList}
   >
-    {#if !isList}
-      <div class="mb-4">
-        <img class="w-16 h-16 rounded-full" src={imgUrl} alt={name} />
-      </div>
-      <div class="flex-1 flex flex-col">
-        <div class="text-xl font-semibold mb-2">{name}</div>
-        <div class="flex mb-2 text-xs">
-          <div class="mr-2 whitespace-nowrap">
-            <span class="font-bold whitespace-nowrap">Source:</span>
-            {source}
-          </div>
-          <div class="mr-2 whitespace-nowrap">
-            <span class="font-bold whitespace-nowrap">Collection:</span>
-            {collection}
-          </div>
-        </div>
-      </div>
-    {/if}
-    {#if isList}
-      <div class="mr-4 flex-shrink-0">
+    <div class="mr-4 flex-shrink-0">
+      {#if nftImage}
+        <NFTImage
+          containerClass=""
+          imgClass="w-[90px] h-[120px] sm:w-[120px] sm:h-[120px] object-cover"
+          url={image}
+          alt={name}
+          size="20"
+        />
+      {:else}
         <img
           class="w-[90px] h-[120px] sm:w-[120px] sm:h-[120px] object-cover"
           src={imgUrl}
           alt="Avatar"
         />
+      {/if}
+    </div>
+    <div class="flex-1 flex flex-col my-4">
+      <div class="sm:text-xl font-serif leading-snug pe-2 sm:pe-0">
+        {name}
       </div>
-      <div class="flex-1 flex flex-col my-4">
-        <div class="sm:text-xl font-serif leading-snug pe-2 sm:pe-0">
-          {name}
+      <div
+        class="flex flex-col lg:flex-row text-xs lg:gap-2 opacity-50 relative"
+      >
+        <div class="whitespace-nowrap">
+          <span class="font-bold whitespace-nowrap">Source:</span>
+          {source}
         </div>
-        <div
-          class="flex flex-col lg:flex-row text-xs lg:gap-2 opacity-50 relative"
-        >
-          <div class="whitespace-nowrap">
-            <span class="font-bold whitespace-nowrap">Source:</span>
-            {source}
-          </div>
-          <span class="hidden lg:block">|</span>
-          <div class="mr-2 whitespace-nowrap">
-            <span class="font-bold whitespace-nowrap">Collection:</span>
-            {collection}
-          </div>
-          <!-- mobile select -->
-          <div class="mt-2 whitespace-nowrap">
-            <span
-              class="whitespace-nowrap dark:text-primary-200 text-primary-400 sm:hidden float-right me-4"
-              >Select<ArrowRight className="h-2 inline-block" />
-            </span>
-          </div>
+        <span class="hidden lg:block">|</span>
+        <div class="mr-2 whitespace-nowrap">
+          <span class="font-bold whitespace-nowrap">Collection:</span>
+          {collection}
         </div>
-      </div>
-      <div class="xl:flex-1 sm:flex justify-end items-center p-4 hidden">
-        <span class="me-6 text-primary-300 show-on-hover hidden"> Select </span>
-        <div
-          class="asset-card-arrow transition flex justify-center items-center rounded-full h-12 w-12 bg-deep-green dark:bg-black text-primary-300 dark:text-primary-200"
-        >
-          <ArrowRight />
+        <!-- mobile select -->
+        <div class="mt-2 whitespace-nowrap">
+          <span
+            class="whitespace-nowrap dark:text-primary-200 text-primary-400 sm:hidden float-right me-4"
+            >Select<ArrowRight className="h-2 inline-block" />
+          </span>
         </div>
       </div>
-    {/if}
+    </div>
+    <div class="xl:flex-1 sm:flex justify-end items-center p-4 hidden">
+      <span class="me-6 text-primary-300 show-on-hover hidden"> Select </span>
+      <div
+        class="asset-card-arrow transition flex justify-center items-center rounded-full h-12 w-12 bg-deep-green dark:bg-black text-primary-300 dark:text-primary-200"
+      >
+        <ArrowRight />
+      </div>
+    </div>
   </div>
 </a>
 
@@ -110,11 +101,5 @@
   .card-link {
     text-decoration: none;
     color: inherit;
-  }
-  .card-square {
-    @apply flex-col aspect-square min-h-full;
-  }
-  .card-horizontal {
-    @apply flex-row;
   }
 </style>
