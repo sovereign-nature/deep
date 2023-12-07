@@ -75,3 +75,7 @@ export type Web3DataState = {
 };
 
 export type CollectionKey = 'sub0' | 'hh';
+
+export type FeaturesConfig = {
+  [key: string]: boolean;
+};
