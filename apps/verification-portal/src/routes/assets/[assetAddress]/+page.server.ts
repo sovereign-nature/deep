@@ -59,8 +59,9 @@ export async function load(event) {
       );
       deepData = entityResponse.data;
       deepData.link = verifiedData;
+
       const { data: stewardResponse } = await getNewsBySteward(
-        verifiedData.steward_id,
+        'aquasearch', //@TODO Remove after testing
         config
       );
       deepData.news = stewardResponse.data ? stewardResponse.data?.news : [];
