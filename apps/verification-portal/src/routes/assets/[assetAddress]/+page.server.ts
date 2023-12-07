@@ -1,6 +1,6 @@
 import { DIRECTUS_API_KEY, VERCEL_URL } from '$env/static/private';
 import { parseAddress } from '@sni/address-utils';
-import { getEntity } from '@sni/clients/data.js';
+import { getEntity, getNewsBySteward } from '@sni/clients/data.js';
 import { getLinkByAddress } from '@sni/clients/link.js';
 import { DEEP_ASSETS_GATEWAY } from '@sni/constants';
 import { error } from '@sveltejs/kit';
@@ -59,6 +59,11 @@ export async function load(event) {
       );
       deepData = entityResponse.data;
       deepData.link = verifiedData;
+      const { data: stewardResponse } = await getNewsBySteward(
+        verifiedData.steward_id,
+        config
+      );
+      deepData.news = stewardResponse.data ? stewardResponse.data?.news : [];
     }
   } catch (e) {
     // @TODO Enable error handling once API responds correctly
@@ -86,7 +91,6 @@ export async function load(event) {
   }
 
   const extractedProperties: ExtractedProperties = processDeepData(deepData);
-
   return {
     assetAddress,
     addressDetails,

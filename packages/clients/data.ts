@@ -16,3 +16,7 @@ export function getEntity(
 export function getSteward(id: string, config: AxiosRequestConfig = {}) {
   return axios.get(`${SNI_API_URL}/items/stewards/${id}`, config);
 }
+
+export function getNewsBySteward(id: string, config: AxiosRequestConfig = {}) {
+  return axios.get(`${SNI_API_URL}/items/stewards/${id}?fields=news.*`, config);
+}
