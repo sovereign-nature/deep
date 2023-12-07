@@ -4,7 +4,6 @@
   import config from '$lib/config/siteConfigs';
   import { Toggle } from 'flowbite-svelte';
   import type { FeaturesConfig } from '$lib/types';
-  import { invalidateAll } from '$app/navigation';
 
   let featureState: FeaturesConfig = {};
 
@@ -50,7 +49,7 @@
   <div>
     <h2 class="text-xl font-semibold">Enabled Features</h2>
     <a
-      on:click={invalidateAll}
+      data-sveltekit-reload
       href="/"
       class="text-sm text-primary-400 hover:text-primary-200"
       >&#x2302; back to overview
