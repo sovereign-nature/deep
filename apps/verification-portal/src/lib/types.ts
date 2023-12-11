@@ -35,6 +35,7 @@ export type NameValue = { name: string; value: number };
 export type DeepData = {
   link?: VerifiedResponse;
   steward: {
+    id: string;
     funds_raised: number;
     name: string;
     description: string;
@@ -42,6 +43,7 @@ export type DeepData = {
     images: Array<DirectusImage>;
     website: string;
   };
+  news: Array<NewsEntity>;
   images: Array<DirectusImage>;
   id: string;
   location: GeoJsonObject;
@@ -62,6 +64,21 @@ export type Address = {
     reference: string;
     identifier: number;
   };
+};
+
+export type NewsEntity = {
+  id: number;
+  status: string;
+  sort?: null;
+  user_created: string;
+  date_created: string;
+  user_updated: string;
+  date_updated: string;
+  title: string;
+  date: string;
+  content: string;
+  image: string;
+  steward: string;
 };
 
 export type Web2DataState = {

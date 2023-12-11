@@ -276,6 +276,16 @@ type RootTranslation = {
 		 */
 		privacy: string
 	}
+	news: {
+		/**
+		 * R​e​a​d​ ​m​o​r​e
+		 */
+		readMore: string
+		/**
+		 * C​l​o​s​e
+		 */
+		close: string
+	}
 	colorTheme: {
 		/**
 		 * A​u​t​o
@@ -563,6 +573,16 @@ export type TranslationFunctions = {
 		 * Privacy Policy
 		 */
 		privacy: () => LocalizedString
+	}
+	news: {
+		/**
+		 * Read more
+		 */
+		readMore: () => LocalizedString
+		/**
+		 * Close
+		 */
+		close: () => LocalizedString
 	}
 	colorTheme: {
 		/**

@@ -104,6 +104,10 @@ const en: BaseTranslation = {
     terms: 'Terms & Conditions',
     privacy: 'Privacy Policy',
   },
+  news: {
+    readMore: 'Read more',
+    close: 'Close',
+  },
   colorTheme: {
     auto: 'Auto',
     light: 'Light Mode',

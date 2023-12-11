@@ -226,6 +226,9 @@ importers:
       autoprefixer:
         specifier: 10.4.16
         version: 10.4.16(postcss@8.4.32)
+      date-fns:
+        specifier: 2.16.0
+        version: 2.16.0
       flowbite:
         specifier: 2.2.0
         version: 2.2.0
@@ -8565,6 +8568,11 @@ packages:
   /dataloader@2.2.2:
     resolution: {integrity: sha512-8YnDaaf7N3k/q5HnTJVuzSyLETjoZjVmHc4AeKAzOvKHEFQKcn64OKBfzHYtE9zGjctNM7V9I0MfnUVLpi7M5g==}
     dev: false
+
+  /date-fns@2.16.0:
+    resolution: {integrity: sha512-DWTRyfOA85sZ4IiXPHhiRIOs3fW5U6Msrp+gElXARa6EpoQTXPyHQmh7hr+ssw2nx9FtOQWnAMJKgL5vaJqILw==}
+    engines: {node: '>=0.11'}
+    dev: true
 
   /dayjs@1.11.10:
     resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}

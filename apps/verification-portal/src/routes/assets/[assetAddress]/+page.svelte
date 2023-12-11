@@ -9,6 +9,7 @@
   import FundsDashboard from '$lib/components/dashboard/FundsDashboard.svelte';
   import SimpleMap from '$lib/components/SimpleMap.svelte';
   import ShareCard from '$lib/components/ShareCard.svelte';
+  import NewsCarousel from '$lib/components/carousel/NewsCarousel.svelte';
   import LL from '$lib/i18n/i18n-svelte.js';
   import type { CollectionKey } from '$lib/types';
 
@@ -234,40 +235,53 @@
         {/if}
       {/key}
     </div>
+
     {#key deepData.steward}
-      <!-- Steward Data -->
-      <div
-        class="Steward-Data bg-primary-100 dark:bg-deep-green text-black dark:text-white sm:rounded-lg overflow-hidden"
-      >
-        <div class={`${cardHeaderClass} mb-8`}>
-          <Subheader>{$LL.assets.ecSteward.title()}</Subheader>
-          <CardHeader
-            title={deepData.steward?.name}
-            url={deepData.steward?.website}
-          />
-          <p class="card-description">
-            {deepData.steward?.description}
-          </p>
-        </div>
-        <div class="w-full aspect-video">
-          <SimpleMap geoJSONData={deepData?.steward?.area} />
-        </div>
-        <div class="w-full flex flex-col">
-          {#if deepData.steward?.images?.length > 0}
-            {#each deepData.steward?.images as image}
-              <ImageSrcSet
-                classNameImage="border-t-2 dark:border-deep-green"
-                assetID={image.directus_files_id}
-                altText={deepData?.steward?.name}
-              />
-            {/each}
-          {:else}
-            <img
-              style="width:inherit"
-              src={placeholderCamp}
-              alt="Not Available"
+      <div class="Steward-Data w-full">
+        <!-- Steward News -->
+
+        {#if deepData.news?.length > 0}
+          <div
+            class=" bg-gray-100 text-black sm:rounded-lg overflow-hidden relative z-20 mb-5 w-inherit"
+            style="width:inherit"
+          >
+            <NewsCarousel newsData={deepData.news}></NewsCarousel>
+          </div>
+        {/if}
+        <!-- Steward Data -->
+        <div
+          class=" bg-primary-100 dark:bg-deep-green text-black dark:text-white sm:rounded-lg overflow-hidden relative z-20"
+        >
+          <div class={`${cardHeaderClass} mb-8`}>
+            <Subheader>{$LL.assets.ecSteward.title()}</Subheader>
+            <CardHeader
+              title={deepData.steward?.name}
+              url={deepData.steward?.website}
             />
-          {/if}
+            <p class="card-description">
+              {deepData.steward?.description}
+            </p>
+          </div>
+          <div class="w-full aspect-video">
+            <SimpleMap geoJSONData={deepData?.steward?.area} />
+          </div>
+          <div class="w-full flex flex-col">
+            {#if deepData.steward?.images?.length > 0}
+              {#each deepData.steward?.images as image}
+                <ImageSrcSet
+                  classNameImage="border-t-2 dark:border-deep-green"
+                  assetID={image.directus_files_id}
+                  altText={deepData?.steward?.name}
+                />
+              {/each}
+            {:else}
+              <img
+                style="width:inherit"
+                src={placeholderCamp}
+                alt="Not Available"
+              />
+            {/if}
+          </div>
         </div>
       </div>
     {/key}
@@ -283,6 +297,7 @@
     grid-template-columns: 1fr;
     gap: 0em 1.25em;
     grid-auto-flow: row;
+    width: 100%;
   }
   .container-grid {
     grid-template-columns: 1fr;
@@ -332,16 +347,16 @@
     grid-area: Animal-Data-Map;
     isolation: isolate;
   }
-
-  .Steward-Data {
-    grid-area: Steward-Data;
+  .Animal-Data-Continued {
+    grid-area: Animal-Data-Continued;
     isolation: isolate;
     place-self: start;
   }
 
-  .Animal-Data-Continued {
-    grid-area: Animal-Data-Continued;
-    place-self: start;
-    min-height: 12rem;
+  .Steward-Data {
+    grid-area: Steward-Data;
+    isolation: isolate;
+    position: relative;
+    overflow: hidden;
   }
 </style>
