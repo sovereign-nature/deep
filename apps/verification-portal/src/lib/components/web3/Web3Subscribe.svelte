@@ -5,6 +5,7 @@
   import { isFeatureEnabled } from '$lib/utils';
   import { getContext, onMount } from 'svelte';
   import type { Writable } from 'svelte/store';
+  import { registerInbox } from '$lib/web3Inbox';
 
   let isLoaded = false;
   export let placeholder = $LL.notifications.subscribe();
@@ -22,7 +23,7 @@
   {#if isLoaded}
     {#if $web3Connected}
       {#key $web3Address || $web3ChainId}
-        <RolloverBtn type="alert" keepOpen>
+        <RolloverBtn type="alert" keepOpen on:click={registerInbox}>
           {placeholder}<span slot="icon">
             <BellIcon className="h-5 w-5 "></BellIcon></span
           >

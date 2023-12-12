@@ -5,6 +5,8 @@
   import { initializeModal, modalHandleTheme } from '$lib/web3Modal';
   import { initThemeContext } from '$lib/themeContext';
   import { getContext, onMount } from 'svelte';
+  import { initializeInbox } from '$lib/web3Inbox';
+  import { browser } from '$app/environment';
   let isLoading = false;
   import { isFeatureEnabled } from '$lib/utils';
 
@@ -16,8 +18,13 @@
 
   $: $theme, modalHandleTheme($theme);
 
-  if (isFeatureEnabled('walletEnabled')) {
-    initializeModal();
+  if (browser) {
+    if (isFeatureEnabled('walletEnabled')) {
+      initializeModal();
+      if (isFeatureEnabled('notificationsEnabled')) {
+        initializeInbox();
+      }
+    }
   }
 
   onMount(async () => {

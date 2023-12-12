@@ -1,4 +1,6 @@
 import { isDarkModePreferred, isFeatureEnabled } from '$lib/utils';
+import { BrowserProvider } from 'ethers';
+import { SiweMessage } from 'siwe';
 import { getContext, setContext } from 'svelte';
 import { writable } from 'svelte/store';
 
@@ -9,6 +11,7 @@ import {
   themeVariablesDark,
   themeVariablesLight,
 } from '$lib/config/web3Configs';
+
 import { createWeb3Modal } from '@web3modal/ethers5';
 import type { Web3Modal } from '@web3modal/ethers5/dist/types/src/client';
 
@@ -32,17 +35,10 @@ export function initializeModal() {
 
   web3Modal.subscribeProvider(async ({ isConnected, address, chainId }) => {
     web3Connected.set(isConnected);
-    web3Address.set(address);
-    web3ChainId.set(chainId);
-    // Check if the correct chain is connected
-    // if (isConnected && chainId !== '0xaa36a7') {
-    // If not, switch to the correct chain
-    // try {
-    //   await switchChain('0xaa36a7'); // Sepolia testnet
-    // } catch (error) {
-    //   console.error('Failed to switch to Sepolia:', error);
-    // }
-    // }
+    if (isConnected) {
+      web3Address.set(address);
+      web3ChainId.set(chainId);
+    }
   });
 }
 
@@ -69,12 +65,35 @@ export function modalHandleTheme(theme: string) {
 export function getWeb3Modal() {
   return getContext('web3Modal') as Web3Modal;
 }
+
 export async function switchChain(id: string) {
   const provider = web3Modal.getWalletProvider();
-  console.log('provider', provider);
   try {
     await provider.send('wallet_switchEthereumChain', [{ chainId: id }]);
   } catch (error) {
     console.error('Failed to switch chain:', error);
   }
+}
+export async function onSign(message: string) {
+  if (!window) return '';
+  const provider = new BrowserProvider(window.ethereum);
+  const signer = await provider.getSigner();
+  const signature = await signer?.signMessage(message);
+  return signature;
+}
+
+export function createSiweMessage(
+  address: string,
+  chainId: number,
+  statement: string
+) {
+  const message = new SiweMessage({
+    version: '1',
+    domain: 'real.sovereignnature.com',
+    uri: 'https://real.sovereignnature.com',
+    address,
+    chainId,
+    statement,
+  });
+  return message.prepareMessage();
 }

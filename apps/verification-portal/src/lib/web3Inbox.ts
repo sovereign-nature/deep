@@ -1,46 +1,74 @@
 import { projectId } from '$lib/config/web3Configs';
+import { createSiweMessage, onSign } from '$lib/web3Modal';
+import type { Web3InboxClient as InboxClientType } from '@web3inbox/core';
 import { Web3InboxClient } from '@web3inbox/core';
-import { writable } from 'svelte/store';
+import { getContext } from 'svelte';
+import type { Writable } from 'svelte/store';
 
-const web3Account = writable();
-const web3Subscription = writable();
-const web3Messages = writable();
+let web3Connected: boolean;
+let web3Address: string;
+let web3ChainId: number;
+let web3InboxClient: InboxClientType;
+let web3InboxRegistered = false;
 
 export async function initializeInbox() {
-  const web3InboxClient = await Web3InboxClient.init({
-    projectId: projectId,
-    domain: 'gm.walletconnect.com',
-    isLimited: false,
+  const web3ConnectedStore: Writable<boolean> = getContext('web3Connected');
+  const web3AddressStore: Writable<string> = getContext('web3Address');
+  const web3ChainIdStore: Writable<number> = getContext('web3ChainId');
+
+  web3ConnectedStore.subscribe((value) => {
+    web3Connected = value;
+    if (value) {
+      createInboxClient();
+    }
   });
 
-  web3InboxClient.watchAccount((account) => {
-    web3Account.set(account);
-    web3InboxClient.register({
-      account,
-      onSign,
+  web3AddressStore.subscribe((value) => {
+    web3Address = value;
+  });
+
+  web3ChainIdStore.subscribe((value) => {
+    web3ChainId = value;
+  });
+
+  if (!web3Connected) return;
+}
+
+async function createInboxClient() {
+  try {
+    web3InboxClient = await Web3InboxClient.init({
+      projectId: projectId,
+      domain: 'real.sovereignnature.com',
+      isLimited: false,
     });
-  });
+    console.log('web3InboxClient', web3InboxClient);
+    web3InboxRegistered = await web3InboxClient.getAccountIsRegistered(
+      `eip155:${web3ChainId}:${web3Address}`
+    );
+  } catch (error) {
+    console.error('Error initializing inbox:', error);
+  }
+}
+export async function registerInbox() {
+  console.log('Registering Inbox:', web3InboxClient);
+  if (!web3InboxRegistered && web3InboxClient) {
+    try {
+      await web3InboxClient.register({
+        account: `eip155:${web3ChainId}:${web3Address}`,
+        domain: 'real.sovereignnature.com',
+        onSign: () =>
+          onSign(
+            createSiweMessage(
+              web3Address,
+              web3ChainId,
+              'I further authorize this app to send me notifications'
+            )
+          ),
+      });
 
-  await web3InboxClient.setAccount(
-    'eip155:1:0xa7129173A57a21316B0785740f9F619fd17b74fD'
-  );
-
-  const subscription = web3InboxClient.getSubscription();
-  web3InboxClient.watchSubscription((subscription) => {
-    web3Subscription.set(subscription);
-    console.log({ subscription });
-  });
-
-  await web3InboxClient.subscribeToDapp();
-
-  const messages = web3InboxClient.getMessageHistory();
-  web3Messages.set(messages);
-
-  return {
-    web3InboxClient,
-    web3Account,
-    web3Subscription,
-    web3Messages,
-    subscription,
-  };
+      //   web3InboxClient.watchAccount((account) => {});
+    } catch (error) {
+      console.error('Error registering account:', error);
+    }
+  }
 }
