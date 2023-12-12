@@ -1,93 +1,39 @@
-# **WARNING: This repo is under heavy refactoring, a lot of things might be broken and changed.**
+# DEEP (Decentralised Ecological Economics Protocol)
 
-# DEEP Protocol
+At Sovereign Nature Initiative, our goal is to refigure the economics of ecology by finding ways to fund and expand projects that sustain life on our planet. Currently, most ecological stewarding projects are severely underfunded. Environmental justice activism and ecological work primarily rely on donations and funding from philanthropies, public institutions, and other donors. This lack of a sustainable financial stream undermines the validation and recognition of the invaluable work being done by ecological stewards such as conservation NGOs, governmental agencies, local communities, and citizen-led initiatives.
 
-## Services Status
+To address this issue, we developed the Decentralised Ecological Economics Protocol (DEEP) together with the Registry for Ecological Asset Linking (REAL). Starting from the notion of eco-data and the way it currently shapes and is being shaped by increased demands of verification for biodiversity impact reporting and evaluation, our approach facilitates the flow of value between ecological work and digital creativity, enabling sustainable validation of ecological efforts. By effectively integrating ecological work with the digital realm through processing eco-data, we not only generate value, but we also give digital assets a tangible and real-life significance. Critically, our approach allows ecological stewards to market their work without impeding their on-site efforts, ensuring a harmonious balance between financial viability and ecological preservation.
 
-![](https://api.checklyhq.com/v1/badges/checks/ede36d5e-dde9-4c73-8c6c-77c185a0a5fa?style=flat&theme=default)
-![](https://api.checklyhq.com/v1/badges/checks/e10df834-ee26-4487-b33c-1f043aeb5b66?style=flat&theme=default&responseTime=true)
-![](https://api.checklyhq.com/v1/badges/checks/6e0413c0-cbf6-4510-bb04-57e3248f2cdc?style=flat&theme=default&responseTime=true)
-![](https://api.checklyhq.com/v1/badges/checks/717a7099-bb01-42ae-ada0-d92936c2770f?style=flat&theme=default&responseTime=true)
-![](https://api.checklyhq.com/v1/badges/checks/1c935243-e4b7-45e1-a54c-0c0b9474ed7b?style=flat&theme=default&responseTime=true)
-![](https://api.checklyhq.com/v1/badges/checks/af187fc8-5280-4f81-9b13-dba3d43f091d?style=flat&theme=default&responseTime=true)
+## About the Protocol
 
-## What's inside?
+DEEP is a protocol that brings eco-data to digital creatives. We collaborate with ecological stewards, such as conservation organisations and rewilding projects, who already generate data as part of their daily work. Eco-data spans species-specific insights obtained through direct observations, evidence of species’ presence (e.g., droppings, tracks) and GPS-tracking devices, as well as broader habitat or ecosystem data collected via top-down remote sensing technologies such as satellites or ground collection of soil and plant samples. We process this data and make it accessible to digital creatives through our protocol, moving it through cleaning, standardisation and aggregation data pipelines. Digital creatives utilise this data in their projects, which can range from gaming and virtual environments to music production. The digital representations created using this data are then made available for purchase, with a share of the proceeds (50-70%) going to the conservation organisations directly, and a share to Sovereign Nature Initiative to fund its continued operation.
 
-This monorepo uses [turborepo](https://turborepo.org/) for tasks/caching and yarn as a package manager. It includes the following packages/apps:
+## Eco Data
 
-Apps:
+## DEEP Link
 
-- `@sni/contracts`: Solidity contracts for Sovereign Nature Identifier built with [Hardhat](https://hardhat.org/) and [OpenZeppelin](https://www.openzeppelin.com/).
-- `@sni/indexer`: indexer for [The Graph](https://thegraph.com/).
-- `@sni/gateway`: GraphQL gateway built with [GraphQL Mesh](https://the-guild.dev/graphql/mesh)
-- `@sni/verification-portal`: DEEP Link verification UI.
+DEEP Link is a [ERC721](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) token that stores the connection between the linked asset and ecological entity. It can link any ecological entity with it's derivatives - like nature inspired in game items or artworks. Such nature connected items can get new properties, functions, and representations based on the ecology they connected to.
 
-Packages:
+### Asset DID Address System
 
-- `@sni/constants`: Shared constants.
-- `@sni/configs`: Shared configs.
-- `@sni/json-schemas`: Shared JSON schemas.
-- `@sni/solidity-interfaces`: Shared Solidity interfaces, like IDerivative.
+DEEP uses address system based on the Asset DID standard. The linked asset address in encoded into the DEEP Link token id via keccak256 function.
 
-## Identifier Core Services Architecture (Outdated)
+## Rarity Index
 
-```mermaid
-  flowchart TD;
-      IPFSData{{IPFS Data}}-->IPFSGateway
-      DerivativeContracts{{Derivatives Contracts}}-->DerivativesIndexer
-      IdentifierContracts{{Identifier Contracts}}-->IdentifiersIndexer
-      IdentifiersIndexer[Identifiers GraphQL Indexer API]-->Gateway((GraphQL Mesh Gateway));
-      DerivativesIndexer[Derivatives GraphQL Indexer API]-->Gateway;
-      IPFSGateway[Pinata IPFS Gateway]-->Gateway
-      Gateway--GraphQL API-->UI(Web UI)
-```
+Organisation according to a rarity is a key logic in the gaming world as well as in the NFT space. The Rarity Index is a custom metric designed to quantify and communicate the uniqueness and importance of various ecological features captured in the eco-data provided by conservation organisations. This index is key for integrating eco-data into gaming as it responds to the request of assigning rarity to items and functionalities by connecting it to real scientific data.  The rarity attributes can be updated from real-life events, so that the index evolves over time together with the linked eco-data.
 
-## Installing Dependencies
+## DEEP Protocol
 
-To install dependencies for whole monorepo run `pnpm i` from the root repo directory.
+text
 
-## Build
+data science
 
-To build all apps and packages, run the following command:
+NFTs
 
-```shell
-pnpm build
-```
+Protocol
 
-### Develop
+Product roadmap (hypercerts / coordinape)
 
-To develop all apps and packages, run the following command:
+## Contribution
 
-```shell
-pnpm dev
-```
-
-To develop specific package run:
-
-```shell
-pnpm dev --filter <PACKAGE_NAME>
-```
-
-For example, to develop verification portal, run:
-
-```shell
-pnpm dev --filter @sni/verification-portal
-```
-
-## Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```shell
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
-
-```shell
-npx turbo link
-```
+To contribute to DEEP please refer to our [development](development.md) section.

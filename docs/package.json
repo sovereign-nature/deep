@@ -1,0 +1,13 @@
+{
+  "name": "@sni/docs",
+  "version": "0.0.0",
+  "description": "Documentation for the DEEP protocol",
+  "private": true,
+  "license": "GPL-3.0",
+  "scripts": {
+    "dev": "docsify serve"
+  },
+  "devDependencies": {
+    "docsify-cli": "4.4.4"
+  }
+}
