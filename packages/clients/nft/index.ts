@@ -1,5 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
 
+import { fetch_retry } from '../utils';
 import { getNftById } from './queries/polkadot';
 
 const POLKADOT_NFT_API = 'https://squid.subsquid.io/speck/graphql';
@@ -24,9 +25,8 @@ export async function getOpenSeaTestNetNft(
   contractAddress: string,
   tokenId: number
 ) {
-  const res = await fetch(
-    `https://testnets-api.opensea.io/api/v1/asset/${contractAddress}/${tokenId}/`
-  );
+  const URL = `https://testnets-api.opensea.io/api/v1/asset/${contractAddress}/${tokenId}/`;
+  const res = await fetch_retry(URL, {}, 5);
 
   return await res.json();
 }
