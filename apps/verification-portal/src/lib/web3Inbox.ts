@@ -1,5 +1,5 @@
 import { projectId } from '$lib/config/web3Configs';
-import { createSiweMessage, onSign } from '$lib/web3Modal';
+import { onSign } from '$lib/web3Modal';
 import type { Web3InboxClient as InboxClientType } from '@web3inbox/core';
 import { Web3InboxClient } from '@web3inbox/core';
 import { getContext } from 'svelte';
@@ -39,7 +39,7 @@ async function createInboxClient() {
     web3InboxClient = await Web3InboxClient.init({
       projectId: projectId,
       domain: 'real.sovereignnature.com',
-      isLimited: false,
+      isLimited: process.env.NODE_ENV == 'production',
     });
     console.log('web3InboxClient', web3InboxClient);
     web3InboxRegistered = await web3InboxClient.getAccountIsRegistered(
@@ -56,14 +56,7 @@ export async function registerInbox() {
       await web3InboxClient.register({
         account: `eip155:${web3ChainId}:${web3Address}`,
         domain: 'real.sovereignnature.com',
-        onSign: () =>
-          onSign(
-            createSiweMessage(
-              web3Address,
-              web3ChainId,
-              'I further authorize this app to send me notifications'
-            )
-          ),
+        onSign,
       });
 
       //   web3InboxClient.watchAccount((account) => {});
