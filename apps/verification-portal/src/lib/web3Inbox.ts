@@ -39,7 +39,7 @@ async function createInboxClient() {
     web3InboxClient = await Web3InboxClient.init({
       projectId: projectId,
       domain: 'real.sovereignnature.com',
-      isLimited: false,
+      isLimited: process.env.NODE_ENV == 'production',
     });
     console.log('web3InboxClient', web3InboxClient);
     web3InboxRegistered = await web3InboxClient.getAccountIsRegistered(
