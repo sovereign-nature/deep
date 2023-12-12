@@ -20,14 +20,6 @@ DEEP uses address system based on the Asset DID standard. The linked asset addre
 
 Organisation according to a rarity is a key logic in the gaming world as well as in the NFT space. The Rarity Index is a custom metric designed to quantify and communicate the uniqueness and importance of various ecological features captured in the eco-data provided by conservation organisations. This index is key for integrating eco-data into gaming as it responds to the request of assigning rarity to items and functionalities by connecting it to real scientific data.  The rarity attributes can be updated from real-life events, so that the index evolves over time together with the linked eco-data.
 
-## DEEP Protocol
+## Roadmap
 
-text
-
-data science
-
-NFTs
-
-Protocol
-
-Product roadmap (hypercerts / coordinape)
+...
