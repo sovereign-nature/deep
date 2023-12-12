@@ -1,4 +1,3 @@
 - [Overview](/)
-
-- [Address System](did-ddo.md)
+- [DEEP Protocol](deep-protocol.md)
 - [Development](development.md)
