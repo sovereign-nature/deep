@@ -54,7 +54,7 @@
     "typesafe-i18n": "5.26.2",
     "vite": "4.5.1",
     "vitest": "0.34.6",
-    "@sentry/sveltekit": "7.86.0",
+    "@sentry/sveltekit": "7.87.0",
     "@web3modal/ethers5": "3.3.2",
     "@web3modal/siwe": "3.4.0-alpha.0",
     "@web3inbox/core": "0.0.25"
