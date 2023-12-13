@@ -68,13 +68,13 @@ function polkadotFormatter(assetData: any): DeepAsset {
 function openSeaFormatter(assetData: any): DeepAsset {
   //TODO: Proper typing for formatted data and assetData
   return {
-    id: assetData.id,
-    tokenId: assetData.token_id,
-    name: assetData.name,
-    description: assetData.description,
-    image: assetData.image_original_url, //TODO: Use asset_contract.image_url instead?
+    id: assetData.nft.identifier,
+    tokenId: assetData.nft.identifier,
+    name: assetData.nft.name,
+    description: assetData.nft.description,
+    image: assetData.nft.image_url, //TODO: Use asset_contract.image_url instead?
     collection: {
-      id: assetData.collection.slug,
+      id: assetData.collection.collection,
       name: assetData.collection.name,
     },
   };

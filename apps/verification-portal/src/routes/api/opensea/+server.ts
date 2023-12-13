@@ -9,7 +9,7 @@ export const GET: RequestHandler = async ({ url }) => {
   const collection = url.searchParams.get('collection');
   const network = dev ? 'testnets-api' : 'api';
   const response = await fetch(
-    `https://${network}.opensea.io/api/v1/assets?owner=${address}&collection_slug=${collection}&order_direction=desc&limit=50&include_orders=false`,
+    `https://${network}.opensea.io/api/v2/chain/sepolia/account/${address}/nfts?collection=${collection}&limit=50`,
     {
       method: 'GET',
       //add headers only in production mode
@@ -23,23 +23,22 @@ export const GET: RequestHandler = async ({ url }) => {
   );
 
   if (response.ok) {
-    const data = await response.json();
-    const assets = data.assets.map((asset) => ({
-      id: asset.id.toString(),
-      tokenId: asset.token_id,
+    const { nfts } = await response.json();
+
+    const assets = nfts.map((asset) => ({
+      id: asset.identifier,
+      tokenId: asset.identifier,
       name: asset.name || '',
       description: asset.description || '',
-      image: asset.image_original_url,
+      image: asset.image_url || '',
       collection: {
-        id: asset.asset_contract.address,
-        name: asset.asset_contract.name || '',
+        id: asset.contract,
+        name: asset.collection || '',
         description: asset.collection.description || '',
       },
-      address: `did:asset:eip155:${getChainId(
-        asset.asset_contract.chain_identifier
-      )}.${asset.asset_contract.schema_name}:${asset.asset_contract.address}:${
-        asset.token_id
-      }`,
+      address: `did:asset:eip155:${getChainId('sepolia')}.${
+        asset.token_standard
+      }:${asset.contract}:${asset.identifier}`,
     }));
 
     return json(assets);
