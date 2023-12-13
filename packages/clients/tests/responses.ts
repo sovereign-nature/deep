@@ -257,4 +257,12 @@ export const openSeaTestNetResponse = {
     ],
     rarity: null,
   },
+  collection: {
+    address: '0x38de3f11ba85d75f28778c6f44a97d29ea910cf2',
+    chain: 'sepolia',
+    collection: 'real-test-1',
+    contract_standard: 'erc1155',
+    name: 'REAL TEST 1',
+    supply: 0,
+  },
 };

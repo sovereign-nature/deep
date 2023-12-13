@@ -24,11 +24,25 @@ export async function getOpenSeaTestNetNft(
   contractAddress: string,
   tokenId: number
 ) {
-  const res = await fetch(
+  const nftRes = await fetch(
     `https://testnets-api.opensea.io/api/v2/chain/sepolia/contract/${contractAddress}/nfts/${tokenId}`
   );
 
-  return await res.json();
+  //TODO: Proper typing
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const nftData: any = await nftRes.json();
+
+  const collectionRes = await fetch(
+    `https://testnets-api.opensea.io/api/v2/chain/sepolia/contract/${contractAddress}`
+  );
+
+  //TODO: Proper typing
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const collectionData: any = await collectionRes.json();
+
+  nftData.collection = collectionData;
+
+  return await nftData;
 }
 
 export function getNftData(
