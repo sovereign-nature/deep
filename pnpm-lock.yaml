@@ -73,8 +73,8 @@ importers:
         specifier: 10.1.0
         version: 10.1.0
       wrangler:
-        specifier: 3.18.0
-        version: 3.18.0
+        specifier: 3.20.0
+        version: 3.20.0
 
   apps/contracts:
     devDependencies:
@@ -149,8 +149,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0
       wrangler:
-        specifier: 3.18.0
-        version: 3.18.0
+        specifier: 3.20.0
+        version: 3.20.0
 
   apps/indexer:
     devDependencies:
@@ -315,8 +315,8 @@ importers:
         specifier: 10.1.0
         version: 10.1.0
       wrangler:
-        specifier: 3.18.0
-        version: 3.18.0
+        specifier: 3.20.0
+        version: 3.20.0
 
   packages/address-utils:
     dependencies:
@@ -11065,7 +11065,7 @@ packages:
     resolution: {integrity: sha512-AmCS+9CT34pp2u0QQVXjKztkuq3y5T+BIciuiHDDtDZucZD8VudosnSdUyXJV6IsRkN5jc4RFDhCk1O6Q3Gxjg==}
     dependencies:
       interface-store: 2.0.2
-      nanoid: 3.3.6
+      nanoid: 3.3.7
       uint8arrays: 3.1.1
     dev: true
 
@@ -11202,7 +11202,7 @@ packages:
       multiaddr: 10.0.1(node-fetch@3.3.2)
       multiaddr-to-uri: 8.0.0(node-fetch@3.3.2)
       multiformats: 9.9.0
-      nanoid: 3.3.6
+      nanoid: 3.3.7
       parse-duration: 1.1.0
       timeout-abort-controller: 1.1.1
       uint8arrays: 3.1.1
@@ -11232,7 +11232,7 @@ packages:
       multiaddr: 10.0.1(node-fetch@3.3.2)
       multiaddr-to-uri: 8.0.0(node-fetch@3.3.2)
       multiformats: 9.9.0
-      nanoid: 3.3.6
+      nanoid: 3.3.7
       parse-duration: 1.1.0
       timeout-abort-controller: 2.0.0
       uint8arrays: 3.1.1
@@ -11335,7 +11335,7 @@ packages:
       it-glob: 1.0.2
       it-to-stream: 1.0.0
       merge-options: 3.0.4
-      nanoid: 3.3.6
+      nanoid: 3.3.7
       native-fetch: 3.0.0(node-fetch@2.6.12)
       node-fetch: 2.6.12
       react-native-fetch-api: 3.0.0
@@ -12673,8 +12673,8 @@ packages:
     hasBin: true
     dev: true
 
-  /miniflare@3.20231030.2:
-    resolution: {integrity: sha512-+DYdMqWlUaY4wBylIjewNu8OVsPFquYjQkxoSb2jGIMBmlKaef65Hn2Bu8sub5tQzQ8tLO0FRklmD2Upx0HCCQ==}
+  /miniflare@3.20231030.4:
+    resolution: {integrity: sha512-7MBz0ArLuDop1WJGZC6tFgN6c5MRyDOIlxbm3yp0TRBpvDS/KsTuWCQcCjsxN4QQ5zvL3JTkuIZbQzRRw/j6ow==}
     engines: {node: '>=16.13'}
     hasBin: true
     dependencies:
@@ -13043,12 +13043,6 @@ packages:
 
   /nanoid@3.3.3:
     resolution: {integrity: sha512-p1sjXuopFs0xg+fPASzQ28agW1oHD7xDsd9Xkf3T15H3c/cifrFHVwrh74PdoklAPi+i7MdRsE47vm2r6JoB+w==}
-    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
-    hasBin: true
-    dev: true
-
-  /nanoid@3.3.6:
-    resolution: {integrity: sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: true
@@ -13987,7 +13981,7 @@ packages:
     resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
-      nanoid: 3.3.6
+      nanoid: 3.3.7
       picocolors: 1.0.0
       source-map-js: 1.0.2
     dev: true
@@ -17500,8 +17494,8 @@ packages:
     resolution: {integrity: sha512-ILEIE97kDZvF9Wb9f6h5aXK4swSlKGUcOEGiIYb2OOu/IrDU9iwj0fD//SsA6E5ibwJxpEvhullJY4Sl4GcpAw==}
     dev: true
 
-  /wrangler@3.18.0:
-    resolution: {integrity: sha512-3UrmldsD84JDBa7HRZ5ACFr1nH+ZZs+Hth37Iv/mAaW2DiQOGcrevKwn4dofmTQO2qYP01u1vtfVJxLM0mq+1w==}
+  /wrangler@3.20.0:
+    resolution: {integrity: sha512-7mg25zJByhBmrfG+CbImSid7JNd5lxGovLA167ndtE8Yrqd3TUukrGWL8o0RCQIm0FUcgl2nCzWArJDShlZVKA==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     dependencies:
@@ -17511,8 +17505,8 @@ packages:
       blake3-wasm: 2.1.5
       chokidar: 3.5.3
       esbuild: 0.17.19
-      miniflare: 3.20231030.2
-      nanoid: 3.3.6
+      miniflare: 3.20231030.4
+      nanoid: 3.3.7
       path-to-regexp: 6.2.1
       resolve.exports: 2.0.2
       selfsigned: 2.1.1
