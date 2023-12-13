@@ -1,8 +1,12 @@
 import { expect, test } from 'vitest';
 import { getEntity, getSteward } from '../data';
 import { getLinkByAddress, getLinkById } from '../link';
-import { getNftData } from '../nft';
-import { kusamaNftResponse, polkadotNftResponse } from './responses';
+import { getNftData, getOpenSeaTestNetNft } from '../nft';
+import {
+  kusamaNftResponse,
+  openSeaTestNetResponse,
+  polkadotNftResponse,
+} from './responses';
 
 test('getLinkById', async () => {
   const response = await getLinkById(
@@ -52,11 +56,11 @@ test('getNFTData from Kusama', async () => {
 //   expect(data).toStrictEqual(hotelHideawayResponse);
 // }); //TODO: Fix this test
 
-// test('getOpenSeaTestNetNft', async () => {
-//   const data = await getOpenSeaTestNetNft(
-//     '0x38de3f11ba85d75f28778c6f44a97d29ea910cf2',
-//     1
-//   );
+test('getOpenSeaTestNetNft', async () => {
+  const data = await getOpenSeaTestNetNft(
+    '0x38de3f11ba85d75f28778c6f44a97d29ea910cf2',
+    1
+  );
 
-//   expect(data).toStrictEqual(openSeaTestNetResponse);
-// }); TODO: Fix this test
+  expect(data).toStrictEqual(openSeaTestNetResponse);
+});
