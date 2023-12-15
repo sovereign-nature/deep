@@ -90,7 +90,7 @@
         </span>
       </h1>
       <div class="mb-6">
-        {#if verifiedStatus}
+        {#if introText}
           <p>{introText}</p>
         {/if}
 
