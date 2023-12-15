@@ -8,6 +8,16 @@ To address this issue, we developed the Decentralised Ecological Economics Proto
 
 ## What Is Eco-Data
 
+Eco Data - is a data collected through the work of ecological stewards.
+
+It's almost impossible to measure ecology in all it's complexity. However, there are thousands of organisations involved in a process of collecting, storing and processing information about ecology while doing theirs conservation and regeneration activities. We collect data from such activities and make it available inside of the DEEP.
+
+The Eco-Data requirements are that it needs to be relevant, educational, and rich in empathy, it needs to be collected by the Ecological Steward and shall refer to the Ecological Entity the Project Supported is intended to conserve and/or restore. The Eco-Data is utilized both internally to inform their conservation and/or restoration strategies and actions, and externally to report on their nature-positive impact.
+
+## Eco-Linked Asset
+
+Physical or digital goods can be linked to the Eco-Data through the DEEP Link - a smart contract that stores the link between the Eco-Data and the linked asset.
+
 ## DEEP Link
 
 DEEP Link is a [ERC721](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) token that stores the connection between the linked asset and ecological entity. It can link any ecological entity with it's derivatives - like nature inspired in game items or artworks. Such nature connected items can get new properties, functions, and representations based on the ecology they connected to.
@@ -23,3 +33,7 @@ Organisation according to a rarity is a key logic in the gaming world as well as
 ## Roadmap
 
 ...
+
+## Contributing to DEEP
+
+Please refer to the [Development](development.md) guide.
