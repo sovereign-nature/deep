@@ -1,4 +1,4 @@
 - [Overview](/)
-- [DEEP Protocol](deep-protocol.md)
-- [REAL](real.md)
+- [DEEP Protocol](deep.md)
+- [REAL Interface](real.md)
 - [Development](development.md)
