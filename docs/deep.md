@@ -14,17 +14,25 @@ It's almost impossible to measure ecology in all its complexity. However, there 
 
 The Eco-Data requirements are that it needs to be relevant, educational, and rich in empathy, it needs to be collected by the Ecological Steward and shall refer to the Ecological Entity the Project Supported is intended to conserve and/or restore. The Eco-Data is utilized both internally to inform their conservation and/or restoration strategies and actions, and externally to report on their nature-positive impact.
 
-## Eco-Linked Asset
+## Eco-Linked Assets
 
 Physical or digital goods can be linked to the Eco-Data through the DEEP Link - a smart contract that stores the link between the Eco-Data and the linked asset.
+
+Linking such assets allows us to generate additional value for both an asset and the ecological entity it's linked to.
 
 ## DEEP Link
 
 DEEP Link is an [ERC721](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) token that stores the connection between the linked asset and ecological entity. It can link any ecological entity with its derivatives - like nature-inspired in-game items or artworks. Such nature-connected items can get new properties, functions, and representations based on the ecology they are connected to.
 
+DEEP Link has the following parameters:
+`id` - unique DEEP Link ID which is a product of caching the address of the linked asset into a big integer number.
+`entity_id` - ID of the ecological entity according to the protocol.
+`steward_id` - ID of the conservation organisation according to the protocol.
+`funds_raised` - amount of funds raised by the link for the steward and ecological entity.
+
 ### Asset DID Address System
 
-DEEP uses an address system based on the Asset DID standard. The linked asset address is encoded into the DEEP Link token ID via the keccak256 function.
+DEEP uses an address system based on the Asset DID [specification](https://github.com/KILTprotocol/spec-asset-did). The linked asset address is encoded into the DEEP Link token ID via the keccak256 function.
 
 ## Rarity Index
 
