@@ -1,4 +1,4 @@
-# REAL
+# Registry for Ecological Assets Linking (REAL)
 
 text
 

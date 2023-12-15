@@ -47,5 +47,12 @@
     "Vadim",
     "vitepress",
     "vueuse"
-  ]
+  ],
+  "cSpell.language": "en-GB",
+  "grammarly.selectors": [
+    {
+      "language": "markdown",
+      "scheme": "file"
+    }
+  ],
 }
