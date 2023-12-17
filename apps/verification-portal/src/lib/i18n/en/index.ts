@@ -38,10 +38,15 @@ const en: BaseTranslation = {
   },
   notifications: {
     seeAll: 'See all notifications',
+    nrNotification: '{0} notification{{s}}',
     subscribe: 'Subscribe to updates',
     subscribeCollection: 'Subscribe to collection',
     newNotifications:
       'You have {nrOfNotifications: number} new notification{{nrOfNotifications:s}}',
+    notificationCenter: 'Your notification center',
+    notificationSettings: 'Notification preferences',
+    notFound: 'No notifications found',
+    deleted: 'Message Deleted',
   },
   web2: {
     search: {

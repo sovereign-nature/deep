@@ -17,6 +17,7 @@ const config = {
     fontSize: {
       xs: '0.6875rem', // 11px
       sm: '0.8125rem', // 13px
+      lg: '0.9375rem', // 15px
       base: '1.125rem', // 18px
       xl: '1.25rem', // 20px
       '2xl': '1.5rem', // 24px
@@ -39,6 +40,7 @@ const config = {
         },
         'deep-green': {
           DEFAULT: '#002727',
+          300: '#0C1A1A',
           600: '#183C37',
           700: '#071E1B',
           800: '#002727', //dark bg

@@ -6,5 +6,6 @@ export default {
     walletEnabled: false,
     POCTabEnabled: false,
     notificationsEnabled: false,
+    testGMInbox: false,
   },
 };
