@@ -84,6 +84,7 @@ async function createInboxClient() {
 }
 
 async function setupInboxClient() {
+  if (!web3InboxClient) createInboxClient();
   web3InboxAccount = `eip155:${web3ChainId}:${web3Address}`;
   const registered =
     await web3InboxClient.getAccountIsRegistered(web3InboxAccount);
@@ -128,6 +129,8 @@ export async function registerInbox() {
               web3InboxAccount,
               'real.sovereignnature.com'
             );
+            console.log('Subscribing to dApp');
+            setupInboxClient();
           }
         })
         .then(() => {
