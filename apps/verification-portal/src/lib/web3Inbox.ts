@@ -9,9 +9,11 @@ import { isFeatureEnabled } from '$lib/utils';
 import { onSign } from '$lib/web3Modal';
 
 let domain = 'real.sovereignnature.com';
+let isLimited = process.env.NODE_ENV == 'production';
 
 if (isFeatureEnabled('testGMInbox')) {
   domain = 'gm.walletconnect.com';
+  isLimited = false;
 }
 
 const web3InboxMessages = writable();
@@ -73,7 +75,7 @@ async function createInboxClient() {
     web3InboxClient = await Web3InboxClient.init({
       projectId: projectId,
       domain: 'real.sovereignnature.com',
-      isLimited: process.env.NODE_ENV == 'production',
+      isLimited: isLimited,
     });
     setupInboxClient();
   } catch (error) {
