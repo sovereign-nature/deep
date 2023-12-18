@@ -6,6 +6,8 @@ At Sovereign Nature Initiative, our goal is to refigure the economics of ecology
 
 To address this issue, we developed the Decentralised Ecological Economics Protocol (DEEP) together with the Registry for Ecological Asset Linking (REAL). Starting from the notion of eco-data and the way it currently shapes and is being shaped by increased demands of verification for biodiversity impact reporting and evaluation, our approach facilitates the flow of value between ecological work and digital creativity, enabling sustainable validation of ecological efforts. By effectively integrating ecological work with the digital realm through processing eco-data, we not only generate value but also give digital assets tangible and real-life significance. Critically, our approach allows ecological stewards to market their work without impeding their on-site efforts, ensuring a harmonious balance between financial viability and ecological preservation.
 
+lllaaa
+
 ## What Is Eco-Data
 
 Eco-Data - is data collected through the work of ecological stewards.
