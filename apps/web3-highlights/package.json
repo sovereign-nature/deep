@@ -10,7 +10,7 @@
     "build": "wrangler deploy --dry-run --outdir=dist"
   },
   "dependencies": {
-    "hono": "3.11.7",
+    "hono": "3.11.8",
     "@sni/clients": "workspace:*",
     "@sni/constants": "workspace:*",
     "@sni/address-utils": "workspace:*",
