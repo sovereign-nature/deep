@@ -2,17 +2,15 @@
 
 ## Overview
 
-REAL, is a platform that functions as a registry for nature-positive claims, connecting contributions to ecological field data through Eco-Linked Assets. Utilising dAPP functionalities, the REAL aim is to democratise public participation in nature-positive efforts.
+The REAL Portal technology is the community interface and registry hosting all Eco-linked Assets issued as a result of an Ecological Contribution. Each Eco-linked Asset in the REAL Portal includes all information gathered through the EIPRV Methodology about the Supported Project and the Ecological Steward. Utilising dAPP functionalities, REAL's technical and EIPRV Methodology are geared toward democratising public access, participation and verification processes conducive to the effective and transparent allocation of monetary contributions towards nature-positive endeavours. Each Eco-linked Asset hosted on REAL integrates comprehensive qualitative and quantitative data about a Supported Project, the Ecological Stewards running it and its Objective and metrics used to track progress.
 
-Each Eco-linked Asset hosted on REAL integrates comprehensive qualitative and quantitative data about a Supported Project, the Ecological Stewards running it and its Objective and metrics used to track progress.
+## Ecological Impact Methodology
 
-## Ecological Contributions in REAL
+To structure the type of information and reporting needed to track the impact of Ecological Contributions, the Sovereign Nature Initiative has developed the Environmental Impact Participation, Reporting and Verification Methodology (EIPRV Methodology). The EIPRV Methodology, embedded in the REAL user experience, is an adaptation of globally applied best practices for international conservation project management, reporting, and verification that offers an engaging, transparent, and comprehensive perspective on the intentions, progress status and verifiable additionality of an Ecological Contribution on the Ecological Entity. 
 
-To structure the type of information and reporting needed for each Eco-linked Asset in a way that sufficiently informs an Ecological Contributor about the impact of their Ecological Contribution, Sovereign Nature Initiative has developed the EIPRV Methodology. This methodology, embedded in the REAL user experience, is an adaptation of globally applied best practices for international conservation project management, reporting, and verification to offer an engaging, transparent, and comprehensive perspective on the intentions, progress status and verifiable additionality of an Ecological Contribution on the Ecological Entity.
+The components of the EIPRV Methodology are logically interconnected and presented in the Eco-linked Asset interface, offering a comprehensive overview of the Ecological Steward's nature-positive strategies, efforts and achievements. This includes a detailed description of the Supported Project and its Objectives, alongside both Eco-Data and Steward’s Feeds.
 
-REAL is hence designed to transform how both individuals and conservation/restoration project developers mutually participate, report, and verify their respective financial contributions and ecological efforts offering a user-friendly interface that fosters educational and participatory experiences.
-
-With REAL, SNI aims to enhance trust and commitment between funders and stewards of nature-positive initiatives, highlighting the potential of alternative funding sources and public involvement in supporting the ambitious targets the world has set to support significant conservation and restoration efforts globally.
+Through this Methodology augmented by the participatory functionalities of REAL, SNI aims to enhance trust and commitment between funders and stewards of biodiverse ecosystems, highlighting the potential of alternative funding sources and public involvement in supporting the ambitious targets the world has set to support significant conservation and restoration efforts globally.
 
 ## REAL Glossary
 
@@ -57,6 +55,10 @@ Eco-Data: Data and metadata that is linked to a specific Ecological Contribution
 ### Steward Feed(s)
 
 The ecological impact reporting and verification tool embedded in an Eco-linked Asset to display a stream of rich content collected by an Ecological Steward to report on the progress of the Supported Project updates such as events of progress toward the Project Objective.
+
+### EIPRV Methodology
+
+The Ecological Impact Participation, Reporting and Verification Methodology SNI uses to collect, structure and share dynamic content and processes aimed at informing an Ecological Contributor about the progress and impact of their Ecological Contribution.
 
 ## Contributing to REAL
 
