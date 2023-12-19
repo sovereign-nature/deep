@@ -56,7 +56,7 @@ Eco-Data: Data and metadata that is linked to a specific Ecological Contribution
 
 ### Steward Feed(s)
 
-The qualitative ecological impact reporting and verification tool that displays content collected by an Ecological Steward to report to the Ecological Contributor on day-to-day operations, and Supported Project updates such as events of progress toward the Project Objective.
+The ecological impact reporting and verification tool embedded in an Eco-linked Asset to display a stream of rich content collected by an Ecological Steward to report on the progress of the Supported Project updates such as events of progress toward the Project Objective.
 
 ## Contributing to REAL
 
