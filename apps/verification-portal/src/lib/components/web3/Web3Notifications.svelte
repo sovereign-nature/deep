@@ -5,30 +5,54 @@
   import { isFeatureEnabled } from '$lib/utils';
   import { getContext, onMount } from 'svelte';
   import type { Writable } from 'svelte/store';
-
-  let isLoaded = false;
-  let hasNew = false;
+  import { registerInbox } from '$lib/web3Inbox';
 
   const web3Connected: Writable<boolean> = getContext('web3Connected');
-  const web3Address: Writable<string> = getContext('web3Address');
-  const web3ChainId: Writable<number> = getContext('web3ChainId');
+  const web3InboxRegistered: Writable<boolean> = getContext(
+    'web3InboxRegistered'
+  );
+  const openInboxModal: Writable<boolean> = getContext('web3InboxModalOpen');
+  const web3MessageCount: Writable<number> = getContext(
+    'web3InboxMessageCount'
+  );
+  const web3InboxLoading: Writable<boolean> = getContext('web3InboxLoading');
 
+  let isLoaded = false;
+  let hasMessages = false;
+
+  let alertNew = false;
+  let previousMessageCount = $web3MessageCount;
+
+  $: {
+    hasMessages = $web3MessageCount > 0;
+    if ($web3MessageCount > previousMessageCount) {
+      alertNew = true;
+      setTimeout(() => {
+        alertNew = false;
+      }, 4000);
+    }
+    previousMessageCount = $web3MessageCount;
+  }
   onMount(async () => {
     isLoaded = true;
   });
 </script>
 
-{#if isFeatureEnabled('notificationsEnabled')}
-  {#if isLoaded}
-    {#if $web3Connected}
-      {#key $web3Address || $web3ChainId}
-        <RolloverBtn type="alert" {hasNew}>
-          {$LL.notifications.seeAll()}
-          <span slot="icon">
-            <BellIcon className="h-5 w-5 mx-1"></BellIcon></span
-          >
-        </RolloverBtn>
-      {/key}
-    {/if}
-  {/if}
+{#if isFeatureEnabled('notificationsEnabled') && isLoaded && ($web3InboxRegistered || $web3Connected)}
+  <RolloverBtn
+    type="alert"
+    hasNew={$web3InboxRegistered ? hasMessages : false}
+    keepOpen={$web3InboxRegistered ? alertNew : !web3InboxLoading}
+    on:click={$web3InboxRegistered
+      ? () => ($openInboxModal = true)
+      : registerInbox}
+  >
+    {$web3InboxRegistered
+      ? $LL.notifications.nrNotification($web3MessageCount)
+      : $LL.notifications.subscribe()}
+    <span slot="icon">
+      <BellIcon className="h-5 w-5 {$web3InboxRegistered ? '' : 'mx-1'}"
+      ></BellIcon>
+    </span>
+  </RolloverBtn>
 {/if}

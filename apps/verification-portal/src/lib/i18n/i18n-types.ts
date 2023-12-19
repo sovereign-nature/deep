@@ -116,6 +116,11 @@ type RootTranslation = {
 		 */
 		seeAll: string
 		/**
+		 * {​0​}​ ​n​o​t​i​f​i​c​a​t​i​o​n​{​{​s​}​}
+		 * @param {string | number | boolean} 0
+		 */
+		nrNotification: RequiredParams<'0'>
+		/**
 		 * S​u​b​s​c​r​i​b​e​ ​t​o​ ​u​p​d​a​t​e​s
 		 */
 		subscribe: string
@@ -128,6 +133,22 @@ type RootTranslation = {
 		 * @param {number} nrOfNotifications
 		 */
 		newNotifications: RequiredParams<'nrOfNotifications'>
+		/**
+		 * Y​o​u​r​ ​n​o​t​i​f​i​c​a​t​i​o​n​ ​c​e​n​t​e​r
+		 */
+		notificationCenter: string
+		/**
+		 * N​o​t​i​f​i​c​a​t​i​o​n​ ​p​r​e​f​e​r​e​n​c​e​s
+		 */
+		notificationSettings: string
+		/**
+		 * N​o​ ​n​o​t​i​f​i​c​a​t​i​o​n​s​ ​f​o​u​n​d
+		 */
+		notFound: string
+		/**
+		 * M​e​s​s​a​g​e​ ​D​e​l​e​t​e​d
+		 */
+		deleted: string
 	}
 	web2: {
 		search: {
@@ -416,6 +437,10 @@ export type TranslationFunctions = {
 		 */
 		seeAll: () => LocalizedString
 		/**
+		 * {0} notification{{s}}
+		 */
+		nrNotification: (arg0: string | number | boolean) => LocalizedString
+		/**
 		 * Subscribe to updates
 		 */
 		subscribe: () => LocalizedString
@@ -427,6 +452,22 @@ export type TranslationFunctions = {
 		 * You have {nrOfNotifications} new notification{{s}}
 		 */
 		newNotifications: (arg: { nrOfNotifications: number }) => LocalizedString
+		/**
+		 * Your notification center
+		 */
+		notificationCenter: () => LocalizedString
+		/**
+		 * Notification preferences
+		 */
+		notificationSettings: () => LocalizedString
+		/**
+		 * No notifications found
+		 */
+		notFound: () => LocalizedString
+		/**
+		 * Message Deleted
+		 */
+		deleted: () => LocalizedString
 	}
 	web2: {
 		search: {

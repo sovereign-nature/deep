@@ -6,13 +6,15 @@
 
   export let keepOpen = false;
   export let type: 'alert' | 'primary' | 'secondary' | string;
-  export let hasNew = true;
+  export let hasNew = false;
   export let url: string = '';
   export let ariaLabel: string = '';
   export let className: string = '';
   export let customBtnClass: string = '';
   export let customIconClass: string = '';
   export let customLabelClass: string = '';
+
+  $: isAlert = hasNew;
 
   let colorClasses = {
     alert: 'dark:text-white bg-orange-200 hover:bg-orange-100',
@@ -22,16 +24,16 @@
       'drop-shadow-sm hover:text-primary-400 text-primary-500 bg-white dark:text-primary-300 hover:dark:text-deep-green-800 dark:bg-deep-green-600 dark:hover:bg-primary-300',
   };
 
-  let alertAfter =
+  $: alertAfter =
     type === 'alert'
-      ? hasNew
+      ? isAlert
         ? 'fill-orange-200 hover:fill-orange-100 dark:fill-orange-500 hover:dark:fill-orange-400'
         : 'fill-orange-200 hover:fill-orange-100 dark:fill-orange-700 dark:hover:fill-orange-600'
       : '';
 
-  let hasNewClass =
+  $: hasNewClass =
     type === 'alert'
-      ? hasNew
+      ? isAlert
         ? 'text-orange-500 hover:text-orange-400 dark:bg-orange-500 dark:hover:bg-orange-400'
         : 'text-orange-700 hover:text-orange-500 dark:bg-orange-700 dark:hover:bg-orange-600'
       : '';

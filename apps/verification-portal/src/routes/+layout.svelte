@@ -9,6 +9,7 @@
   import { browser } from '$app/environment';
   let isLoading = false;
   import { isFeatureEnabled } from '$lib/utils';
+  import Modal from '$lib/components/web3/inboxModal/index.svelte';
 
   beforeNavigate(() => (isLoading = true));
   afterNavigate(() => (isLoading = false));
@@ -55,6 +56,8 @@
 
 {#key data.pathname}
   <div in:fade={{ duration: 200, delay: 100 }} out:fade={{ duration: 100 }}>
+    <Modal />
+
     <slot />
   </div>
 {/key}
