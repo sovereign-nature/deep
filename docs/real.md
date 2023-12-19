@@ -4,6 +4,8 @@
 
 The REAL Portal technology is the community interface and registry hosting all Eco-linked Assets issued as a result of an Ecological Contribution. Each Eco-linked Asset in the REAL Portal includes all information gathered through the EIPRV Methodology about the Supported Project and the Ecological Steward. Utilising dAPP functionalities, REAL's technical and EIPRV Methodology are geared toward democratising public access, participation and verification processes conducive to the effective and transparent allocation of monetary contributions towards nature-positive endeavours. Each Eco-linked Asset hosted on REAL integrates comprehensive qualitative and quantitative data about a Supported Project, the Ecological Stewards running it and its Objective and metrics used to track progress.
 
+vvvv
+
 ## Ecological Impact Methodology
 
 To structure the type of information and reporting needed to track the impact of Ecological Contributions, the Sovereign Nature Initiative has developed the Environmental Impact Participation, Reporting and Verification Methodology (EIPRV Methodology). The EIPRV Methodology, embedded in the REAL user experience, is an adaptation of globally applied best practices for international conservation project management, reporting, and verification that offers an engaging, transparent, and comprehensive perspective on the intentions, progress status and verifiable additionality of an Ecological Contribution on the Ecological Entity. 
