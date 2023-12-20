@@ -11,6 +11,6 @@ export const formSearch = {
 
     const assetAddress = isMatch ? search : `${prefix}${search}`;
 
-    throw redirect(307, `/assets/${assetAddress}`);
+    redirect(307, `/assets/${assetAddress}`);
   },
 };
