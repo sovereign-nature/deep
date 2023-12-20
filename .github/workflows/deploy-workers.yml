@@ -19,7 +19,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           workingDirectory: './apps/assets-gateway'
           packageManager: 'pnpm'
-      - name: Deploy Assets Gateway
+      - name: Deploy Web3 Highlights
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
