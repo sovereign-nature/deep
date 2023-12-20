@@ -1,5 +1,5 @@
-const tailwindcss = require('tailwindcss');
-const autoprefixer = require('autoprefixer');
+import autoprefixer from 'autoprefixer';
+import tailwindcss from 'tailwindcss';
 
 const config = {
   plugins: [
@@ -10,4 +10,4 @@ const config = {
   ],
 };
 
-module.exports = config;
+export default config;
