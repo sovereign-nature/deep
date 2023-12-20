@@ -16,7 +16,7 @@
     "lint": "npm run lint:contracts && npm run lint:tests"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "3.0.0",
+    "@nomicfoundation/hardhat-toolbox": "4.0.0",
     "@openzeppelin/contracts": "4.9.5",
     "@sni/constants": "workspace:*",
     "@web-std/fetch": "4.2.1",
