@@ -4,6 +4,7 @@
   import type { Map as LeafletMap, GeoJSON } from 'leaflet';
   import { onDestroy, onMount } from 'svelte';
   export let geoJSONData: GeoJsonObject | undefined;
+  import 'leaflet/dist/leaflet.css';
 
   let mapElement: HTMLDivElement;
   let map: LeafletMap;
@@ -47,11 +48,11 @@
   });
 </script>
 
-<link
+<!-- <link
   rel="stylesheet"
   href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   crossorigin=""
-/>
+/> -->
 <div bind:this={mapElement} class="min-h-inherit h-full" />
 
 <!-- <style>
