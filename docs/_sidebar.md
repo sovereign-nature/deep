@@ -1,4 +1,6 @@
 - [Overview](/)
 - [DEEP Protocol](deep.md)
 - [REAL Interface](real.md)
+- [PoCs](pocs.md)
+- [Value(s)](values(s).md) 
 - [Development](development.md)
