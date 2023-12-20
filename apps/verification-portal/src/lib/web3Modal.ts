@@ -1,9 +1,3 @@
-import { isDarkModePreferred, isFeatureEnabled } from '$lib/utils';
-import { BrowserProvider } from 'ethers';
-import { SiweMessage } from 'siwe';
-import { getContext, setContext } from 'svelte';
-import { writable } from 'svelte/store';
-
 import {
   chains,
   ethersConfig,
@@ -11,14 +5,20 @@ import {
   themeVariablesDark,
   themeVariablesLight,
 } from '$lib/config/web3Configs';
+import { isDarkModePreferred, isFeatureEnabled } from '$lib/utils';
+import { BrowserProvider } from 'ethers';
+import { getContext, setContext } from 'svelte';
+import { writable } from 'svelte/store';
 
 import { createWeb3Modal } from '@web3modal/ethers5';
-import type { Web3Modal } from '@web3modal/ethers5/dist/types/src/client';
+import type { Web3Modal } from '@web3modal/ethers5/dist/types/exports/client';
 
 let web3Modal: Web3Modal;
 const web3Connected = writable(false);
 const web3Address = writable();
 const web3ChainId = writable();
+let web3SelectedNetworkID: string | undefined;
+let pendingChainSwitch = false;
 
 export function initializeModal() {
   web3Modal = createWeb3Modal({
@@ -32,12 +32,33 @@ export function initializeModal() {
   setContext('web3Connected', web3Connected);
   setContext('web3Address', web3Address);
   setContext('web3ChainId', web3ChainId);
+  setContext('web3SelectedNetworkID', web3SelectedNetworkID);
+
+  //Track network selected network to trigger chain switch after modal is connected or re-connected
+  web3Modal.subscribeState(async ({ selectedNetworkId }) => {
+    web3SelectedNetworkID = selectedNetworkId;
+    if (selectedNetworkId && selectedNetworkId !== web3Modal.getChainId()) {
+      pendingChainSwitch = true;
+    } else {
+      pendingChainSwitch = false;
+    }
+  });
 
   web3Modal.subscribeProvider(async ({ isConnected, address, chainId }) => {
     web3Connected.set(isConnected);
     if (isConnected) {
       web3Address.set(address);
       web3ChainId.set(chainId);
+      if (
+        pendingChainSwitch &&
+        web3SelectedNetworkID &&
+        web3SelectedNetworkID !== chainId
+      ) {
+        web3Modal.switchNetwork(web3SelectedNetworkID);
+      }
+    } else {
+      web3Address.set(null);
+      web3ChainId.set(null);
     }
   });
 }
@@ -62,18 +83,6 @@ export function modalHandleTheme(theme: string) {
   }
 }
 
-export function getWeb3Modal() {
-  return getContext('web3Modal') as Web3Modal;
-}
-
-export async function switchChain(id: string) {
-  const provider = web3Modal.getWalletProvider();
-  try {
-    await provider.send('wallet_switchEthereumChain', [{ chainId: id }]);
-  } catch (error) {
-    console.error('Failed to switch chain:', error);
-  }
-}
 export async function onSign(message: string) {
   if (!window) return '';
   const provider = new BrowserProvider(window.ethereum);
@@ -82,18 +91,6 @@ export async function onSign(message: string) {
   return signature;
 }
 
-export function createSiweMessage(
-  address: string,
-  chainId: number,
-  statement: string
-) {
-  const message = new SiweMessage({
-    version: '1',
-    domain: 'real.sovereignnature.com',
-    uri: 'https://real.sovereignnature.com',
-    address,
-    chainId,
-    statement,
-  });
-  return message.prepareMessage();
+export function getWeb3Modal() {
+  return getContext('web3Modal') as Web3Modal;
 }

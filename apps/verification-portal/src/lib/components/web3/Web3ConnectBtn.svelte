@@ -16,7 +16,10 @@
   const web3Address: Writable<string> = getContext('web3Address');
   const web3ChainId: Writable<number> = getContext('web3ChainId');
 
-  function openModal() {
+  function openModal(showNetworks = false) {
+    if (showNetworks === true) {
+      return web3Modal.open({ view: 'Networks' });
+    }
     web3Modal.open();
   }
   function shortenAddress(address: string) {
@@ -48,7 +51,11 @@
       </button>
     {/key}
   {:else}
-    <RolloverBtn type="primary" keepOpen={alwaysOpen} on:click={openModal}>
+    <RolloverBtn
+      type="primary"
+      keepOpen={alwaysOpen}
+      on:click={() => openModal(true)}
+    >
       Connect your wallet
       <ConnectIcon slot="icon" className="h-4 w-4 mx-1" />
     </RolloverBtn>

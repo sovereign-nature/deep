@@ -1,3 +1,4 @@
+import { dev } from '$app/environment';
 import { PUBLIC_WALLET_CONNECT_PROJECT_ID } from '$env/static/public';
 import config from '$lib/config/siteConfigs';
 import { defaultConfig } from '@web3modal/ethers5';
@@ -8,7 +9,7 @@ if (!PUBLIC_WALLET_CONNECT_PROJECT_ID) {
 
 export const projectId = PUBLIC_WALLET_CONNECT_PROJECT_ID;
 
-export const chains = [
+const prodChains = [
   {
     chainId: 42161,
     name: 'Arbitrum',
@@ -17,23 +18,39 @@ export const chains = [
     rpcUrl: 'https://arb1.arbitrum.io/rpc',
   },
   {
+    chainId: 1,
+    name: 'Ethereum',
+    currency: 'ETH',
+    explorerUrl: 'https://etherscan.io',
+    rpcUrl: 'https://cloudflare-eth.com',
+  },
+];
+
+const devChains = [
+  ...prodChains,
+  {
     chainId: 11155111,
     name: 'Sepolia',
     currency: 'ETH',
     explorerUrl: 'https://sepolia.etherscan.io/',
-
     rpcUrl: 'https://ethereum-sepolia.publicnode.com',
   },
 ];
+
+export const chains = dev ? devChains : prodChains;
 // 3. Create modal
 export const metadata = {
   name: config.siteName,
   description: config.siteDescription,
+  image: '/android-chrome-512x512.png',
   url: 'https://real.sovereignnature.com/',
-  icons: ['/android-chrome-192x192.png', '/android-chrome-512x512.png'],
+  icons: [
+    'https://real.sovereignnature.com/android-chrome-192x192.png',
+    'https://real.sovereignnature.com/android-chrome-512x512.png',
+  ],
 };
 
-export const ethersConfig = defaultConfig({ metadata, defaultChainId: 42161 });
+export const ethersConfig = defaultConfig({ metadata, defaultChainId: 1 });
 
 export const themeVariablesDark = {
   '--w3m-font-family': 'Roboto, sans-serif',
