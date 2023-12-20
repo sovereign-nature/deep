@@ -10,6 +10,9 @@ jobs:
     name: Deploy Workers
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          run_install: false
       - name: Deploy Assets Gateway
         uses: cloudflare/wrangler-action@v3
         with:
