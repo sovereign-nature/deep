@@ -2,5 +2,5 @@
 - [DEEP Protocol](deep.md)
 - [REAL Interface](real.md)
 - [PoCs](pocs.md)
-- [Value(s)](values(s).md) 
+- [Value(s)](values.md)
 - [Development](development.md)
