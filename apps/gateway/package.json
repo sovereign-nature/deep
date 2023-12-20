@@ -26,6 +26,6 @@
   "devDependencies": {
     "env-cmd": "10.1.0",
     "mustache": "4.2.0",
-    "wrangler": "3.22.0"
+    "wrangler": "3.22.1"
   }
 }
