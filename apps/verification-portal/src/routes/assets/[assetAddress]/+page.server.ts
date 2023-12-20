@@ -36,7 +36,7 @@ export async function load(event) {
     assetData = fetchedAsset;
     addressDetails = parseAddress(assetAddress);
   } catch (e) {
-    throw error(404, notFoundMessage);
+    error(404, notFoundMessage);
   }
 
   //Fetch verified data
