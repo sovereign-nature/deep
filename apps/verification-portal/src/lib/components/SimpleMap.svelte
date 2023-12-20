@@ -48,13 +48,4 @@
   });
 </script>
 
-<!-- <link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  crossorigin=""
-/> -->
 <div bind:this={mapElement} class="min-h-inherit h-full" />
-
-<!-- <style>
-  @import 'leaflet/dist/leaflet.css';
-</style> -->
