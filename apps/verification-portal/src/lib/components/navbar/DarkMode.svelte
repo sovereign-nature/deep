@@ -7,8 +7,9 @@
     ' text-gray-500 dark:text-gray-400  hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700  cursor-pointer ';
 
   export let itemClass =
-    'dark:bg-transparent p-0 mb-1 flex w-full items-baseline gap-2 dark:hover:bg-primary-400 bg-gray-100 dark:bg-primary-800 w-44 cursor-pointer px-2  rounded-full';
-  const radioClass = ' m-0 p-0 px-2 py-2 w-full text-base bg-transparent]';
+    'dark:bg-transparent p-0 mb-1 flex w-full items-baseline gap-2 text-primary-500 hover:text-primary-400 dark:text-primary-400 hover:dark:text-white dark:hover:bg-primary-400 bg-gray-100 dark:bg-primary-800 w-44 cursor-pointer px-2  rounded-full';
+  const radioClass =
+    'm-0 p-0 px-2 py-2 w-full text-base bg-transparent text-inherit';
   const theme = getContext('theme');
   let selectedTheme: string;
   theme.subscribe((value) => {

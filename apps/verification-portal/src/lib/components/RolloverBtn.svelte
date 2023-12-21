@@ -1,6 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
   import { fly } from 'svelte/transition';
+  import { goto } from '$app/navigation';
 
   const dispatch = createEventDispatcher();
 
@@ -19,7 +20,7 @@
   let colorClasses = {
     alert: 'dark:text-white bg-orange-200 hover:bg-orange-100',
     primary:
-      'drop-shadow-sm text-white bg-primary-400 hover:bg-primary-300  dark:bg-primary-400 dark:hover:bg-primary-300',
+      'drop-shadow-sm text-white bg-primary-400 hover:bg-primary-300 dark:bg-primary-400 dark:hover:bg-primary-300',
     secondary:
       'drop-shadow-sm hover:text-primary-400 text-primary-500 bg-white dark:text-primary-300 hover:dark:text-deep-green-800 dark:bg-deep-green-600 dark:hover:bg-primary-300',
   };
@@ -34,8 +35,8 @@
   $: hasNewClass =
     type === 'alert'
       ? isAlert
-        ? 'text-orange-500 hover:text-orange-400 dark:bg-orange-500 dark:hover:bg-orange-400'
-        : 'text-orange-700 hover:text-orange-500 dark:bg-orange-700 dark:hover:bg-orange-600'
+        ? 'text-orange-500 hover:text-orange-400 dark:text-white hover:dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400'
+        : 'text-orange-700 hover:text-orange-500 dark:text-white hover:dark:text-white dark:bg-orange-700 dark:hover:bg-orange-600'
       : '';
 
   let isHovered = false;
@@ -53,7 +54,7 @@
       class={`${btnClass} ${$$slots.default && isOpen ? 'open' : 'closed'}`}
       on:click={() => {
         if (url) {
-          window.location.href = url;
+          goto(url);
         } else {
           dispatch('click');
         }
