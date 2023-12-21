@@ -272,8 +272,8 @@ importers:
         specifier: 3.6.2
         version: 3.6.2(@babel/core@7.22.9)(postcss-load-config@4.0.2)(postcss@8.4.32)(svelte@4.2.8)
       tailwind-merge:
-        specifier: 2.1.0
-        version: 2.1.0
+        specifier: 2.2.0
+        version: 2.2.0
       tailwindcss:
         specifier: 3.4.0
         version: 3.4.0
@@ -10186,7 +10186,7 @@ packages:
       apexcharts: 3.44.0
       flowbite: 2.2.1
       svelte: 4.2.8
-      tailwind-merge: 2.1.0
+      tailwind-merge: 2.2.0
     dev: true
 
   /flowbite@2.2.1:
@@ -16337,8 +16337,8 @@ packages:
       strip-ansi: 6.0.1
     dev: true
 
-  /tailwind-merge@2.1.0:
-    resolution: {integrity: sha512-l11VvI4nSwW7MtLSLYT4ldidDEUwQAMWuSHk7l4zcXZDgnCRa0V3OdCwFfM7DCzakVXMNRwAeje9maFFXT71dQ==}
+  /tailwind-merge@2.2.0:
+    resolution: {integrity: sha512-SqqhhaL0T06SW59+JVNfAqKdqLs0497esifRrZ7jOaefP3o64fdFNDMrAQWZFMxTLJPiHVjRLUywT8uFz1xNWQ==}
     dependencies:
       '@babel/runtime': 7.23.5
     dev: true
