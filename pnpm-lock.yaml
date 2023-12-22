@@ -155,8 +155,8 @@ importers:
   apps/indexer:
     devDependencies:
       '@graphprotocol/graph-cli':
-        specifier: 0.64.0
-        version: 0.64.0(@types/node@18.17.1)(node-fetch@3.3.2)(typescript@5.3.3)
+        specifier: 0.64.1
+        version: 0.64.1(@types/node@18.17.1)(node-fetch@3.3.2)(typescript@5.3.3)
       '@graphprotocol/graph-ts':
         specifier: 0.32.0
         version: 0.32.0
@@ -2726,8 +2726,8 @@ packages:
       three: 0.157.0
     dev: true
 
-  /@graphprotocol/graph-cli@0.64.0(@types/node@18.17.1)(node-fetch@3.3.2)(typescript@5.3.3):
-    resolution: {integrity: sha512-JvEL3FvXEhRhEaCAk310h13UothElQgNPt0InjoXJUG+yNexsdJ6Rr1FYCC517Q/b7pfcczT6usSyOgnTgR7FA==}
+  /@graphprotocol/graph-cli@0.64.1(@types/node@18.17.1)(node-fetch@3.3.2)(typescript@5.3.3):
+    resolution: {integrity: sha512-BUjWLiEvZUPxuJ/PpARXMBeVLBGjJ/AKP+Orqzlb09b/6HAyQwYpDsaz5R9rW05LYPRqMikuCmktY727rbIFuA==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
@@ -2751,7 +2751,7 @@ packages:
       ipfs-http-client: 55.0.0(node-fetch@3.3.2)
       jayson: 4.0.0
       js-yaml: 3.14.1
-      prettier: 1.19.1
+      prettier: 3.0.3
       request: 2.88.2
       semver: 7.4.0
       sync-request: 6.1.0
@@ -14377,15 +14377,15 @@ packages:
       svelte: 4.2.8
     dev: true
 
-  /prettier@1.19.1:
-    resolution: {integrity: sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==}
-    engines: {node: '>=4'}
-    hasBin: true
-    dev: true
-
   /prettier@2.8.4:
     resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
     engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
+
+  /prettier@3.0.3:
+    resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
