@@ -35,7 +35,7 @@
     "@vercel/analytics": "1.1.1",
     "@vercel/og": "0.6.1",
     "autoprefixer": "10.4.16",
-    "date-fns": "3.0.5",
+    "date-fns": "3.0.6",
     "flowbite": "2.2.1",
     "flowbite-svelte": "0.44.20",
     "fuse.js": "7.0.0",
