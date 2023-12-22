@@ -239,8 +239,8 @@ importers:
         specifier: 2.2.1
         version: 2.2.1
       flowbite-svelte:
-        specifier: 0.44.20
-        version: 0.44.20(svelte@4.2.8)
+        specifier: 0.44.21
+        version: 0.44.21(svelte@4.2.8)
       fuse.js:
         specifier: 7.0.0
         version: 7.0.0
@@ -10176,8 +10176,8 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
-  /flowbite-svelte@0.44.20(svelte@4.2.8):
-    resolution: {integrity: sha512-juvzolgEvGEga8PIe+vpzGf9/xfpvd4p9ZgtSPpWQLZB8iyY/ebbKb5HNu60uqoehdokFuy/0htBBLNmP2yd/g==}
+  /flowbite-svelte@0.44.21(svelte@4.2.8):
+    resolution: {integrity: sha512-M3xmu/HUgGHMR+iJNzxd9J3j8o1SzsrbvWlOKQOdIhcsRVNioqfcNvvjKgSciMf8p/GcUQq6AS5UyfIpqo5aGw==}
     engines: {node: '>=18.0.0', npm: '>=7.0.0'}
     peerDependencies:
       svelte: ^4.0.0

@@ -37,7 +37,7 @@
     "autoprefixer": "10.4.16",
     "date-fns": "3.0.6",
     "flowbite": "2.2.1",
-    "flowbite-svelte": "0.44.20",
+    "flowbite-svelte": "0.44.21",
     "fuse.js": "7.0.0",
     "graphql-request": "^6.1.0",
     "leaflet": "1.9.4",
