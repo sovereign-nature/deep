@@ -84,7 +84,10 @@ async function createInboxClient() {
 }
 
 async function setupInboxClient() {
-  if (!web3InboxClient) createInboxClient();
+  if (!web3InboxClient) {
+    createInboxClient();
+    return;
+  }
   web3InboxAccount = `eip155:${web3ChainId}:${web3Address}`;
   const registered =
     await web3InboxClient.getAccountIsRegistered(web3InboxAccount);
