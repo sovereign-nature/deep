@@ -63,8 +63,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/types
       hono:
-        specifier: 3.11.9
-        version: 3.11.9
+        specifier: 3.11.12
+        version: 3.11.12
     devDependencies:
       '@cloudflare/workers-types':
         specifier: 4.20231218.0
@@ -308,8 +308,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/types
       hono:
-        specifier: 3.11.9
-        version: 3.11.9
+        specifier: 3.11.12
+        version: 3.11.12
     devDependencies:
       '@cloudflare/workers-types':
         specifier: 4.20231218.0
@@ -3047,7 +3047,7 @@ packages:
       tsconfig-paths: 4.2.0
       tslib: 2.6.2
       typescript: 5.3.3
-      uWebSockets.js: github.com/uNetworking/uWebSockets.js/187881c309817522b572b9ef5f1d965ff4bd1e5e
+      uWebSockets.js: github.com/uNetworking/uWebSockets.js/560035d4ad6caeda563deee1d3d68143462a305b
       yargs: 17.7.2
     optionalDependencies:
       node-libcurl: 3.0.1-0
@@ -11154,8 +11154,8 @@ packages:
     dev: false
     optional: true
 
-  /hono@3.11.9:
-    resolution: {integrity: sha512-vjwVHw/y9xXPf7a87XjAPE9d3NFLyDiDBHmTU5SsGiJoe4BSiU/Yiu5UB9orhP+YGkSwD7fzXmuG7lpvKnr15w==}
+  /hono@3.11.12:
+    resolution: {integrity: sha512-TrxH75bc0m2UbvrhaXkoo32A9OhkJtvICAYgYWtxqLDOxBjRqSikyp4K7HTbnWkPeg9Z+2Q3nv0dN4o8kL6yLg==}
     engines: {node: '>=16.0.0'}
     dev: false
 
@@ -18183,8 +18183,8 @@ packages:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: true
 
-  github.com/uNetworking/uWebSockets.js/187881c309817522b572b9ef5f1d965ff4bd1e5e:
-    resolution: {tarball: https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/187881c309817522b572b9ef5f1d965ff4bd1e5e}
+  github.com/uNetworking/uWebSockets.js/560035d4ad6caeda563deee1d3d68143462a305b:
+    resolution: {tarball: https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/560035d4ad6caeda563deee1d3d68143462a305b}
     name: uWebSockets.js
-    version: 20.35.0
+    version: 20.38.0
     dev: false
