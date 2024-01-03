@@ -89,7 +89,6 @@
       handleDataLoaded(response.data);
     } catch (error) {
       handleDataLoaded([], true);
-      //@TODO add Sentry
       if (axios.isAxiosError(error)) {
         // Axios error (e.g., network error, timeout)
         if (error.code === 'ECONNABORTED') {
