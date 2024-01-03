@@ -33,17 +33,26 @@ function getNetworkId(chainNamespace: string, chainId: string): string {
 
 app.get('/:assetDID', async (c) => {
   const assetDID = c.req.param('assetDID');
+  let networkId: string;
+  let tokenId: number;
+  let assetId: string;
 
+  // Parsing DID
   try {
     const { chain, asset } = parseAddress(assetDID);
-    const networkId = getNetworkId(chain.namespace, chain.reference);
-    const assetId = asset.reference;
-    const tokenId = asset.identifier;
+    networkId = getNetworkId(chain.namespace, chain.reference);
+    assetId = asset.reference;
+    tokenId = asset.identifier;
+  } catch (e) {
+    return c.json({ error: 'Invalid DID' });
+  }
 
+  // Getting asset data
+  try {
     const assetData = await getAsset(networkId, assetId, tokenId);
     return c.json(assetData);
   } catch (e) {
-    return c.json({ error: 'Invalid DID' });
+    return c.json({ error: 'Asset not found' });
   }
 });
 
