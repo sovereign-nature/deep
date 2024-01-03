@@ -1,8 +1,10 @@
 import { expect, test } from 'vitest';
 import { getEntity, getSteward } from '../data';
 import { getLinkByAddress, getLinkById } from '../link';
-import { getNftData, getOpenSeaTestNetNft } from '../nft';
+import { getNftAsset, getOpenSeaTestNetNft } from '../nft';
+import { getWeb2Asset } from '../web2';
 import {
+  hotelHideawayResponse,
   kusamaNftResponse,
   openSeaTestNetResponse,
   polkadotNftResponse,
@@ -37,24 +39,25 @@ test('getSteward', async () => {
 });
 
 test('getNFTData from Polkadot', async () => {
-  const response = (await getNftData('polkadot', 'u-8', 262)) as object;
+  const response = (await getNftAsset('polkadot', 'u-8', 262)) as object;
 
   expect(response).toStrictEqual(polkadotNftResponse);
 });
 
 test('getNFTData from Kusama', async () => {
-  const response = (await getNftData('kusama', '91', 10)) as object;
+  const response = (await getNftAsset('kusama', '91', 10)) as object;
 
   expect(response).toStrictEqual(kusamaNftResponse);
 });
 
-// test('getWeb2Asset from Hotel Hideaway', async () => {
-//   const data = await (
-//     await getWeb2Asset('hotel-hideaway', 'congolese-elephant-headwrap')
-//   ).json();
+test('getWeb2Asset from Hotel Hideaway', async () => {
+  const data = await await getWeb2Asset(
+    'hotel-hideaway',
+    'upemba-national-park-curls'
+  );
 
-//   expect(data).toStrictEqual(hotelHideawayResponse);
-// }); //TODO: Fix this test
+  expect(data).toStrictEqual(hotelHideawayResponse);
+});
 
 test('getOpenSeaTestNetNft', async () => {
   const data = await getOpenSeaTestNetNft(

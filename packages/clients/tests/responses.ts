@@ -207,18 +207,20 @@ export const kusamaNftResponse = {
 
 export const hotelHideawayResponse = {
   data: {
-    id: 'congolese-elephant-headwrap',
-    date_created: '2023-10-16T10:43:19.636Z',
-    date_updated: '2023-10-16T13:23:42.461Z',
-    name: 'Congolese Elephant Headwrap',
+    id: 'upemba-national-park-curls',
+    date_created: '2023-10-19T21:17:26.555Z',
+    date_updated: '2023-11-16T09:47:52.697Z',
+    name: 'Upemba National Park Curls',
     description: null,
-    image: 'a62cc6db-7c48-4907-a600-674a132ec3f2',
+    image: '586e426d-8f15-4cbd-b7f5-d1b15c51f5f7',
+    status: 'published',
     collection: {
       id: 'fpf-upemba',
       date_created: '2023-10-16T13:22:03.838Z',
-      date_updated: null,
+      date_updated: '2023-10-23T17:39:32.981Z',
       name: 'SNI x Upemba National Park',
-      description: 'Lorem ipsum',
+      description:
+        'Welcome to the Hotel Hideaway collection! Your contribution makes a REAL difference for Forgotten Park Foundation’s biodiversity conservation efforts. Learn more about your impact below and spread the word!',
     },
   },
 };
@@ -237,21 +239,24 @@ export const openSeaTestNetResponse = {
     metadata_url: null,
     opensea_url:
       'https://testnets.opensea.io/assets/sepolia/0x38de3f11ba85d75f28778c6f44a97d29ea910cf2/1',
-    created_at: ' ',
     updated_at: '2023-11-22T20:04:13.619911',
     is_disabled: false,
     is_nsfw: false,
-    animation_url: '',
+    traits: null,
+    animation_url: null,
     is_suspicious: false,
     creator: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
-    traits: null,
     owners: [
       {
         address: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
-        quantity: 99,
+        quantity: 98,
       },
       {
         address: '0xa7129173a57a21316b0785740f9f619fd17b74fd',
+        quantity: 1,
+      },
+      {
+        address: '0xcab6acfd243d62419e7161d214b793636d29fa3a',
         quantity: 1,
       },
     ],
@@ -263,6 +268,6 @@ export const openSeaTestNetResponse = {
     collection: 'real-test-1',
     contract_standard: 'erc1155',
     name: 'REAL TEST 1',
-    supply: 0,
+    total_supply: 0,
   },
 };
