@@ -2,10 +2,10 @@
 
 <script>
   import LL from '$lib/i18n/i18n-svelte';
+  import { ogPlaceholder } from '@sni/cdn/placeholders';
   export let title = $LL.social.shareCard.title(); //max 40 characters
   export let description = $LL.social.shareCard.description(); //max 200 characters
-  export let image =
-    'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/b72060a5-e585-48bc-97b1-f73358d7ec00/public';
+  export let image = ogPlaceholder;
   export let twitterSite = '@sovereignnature';
 </script>
 

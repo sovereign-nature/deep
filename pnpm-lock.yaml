@@ -190,6 +190,9 @@ importers:
       '@sni/address-utils':
         specifier: workspace:*
         version: link:../../packages/address-utils
+      '@sni/cdn':
+        specifier: workspace:*
+        version: link:../../packages/cdn
       '@sni/clients':
         specifier: workspace:*
         version: link:../../packages/clients
@@ -333,6 +336,8 @@ importers:
       vitest:
         specifier: 1.1.1
         version: 1.1.1
+
+  packages/cdn: {}
 
   packages/clients:
     dependencies:

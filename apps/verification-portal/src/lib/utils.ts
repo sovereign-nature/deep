@@ -1,3 +1,5 @@
+import type { FeaturesConfig } from '$lib/types';
+import { animalPlaceholder } from '@sni/cdn/placeholders';
 import type { Page } from '@sveltejs/kit';
 
 export function shortenMoneyValue(value: string): string {
@@ -59,8 +61,6 @@ export function isIPFSUrl(url: string): boolean {
 
 import { goto } from '$app/navigation';
 import { SNI_API_URL } from '@sni/constants';
-const placeholderAnimal =
-  'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/6b8c11cc-7186-4929-4c9e-9b5eba599e00/public';
 
 const API_BASE_URL = SNI_API_URL;
 const imageRequestConfig = '?format=auto&withoutEnlargement&quality=80';
@@ -70,7 +70,7 @@ export function generateAssetURL(
   width: number = 1000
 ): string {
   if (!assetID) {
-    return placeholderAnimal;
+    return animalPlaceholder;
   }
   return `${API_BASE_URL}/assets/${assetID}${imageRequestConfig}&width=${width}`;
 }
@@ -118,11 +118,11 @@ export function isDarkModePreferred() {
 }
 
 import config from '$lib/config/siteConfigs';
-export function isFeatureEnabled(feature) {
+export function isFeatureEnabled(feature: string) {
   let isEnabled = false;
 
   if (feature in config.feature) {
-    isEnabled = config.feature[feature]; // Use the value in the config if it exists
+    isEnabled = (config.feature as FeaturesConfig)[feature]; // Use the value in the config if it exists
   } else {
     console.log(`Feature flag ${feature} not found in config`);
   }

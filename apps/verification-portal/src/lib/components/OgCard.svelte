@@ -3,12 +3,12 @@
   import Logo from '$lib/components/icons/Logo.svelte';
   import FundsWidget from '$lib/components/dashboard/FundsWidget.svelte';
   import LL from '$lib/i18n/i18n-svelte';
+  import { ogPlaceholder } from '@sni/cdn/placeholders';
   export let title = '';
   export let tokenId = '';
   export let funds = '';
   export let source = '';
-  export let img =
-    'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/b72060a5-e585-48bc-97b1-f73358d7ec00/public';
+  export let img = ogPlaceholder;
   const mediumTitle = isLongTitle(title);
   const smallTitle = isLongTitle(title, 9, 3);
 

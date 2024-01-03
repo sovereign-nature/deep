@@ -12,14 +12,9 @@
   import NewsCarousel from '$lib/components/carousel/NewsCarousel.svelte';
   import LL from '$lib/i18n/i18n-svelte.js';
   import type { CollectionKey } from '$lib/types';
+  import { animalPlaceholder, campPlaceholder } from '@sni/cdn/placeholders';
 
   import { page } from '$app/stores';
-
-  const placeholderCamp =
-    'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/70034649-f8e9-40b6-ec41-371c97e3d800/public';
-
-  const placeholderAnimal =
-    'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/6b8c11cc-7186-4929-4c9e-9b5eba599e00/public';
 
   $: currentPath = $page.url.toString();
   $: pageTitle = `${$LL.assets.title({ assetName: nftData.name })}`;
@@ -180,7 +175,7 @@
           {:else}
             <img
               style="width:inherit"
-              src={placeholderAnimal}
+              src={animalPlaceholder}
               alt="Not Available"
             />
           {/if}
@@ -280,7 +275,7 @@
             {:else}
               <img
                 style="width:inherit"
-                src={placeholderCamp}
+                src={campPlaceholder}
                 alt="Not Available"
               />
             {/if}
