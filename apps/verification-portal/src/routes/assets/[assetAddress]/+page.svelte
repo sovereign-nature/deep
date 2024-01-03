@@ -12,7 +12,10 @@
   import NewsCarousel from '$lib/components/carousel/NewsCarousel.svelte';
   import LL from '$lib/i18n/i18n-svelte.js';
   import type { CollectionKey } from '$lib/types';
-  import { ANIMAL_PLACEHOLDER, CAMP_PLACEHOLDER } from '@sni/cdn/placeholders';
+  import {
+    ANIMAL_PLACEHOLDER,
+    CAMP_PLACEHOLDER,
+  } from '@sni/constants/cdn/placeholders';
 
   import { page } from '$app/stores';
 

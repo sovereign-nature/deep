@@ -1,5 +1,5 @@
 import type { FeaturesConfig } from '$lib/types';
-import { ANIMAL_PLACEHOLDER } from '@sni/cdn/placeholders';
+import { ANIMAL_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
 import type { Page } from '@sveltejs/kit';
 
 export function shortenMoneyValue(value: string): string {

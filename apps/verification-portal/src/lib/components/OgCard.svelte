@@ -3,7 +3,7 @@
   import Logo from '$lib/components/icons/Logo.svelte';
   import FundsWidget from '$lib/components/dashboard/FundsWidget.svelte';
   import LL from '$lib/i18n/i18n-svelte';
-  import { SOCIAL_CARD_PLACEHOLDER } from '@sni/cdn/placeholders';
+  import { SOCIAL_CARD_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
   export let title = '';
   export let tokenId = '';
   export let funds = '';
