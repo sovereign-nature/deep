@@ -34,17 +34,17 @@ function getNetworkId(chainNamespace: string, chainId: string): string {
 app.get('/:assetDID', async (c) => {
   const assetDID = c.req.param('assetDID');
 
-  const { chain, asset } = parseAddress(assetDID);
+  try {
+    const { chain, asset } = parseAddress(assetDID);
+    const networkId = getNetworkId(chain.namespace, chain.reference);
+    const assetId = asset.reference;
+    const tokenId = asset.identifier;
 
-  //TODO: Handle unknown chains
-  const networkId = getNetworkId(chain.namespace, chain.reference);
-
-  const assetId = asset.reference;
-  const tokenId = asset.identifier;
-
-  const assetData = await getAsset(networkId, assetId, tokenId);
-
-  return c.json(assetData);
+    const assetData = await getAsset(networkId, assetId, tokenId);
+    return c.json(assetData);
+  } catch (e) {
+    return c.json({ error: 'Invalid DID' });
+  }
 });
 
 //TODO: Proper typing
