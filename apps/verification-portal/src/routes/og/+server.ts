@@ -2,15 +2,15 @@ import { componentToImageResponse } from '$lib';
 import OgCard from '$lib/components/OgCard.svelte';
 import type { RequestHandler } from '@sveltejs/kit';
 const fontFile = await fetch(
-  'https://cdn.sovereignnature.com/deep-real/fonts/clearface/Clearface-Serial-Med.woff'
+  'https://cdn2.sovereignnature.com/fonts/clearface/Clearface-Serial-Med.woff'
 );
 const fontData: ArrayBuffer = await fontFile.arrayBuffer();
 const robotoFile = await fetch(
-  'https://cdn.sovereignnature.com/deep-real/fonts/roboto/Roboto-Regular.ttf'
+  'https://cdn2.sovereignnature.com/fonts/roboto/Roboto-Regular.ttf'
 );
 const robotoData: ArrayBuffer = await robotoFile.arrayBuffer();
 const robotoBoldFile = await fetch(
-  'https://cdn.sovereignnature.com/deep-real/fonts/roboto/Roboto-Medium.ttf'
+  'https://cdn2.sovereignnature.com/fonts/roboto/Roboto-Medium.ttf'
 );
 const robotoBoldData: ArrayBuffer = await robotoBoldFile.arrayBuffer();
 export const GET: RequestHandler = async ({ url }) => {
