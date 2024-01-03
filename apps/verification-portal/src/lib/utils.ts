@@ -58,8 +58,9 @@ export function isIPFSUrl(url: string): boolean {
 }
 
 import { goto } from '$app/navigation';
-import placeholderAnimal from '$lib/assets/images/placeholderAnimal.jpg'; //@TODO replace with CDN image
 import { SNI_API_URL } from '@sni/constants';
+const placeholderAnimal =
+  'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/6b8c11cc-7186-4929-4c9e-9b5eba599e00/public';
 
 const API_BASE_URL = SNI_API_URL;
 const imageRequestConfig = '?format=auto&withoutEnlargement&quality=80';
