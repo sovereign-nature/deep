@@ -14,7 +14,7 @@ const robotoBoldFile = await fetch(
 );
 const robotoBoldData: ArrayBuffer = await robotoBoldFile.arrayBuffer();
 export const GET: RequestHandler = async ({ url }) => {
-  const decodeQueryParam = (param: string) =>
+  const decodeQueryParam = (param: string | null) =>
     param ? decodeURIComponent(param) : undefined;
 
   const title = decodeQueryParam(url.searchParams.get('title')) || 'NFT';
