@@ -1,0 +1,11 @@
+{
+  "name": "@sni/cdn",
+  "version": "0.0.0",
+  "description": "Package for accessing assets from CDN",
+  "keywords": [
+    "cdn",
+    "content delivery network"
+  ],
+  "author": "Vadim Smakhtin",
+  "license": "GPL-3.0"
+}
