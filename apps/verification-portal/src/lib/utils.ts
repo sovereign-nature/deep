@@ -1,5 +1,5 @@
 import type { FeaturesConfig } from '$lib/types';
-import { animalPlaceholder } from '@sni/cdn/placeholders';
+import { ANIMAL_PLACEHOLDER } from '@sni/cdn/placeholders';
 import type { Page } from '@sveltejs/kit';
 
 export function shortenMoneyValue(value: string): string {
@@ -70,7 +70,7 @@ export function generateAssetURL(
   width: number = 1000
 ): string {
   if (!assetID) {
-    return animalPlaceholder;
+    return ANIMAL_PLACEHOLDER;
   }
   return `${API_BASE_URL}/assets/${assetID}${imageRequestConfig}&width=${width}`;
 }
