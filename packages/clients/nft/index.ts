@@ -5,17 +5,51 @@ import { getNftById } from './queries/polkadot';
 const POLKADOT_NFT_API = 'https://squid.subsquid.io/speck/graphql';
 const KUSAMA_NFT_API = 'https://squid.subsquid.io/stick/graphql';
 
+export type PolkadotResponse = {
+  nftEntity: {
+    id: string;
+    sn: string;
+    meta: {
+      name: string;
+      description: string;
+      image: string;
+    };
+    collection: {
+      id: string;
+      name: string;
+    };
+  };
+};
+
+export type OpenSeaResponse = {
+  nft: {
+    identifier: string;
+    name: string;
+    description: string;
+    image_url: string;
+  };
+  collection: {
+    collection: string;
+    name: string;
+  };
+};
+
+export type OpenSeaCollectionResponse = {
+  collection: string;
+  name: string;
+};
+
 const polkadotClient = new GraphQLClient(POLKADOT_NFT_API, { fetch });
 const kusamaClient = new GraphQLClient(KUSAMA_NFT_API, { fetch });
 
 export function getPolkadotNft(id: string) {
-  return polkadotClient.request(getNftById, {
+  return polkadotClient.request<PolkadotResponse>(getNftById, {
     id,
   });
 }
 
 export function getKusamaNft(id: string) {
-  return kusamaClient.request(getNftById, {
+  return kusamaClient.request<PolkadotResponse>(getNftById, {
     id,
   });
 }
@@ -28,24 +62,20 @@ export async function getOpenSeaTestNetNft(
     `https://testnets-api.opensea.io/api/v2/chain/sepolia/contract/${contractAddress}/nfts/${tokenId}`
   );
 
-  //TODO: Proper typing
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const nftData: any = await nftRes.json();
+  const nftData: OpenSeaResponse = await nftRes.json();
 
   const collectionRes = await fetch(
     `https://testnets-api.opensea.io/api/v2/chain/sepolia/contract/${contractAddress}`
   );
 
-  //TODO: Proper typing
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const collectionData: any = await collectionRes.json();
+  const collectionData: OpenSeaCollectionResponse = await collectionRes.json();
 
   nftData.collection = collectionData;
 
-  return await nftData;
+  return nftData;
 }
 
-export function getNftData(
+export function getNftAsset(
   network: string,
   contractAddress: string,
   tokenId: number
@@ -57,5 +87,7 @@ export function getNftData(
       return getKusamaNft(`${contractAddress}-${tokenId}`);
     case 'sepolia':
       return getOpenSeaTestNetNft(contractAddress, tokenId);
+    default:
+      throw new Error(`Unknown network: ${network}`);
   }
 }

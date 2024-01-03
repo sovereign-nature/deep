@@ -1,5 +1,9 @@
 import { parseAddress } from '@sni/address-utils';
-import { getNftData } from '@sni/clients/nft';
+import {
+  OpenSeaResponse,
+  PolkadotResponse,
+  getNftAsset,
+} from '@sni/clients/nft';
 import { getHotelHideawayAsset } from '@sni/clients/web2';
 import { SNI_API_URL } from '@sni/constants';
 import { DeepAsset } from '@sni/types';
@@ -58,7 +62,7 @@ app.get('/:assetDID', async (c) => {
 
 //TODO: Proper typing
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function polkadotFormatter(assetData: any): DeepAsset {
+function polkadotFormatter(assetData: PolkadotResponse): DeepAsset {
   const nftEntity = assetData.nftEntity;
   return {
     id: nftEntity.id,
@@ -73,9 +77,7 @@ function polkadotFormatter(assetData: any): DeepAsset {
   };
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function openSeaFormatter(assetData: any): DeepAsset {
-  //TODO: Proper typing for formatted data and assetData
+function openSeaFormatter(assetData: OpenSeaResponse): DeepAsset {
   return {
     id: assetData.nft.identifier,
     tokenId: assetData.nft.identifier,
@@ -108,15 +110,15 @@ async function getAsset(
   switch (networkId) {
     case 'polkadot':
     case 'kusama':
-      return polkadotFormatter(await getNftData(networkId, assetId, tokenId));
-    case 'sepolia':
-      return openSeaFormatter(await getNftData(networkId, assetId, tokenId));
-    case 'hotel-hideaway':
-      //TODO: Proper typing
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      return directusFormatter(
-        await (await getHotelHideawayAsset(assetId)).json()
+      return polkadotFormatter(
+        (await getNftAsset(networkId, assetId, tokenId)) as PolkadotResponse
       );
+    case 'sepolia':
+      return openSeaFormatter(
+        (await getNftAsset(networkId, assetId, tokenId)) as OpenSeaResponse
+      );
+    case 'hotel-hideaway':
+      return directusFormatter(await getHotelHideawayAsset(assetId));
     default:
       throw new Error(`Unknown networkId: ${networkId}`);
   }
