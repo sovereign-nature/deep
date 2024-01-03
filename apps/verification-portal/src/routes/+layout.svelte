@@ -7,9 +7,13 @@
   import { getContext, onMount } from 'svelte';
   import { initializeInbox } from '$lib/web3Inbox';
   import { browser } from '$app/environment';
-  let isLoading = false;
   import { isFeatureEnabled } from '$lib/utils';
   import Modal from '$lib/components/web3/inboxModal/index.svelte';
+  import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+
+  let isLoading = false;
+
+  injectSpeedInsights();
 
   beforeNavigate(() => (isLoading = true));
   afterNavigate(() => (isLoading = false));
