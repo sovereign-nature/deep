@@ -9,6 +9,6 @@
     "ethers": "6.9.1"
   },
   "devDependencies": {
-    "vitest": "1.1.0"
+    "vitest": "1.1.1"
   }
 }
