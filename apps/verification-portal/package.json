@@ -54,7 +54,7 @@
     "typescript": "5.3.3",
     "typesafe-i18n": "5.26.2",
     "vite": "5.0.10",
-    "vitest": "1.1.0",
+    "vitest": "1.1.1",
     "@sentry/sveltekit": "7.90.0",
     "@web3modal/ethers5": "3.5.3",
     "@web3modal/siwe": "3.5.1",
