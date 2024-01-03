@@ -1,6 +1,10 @@
 import { parseAddress } from '@sni/address-utils';
-import { getNftData } from '@sni/clients/nft';
-import { getHotelHideawayAsset } from '@sni/clients/web2';
+import {
+  OpenSeaResponse,
+  PolkadotResponse,
+  getNftAsset,
+} from '@sni/clients/nft';
+import { DirectusAsset, getHotelHideawayAsset } from '@sni/clients/web2';
 import { SNI_API_URL } from '@sni/constants';
 import { DeepAsset } from '@sni/types';
 import { Hono } from 'hono';
@@ -33,23 +37,30 @@ function getNetworkId(chainNamespace: string, chainId: string): string {
 
 app.get('/:assetDID', async (c) => {
   const assetDID = c.req.param('assetDID');
+  let networkId: string;
+  let tokenId: number;
+  let assetId: string;
 
-  const { chain, asset } = parseAddress(assetDID);
+  // Parsing DID
+  try {
+    const { chain, asset } = parseAddress(assetDID);
+    networkId = getNetworkId(chain.namespace, chain.reference);
+    assetId = asset.reference;
+    tokenId = asset.identifier;
+  } catch (e) {
+    return c.json({ error: 'Invalid DID' });
+  }
 
-  //TODO: Handle unknown chains
-  const networkId = getNetworkId(chain.namespace, chain.reference);
-
-  const assetId = asset.reference;
-  const tokenId = asset.identifier;
-
-  const assetData = await getAsset(networkId, assetId, tokenId);
-
-  return c.json(assetData);
+  // Getting asset data
+  try {
+    const assetData = await getAsset(networkId, assetId, tokenId);
+    return c.json(assetData);
+  } catch (e) {
+    return c.json({ error: 'Asset not found' });
+  }
 });
 
-//TODO: Proper typing
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function polkadotFormatter(assetData: any): DeepAsset {
+function polkadotFormatter(assetData: PolkadotResponse): DeepAsset {
   const nftEntity = assetData.nftEntity;
   return {
     id: nftEntity.id,
@@ -64,9 +75,7 @@ function polkadotFormatter(assetData: any): DeepAsset {
   };
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function openSeaFormatter(assetData: any): DeepAsset {
-  //TODO: Proper typing for formatted data and assetData
+function openSeaFormatter(assetData: OpenSeaResponse): DeepAsset {
   return {
     id: assetData.nft.identifier,
     tokenId: assetData.nft.identifier,
@@ -80,15 +89,13 @@ function openSeaFormatter(assetData: any): DeepAsset {
   };
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function directusFormatter(assetData: any): DeepAsset {
-  //TODO: Proper typing for data
+function directusFormatter(assetData: DirectusAsset): DeepAsset {
   const data = assetData.data;
 
   const fullImageUrl = `${SNI_API_URL}/assets/${data.image}`;
   data.image = fullImageUrl;
 
-  return data;
+  return { ...data, tokenId: data.id };
 }
 
 async function getAsset(
@@ -99,15 +106,15 @@ async function getAsset(
   switch (networkId) {
     case 'polkadot':
     case 'kusama':
-      return polkadotFormatter(await getNftData(networkId, assetId, tokenId));
-    case 'sepolia':
-      return openSeaFormatter(await getNftData(networkId, assetId, tokenId));
-    case 'hotel-hideaway':
-      //TODO: Proper typing
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      return directusFormatter(
-        await (await getHotelHideawayAsset(assetId)).json()
+      return polkadotFormatter(
+        (await getNftAsset(networkId, assetId, tokenId)) as PolkadotResponse
       );
+    case 'sepolia':
+      return openSeaFormatter(
+        (await getNftAsset(networkId, assetId, tokenId)) as OpenSeaResponse
+      );
+    case 'hotel-hideaway':
+      return directusFormatter(await getHotelHideawayAsset(assetId));
     default:
       throw new Error(`Unknown networkId: ${networkId}`);
   }
