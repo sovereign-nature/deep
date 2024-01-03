@@ -227,8 +227,8 @@ importers:
         specifier: 3.5.3
         version: 3.5.3(ethers@5.7.2)(typescript@5.3.3)
       '@web3modal/siwe':
-        specifier: 3.5.1
-        version: 3.5.1(typescript@5.3.3)
+        specifier: 3.5.3
+        version: 3.5.3(typescript@5.3.3)
       autoprefixer:
         specifier: 10.4.16
         version: 10.4.16(postcss@8.4.32)
@@ -6887,26 +6887,10 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@web3modal/common@3.5.1:
-    resolution: {integrity: sha512-OBm8ugfK7VoVSIJdZRhcxGFU3yNoHnCVxrOxnJ/+cBnGT/hariWtGOIaGJXaaj+HHWm9sRDsk8iMHS/Nil+lHw==}
-    dependencies:
-      dayjs: 1.11.10
-    dev: true
-
   /@web3modal/common@3.5.3:
     resolution: {integrity: sha512-HQKaDHUU5k4gz7BBiCJRmgDnPCIIyAPwz21Z3UcrL3evDv24rlGOD8k8A3E40VxBKdIj5/TjgEUwlX2r+VKFvQ==}
     dependencies:
       dayjs: 1.11.10
-    dev: true
-
-  /@web3modal/core@3.5.1(react@18.2.0):
-    resolution: {integrity: sha512-lJrUbDSU36ejeoUynq+7WoSeDgb50m+Hgj0QnnnB2eG59dZ+2ls5PuEPLsKy/1O4sUyHoUpSqjbd3jUt5ic68g==}
-    dependencies:
-      '@web3modal/common': 3.5.1
-      valtio: 1.11.2(react@18.2.0)
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
     dev: true
 
   /@web3modal/core@3.5.3(react@18.2.0):
@@ -6969,12 +6953,6 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@web3modal/polyfills@3.5.1:
-    resolution: {integrity: sha512-vBfwmFpeRXxrm6b9DPlfN2ntOCojs7CxBP9696wYir2/C1TbrjxvDbO43oiU9resiAmGqGBm39cwpYz2gDni+w==}
-    dependencies:
-      buffer: 6.0.3
-    dev: true
-
   /@web3modal/polyfills@3.5.3:
     resolution: {integrity: sha512-k4s6XOXzJlJ6ScafgC+LOiCHkqBTIIKsNBkitoa3J4F0SAunrmSl8kH7Xul0OiT0NDn1AZ9/ATKM7O7vLk01dA==}
     dependencies:
@@ -6992,17 +6970,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
-    dev: true
-
-  /@web3modal/scaffold-utils@3.5.1(react@18.2.0):
-    resolution: {integrity: sha512-EUEqSaIQeuPc6+UdZfwtTmEQVypitJTeb0RRSrzcoVUh4UA22o5mcrt1IRUgKM7WtUvAKKPEHbvl+fc3Qow4ig==}
-    dependencies:
-      '@web3modal/polyfills': 3.5.1
-      '@web3modal/scaffold': 3.5.1(react@18.2.0)
-      valtio: 1.11.2(react@18.2.0)
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
     dev: true
 
   /@web3modal/scaffold-utils@3.5.3(react@18.2.0):
@@ -7028,18 +6995,6 @@ packages:
       - react
     dev: true
 
-  /@web3modal/scaffold@3.5.1(react@18.2.0):
-    resolution: {integrity: sha512-0lfjqoGs5atqEC0I+Gs4GlxYR6Ud7c3tpIw7zcraQ45ctFDQWnHffxZsCjO67WQvmeyRs96QlG9bLT+nO1qxXQ==}
-    dependencies:
-      '@web3modal/common': 3.5.1
-      '@web3modal/core': 3.5.1(react@18.2.0)
-      '@web3modal/ui': 3.5.1
-      lit: 3.1.0
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
-    dev: true
-
   /@web3modal/scaffold@3.5.3(react@18.2.0):
     resolution: {integrity: sha512-K+sUcG0fK9wHDMXSk1q3gSiHhRUEq/qzjtNXrLkzziuJAbm0I4isw820rQbCncrJ1cG0cXNGe2fS35aOOK1fvw==}
     dependencies:
@@ -7050,27 +7005,6 @@ packages:
     transitivePeerDependencies:
       - '@types/react'
       - react
-    dev: true
-
-  /@web3modal/siwe@3.5.1(typescript@5.3.3):
-    resolution: {integrity: sha512-flhvBSYR/7PtBJET9ydpbSH5RrMXDww+HsX11DP1OILuoQBem+ZYRCcfVemJ8D3981AYfDgR8B96Gxf0CEZreQ==}
-    peerDependenciesMeta:
-      react:
-        optional: true
-      react-dom:
-        optional: true
-      vue:
-        optional: true
-    dependencies:
-      '@web3modal/core': 3.5.1(react@18.2.0)
-      '@web3modal/scaffold-utils': 3.5.1(react@18.2.0)
-    optionalDependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      vue: 3.3.8(typescript@5.3.3)
-    transitivePeerDependencies:
-      - '@types/react'
-      - typescript
     dev: true
 
   /@web3modal/siwe@3.5.3(typescript@5.3.3):
@@ -7093,14 +7027,6 @@ packages:
     transitivePeerDependencies:
       - '@types/react'
       - typescript
-    dev: true
-    optional: true
-
-  /@web3modal/ui@3.5.1:
-    resolution: {integrity: sha512-sfj0DL6fBdnYEeENV5FvebUzCnx+blch3cRG1lIorCGz9/nB4gBpxNjBFl6ONF7AgekMnnn109JpTqdlmO7Wig==}
-    dependencies:
-      lit: 3.1.0
-      qrcode: 1.5.3
     dev: true
 
   /@web3modal/ui@3.5.3:
