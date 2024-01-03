@@ -1,13 +1,16 @@
 import { SNI_API_URL } from '@sni/constants';
 
-type DirectusAsset = {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  collection: {
+export type DirectusAsset = {
+  data: {
     id: string;
     name: string;
+    description: string;
+    image: string;
+    collection: {
+      id: string;
+      name: string;
+      description: string;
+    };
   };
 };
 

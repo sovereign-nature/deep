@@ -4,7 +4,7 @@ import {
   PolkadotResponse,
   getNftAsset,
 } from '@sni/clients/nft';
-import { getHotelHideawayAsset } from '@sni/clients/web2';
+import { DirectusAsset, getHotelHideawayAsset } from '@sni/clients/web2';
 import { SNI_API_URL } from '@sni/constants';
 import { DeepAsset } from '@sni/types';
 import { Hono } from 'hono';
@@ -60,8 +60,6 @@ app.get('/:assetDID', async (c) => {
   }
 });
 
-//TODO: Proper typing
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function polkadotFormatter(assetData: PolkadotResponse): DeepAsset {
   const nftEntity = assetData.nftEntity;
   return {
@@ -91,15 +89,13 @@ function openSeaFormatter(assetData: OpenSeaResponse): DeepAsset {
   };
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function directusFormatter(assetData: any): DeepAsset {
-  //TODO: Proper typing for data
+function directusFormatter(assetData: DirectusAsset): DeepAsset {
   const data = assetData.data;
 
   const fullImageUrl = `${SNI_API_URL}/assets/${data.image}`;
   data.image = fullImageUrl;
 
-  return data;
+  return { ...data, tokenId: data.id };
 }
 
 async function getAsset(
