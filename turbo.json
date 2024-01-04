@@ -12,7 +12,8 @@
         "PINATA_API_KEY",
         "NODE_ENV",
         "PINATA_TOKEN",
-        "ENVIRONMENT_URL"
+        "ENVIRONMENT_URL",
+        "VITE_VISUALIZE_BUILD"
       ],
       "outputs": [
         "artifacts/**",
