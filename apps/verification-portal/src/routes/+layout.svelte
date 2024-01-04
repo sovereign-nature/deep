@@ -36,19 +36,6 @@
   export let data;
 </script>
 
-<svelte:head>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin="anonymous"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap"
-    rel="stylesheet"
-  />
-</svelte:head>
-
 {#if isLoading}
   <div
     class="fixed top-0 left-0 h-1 bg-primary-300 w-0 animate-loading-bar z-50"
