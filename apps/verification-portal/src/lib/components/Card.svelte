@@ -47,6 +47,7 @@
           class="w-[90px] h-[120px] sm:w-[120px] sm:h-[120px] object-cover"
           src={imgUrl}
           alt="Avatar"
+          loading="lazy"
         />
       {/if}
     </div>
