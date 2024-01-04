@@ -12,6 +12,6 @@
     "graphql-request": "6.1.0"
   },
   "devDependencies": {
-    "vitest": "1.1.1"
+    "vitest": "1.1.2"
   }
 }
