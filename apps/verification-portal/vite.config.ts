@@ -4,6 +4,8 @@ import { SvelteKitPWA } from '@vite-pwa/sveltekit';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, type PluginOption } from 'vite';
 
+const isVisualizeBuild = () => process.env.VITE_VISUALIZE_BUILD === 'true';
+
 export default defineConfig({
   plugins: [
     // sentrySvelteKit({
@@ -14,10 +16,12 @@ export default defineConfig({
     // }),
     sveltekit(),
     SvelteKitPWA(),
-    visualizer({
-      emitFile: true,
-      filename: 'stats.html',
-    }) as PluginOption,
+    // Visualize bundle size in stats.html files
+    isVisualizeBuild() &&
+      (visualizer({
+        emitFile: true,
+        filename: 'stats.html',
+      }) as PluginOption),
   ],
   assetsInclude: ['**/*.glb'],
 });
