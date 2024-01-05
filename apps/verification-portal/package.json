@@ -59,7 +59,7 @@
     "typesafe-i18n": "5.26.2",
     "typescript": "5.3.3",
     "vite": "5.0.10",
-    "vitest": "1.1.1"
+    "vitest": "1.1.2"
   },
   "type": "module"
 }
