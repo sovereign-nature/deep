@@ -1,10 +1,12 @@
 # DEEP (Decentralised Ecological Economics Protocol)
 
+A Pathway to Flipping the Economics of Ecology
+
 ## Overview
 
 At Sovereign Nature Initiative, our goal is to reconfigure the economics of ecology by finding ways to fund and expand projects that sustain life on our planet. Currently, most ecological stewarding projects are severely underfunded. Biodiversity restoration primarily relies on donations, and funding from philanthropists, public institutions, and other donors. The lack of sustainable financial streams is estimated at approximately $700 billion per year according to the Convention on Biological Diversity Secretariat. Private voluntary contributions toward nature-positive efforts, also known as “private investments in nature”, play a key role in addressing this funding gap.
 
-We developed the Decentralised Ecological Economics Protocol (DEEP) together with the Registry for Ecological Asset Linking (REAL) to ensure that private voluntary giving is valuable, and eventually a key mode for contributing to the restoration of biodiversity worldwide. Our protocol and interface allow us to effectively integrate data about ecological impact with the digital realm. This approach generates new funding streams while imbuing digital assets with tangible and real-life significance. Critically, our approach allows ecological stewards to market their work without impeding their on-site efforts, ensuring a harmonious balance between financial viability and biodiversity restoration.
+We developed the Decentralised Ecological Economics Protocol (DEEP) together with the Registry for Ecological Asset Linking (REAL) to ensure that private committments are valuable, and eventually a key mode for contributing to the restoration of biodiversity worldwide. Our protocol and interface allow us to effectively integrate data about ecological impact with the digital realm. This approach generates new funding streams while imbuing digital assets with tangible and real-life significance. Critically, our approach allows ecological stewards to market their work without impeding their on-site efforts, ensuring a harmonious balance between financial viability and biodiversity restoration.
 
 Our work is guided by the following key propositions:
 
