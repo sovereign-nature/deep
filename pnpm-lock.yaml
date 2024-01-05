@@ -63,8 +63,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/types
       hono:
-        specifier: 3.11.12
-        version: 3.11.12
+        specifier: 3.12.0
+        version: 3.12.0
     devDependencies:
       '@cloudflare/workers-types':
         specifier: 4.20231218.0
@@ -314,8 +314,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/types
       hono:
-        specifier: 3.11.12
-        version: 3.11.12
+        specifier: 3.12.0
+        version: 3.12.0
     devDependencies:
       '@cloudflare/workers-types':
         specifier: 4.20231218.0
@@ -11269,8 +11269,8 @@ packages:
     dev: false
     optional: true
 
-  /hono@3.11.12:
-    resolution: {integrity: sha512-TrxH75bc0m2UbvrhaXkoo32A9OhkJtvICAYgYWtxqLDOxBjRqSikyp4K7HTbnWkPeg9Z+2Q3nv0dN4o8kL6yLg==}
+  /hono@3.12.0:
+    resolution: {integrity: sha512-UPEtZuLY7Wo7g0mqKWSOjLFdT8t7wJ60IYEcxKl3AQNU4u+R2QqU2fJMPmSu24C+/ag20Z8mOTQOErZzK4DMvA==}
     engines: {node: '>=16.0.0'}
     dev: false
 
