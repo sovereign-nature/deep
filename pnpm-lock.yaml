@@ -233,8 +233,8 @@ importers:
         specifier: 3.5.3
         version: 3.5.3(ethers@5.7.2)(typescript@5.3.3)
       '@web3modal/siwe':
-        specifier: 3.5.3
-        version: 3.5.3(typescript@5.3.3)
+        specifier: 3.5.4
+        version: 3.5.4(typescript@5.3.3)
       autoprefixer:
         specifier: 10.4.16
         version: 10.4.16(postcss@8.4.32)
@@ -6905,11 +6905,28 @@ packages:
       dayjs: 1.11.10
     dev: true
 
+  /@web3modal/common@3.5.4:
+    resolution: {integrity: sha512-9qBg8anJjAnGxFicgZUl/Gdj9lunqtGm8fKx8yGYEpwW1R/Hqq9WqjCgwEH/+exvA5Xv2avO803P40mYI/ADRw==}
+    dependencies:
+      dayjs: 1.11.10
+    dev: true
+
   /@web3modal/core@3.5.3(react@18.2.0):
     resolution: {integrity: sha512-wVJR/vnk6Xx1snnZE6rMCTrxxk8vUW4uH478yWa7BTWSGXsbz05tU7FAUXUSvngzbWTZF/GydSZ+JcuJCqwFkA==}
     dependencies:
       '@web3modal/common': 3.5.3
       '@web3modal/wallet': 3.5.3
+      valtio: 1.11.2(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - react
+    dev: true
+
+  /@web3modal/core@3.5.4(react@18.2.0):
+    resolution: {integrity: sha512-d2V3Ooj5OaqHtT0ie75ANNuvoZeT+qw0D9dMmaGL+KTbAC8m2Z/AkoyvHdaM656rsjIdxWLo7g170TLmnNS3FQ==}
+    dependencies:
+      '@web3modal/common': 3.5.4
+      '@web3modal/wallet': 3.5.4
       valtio: 1.11.2(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
@@ -6971,6 +6988,12 @@ packages:
       buffer: 6.0.3
     dev: true
 
+  /@web3modal/polyfills@3.5.4:
+    resolution: {integrity: sha512-t7mI8VdRsz0c5n2Gku6sqFNbxYl7qy+8OaI2ItReBQmF2ytVTCfRW5om2UHwS6RheHVk7Z/56m50vIi29fZ2Ag==}
+    dependencies:
+      buffer: 6.0.3
+    dev: true
+
   /@web3modal/scaffold-react@3.5.3(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-leJZ+KRCcTEMwDCWLzd+/6gsjCt9ROu2hWPAirUWECwUDnJ4G890ID0TCdcErxz88AV1/U28+WUoKkAxwrfyaw==}
     peerDependencies:
@@ -6989,6 +7012,17 @@ packages:
     dependencies:
       '@web3modal/polyfills': 3.5.3
       '@web3modal/scaffold': 3.5.3(react@18.2.0)
+      valtio: 1.11.2(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - react
+    dev: true
+
+  /@web3modal/scaffold-utils@3.5.4(react@18.2.0):
+    resolution: {integrity: sha512-PyIEjl1YYujM42FGdgzBvxdq16i4j79CXhSlh4l9HBYawhRlHBa/yvfJGssF3Kn34zcuj7GG7eMfpQfYgLg3UQ==}
+    dependencies:
+      '@web3modal/polyfills': 3.5.4
+      '@web3modal/scaffold': 3.5.4(react@18.2.0)
       valtio: 1.11.2(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
@@ -7019,6 +7053,18 @@ packages:
       - react
     dev: true
 
+  /@web3modal/scaffold@3.5.4(react@18.2.0):
+    resolution: {integrity: sha512-F/EDz84CGxWWDl9C/Q2OPcK/8XMYjkBm34ldBTuAq2XpootBI6uhSFohMjIRXsYTs9YSxJOtPo2CM7tvTQd71w==}
+    dependencies:
+      '@web3modal/common': 3.5.4
+      '@web3modal/core': 3.5.4(react@18.2.0)
+      '@web3modal/ui': 3.5.4
+      lit: 3.1.0
+    transitivePeerDependencies:
+      - '@types/react'
+      - react
+    dev: true
+
   /@web3modal/siwe@3.5.3(typescript@5.3.3):
     resolution: {integrity: sha512-QMm/ypgkFXfNYOrBea9T55jvNI7LAfhKhK9G3xEIBsMDQiWKV5R++HP7kPPxD1UXs9y9bdWfCZ/sn3shQaYo2w==}
     requiresBuild: true
@@ -7040,6 +7086,28 @@ packages:
       - '@types/react'
       - typescript
     dev: true
+    optional: true
+
+  /@web3modal/siwe@3.5.4(typescript@5.3.3):
+    resolution: {integrity: sha512-f8UyVy+N+UKbURERecPuAsRz0vpy5Ai6oqfTfx1NGrNfnjwFJOicz9UalXgkXEm9ejhTCcWIMitKlVIdzMfe7g==}
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+      vue:
+        optional: true
+    dependencies:
+      '@web3modal/core': 3.5.4(react@18.2.0)
+      '@web3modal/scaffold-utils': 3.5.4(react@18.2.0)
+    optionalDependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      vue: 3.3.8(typescript@5.3.3)
+    transitivePeerDependencies:
+      - '@types/react'
+      - typescript
+    dev: true
 
   /@web3modal/ui@3.5.3:
     resolution: {integrity: sha512-GHi4jJVDa2eTXcoyEUYMEUjMj00MU8oXKAu0YiAppbEzW/CPvr7r/3HR0tDYh2y8sh1650uSxMO7iC3EEoGKtA==}
@@ -7048,9 +7116,22 @@ packages:
       qrcode: 1.5.3
     dev: true
 
+  /@web3modal/ui@3.5.4:
+    resolution: {integrity: sha512-Z9HWqsb6eakryd8XbcwYshIP2Pd2/0pICSCO+aCrS2/2tSfSfKe885RHjdEfjXqsLpg3j/53lZGJT0O7IRj2Bg==}
+    dependencies:
+      lit: 3.1.0
+      qrcode: 1.5.3
+    dev: true
+
   /@web3modal/wallet@3.5.3:
     resolution: {integrity: sha512-tzQlrBYbKIYrFw0JRH7iarZFUgCueWwMyDMmN7Pjy80dNQ8vcNjlLQM97yymVKun0QNBfZZrHLrDP4yd66dW3g==}
     requiresBuild: true
+    dependencies:
+      zod: 3.22.4
+    dev: true
+
+  /@web3modal/wallet@3.5.4:
+    resolution: {integrity: sha512-G4RsIW581n/YUzJr9dJ6NZ8MD2kydm+IWRK9f1TcdAYGD3RMUt4LskwwJJrKpSR15XzfTTc42O1nxO7AdmW8lg==}
     dependencies:
       zod: 3.22.4
     dev: true
