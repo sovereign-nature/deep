@@ -1,5 +1,7 @@
 # DEEP (Decentralised Ecological Economics Protocol)
 
+A Pathway to Flipping the Economics of Ecology
+
 ## Overview
 
 At Sovereign Nature Initiative, our goal is to reconfigure the economics of ecology by finding ways to fund and expand projects that sustain life on our planet. Currently, most ecological stewarding projects are severely underfunded. Biodiversity restoration primarily relies on donations, and funding from philanthropists, public institutions, and other donors. The lack of sustainable financial streams is estimated at approximately $700 billion per year according to the Convention on Biological Diversity Secretariat. Private voluntary contributions toward nature-positive efforts, also known as “private investments in nature”, play a key role in addressing this funding gap.
