@@ -7,6 +7,7 @@
     "dev": "vite dev & typesafe-i18n",
     "serve": "vite dev --host & typesafe-i18n",
     "build": "vite build",
+    "build:visualize": "VITE_VISUALIZE_BUILD=true NOVE_DENV=production vite build",
     "preview": "vite preview",
     "test": "npm run test:unit",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
