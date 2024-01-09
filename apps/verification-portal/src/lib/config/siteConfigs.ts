@@ -3,9 +3,9 @@ export default {
   siteDescription:
     'The eco-data pipeline to connect real life ecology with the digital world.',
   feature: {
-    walletEnabled: false,
-    POCTabEnabled: false,
-    notificationsEnabled: false,
+    walletEnabled: true,
+    POCTabEnabled: true,
+    notificationsEnabled: true,
     testGMInbox: false,
   },
 };

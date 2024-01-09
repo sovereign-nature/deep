@@ -9,7 +9,7 @@
   } from '$lib/web3Modal';
   import { initThemeContext } from '$lib/themeContext';
   import { getContext, onMount } from 'svelte';
-  import { initializeInbox } from '$lib/web3Inbox';
+  import { initializeInbox, initializeInboxContext } from '$lib/web3Inbox';
   import { browser } from '$app/environment';
   import { isFeatureEnabled } from '$lib/utils';
   import Modal from '$lib/components/web3/inboxModal/index.svelte';
@@ -28,17 +28,21 @@
     if (isFeatureEnabled('walletEnabled')) {
       initializeContext();
       if (isFeatureEnabled('notificationsEnabled')) {
-        initializeInbox();
+        initializeInboxContext();
       }
     }
   }
 
   onMount(async () => {
-    const { createWeb3Modal, defaultConfig } = await import(
-      '@web3modal/ethers'
-    );
     if (isFeatureEnabled('walletEnabled')) {
+      const { createWeb3Modal, defaultConfig } = await import(
+        '@web3modal/ethers'
+      );
       initializeModal(createWeb3Modal, defaultConfig);
+      if (isFeatureEnabled('notificationsEnabled')) {
+        const { Web3InboxClient } = await import('@web3inbox/core');
+        initializeInbox(Web3InboxClient);
+      }
     }
 
     modalHandleTheme($theme);
