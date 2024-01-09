@@ -112,8 +112,8 @@ importers:
         specifier: 7.1.1
         version: 7.1.1(node-fetch@3.3.2)
       solhint:
-        specifier: 4.0.0
-        version: 4.0.0
+        specifier: 4.1.1
+        version: 4.1.1
       solidity-coverage:
         specifier: 0.8.5
         version: 0.8.5(hardhat@2.19.4)
@@ -15747,8 +15747,8 @@ packages:
       - debug
     dev: true
 
-  /solhint@4.0.0:
-    resolution: {integrity: sha512-bFViMcFvhqVd/HK3Roo7xZXX5nbujS7Bxeg5vnZc9QvH0yCWCrQ38Yrn1pbAY9tlKROc6wFr+rK1mxYgYrjZgA==}
+  /solhint@4.1.1:
+    resolution: {integrity: sha512-7G4iF8H5hKHc0tR+/uyZesSKtfppFIMvPSW+Ku6MSL25oVRuyFeqNhOsXHfkex64wYJyXs4fe+pvhB069I19Tw==}
     hasBin: true
     dependencies:
       '@solidity-parser/parser': 0.16.1
