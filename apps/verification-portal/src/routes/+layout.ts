@@ -5,7 +5,7 @@ import { inject } from '@vercel/analytics';
 import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 
 inject({ mode: dev ? 'development' : 'production' });
-injectSpeedInsights();
+if (!dev) injectSpeedInsights();
 
 export const load = async ({ url }) => {
   const { pathname } = url;

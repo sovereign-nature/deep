@@ -10,8 +10,9 @@ import { BrowserProvider } from 'ethers';
 import { getContext, setContext } from 'svelte';
 import { writable } from 'svelte/store';
 
-let web3Modal;
 const modal = writable();
+let web3Modal;
+
 const web3Connected = writable(false);
 const web3Address = writable();
 const web3ChainId = writable();
@@ -28,11 +29,10 @@ export function initializeContext() {
 
 export function initializeModal(createWeb3Modal, defaultConfig) {
   const modalConfig = defaultConfig({
-    ethersConfig,
+    ...ethersConfig,
   });
-
   web3Modal = createWeb3Modal({
-    modalConfig,
+    ethersConfig: modalConfig,
     projectId,
     chains,
     themeVariables: themeVariablesDark,
