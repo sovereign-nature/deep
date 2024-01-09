@@ -41,7 +41,7 @@
     "@web3modal/ethers5": "3.5.5",
     "@web3modal/siwe": "3.5.4",
     "autoprefixer": "10.4.16",
-    "date-fns": "3.1.0",
+    "date-fns": "3.2.0",
     "flowbite": "2.2.1",
     "flowbite-svelte": "0.44.21",
     "fuse.js": "7.0.0",

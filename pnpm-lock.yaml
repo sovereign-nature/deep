@@ -239,8 +239,8 @@ importers:
         specifier: 10.4.16
         version: 10.4.16(postcss@8.4.33)
       date-fns:
-        specifier: 3.1.0
-        version: 3.1.0
+        specifier: 3.2.0
+        version: 3.2.0
       flowbite:
         specifier: 2.2.1
         version: 2.2.1
@@ -3056,7 +3056,7 @@ packages:
       tsconfig-paths: 4.2.0
       tslib: 2.6.2
       typescript: 5.3.3
-      uWebSockets.js: github.com/uNetworking/uWebSockets.js/560035d4ad6caeda563deee1d3d68143462a305b
+      uWebSockets.js: github.com/uNetworking/uWebSockets.js/ec37cb6444a284c4a0a8d50041a23a4bac9e5715
       yargs: 17.7.2
     optionalDependencies:
       node-libcurl: 3.0.1-0
@@ -9045,8 +9045,8 @@ packages:
     resolution: {integrity: sha512-8YnDaaf7N3k/q5HnTJVuzSyLETjoZjVmHc4AeKAzOvKHEFQKcn64OKBfzHYtE9zGjctNM7V9I0MfnUVLpi7M5g==}
     dev: false
 
-  /date-fns@3.1.0:
-    resolution: {integrity: sha512-ZO7yefXV/wCWzd3I9haCHmfzlfA3i1a2HHO7ZXjtJrRjXt8FULKJ2Vl8wji3XYF4dQ0ZJ/tokXDZeYlFvgms9Q==}
+  /date-fns@3.2.0:
+    resolution: {integrity: sha512-E4KWKavANzeuusPi0jUjpuI22SURAznGkx7eZV+4i6x2A+IZxAMcajgkvuDAU1bg40+xuhW1zRdVIIM/4khuIg==}
     dev: true
 
   /dayjs@1.11.10:
@@ -18425,8 +18425,8 @@ packages:
     requiresBuild: true
     dev: true
 
-  github.com/uNetworking/uWebSockets.js/560035d4ad6caeda563deee1d3d68143462a305b:
-    resolution: {tarball: https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/560035d4ad6caeda563deee1d3d68143462a305b}
+  github.com/uNetworking/uWebSockets.js/ec37cb6444a284c4a0a8d50041a23a4bac9e5715:
+    resolution: {tarball: https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/ec37cb6444a284c4a0a8d50041a23a4bac9e5715}
     name: uWebSockets.js
-    version: 20.38.0
+    version: 20.39.0
     dev: false
