@@ -152,8 +152,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0
       wrangler:
-        specifier: 3.22.3
-        version: 3.22.3
+        specifier: 3.22.4
+        version: 3.22.4
 
   apps/indexer:
     devDependencies:
@@ -18033,33 +18033,6 @@ packages:
 
   /workerpool@6.2.1:
     resolution: {integrity: sha512-ILEIE97kDZvF9Wb9f6h5aXK4swSlKGUcOEGiIYb2OOu/IrDU9iwj0fD//SsA6E5ibwJxpEvhullJY4Sl4GcpAw==}
-    dev: true
-
-  /wrangler@3.22.3:
-    resolution: {integrity: sha512-EhGEQLoMcQm71v6XrtnKfMG2B8BTM7RxhoS9iWIkc1hc3l9cOWyoN0cJnoBqcGTgtQk5V7+cRECTfwh08IEjBQ==}
-    engines: {node: '>=16.17.0'}
-    hasBin: true
-    dependencies:
-      '@cloudflare/kv-asset-handler': 0.2.0
-      '@cspotcode/source-map-support': 0.8.1
-      '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
-      '@esbuild-plugins/node-modules-polyfill': 0.2.2(esbuild@0.17.19)
-      blake3-wasm: 2.1.5
-      chokidar: 3.5.3
-      esbuild: 0.17.19
-      miniflare: 3.20231218.1
-      nanoid: 3.3.7
-      path-to-regexp: 6.2.1
-      resolve.exports: 2.0.2
-      selfsigned: 2.1.1
-      source-map: 0.6.1
-      xxhash-wasm: 1.0.2
-    optionalDependencies:
-      fsevents: 2.3.3
-    transitivePeerDependencies:
-      - bufferutil
-      - supports-color
-      - utf-8-validate
     dev: true
 
   /wrangler@3.22.4:
