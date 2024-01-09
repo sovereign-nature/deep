@@ -2,7 +2,11 @@
   import '../app.postcss';
   import { fade } from 'svelte/transition';
   import { beforeNavigate, afterNavigate } from '$app/navigation';
-  import { initializeModal, modalHandleTheme } from '$lib/web3Modal';
+  import {
+    initializeContext,
+    modalHandleTheme,
+    initializeModal,
+  } from '$lib/web3Modal';
   import { initThemeContext } from '$lib/themeContext';
   import { getContext, onMount } from 'svelte';
   import { initializeInbox } from '$lib/web3Inbox';
@@ -22,7 +26,7 @@
 
   if (browser) {
     if (isFeatureEnabled('walletEnabled')) {
-      initializeModal();
+      initializeContext();
       if (isFeatureEnabled('notificationsEnabled')) {
         initializeInbox();
       }
@@ -30,6 +34,13 @@
   }
 
   onMount(async () => {
+    const { createWeb3Modal, defaultConfig } = await import(
+      '@web3modal/ethers'
+    );
+    if (isFeatureEnabled('walletEnabled')) {
+      initializeModal(createWeb3Modal, defaultConfig);
+    }
+
     modalHandleTheme($theme);
   });
 
@@ -45,7 +56,6 @@
 {#key data.pathname}
   <div in:fade={{ duration: 200, delay: 100 }} out:fade={{ duration: 100 }}>
     <Modal />
-
     <slot />
   </div>
 {/key}

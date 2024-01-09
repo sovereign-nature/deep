@@ -7,7 +7,7 @@
     "dev": "vite dev & typesafe-i18n",
     "serve": "vite dev --host & typesafe-i18n",
     "build": "vite build",
-    "build:visualize": "VITE_VISUALIZE_BUILD=true NOVE_DENV=production vite build",
+    "build:visualize": "VITE_VISUALIZE_BUILD=true NOVE_DENV=production ENV=production vite build",
     "preview": "vite preview",
     "test": "npm run test:unit",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -38,8 +38,7 @@
     "@vercel/speed-insights": "1.0.2",
     "@vite-pwa/sveltekit": "0.3.0",
     "@web3inbox/core": "0.0.25",
-    "@web3modal/ethers5": "3.5.5",
-    "@web3modal/siwe": "3.5.4",
+    "@web3modal/ethers": "3.5.5",
     "autoprefixer": "10.4.16",
     "date-fns": "3.1.0",
     "flowbite": "2.2.1",
@@ -52,16 +51,15 @@
     "rollup-plugin-visualizer": "5.12.0",
     "satori": "0.10.11",
     "satori-html": "0.3.2",
-    "siwe": "2.1.4",
     "svelte": "4.2.8",
     "svelte-check": "3.6.2",
-    "tailwind-merge": "2.2.0",
     "tailwindcss": "3.4.1",
     "tslib": "2.6.2",
     "typesafe-i18n": "5.26.2",
     "typescript": "5.3.3",
     "vite": "5.0.11",
-    "vitest": "1.1.3"
+    "vitest": "1.1.3",
+    "vite-plugin-tailwind-purgecss": "0.1.4"
   },
   "type": "module"
 }
