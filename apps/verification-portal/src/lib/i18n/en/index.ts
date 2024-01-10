@@ -91,18 +91,9 @@ const en: BaseTranslation = {
       source: 'Source:',
       fundsGenerated: 'Total funds generated to date:',
     },
-    sub0: {
-      twitterPrefix:
-        '#NFTs supporting verified #BiodiversityConservation?! Count me in! 🐬\n\nThanks @sovereignnature for bringing REAL data of bottlenose dolphins & minke whales monitored by @AIMMPortugal onchain. Glad my @Polkadot #sub0 attendance supports this wild cause! 🐋',
-      telegramPrefix:
-        'NFTs supporting verified biodiversity conservation?! Count me in! 🐬 \n \nThanks Sovereign Nature Initiative for bringing REAL data of bottlenose dolphins and minke whales monitored by AIMM Portugal onchain. Glad my Polkadot sub0 attendance supports this wild cause! 🐋',
-    },
-    hh: {
-      twitterPrefix:
-        'Just discovered the Upemba National Park room in #HotelHideaway, and it is WILD! 🐘🦓\n\nFor example, this item I purchased directly supports @forgottenparksF’s #BiodiversityConservation efforts thanks to @sovereignnature. Check out the details below!',
-      telegramPrefix:
-        'Just discovered the Upemba National Park room in Hotel Hideaway, and it is WILD! 🐘🦓\n\nFor example, this item I purchased directly supports @forgottenparksF’s biodiversity conservation efforts thanks to the Sovereign Nature Initiative. Check out the details below!',
-    },
+    twitterPrefix: 'Look at my eco-linked asset by @sovereignnature',
+    telegramPrefix:
+      'Look at my eco-linked asset by Sovereign Nature Initiative',
   },
   footer: {
     mailing: 'Subscribe to our mailing list',

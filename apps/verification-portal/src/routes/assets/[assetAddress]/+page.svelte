@@ -11,7 +11,6 @@
   import ShareCard from '$lib/components/ShareCard.svelte';
   import NewsCarousel from '$lib/components/carousel/NewsCarousel.svelte';
   import LL from '$lib/i18n/i18n-svelte.js';
-  import type { CollectionKey } from '$lib/types';
   import {
     ANIMAL_PLACEHOLDER,
     CAMP_PLACEHOLDER,
@@ -34,16 +33,10 @@
     properties,
   } = data;
 
-  const isSub0 = addressDetails?.chain?.reference == 'polkadot';
-
   const chainReference = addressDetails?.chain?.reference;
 
-  const introText = isSub0
-    ? $LL.assets.intro.sub0()
-    : nftData?.collection?.description;
-
   // Define specific share card data for a page
-  $: pageDescription = `${introText}`;
+  $: pageDescription = nftData?.collection?.description || '';
   $: name = nftData.name || '';
   $: funds = deepData?.link?.funds_raised || 0;
   $: source = isNaN(parseInt(chainReference))
@@ -57,7 +50,6 @@
   )}&source=${encodeURIComponent(source)}`;
   // styling
   const cardHeaderClass = 'px-4 pt-6 sm:px-8 sm:pt-8 md:px-11 md:pt-11';
-  const collectionId: CollectionKey = isSub0 ? 'sub0' : 'hh';
 </script>
 
 {#key nftData}
@@ -96,10 +88,6 @@
         </span>
       </h1>
       <div class="mb-6">
-        {#if introText}
-          <p>{introText}</p>
-        {/if}
-
         {#if nftData.description}
           <span class="text-sm block pt-2"> {nftData.description}</span>
         {/if}
@@ -115,22 +103,17 @@
             <p>{nftData.tokenId}</p>
           </Property>
         {/if}
-        {#if isSub0}
-          <Property name="Asset Address">
-            <p>{assetAddress}</p>
-          </Property>
-        {:else}
-          <Property name="Asset Address">
-            <Info>{assetAddress}</Info>
-          </Property>
-        {/if}
+
+        <Property name="Asset Address">
+          <Info>{assetAddress}</Info>
+        </Property>
       </div>
 
       <div
         class="col-span-2 flex flex-col lg:flex-row lg:items-center gap-5 pb-4 lg:pb-0"
       >
         <span class="text-sm">{$LL.assets.shareText()}</span>
-        <SocialShare shareUrl={currentPath} collection={collectionId} />
+        <SocialShare shareUrl={currentPath} />
       </div>
     </div>
   </div>
