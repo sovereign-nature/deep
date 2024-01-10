@@ -74,6 +74,7 @@
     {#if isMounted && !isError}
       <!-- Render the image when it's loaded -->
       <img
+        loading="eager"
         src={imageUrl}
         {alt}
         class={imgClass}

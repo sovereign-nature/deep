@@ -2,6 +2,7 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { SvelteKitPWA } from '@vite-pwa/sveltekit';
 import { visualizer } from 'rollup-plugin-visualizer';
+
 import { defineConfig, type PluginOption } from 'vite';
 
 const isVisualizeBuild = () => process.env.VITE_VISUALIZE_BUILD === 'true';
@@ -23,5 +24,11 @@ export default defineConfig({
         filename: 'stats.html',
       }) as PluginOption),
   ],
+
+  build: {
+    rollupOptions: {
+      treeshake: 'smallest',
+    },
+  },
   assetsInclude: ['**/*.glb'],
 });
