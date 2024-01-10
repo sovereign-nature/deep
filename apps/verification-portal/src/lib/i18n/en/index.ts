@@ -22,8 +22,8 @@ const en: BaseTranslation = {
     collectionName: 'sub0 Biodiversity',
     placeholder: 'Enter token ID (1-1999)',
   },
-  newCol: {
-    collectionName: 'New Collection',
+  soundwaves: {
+    collectionName: 'Wallet Connect Soundwaves',
     placeholder: 'Explore by token ID (1-1999)',
   },
   wallet: {

@@ -69,9 +69,9 @@ type RootTranslation = {
 		 */
 		placeholder: string
 	}
-	newCol: {
+	soundwaves: {
 		/**
-		 * N​e​w​ ​C​o​l​l​e​c​t​i​o​n
+		 * W​a​l​l​e​t​ ​C​o​n​n​e​c​t​ ​S​o​u​n​d​w​a​v​e​s
 		 */
 		collectionName: string
 		/**
@@ -394,9 +394,9 @@ export type TranslationFunctions = {
 		 */
 		placeholder: () => LocalizedString
 	}
-	newCol: {
+	soundwaves: {
 		/**
-		 * New Collection
+		 * Wallet Connect Soundwaves
 		 */
 		collectionName: () => LocalizedString
 		/**
