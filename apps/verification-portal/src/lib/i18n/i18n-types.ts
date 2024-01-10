@@ -71,7 +71,7 @@ type RootTranslation = {
 	}
 	soundwaves: {
 		/**
-		 * W​a​l​l​e​t​ ​C​o​n​n​e​c​t​ ​S​o​u​n​d​w​a​v​e​s
+		 * S​o​u​n​d​w​a​v​e​s
 		 */
 		collectionName: string
 		/**
@@ -376,7 +376,7 @@ export type TranslationFunctions = {
 	}
 	soundwaves: {
 		/**
-		 * Wallet Connect Soundwaves
+		 * Soundwaves
 		 */
 		collectionName: () => LocalizedString
 		/**

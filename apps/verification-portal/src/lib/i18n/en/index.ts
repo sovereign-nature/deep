@@ -23,7 +23,7 @@ const en: BaseTranslation = {
     placeholder: 'Enter token ID (1-1999)',
   },
   soundwaves: {
-    collectionName: 'Wallet Connect Soundwaves',
+    collectionName: 'Soundwaves',
     placeholder: 'Explore by token ID (1-1999)',
   },
   wallet: {
