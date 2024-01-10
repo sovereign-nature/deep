@@ -1,35 +1,8 @@
 <script lang="ts">
   import HexagonIcon from './icons/HexagonIcon.svelte';
-  import type { CollectionKey } from '$lib/types';
   import LL from '$lib/i18n/i18n-svelte';
 
   export let shareUrl: string = '';
-
-  export let collection: CollectionKey;
-
-  const collectionContent: Record<
-    CollectionKey,
-    { twitterPrefix: string; telegramPrefix: string }
-  > = {
-    sub0: {
-      twitterPrefix: $LL.social.sub0.twitterPrefix(),
-      telegramPrefix: $LL.social.sub0.telegramPrefix(),
-    },
-    hh: {
-      twitterPrefix: $LL.social.hh.twitterPrefix(),
-      telegramPrefix: $LL.social.hh.telegramPrefix(),
-    },
-  };
-
-  //@TODO shorten twitter text
-  const twitterPrefix: string =
-    collection && collectionContent[collection]
-      ? collectionContent[collection].twitterPrefix
-      : '';
-  const telegramPrefix: string =
-    collection && collectionContent[collection]
-      ? collectionContent[collection].telegramPrefix
-      : '';
 
   // Function to share on Twitter
   function shareOnTwitter() {
@@ -37,7 +10,7 @@
     window.open(
       `https://twitter.com/intent/tweet?url=${encodeURIComponent(
         shareUrl
-      )}&text=${encodeURIComponent(twitterPrefix)}`,
+      )}&text=${encodeURIComponent($LL.social.twitterPrefix())}`,
       '_blank'
     );
   }
@@ -47,7 +20,7 @@
     window.open(
       `https://t.me/share/url?url=${encodeURIComponent(
         shareUrl
-      )}&text=${encodeURIComponent(telegramPrefix)}`,
+      )}&text=${encodeURIComponent($LL.social.telegramPrefix())}`,
       '_blank'
     );
   }
