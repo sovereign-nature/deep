@@ -1,7 +1,7 @@
 {
   "name": "@sni/deep-monorepo",
   "private": true,
-  "packageManager": "pnpm@8.14.0",
+  "packageManager": "pnpm@8.14.1",
   "license": "GPL-3.0",
   "scripts": {
     "build": "turbo run build --no-daemon",
