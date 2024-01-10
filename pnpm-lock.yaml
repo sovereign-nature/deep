@@ -290,8 +290,8 @@ importers:
         specifier: 5.0.11
         version: 5.0.11
       vite-plugin-tailwind-purgecss:
-        specifier: 0.1.4
-        version: 0.1.4(vite@5.0.11)
+        specifier: 0.2.0
+        version: 0.2.0(vite@5.0.11)
       vitest:
         specifier: 1.1.3
         version: 1.1.3
@@ -679,6 +679,7 @@ packages:
   /@babel/helper-string-parser@7.23.4:
     resolution: {integrity: sha512-803gmbQdqwdf4olxrX4AJyFBV/RTr3rSmOj0rKwesmzlfhYNDEs+/iOcznzpNWlJlIlTJC2QfPFcHB6DlzdVLQ==}
     engines: {node: '>=6.9.0'}
+    requiresBuild: true
 
   /@babel/helper-validator-identifier@7.22.20:
     resolution: {integrity: sha512-Y4OZ+ytlatR8AI+8KZfKuL5urKp7qey08ha31L8b3BwewJAoJamTzyvxPR/5D+KkdJCGPq/+8TukHBlY10FX9A==}
@@ -9754,6 +9755,7 @@ packages:
       is-hex-prefixed: 1.0.0
       strip-hex-prefix: 1.0.0
     dev: true
+    bundledDependencies: false
 
   /event-target-shim@5.0.1:
     resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==}
@@ -11099,6 +11101,7 @@ packages:
   /iconv-lite@0.6.3:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
     dependencies:
       safer-buffer: 2.1.2
 
@@ -16253,6 +16256,7 @@ packages:
   /to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
+    requiresBuild: true
 
   /to-json-schema@0.2.5:
     resolution: {integrity: sha512-jP1ievOee8pec3tV9ncxLSS48Bnw7DIybgy112rhMCEhf3K4uyVNZZHr03iQQBzbV5v5Hos+dlZRRyk6YSMNDw==}
@@ -17046,10 +17050,10 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-tailwind-purgecss@0.1.4(vite@5.0.11):
-    resolution: {integrity: sha512-iL43Amym6/TWKHcHwCjQl2LLLKhil7WQH7oMtDSOCzINFuKS3STaQrI5SDCl+waqheezv9WmI2gNuIWY+o5hsA==}
+  /vite-plugin-tailwind-purgecss@0.2.0(vite@5.0.11):
+    resolution: {integrity: sha512-6Q+SaalUd0t3BOIIiCQPlbZQuYARVgjoC78X+fLbQJqIEy/9fC58aQgHMgi+CmYfVfZmJToA8YiLueSGEo2mng==}
     peerDependencies:
-      vite: ^4.1.1
+      vite: ^4.1.1 || ^5.0.0
     dependencies:
       estree-walker: 3.0.3
       purgecss: 6.0.0-alpha.0
