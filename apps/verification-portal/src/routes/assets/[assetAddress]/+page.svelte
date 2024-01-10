@@ -43,7 +43,7 @@
   $: pageDescription = `${introText}`;
   $: name = nftData.name || '';
   $: funds = deepData?.link?.funds_raised || 0;
-  $: source = isSub0 ? 'sub0' : 'Hotel Hideaway'; // @TODO replace with dynamic source
+  $: source = addressDetails?.chain?.reference || 'unknown';
   $: image = nftData.image;
   $: pageImage = `${baseUrl}/og?title=${encodeURIComponent(
     name
