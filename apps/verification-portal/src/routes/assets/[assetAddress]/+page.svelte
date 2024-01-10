@@ -18,6 +18,7 @@
   } from '@sni/constants/cdn/placeholders';
 
   import { page } from '$app/stores';
+  import { getChainName } from '@sni/address-utils';
 
   $: currentPath = $page.url.toString();
   $: pageTitle = `${$LL.assets.title({ assetName: nftData.name })}`;
@@ -35,6 +36,8 @@
 
   const isSub0 = addressDetails?.chain?.reference == 'polkadot';
 
+  const chainReference = addressDetails?.chain?.reference;
+
   const introText = isSub0
     ? $LL.assets.intro.sub0()
     : nftData?.collection?.description;
@@ -43,7 +46,9 @@
   $: pageDescription = `${introText}`;
   $: name = nftData.name || '';
   $: funds = deepData?.link?.funds_raised || 0;
-  $: source = addressDetails?.chain?.reference || 'unknown';
+  $: source = isNaN(parseInt(chainReference))
+    ? chainReference
+    : getChainName(parseInt(chainReference));
   $: image = nftData.image;
   $: pageImage = `${baseUrl}/og?title=${encodeURIComponent(
     name
