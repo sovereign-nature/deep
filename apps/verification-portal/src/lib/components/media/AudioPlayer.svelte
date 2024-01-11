@@ -20,7 +20,7 @@
   let currentPosition = 0;
   let intervalId: number;
   let progress = 0;
-  let loadError = false; //@TODO decide on error state feedback
+  // let loadError = false; //@TODO decide on error state feedback
   $: mousePosition = 0;
   $: progress = (currentPosition / trackLength) * 100;
 
@@ -53,7 +53,7 @@
         },
         onloaderror: (error) => {
           console.error(`Load error: ${error}, mediaURL: ${mediaURL}`); //@TODO trigger sentry?
-          loadError = true;
+          // loadError = true;
         },
         onpause: () => {
           isPlaying = false;
