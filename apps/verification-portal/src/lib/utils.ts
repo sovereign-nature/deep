@@ -74,6 +74,12 @@ export function generateAssetURL(
   }
   return `${API_BASE_URL}/assets/${assetID}${imageRequestConfig}&width=${width}`;
 }
+export function generateMediaURL(assetID: string): string {
+  if (!assetID) {
+    return ANIMAL_PLACEHOLDER;
+  }
+  return `${API_BASE_URL}/assets/${assetID}?metadata`;
+}
 
 export function updateQueryParams(
   param: string,
