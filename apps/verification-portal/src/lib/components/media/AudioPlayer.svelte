@@ -3,7 +3,7 @@
   import { browser } from '$app/environment';
   import { Howl } from 'howler';
   import { Howl as HowlType } from 'howler';
-  import { generateMediaURL } from '$lib/utils';
+  import { generateMediaURL, setCookie, getCookie } from '$lib/utils';
   import Play from '$lib/components/icons/Play.svelte';
   import Pause from '$lib/components/icons/Pause.svelte';
   import Mute from '$lib/components/icons/Mute.svelte';
@@ -23,17 +23,6 @@
   // let loadError = false; //@TODO decide on error state feedback
   $: mousePosition = 0;
   $: progress = (currentPosition / trackLength) * 100;
-
-  function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  }
-  function setCookie(name, value) {
-    const date = new Date();
-    date.setMonth(date.getMonth() + 1); // Set the cookie to expire in 1 month
-    document.cookie = `${name}=${value}; expires=${date.toUTCString()};path=/`;
-  }
 
   onMount(async () => {
     if (browser && assetID && fileFormat) {
