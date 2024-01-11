@@ -212,8 +212,8 @@ importers:
         specifier: 3.0.1
         version: 3.0.1(svelte@4.2.8)(vite@5.0.11)
       '@types/howler':
-        specifier: 2.2.0
-        version: 2.2.0
+        specifier: 2.2.11
+        version: 2.2.11
       '@types/leaflet':
         specifier: 1.9.8
         version: 1.9.8
@@ -254,8 +254,8 @@ importers:
         specifier: ^6.1.0
         version: 6.1.0(graphql@16.8.1)
       howler:
-        specifier: 2.2.3
-        version: 2.2.3
+        specifier: 2.2.4
+        version: 2.2.4
       leaflet:
         specifier: 1.9.4
         version: 1.9.4
@@ -5832,8 +5832,8 @@ packages:
       '@types/node': 20.10.8
     dev: true
 
-  /@types/howler@2.2.0:
-    resolution: {integrity: sha512-YUQOF+2usyZc7v6GPsifKXsHI50bYKjpfNtaw9SqpgZF/72ofUbpLWmfSpWN8VMZ1xVU1ga8/yMm/B+sJ7Fc2w==}
+  /@types/howler@2.2.11:
+    resolution: {integrity: sha512-7aBoUL6RbSIrqKnpEgfa1wSNUBK06mn08siP2QI0zYk7MXfEJAaORc4tohamQYqCqVESoDyRWSdQn2BOKWj2Qw==}
     dev: true
 
   /@types/http-cache-semantics@4.0.4:
@@ -10989,8 +10989,8 @@ packages:
       lru-cache: 6.0.0
     dev: true
 
-  /howler@2.2.3:
-    resolution: {integrity: sha512-QM0FFkw0LRX1PR8pNzJVAY25JhIWvbKMBFM4gqk+QdV+kPXOhleWGCB6AiAF/goGjIHK2e/nIElplvjQwhr0jg==}
+  /howler@2.2.4:
+    resolution: {integrity: sha512-iARIBPgcQrwtEr+tALF+rapJ8qSc+Set2GJQl7xT1MQzWaVkFebdJhR3alVlSiUf5U7nAANKuj3aWpwerocD5w==}
     dev: true
 
   /http-basic@8.1.3:
