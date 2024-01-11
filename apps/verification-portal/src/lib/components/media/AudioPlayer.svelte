@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
+  import { browser } from '$app/environment';
   import { Howl } from 'howler';
   import { Howl as HowlType } from 'howler';
   import { generateMediaURL } from '$lib/utils';
@@ -11,7 +12,7 @@
   export let assetID: string;
   export let file: string;
   let fileFormat = file ? file.split('.').pop() : null; // Extract the file format from the file string
-  let sound: HowlType;
+  let audioPlayer: HowlType;
   let loaded = false;
   let isPlaying = false;
   let isMuted = false;
@@ -19,56 +20,85 @@
   let currentPosition = 0;
   let intervalId: number;
   let progress = 0;
+  let loadError = false; //@TODO decide on error state feedback
   $: mousePosition = 0;
   $: progress = (currentPosition / trackLength) * 100;
 
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+  function setCookie(name, value) {
+    const date = new Date();
+    date.setMonth(date.getMonth() + 1); // Set the cookie to expire in 1 month
+    document.cookie = `${name}=${value}; expires=${date.toUTCString()};path=/`;
+  }
+
   onMount(async () => {
-    if (assetID && fileFormat) {
+    if (browser && assetID && fileFormat) {
+      const muted = getCookie('player_muted') === 'true';
+      const autoplay = getCookie('player_autoplay') !== 'false' && !muted;
+      isMuted = muted;
       let mediaURL = generateMediaURL(assetID);
-      sound = await new Howl({
+      audioPlayer = await new Howl({
         src: [mediaURL],
         format: [fileFormat],
-        autoplay: true,
-        loop: true,
+        autoplay: autoplay,
+        loop: !isMuted,
         volume: 0.2,
         onload: () => {
           loaded = true;
-          trackLength = sound.duration();
+          trackLength = audioPlayer.duration();
+        },
+        onloaderror: (error) => {
+          console.error(`Load error: ${error}, mediaURL: ${mediaURL}`); //@TODO trigger sentry?
+          loadError = true;
         },
         onpause: () => {
           isPlaying = false;
           clearInterval(intervalId);
+          //if user has paused the audio, set autoplay to be paused for future visits
+          setCookie('player_autoplay', 'false');
         },
         onplay: () => {
           isPlaying = true;
+
           intervalId = setInterval(() => {
-            currentPosition = sound.seek();
+            currentPosition = audioPlayer.seek();
           }, 100);
+          //if user has played the audio, set autoplay to be played for future visits
+          setCookie('player_autoplay', 'true');
         },
       });
     }
   });
   onDestroy(() => {
     loaded = false;
-    if (sound) {
-      sound.stop();
-      sound.unload();
+    if (audioPlayer) {
+      audioPlayer.stop();
+      audioPlayer.unload();
     }
   });
 
   function togglePlay() {
     if (!loaded) return;
     if (isPlaying) {
-      sound.pause();
+      audioPlayer.pause();
     } else {
-      sound.play();
+      audioPlayer.play();
+      audioPlayer.mute(false);
+      isMuted = false;
     }
   }
-
+  //@TODO add volume control dropdown to the audioPlayer state button (currently mute/unmute)
   function toggleMute() {
     if (!loaded) return;
-    sound.mute(!isMuted);
+    audioPlayer.mute(!isMuted);
+    audioPlayer.loop(!isMuted);
     isMuted = !isMuted;
+    //keep user mute state preferences for future visits
+    setCookie('player_muted', String(isMuted));
   }
   function seek(e: MouseEvent) {
     if (!loaded) return;
@@ -77,7 +107,7 @@
     const clickPositionInPercentage =
       (clickPosition / progressBar.offsetWidth) * 100;
     const seekPosition = (clickPositionInPercentage / 100) * trackLength;
-    sound.seek(seekPosition);
+    audioPlayer.seek(seekPosition);
     if (!isPlaying) {
       togglePlay();
     }
@@ -92,9 +122,9 @@
   }
   function handleKeyDown(e: KeyboardEvent) {
     if (e.key === 'ArrowRight') {
-      sound.seek(currentPosition + 5);
+      audioPlayer.seek(currentPosition + 5);
     } else if (e.key === 'ArrowLeft') {
-      sound.seek(currentPosition - 5);
+      audioPlayer.seek(currentPosition - 5);
     }
   }
 </script>
@@ -103,10 +133,10 @@
   class="flex items-center justify-center space-x-4 m-5 bg-deep-blue-700 dark:bg-deep-green rounded-lg p-3 flex-shrink-0"
 >
   <button
-    on:click={togglePlay}
     class=" rounded-full h-12 w-12 p-2 bg-primary-300 text-deep-green text-xl enabled:hover:bg-primary-200 disabled:opacity-50 disabled:cursor-not-allowed"
     aria-label={isPlaying ? 'Pause' : 'Play'}
     disabled={!loaded}
+    on:click={togglePlay}
   >
     {#if isPlaying}
       <Pause />
@@ -116,6 +146,7 @@
   </button>
   <button
     class="grow h-2 bg-deep-green dark:bg-deep-blue overflow-hidden rounded-sm relative"
+    aria-label="Audio Progress"
     disabled={!loaded}
     on:click={seek}
     on:mousemove={updateMousePosition}
@@ -123,7 +154,6 @@
       mousePosition = 0;
     }}
     on:keydown={handleKeyDown}
-    aria-label="Audio Progress"
   >
     {#if loaded}
       <div
@@ -143,10 +173,10 @@
   </div>
 
   <button
+    class="rounded-full h-8 w-8 bg-deep-green-900 bg-opacity-50 p-1 text-primary-300 enabled:hover:text-primary-200 enabled:bg-opacity-75 disabled:cursor-not-allowed"
+    aria-label={isMuted ? 'Unmute' : 'Mute'}
     disabled={!loaded}
     on:click={toggleMute}
-    class="rounded-full h-8 w-8 bg-deep-green-900 bg-opacity-50 p-1 text-primary-300 enabled:hover:text-primary-200 enabled:bg-opacity-75 disabled:cursor-not-allowed"
-    aria-label={isMuted ? 'Unmute' : 'x'}
   >
     {#if isMuted}
       <UnMute />
