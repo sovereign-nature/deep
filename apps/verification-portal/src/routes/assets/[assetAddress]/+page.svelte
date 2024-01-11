@@ -9,6 +9,7 @@
   import FundsDashboard from '$lib/components/dashboard/FundsDashboard.svelte';
   import SimpleMap from '$lib/components/SimpleMap.svelte';
   import ShareCard from '$lib/components/ShareCard.svelte';
+  import AudioPlayer from '$lib/components/media/AudioPlayer.svelte';
   import NewsCarousel from '$lib/components/carousel/NewsCarousel.svelte';
   import LL from '$lib/i18n/i18n-svelte.js';
   import {
@@ -32,7 +33,6 @@
     addressDetails,
     properties,
   } = data;
-
   const chainReference = addressDetails?.chain?.reference;
 
   // Define specific share card data for a page
@@ -150,6 +150,16 @@
           >{$LL.assets.ecEntity.cardTitle()}</Subheader
         >
         <h3 class="text-5xl">{deepData?.id}</h3>
+      </div>
+      <div class="full">
+        {#key deepData}
+          {#if deepData.sound}
+            <AudioPlayer
+              assetID={deepData.sound?.id}
+              file={deepData.sound?.filename_disk}
+            ></AudioPlayer>
+          {/if}
+        {/key}
       </div>
       <div class="w-full">
         {#key deepData}

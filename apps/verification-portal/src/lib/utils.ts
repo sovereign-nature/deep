@@ -74,6 +74,12 @@ export function generateAssetURL(
   }
   return `${API_BASE_URL}/assets/${assetID}${imageRequestConfig}&width=${width}`;
 }
+export function generateMediaURL(assetID: string): string {
+  if (!assetID) {
+    return ANIMAL_PLACEHOLDER;
+  }
+  return `${API_BASE_URL}/assets/${assetID}?metadata`;
+}
 
 export function updateQueryParams(
   param: string,
@@ -142,4 +148,15 @@ export function isFeatureEnabled(feature: string) {
   }
 
   return isEnabled;
+}
+
+export function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+export function setCookie(name, value) {
+  const date = new Date();
+  date.setMonth(date.getMonth() + 1); // Set the cookie to expire in 1 month
+  document.cookie = `${name}=${value}; expires=${date.toUTCString()};path=/`;
 }
