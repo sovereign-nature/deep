@@ -18,9 +18,9 @@
 
   function openModal(showNetworks = false) {
     if (showNetworks === true) {
-      return web3Modal.open({ view: 'Networks' });
+      return $web3Modal.open({ view: 'Networks' });
     }
-    web3Modal.open();
+    $web3Modal.open();
   }
   function shortenAddress(address: string) {
     return address.replace(/^(.{4})(.*)(.{4})$/, '$1...$3');

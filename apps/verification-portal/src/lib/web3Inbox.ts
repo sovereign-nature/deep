@@ -1,5 +1,5 @@
 import type { Web3InboxClient as InboxClientType } from '@web3inbox/core';
-import { Web3InboxClient } from '@web3inbox/core';
+
 import { getContext, setContext } from 'svelte';
 import type { Writable } from 'svelte/store';
 import { writable } from 'svelte/store';
@@ -15,7 +15,7 @@ if (isFeatureEnabled('testGMInbox')) {
   domain = 'gm.walletconnect.com';
   isLimited = false;
 }
-
+let Web3InboxConstructor;
 const web3InboxMessages = writable();
 const web3InboxTypes = writable();
 const web3InboxRegistered = writable(false);
@@ -29,11 +29,24 @@ let web3ChainId: number;
 let web3Connected: boolean;
 let web3InboxClient: InboxClientType | null;
 let web3InboxAccount: string;
+let web3ConnectedStore: Writable<boolean>;
+let web3AddressStore: Writable<string>;
+let web3ChainIdStore: Writable<number>;
+export async function initializeInboxContext() {
+  setContext('web3InboxMessages', web3InboxMessages);
+  setContext('web3InboxTypes', web3InboxTypes);
+  setContext('web3InboxRegistered', web3InboxRegistered);
+  setContext('web3InboxSubscribed', web3InboxSubscribed);
+  setContext('web3InboxModalOpen', web3InboxModalOpen);
+  setContext('web3InboxMessageCount', web3InboxMessageCount);
+  setContext('web3InboxLoading', web3InboxLoading);
+  web3ConnectedStore = getContext('web3Connected');
+  web3AddressStore = getContext('web3Address');
+  web3ChainIdStore = getContext('web3ChainId');
+}
 
-export async function initializeInbox() {
-  const web3ConnectedStore: Writable<boolean> = getContext('web3Connected');
-  const web3AddressStore: Writable<string> = getContext('web3Address');
-  const web3ChainIdStore: Writable<number> = getContext('web3ChainId');
+export async function initializeInbox(constructor) {
+  Web3InboxConstructor = constructor;
 
   web3ConnectedStore.subscribe((value) => {
     web3Connected = value;
@@ -59,20 +72,13 @@ export async function initializeInbox() {
       ? setupInboxClient()
       : console.log('Loading inbox chain id change');
   });
-  setContext('web3InboxMessages', web3InboxMessages);
-  setContext('web3InboxTypes', web3InboxTypes);
-  setContext('web3InboxRegistered', web3InboxRegistered);
-  setContext('web3InboxSubscribed', web3InboxSubscribed);
-  setContext('web3InboxModalOpen', web3InboxModalOpen);
-  setContext('web3InboxMessageCount', web3InboxMessageCount);
-  setContext('web3InboxLoading', web3InboxLoading);
   if (!web3Connected) return;
   createInboxClient();
 }
 
 async function createInboxClient() {
   try {
-    web3InboxClient = await Web3InboxClient.init({
+    web3InboxClient = await Web3InboxConstructor.init({
       projectId: projectId,
       domain: 'real.sovereignnature.com',
       isLimited: isLimited,
@@ -92,7 +98,6 @@ async function setupInboxClient() {
   const registered =
     await web3InboxClient.getAccountIsRegistered(web3InboxAccount);
   web3InboxRegistered.set(registered);
-  console.log(registered, 'Registered status');
 
   if (registered) {
     registerInbox();
@@ -101,7 +106,6 @@ async function setupInboxClient() {
 }
 
 async function clearInboxClient() {
-  console.log('Clearing inbox client');
   if (!web3InboxClient) return;
   web3InboxClient = null;
   web3InboxRegistered.set(false);

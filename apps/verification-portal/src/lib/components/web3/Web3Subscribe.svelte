@@ -1,6 +1,6 @@
 <script lang="ts">
   import RolloverBtn from '$lib/components/RolloverBtn.svelte';
-  import BellIcon from '../icons/BellIcon.svelte';
+  import BellIcon from '$lib/components/icons/BellIcon.svelte';
   import { LL } from '$lib/i18n/i18n-svelte';
   import { isFeatureEnabled } from '$lib/utils';
   import { getContext, onMount } from 'svelte';

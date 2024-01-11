@@ -36,7 +36,7 @@
   onMount(() => {
     const qValue = url.searchParams.get('q');
     if (qValue) {
-      activeTab = ['hh', 'sub0', 'new'].includes(qValue) ? qValue : 'hh';
+      activeTab = ['hh', 'sub0', 'soundwaves'].includes(qValue) ? qValue : 'hh';
     }
   });
 </script>
@@ -87,22 +87,25 @@
   {#if isFeatureEnabled('POCTabEnabled')}
     <Web3Connection collectionId="real-test-1">
       <TabItem
-        title="{$LL.newCol.collectionName()} "
-        open={activeTab === 'new'}
+        title="{$LL.soundwaves.collectionName()} "
+        open={activeTab === 'soundwaves'}
         class="!ml-0 sm:!ml-3 sm:pb-3"
         defaultClass={classDefault}
         inactiveClasses={classInactive}
         activeClasses={classActive}
-        on:click={() => handleTabClick('new')}
+        on:click={() => handleTabClick('soundwaves')}
       >
         <Web3SearchInput
           web3enabled
           network="eip155"
           goIcon
           inputmode="numeric"
-          placeholder={$LL.newCol.placeholder()}
+          placeholder={$LL.soundwaves.placeholder()}
         />
-        <Web3Assets collectionName={$LL.newCol.collectionName()} web3enabled />
+        <Web3Assets
+          collectionName={$LL.soundwaves.collectionName()}
+          web3enabled
+        />
       </TabItem>
     </Web3Connection>
   {/if}

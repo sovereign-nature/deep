@@ -43,6 +43,11 @@ export type DeepData = {
     images: Array<DirectusImage>;
     website: string;
   };
+  sound: {
+    id: string;
+    filename_disk: string;
+    filename_download: string;
+  };
   news: Array<NewsEntity>;
   images: Array<DirectusImage>;
   id: string;

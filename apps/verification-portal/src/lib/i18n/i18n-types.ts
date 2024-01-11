@@ -69,9 +69,9 @@ type RootTranslation = {
 		 */
 		placeholder: string
 	}
-	newCol: {
+	soundwaves: {
 		/**
-		 * N​e​w​ ​C​o​l​l​e​c​t​i​o​n
+		 * S​o​u​n​d​w​a​v​e​s
 		 */
 		collectionName: string
 		/**
@@ -254,34 +254,14 @@ type RootTranslation = {
 			 */
 			fundsGenerated: string
 		}
-		sub0: {
-			/**
-			 * #​N​F​T​s​ ​s​u​p​p​o​r​t​i​n​g​ ​v​e​r​i​f​i​e​d​ ​#​B​i​o​d​i​v​e​r​s​i​t​y​C​o​n​s​e​r​v​a​t​i​o​n​?​!​ ​C​o​u​n​t​ ​m​e​ ​i​n​!​ ​�​�​
-		​
-		​T​h​a​n​k​s​ ​@​s​o​v​e​r​e​i​g​n​n​a​t​u​r​e​ ​f​o​r​ ​b​r​i​n​g​i​n​g​ ​R​E​A​L​ ​d​a​t​a​ ​o​f​ ​b​o​t​t​l​e​n​o​s​e​ ​d​o​l​p​h​i​n​s​ ​&​ ​m​i​n​k​e​ ​w​h​a​l​e​s​ ​m​o​n​i​t​o​r​e​d​ ​b​y​ ​@​A​I​M​M​P​o​r​t​u​g​a​l​ ​o​n​c​h​a​i​n​.​ ​G​l​a​d​ ​m​y​ ​@​P​o​l​k​a​d​o​t​ ​#​s​u​b​0​ ​a​t​t​e​n​d​a​n​c​e​ ​s​u​p​p​o​r​t​s​ ​t​h​i​s​ ​w​i​l​d​ ​c​a​u​s​e​!​ ​�​�
-			 */
-			twitterPrefix: string
-			/**
-			 * N​F​T​s​ ​s​u​p​p​o​r​t​i​n​g​ ​v​e​r​i​f​i​e​d​ ​b​i​o​d​i​v​e​r​s​i​t​y​ ​c​o​n​s​e​r​v​a​t​i​o​n​?​!​ ​C​o​u​n​t​ ​m​e​ ​i​n​!​ ​�​�​ ​
-		​ ​
-		​T​h​a​n​k​s​ ​S​o​v​e​r​e​i​g​n​ ​N​a​t​u​r​e​ ​I​n​i​t​i​a​t​i​v​e​ ​f​o​r​ ​b​r​i​n​g​i​n​g​ ​R​E​A​L​ ​d​a​t​a​ ​o​f​ ​b​o​t​t​l​e​n​o​s​e​ ​d​o​l​p​h​i​n​s​ ​a​n​d​ ​m​i​n​k​e​ ​w​h​a​l​e​s​ ​m​o​n​i​t​o​r​e​d​ ​b​y​ ​A​I​M​M​ ​P​o​r​t​u​g​a​l​ ​o​n​c​h​a​i​n​.​ ​G​l​a​d​ ​m​y​ ​P​o​l​k​a​d​o​t​ ​s​u​b​0​ ​a​t​t​e​n​d​a​n​c​e​ ​s​u​p​p​o​r​t​s​ ​t​h​i​s​ ​w​i​l​d​ ​c​a​u​s​e​!​ ​�​�
-			 */
-			telegramPrefix: string
-		}
-		hh: {
-			/**
-			 * J​u​s​t​ ​d​i​s​c​o​v​e​r​e​d​ ​t​h​e​ ​U​p​e​m​b​a​ ​N​a​t​i​o​n​a​l​ ​P​a​r​k​ ​r​o​o​m​ ​i​n​ ​#​H​o​t​e​l​H​i​d​e​a​w​a​y​,​ ​a​n​d​ ​i​t​ ​i​s​ ​W​I​L​D​!​ ​�​�​�​�​
-		​
-		​F​o​r​ ​e​x​a​m​p​l​e​,​ ​t​h​i​s​ ​i​t​e​m​ ​I​ ​p​u​r​c​h​a​s​e​d​ ​d​i​r​e​c​t​l​y​ ​s​u​p​p​o​r​t​s​ ​@​f​o​r​g​o​t​t​e​n​p​a​r​k​s​F​’​s​ ​#​B​i​o​d​i​v​e​r​s​i​t​y​C​o​n​s​e​r​v​a​t​i​o​n​ ​e​f​f​o​r​t​s​ ​t​h​a​n​k​s​ ​t​o​ ​@​s​o​v​e​r​e​i​g​n​n​a​t​u​r​e​.​ ​C​h​e​c​k​ ​o​u​t​ ​t​h​e​ ​d​e​t​a​i​l​s​ ​b​e​l​o​w​!
-			 */
-			twitterPrefix: string
-			/**
-			 * J​u​s​t​ ​d​i​s​c​o​v​e​r​e​d​ ​t​h​e​ ​U​p​e​m​b​a​ ​N​a​t​i​o​n​a​l​ ​P​a​r​k​ ​r​o​o​m​ ​i​n​ ​H​o​t​e​l​ ​H​i​d​e​a​w​a​y​,​ ​a​n​d​ ​i​t​ ​i​s​ ​W​I​L​D​!​ ​�​�​�​�​
-		​
-		​F​o​r​ ​e​x​a​m​p​l​e​,​ ​t​h​i​s​ ​i​t​e​m​ ​I​ ​p​u​r​c​h​a​s​e​d​ ​d​i​r​e​c​t​l​y​ ​s​u​p​p​o​r​t​s​ ​@​f​o​r​g​o​t​t​e​n​p​a​r​k​s​F​’​s​ ​b​i​o​d​i​v​e​r​s​i​t​y​ ​c​o​n​s​e​r​v​a​t​i​o​n​ ​e​f​f​o​r​t​s​ ​t​h​a​n​k​s​ ​t​o​ ​t​h​e​ ​S​o​v​e​r​e​i​g​n​ ​N​a​t​u​r​e​ ​I​n​i​t​i​a​t​i​v​e​.​ ​C​h​e​c​k​ ​o​u​t​ ​t​h​e​ ​d​e​t​a​i​l​s​ ​b​e​l​o​w​!
-			 */
-			telegramPrefix: string
-		}
+		/**
+		 * L​o​o​k​ ​a​t​ ​m​y​ ​e​c​o​-​l​i​n​k​e​d​ ​a​s​s​e​t​ ​b​y​ ​@​s​o​v​e​r​e​i​g​n​n​a​t​u​r​e
+		 */
+		twitterPrefix: string
+		/**
+		 * L​o​o​k​ ​a​t​ ​m​y​ ​e​c​o​-​l​i​n​k​e​d​ ​a​s​s​e​t​ ​b​y​ ​S​o​v​e​r​e​i​g​n​ ​N​a​t​u​r​e​ ​I​n​i​t​i​a​t​i​v​e
+		 */
+		telegramPrefix: string
 	}
 	footer: {
 		/**
@@ -394,9 +374,9 @@ export type TranslationFunctions = {
 		 */
 		placeholder: () => LocalizedString
 	}
-	newCol: {
+	soundwaves: {
 		/**
-		 * New Collection
+		 * Soundwaves
 		 */
 		collectionName: () => LocalizedString
 		/**
@@ -572,34 +552,14 @@ export type TranslationFunctions = {
 			 */
 			fundsGenerated: () => LocalizedString
 		}
-		sub0: {
-			/**
-			 * #NFTs supporting verified #BiodiversityConservation?! Count me in! 🐬
-	
-		Thanks @sovereignnature for bringing REAL data of bottlenose dolphins & minke whales monitored by @AIMMPortugal onchain. Glad my @Polkadot #sub0 attendance supports this wild cause! 🐋
-			 */
-			twitterPrefix: () => LocalizedString
-			/**
-			 * NFTs supporting verified biodiversity conservation?! Count me in! 🐬 
-		 
-		Thanks Sovereign Nature Initiative for bringing REAL data of bottlenose dolphins and minke whales monitored by AIMM Portugal onchain. Glad my Polkadot sub0 attendance supports this wild cause! 🐋
-			 */
-			telegramPrefix: () => LocalizedString
-		}
-		hh: {
-			/**
-			 * Just discovered the Upemba National Park room in #HotelHideaway, and it is WILD! 🐘🦓
-	
-		For example, this item I purchased directly supports @forgottenparksF’s #BiodiversityConservation efforts thanks to @sovereignnature. Check out the details below!
-			 */
-			twitterPrefix: () => LocalizedString
-			/**
-			 * Just discovered the Upemba National Park room in Hotel Hideaway, and it is WILD! 🐘🦓
-	
-		For example, this item I purchased directly supports @forgottenparksF’s biodiversity conservation efforts thanks to the Sovereign Nature Initiative. Check out the details below!
-			 */
-			telegramPrefix: () => LocalizedString
-		}
+		/**
+		 * Look at my eco-linked asset by @sovereignnature
+		 */
+		twitterPrefix: () => LocalizedString
+		/**
+		 * Look at my eco-linked asset by Sovereign Nature Initiative
+		 */
+		telegramPrefix: () => LocalizedString
 	}
 	footer: {
 		/**

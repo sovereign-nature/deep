@@ -10,33 +10,41 @@ import { BrowserProvider } from 'ethers';
 import { getContext, setContext } from 'svelte';
 import { writable } from 'svelte/store';
 
-import { createWeb3Modal } from '@web3modal/ethers5';
-import type { Web3Modal } from '@web3modal/ethers5/dist/types/exports/client';
+const modal = writable();
+let web3Modal;
 
-let web3Modal: Web3Modal;
 const web3Connected = writable(false);
 const web3Address = writable();
 const web3ChainId = writable();
-let web3SelectedNetworkID: string | undefined;
+const web3SelectedNetworkID = writable(undefined);
 let pendingChainSwitch = false;
 
-export function initializeModal() {
-  web3Modal = createWeb3Modal({
-    ethersConfig,
-    projectId,
-    chains,
-    themeVariables: themeVariablesDark,
-  });
-
-  setContext('web3Modal', web3Modal);
+export function initializeContext() {
+  setContext('web3Modal', modal);
   setContext('web3Connected', web3Connected);
   setContext('web3Address', web3Address);
   setContext('web3ChainId', web3ChainId);
   setContext('web3SelectedNetworkID', web3SelectedNetworkID);
+}
 
+export function initializeModal(createWeb3Modal, defaultConfig) {
+  const modalConfig = defaultConfig({
+    ...ethersConfig,
+  });
+  web3Modal = createWeb3Modal({
+    ethersConfig: modalConfig,
+    projectId,
+    chains,
+    themeVariables: themeVariablesDark,
+  });
+  modal.set(web3Modal);
+  setSubscriptions();
+}
+
+function setSubscriptions() {
   //Track network selected network to trigger chain switch after modal is connected or re-connected
   web3Modal.subscribeState(async ({ selectedNetworkId }) => {
-    web3SelectedNetworkID = selectedNetworkId;
+    web3SelectedNetworkID.set(selectedNetworkId);
     if (selectedNetworkId && selectedNetworkId !== web3Modal.getChainId()) {
       pendingChainSwitch = true;
     } else {
@@ -67,10 +75,12 @@ export function modalHandleTheme(theme: string) {
   if (isFeatureEnabled('walletEnabled')) {
     if (!web3Modal) return;
     if (theme === 'system') {
-      web3Modal.setThemeMode(undefined);
       if (isDarkModePreferred()) {
+        web3Modal.setThemeMode('dark');
         web3Modal.setThemeVariables(themeVariablesDark);
       } else {
+        web3Modal.setThemeMode('light');
+
         web3Modal.setThemeVariables(themeVariablesLight);
       }
     } else if (theme === 'dark') {
