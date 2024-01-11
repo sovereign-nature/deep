@@ -99,6 +99,9 @@ export function getNftAsset(
     case 'kusama':
       return getKusamaNft(`${contractAddress}-${tokenId}`);
     case 'sepolia':
+    case 'arbitrum':
+    case 'polygon':
+    case 'optimism':
       return getOpenSeaNft(contractAddress, tokenId, network);
     default:
       throw new Error(`Unknown network: ${network}`);
