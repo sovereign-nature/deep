@@ -5,7 +5,7 @@ import { get, writable } from 'svelte/store';
 import { projectId } from '$lib/config/web3Configs';
 import { onSign, type Web3Modal } from '$lib/web3Modal';
 import type { NotifyClientTypes } from '@walletconnect/notify-client';
-import { Web3InboxClient as Web3InboxConstructor } from '@web3inbox/core';
+import { Web3InboxClient } from '@web3inbox/core';
 
 const domain = 'real.sovereignnature.com';
 const isLimited = process.env.NODE_ENV === 'production';
@@ -19,7 +19,7 @@ const web3InboxModalOpen = writable(false);
 const web3InboxMessageCount = writable(0);
 const web3InboxLoading = writable(true);
 
-let web3InboxClient: Web3InboxConstructor | null = null;
+let web3InboxClient: Web3InboxClient | null;
 let web3InboxAccount: string;
 let web3ConnectedStore: Writable<boolean>;
 let web3AddressStore: Writable<string>;
@@ -66,9 +66,9 @@ export function initializeInbox() {
 }
 
 async function connectToInbox() {
-  console.log('!!!Connecting to inbox');
+  console.log('Connecting to inbox');
   try {
-    web3InboxClient = await Web3InboxConstructor.init({
+    web3InboxClient = await Web3InboxClient.init({
       projectId,
       domain,
       isLimited: isLimited,
