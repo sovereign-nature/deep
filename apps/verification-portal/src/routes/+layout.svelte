@@ -35,10 +35,7 @@
 
   onMount(async () => {
     if (isFeatureEnabled('walletEnabled')) {
-      const { createWeb3Modal, defaultConfig } = await import(
-        '@web3modal/ethers'
-      );
-      initializeModal(createWeb3Modal, defaultConfig);
+      initializeModal();
       if (isFeatureEnabled('notificationsEnabled')) {
         initializeInbox();
       }
