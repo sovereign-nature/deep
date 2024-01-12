@@ -11,7 +11,8 @@ import { BrowserProvider } from 'ethers';
 import { getContext, setContext } from 'svelte';
 import { writable } from 'svelte/store';
 const modal = writable();
-let web3Modal: ReturnType<typeof createWeb3Modal>;
+export type Web3Modal = ReturnType<typeof createWeb3Modal>;
+let web3Modal: Web3Modal;
 
 const web3Connected = writable(false);
 const web3Address = writable();

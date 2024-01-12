@@ -1,9 +1,9 @@
 import { getContext, setContext } from 'svelte';
 import type { Writable } from 'svelte/store';
-import { writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 
 import { projectId } from '$lib/config/web3Configs';
-import { onSign } from '$lib/web3Modal';
+import { onSign, type Web3Modal } from '$lib/web3Modal';
 import type { NotifyClientTypes } from '@walletconnect/notify-client';
 import { Web3InboxClient as Web3InboxConstructor } from '@web3inbox/core';
 
@@ -19,14 +19,18 @@ const web3InboxModalOpen = writable(false);
 const web3InboxMessageCount = writable(0);
 const web3InboxLoading = writable(true);
 
-const web3ChainId = 1;
-let web3Address = '';
 let web3InboxClient: Web3InboxConstructor | null = null;
 let web3Connected: boolean;
 let web3InboxAccount: string;
 let web3ConnectedStore: Writable<boolean>;
 let web3AddressStore: Writable<string>;
-const getWeb3InboxAccount = () => `eip155:${web3ChainId}:${web3Address}`;
+let web3ModalStore: Writable<Web3Modal>;
+
+const getWeb3InboxAccount = () => {
+  const address = `eip155:1:${get(web3ModalStore).getAddress()}`;
+  console.log('getWeb3InboxAccount', address);
+  return address;
+};
 
 // Web3Inbox Context Setup
 export function setInboxContext() {
@@ -39,6 +43,7 @@ export function setInboxContext() {
   setContext('web3InboxLoading', web3InboxLoading);
   web3ConnectedStore = getContext('web3Connected');
   web3AddressStore = getContext('web3Address');
+  web3ModalStore = getContext('web3Modal');
 }
 
 export function initializeInbox() {
@@ -46,8 +51,7 @@ export function initializeInbox() {
     web3Connected = value;
     web3Connected ? connectToInbox() : clearInboxClient();
   });
-  web3AddressStore.subscribe(async (value) => {
-    web3Address = value;
+  web3AddressStore.subscribe(async () => {
     if (web3InboxClient) {
       await configureInboxSubscription();
       console.log('Inbox address changed, reconfiguring inbox client');
