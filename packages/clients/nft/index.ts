@@ -57,7 +57,8 @@ export function getKusamaNft(id: string) {
 export async function getOpenSeaNft(
   contractAddress: string,
   tokenId: number,
-  network: string
+  network: string,
+  apiKey?: string
 ) {
   const testnetPrefix = network === 'sepolia' ? 'testnets-' : '';
 
@@ -66,7 +67,7 @@ export async function getOpenSeaNft(
   //TODO: Rename OPEN_SEA to OPENSEA
   //TODO: Unify client and server clients
   const headers = {
-    'X-API-KEY': process.env.OPEN_SEA_API_KEY || '',
+    'X-API-KEY': apiKey ? apiKey : '',
     Accept: 'application/json',
   };
 
@@ -91,7 +92,8 @@ export async function getOpenSeaNft(
 export function getNftAsset(
   network: string,
   contractAddress: string,
-  tokenId: number
+  tokenId: number,
+  apiKey?: string
 ) {
   switch (network) {
     case 'polkadot':
@@ -102,7 +104,7 @@ export function getNftAsset(
     case 'arbitrum':
     case 'polygon':
     case 'optimism':
-      return getOpenSeaNft(contractAddress, tokenId, network);
+      return getOpenSeaNft(contractAddress, tokenId, network, apiKey);
     default:
       throw new Error(`Unknown network: ${network}`);
   }

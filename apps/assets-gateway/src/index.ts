@@ -8,7 +8,12 @@ import { DirectusAsset, getHotelHideawayAsset } from '@sni/clients/web2';
 import { SNI_API_URL } from '@sni/constants';
 import { DeepAsset } from '@sni/types';
 import { Hono } from 'hono';
+import { env } from 'hono/adapter';
 const app = new Hono();
+
+export interface Env {
+  OPEN_SEA_API_KEY: string;
+}
 
 app.get('/', (c) => c.text('DEEP Assets Gateway'));
 
@@ -41,6 +46,8 @@ app.get('/:assetDID', async (c) => {
   let tokenId: number;
   let assetId: string;
 
+  const { OPEN_SEA_API_KEY } = env<{ OPEN_SEA_API_KEY: string }>(c);
+
   // Parsing DID
   try {
     const { chain, asset } = parseAddress(assetDID);
@@ -53,7 +60,12 @@ app.get('/:assetDID', async (c) => {
 
   // Getting asset data
   try {
-    const assetData = await getAsset(networkId, assetId, tokenId);
+    const assetData = await getAsset(
+      networkId,
+      assetId,
+      tokenId,
+      OPEN_SEA_API_KEY
+    );
     return c.json(assetData);
   } catch (e) {
     return c.json({ error: 'Asset not found' });
@@ -101,7 +113,8 @@ function directusFormatter(assetData: DirectusAsset): DeepAsset {
 async function getAsset(
   networkId: string,
   assetId: string,
-  tokenId: number
+  tokenId: number,
+  apiKey?: string
 ): Promise<DeepAsset> {
   switch (networkId) {
     case 'polkadot':
@@ -110,8 +123,14 @@ async function getAsset(
         (await getNftAsset(networkId, assetId, tokenId)) as PolkadotResponse
       );
     case 'sepolia':
+    case 'arbitrum':
       return openSeaFormatter(
-        (await getNftAsset(networkId, assetId, tokenId)) as OpenSeaResponse
+        (await getNftAsset(
+          networkId,
+          assetId,
+          tokenId,
+          apiKey
+        )) as OpenSeaResponse
       );
     case 'hotel-hideaway':
       return directusFormatter(await getHotelHideawayAsset(assetId));

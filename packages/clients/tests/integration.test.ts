@@ -74,7 +74,8 @@ test('getOpenSeaArbitrumNft', async () => {
   const data = await getOpenSeaNft(
     '0x10d2baeb37a4079fc62cc716b08e2452936424b1',
     422,
-    'arbitrum'
+    'arbitrum',
+    process.env.OPEN_SEA_API_KEY
   );
 
   expect(data).toStrictEqual(openSeaArbitrumResponse);
