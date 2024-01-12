@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 import { getEntity, getSteward } from '../data';
 import { getLinkByAddress, getLinkById } from '../link';
-import { getNftAsset, getOpenSeaTestNetNft } from '../nft';
+import { getNftAsset, getOpenSeaNft } from '../nft';
 import { getWeb2Asset } from '../web2';
 import {
   hotelHideawayResponse,
@@ -60,9 +60,10 @@ test('getWeb2Asset from Hotel Hideaway', async () => {
 });
 
 test('getOpenSeaTestNetNft', async () => {
-  const data = await getOpenSeaTestNetNft(
+  const data = await getOpenSeaNft(
     '0x38de3f11ba85d75f28778c6f44a97d29ea910cf2',
-    1
+    1,
+    'sepolia'
   );
 
   expect(data).toStrictEqual(openSeaTestNetResponse);

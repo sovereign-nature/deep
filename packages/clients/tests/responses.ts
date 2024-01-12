@@ -226,6 +226,14 @@ export const hotelHideawayResponse = {
 };
 
 export const openSeaTestNetResponse = {
+  collection: {
+    address: '0x38de3f11ba85d75f28778c6f44a97d29ea910cf2',
+    chain: 'sepolia',
+    collection: 'real-test-1',
+    contract_standard: 'erc1155',
+    name: 'REAL TEST 1',
+    total_supply: 0,
+  },
   nft: {
     identifier: '1',
     collection: 'real-test-1',
@@ -248,8 +256,16 @@ export const openSeaTestNetResponse = {
     creator: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
     owners: [
       {
+        address: '0x656dbd1d677dff4fd9d28d36e2d0f95a3cf27cbf',
+        quantity: 1,
+      },
+      {
+        address: '0x99af1e012d621aa2d384775e4097280ec7d9610d',
+        quantity: 1,
+      },
+      {
         address: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
-        quantity: 98,
+        quantity: 95,
       },
       {
         address: '0xa7129173a57a21316b0785740f9f619fd17b74fd',
@@ -259,15 +275,11 @@ export const openSeaTestNetResponse = {
         address: '0xcab6acfd243d62419e7161d214b793636d29fa3a',
         quantity: 1,
       },
+      {
+        address: '0xd0f84a69e09e000cc450eca4094979b4da4d9098',
+        quantity: 1,
+      },
     ],
     rarity: null,
-  },
-  collection: {
-    address: '0x38de3f11ba85d75f28778c6f44a97d29ea910cf2',
-    chain: 'sepolia',
-    collection: 'real-test-1',
-    contract_standard: 'erc1155',
-    name: 'REAL TEST 1',
-    total_supply: 0,
   },
 };
