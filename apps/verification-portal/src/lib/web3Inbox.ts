@@ -20,7 +20,6 @@ const web3InboxMessageCount = writable(0);
 const web3InboxLoading = writable(true);
 
 let web3InboxClient: Web3InboxConstructor | null = null;
-let web3Connected: boolean;
 let web3InboxAccount: string;
 let web3ConnectedStore: Writable<boolean>;
 let web3AddressStore: Writable<string>;
@@ -47,9 +46,13 @@ export function setInboxContext() {
 }
 
 export function initializeInbox() {
-  web3ConnectedStore.subscribe((value) => {
-    web3Connected = value;
-    web3Connected ? connectToInbox() : clearInboxClient();
+  web3ConnectedStore.subscribe((connected) => {
+    if (connected) {
+      console.log('Connected, proceeding to connect to inbox');
+      connectToInbox();
+    } else {
+      clearInboxClient();
+    }
   });
 
   web3AddressStore.subscribe(async () => {
