@@ -96,9 +96,17 @@ export function modalHandleTheme(theme: string) {
 export async function onSign(message: string) {
   console.log('Signing message:', message);
   if (!window) return '';
-  const provider = new BrowserProvider(window.ethereum);
-  const signer = await provider.getSigner();
+  const walletProvider = web3Modal.getWalletProvider();
+
+  const ethersProvider = new BrowserProvider(walletProvider);
+  console.log('Provider:', ethersProvider);
+
+  const signer = await ethersProvider.getSigner();
+  console.log('Signer:', signer);
+
   const signature = await signer?.signMessage(message);
+  console.log('Signature:', signature);
+
   return signature;
 }
 
