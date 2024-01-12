@@ -66,6 +66,7 @@ export function initializeInbox() {
 
 async function connectToInbox() {
   console.log('Connecting to inbox');
+  const account = getWeb3InboxAccount();
   try {
     web3InboxClient = await Web3InboxClient.init({
       projectId,
@@ -78,29 +79,21 @@ async function connectToInbox() {
       web3InboxClient!.register({ account, onSign, domain });
     });
 
-    await web3InboxClient.setAccount(getWeb3InboxAccount());
+    await web3InboxClient.setAccount(account);
 
     web3InboxClient.register({
-      account: getWeb3InboxAccount(),
+      account,
       onSign,
       domain,
     });
 
     web3InboxLoading.set(false);
 
-    const subscription = web3InboxClient.getSubscription(
-      getWeb3InboxAccount(),
-      domain
-    );
+    const subscription = web3InboxClient.getSubscription(account, domain);
 
-    const isSubscribed = web3InboxClient.isSubscribedToDapp(
-      getWeb3InboxAccount(),
-      domain
-    );
+    const isSubscribed = web3InboxClient.isSubscribedToDapp(account, domain);
 
-    const registered = await web3InboxClient.getAccountIsRegistered(
-      getWeb3InboxAccount()
-    );
+    const registered = await web3InboxClient.getAccountIsRegistered(account);
 
     console.log('User is registered:', registered);
     console.log('With account:', getWeb3InboxAccount());
