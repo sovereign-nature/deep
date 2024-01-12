@@ -96,6 +96,9 @@ async function connectToInbox() {
     web3InboxRegistered.set(registered);
     web3InboxSubscribed.set(isSubscribed);
 
+    console.log('!!Subscribed:', isSubscribed);
+    console.log('!!Account: ', account);
+
     if (isSubscribed) getInboxContent();
   } catch (error) {
     console.error('Error initializing inbox:', error);
@@ -130,10 +133,6 @@ export async function registerInbox() {
     getInboxContent();
   } catch (error) {
     console.error('Error registering account:', error);
-    console.log(`Account ${account}`);
-    console.log(`Client ${web3InboxClient}`);
-    console.log(`Domain ${domain}`);
-    console.log(`onSign ${onSign}`);
   }
 }
 

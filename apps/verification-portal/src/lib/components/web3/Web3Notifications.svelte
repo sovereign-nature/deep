@@ -11,6 +11,9 @@
   const web3InboxRegistered: Writable<boolean> = getContext(
     'web3InboxRegistered'
   );
+  const web3InboxSubscribed: Writable<boolean> = getContext(
+    'web3InboxSubscribed'
+  );
   const openInboxModal: Writable<boolean> = getContext('web3InboxModalOpen');
   const web3MessageCount: Writable<number> = getContext(
     'web3InboxMessageCount'
@@ -43,11 +46,11 @@
     type="alert"
     hasNew={$web3InboxRegistered ? hasMessages : false}
     keepOpen={$web3InboxRegistered ? alertNew : !web3InboxLoading}
-    on:click={$web3InboxRegistered
+    on:click={$web3InboxSubscribed
       ? () => ($openInboxModal = true)
       : registerInbox}
   >
-    {$web3InboxRegistered
+    {$web3InboxSubscribed
       ? $LL.notifications.nrNotification($web3MessageCount)
       : $LL.notifications.subscribe()}
     <span slot="icon">
