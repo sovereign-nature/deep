@@ -110,10 +110,13 @@ async function clearInboxClient() {
 }
 
 export async function registerInbox() {
-  if (!web3InboxClient) return;
+  console.log('Registering inbox & triggering sign or log-in');
+  if (!web3InboxClient) {
+    console.error('Register called with no Client, abort sign');
+    return;
+  }
 
   try {
-    if (!web3InboxClient) return; // Add this check
     await web3InboxClient
       .register({
         account: web3InboxAccount,
@@ -121,6 +124,7 @@ export async function registerInbox() {
         onSign,
       })
       .then(() => {
+        console.log('Account registered successfully ');
         if (web3InboxClient) {
           const isSubscribed = web3InboxClient.isSubscribedToDapp(
             web3InboxAccount,
@@ -132,7 +136,7 @@ export async function registerInbox() {
         }
       })
       .then(() => {
-        console.log('Setting up inbox');
+        console.log('Getting messages & types');
         getInboxContent();
       });
   } catch (error) {

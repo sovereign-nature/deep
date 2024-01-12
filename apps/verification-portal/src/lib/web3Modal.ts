@@ -94,6 +94,7 @@ export function modalHandleTheme(theme: string) {
 }
 
 export async function onSign(message: string) {
+  console.log('Signing message:', message);
   if (!window) return '';
   const provider = new BrowserProvider(window.ethereum);
   const signer = await provider.getSigner();
