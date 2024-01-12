@@ -6,6 +6,7 @@ import { getWeb2Asset } from '../web2';
 import {
   hotelHideawayResponse,
   kusamaNftResponse,
+  openSeaArbitrumResponse,
   openSeaTestNetResponse,
   polkadotNftResponse,
 } from './responses';
@@ -67,4 +68,14 @@ test('getOpenSeaTestNetNft', async () => {
   );
 
   expect(data).toStrictEqual(openSeaTestNetResponse);
+});
+
+test('getOpenSeaArbitrumNft', async () => {
+  const data = await getOpenSeaNft(
+    '0x10d2baeb37a4079fc62cc716b08e2452936424b1',
+    422,
+    'arbitrum'
+  );
+
+  expect(data).toStrictEqual(openSeaArbitrumResponse);
 });

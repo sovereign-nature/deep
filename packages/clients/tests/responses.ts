@@ -283,3 +283,88 @@ export const openSeaTestNetResponse = {
     rarity: null,
   },
 };
+
+export const openSeaArbitrumResponse = {
+  collection: {
+    address: '0x10d2baeb37a4079fc62cc716b08e2452936424b1',
+    chain: 'arbitrum',
+    collection: '888alien',
+    contract_standard: 'erc721',
+    name: '888 Alien',
+    total_supply: 0,
+  },
+  nft: {
+    identifier: '422',
+    collection: '888alien',
+    contract: '0x10d2baeb37a4079fc62cc716b08e2452936424b1',
+    token_standard: 'erc721',
+    name: '888 ALIEN #422',
+    description: null,
+    image_url:
+      'https://888aliens.mypinata.cloud/ipfs/QmZwtoLybBugXHVrUpUQtPeN4PNfSq3jkBLu1fqrxNA6Gc/422.png',
+    metadata_url:
+      'https://888aliens.mypinata.cloud/ipfs/QmcYKUNnuQRBU5S87WCu89a8mEa3JJPF39k4ov4xjbouRJ/422',
+    opensea_url:
+      'https://opensea.io/assets/arbitrum/0x10d2baeb37a4079fc62cc716b08e2452936424b1/422',
+    updated_at: '2023-10-06T13:30:51.850177',
+    is_disabled: false,
+    is_nsfw: false,
+    traits: [
+      {
+        trait_type: 'Background',
+        display_type: null,
+        max_value: null,
+        value: 'Green',
+      },
+      {
+        trait_type: 'Body',
+        display_type: null,
+        max_value: null,
+        value: 'Cursed Marks',
+      },
+      {
+        trait_type: 'Mouth',
+        display_type: null,
+        max_value: null,
+        value: 'White Beard',
+      },
+      {
+        trait_type: 'Eyes',
+        display_type: null,
+        max_value: null,
+        value: 'Mii',
+      },
+      {
+        trait_type: 'Clothes',
+        display_type: null,
+        max_value: null,
+        value: 'Dragnir',
+      },
+      {
+        trait_type: 'Hair',
+        display_type: null,
+        max_value: null,
+        value: 'Straight Brown Horns',
+      },
+    ],
+    animation_url: null,
+    is_suspicious: false,
+    creator: '0x70ae1a02a86f576fa7dfc0287ab3c8c65280d367',
+    owners: [
+      {
+        address: '0x37f730b7bcdc7fc84f00820a3c1098dca28ff508',
+        quantity: 1,
+      },
+    ],
+    rarity: {
+      strategy_id: null,
+      strategy_version: null,
+      rank: 616,
+      score: null,
+      calculated_at: '',
+      max_rank: null,
+      tokens_scored: 0,
+      ranking_features: null,
+    },
+  },
+};
