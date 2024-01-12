@@ -64,9 +64,6 @@ export function initializeInbox() {
     console.log('!!!Web3 is not connected');
     return;
   }
-
-  console.log('!!!Web3 is connected');
-  connectToInbox();
 }
 
 async function connectToInbox() {
@@ -77,9 +74,12 @@ async function connectToInbox() {
       domain,
       isLimited: isLimited,
     });
+
     web3InboxClient.watchAccount((account) => {
       web3InboxClient!.register({ account, onSign });
     });
+
+    web3InboxClient.setAccount(getWeb3InboxAccount());
 
     configureInboxSubscription();
   } catch (error) {
