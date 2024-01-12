@@ -77,13 +77,8 @@ async function connectToInbox() {
       domain,
       isLimited: isLimited,
     });
-    let previousAccount: string | null = null;
     web3InboxClient.watchAccount((account) => {
-      if (account !== previousAccount) {
-        console.log('Account changed to', account);
-        previousAccount = account;
-        registerInbox();
-      }
+      web3InboxClient!.register({ account, onSign });
     });
 
     configureInboxSubscription();
