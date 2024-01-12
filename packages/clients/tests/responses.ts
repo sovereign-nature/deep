@@ -226,6 +226,14 @@ export const hotelHideawayResponse = {
 };
 
 export const openSeaTestNetResponse = {
+  collection: {
+    address: '0x38de3f11ba85d75f28778c6f44a97d29ea910cf2',
+    chain: 'sepolia',
+    collection: 'real-test-1',
+    contract_standard: 'erc1155',
+    name: 'REAL TEST 1',
+    total_supply: 0,
+  },
   nft: {
     identifier: '1',
     collection: 'real-test-1',
@@ -248,8 +256,16 @@ export const openSeaTestNetResponse = {
     creator: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
     owners: [
       {
+        address: '0x656dbd1d677dff4fd9d28d36e2d0f95a3cf27cbf',
+        quantity: 1,
+      },
+      {
+        address: '0x99af1e012d621aa2d384775e4097280ec7d9610d',
+        quantity: 1,
+      },
+      {
         address: '0x96ffa04a300294f810f754e0b95431c2821d3d50',
-        quantity: 98,
+        quantity: 95,
       },
       {
         address: '0xa7129173a57a21316b0785740f9f619fd17b74fd',
@@ -259,15 +275,96 @@ export const openSeaTestNetResponse = {
         address: '0xcab6acfd243d62419e7161d214b793636d29fa3a',
         quantity: 1,
       },
+      {
+        address: '0xd0f84a69e09e000cc450eca4094979b4da4d9098',
+        quantity: 1,
+      },
     ],
     rarity: null,
   },
+};
+
+export const openSeaArbitrumResponse = {
   collection: {
-    address: '0x38de3f11ba85d75f28778c6f44a97d29ea910cf2',
-    chain: 'sepolia',
-    collection: 'real-test-1',
-    contract_standard: 'erc1155',
-    name: 'REAL TEST 1',
+    address: '0x10d2baeb37a4079fc62cc716b08e2452936424b1',
+    chain: 'arbitrum',
+    collection: '888alien',
+    contract_standard: 'erc721',
+    name: '888 Alien',
     total_supply: 0,
+  },
+  nft: {
+    identifier: '422',
+    collection: '888alien',
+    contract: '0x10d2baeb37a4079fc62cc716b08e2452936424b1',
+    token_standard: 'erc721',
+    name: '888 ALIEN #422',
+    description: null,
+    image_url:
+      'https://888aliens.mypinata.cloud/ipfs/QmZwtoLybBugXHVrUpUQtPeN4PNfSq3jkBLu1fqrxNA6Gc/422.png',
+    metadata_url:
+      'https://888aliens.mypinata.cloud/ipfs/QmcYKUNnuQRBU5S87WCu89a8mEa3JJPF39k4ov4xjbouRJ/422',
+    opensea_url:
+      'https://opensea.io/assets/arbitrum/0x10d2baeb37a4079fc62cc716b08e2452936424b1/422',
+    updated_at: '2023-10-06T13:30:51.850177',
+    is_disabled: false,
+    is_nsfw: false,
+    traits: [
+      {
+        trait_type: 'Background',
+        display_type: null,
+        max_value: null,
+        value: 'Green',
+      },
+      {
+        trait_type: 'Body',
+        display_type: null,
+        max_value: null,
+        value: 'Cursed Marks',
+      },
+      {
+        trait_type: 'Mouth',
+        display_type: null,
+        max_value: null,
+        value: 'White Beard',
+      },
+      {
+        trait_type: 'Eyes',
+        display_type: null,
+        max_value: null,
+        value: 'Mii',
+      },
+      {
+        trait_type: 'Clothes',
+        display_type: null,
+        max_value: null,
+        value: 'Dragnir',
+      },
+      {
+        trait_type: 'Hair',
+        display_type: null,
+        max_value: null,
+        value: 'Straight Brown Horns',
+      },
+    ],
+    animation_url: null,
+    is_suspicious: false,
+    creator: '0x70ae1a02a86f576fa7dfc0287ab3c8c65280d367',
+    owners: [
+      {
+        address: '0x37f730b7bcdc7fc84f00820a3c1098dca28ff508',
+        quantity: 1,
+      },
+    ],
+    rarity: {
+      strategy_id: null,
+      strategy_version: null,
+      rank: 616,
+      score: null,
+      calculated_at: '',
+      max_rank: null,
+      tokens_scored: 0,
+      ranking_features: null,
+    },
   },
 };

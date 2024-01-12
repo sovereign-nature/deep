@@ -13,7 +13,8 @@
         "NODE_ENV",
         "PINATA_TOKEN",
         "ENVIRONMENT_URL",
-        "VITE_VISUALIZE_BUILD"
+        "VITE_VISUALIZE_BUILD",
+        "OPEN_SEA_API_KEY"
       ],
       "outputs": [
         "artifacts/**",
