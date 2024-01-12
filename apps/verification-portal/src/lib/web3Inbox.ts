@@ -141,6 +141,10 @@ export async function registerInbox() {
       });
   } catch (error) {
     console.error('Error registering account:', error);
+    console.log(`Account ${web3InboxAccount}`);
+    console.log(`Client ${web3InboxClient}`);
+    console.log(`Domain ${domain}`);
+    console.log(`onSign ${onSign}`);
   }
 }
 
