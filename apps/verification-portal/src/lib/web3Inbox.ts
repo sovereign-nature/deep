@@ -74,19 +74,36 @@ async function connectToInbox() {
     });
 
     web3InboxClient.watchAccount((account) => {
-      web3InboxClient!.register({ account, onSign });
+      console.log('Account changed, registering', account);
+      web3InboxClient!.register({ account, onSign, domain });
     });
 
-    web3InboxClient.setAccount(getWeb3InboxAccount());
+    await web3InboxClient.setAccount(getWeb3InboxAccount());
+
+    web3InboxClient.register({
+      account: getWeb3InboxAccount(),
+      onSign,
+      domain,
+    });
 
     web3InboxLoading.set(false);
 
-    const subscription = web3InboxClient.getSubscription();
+    const subscription = web3InboxClient.getSubscription(
+      getWeb3InboxAccount(),
+      domain
+    );
 
     const isSubscribed = web3InboxClient.isSubscribedToDapp(
       getWeb3InboxAccount(),
       domain
     );
+
+    const registered = await web3InboxClient.getAccountIsRegistered(
+      getWeb3InboxAccount()
+    );
+
+    console.log('User is registered:', registered);
+    console.log('With account:', getWeb3InboxAccount());
 
     console.log('User is subscribed to dApp:', isSubscribed);
     console.log('Subscription account', subscription?.account);
