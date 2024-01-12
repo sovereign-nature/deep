@@ -5,7 +5,7 @@
   import { isFeatureEnabled } from '$lib/utils';
   import { getContext, onMount } from 'svelte';
   import type { Writable } from 'svelte/store';
-  // import { registerInbox } from '$lib/web3Inbox';
+  import { registerInbox } from '$lib/web3Inbox';
 
   const web3Connected: Writable<boolean> = getContext('web3Connected');
   const web3InboxRegistered: Writable<boolean> = getContext(
