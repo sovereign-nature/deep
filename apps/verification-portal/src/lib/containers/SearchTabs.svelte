@@ -18,7 +18,7 @@
 
   // tab classes
   let classDefault =
-    'font-serif text-sm sm:text-base lg:text-xl xl:text-2xl text-gray-400 dark:text-gray-400 bg-deep-green dark:bg-black py-4 px-6 rounded transition mb-2 mt-0';
+    'font-serif text-sm sm:text-base lg:text-xl xl:text-2xl text-gray-400 dark:text-gray-400 bg-deep-green dark:bg-black py-2 px-3 sm:py-4 sm:px-6 rounded transition mb-2 mt-0';
   let classInactive =
     'bg-deep-green dark:bg-black bg-opacity-5 dark:bg-opacity-20 hover:dark:text-primary-300 hover:bg-opacity-10 hover:text-primary-300';
   let classActive =
@@ -41,7 +41,7 @@
   });
 </script>
 
-<h2 class="text-gray-400 lg:hidden mb-2">
+<h2 class="text-gray-400 lg:hidden mb-0 text-sm sm:text-xl">
   {$LL.collection()}
 </h2>
 <Tabs
@@ -49,7 +49,10 @@
   contentClass="bg-deep-green dark:bg-black p-6 md:p-12 bg-opacity-100 dark:bg-opacity-60 rounded-lg"
   divider={false}
 >
-  <h2 class="hidden lg:flex text-gray-400 me-2 py-4 mb-5 items-center">
+  <h2
+    class="hidden lg:flex text-gray-400 me-2 py-4 mb-2 items-center"
+    role="contentinfo"
+  >
     {$LL.collection()}
   </h2>
 
@@ -57,7 +60,7 @@
     <TabItem
       title="Hotel Hideaway"
       open={activeTab === 'hh'}
-      class="sm:pb-3 mr-2 sm:mr-0"
+      class="sm:pb-3 !mr-2 sm:!mr-0 !ml-0 lg:!ml-2 "
       defaultClass={classDefault}
       inactiveClasses={classInactive}
       activeClasses={classActive}
@@ -70,7 +73,7 @@
   <TabItem
     title="{$LL.sub0.collectionName()} "
     open={activeTab === 'sub0'}
-    class="!ml-0 sm:!ml-3 sm:pb-3"
+    class="!ml-0 sm:!ml-3 sm:pb-3 !mr-2 sm:!mr-0"
     defaultClass={classDefault}
     inactiveClasses={classInactive}
     activeClasses={classActive}
