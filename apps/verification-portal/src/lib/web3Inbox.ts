@@ -51,10 +51,11 @@ export function initializeInbox() {
     web3Connected = value;
     web3Connected ? connectToInbox() : clearInboxClient();
   });
+
   web3AddressStore.subscribe(async () => {
     if (web3InboxClient) {
-      await configureInboxSubscription();
       console.log('Inbox address changed, reconfiguring inbox client');
+      web3InboxClient.setAccount(getWeb3InboxAccount());
     } else {
       console.log('Address changed, no inbox client');
     }
