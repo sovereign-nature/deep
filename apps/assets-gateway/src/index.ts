@@ -1,4 +1,4 @@
-import { parseAddress } from '@sni/address-utils';
+import { getChainName, parseAddress } from '@sni/address-utils';
 import {
   OpenSeaResponse,
   PolkadotResponse,
@@ -17,22 +17,10 @@ export interface Env {
 
 app.get('/', (c) => c.text('DEEP Assets Gateway'));
 
-// TODO: Move methods to library, cover with tests
-function eip155ToName(chainId: number): string {
-  switch (chainId) {
-    case 1:
-      return 'ethereum';
-    case 11155111:
-      return 'sepolia';
-    default:
-      throw new Error(`Unknown chainId: ${chainId}`);
-  }
-}
-
 function getNetworkId(chainNamespace: string, chainId: string): string {
   switch (chainNamespace) {
     case 'eip155':
-      return eip155ToName(parseInt(chainId));
+      return getChainName(parseInt(chainId));
     case 'deep':
       return chainId;
     default:
