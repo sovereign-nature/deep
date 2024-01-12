@@ -59,11 +59,18 @@ export function initializeInbox() {
       console.log('Address changed, no inbox client');
     }
   });
-  if (!web3Connected) return;
+
+  if (!get(web3ModalStore).getIsConnected()) {
+    console.log('!!!Web3 is not connected');
+    return;
+  }
+
+  console.log('!!!Web3 is connected');
   connectToInbox();
 }
 
 async function connectToInbox() {
+  console.log('!!!Connecting to inbox');
   try {
     web3InboxClient = await Web3InboxConstructor.init({
       projectId,
