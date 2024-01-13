@@ -87,10 +87,10 @@ async function connectToInbox() {
       isLimited: isLimited,
     });
 
-    // web3InboxClient.watchAccount((account) => {
-    //   console.log('Account changed, registering', account);
-    //   web3InboxClient!.register({ account, onSign, domain });
-    // });
+    web3InboxClient.watchAccount((account) => {
+      console.log('Account changed, registering', account);
+      web3InboxClient!.register({ account, onSign, domain });
+    });
 
     await web3InboxClient.setAccount(account);
 
@@ -151,9 +151,13 @@ export async function registerInbox() {
 
   if (!registered) throw new Error(`Can't register account ${account}`);
 
-  await web3InboxClient.subscribeToDapp(account, domain);
+  let isSubscribed = false;
 
-  const isSubscribed = web3InboxClient.isSubscribedToDapp(account, domain);
+  //TODO: Fix this, this is brutal
+  while (!isSubscribed) {
+    await web3InboxClient.subscribeToDapp(account, domain);
+    isSubscribed = web3InboxClient.isSubscribedToDapp(account, domain);
+  }
 
   web3InboxSubscribed.set(isSubscribed);
 
@@ -161,9 +165,7 @@ export async function registerInbox() {
     `Account ${account} is registered ${registered} and subscribed ${isSubscribed}`
   );
 
-  if (isSubscribed) {
-    getInboxContent();
-  }
+  getInboxContent();
 }
 
 async function getInboxContent() {
