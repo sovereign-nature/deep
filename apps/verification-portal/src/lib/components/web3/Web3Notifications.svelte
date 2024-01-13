@@ -41,20 +41,25 @@
   });
 </script>
 
-{#if isFeatureEnabled('notificationsEnabled') && isLoaded && ($web3InboxRegistered || $web3Connected)}
+{#if isFeatureEnabled('notificationsEnabled') && isLoaded && (($web3InboxRegistered && $web3InboxSubscribed) || $web3Connected)}
   <RolloverBtn
     type="alert"
-    hasNew={$web3InboxRegistered ? hasMessages : false}
-    keepOpen={$web3InboxRegistered ? alertNew : !web3InboxLoading}
-    on:click={$web3InboxSubscribed
+    hasNew={$web3InboxRegistered && $web3InboxSubscribed ? hasMessages : false}
+    keepOpen={$web3InboxRegistered && $web3InboxSubscribed
+      ? alertNew
+      : !web3InboxLoading}
+    on:click={$web3InboxRegistered && $web3InboxSubscribed
       ? () => ($openInboxModal = true)
       : registerInbox}
   >
-    {$web3InboxSubscribed
+    {$web3InboxRegistered && $web3InboxSubscribed
       ? $LL.notifications.nrNotification($web3MessageCount)
       : $LL.notifications.subscribe()}
     <span slot="icon">
-      <BellIcon className="h-5 w-5 {$web3InboxRegistered ? '' : 'mx-1'}"
+      <BellIcon
+        className="h-5 w-5 {$web3InboxRegistered && web3InboxSubscribed
+          ? ''
+          : 'mx-1'}"
       ></BellIcon>
     </span>
   </RolloverBtn>

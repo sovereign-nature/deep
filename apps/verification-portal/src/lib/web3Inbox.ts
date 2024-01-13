@@ -38,6 +38,7 @@ export function setInboxContext() {
   setContext('web3InboxModalOpen', web3InboxModalOpen);
   setContext('web3InboxMessageCount', web3InboxMessageCount);
   setContext('web3InboxLoading', web3InboxLoading);
+
   web3ConnectedStore = getContext('web3Connected');
   web3AddressStore = getContext('web3Address');
   web3ModalStore = getContext('web3Modal');
@@ -55,7 +56,20 @@ export function initializeInbox() {
 
   web3AddressStore.subscribe(async () => {
     if (web3InboxClient) {
-      console.log('Inbox address changed, reconfiguring inbox client');
+      const account = getWeb3InboxAccount();
+      console.log(
+        `Inbox address changed to ${account}, reconfiguring inbox client`
+      );
+      const registered = await web3InboxClient.getAccountIsRegistered(account);
+      const subscribed = web3InboxClient.isSubscribedToDapp(account, domain);
+
+      web3InboxRegistered.set(registered);
+      web3InboxSubscribed.set(subscribed);
+
+      console.log(
+        `!!Registered account ${account} ${registered}, subscribed: ${subscribed}`
+      );
+
       web3InboxClient.setAccount(getWeb3InboxAccount());
     } else {
       console.log('Address changed, no inbox client');
@@ -73,28 +87,28 @@ async function connectToInbox() {
       isLimited: isLimited,
     });
 
-    web3InboxClient.watchAccount((account) => {
-      console.log('Account changed, registering', account);
-      web3InboxClient!.register({ account, onSign, domain });
-    });
+    // web3InboxClient.watchAccount((account) => {
+    //   console.log('Account changed, registering', account);
+    //   web3InboxClient!.register({ account, onSign, domain });
+    // });
 
     await web3InboxClient.setAccount(account);
 
-    await web3InboxClient.register({
-      account,
-      onSign,
-      domain,
-    });
-
-    web3InboxLoading.set(false);
+    // await web3InboxClient.register({
+    //   account,
+    //   onSign,
+    //   domain,
+    // });
 
     // web3InboxClient.getSubscription(account, domain);
 
-    const isSubscribed = web3InboxClient.isSubscribedToDapp(account, domain);
     const registered = await web3InboxClient.getAccountIsRegistered(account);
-
     web3InboxRegistered.set(registered);
+
+    const isSubscribed = web3InboxClient.isSubscribedToDapp(account, domain);
     web3InboxSubscribed.set(isSubscribed);
+
+    web3InboxLoading.set(false);
 
     console.log('!!Subscribed:', isSubscribed);
     console.log('!!Account: ', account);
@@ -125,25 +139,35 @@ export async function registerInbox() {
 
   const account = getWeb3InboxAccount();
 
-  try {
-    const isSubscribed = web3InboxClient.isSubscribedToDapp(account, domain);
-    web3InboxSubscribed.set(isSubscribed);
-    !isSubscribed && subscribeAndSetupInboxClient();
-    console.log('Getting messages & types');
-    getInboxContent();
-  } catch (error) {
-    console.error('Error registering account:', error);
-  }
-}
+  await web3InboxClient.register({
+    account,
+    domain,
+    onSign,
+  });
 
-function subscribeAndSetupInboxClient() {
-  console.log('Subscribing to dApp');
-  if (web3InboxClient) {
-    web3InboxClient.subscribeToDapp(getWeb3InboxAccount(), domain);
+  const registered = await web3InboxClient.getAccountIsRegistered(account);
+
+  web3InboxRegistered.set(registered);
+
+  if (!registered) throw new Error(`Can't register account ${account}`);
+
+  await web3InboxClient.subscribeToDapp(account, domain);
+
+  const isSubscribed = web3InboxClient.isSubscribedToDapp(account, domain);
+
+  web3InboxSubscribed.set(isSubscribed);
+
+  console.log(
+    `Account ${account} is registered ${registered} and subscribed ${isSubscribed}`
+  );
+
+  if (isSubscribed) {
+    getInboxContent();
   }
 }
 
 async function getInboxContent() {
+  console.log('Getting inbox content');
   getNotificationTypes();
   getMessages();
 }
