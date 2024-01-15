@@ -8,6 +8,7 @@ export const GET: RequestHandler = async ({ url }) => {
   const address = url.searchParams.get('address');
   const collection = url.searchParams.get('collection');
   const network = dev ? 'testnets-api' : 'api';
+  //TODO: add network switch here
   const response = await fetch(
     `https://${network}.opensea.io/api/v2/chain/sepolia/account/${address}/nfts?collection=${collection}&limit=50`,
     {
@@ -36,6 +37,7 @@ export const GET: RequestHandler = async ({ url }) => {
         name: asset.collection || '',
         description: asset.collection.description || '',
       },
+      //TODO: add network switch here
       address: `did:asset:eip155:${getChainId('sepolia')}.${
         asset.token_standard
       }:${asset.contract}:${asset.identifier}`,

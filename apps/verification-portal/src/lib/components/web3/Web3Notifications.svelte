@@ -11,6 +11,9 @@
   const web3InboxRegistered: Writable<boolean> = getContext(
     'web3InboxRegistered'
   );
+  const web3InboxSubscribed: Writable<boolean> = getContext(
+    'web3InboxSubscribed'
+  );
   const openInboxModal: Writable<boolean> = getContext('web3InboxModalOpen');
   const web3MessageCount: Writable<number> = getContext(
     'web3InboxMessageCount'
@@ -38,20 +41,25 @@
   });
 </script>
 
-{#if isFeatureEnabled('notificationsEnabled') && isLoaded && ($web3InboxRegistered || $web3Connected)}
+{#if isFeatureEnabled('notificationsEnabled') && isLoaded && (($web3InboxRegistered && $web3InboxSubscribed) || $web3Connected)}
   <RolloverBtn
     type="alert"
-    hasNew={$web3InboxRegistered ? hasMessages : false}
-    keepOpen={$web3InboxRegistered ? alertNew : !web3InboxLoading}
-    on:click={$web3InboxRegistered
+    hasNew={$web3InboxRegistered && $web3InboxSubscribed ? hasMessages : false}
+    keepOpen={$web3InboxRegistered && $web3InboxSubscribed
+      ? alertNew
+      : !web3InboxLoading}
+    on:click={$web3InboxRegistered && $web3InboxSubscribed
       ? () => ($openInboxModal = true)
       : registerInbox}
   >
-    {$web3InboxRegistered
+    {$web3InboxRegistered && $web3InboxSubscribed
       ? $LL.notifications.nrNotification($web3MessageCount)
       : $LL.notifications.subscribe()}
     <span slot="icon">
-      <BellIcon className="h-5 w-5 {$web3InboxRegistered ? '' : 'mx-1'}"
+      <BellIcon
+        className="h-5 w-5 {$web3InboxRegistered && web3InboxSubscribed
+          ? ''
+          : 'mx-1'}"
       ></BellIcon>
     </span>
   </RolloverBtn>

@@ -5,7 +5,7 @@ export const formSearch = {
   formSearch: async (event: ServerLoadEvent) => {
     const form = await event.request.formData();
     const search = form.get('search') as string;
-    const prefix = 'did:asset:deep:polkadot.asset-hub:13:';
+    const prefix = 'did:asset:deep:polkadot.asset-hub:13:'; //TODO: add network switch here, should be dynamically formed
     const regex = new RegExp(`^${prefix}`);
     const isMatch = regex.test(search);
 

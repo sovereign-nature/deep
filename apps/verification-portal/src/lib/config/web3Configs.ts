@@ -49,7 +49,11 @@ export const metadata = {
   ],
 };
 
-export const ethersConfig = { metadata, defaultChainId: 1, enableCoinbase: 0 };
+export const ethersConfig = {
+  metadata,
+  defaultChainId: 1,
+  enableCoinbase: false,
+};
 
 export const themeVariablesDark = {
   '--w3m-font-family': 'Roboto, sans-serif',

@@ -1,6 +1,6 @@
 <script lang="ts">
   import FeaturedContainer from '$lib/components/featured/index.svelte';
-  import Web3Featured from '$lib/data/Web3Featured.json';
+  import Web3Featured from '$lib/data/Web3Featured.json'; //TODO: Replace with API call to highlights services
   import type { AssetFeatured } from '$lib/types';
   import { shuffleArray } from '$lib/utils';
 

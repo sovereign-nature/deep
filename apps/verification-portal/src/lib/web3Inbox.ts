@@ -1,11 +1,11 @@
 import { getContext, setContext } from 'svelte';
 import type { Writable } from 'svelte/store';
-import { writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 
 import { projectId } from '$lib/config/web3Configs';
-import { onSign } from '$lib/web3Modal';
+import { onSign, type Web3Modal } from '$lib/web3Modal';
 import type { NotifyClientTypes } from '@walletconnect/notify-client';
-import { Web3InboxClient as Web3InboxConstructor } from '@web3inbox/core';
+import { Web3InboxClient } from '@web3inbox/core';
 
 const domain = 'real.sovereignnature.com';
 const isLimited = process.env.NODE_ENV === 'production';
@@ -19,14 +19,15 @@ const web3InboxModalOpen = writable(false);
 const web3InboxMessageCount = writable(0);
 const web3InboxLoading = writable(true);
 
-const web3ChainId = 1;
-let web3Address = '';
-let web3InboxClient: Web3InboxConstructor | null = null;
-let web3Connected: boolean;
-let web3InboxAccount: string;
+let web3InboxClient: Web3InboxClient | null;
 let web3ConnectedStore: Writable<boolean>;
 let web3AddressStore: Writable<string>;
-const getWeb3InboxAccount = () => `eip155:${web3ChainId}:${web3Address}`;
+let web3ModalStore: Writable<Web3Modal>;
+
+const getWeb3InboxAccount = () => {
+  const address = `eip155:1:${get(web3ModalStore).getAddress()}`;
+  return address;
+};
 
 // Web3Inbox Context Setup
 export function setInboxContext() {
@@ -37,65 +38,88 @@ export function setInboxContext() {
   setContext('web3InboxModalOpen', web3InboxModalOpen);
   setContext('web3InboxMessageCount', web3InboxMessageCount);
   setContext('web3InboxLoading', web3InboxLoading);
+
   web3ConnectedStore = getContext('web3Connected');
   web3AddressStore = getContext('web3Address');
+  web3ModalStore = getContext('web3Modal');
 }
 
 export function initializeInbox() {
-  web3ConnectedStore.subscribe((value) => {
-    web3Connected = value;
-    web3Connected ? connectToInbox() : clearInboxClient();
+  web3ConnectedStore.subscribe((connected) => {
+    if (connected) {
+      console.log('Connected, proceeding to connect to inbox');
+      connectToInbox();
+    } else {
+      clearInboxClient();
+    }
   });
-  web3AddressStore.subscribe(async (value) => {
-    web3Address = value;
+
+  web3AddressStore.subscribe(async () => {
     if (web3InboxClient) {
-      await configureInboxSubscription();
-      console.log('Inbox address changed, reconfiguring inbox client');
+      const account = getWeb3InboxAccount();
+      console.log(
+        `Inbox address changed to ${account}, reconfiguring inbox client`
+      );
+      const registered = await web3InboxClient.getAccountIsRegistered(account);
+      const subscribed = web3InboxClient.isSubscribedToDapp(account, domain);
+
+      web3InboxRegistered.set(registered);
+      web3InboxSubscribed.set(subscribed);
+
+      console.log(
+        `!!Registered account ${account} ${registered}, subscribed: ${subscribed}`
+      );
+
+      web3InboxClient.setAccount(getWeb3InboxAccount());
     } else {
       console.log('Address changed, no inbox client');
     }
   });
-  if (!web3Connected) return;
-  connectToInbox();
 }
 
 async function connectToInbox() {
+  console.log('Connecting to inbox');
+  const account = getWeb3InboxAccount();
   try {
-    web3InboxClient = await Web3InboxConstructor.init({
+    web3InboxClient = await Web3InboxClient.init({
       projectId,
       domain,
       isLimited: isLimited,
     });
-    let previousAccount: string | null = null;
+
     web3InboxClient.watchAccount((account) => {
-      if (account !== previousAccount) {
-        console.log('Account changed to', account);
-        previousAccount = account;
-        registerInbox();
-      }
+      console.log('Account changed, registering', account);
+
+      if (!web3InboxClient) return;
+
+      web3InboxClient.register({ account, onSign, domain });
     });
 
-    configureInboxSubscription();
+    await web3InboxClient.setAccount(account);
+
+    // await web3InboxClient.register({
+    //   account,
+    //   onSign,
+    //   domain,
+    // });
+
+    // web3InboxClient.getSubscription(account, domain);
+
+    const registered = await web3InboxClient.getAccountIsRegistered(account);
+    web3InboxRegistered.set(registered);
+
+    const isSubscribed = web3InboxClient.isSubscribedToDapp(account, domain);
+    web3InboxSubscribed.set(isSubscribed);
+
+    web3InboxLoading.set(false);
+
+    console.log('!!Subscribed:', isSubscribed);
+    console.log('!!Account: ', account);
+
+    if (isSubscribed) getInboxContent();
   } catch (error) {
     console.error('Error initializing inbox:', error);
   }
-}
-
-async function configureInboxSubscription() {
-  if (!web3InboxClient) return connectToInbox();
-  web3InboxAccount = getWeb3InboxAccount();
-  await web3InboxClient.setAccount(web3InboxAccount);
-
-  console.log('Account Set For', web3InboxClient.getAccount());
-
-  const registered =
-    await web3InboxClient.getAccountIsRegistered(web3InboxAccount);
-
-  console.log('Registered status', registered);
-
-  web3InboxRegistered.set(registered);
-  registered && registerInbox();
-  web3InboxLoading.set(false);
 }
 
 async function clearInboxClient() {
@@ -116,47 +140,39 @@ export async function registerInbox() {
     return;
   }
 
-  try {
-    await web3InboxClient
-      .register({
-        account: web3InboxAccount,
-        domain,
-        onSign,
-      })
-      .then(() => {
-        console.log('Account registered successfully ');
-        if (web3InboxClient) {
-          const isSubscribed = web3InboxClient.isSubscribedToDapp(
-            web3InboxAccount,
-            domain
-          );
-          web3InboxSubscribed.set(isSubscribed);
-          console.log('isSubscribed', isSubscribed);
-          !isSubscribed && subscribeAndSetupInboxClient();
-        }
-      })
-      .then(() => {
-        console.log('Getting messages & types');
-        getInboxContent();
-      });
-  } catch (error) {
-    console.error('Error registering account:', error);
-    console.log(`Account ${web3InboxAccount}`);
-    console.log(`Client ${web3InboxClient}`);
-    console.log(`Domain ${domain}`);
-    console.log(`onSign ${onSign}`);
-  }
-}
+  const account = getWeb3InboxAccount();
 
-function subscribeAndSetupInboxClient() {
-  console.log('Subscribing to dApp');
-  if (web3InboxClient) {
-    web3InboxClient.subscribeToDapp(web3InboxAccount, domain);
-    configureInboxSubscription();
+  await web3InboxClient.register({
+    account,
+    domain,
+    onSign,
+  });
+
+  const registered = await web3InboxClient.getAccountIsRegistered(account);
+
+  web3InboxRegistered.set(registered);
+
+  if (!registered) throw new Error(`Can't register account ${account}`);
+
+  let isSubscribed = false;
+
+  //TODO: Fix this, this is brutal
+  while (!isSubscribed) {
+    await web3InboxClient.subscribeToDapp(account, domain);
+    isSubscribed = web3InboxClient.isSubscribedToDapp(account, domain);
   }
+
+  web3InboxSubscribed.set(isSubscribed);
+
+  console.log(
+    `Account ${account} is registered ${registered} and subscribed ${isSubscribed}`
+  );
+
+  getInboxContent();
 }
 
 async function getInboxContent() {
+  console.log('Getting inbox content');
   getNotificationTypes();
   getMessages();
 }
@@ -167,10 +183,13 @@ async function getMessages() {
     getWeb3InboxAccount(),
     domain
   );
+
+  console.log('Messages:', messages);
+
   setupMessages(messages);
   web3InboxClient.watchMessages(
     (m) => setupMessages(m),
-    web3InboxAccount,
+    getWeb3InboxAccount(),
     domain
   );
 }
@@ -186,11 +205,12 @@ function sortMessages(messages: NotifyClientTypes.NotifyMessageRecord[]) {
 
 async function getNotificationTypes() {
   if (!web3InboxClient) return;
-  const types = await web3InboxClient.getNotificationTypes(
+  const types = web3InboxClient.getNotificationTypes(
     getWeb3InboxAccount(),
     domain
   );
   const transformTypes = Object.values(types);
+  console.log('Notification types:', transformTypes);
   web3InboxTypes.set(transformTypes);
 }
 

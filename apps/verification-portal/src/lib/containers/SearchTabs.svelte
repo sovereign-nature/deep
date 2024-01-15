@@ -14,7 +14,7 @@
   import { isFeatureEnabled } from '$lib/utils';
   const url = $page.url;
 
-  let activeTab = 'hh';
+  let activeTab = 'hh'; //TODO: soundwaves should be an active tab
 
   // tab classes
   let classDefault =
@@ -56,37 +56,6 @@
     {$LL.collection()}
   </h2>
 
-  <Web2SearchContainer campaign="hotel_hideaway">
-    <TabItem
-      title="Hotel Hideaway"
-      open={activeTab === 'hh'}
-      class="sm:pb-3 !mr-2 sm:!mr-0 !ml-0 lg:!ml-2 "
-      defaultClass={classDefault}
-      inactiveClasses={classInactive}
-      activeClasses={classActive}
-      on:click={() => handleTabClick('hh')}
-    >
-      <Web2SearchInput placeholder={$LL.web2.search.placeholder()} />
-      <SearchResults />
-    </TabItem>
-  </Web2SearchContainer>
-  <TabItem
-    title="{$LL.sub0.collectionName()} "
-    open={activeTab === 'sub0'}
-    class="!ml-0 sm:!ml-3 sm:pb-3 !mr-2 sm:!mr-0"
-    defaultClass={classDefault}
-    inactiveClasses={classInactive}
-    activeClasses={classActive}
-    on:click={() => handleTabClick('sub0')}
-  >
-    <Web3SearchInput
-      network="sub0"
-      goIcon
-      inputmode="numeric"
-      placeholder={$LL.sub0.placeholder()}
-    />
-    <Web3Assets collectionName={$LL.sub0.collectionName()} />
-  </TabItem>
   {#if isFeatureEnabled('POCTabEnabled')}
     <Web3Connection collectionId="real-test-1">
       <TabItem
@@ -112,4 +81,35 @@
       </TabItem>
     </Web3Connection>
   {/if}
+  <TabItem
+    title="{$LL.sub0.collectionName()} "
+    open={activeTab === 'sub0'}
+    class="!ml-0 sm:!ml-3 sm:pb-3 !mr-2 sm:!mr-0"
+    defaultClass={classDefault}
+    inactiveClasses={classInactive}
+    activeClasses={classActive}
+    on:click={() => handleTabClick('sub0')}
+  >
+    <Web3SearchInput
+      network="sub0"
+      goIcon
+      inputmode="numeric"
+      placeholder={$LL.sub0.placeholder()}
+    />
+    <Web3Assets collectionName={$LL.sub0.collectionName()} />
+  </TabItem>
+  <Web2SearchContainer campaign="hotel_hideaway">
+    <TabItem
+      title="Hotel Hideaway"
+      open={activeTab === 'hh'}
+      class="sm:pb-3 !mr-2 sm:!mr-0 !ml-0 lg:!ml-2 "
+      defaultClass={classDefault}
+      inactiveClasses={classInactive}
+      activeClasses={classActive}
+      on:click={() => handleTabClick('hh')}
+    >
+      <Web2SearchInput placeholder={$LL.web2.search.placeholder()} />
+      <SearchResults />
+    </TabItem>
+  </Web2SearchContainer>
 </Tabs>

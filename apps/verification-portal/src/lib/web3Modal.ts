@@ -6,17 +6,18 @@ import {
   themeVariablesLight,
 } from '$lib/config/web3Configs';
 import { isDarkModePreferred, isFeatureEnabled } from '$lib/utils';
+import { createWeb3Modal, defaultConfig } from '@web3modal/ethers';
 import { BrowserProvider } from 'ethers';
 import { getContext, setContext } from 'svelte';
 import { writable } from 'svelte/store';
-
 const modal = writable();
-let web3Modal;
+export type Web3Modal = ReturnType<typeof createWeb3Modal>;
+let web3Modal: Web3Modal;
 
 const web3Connected = writable(false);
 const web3Address = writable();
 const web3ChainId = writable();
-const web3SelectedNetworkID = writable(undefined);
+const web3SelectedNetworkID = writable(1);
 let pendingChainSwitch = false;
 
 export function initializeContext() {
@@ -27,7 +28,7 @@ export function initializeContext() {
   setContext('web3SelectedNetworkID', web3SelectedNetworkID);
 }
 
-export function initializeModal(createWeb3Modal, defaultConfig) {
+export function initializeModal() {
   const modalConfig = defaultConfig({
     ...ethersConfig,
   });
@@ -44,7 +45,8 @@ export function initializeModal(createWeb3Modal, defaultConfig) {
 function setSubscriptions() {
   //Track network selected network to trigger chain switch after modal is connected or re-connected
   web3Modal.subscribeState(async ({ selectedNetworkId }) => {
-    web3SelectedNetworkID.set(selectedNetworkId);
+    web3SelectedNetworkID.set(selectedNetworkId ? selectedNetworkId : 1);
+
     if (selectedNetworkId && selectedNetworkId !== web3Modal.getChainId()) {
       pendingChainSwitch = true;
     } else {
@@ -95,8 +97,12 @@ export function modalHandleTheme(theme: string) {
 
 export async function onSign(message: string) {
   console.log('Signing message:', message);
+
   if (!window) return '';
+
   const walletProvider = web3Modal.getWalletProvider();
+
+  if (!walletProvider) throw new Error('No wallet provider found');
 
   const ethersProvider = new BrowserProvider(walletProvider);
   console.log('Provider:', ethersProvider);
@@ -111,5 +117,5 @@ export async function onSign(message: string) {
 }
 
 export function getWeb3Modal() {
-  return getContext('web3Modal') as Web3Modal;
+  return getContext('web3Modal') as ReturnType<typeof createWeb3Modal>;
 }
