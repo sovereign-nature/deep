@@ -89,7 +89,10 @@ async function connectToInbox() {
 
     web3InboxClient.watchAccount((account) => {
       console.log('Account changed, registering', account);
-      web3InboxClient!.register({ account, onSign, domain });
+
+      if (!web3InboxClient) return;
+
+      web3InboxClient.register({ account, onSign, domain });
     });
 
     await web3InboxClient.setAccount(account);
