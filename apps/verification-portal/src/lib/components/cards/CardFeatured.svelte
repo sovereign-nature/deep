@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { AssetFeatured } from '$lib/types';
   import NFTImage from '$lib/components/NFTImage.svelte';
-  export let item: AssetFeatured;
+  import type { DeepAsset } from '@sni/types';
+  export let item: DeepAsset;
   let showId = item.tokenId !== undefined;
   const containerClass = showId ? 'sm:grid-cols-6' : 'sm:grid-cols-4';
   const titleClass = showId ? 'col-span-3 lg:col-span-4' : 'col-span-full';

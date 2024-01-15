@@ -1,20 +1,22 @@
 <script lang="ts">
-  import Web3Featured from '$lib/data/Web3Featured.json';
-  import type { AssetFeatured, Web3DataState } from '$lib/types';
+  // import Web3Featured from '$lib/data/Web3Featured.json';
+  import type { Web3DataState } from '$lib/types';
   import { shuffleArray } from '$lib/utils';
   import { getContext, setContext } from 'svelte';
   import { writable } from 'svelte/store';
   import type { Writable } from 'svelte/store';
+  import type { DeepAsset } from '@sni/types';
 
   export let collectionId: string;
+  export let highlights: DeepAsset[] = [];
 
   const web3DataState: Web3DataState = {
     loaded: false,
     error: false,
   };
 
-  let items: AssetFeatured[] = [];
-  let featured: AssetFeatured[] = shuffleArray(Web3Featured).slice(0, 3);
+  let items: DeepAsset[] = [];
+  let featured: DeepAsset[] = shuffleArray(highlights).slice(0, 3);
   let web3Items = writable(items);
   const web3Response = writable(web3DataState);
 

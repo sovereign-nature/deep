@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let featuredItems: AssetFeatured[];
-  import type { AssetFeatured } from '$lib/types';
+  export let featuredItems: DeepAsset[];
+  import type { DeepAsset } from '@sni/types';
   import CardFeatured from '$lib/components/cards/CardFeatured.svelte';
   import LL from '$lib/i18n/i18n-svelte';
 </script>

@@ -13,7 +13,7 @@ export const load = async ({ fetch, url }) => {
     highlights = await highlightsResponse.json();
   }
 
-  console.log(highlights);
+  console.log('Server highlights: ', highlights);
 
   return { highlights };
 };

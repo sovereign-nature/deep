@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import LayoutLanding from '$lib/containers/LayoutLanding.svelte';
 
   import ShareCard from '$lib/components/ShareCard.svelte';
@@ -6,6 +6,8 @@
   import SearchTabs from '$lib/containers/SearchTabs.svelte';
 
   import { LL } from '$lib/i18n/i18n-svelte';
+
+  export let data;
 </script>
 
 <ShareCard />
@@ -32,5 +34,5 @@
     </span>
   </div>
 
-  <SearchTabs />
+  <SearchTabs highlights={data.highlights} />
 </LayoutLanding>
