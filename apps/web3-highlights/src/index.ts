@@ -1,12 +1,14 @@
 import { DEEP_ASSETS_GATEWAY } from '@sni/constants';
 import { DeepAsset } from '@sni/types';
 import { Hono } from 'hono';
+import { cors } from 'hono/cors';
 
 type Bindings = {
   assets: ServiceWorkerGlobalScope;
 };
 
 const app = new Hono<{ Bindings: Bindings }>();
+app.use('/*', cors({ origin: '*' }));
 
 app.get('/', (c) => c.text('DEEP Web3 Highlights'));
 
@@ -29,6 +31,7 @@ async function fetchAssets(
     //TODO: use local fetch in dev mode
     const response = await serviceWorker.fetch(url);
     const asset: DeepAsset = await response.json();
+    asset.address = `${collectionAddress}:${tokenId}`;
     assets.push(asset);
   }
 
@@ -52,7 +55,7 @@ app.get('/:collectionId', async (c) => {
       );
       break;
     default:
-      throw new Error(`Unknown collectionId: ${collectionId}`);
+      return c.text('Collection not found', 404);
   }
 
   return c.json(assets);
