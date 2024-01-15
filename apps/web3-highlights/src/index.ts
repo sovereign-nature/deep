@@ -52,7 +52,7 @@ app.get('/:collectionId', async (c) => {
       );
       break;
     default:
-      throw new Error(`Unknown collectionId: ${collectionId}`);
+      return c.text('Collection not found', 404);
   }
 
   return c.json(assets);
