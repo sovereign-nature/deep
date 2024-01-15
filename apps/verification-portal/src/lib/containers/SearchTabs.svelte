@@ -26,6 +26,8 @@
   let classActive =
     'text-primary-300 dark:text-primary-200  dark:bg-opacity-60 transition';
 
+  let tabClass = '';
+
   function handleTabClick(tab: string) {
     activeTab = tab;
     if (activeTab === 'hh') {
@@ -49,6 +51,7 @@
 <Tabs
   style="pill"
   contentClass="bg-deep-green dark:bg-black p-6 md:p-12 bg-opacity-100 dark:bg-opacity-60 rounded-lg"
+  defaultClass="flex flex-wrap gap-x-3 pb-2 "
   divider={false}
 >
   <h2
@@ -64,7 +67,7 @@
       <TabItem
         title="{$LL.soundwaves.collectionName()} "
         open={activeTab === 'soundwaves'}
-        class="!ml-0 sm:!ml-3 sm:pb-3"
+        class={tabClass}
         defaultClass={classDefault}
         inactiveClasses={classInactive}
         activeClasses={classActive}
@@ -87,7 +90,7 @@
   <TabItem
     title="{$LL.sub0.collectionName()} "
     open={activeTab === 'sub0'}
-    class="!ml-0 sm:!ml-3 sm:pb-3 !mr-2 sm:!mr-0"
+    class={tabClass}
     defaultClass={classDefault}
     inactiveClasses={classInactive}
     activeClasses={classActive}
@@ -105,7 +108,7 @@
     <TabItem
       title="Hotel Hideaway"
       open={activeTab === 'hh'}
-      class="sm:pb-3 !mr-2 sm:!mr-0 !ml-0 lg:!ml-2 "
+      class={tabClass}
       defaultClass={classDefault}
       inactiveClasses={classInactive}
       activeClasses={classActive}
