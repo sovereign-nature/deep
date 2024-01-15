@@ -3,11 +3,8 @@
   import { shuffleArray } from '$lib/utils';
   import type { DeepAsset } from '@sni/types';
 
-  export let highlights: DeepAsset[] = [];
-
-  //TODO: Move processing to load function
-  // Shuffle the items array and select the first 3 items
-  let featured: DeepAsset[] = shuffleArray(highlights).slice(0, 3);
+  export let highlights: DeepAsset[];
 </script>
 
-<FeaturedContainer featuredItems={featured} />
+<!-- Move shuffling to load function -->
+<FeaturedContainer featuredItems={shuffleArray(highlights).slice(0, 3)} />
