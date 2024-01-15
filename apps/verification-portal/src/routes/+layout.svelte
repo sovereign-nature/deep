@@ -16,7 +16,7 @@
 
   let isLoading = false;
 
-  beforeNavigate(({ to, from }) => {
+  beforeNavigate(({ to }) => {
     if (!to?.route.id) return; // No loading bar for external links
 
     isLoading = true;
