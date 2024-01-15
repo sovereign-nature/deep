@@ -1,6 +1,6 @@
 import { DIRECTUS_API_KEY, VERCEL_URL } from '$env/static/private';
 import { parseAddress } from '@sni/address-utils';
-import { getEntity, getNewsBySteward } from '@sni/clients/data.js';
+import { getEntity, getNewsBySteward } from '@sni/clients/data.js'; //TODO: Do we need js postfix?
 import { getLinkByAddress } from '@sni/clients/link.js';
 import { DEEP_ASSETS_GATEWAY } from '@sni/constants';
 import { error } from '@sveltejs/kit';

@@ -101,10 +101,8 @@ export function updateQueryParams(
   }
 }
 
-import type { AssetFeatured } from '$lib/types';
-
 // Function to shuffle array randomly
-export function shuffleArray(array: AssetFeatured[]) {
+export function shuffleArray(array: DeepAsset[]) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -124,6 +122,7 @@ export function isDarkModePreferred() {
 }
 
 import config from '$lib/config/siteConfigs';
+import type { DeepAsset } from '@sni/types';
 export function isFeatureEnabled(feature: string) {
   let isEnabled = false;
 

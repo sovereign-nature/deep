@@ -8,9 +8,11 @@
   import FeaturedContainer from '$lib/components/featured/Web3Featured.svelte';
   import { LL } from '$lib/i18n/i18n-svelte';
   import Web3Subscribe from '$lib/components/web3/Web3Subscribe.svelte';
+  import type { DeepAsset } from '@sni/types';
 
   export let web3enabled = false;
   export let collectionName: string;
+  export let highlights: DeepAsset[] = [];
   const web3Items: Writable<AssetFeatured[]> = getContext('web3Items');
   const web3Connected: Writable<boolean> = getContext('web3Connected');
   const web3Response: Writable<Web3DataState> = getContext('web3Response');
@@ -92,6 +94,6 @@
       {/if}
     </div>
   {:else}
-    <FeaturedContainer />
+    <FeaturedContainer {highlights} />
   {/if}
 {/key}

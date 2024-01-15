@@ -12,9 +12,11 @@
   import Web3SearchInput from '$lib/components/search/Web3SearchInput.svelte';
   import Web3Assets from '$lib/components/web3/Web3AssetsContainer.svelte';
   import { isFeatureEnabled } from '$lib/utils';
+  import type { DeepAsset } from '@sni/types';
   const url = $page.url;
 
   let activeTab = 'hh'; //TODO: soundwaves should be an active tab
+  export let highlights: DeepAsset[] = [];
 
   // tab classes
   let classDefault =
@@ -57,7 +59,8 @@
   </h2>
 
   {#if isFeatureEnabled('POCTabEnabled')}
-    <Web3Connection collectionId="real-test-1">
+    <!-- TODO: Unify Web3 tabs architecture -->
+    <Web3Connection collectionId="real-test-1" {highlights}>
       <TabItem
         title="{$LL.soundwaves.collectionName()} "
         open={activeTab === 'soundwaves'}
@@ -96,7 +99,7 @@
       inputmode="numeric"
       placeholder={$LL.sub0.placeholder()}
     />
-    <Web3Assets collectionName={$LL.sub0.collectionName()} />
+    <Web3Assets collectionName={$LL.sub0.collectionName()} {highlights} />
   </TabItem>
   <Web2SearchContainer campaign="hotel_hideaway">
     <TabItem
