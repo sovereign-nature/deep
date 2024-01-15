@@ -14,7 +14,7 @@
   import { isFeatureEnabled } from '$lib/utils';
   const url = $page.url;
 
-  let activeTab = 'hh';
+  let activeTab = 'hh'; //TODO: soundwaves should be an active tab
 
   // tab classes
   let classDefault =
