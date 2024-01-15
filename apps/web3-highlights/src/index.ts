@@ -1,12 +1,14 @@
 import { DEEP_ASSETS_GATEWAY } from '@sni/constants';
 import { DeepAsset } from '@sni/types';
 import { Hono } from 'hono';
+import { cors } from 'hono/cors';
 
 type Bindings = {
   assets: ServiceWorkerGlobalScope;
 };
 
 const app = new Hono<{ Bindings: Bindings }>();
+app.use('/*', cors());
 
 app.get('/', (c) => c.text('DEEP Web3 Highlights'));
 
