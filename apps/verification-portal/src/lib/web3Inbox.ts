@@ -79,7 +79,7 @@ export function initializeInbox() {
         registerInbox();
       } else {
         console.log(
-          'Inbox account changed to no address, clearing inbox client' //TODO: Probably we need to call a cleanup function here
+          'Inbox account changed to no address, inbox client should be cleared' //TODO: Probably we need to call a cleanup function here
         );
       }
     } else {

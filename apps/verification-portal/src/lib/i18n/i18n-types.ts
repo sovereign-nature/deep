@@ -121,11 +121,11 @@ type RootTranslation = {
 		 */
 		nrNotification: RequiredParams<'0'>
 		/**
-		 * S​u​b​s​c​r​i​b​e​ ​t​o​ ​u​p​d​a​t​e​s
+		 * E​n​a​b​l​e
 		 */
 		subscribe: string
 		/**
-		 * S​u​b​s​c​r​i​b​e​ ​t​o​ ​c​o​l​l​e​c​t​i​o​n
+		 * E​n​a​b​l​e​ ​n​o​t​i​f​i​c​a​t​i​o​n​s
 		 */
 		subscribeCollection: string
 		/**
@@ -149,6 +149,14 @@ type RootTranslation = {
 		 * M​e​s​s​a​g​e​ ​D​e​l​e​t​e​d
 		 */
 		deleted: string
+		/**
+		 * l​o​a​d​i​n​g​.​.​.
+		 */
+		loading: string
+		/**
+		 * c​o​n​n​e​c​t​i​n​g​.​.​.
+		 */
+		connecting: string
 	}
 	web2: {
 		search: {
@@ -421,11 +429,11 @@ export type TranslationFunctions = {
 		 */
 		nrNotification: (arg0: string | number | boolean) => LocalizedString
 		/**
-		 * Subscribe to updates
+		 * Enable
 		 */
 		subscribe: () => LocalizedString
 		/**
-		 * Subscribe to collection
+		 * Enable notifications
 		 */
 		subscribeCollection: () => LocalizedString
 		/**
@@ -448,6 +456,14 @@ export type TranslationFunctions = {
 		 * Message Deleted
 		 */
 		deleted: () => LocalizedString
+		/**
+		 * loading...
+		 */
+		loading: () => LocalizedString
+		/**
+		 * connecting...
+		 */
+		connecting: () => LocalizedString
 	}
 	web2: {
 		search: {
