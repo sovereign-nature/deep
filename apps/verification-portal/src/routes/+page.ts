@@ -1,5 +1,5 @@
-export const load = async (event) => {
-  let collection = event.url.searchParams.get('q');
+export const load = async ({ fetch, url }) => {
+  let collection = url.searchParams.get('q');
 
   if (!collection) collection = 'soundwaves';
 
@@ -7,7 +7,11 @@ export const load = async (event) => {
     `https://web3-highlights.sovereign.workers.dev/${collection}`
   );
 
-  const highlights = await highlightsResponse.json();
+  let highlights = [];
+
+  if (highlightsResponse.ok) {
+    highlights = await highlightsResponse.json();
+  }
 
   console.log(highlights);
 
