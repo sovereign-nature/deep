@@ -14,6 +14,7 @@
   export let customBtnClass: string = '';
   export let customIconClass: string = '';
   export let customLabelClass: string = '';
+  export let disabled: boolean = false;
 
   $: isAlert = hasNew;
 
@@ -42,7 +43,7 @@
   let isHovered = false;
   $: isOpen = keepOpen || isHovered;
 
-  $: btnClass = `btn ${
+  $: btnClass = `btn disabled:opacity-80 disabled:cursor-not-allowed ${
     colorClasses[type as 'alert' | 'primary' | 'secondary']
   } ${customBtnClass} ${hasNewClass} font-aeonik  text-base z-10 relative h-11  flex items-center justify-end rounded-full whitespace-nowrap overflow-hidden gap-2 px-3`;
 </script>
@@ -51,6 +52,7 @@
   <div class="relative">
     <button
       type="button"
+      {disabled}
       class={`${btnClass} ${$$slots.default && isOpen ? 'open' : 'closed'}`}
       on:click={() => {
         if (url) {
@@ -95,7 +97,9 @@
         height="14"
         viewBox="0 0 17 14"
         xmlns="http://www.w3.org/2000/svg"
-        class="alert-after z-0 absolute -right-1 bottom-0"
+        class={`alert-after z-0 absolute -right-1 bottom-0 ${
+          disabled ? 'opacity-90' : ''
+        } `}
       >
         <path
           d="M16.3873 13.3694C11.0463 12.636 5.46243 11.8693 0.396227 8.23369L11.9821 0.416809C7.7065 4.5336 16.3873 13.3694 16.3873 13.3694Z"

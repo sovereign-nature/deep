@@ -17,7 +17,8 @@ const web3InboxRegistered = writable(false);
 const web3InboxSubscribed = writable(false);
 const web3InboxModalOpen = writable(false);
 const web3InboxMessageCount = writable(0);
-const web3InboxLoading = writable(true);
+const web3InboxLoading = writable(true); // Notify client loading state
+const web3InboxEnabling = writable(false); // state when registering, subscribing and setting up inbox are not resolved
 
 let web3InboxClient: Web3InboxClient | null;
 let web3ConnectedStore: Writable<boolean>;
@@ -25,8 +26,9 @@ let web3AddressStore: Writable<string>;
 let web3ModalStore: Writable<Web3Modal>;
 
 const getWeb3InboxAccount = () => {
-  const address = `eip155:1:${get(web3ModalStore).getAddress()}`;
-  return address;
+  const address = get(web3ModalStore).getAddress();
+  const account = address ? `eip155:1:${address}` : undefined;
+  return account;
 };
 
 // Web3Inbox Context Setup
@@ -38,6 +40,7 @@ export function setInboxContext() {
   setContext('web3InboxModalOpen', web3InboxModalOpen);
   setContext('web3InboxMessageCount', web3InboxMessageCount);
   setContext('web3InboxLoading', web3InboxLoading);
+  setContext('web3InboxEnabling', web3InboxEnabling);
 
   web3ConnectedStore = getContext('web3Connected');
   web3AddressStore = getContext('web3Address');
@@ -57,20 +60,28 @@ export function initializeInbox() {
   web3AddressStore.subscribe(async () => {
     if (web3InboxClient) {
       const account = getWeb3InboxAccount();
-      console.log(
-        `Inbox address changed to ${account}, reconfiguring inbox client`
-      );
-      const registered = await web3InboxClient.getAccountIsRegistered(account);
-      const subscribed = web3InboxClient.isSubscribedToDapp(account, domain);
+      if (account) {
+        console.log(
+          `Inbox address changed to ${account}, reconfiguring inbox client`
+        );
+        const registered =
+          await web3InboxClient.getAccountIsRegistered(account);
+        const subscribed = web3InboxClient.isSubscribedToDapp(account, domain);
 
-      web3InboxRegistered.set(registered);
-      web3InboxSubscribed.set(subscribed);
+        web3InboxRegistered.set(registered);
+        web3InboxSubscribed.set(subscribed);
 
-      console.log(
-        `!!Registered account ${account} ${registered}, subscribed: ${subscribed}`
-      );
+        console.log(
+          `!!Registered account ${account} ${registered}, subscribed: ${subscribed}`
+        );
 
-      web3InboxClient.setAccount(getWeb3InboxAccount());
+        web3InboxClient.setAccount(account);
+        registerInbox();
+      } else {
+        console.log(
+          'Inbox account changed to no address, clearing inbox client'
+        );
+      }
     } else {
       console.log('Address changed, no inbox client');
     }
@@ -88,7 +99,7 @@ async function connectToInbox() {
     });
 
     web3InboxClient.watchAccount((account) => {
-      console.log('Account changed, registering', account);
+      console.log('Account changed from watch, registering', account);
 
       if (!web3InboxClient) return;
 
@@ -116,7 +127,7 @@ async function connectToInbox() {
     console.log('!!Subscribed:', isSubscribed);
     console.log('!!Account: ', account);
 
-    if (isSubscribed) getInboxContent();
+    if (isSubscribed) registerInbox();
   } catch (error) {
     console.error('Error initializing inbox:', error);
   }
@@ -139,14 +150,23 @@ export async function registerInbox() {
     console.error('Register called with no Client, abort sign');
     return;
   }
+  web3InboxEnabling.set(true);
 
   const account = getWeb3InboxAccount();
 
-  await web3InboxClient.register({
-    account,
-    domain,
-    onSign,
-  });
+  await web3InboxClient
+    .register({
+      account,
+      domain,
+      onSign,
+    })
+    .then(() => {
+      console.log('Registered inbox');
+    })
+    .catch((error) => {
+      console.error('Error registering inbox:', error);
+      web3InboxEnabling.set(false);
+    });
 
   const registered = await web3InboxClient.getAccountIsRegistered(account);
 
@@ -155,7 +175,6 @@ export async function registerInbox() {
   if (!registered) throw new Error(`Can't register account ${account}`);
 
   let isSubscribed = false;
-
   //TODO: Fix this, this is brutal
   while (!isSubscribed) {
     await web3InboxClient.subscribeToDapp(account, domain);
@@ -167,31 +186,23 @@ export async function registerInbox() {
   console.log(
     `Account ${account} is registered ${registered} and subscribed ${isSubscribed}`
   );
-
-  getInboxContent();
+  await getInboxContent();
 }
 
 async function getInboxContent() {
-  console.log('Getting inbox content');
   getNotificationTypes();
   getMessages();
+  web3InboxEnabling.set(false);
 }
 
 async function getMessages() {
   if (!web3InboxClient) return;
-  const messages = web3InboxClient.getMessageHistory(
-    getWeb3InboxAccount(),
-    domain
-  );
+  const account = getWeb3InboxAccount();
+  const messages = web3InboxClient.getMessageHistory(account, domain);
 
   console.log('Messages:', messages);
-
   setupMessages(messages);
-  web3InboxClient.watchMessages(
-    (m) => setupMessages(m),
-    getWeb3InboxAccount(),
-    domain
-  );
+  web3InboxClient.watchMessages((m) => setupMessages(m), account, domain);
 }
 
 function setupMessages(messages: NotifyClientTypes.NotifyMessageRecord[]) {
