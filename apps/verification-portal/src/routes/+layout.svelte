@@ -17,10 +17,11 @@
   let isLoading = false;
 
   beforeNavigate(({ to, from }) => {
-    if (to?.route?.id !== from?.route?.id) {
-      isLoading = true;
-    }
+    if (!to?.route.id) return; // No loading bar for external links
+
+    isLoading = true;
   });
+
   afterNavigate(() => (isLoading = false));
 
   initThemeContext();
