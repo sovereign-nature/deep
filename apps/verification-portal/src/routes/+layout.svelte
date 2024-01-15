@@ -16,7 +16,11 @@
 
   let isLoading = false;
 
-  beforeNavigate(() => (isLoading = true));
+  beforeNavigate(({ to, from }) => {
+    if (to?.route?.id !== from?.route?.id) {
+      isLoading = true;
+    }
+  });
   afterNavigate(() => (isLoading = false));
 
   initThemeContext();
