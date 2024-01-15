@@ -49,6 +49,7 @@ const en: BaseTranslation = {
     deleted: 'Message Deleted',
     loading: 'loading...',
     connecting: 'connecting...',
+    savePreferences: 'Save preferences',
   },
   web2: {
     search: {

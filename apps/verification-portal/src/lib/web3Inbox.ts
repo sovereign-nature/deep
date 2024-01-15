@@ -220,13 +220,16 @@ function sortMessages(messages: NotifyClientTypes.NotifyMessageRecord[]) {
 
 async function getNotificationTypes() {
   if (!web3InboxClient) return;
-  const types = web3InboxClient.getNotificationTypes(
-    getWeb3InboxAccount(),
-    domain
-  );
-  const transformTypes = Object.values(types);
-  console.log('Notification types:', transformTypes);
-  web3InboxTypes.set(transformTypes);
+  const account = getWeb3InboxAccount();
+
+  const updateTypes = () => {
+    const types = web3InboxClient.getNotificationTypes(account, domain);
+    const transformTypes = Object.values(types);
+    console.log('Notification types:', transformTypes);
+    web3InboxTypes.set(transformTypes);
+  };
+  updateTypes();
+  web3InboxClient.watchSubscriptions(updateTypes, account);
 }
 
 export async function deleteMessage(id: number) {
@@ -237,5 +240,15 @@ export async function deleteMessage(id: number) {
     getMessages();
   } catch (error) {
     console.error('Error deleting message:', error);
+  }
+}
+
+export async function updateScopes(scopes: string[]) {
+  if (!web3InboxClient) return;
+  const account = getWeb3InboxAccount();
+  try {
+    await web3InboxClient.update(scopes, account, domain);
+  } catch (error) {
+    console.error('Error updating scopes:', error);
   }
 }
