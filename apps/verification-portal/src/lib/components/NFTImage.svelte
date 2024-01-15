@@ -32,6 +32,9 @@
 
   //check if id or url
   function isUrl(url: string): boolean {
+    if (!url) {
+      return false;
+    }
     return (
       url.toLowerCase().startsWith('https://') ||
       url.toLowerCase().startsWith('http://')

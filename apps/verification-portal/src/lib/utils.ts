@@ -56,7 +56,7 @@ function getCID(url: string): string {
 }
 
 export function isIPFSUrl(url: string): boolean {
-  return url.startsWith('ipfs://');
+  return url !== undefined && url.startsWith('ipfs://');
 }
 
 import { goto } from '$app/navigation';
