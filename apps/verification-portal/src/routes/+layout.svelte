@@ -25,6 +25,8 @@
   afterNavigate(() => (isLoading = false));
 
   initThemeContext();
+
+  //TODO: Type theme with writable interface or fix store definition
   const theme = getContext('theme');
 
   $: $theme, modalHandleTheme($theme);
