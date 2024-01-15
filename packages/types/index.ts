@@ -8,4 +8,6 @@ export type DeepAsset = {
     id: string;
     name: string;
   };
+  //TODO: Check if address is used everywhere
+  address?: string;
 };

@@ -31,6 +31,7 @@ async function fetchAssets(
     //TODO: use local fetch in dev mode
     const response = await serviceWorker.fetch(url);
     const asset: DeepAsset = await response.json();
+    asset.address = `${collectionAddress}:${tokenId}`;
     assets.push(asset);
   }
 
