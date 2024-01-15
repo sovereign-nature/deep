@@ -8,7 +8,7 @@ type Bindings = {
 };
 
 const app = new Hono<{ Bindings: Bindings }>();
-app.use('/*', cors());
+app.use('/*', cors({ origin: '*' }));
 
 app.get('/', (c) => c.text('DEEP Web3 Highlights'));
 
