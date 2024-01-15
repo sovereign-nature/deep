@@ -27,7 +27,7 @@ let web3ModalStore: Writable<Web3Modal>;
 
 const getWeb3InboxAccount = () => {
   const address = get(web3ModalStore).getAddress();
-  const account = address ? `eip155:1:${address}` : undefined;
+  const account = address ? `eip155:1:${address}` : undefined; //TODO: Proper handling of undefined account needed in downstream functions
   return account;
 };
 
@@ -79,7 +79,7 @@ export function initializeInbox() {
         registerInbox();
       } else {
         console.log(
-          'Inbox account changed to no address, inbox client should be cleared'
+          'Inbox account changed to no address, inbox client should be cleared' //TODO: Probably we need to call a cleanup function here
         );
       }
     } else {
@@ -106,7 +106,7 @@ async function connectToInbox() {
       web3InboxClient.register({ account, onSign, domain });
     });
 
-    await web3InboxClient.setAccount(account);
+    await web3InboxClient.setAccount(account as string);
 
     // await web3InboxClient.register({
     //   account,
@@ -116,7 +116,9 @@ async function connectToInbox() {
 
     // web3InboxClient.getSubscription(account, domain);
 
-    const registered = await web3InboxClient.getAccountIsRegistered(account);
+    const registered = await web3InboxClient.getAccountIsRegistered(
+      account as string //TODO: Check if we need undefined account
+    );
     web3InboxRegistered.set(registered);
 
     const isSubscribed = web3InboxClient.isSubscribedToDapp(account, domain);
@@ -168,7 +170,9 @@ export async function registerInbox() {
       web3InboxEnabling.set(false);
     });
 
-  const registered = await web3InboxClient.getAccountIsRegistered(account);
+  const registered = await web3InboxClient.getAccountIsRegistered(
+    account as string
+  );
 
   web3InboxRegistered.set(registered);
 
