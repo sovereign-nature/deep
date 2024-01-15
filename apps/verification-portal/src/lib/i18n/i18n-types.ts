@@ -157,6 +157,10 @@ type RootTranslation = {
 		 * c​o​n​n​e​c​t​i​n​g​.​.​.
 		 */
 		connecting: string
+		/**
+		 * S​a​v​e​ ​p​r​e​f​e​r​e​n​c​e​s
+		 */
+		savePreferences: string
 	}
 	web2: {
 		search: {
@@ -464,6 +468,10 @@ export type TranslationFunctions = {
 		 * connecting...
 		 */
 		connecting: () => LocalizedString
+		/**
+		 * Save preferences
+		 */
+		savePreferences: () => LocalizedString
 	}
 	web2: {
 		search: {

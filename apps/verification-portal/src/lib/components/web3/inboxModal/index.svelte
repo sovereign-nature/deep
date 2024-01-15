@@ -1,13 +1,17 @@
 <script lang="ts">
-  import { Modal, CloseButton, Toggle } from 'flowbite-svelte';
+  import { Modal, CloseButton } from 'flowbite-svelte';
+  import type { SizeType } from 'flowbite-svelte';
   import { getContext } from 'svelte';
   import type { Writable } from 'svelte/store';
 
   import { LL } from '$lib/i18n/i18n-svelte';
   import { flip } from 'svelte/animate';
-  import { deleteMessage } from '$lib/web3Inbox';
+  import { deleteMessage, updateScopes } from '$lib/web3Inbox';
+  import type { NotifyClientTypes } from '@walletconnect/notify-client';
   import { formatDistanceToNowStrict } from 'date-fns';
+  import Toggle from '$lib/components/Toggle.svelte';
   import Info from '$lib/typography/Info.svelte';
+  import Spinner from '$lib/components/icons/Spinner.svelte';
   import CogIcon from '$lib/components/icons/CogIcon.svelte';
   import ArrowBackIcon from '$lib/components/icons/ArrowBackIcon.svelte';
   import BellIcon from '$lib/components/icons/BellIcon.svelte';
@@ -15,19 +19,32 @@
 
   let showSettings = false;
   let openToast = false;
-  let size = 'sm';
-  let notifications = [];
-  let notificationTypes = [];
-  let triggerToast;
+  let size: SizeType = 'sm';
+  let notifications: NotifyClientTypes.NotifyMessageRecord[] = [];
+  let notificationTypes: NotifyClientTypes.ScopeMap[] = [];
+  let triggerToast: () => Promise<void>;
+  let scopes: string[] = [];
+  let updatingPreferences = false;
+  let preferencesChanged = false;
 
-  const web3Types: Writable<Array> = getContext('web3InboxTypes');
-  const web3Messages: Writable<Array> = getContext('web3InboxMessages');
+  const web3Types: Writable<NotifyClientTypes.ScopeMap[]> =
+    getContext('web3InboxTypes');
+  const web3Messages: Writable<NotifyClientTypes.NotifyMessageRecord[]> =
+    getContext('web3InboxMessages');
   const openInboxModal: Writable<boolean> = getContext('web3InboxModalOpen');
 
   $: $web3Messages, (notifications = $web3Messages);
-  $: $web3Types, (notificationTypes = $web3Types);
+  $: $web3Types, updateTypesAndScope();
 
-  function closeNotification(id) {
+  function updateTypesAndScope() {
+    notificationTypes = $web3Types;
+    if ($web3Types) {
+      scopes = $web3Types.filter((type) => type.enabled).map((type) => type.id);
+    }
+    updatingPreferences = false;
+    preferencesChanged = false;
+  }
+  function closeNotification(id: number) {
     deleteMessage(id);
     triggerToast();
   }
@@ -38,8 +55,18 @@
     return type;
   }
 
-  function togglePreference(id: string) {
-    console.log(id);
+  // Toggle preference
+  async function toggleScopePreference(id: string) {
+    preferencesChanged = true;
+    if (scopes.includes(id)) {
+      scopes = scopes.filter((typeId) => typeId !== id);
+    } else {
+      scopes = [...scopes, id];
+    }
+  }
+  function savePreferences() {
+    updatingPreferences = true;
+    updateScopes(scopes);
   }
 </script>
 
@@ -86,16 +113,9 @@
         <div class="flex flex-col gap-5 pb-16">
           <div class="flex flex-col justify-between">
             <h4 class="font-sans">
-              {$LL.notifications.notificationSettings()} (READ ONLY)
+              {$LL.notifications.notificationSettings()}
             </h4>
-            <h5 class="text-sm allcaps font-sans text-orange-500 pb-5">
-              Coming soon, please use <a
-                class="underline hover:text-orange-400"
-                href="https://app.web3inbox.com/"
-              >
-                https://app.web3inbox.com</a
-              > to configure your preferences for now!
-            </h5>
+
             <div
               class="flex flex-col items-start justify-start gap-5 text-white"
             >
@@ -103,9 +123,9 @@
                 {#each notificationTypes as type (type.id)}
                   <Toggle
                     checked={type.enabled}
+                    disabled={updatingPreferences}
                     color="green"
-                    disabled
-                    on:change={() => togglePreference(type.id)}
+                    toggleFunction={() => toggleScopePreference(type.id)}
                   >
                     <div class="flex flex-col">
                       <span class="text-white font-semibold">{type.name}</span>
@@ -116,6 +136,19 @@
                   </Toggle>
                 {/each}
               {/if}
+              <button
+                disabled={updatingPreferences || !preferencesChanged}
+                class="btn mt-5 bg-primary-400 disabled:bg-primary-500 hover:bg-primary-300 rounded-sm px-5 py-3 font-aeonik text-sm"
+                on:click={savePreferences}
+              >
+                <span class="flex flex-row gap-3">
+                  {$LL.notifications.savePreferences()}
+                  {#if updatingPreferences}
+                    <Spinner className="h-5 w-5 text-primary-500 fill-gray-200"
+                    ></Spinner>
+                  {/if}
+                </span>
+              </button>
             </div>
           </div>
         </div>
