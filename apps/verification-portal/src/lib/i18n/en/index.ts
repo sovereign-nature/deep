@@ -39,14 +39,16 @@ const en: BaseTranslation = {
   notifications: {
     seeAll: 'See all notifications',
     nrNotification: '{0} notification{{s}}',
-    subscribe: 'Subscribe to updates',
-    subscribeCollection: 'Subscribe to collection',
+    subscribe: 'Enable',
+    subscribeCollection: 'Enable notifications',
     newNotifications:
       'You have {nrOfNotifications: number} new notification{{nrOfNotifications:s}}',
     notificationCenter: 'Your notification center',
     notificationSettings: 'Notification preferences',
     notFound: 'No notifications found',
     deleted: 'Message Deleted',
+    loading: 'loading...',
+    connecting: 'connecting...',
   },
   web2: {
     search: {

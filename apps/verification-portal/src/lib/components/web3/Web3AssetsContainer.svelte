@@ -7,7 +7,7 @@
   import type { AssetFeatured, Web3DataState } from '$lib/types';
   import FeaturedContainer from '$lib/components/featured/Web3Featured.svelte';
   import { LL } from '$lib/i18n/i18n-svelte';
-  import Web3Subscribe from '$lib/components/web3/Web3Subscribe.svelte';
+  import Web3Notifications from '$lib/components/web3/Web3Notifications.svelte';
   import type { DeepAsset } from '@sni/types';
 
   export let web3enabled = false;
@@ -42,8 +42,10 @@
             })}
           </h2>
           <div class="flex">
-            <Web3Subscribe placeholder={$LL.notifications.subscribeCollection()}
-            ></Web3Subscribe>
+            <Web3Notifications
+              alwaysOpen
+              placeholder={$LL.notifications.subscribeCollection()}
+            ></Web3Notifications>
           </div>
         </div>
         <!-- <div
