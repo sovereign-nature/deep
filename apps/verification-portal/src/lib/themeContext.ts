@@ -11,6 +11,7 @@ const getInitialTheme = () => {
 
 const themeStore = writable(getInitialTheme());
 
+//TODO: Why we need this custom theme store?
 const theme = {
   subscribe: themeStore.subscribe,
   setTheme: (value: string) => {
