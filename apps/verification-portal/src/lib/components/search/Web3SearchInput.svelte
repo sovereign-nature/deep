@@ -6,7 +6,7 @@
   import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
   import { Input, ButtonGroup, Button } from 'flowbite-svelte';
-  export let network = 'sub0';
+  export let collection = 'sub0';
   export let placeholder = 'Enter the token ID (1-1466)';
   export let goIcon = false;
   export let inputmode = 'search';
@@ -49,7 +49,7 @@
     {/if}
   </div>
   <form class="w-full sm:w-auto md:w-1/2" method="POST" use:enhance>
-    <input name="network" value={network} type="text" readonly hidden />
+    <input name="collection" value={collection} type="text" readonly hidden />
     <ButtonGroup
       divClass="w-full flex flex-col sm:flex-row sm:inline-flex  justify-items-stretch gap-y-4  sm:flex-row sm:inline-flex  justify-items-stretch gap-y-4 "
     >

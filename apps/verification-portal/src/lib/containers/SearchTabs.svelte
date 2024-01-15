@@ -69,7 +69,7 @@
       >
         <Web3SearchInput
           web3enabled
-          network="eip155"
+          collection="soundwaves"
           goIcon
           inputmode="numeric"
           placeholder={$LL.soundwaves.placeholder()}
@@ -91,7 +91,7 @@
     on:click={() => handleTabClick('sub0')}
   >
     <Web3SearchInput
-      network="sub0"
+      collection="sub0"
       goIcon
       inputmode="numeric"
       placeholder={$LL.sub0.placeholder()}
