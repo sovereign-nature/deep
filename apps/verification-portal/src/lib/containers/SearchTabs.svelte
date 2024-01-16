@@ -14,7 +14,7 @@
   import type { DeepAsset } from '@sni/types';
   const url = $page.url;
 
-  let activeTab = 'hh'; //TODO: soundwaves should be an active tab
+  let activeTab = 'soundwaves';
   export let highlights: DeepAsset[] = [];
 
   // tab classes
