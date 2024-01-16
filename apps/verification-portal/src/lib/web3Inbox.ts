@@ -25,6 +25,12 @@ let web3ConnectedStore: Writable<boolean>;
 let web3AddressStore: Writable<string>;
 let web3ModalStore: Writable<Web3Modal>;
 
+//@TODO this is a bit hacky, but can be changed if all inbox code subscription functions will have unsubscribe callbacks
+let inboxInitialized = false;
+let accountWatchInitialized = false;
+let typeWatchInitialized = false;
+let messageWatchInitialized = false;
+
 const getWeb3InboxAccount = () => {
   const address = get(web3ModalStore).getAddress();
   const account = address ? `eip155:1:${address}` : undefined; //TODO: Proper handling of undefined account needed in downstream functions
@@ -48,6 +54,8 @@ export function setInboxContext() {
 }
 
 export function initializeInbox() {
+  if (inboxInitialized) return;
+  inboxInitialized = true;
   web3ConnectedStore.subscribe((connected) => {
     if (connected) {
       console.log('Connected, proceeding to connect to inbox');
@@ -97,15 +105,16 @@ async function connectToInbox() {
       domain,
       isLimited: isLimited,
     });
+    if (!accountWatchInitialized) {
+      accountWatchInitialized = true;
+      web3InboxClient.watchAccount((account) => {
+        console.log('Account changed from watch, registering', account);
 
-    web3InboxClient.watchAccount((account) => {
-      console.log('Account changed from watch, registering', account);
+        if (!web3InboxClient) return;
 
-      if (!web3InboxClient) return;
-
-      web3InboxClient.register({ account, onSign, domain });
-    });
-
+        web3InboxClient.register({ account, onSign, domain });
+      });
+    }
     await web3InboxClient.setAccount(account as string);
 
     // await web3InboxClient.register({
@@ -206,7 +215,10 @@ async function getMessages() {
 
   console.log('Messages:', messages);
   setupMessages(messages);
-  web3InboxClient.watchMessages((m) => setupMessages(m), account, domain);
+  if (!messageWatchInitialized) {
+    messageWatchInitialized = true;
+    web3InboxClient.watchMessages((m) => setupMessages(m));
+  }
 }
 
 function setupMessages(messages: NotifyClientTypes.NotifyMessageRecord[]) {
@@ -220,16 +232,20 @@ function sortMessages(messages: NotifyClientTypes.NotifyMessageRecord[]) {
 
 async function getNotificationTypes() {
   if (!web3InboxClient) return;
-  const account = getWeb3InboxAccount();
 
   const updateTypes = () => {
+    const account = getWeb3InboxAccount();
     const types = web3InboxClient.getNotificationTypes(account, domain);
     const transformTypes = Object.values(types);
     console.log('Notification types:', transformTypes);
     web3InboxTypes.set(transformTypes);
   };
-  updateTypes();
-  web3InboxClient.watchSubscriptions(updateTypes, account);
+
+  if (!typeWatchInitialized) {
+    typeWatchInitialized = true;
+    updateTypes();
+    web3InboxClient.watchSubscriptions(updateTypes);
+  }
 }
 
 export async function deleteMessage(id: number) {
