@@ -1,4 +1,4 @@
-# Introducing DEEP (Decentralised Ecological Economics Protocol)
+# Introducing DEEP
 
 A Pathway to Flipping the Economics of Ecology
 
@@ -9,7 +9,8 @@ At the Sovereign Nature Initiative, our goal is to reconfigure the economics of 
 We developed the Decentralised Ecological Economics Protocol (DEEP) together with the Registry for Ecological Asset Linking (REAL) to ensure that private commitments are valuable, and eventually become a key mode for contributing to the restoration of biodiversity worldwide. Our protocol and interface allow us to effectively integrate data about ecological impact with the digital realm. This approach generates new funding streams while imbuing digital assets with tangible and real-life significance. Critically, our approach allows ecological stewards to market their work without impeding their on-site efforts, ensuring a harmonious balance between financial viability and biodiversity restoration.
 
 Our work is guided by the following key propositions:
-- breaking with the paradigm of one-sided donation: we integrate the value of biodiversity into digital products increasing their value in the digital economy by imbuing them with meaning in the age of digital overproduction; 
+
+- breaking with the paradigm of one-sided donation: we integrate the value of biodiversity into digital products increasing their value in the digital economy by imbuing them with meaning in the age of digital overproduction;
 - verifying impact through data: we provide access to the most relevant ecological field data used by organisations to monitor their progress and evaluate impact, with a digestible explanation of how the data is used to inform nature-positive strategies and actions;
 - selecting trustworthy partners: we invest in projects of ecological stewards with a successful track record that operate on the ground and are guided by a holistic vision of sustaining life on earth for all species;
 - reducing the distance: we develop meaningful and long-term connections between contributors and biodiversity practitioners to lay the foundation for a large scale socio-economic transformation;
