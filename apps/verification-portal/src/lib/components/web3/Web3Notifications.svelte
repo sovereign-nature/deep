@@ -3,7 +3,6 @@
   import BellIcon from '$lib/components/icons/BellIcon.svelte';
   import Spinner from '$lib/components/icons/Spinner.svelte';
   import { LL } from '$lib/i18n/i18n-svelte';
-  import { isFeatureEnabled } from '$lib/utils';
   import { getContext, onMount } from 'svelte';
   import type { Writable } from 'svelte/store';
   import { registerInbox } from '$lib/web3Inbox';
@@ -66,7 +65,7 @@
   });
 </script>
 
-{#if isFeatureEnabled('notificationsEnabled') && isLoaded && (($web3InboxRegistered && $web3InboxSubscribed) || $web3Connected)}
+{#if isLoaded && (($web3InboxRegistered && $web3InboxSubscribed) || $web3Connected)}
   <RolloverBtn
     type="alert"
     disabled={$web3InboxLoading || $web3InboxEnabling}

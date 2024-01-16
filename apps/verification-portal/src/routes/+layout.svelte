@@ -11,7 +11,6 @@
   import { getContext, onMount } from 'svelte';
   import { initializeInbox, setInboxContext } from '$lib/web3Inbox';
   import { browser } from '$app/environment';
-  import { isFeatureEnabled } from '$lib/utils';
   import Modal from '$lib/components/web3/inboxModal/index.svelte';
 
   let isLoading = false;
@@ -32,21 +31,13 @@
   $: $theme, modalHandleTheme($theme);
 
   if (browser) {
-    if (isFeatureEnabled('walletEnabled')) {
-      initializeContext();
-      if (isFeatureEnabled('notificationsEnabled')) {
-        setInboxContext();
-      }
-    }
+    initializeContext();
+    setInboxContext();
   }
 
   onMount(async () => {
-    if (isFeatureEnabled('walletEnabled')) {
-      initializeModal();
-      if (isFeatureEnabled('notificationsEnabled')) {
-        initializeInbox();
-      }
-    }
+    initializeModal();
+    initializeInbox();
 
     modalHandleTheme($theme);
   });
