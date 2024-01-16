@@ -61,32 +61,30 @@
     {$LL.collection()}
   </h2>
 
-  {#if isFeatureEnabled('POCTabEnabled')}
-    <!-- TODO: Unify Web3 tabs architecture -->
-    <Web3Connection collectionId="real-test-1" {highlights}>
-      <TabItem
-        title="{$LL.soundwaves.collectionName()} "
-        open={activeTab === 'soundwaves'}
-        class={tabClass}
-        defaultClass={classDefault}
-        inactiveClasses={classInactive}
-        activeClasses={classActive}
-        on:click={() => handleTabClick('soundwaves')}
-      >
-        <Web3SearchInput
-          web3enabled
-          collection="soundwaves"
-          goIcon
-          inputmode="numeric"
-          placeholder={$LL.soundwaves.placeholder()}
-        />
-        <Web3Assets
-          collectionName={$LL.soundwaves.collectionName()}
-          web3enabled
-        />
-      </TabItem>
-    </Web3Connection>
-  {/if}
+  <!-- TODO: Unify Web3 tabs architecture -->
+  <Web3Connection collectionId="real-test-1" {highlights}>
+    <TabItem
+      title="{$LL.soundwaves.collectionName()} "
+      open={activeTab === 'soundwaves'}
+      class={tabClass}
+      defaultClass={classDefault}
+      inactiveClasses={classInactive}
+      activeClasses={classActive}
+      on:click={() => handleTabClick('soundwaves')}
+    >
+      <Web3SearchInput
+        web3enabled
+        collection="soundwaves"
+        goIcon
+        inputmode="numeric"
+        placeholder={$LL.soundwaves.placeholder()}
+      />
+      <Web3Assets
+        collectionName={$LL.soundwaves.collectionName()}
+        web3enabled
+      />
+    </TabItem>
+  </Web3Connection>
   <TabItem
     title="{$LL.sub0.collectionName()} "
     open={activeTab === 'sub0'}
