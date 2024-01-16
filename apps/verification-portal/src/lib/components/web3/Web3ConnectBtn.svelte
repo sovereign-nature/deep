@@ -6,7 +6,6 @@
   import { getWeb3Modal } from '$lib/web3Modal';
   import { getContext, onMount } from 'svelte';
   import type { Writable } from 'svelte/store';
-  import { isFeatureEnabled } from '$lib/utils';
 
   const web3Modal = getWeb3Modal();
   let isLoaded = false;

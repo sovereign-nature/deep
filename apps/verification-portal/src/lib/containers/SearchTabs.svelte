@@ -11,7 +11,6 @@
   import Web3Connection from '$lib/containers/context/Web3Connection.svelte';
   import Web3SearchInput from '$lib/components/search/Web3SearchInput.svelte';
   import Web3Assets from '$lib/components/web3/Web3AssetsContainer.svelte';
-  import { isFeatureEnabled } from '$lib/utils';
   import type { DeepAsset } from '@sni/types';
   const url = $page.url;
 
