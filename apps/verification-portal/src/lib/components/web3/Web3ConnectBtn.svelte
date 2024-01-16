@@ -18,9 +18,9 @@
 
   function openModal(showNetworks = false) {
     if (showNetworks === true) {
-      return $web3Modal.open({ view: 'Networks' });
+      return $web3Modal.open({ view: 'Networks' }); //TODO: Possible bug in web3modal access
     }
-    $web3Modal.open();
+    $web3Modal.open(); //TODO: Possible bug in web3modal access
   }
   function shortenAddress(address: string) {
     return address.replace(/^(.{4})(.*)(.{4})$/, '$1...$3');
@@ -30,9 +30,10 @@
   });
 </script>
 
-{#if isLoaded && isFeatureEnabled('walletEnabled')}
+{#if isLoaded}
   {#if $web3Connected}
     {#key $web3Address || $web3ChainId}
+      <!-- TODO: Check if click assigned correctly -->
       <button
         class=" dark:text-primary-200 pe-1 opacity-80 hover:opacity-100 active:opacity-100 flex items-center gap-2"
         on:click={openModal}

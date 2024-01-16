@@ -32,20 +32,16 @@
   $: $theme, modalHandleTheme($theme);
 
   if (browser) {
-    if (isFeatureEnabled('walletEnabled')) {
-      initializeContext();
-      if (isFeatureEnabled('notificationsEnabled')) {
-        setInboxContext();
-      }
+    initializeContext();
+    if (isFeatureEnabled('notificationsEnabled')) {
+      setInboxContext();
     }
   }
 
   onMount(async () => {
-    if (isFeatureEnabled('walletEnabled')) {
-      initializeModal();
-      if (isFeatureEnabled('notificationsEnabled')) {
-        initializeInbox();
-      }
+    initializeModal();
+    if (isFeatureEnabled('notificationsEnabled')) {
+      initializeInbox();
     }
 
     modalHandleTheme($theme);

@@ -5,7 +5,7 @@ import {
   themeVariablesDark,
   themeVariablesLight,
 } from '$lib/config/web3Configs';
-import { isDarkModePreferred, isFeatureEnabled } from '$lib/utils';
+import { isDarkModePreferred } from '$lib/utils';
 import { createWeb3Modal, defaultConfig } from '@web3modal/ethers';
 import { BrowserProvider } from 'ethers';
 import { getContext, setContext } from 'svelte';
@@ -62,7 +62,7 @@ function setSubscriptions() {
       if (
         pendingChainSwitch &&
         web3SelectedNetworkID &&
-        web3SelectedNetworkID !== chainId
+        web3SelectedNetworkID !== chainId //TODO: probably missing get from store
       ) {
         web3Modal.switchNetwork(web3SelectedNetworkID);
       }
@@ -74,24 +74,22 @@ function setSubscriptions() {
 }
 
 export function modalHandleTheme(theme: string) {
-  if (isFeatureEnabled('walletEnabled')) {
-    if (!web3Modal) return;
-    if (theme === 'system') {
-      if (isDarkModePreferred()) {
-        web3Modal.setThemeMode('dark');
-        web3Modal.setThemeVariables(themeVariablesDark);
-      } else {
-        web3Modal.setThemeMode('light');
-
-        web3Modal.setThemeVariables(themeVariablesLight);
-      }
-    } else if (theme === 'dark') {
+  if (!web3Modal) return;
+  if (theme === 'system') {
+    if (isDarkModePreferred()) {
       web3Modal.setThemeMode('dark');
       web3Modal.setThemeVariables(themeVariablesDark);
     } else {
       web3Modal.setThemeMode('light');
+
       web3Modal.setThemeVariables(themeVariablesLight);
     }
+  } else if (theme === 'dark') {
+    web3Modal.setThemeMode('dark');
+    web3Modal.setThemeVariables(themeVariablesDark);
+  } else {
+    web3Modal.setThemeMode('light');
+    web3Modal.setThemeVariables(themeVariablesLight);
   }
 }
 
