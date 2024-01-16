@@ -33,16 +33,12 @@
 
   if (browser) {
     initializeContext();
-    if (isFeatureEnabled('notificationsEnabled')) {
-      setInboxContext();
-    }
+    setInboxContext();
   }
 
   onMount(async () => {
     initializeModal();
-    if (isFeatureEnabled('notificationsEnabled')) {
-      initializeInbox();
-    }
+    initializeInbox();
 
     modalHandleTheme($theme);
   });

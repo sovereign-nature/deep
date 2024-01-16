@@ -66,7 +66,7 @@
   });
 </script>
 
-{#if isFeatureEnabled('notificationsEnabled') && isLoaded && (($web3InboxRegistered && $web3InboxSubscribed) || $web3Connected)}
+{#if isLoaded && (($web3InboxRegistered && $web3InboxSubscribed) || $web3Connected)}
   <RolloverBtn
     type="alert"
     disabled={$web3InboxLoading || $web3InboxEnabling}
