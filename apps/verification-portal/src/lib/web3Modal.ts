@@ -64,7 +64,7 @@ function setSubscriptions() {
         web3SelectedNetworkID &&
         web3SelectedNetworkID !== chainId //TODO: probably missing get from store
       ) {
-        web3Modal.switchNetwork(web3SelectedNetworkID);
+        web3Modal.switchNetwork(web3SelectedNetworkID); //TODO: Are we sure that we need to enforce network switch?
       }
     } else {
       web3Address.set(null);
