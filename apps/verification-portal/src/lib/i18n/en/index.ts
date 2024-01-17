@@ -20,11 +20,11 @@ const en: BaseTranslation = {
 
   sub0: {
     collectionName: 'sub0 Biodiversity',
-    placeholder: 'Enter token ID (1-1999)',
+    placeholder: 'Find by token ID (1-1466)',
   },
   soundwaves: {
     collectionName: 'Soundwaves',
-    placeholder: 'Explore by token ID (1-1999)',
+    placeholder: 'Find by token ID',
   },
   wallet: {
     assetsFor: 'Showing your ',

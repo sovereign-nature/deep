@@ -11,6 +11,7 @@
   export let goIcon = false;
   export let inputmode = 'search';
   export let web3enabled = false;
+  export let searchEnabled = true;
 
   import { onMount } from 'svelte';
   import Web3ConnectBtn from '$lib/components/web3/Web3ConnectBtn.svelte';
@@ -61,6 +62,8 @@
         {placeholder}
         required
         {inputmode}
+        disabled={!searchEnabled}
+        title={!searchEnabled ? 'Coming soon' : ''}
       />
 
       <Button
@@ -69,6 +72,7 @@
         type="submit"
         aria-label="search"
         formaction="/?/formSearch"
+        disabled={!searchEnabled}
       >
         {#if goIcon}
           <ArrowRight className="h-4 w-4 sm:h-7 sm:w-7" />
