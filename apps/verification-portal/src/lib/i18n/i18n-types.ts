@@ -65,7 +65,7 @@ type RootTranslation = {
 		 */
 		collectionName: string
 		/**
-		 * E​n​t​e​r​ ​t​o​k​e​n​ ​I​D​ ​(​1​-​1​9​9​9​)
+		 * F​i​n​d​ ​b​y​ ​t​o​k​e​n​ ​I​D​ ​(​1​-​1​4​6​6​)
 		 */
 		placeholder: string
 	}
@@ -75,7 +75,7 @@ type RootTranslation = {
 		 */
 		collectionName: string
 		/**
-		 * E​x​p​l​o​r​e​ ​b​y​ ​t​o​k​e​n​ ​I​D​ ​(​1​-​1​9​9​9​)
+		 * F​i​n​d​ ​b​y​ ​t​o​k​e​n​ ​I​D
 		 */
 		placeholder: string
 	}
@@ -382,7 +382,7 @@ export type TranslationFunctions = {
 		 */
 		collectionName: () => LocalizedString
 		/**
-		 * Enter token ID (1-1999)
+		 * Find by token ID (1-1466)
 		 */
 		placeholder: () => LocalizedString
 	}
@@ -392,7 +392,7 @@ export type TranslationFunctions = {
 		 */
 		collectionName: () => LocalizedString
 		/**
-		 * Explore by token ID (1-1999)
+		 * Find by token ID
 		 */
 		placeholder: () => LocalizedString
 	}

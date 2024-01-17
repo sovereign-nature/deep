@@ -77,6 +77,7 @@
         goIcon
         inputmode="numeric"
         placeholder={$LL.soundwaves.placeholder()}
+        searchEnabled={false}
       />
       <Web3Assets
         collectionName={$LL.soundwaves.collectionName()}
