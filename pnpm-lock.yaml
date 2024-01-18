@@ -76,8 +76,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0
       wrangler:
-        specifier: 3.22.4
-        version: 3.22.4
+        specifier: 3.23.0
+        version: 3.23.0
 
   apps/contracts:
     devDependencies:
@@ -152,8 +152,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0
       wrangler:
-        specifier: 3.22.3
-        version: 3.22.3
+        specifier: 3.23.0
+        version: 3.23.0
 
   apps/indexer:
     devDependencies:
@@ -330,8 +330,8 @@ importers:
         specifier: 10.1.0
         version: 10.1.0
       wrangler:
-        specifier: 3.22.4
-        version: 3.22.4
+        specifier: 3.23.0
+        version: 3.23.0
 
   packages/address-utils:
     dependencies:
@@ -3027,7 +3027,7 @@ packages:
       tsconfig-paths: 4.2.0
       tslib: 2.6.2
       typescript: 5.3.3
-      uWebSockets.js: github.com/uNetworking/uWebSockets.js/ec37cb6444a284c4a0a8d50041a23a4bac9e5715
+      uWebSockets.js: github.com/uNetworking/uWebSockets.js/f97da56fe535bb6d318c62ed31e0f44cef104f05
       yargs: 17.7.2
     optionalDependencies:
       node-libcurl: 3.0.1-0
@@ -12848,8 +12848,8 @@ packages:
     hasBin: true
     dev: true
 
-  /miniflare@3.20231218.1:
-    resolution: {integrity: sha512-rl/wADgaRLpbl7EMobwbAt6BgVqkOoWsVQJAliIIUCRzC0s0xg7ZVeoV+DuQD4ffN4RySXsPnP97hp7ksc7ylA==}
+  /miniflare@3.20231218.2:
+    resolution: {integrity: sha512-rCUI2OjqCf3fZVdmSX4DOZQRzSDvHp/oL2vjER/cvJEdWSYiqRxDp2oO7A7JcEo1/Y+kPa5VQ1pFfdZpjBcpFg==}
     engines: {node: '>=16.13'}
     hasBin: true
     dependencies:
@@ -17544,48 +17544,21 @@ packages:
     resolution: {integrity: sha512-ILEIE97kDZvF9Wb9f6h5aXK4swSlKGUcOEGiIYb2OOu/IrDU9iwj0fD//SsA6E5ibwJxpEvhullJY4Sl4GcpAw==}
     dev: true
 
-  /wrangler@3.22.3:
-    resolution: {integrity: sha512-EhGEQLoMcQm71v6XrtnKfMG2B8BTM7RxhoS9iWIkc1hc3l9cOWyoN0cJnoBqcGTgtQk5V7+cRECTfwh08IEjBQ==}
+  /wrangler@3.23.0:
+    resolution: {integrity: sha512-mOWPL02/popoF6jjb4TT8au4yvo8VFu6O6/IwcRN74rlgwaGS0XvlkFtbofBGAdDUHAh5DXkuoPNS871mXNuJg==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     dependencies:
       '@cloudflare/kv-asset-handler': 0.2.0
-      '@cspotcode/source-map-support': 0.8.1
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
       '@esbuild-plugins/node-modules-polyfill': 0.2.2(esbuild@0.17.19)
       blake3-wasm: 2.1.5
       chokidar: 3.5.3
       esbuild: 0.17.19
-      miniflare: 3.20231218.1
+      miniflare: 3.20231218.2
       nanoid: 3.3.7
       path-to-regexp: 6.2.1
-      resolve.exports: 2.0.2
-      selfsigned: 2.4.1
-      source-map: 0.6.1
-      xxhash-wasm: 1.0.2
-    optionalDependencies:
-      fsevents: 2.3.3
-    transitivePeerDependencies:
-      - bufferutil
-      - supports-color
-      - utf-8-validate
-    dev: true
-
-  /wrangler@3.22.4:
-    resolution: {integrity: sha512-AhqraOHTcIV9rrm0z5tlxFDhx+l+O6g4QnKL08J1wnLg3mdvTWwMm5QmhxN0JQ0YgS2jgRCwg0PR+Fa5cumP8A==}
-    engines: {node: '>=16.17.0'}
-    hasBin: true
-    dependencies:
-      '@cloudflare/kv-asset-handler': 0.2.0
-      '@cspotcode/source-map-support': 0.8.1
-      '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
-      '@esbuild-plugins/node-modules-polyfill': 0.2.2(esbuild@0.17.19)
-      blake3-wasm: 2.1.5
-      chokidar: 3.5.3
-      esbuild: 0.17.19
-      miniflare: 3.20231218.1
-      nanoid: 3.3.7
-      path-to-regexp: 6.2.1
+      resolve: 1.22.8
       resolve.exports: 2.0.2
       selfsigned: 2.4.1
       source-map: 0.6.1
@@ -17834,8 +17807,8 @@ packages:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
     dev: true
 
-  github.com/uNetworking/uWebSockets.js/ec37cb6444a284c4a0a8d50041a23a4bac9e5715:
-    resolution: {tarball: https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/ec37cb6444a284c4a0a8d50041a23a4bac9e5715}
+  github.com/uNetworking/uWebSockets.js/f97da56fe535bb6d318c62ed31e0f44cef104f05:
+    resolution: {tarball: https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/f97da56fe535bb6d318c62ed31e0f44cef104f05}
     name: uWebSockets.js
-    version: 20.39.0
+    version: 20.40.0
     dev: false
