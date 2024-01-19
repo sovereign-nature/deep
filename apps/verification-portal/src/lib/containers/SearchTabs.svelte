@@ -61,7 +61,7 @@
   </h2>
 
   <!-- TODO: Unify Web3 tabs architecture -->
-  <Web3Connection collectionId="real-test-1" {highlights}>
+  <Web3Connection collectionId="the-soundwaves-collection" {highlights}>
     <TabItem
       title="{$LL.soundwaves.collectionName()} "
       open={activeTab === 'soundwaves'}
