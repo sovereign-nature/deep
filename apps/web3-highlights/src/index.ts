@@ -18,6 +18,12 @@ const collections = {
     collectionAddress: 'did:asset:deep:polkadot.asset-hub:13',
     highlightIds: [1, 2, 3, 4, 734, 735, 736, 737],
   },
+  soundwaves: {
+    id: 'soundwaves',
+    collectionAddress:
+      'did:asset:eip155:42161.erc721:0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78',
+    highlightIds: [1, 2, 3, 4, 5, 6, 7, 8],
+  },
 };
 
 async function fetchAssets(
