@@ -60,6 +60,13 @@ app.get('/:collectionId', async (c) => {
         c.env.assets
       );
       break;
+    case collections.soundwaves.id:
+      assets = await fetchAssets(
+        collections.soundwaves.collectionAddress,
+        collections.soundwaves.highlightIds,
+        c.env.assets
+      );
+      break;
     default:
       return c.text('Collection not found', 404);
   }
