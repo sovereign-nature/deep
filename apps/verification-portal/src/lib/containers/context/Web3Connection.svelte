@@ -17,7 +17,6 @@
 
   let items: DeepAsset[] = [];
   let featured: DeepAsset[] = shuffleArray(highlights).slice(0, 3);
-  console.log('featured', featured);
   let web3Items = writable(items);
   const web3Response = writable(web3DataState);
 

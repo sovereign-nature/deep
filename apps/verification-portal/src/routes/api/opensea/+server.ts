@@ -7,8 +7,8 @@ export const GET: RequestHandler = async ({ url }) => {
   const dev = true; //@TODO add dynamic config to switch between testnet and mainnet
   const address = url.searchParams.get('address');
   const collection = url.searchParams.get('collection');
-  const network = dev ? 'testnets-api' : 'api';
-  const chain = dev ? 'sepolia' : 'arbitrum';
+  const network = 'api';
+  const chain = 'arbitrum';
   //TODO: add network switch here
   const response = await fetch(
     `https://${network}.opensea.io/api/v2/chain/${chain}/account/${address}/nfts?collection=${collection}&limit=50`,
@@ -26,6 +26,7 @@ export const GET: RequestHandler = async ({ url }) => {
 
   if (response.ok) {
     const { nfts } = await response.json();
+    console.log('nfts', nfts);
 
     const assets = nfts.map((asset) => ({
       id: asset.identifier,

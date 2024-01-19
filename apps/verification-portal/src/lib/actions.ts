@@ -1,4 +1,3 @@
-import { dev } from '$app/environment';
 import { getChainId } from '@sni/address-utils';
 import type { ServerLoadEvent } from '@sveltejs/kit';
 import { redirect } from '@sveltejs/kit';
@@ -8,11 +7,9 @@ export const formSearch = {
     const form = await event.request.formData();
     const collection = form.get('collection') as string;
 
-    const chainId = dev ? getChainId('sepolia') : getChainId('arbitrum');
-    const tokenStandard = dev ? 'erc1155' : 'erc721';
-    const contractAddress = dev
-      ? '0x38de3f11ba85d75f28778c6f44a97d29ea910cf2'
-      : '0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78';
+    const chainId = getChainId('arbitrum');
+    const tokenStandard = 'erc721';
+    const contractAddress = '0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78';
 
     let prefix = '';
     switch (collection) {
