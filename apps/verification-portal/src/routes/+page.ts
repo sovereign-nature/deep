@@ -1,7 +1,7 @@
 export const load = async ({ fetch, url }) => {
   let collection = url.searchParams.get('q');
 
-  if (!collection) collection = 'soundwaves';
+  if (!collection) collection = 'soundwaves'; //TODO: Should be default url, this fix should be removed
 
   const highlightsResponse = await fetch(
     `https://web3-highlights.sovereign.workers.dev/${collection}`
@@ -17,7 +17,3 @@ export const load = async ({ fetch, url }) => {
 
   return { highlights };
 };
-
-// const response = fetch(
-//   `https://web3-highlights.sovereign.workers.dev/${collection}`
-// ).then((res) => await res.json());

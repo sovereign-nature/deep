@@ -8,9 +8,10 @@ export const GET: RequestHandler = async ({ url }) => {
   const address = url.searchParams.get('address');
   const collection = url.searchParams.get('collection');
   const network = dev ? 'testnets-api' : 'api';
+  const chain = dev ? 'sepolia' : 'arbitrum';
   //TODO: add network switch here
   const response = await fetch(
-    `https://${network}.opensea.io/api/v2/chain/sepolia/account/${address}/nfts?collection=${collection}&limit=50`,
+    `https://${network}.opensea.io/api/v2/chain/${chain}/account/${address}/nfts?collection=${collection}&limit=50`,
     {
       method: 'GET',
       //add headers only in production mode
@@ -38,9 +39,9 @@ export const GET: RequestHandler = async ({ url }) => {
         description: asset.collection.description || '',
       },
       //TODO: add network switch here
-      address: `did:asset:eip155:${getChainId('sepolia')}.${
-        asset.token_standard
-      }:${asset.contract}:${asset.identifier}`,
+      address: `did:asset:eip155:${getChainId(chain)}.${asset.token_standard}:${
+        asset.contract
+      }:${asset.identifier}`,
     }));
 
     return json(assets);
