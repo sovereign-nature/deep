@@ -63,8 +63,9 @@
   </h2>
 
   <!-- TODO: Unify Web3 tabs architecture -->
+  <!-- TODO: Rename to collectionAddress -->
   <Web3Connection
-    collectionId="the-soundwaves-collection"
+    collectionId="0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78"
     highlights={soundwavesHighlights}
   >
     <TabItem

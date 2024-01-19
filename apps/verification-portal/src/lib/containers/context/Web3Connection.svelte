@@ -36,7 +36,7 @@
       web3Response.set({ loaded: false, error: false });
       try {
         const response = await fetch(
-          `/api/opensea?collection=${collectionId}&address=${$web3Address}`
+          `/api/nftscan?collection=${collectionId}&address=${$web3Address}`
         );
         if (!response.ok) throw new Error('Failed to fetch data');
         const data = await response.json();
