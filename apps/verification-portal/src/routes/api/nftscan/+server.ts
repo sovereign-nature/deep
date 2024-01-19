@@ -26,17 +26,21 @@ export const GET: RequestHandler = async ({ url }) => {
   if (response.ok) {
     const responseData = await response.json();
 
-    console.log('responseData', responseData);
-
     const filteredChain = responseData.data.filter(
       (n) => n.chain === 'arbitrum'
     )[0];
+
+    if (!filteredChain) return json([]);
 
     const selectedCollection = filteredChain.collection_assets.filter(
       (c) => c.contract_address === collection
     )[0];
 
+    if (!selectedCollection) return json([]);
+
     const unprocessedAssets = selectedCollection.assets;
+
+    if (!unprocessedAssets) return json([]);
 
     const assets = unprocessedAssets.map((asset) => ({
       id: asset.token_id,
