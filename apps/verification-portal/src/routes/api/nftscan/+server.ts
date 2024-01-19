@@ -32,11 +32,17 @@ export const GET: RequestHandler = async ({ url }) => {
       (n) => n.chain === 'arbitrum'
     )[0];
 
+    if (!filteredChain) return json([]);
+
     const selectedCollection = filteredChain.collection_assets.filter(
       (c) => c.contract_address === collection
     )[0];
 
+    if (!selectedCollection) return json([]);
+
     const unprocessedAssets = selectedCollection.assets;
+
+    if (!unprocessedAssets) return json([]);
 
     const assets = unprocessedAssets.map((asset) => ({
       id: asset.token_id,
