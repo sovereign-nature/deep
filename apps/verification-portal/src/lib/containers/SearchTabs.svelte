@@ -13,7 +13,7 @@
   import Web3Assets from '$lib/components/web3/Web3AssetsContainer.svelte';
   import sub0Highlights from '$lib/data/Web3Featured.json'; //TODO: Fetch from API
   import soundwavesHighlights from '$lib/data/SoundwavesFeatured.json'; //TODO: Fetch from API
-  import type { DeepAsset } from '@sni/types';
+  // import type { DeepAsset } from '@sni/types';
   const url = $page.url;
 
   let activeTab = 'soundwaves';
