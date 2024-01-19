@@ -11,9 +11,6 @@ export const GET: RequestHandler = async ({ url }) => {
   const network = 'api';
   const chain = 'arbitrum';
   //TODO: add network switch here
-  const requestUrl = `https://${network}.opensea.io/api/v2/chain/${chain}/account/${address}/nfts?collection=${collection}&limit=50`;
-  console.log('requestUrl', requestUrl);
-  // console.log('OPEN_SEA_API_KEY', OPEN_SEA_API_KEY);
 
   const headers = {
     'X-API-KEY': OPEN_SEA_API_KEY,
@@ -24,7 +21,6 @@ export const GET: RequestHandler = async ({ url }) => {
     `https://${network}.opensea.io/api/v2/chain/${chain}/account/${address}/nfts?collection=${collection}&limit=50`,
     {
       method: 'GET',
-      //add headers only in production mode
       headers: headers,
     }
   );
