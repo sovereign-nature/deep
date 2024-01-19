@@ -38,7 +38,7 @@
   // Define specific share card data for a page
   $: pageDescription = nftData?.collection?.description || '';
   $: name = nftData.name || '';
-  $: funds = deepData?.link?.funds_raised || 0; //TODO: get from steward maybe?
+  $: funds = deepData?.steward?.funds_raised || 0;
   $: source = isNaN(parseInt(chainReference))
     ? chainReference
     : getChainName(parseInt(chainReference));
