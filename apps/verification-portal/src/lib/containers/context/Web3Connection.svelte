@@ -24,7 +24,7 @@
   let web3Address: Writable<string> = getContext('web3Address');
 
   setContext('web3Items', web3Items);
-  setContext('web3Featured', featured);
+  setContext('web3Featured', featured); //TODO: Cleanup context
   setContext('web3Response', web3Response);
 
   // Reactively update web3 assets when web3Connected or web3Address changes

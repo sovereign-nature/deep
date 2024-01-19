@@ -1,3 +1,4 @@
+import { getChainId } from '@sni/address-utils';
 import type { ServerLoadEvent } from '@sveltejs/kit';
 import { redirect } from '@sveltejs/kit';
 
@@ -6,14 +7,17 @@ export const formSearch = {
     const form = await event.request.formData();
     const collection = form.get('collection') as string;
 
+    const chainId = getChainId('arbitrum');
+    const tokenStandard = 'erc721';
+    const contractAddress = '0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78';
+
     let prefix = '';
     switch (collection) {
       case 'sub0':
         prefix = 'did:asset:deep:polkadot.asset-hub:13:';
         break;
       case 'soundwaves':
-        prefix =
-          'did:asset:eip155:11155111.erc1155:0x38de3f11ba85d75f28778c6f44a97d29ea910cf2:';
+        prefix = `did:asset:eip155:${chainId}.${tokenStandard}:${contractAddress}:`; //TODO: Should be unified across app
         break;
       default:
         throw new Error('Invalid collection id');

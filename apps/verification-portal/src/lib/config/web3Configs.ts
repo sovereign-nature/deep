@@ -1,4 +1,3 @@
-import { dev } from '$app/environment';
 import { PUBLIC_WALLET_CONNECT_PROJECT_ID } from '$env/static/public';
 import config from '$lib/config/siteConfigs';
 
@@ -25,18 +24,18 @@ const prodChains = [
   // },
 ];
 
-const devChains = [
-  ...prodChains,
-  {
-    chainId: 11155111,
-    name: 'Sepolia',
-    currency: 'ETH',
-    explorerUrl: 'https://sepolia.etherscan.io/',
-    rpcUrl: 'https://ethereum-sepolia.publicnode.com',
-  },
-];
+// const devChains = [
+//   ...prodChains,
+//   {
+//     chainId: 11155111,
+//     name: 'Sepolia',
+//     currency: 'ETH',
+//     explorerUrl: 'https://sepolia.etherscan.io/',
+//     rpcUrl: 'https://ethereum-sepolia.publicnode.com',
+//   },
+// ];
 
-export const chains = dev ? devChains : prodChains;
+export const chains = prodChains;
 // 3. Create modal
 export const metadata = {
   name: config.siteName,

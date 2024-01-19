@@ -1,23 +1,17 @@
-export const load = async ({ fetch, url }) => {
-  let collection = url.searchParams.get('q');
+// export const load = async ({ fetch, url }) => {
+//   let collection = url.searchParams.get('q');
 
-  if (!collection) collection = 'soundwaves';
+//   if (!collection) collection = 'soundwaves'; //TODO: Should be default url, this fix should be removed
 
-  const highlightsResponse = await fetch(
-    `https://web3-highlights.sovereign.workers.dev/${collection}`
-  );
+//   const highlightsResponse = await fetch(
+//     `https://web3-highlights.sovereign.workers.dev/${collection}`
+//   );
 
-  let highlights = [];
+//   let highlights = [];
 
-  if (highlightsResponse.ok) {
-    highlights = await highlightsResponse.json();
-  }
+//   if (highlightsResponse.ok) {
+//     highlights = await highlightsResponse.json();
+//   }
 
-  console.log('Server highlights: ', highlights);
-
-  return { highlights };
-};
-
-// const response = fetch(
-//   `https://web3-highlights.sovereign.workers.dev/${collection}`
-// ).then((res) => await res.json());
+//   return { highlights };
+// };

@@ -11,11 +11,13 @@
   import Web3Connection from '$lib/containers/context/Web3Connection.svelte';
   import Web3SearchInput from '$lib/components/search/Web3SearchInput.svelte';
   import Web3Assets from '$lib/components/web3/Web3AssetsContainer.svelte';
-  import type { DeepAsset } from '@sni/types';
+  import sub0Highlights from '$lib/data/Web3Featured.json'; //TODO: Fetch from API
+  import soundwavesHighlights from '$lib/data/SoundwavesFeatured.json'; //TODO: Fetch from API
+  // import type { DeepAsset } from '@sni/types';
   const url = $page.url;
 
   let activeTab = 'soundwaves';
-  export let highlights: DeepAsset[] = [];
+  // export let highlights: DeepAsset[] = [];
 
   // tab classes
   let classDefault =
@@ -61,7 +63,10 @@
   </h2>
 
   <!-- TODO: Unify Web3 tabs architecture -->
-  <Web3Connection collectionId="real-test-1" {highlights}>
+  <Web3Connection
+    collectionId="the-soundwaves-collection"
+    highlights={soundwavesHighlights}
+  >
     <TabItem
       title="{$LL.soundwaves.collectionName()} "
       open={activeTab === 'soundwaves'}
@@ -77,10 +82,11 @@
         goIcon
         inputmode="numeric"
         placeholder={$LL.soundwaves.placeholder()}
-        searchEnabled={false}
+        searchEnabled={true}
       />
       <Web3Assets
         collectionName={$LL.soundwaves.collectionName()}
+        highlights={soundwavesHighlights}
         web3enabled
       />
     </TabItem>
@@ -100,7 +106,10 @@
       inputmode="numeric"
       placeholder={$LL.sub0.placeholder()}
     />
-    <Web3Assets collectionName={$LL.sub0.collectionName()} {highlights} />
+    <Web3Assets
+      collectionName={$LL.sub0.collectionName()}
+      highlights={sub0Highlights}
+    />
   </TabItem>
   <Web2SearchContainer campaign="hotel_hideaway">
     <TabItem
