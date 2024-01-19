@@ -17,7 +17,7 @@
   const url = $page.url;
 
   let activeTab = 'soundwaves';
-  export let highlights: DeepAsset[] = [];
+  // export let highlights: DeepAsset[] = [];
 
   // tab classes
   let classDefault =
