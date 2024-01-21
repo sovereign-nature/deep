@@ -15,7 +15,7 @@ export const GET: RequestHandler = async ({ url }) => {
 
   //TODO: add network switch here
   const response = await fetch(
-    `https://restapi.nftscan.com/api/v2/assets/chain/${address}?chain=arbitrum`,
+    `https://arbitrumapi.nftscan.com/api/v2/account/own/${address}?&contract_address=${collection}&limit=50`,
     {
       method: 'GET',
       //add headers only in production mode
@@ -24,25 +24,9 @@ export const GET: RequestHandler = async ({ url }) => {
   );
 
   if (response.ok) {
-    const responseData = await response.json();
+    const { data } = await response.json();
 
-    const filteredChain = responseData.data.filter(
-      (n) => n.chain === 'arbitrum'
-    )[0];
-
-    if (!filteredChain) return json([]);
-
-    const selectedCollection = filteredChain.collection_assets.filter(
-      (c) => c.contract_address === collection
-    )[0];
-
-    if (!selectedCollection) return json([]);
-
-    const unprocessedAssets = selectedCollection.assets;
-
-    if (!unprocessedAssets) return json([]);
-
-    const assets = unprocessedAssets.map((asset) => ({
+    const assets = data.content.map((asset) => ({
       id: asset.token_id,
       tokenId: asset.token_id,
       name: asset.name || '',
@@ -53,7 +37,6 @@ export const GET: RequestHandler = async ({ url }) => {
         name: asset.contract_name || '',
         description: '',
       },
-      //TODO: add network switch here
       address: `did:asset:eip155:${getChainId(chain)}.${asset.erc_type}:${
         asset.contract_address
       }:${asset.token_id}`,
@@ -63,6 +46,6 @@ export const GET: RequestHandler = async ({ url }) => {
 
     return json(assets);
   } else {
-    return json({ error: 'Failed to fetch data from OpenSea' });
+    return json({ error: 'Failed to fetch data from NFT Scan' });
   }
 };
