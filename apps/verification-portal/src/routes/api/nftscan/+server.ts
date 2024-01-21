@@ -42,8 +42,6 @@ export const GET: RequestHandler = async ({ url }) => {
       }:${asset.token_id}`,
     }));
 
-    console.log('assets', assets);
-
     return json(assets);
   } else {
     return json({ error: 'Failed to fetch data from NFT Scan' });
