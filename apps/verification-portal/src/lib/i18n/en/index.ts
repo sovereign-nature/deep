@@ -90,6 +90,7 @@ const en: BaseTranslation = {
         'The eco-data pipeline to connect real life ecology with the digital world.',
     },
     og: {
+      // !NB: to prevent open graph errors in generating image, there is fallback text in OgCard component
       token: 'Token ID:',
       source: 'Source:',
       fundsGenerated: 'Total funds generated to date:',
