@@ -11,11 +11,19 @@
   export let img = SOCIAL_CARD_PLACEHOLDER;
   const mediumTitle = isLongTitle(title);
   const smallTitle = isLongTitle(title, 9, 3);
+  const sourceText = $LL.social.og.source()
+    ? $LL.social.og.source()
+    : 'Source:';
+
+  const fundsText = $LL.social.og.fundsGenerated()
+    ? $LL.social.og.fundsGenerated()
+    : 'Total funds generated to date:';
+  const tokenText = $LL.social.og.token() ? $LL.social.og.token() : 'Token ID:';
 
   let fontSizeClass = 'text-72px'; // Default font size
 
   if (smallTitle) {
-    fontSizeClass = 'text-50px'; // Small font size
+    fontSizeClass = 'text-48px'; // Small font size
   } else if (mediumTitle) {
     fontSizeClass = 'text-62px'; // Medium font size
   }
@@ -36,7 +44,7 @@
   <Logo className="absolute top-65px left-58px w-96px h-96px text-white" />
   <div class="flex flex-col absolute w-1/3 left-58px top-208px">
     <h1
-      class="font-serif text-white capitalize leading-snug max-h-198px max-w-352px overflow-hidden break-all {fontSizeClass}"
+      class="font-serif text-white capitalize leading-snug max-h-199px max-w-352px overflow-hidden break-all {fontSizeClass}"
     >
       {title}
     </h1>
@@ -45,7 +53,7 @@
         class="flex items-start text-white text-21px mb-2"
         style="font-family: Roboto; font-weight:400"
       >
-        <strong>{$LL.social.og.source()}</strong>
+        <strong>{sourceText}</strong>
         <span class="text-[#00C67E] ml-2">{source}</span>
       </div>
     {/if}
@@ -54,7 +62,7 @@
         class="flex items-start text-white text-21px"
         style="font-family: Roboto; font-weight:400;"
       >
-        <strong>{$LL.social.og.token()}</strong>
+        <strong>{tokenText}</strong>
         <span class="text-[#00C67E] ml-2">{tokenId}</span>
       </div>
     {/if}
@@ -62,8 +70,7 @@
   {#if funds}
     <span
       class="absolute left-58px top-510px text-[#00C67E] text-21px"
-      style="font-family: Roboto; font-weight:400"
-      >{$LL.social.og.fundsGenerated()}</span
+      style="font-family: Roboto; font-weight:400">{fundsText}</span
     >
     <FundsWidget
       size="xl"
