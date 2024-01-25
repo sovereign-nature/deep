@@ -21,7 +21,7 @@
     "typesafe-i18n": "typesafe-i18n"
   },
   "devDependencies": {
-    "@google/model-viewer": "3.3.0",
+    "@google/model-viewer": "3.4.0",
     "@playwright/test": "1.40.1",
     "@popperjs/core": "2.11.8",
     "@sentry/sveltekit": "7.92.0",
