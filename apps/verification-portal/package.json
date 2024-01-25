@@ -29,7 +29,7 @@
     "@sni/clients": "workspace:*",
     "@sni/constants": "workspace:*",
     "@sni/types": "workspace:*",
-    "@sveltejs/adapter-auto": "3.1.0",
+    "@sveltejs/adapter-auto": "3.1.1",
     "@sveltejs/adapter-vercel": "4.0.5",
     "@sveltejs/kit": "2.4.3",
     "@sveltejs/vite-plugin-svelte": "3.0.1",
