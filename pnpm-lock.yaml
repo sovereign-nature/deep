@@ -227,8 +227,8 @@ importers:
         specifier: 0.6.2
         version: 0.6.2
       '@vercel/speed-insights':
-        specifier: 1.0.4
-        version: 1.0.4
+        specifier: 1.0.7
+        version: 1.0.7(@sveltejs/kit@2.3.3)(react@18.2.0)(svelte@4.2.9)(vue@3.4.7)
       '@vite-pwa/sveltekit':
         specifier: 0.3.0
         version: 0.3.0(@sveltejs/kit@2.4.3)(vite-plugin-pwa@0.17.4)
@@ -6149,9 +6149,34 @@ packages:
       yoga-wasm-web: 0.3.3
     dev: true
 
-  /@vercel/speed-insights@1.0.4:
-    resolution: {integrity: sha512-Q7O0bnV11KUqNKAKA984YWIGxCjqgOuJdwH1cdItqlkUVTLbIm8BhObro6hJobGMSUHm+z7xjQ0YbC8ps1ekDg==}
+  /@vercel/speed-insights@1.0.7(@sveltejs/kit@2.3.3)(react@18.2.0)(svelte@4.2.9)(vue@3.4.7):
+    resolution: {integrity: sha512-1XYZO/OlrAco8QPoXXIOPoMrj0O+slB9k6poRo1drQJ+DWTbdUUT18Mtm4ybA8KMj4mGEMEgbw0BKR/yq/VPhA==}
     requiresBuild: true
+    peerDependencies:
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      react: ^18 || ^19
+      svelte: ^4
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
+    dependencies:
+      '@sveltejs/kit': 2.3.3(@sveltejs/vite-plugin-svelte@3.0.1)(svelte@4.2.9)(vite@5.0.11)
+      react: 18.2.0
+      svelte: 4.2.9
+      vue: 3.4.7(typescript@5.3.3)
     dev: true
 
   /@vite-pwa/sveltekit@0.3.0(@sveltejs/kit@2.4.3)(vite-plugin-pwa@0.17.4):
