@@ -1,4 +1,4 @@
-# SNI Verification Portal
+# REAL Portal
 
 ## Address Validation Flow
 

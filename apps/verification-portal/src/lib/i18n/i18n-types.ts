@@ -23,7 +23,7 @@ type RootTranslation = {
 		 */
 		part2: string
 		/**
-		 * V​e​r​i​f​i​c​a​t​i​o​n​ ​P​o​r​t​a​l​.
+		 * P​o​r​t​a​l​.
 		 */
 		part3: string
 	}
@@ -341,7 +341,7 @@ export type TranslationFunctions = {
 		 */
 		part2: () => LocalizedString
 		/**
-		 * Verification Portal.
+		 * Portal.
 		 */
 		part3: () => LocalizedString
 	}

@@ -4,7 +4,7 @@ const en: BaseTranslation = {
   title: {
     part1: 'Welcome to our',
     part2: 'REAL',
-    part3: 'Verification Portal.',
+    part3: 'Portal.',
   },
   subtitle:
     'Learn how your asset is helping real-world conservation efforts around the globe.',
