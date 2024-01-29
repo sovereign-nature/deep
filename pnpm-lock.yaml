@@ -179,8 +179,8 @@ importers:
   apps/verification-portal:
     devDependencies:
       '@google/model-viewer':
-        specifier: 3.3.0
-        version: 3.3.0(three@0.157.0)
+        specifier: 3.4.0
+        version: 3.4.0(three@0.160.1)
       '@playwright/test':
         specifier: 1.40.1
         version: 1.40.1
@@ -2696,14 +2696,15 @@ packages:
     resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
     dev: true
 
-  /@google/model-viewer@3.3.0(three@0.157.0):
-    resolution: {integrity: sha512-nQQXi9VUpO7odH42EfnN5L3E/1DT5M50H7eOMd5Q9xI2X6J4we6IsfHPzxxFXffK9fMSw026OE2YAvkUcBxT3A==}
+  /@google/model-viewer@3.4.0(three@0.160.1):
+    resolution: {integrity: sha512-ZGZktE+uy7CiNOSrFdR1bTZDe9nfel2h8gWiRY6D5Eit77RAzIRYnPlkdQBoLSo8nnYS0faL/Z1tKP7nntvoGg==}
     engines: {node: '>=6.0.0'}
     peerDependencies:
-      three: ^0.157.0
+      three: ^0.160.0
     dependencies:
+      '@monogrid/gainmap-js': 3.0.1(three@0.160.1)
       lit: 2.8.0
-      three: 0.157.0
+      three: 0.160.1
     dev: true
 
   /@graphprotocol/graph-cli@0.67.2(@types/node@20.10.8)(node-fetch@3.3.2)(typescript@5.3.3):
@@ -4002,6 +4003,15 @@ packages:
       superstruct: 1.0.3
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@monogrid/gainmap-js@3.0.1(three@0.160.1):
+    resolution: {integrity: sha512-ds5/oRGp6bW11W6iHHHAQiEFaBMUDTuszXHxZvkLH4YdcRd1eRFt925XDLcE/ucT3HhYq7rr1xS1Yjz26QOB6A==}
+    peerDependencies:
+      three: '>= 0.159.0'
+    dependencies:
+      promise-worker-transferable: 1.0.4
+      three: 0.160.1
     dev: true
 
   /@motionone/animation@10.17.0:
@@ -11630,6 +11640,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /is-promise@2.2.2:
+    resolution: {integrity: sha512-+lP4/6lKUBfQjZ2pdxThZvLUAafmZb8OAxFb8XXtiQmS35INgr85hdOGoEs124ez1FCnZJt6jau/T+alh58QFQ==}
+    dev: true
+
   /is-property@1.0.2:
     resolution: {integrity: sha512-Ks/IoX00TtClbGQr4TWXemAnktAQvYB7HzcCxDGqEZU6oCmb2INHuOoKxbtR+HFkmYWBKv/dOZtGRiAjDhj92g==}
     dev: false
@@ -14106,6 +14120,13 @@ packages:
     dev: false
     optional: true
 
+  /promise-worker-transferable@1.0.4:
+    resolution: {integrity: sha512-bN+0ehEnrXfxV2ZQvU2PetO0n4gqBD4ulq3MI1WOPLgr7/Mg9yRQkX5+0v1vagr74ZTsl7XtzlaYDo2EuCeYJw==}
+    dependencies:
+      is-promise: 2.2.2
+      lie: 3.1.1
+    dev: true
+
   /promise@7.3.1:
     resolution: {integrity: sha512-nolQXZ/4L+bP/UGlkfaIujX9BKxGwmQ9OT4mOt5yvy8iK1h3wqTEJCijzGANTCCl9nWjY41juyAn2K3Q1hLLTg==}
     dependencies:
@@ -16038,8 +16059,8 @@ packages:
       real-require: 0.1.0
     dev: true
 
-  /three@0.157.0:
-    resolution: {integrity: sha512-CeAwQrf4x3z0/e+MC4F+nXLW5t0gh3pw+L6CCBqpHvOq3bGYIgRYub7Pv0j/9wR+d++OiEglyZzWyuSYbwWGOA==}
+  /three@0.160.1:
+    resolution: {integrity: sha512-Bgl2wPJypDOZ1stAxwfWAcJ0WQf7QzlptsxkjYiURPz+n5k4RBDLsq+6f9Y75TYxn6aHLcWz+JNmwTOXWrQTBQ==}
     dev: true
 
   /throttled-queue@2.1.4:
