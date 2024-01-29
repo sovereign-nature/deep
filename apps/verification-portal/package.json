@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@google/model-viewer": "3.4.0",
-    "@playwright/test": "1.40.1",
+    "@playwright/test": "1.41.1",
     "@popperjs/core": "2.11.8",
     "@sentry/sveltekit": "7.92.0",
     "@sni/address-utils": "workspace:*",
