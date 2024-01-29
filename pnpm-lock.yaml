@@ -242,8 +242,8 @@ importers:
         specifier: 10.4.17
         version: 10.4.17(postcss@8.4.33)
       date-fns:
-        specifier: 3.2.0
-        version: 3.2.0
+        specifier: 3.3.1
+        version: 3.3.1
       flowbite:
         specifier: 2.2.1
         version: 2.2.1
@@ -8753,8 +8753,8 @@ packages:
     resolution: {integrity: sha512-8YnDaaf7N3k/q5HnTJVuzSyLETjoZjVmHc4AeKAzOvKHEFQKcn64OKBfzHYtE9zGjctNM7V9I0MfnUVLpi7M5g==}
     dev: false
 
-  /date-fns@3.2.0:
-    resolution: {integrity: sha512-E4KWKavANzeuusPi0jUjpuI22SURAznGkx7eZV+4i6x2A+IZxAMcajgkvuDAU1bg40+xuhW1zRdVIIM/4khuIg==}
+  /date-fns@3.3.1:
+    resolution: {integrity: sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==}
     dev: true
 
   /dayjs@1.11.10:
