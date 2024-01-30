@@ -76,8 +76,8 @@ importers:
         specifier: 1.2.2
         version: 1.2.2
       wrangler:
-        specifier: 3.23.0
-        version: 3.23.0
+        specifier: 3.25.0
+        version: 3.25.0
 
   apps/contracts:
     devDependencies:
@@ -152,8 +152,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0
       wrangler:
-        specifier: 3.23.0
-        version: 3.23.0
+        specifier: 3.25.0
+        version: 3.25.0
 
   apps/indexer:
     devDependencies:
@@ -330,8 +330,8 @@ importers:
         specifier: 10.1.0
         version: 10.1.0
       wrangler:
-        specifier: 3.23.0
-        version: 3.23.0
+        specifier: 3.25.0
+        version: 3.25.0
 
   packages/address-utils:
     dependencies:
@@ -7201,11 +7201,6 @@ packages:
       acorn: 8.11.3
     dev: true
 
-  /acorn-walk@8.3.1:
-    resolution: {integrity: sha512-TgUZgYvqZprrl7YldZNoa9OciCAyZR+Ejm9eXzKCmjsF5IKp/wgQ7Z/ZpjpGTIUPwrHQIcYeI8qDh4PsEwxMbw==}
-    engines: {node: '>=0.4.0'}
-    dev: true
-
   /acorn-walk@8.3.2:
     resolution: {integrity: sha512-cjkyv4OtNCIeqhHrfS81QWXoCBPExR/J62oyEqepVw8WaQeSqpW2uhuLPh1m9eWhDuOo/jUXVTlifvesOWp/4A==}
     engines: {node: '>=0.4.0'}
@@ -12780,14 +12775,14 @@ packages:
     hasBin: true
     dev: true
 
-  /miniflare@3.20231218.2:
-    resolution: {integrity: sha512-rCUI2OjqCf3fZVdmSX4DOZQRzSDvHp/oL2vjER/cvJEdWSYiqRxDp2oO7A7JcEo1/Y+kPa5VQ1pFfdZpjBcpFg==}
+  /miniflare@3.20231218.4:
+    resolution: {integrity: sha512-2mpxvDiRBxGGGVnTKC0SZy0FtTXxFs3tM1ol67EoIJABGzvWFf33GThwh+/dRmaHSjKKId/FI8rEl5JxXXXZgQ==}
     engines: {node: '>=16.13'}
     hasBin: true
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       acorn: 8.11.3
-      acorn-walk: 8.3.1
+      acorn-walk: 8.3.2
       capnp-ts: 0.7.0
       exit-hook: 2.2.1
       glob-to-regexp: 0.4.1
@@ -17391,8 +17386,8 @@ packages:
     resolution: {integrity: sha512-ILEIE97kDZvF9Wb9f6h5aXK4swSlKGUcOEGiIYb2OOu/IrDU9iwj0fD//SsA6E5ibwJxpEvhullJY4Sl4GcpAw==}
     dev: true
 
-  /wrangler@3.23.0:
-    resolution: {integrity: sha512-mOWPL02/popoF6jjb4TT8au4yvo8VFu6O6/IwcRN74rlgwaGS0XvlkFtbofBGAdDUHAh5DXkuoPNS871mXNuJg==}
+  /wrangler@3.25.0:
+    resolution: {integrity: sha512-eU47Ez1QLu1B/wutm5ow+VwZnY4OqA+D/iy6BORAu5tABujoDr9p1yBxY/1DS/DxxDWqqY3sBBS6TzcC4NSLUQ==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     dependencies:
@@ -17402,7 +17397,7 @@ packages:
       blake3-wasm: 2.1.5
       chokidar: 3.5.3
       esbuild: 0.17.19
-      miniflare: 3.20231218.2
+      miniflare: 3.20231218.4
       nanoid: 3.3.7
       path-to-regexp: 6.2.1
       resolve: 1.22.8
