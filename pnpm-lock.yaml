@@ -83,7 +83,7 @@ importers:
     devDependencies:
       '@nomicfoundation/hardhat-toolbox':
         specifier: 4.0.0
-        version: 4.0.0(@nomicfoundation/hardhat-chai-matchers@2.0.3)(@nomicfoundation/hardhat-ethers@3.0.5)(@nomicfoundation/hardhat-network-helpers@1.0.10)(@nomicfoundation/hardhat-verify@2.0.3)(@typechain/ethers-v6@0.5.1)(@typechain/hardhat@9.1.0)(@types/chai@4.3.11)(@types/mocha@10.0.6)(@types/node@20.10.8)(chai@4.4.0)(ethers@6.10.0)(hardhat-gas-reporter@1.0.9)(hardhat@2.19.5)(solidity-coverage@0.8.6)(ts-node@10.9.2)(typechain@8.3.2)(typescript@5.3.3)
+        version: 4.0.0(@nomicfoundation/hardhat-chai-matchers@2.0.3)(@nomicfoundation/hardhat-ethers@3.0.5)(@nomicfoundation/hardhat-network-helpers@1.0.10)(@nomicfoundation/hardhat-verify@2.0.3)(@typechain/ethers-v6@0.5.1)(@typechain/hardhat@9.1.0)(@types/chai@4.3.11)(@types/mocha@10.0.6)(@types/node@20.10.8)(chai@4.4.0)(ethers@6.10.0)(hardhat-gas-reporter@1.0.10)(hardhat@2.19.5)(solidity-coverage@0.8.6)(ts-node@10.9.2)(typechain@8.3.2)(typescript@5.3.3)
       '@openzeppelin/contracts':
         specifier: 4.9.5
         version: 4.9.5
@@ -106,8 +106,8 @@ importers:
         specifier: 2.10.1
         version: 2.10.1(hardhat@2.19.5)
       hardhat-gas-reporter:
-        specifier: 1.0.9
-        version: 1.0.9(hardhat@2.19.5)
+        specifier: 1.0.10
+        version: 1.0.10(hardhat@2.19.5)
       nft.storage:
         specifier: 7.1.1
         version: 7.1.1(node-fetch@3.3.2)
@@ -4343,7 +4343,7 @@ packages:
       hardhat: 2.19.5(ts-node@10.9.2)(typescript@5.3.3)
     dev: true
 
-  /@nomicfoundation/hardhat-toolbox@4.0.0(@nomicfoundation/hardhat-chai-matchers@2.0.3)(@nomicfoundation/hardhat-ethers@3.0.5)(@nomicfoundation/hardhat-network-helpers@1.0.10)(@nomicfoundation/hardhat-verify@2.0.3)(@typechain/ethers-v6@0.5.1)(@typechain/hardhat@9.1.0)(@types/chai@4.3.11)(@types/mocha@10.0.6)(@types/node@20.10.8)(chai@4.4.0)(ethers@6.10.0)(hardhat-gas-reporter@1.0.9)(hardhat@2.19.5)(solidity-coverage@0.8.6)(ts-node@10.9.2)(typechain@8.3.2)(typescript@5.3.3):
+  /@nomicfoundation/hardhat-toolbox@4.0.0(@nomicfoundation/hardhat-chai-matchers@2.0.3)(@nomicfoundation/hardhat-ethers@3.0.5)(@nomicfoundation/hardhat-network-helpers@1.0.10)(@nomicfoundation/hardhat-verify@2.0.3)(@typechain/ethers-v6@0.5.1)(@typechain/hardhat@9.1.0)(@types/chai@4.3.11)(@types/mocha@10.0.6)(@types/node@20.10.8)(chai@4.4.0)(ethers@6.10.0)(hardhat-gas-reporter@1.0.10)(hardhat@2.19.5)(solidity-coverage@0.8.6)(ts-node@10.9.2)(typechain@8.3.2)(typescript@5.3.3):
     resolution: {integrity: sha512-jhcWHp0aHaL0aDYj8IJl80v4SZXWMS1A2XxXa1CA6pBiFfJKuZinCkO6wb+POAt0LIfXB3gA3AgdcOccrcwBwA==}
     peerDependencies:
       '@nomicfoundation/hardhat-chai-matchers': ^2.0.0
@@ -4376,7 +4376,7 @@ packages:
       chai: 4.4.0
       ethers: 6.10.0
       hardhat: 2.19.5(ts-node@10.9.2)(typescript@5.3.3)
-      hardhat-gas-reporter: 1.0.9(hardhat@2.19.5)
+      hardhat-gas-reporter: 1.0.10(hardhat@2.19.5)
       solidity-coverage: 0.8.6(hardhat@2.19.5)
       ts-node: 10.9.2(@types/node@20.10.8)(typescript@5.3.3)
       typechain: 8.3.2(typescript@5.3.3)
@@ -10767,8 +10767,8 @@ packages:
       hardhat: 2.19.5(ts-node@10.9.2)(typescript@5.3.3)
     dev: true
 
-  /hardhat-gas-reporter@1.0.9(hardhat@2.19.5):
-    resolution: {integrity: sha512-INN26G3EW43adGKBNzYWOlI3+rlLnasXTwW79YNnUhXPDa+yHESgt639dJEs37gCjhkbNKcRRJnomXEuMFBXJg==}
+  /hardhat-gas-reporter@1.0.10(hardhat@2.19.5):
+    resolution: {integrity: sha512-02N4+So/fZrzJ88ci54GqwVA3Zrf0C9duuTyGt0CFRIh/CdNwbnTgkXkRfojOMLBQ+6t+lBIkgbsOtqMvNwikA==}
     peerDependencies:
       hardhat: ^2.0.2
     dependencies:

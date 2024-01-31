@@ -24,7 +24,7 @@
     "dotenv": "16.4.1",
     "hardhat": "2.19.5",
     "hardhat-abi-exporter": "2.10.1",
-    "hardhat-gas-reporter": "1.0.9",
+    "hardhat-gas-reporter": "1.0.10",
     "nft.storage": "7.1.1",
     "solhint": "4.1.1",
     "solidity-coverage": "0.8.6"
