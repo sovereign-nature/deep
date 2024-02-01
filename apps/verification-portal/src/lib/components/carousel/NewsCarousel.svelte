@@ -7,6 +7,7 @@
   import { format, parseISO } from 'date-fns';
   import { LL } from '$lib/i18n/i18n-svelte';
   import { track } from '@vercel/analytics';
+  import { dev } from '$app/environment';
 
   export let newsData: Array<NewsEntity>;
   let autoplay = true;
@@ -30,10 +31,13 @@
 
   function toggleExpanded() {
     expanded = !expanded;
-    track('news_read_more', {
-      title: images[index]?.title,
-      expanded,
-    });
+
+    if (!dev) {
+      track('news_read_more', {
+        title: images[index]?.title,
+        expanded,
+      });
+    }
   }
 </script>
 
