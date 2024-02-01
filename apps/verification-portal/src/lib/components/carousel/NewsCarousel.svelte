@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Carousel } from 'flowbite-svelte';
+  import Carousel from './Carousel.svelte';
   import Subheader from '$lib/typography/Subheader.svelte';
   import CardHeader from '$lib/typography/CardHeader.svelte';
   import { generateAssetURL } from '$lib/utils';
@@ -22,6 +22,7 @@
     title: item?.title,
     content: item?.content,
   }));
+
   let mouseCursor =
     images && images.length > 1 ? 'cursor-pointer' : 'cursor-default';
 
