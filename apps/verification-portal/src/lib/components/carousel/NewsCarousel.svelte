@@ -6,6 +6,7 @@
   import type { NewsEntity } from '$lib/types';
   import { format, parseISO } from 'date-fns';
   import { LL } from '$lib/i18n/i18n-svelte';
+  import { track } from '@vercel/analytics';
 
   export let newsData: Array<NewsEntity>;
   let autoplay = true;
@@ -29,6 +30,10 @@
 
   function toggleExpanded() {
     expanded = !expanded;
+    track('news_read_more', {
+      title: images[index]?.title,
+      expanded,
+    });
   }
 </script>
 
