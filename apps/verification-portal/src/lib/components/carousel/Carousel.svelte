@@ -20,6 +20,7 @@
   import Slide from 'flowbite-svelte/Slide.svelte';
   import { canChangeSlide } from './CarouselSlide';
 
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   type TransitionFunc = (node: HTMLElement, params: any) => TransitionConfig;
   const SLIDE_DURATION_RATIO = 0.25; // TODO: Expose one day?
 
@@ -110,6 +111,7 @@
     carouselDiv = node; // used by DragStart
 
     // loop timer
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     let intervalId: any;
 
     if (duration > 0) intervalId = setInterval(nextSlide, duration);
@@ -177,7 +179,7 @@
   $: onDragStop =
     activeDragGesture === undefined
       ? undefined
-      : (evt: MouseEvent | TouchEvent) => {
+      : () => {
           // These might be exposed one day, keep them safely tucked away as constants.
           const SWIPE_MAX_DURATION = 250;
           const SWIPE_MIN_DISTANCE = 30;
