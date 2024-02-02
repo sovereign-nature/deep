@@ -7,6 +7,7 @@
     "build": "turbo run build --no-daemon",
     "dev": "turbo run dev --parallel --no-daemon",
     "lint": "eslint --cache .",
+    "lint:fix": "eslint --fix .",
     "test": "turbo run test --no-daemon",
     "codegen": "turbo run codegen --no-daemon",
     "format": "prettier --cache --write .",
@@ -32,6 +33,8 @@
     "@typescript-eslint/parser": "6.20.0",
     "eslint": "8.56.0",
     "eslint-plugin-svelte": "2.35.1",
+    "eslint-plugin-boundaries": "4.2.0",
+    "eslint-plugin-import": "2.29.1",
     "eslint-config-prettier": "9.1.0",
     "eslint-config-turbo": "1.10.16"
   },

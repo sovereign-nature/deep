@@ -1,10 +1,10 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import {
+    generateAssetURL,
     generateIPFSImageUrl,
     isIPFSUrl,
-    generateAssetURL,
   } from '$lib/utils';
-  import { onMount } from 'svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import VerifiedIcon from '$lib/components/icons/VerifiedIcon.svelte';
   import LL from '$lib/i18n/i18n-svelte';

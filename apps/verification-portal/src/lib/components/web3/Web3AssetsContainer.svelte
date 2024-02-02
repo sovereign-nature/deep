@@ -1,14 +1,14 @@
 <script lang="ts">
   import { getContext } from 'svelte';
   import type { Writable } from 'svelte/store';
-  import Card from '$lib/components/Card.svelte';
   import { flip } from 'svelte/animate';
+  import type { DeepAsset } from '@sni/types';
+  import Card from '$lib/components/Card.svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import type { AssetFeatured, Web3DataState } from '$lib/types';
   import FeaturedContainer from '$lib/components/featured/Web3Featured.svelte';
   import { LL } from '$lib/i18n/i18n-svelte';
   import Web3Notifications from '$lib/components/web3/Web3Notifications.svelte';
-  import type { DeepAsset } from '@sni/types';
 
   export let web3enabled = false;
   export let collectionName: string;

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getContext } from 'svelte';
   import type { Writable } from 'svelte/store';
-  import { Input, ButtonGroup, Button } from 'flowbite-svelte';
+  import { Button, ButtonGroup, Input } from 'flowbite-svelte';
   import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
   import { updateQueryParams } from '$lib/utils';
   import { LL } from '$lib/i18n/i18n-svelte';

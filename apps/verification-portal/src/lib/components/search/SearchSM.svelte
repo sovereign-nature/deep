@@ -1,7 +1,7 @@
 <script>
-  import { Input, ButtonGroup, Button } from 'flowbite-svelte';
-  import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
+  import { Button, ButtonGroup, Input } from 'flowbite-svelte';
   import { Modal } from 'flowbite-svelte';
+  import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
   import SearchTabs from '$lib/containers/SearchTabs.svelte';
 
   let defaultModal = false;

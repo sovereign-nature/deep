@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { Modal, CloseButton } from 'flowbite-svelte';
+  import { CloseButton, Modal } from 'flowbite-svelte';
   import type { SizeType } from 'flowbite-svelte';
   import { getContext } from 'svelte';
   import type { Writable } from 'svelte/store';
 
-  import { LL } from '$lib/i18n/i18n-svelte';
   import { flip } from 'svelte/animate';
-  import { deleteMessage, updateScopes } from '$lib/web3Inbox';
   import type { NotifyClientTypes } from '@walletconnect/notify-client';
   import { formatDistanceToNowStrict } from 'date-fns';
+  import { deleteMessage, updateScopes } from '$lib/web3Inbox';
+  import { LL } from '$lib/i18n/i18n-svelte';
   import Toggle from '$lib/components/Toggle.svelte';
   import Info from '$lib/typography/Info.svelte';
   import Spinner from '$lib/components/icons/Spinner.svelte';

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { browser } from '$app/environment';
   import { onMount } from 'svelte';
+  import { browser } from '$app/environment';
 
   export let modelUrl: string;
 

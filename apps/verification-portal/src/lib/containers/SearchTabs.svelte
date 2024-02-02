@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { updateQueryParams } from '$lib/utils';
-  import { Tabs, TabItem } from 'flowbite-svelte';
+  import { TabItem, Tabs } from 'flowbite-svelte';
   import { onMount } from 'svelte';
+  import { updateQueryParams } from '$lib/utils';
   import { page } from '$app/stores';
   import { LL } from '$lib/i18n/i18n-svelte';
 

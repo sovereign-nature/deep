@@ -1,10 +1,10 @@
 <script lang="ts">
   import { getContext } from 'svelte';
   import type { Writable } from 'svelte/store';
-  import Card from '$lib/components/Card.svelte';
   import { flip } from 'svelte/animate';
+  import Card from '$lib/components/Card.svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
-  import type { Web2DataState, AssetFeatured } from '$lib/types';
+  import type { AssetFeatured, Web2DataState } from '$lib/types';
   import FeaturedContainer from '$lib/components/featured/Web2Featured.svelte';
   import { LL } from '$lib/i18n/i18n-svelte';
 

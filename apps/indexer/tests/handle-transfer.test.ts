@@ -3,7 +3,6 @@ import { assert, describe, test } from 'matchstick-as/assembly/index';
 import { Address, BigInt } from '@graphprotocol/graph-ts';
 
 import { handleTransfer } from '../src/deep-link';
-import { createTransferEvent } from './events-mocks';
 
 import { SUBGRAPH_ENTITY_NAME } from '../../../packages/constants';
 
@@ -17,6 +16,7 @@ import {
   SYMBOL,
   TOKEN_URI,
 } from '../../../packages/constants/mocks/deep-link';
+import { createTransferEvent } from './events-mocks';
 import { mockForToken } from './mocks/functions';
 
 //MOCKED CONSTANTS

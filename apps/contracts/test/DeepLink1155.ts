@@ -1,11 +1,10 @@
 import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
+import { CONSERVATION_IDS, ELEMENT_IDS } from '@sni/constants/mocks/deep-link';
 import { expect } from 'chai';
 import {
   deployDeepLink1155BatchFixture,
   deployDeepLink1155SingleFixture,
 } from './fixtures';
-
-import { CONSERVATION_IDS, ELEMENT_IDS } from '@sni/constants/mocks/deep-link';
 
 const tests = [
   { mintingType: 'single', fixture: deployDeepLink1155SingleFixture },

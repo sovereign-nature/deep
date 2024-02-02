@@ -1,12 +1,12 @@
 <script>
   import { onMount } from 'svelte';
+  import { Dropdown, DropdownItem } from 'flowbite-svelte';
   import BtnWeb3Connect from '$lib/components/web3/Web3ConnectBtn.svelte';
   import Web3Notifications from '$lib/components/web3/Web3Notifications.svelte';
   import ThemeSwitch from '$lib/components/navbar/ThemeSwitch.svelte';
-  import { Dropdown, DropdownItem } from 'flowbite-svelte';
   let dropdownOpen = false;
 
-  import { Navbar, NavBrand } from 'flowbite-svelte';
+  import { NavBrand, Navbar } from 'flowbite-svelte';
 
   import logo from '$lib/assets/brand/sni_logo_round.svg';
 

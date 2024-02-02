@@ -1,4 +1,9 @@
 <script setup lang="ts">
+  import {
+    ANIMAL_PLACEHOLDER,
+    CAMP_PLACEHOLDER,
+  } from '@sni/constants/cdn/placeholders';
+  import { getChainName } from '@sni/address-utils';
   import Property from '$lib/typography/Property.svelte';
   import Info from '$lib/typography/Info.svelte';
   import Subheader from '$lib/typography/Subheader.svelte';
@@ -12,13 +17,8 @@
   import AudioPlayer from '$lib/components/media/AudioPlayer.svelte';
   import NewsCarousel from '$lib/components/carousel/NewsCarousel.svelte';
   import LL from '$lib/i18n/i18n-svelte.js';
-  import {
-    ANIMAL_PLACEHOLDER,
-    CAMP_PLACEHOLDER,
-  } from '@sni/constants/cdn/placeholders';
 
   import { page } from '$app/stores';
-  import { getChainName } from '@sni/address-utils';
 
   $: currentPath = $page.url.toString();
   $: pageTitle = `${$LL.assets.title({ assetName: nftData.name })}`;

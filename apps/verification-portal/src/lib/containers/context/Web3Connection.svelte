@@ -1,11 +1,11 @@
 <script lang="ts">
   // import Web3Featured from '$lib/data/Web3Featured.json';
-  import type { Web3DataState } from '$lib/types';
-  import { shuffleArray } from '$lib/utils';
   import { getContext, setContext } from 'svelte';
   import { writable } from 'svelte/store';
   import type { Writable } from 'svelte/store';
   import type { DeepAsset } from '@sni/types';
+  import { shuffleArray } from '$lib/utils';
+  import type { Web3DataState } from '$lib/types';
 
   export let collectionId: string;
   export let highlights: DeepAsset[] = [];

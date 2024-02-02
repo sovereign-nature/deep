@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { browser } from '$app/environment';
   import type { GeoJsonObject } from 'geojson';
-  import type { Map as LeafletMap, GeoJSON } from 'leaflet';
+  import type { GeoJSON, Map as LeafletMap } from 'leaflet';
   import { onDestroy, onMount } from 'svelte';
+  import { browser } from '$app/environment';
   export let geoJSONData: GeoJsonObject | undefined;
   import 'leaflet/dist/leaflet.css';
 
