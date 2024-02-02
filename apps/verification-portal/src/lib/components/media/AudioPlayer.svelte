@@ -3,7 +3,7 @@
   import { Howl } from 'howler';
   import { Howl as HowlType } from 'howler';
   import { browser } from '$app/environment';
-  import { generateMediaURL, getCookie, setCookie } from '$lib/utils';
+  import { generateMediaURL, getCookie, setCookie } from '$lib/shared/utils';
   import Play from '$lib/components/icons/Play.svelte';
   import Pause from '$lib/components/icons/Pause.svelte';
   import Mute from '$lib/components/icons/Mute.svelte';

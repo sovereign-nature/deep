@@ -2,7 +2,7 @@
   export let featuredItems: DeepAsset[];
   import type { DeepAsset } from '@sni/types';
   import CardFeatured from '$lib/components/cards/CardFeatured.svelte';
-  import LL from '$lib/i18n/i18n-svelte';
+  import LL from '$lib/shared/i18n/i18n-svelte';
 </script>
 
 {#if featuredItems && featuredItems.length > 0}

@@ -4,7 +4,7 @@
   import { writable } from 'svelte/store';
   import type { Writable } from 'svelte/store';
   import type { DeepAsset } from '@sni/types';
-  import { shuffleArray } from '$lib/utils';
+  import { shuffleArray } from '$lib/shared/utils';
   import type { Web3DataState } from '$lib/types';
 
   export let collectionId: string;

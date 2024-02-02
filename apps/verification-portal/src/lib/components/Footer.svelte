@@ -4,7 +4,7 @@
   const currentYear = new Date().getFullYear();
   const copyrightNotice = `© ${currentYear} SNI`;
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
-  import LL from '$lib/i18n/i18n-svelte';
+  import LL from '$lib/shared/i18n/i18n-svelte';
 
   const links = {
     mailing: {

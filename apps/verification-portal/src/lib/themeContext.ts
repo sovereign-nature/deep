@@ -1,6 +1,6 @@
 import { setContext } from 'svelte';
 import { writable } from 'svelte/store';
-import { isDarkModePreferred } from './utils';
+import { isDarkModePreferred } from '$lib/shared/utils';
 
 const getInitialTheme = () => {
   if (typeof window !== 'undefined' && localStorage.getItem('color-theme')) {

@@ -5,7 +5,7 @@
 
   import SearchTabs from '$lib/containers/SearchTabs.svelte';
 
-  import { LL } from '$lib/i18n/i18n-svelte';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
 
   export let data;
 </script>

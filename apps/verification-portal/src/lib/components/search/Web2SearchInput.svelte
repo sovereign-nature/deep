@@ -3,8 +3,8 @@
   import type { Writable } from 'svelte/store';
   import { Button, ButtonGroup, Input } from 'flowbite-svelte';
   import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
-  import { updateQueryParams } from '$lib/utils';
-  import { LL } from '$lib/i18n/i18n-svelte';
+  import { updateQueryParams } from '$lib/shared/utils';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
 
   export let placeholder = $LL.web2.search.placeholder();
   export const inputmode = 'search';

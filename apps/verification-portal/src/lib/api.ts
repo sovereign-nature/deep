@@ -1,3 +1,4 @@
+//TODO: This is not API file, relates to OG widget
 // adapted from https://github.com/etherCorps/sveltekit-og
 import { ImageResponse as IR } from '@vercel/og';
 import { html } from 'satori-html';

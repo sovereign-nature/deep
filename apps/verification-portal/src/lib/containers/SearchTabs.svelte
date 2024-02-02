@@ -1,9 +1,9 @@
 <script lang="ts">
   import { TabItem, Tabs } from 'flowbite-svelte';
   import { onMount } from 'svelte';
-  import { updateQueryParams } from '$lib/utils';
+  import { updateQueryParams } from '$lib/shared/utils';
   import { page } from '$app/stores';
-  import { LL } from '$lib/i18n/i18n-svelte';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
 
   import SearchResults from '$lib/components/search/Web2SearchResults.svelte';
   import Web2SearchContainer from '$lib/containers/context/Web2Search.svelte';

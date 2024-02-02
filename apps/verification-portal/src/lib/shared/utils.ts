@@ -1,3 +1,5 @@
+//TODO: Refactor utils dump
+
 import { SNI_API_URL, SNI_IPFS_CACHE } from '@sni/constants';
 import { ANIMAL_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
 import type { DeepAsset } from '@sni/types';

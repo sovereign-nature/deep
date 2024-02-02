@@ -2,11 +2,11 @@
   import { format, parseISO } from 'date-fns';
   import { track } from '@vercel/analytics';
   import Carousel from './Carousel.svelte';
-  import Subheader from '$lib/typography/Subheader.svelte';
-  import CardHeader from '$lib/typography/CardHeader.svelte';
-  import { generateAssetURL } from '$lib/utils';
+  import Subheader from '$lib/shared/typography/Subheader.svelte';
+  import CardHeader from '$lib/shared/typography/CardHeader.svelte';
+  import { generateAssetURL } from '$lib/shared/utils';
   import type { NewsEntity } from '$lib/types';
-  import { LL } from '$lib/i18n/i18n-svelte';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
   import { dev } from '$app/environment';
 
   export let newsData: Array<NewsEntity>;

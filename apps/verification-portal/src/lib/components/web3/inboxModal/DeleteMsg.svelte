@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Toast } from 'flowbite-svelte';
   import { fly } from 'svelte/transition';
-  import { LL } from '$lib/i18n/i18n-svelte';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
   export let openToast = false;
   let counter = 5;
 
