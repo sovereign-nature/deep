@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { Toggle } from 'flowbite-svelte';
   import { browser } from '$app/environment';
   import config from '$lib/config/siteConfigs';
-  import { Toggle } from 'flowbite-svelte';
   import type { FeaturesConfig } from '$lib/types';
 
   let featureState: FeaturesConfig = {};

@@ -3,11 +3,11 @@
   import type { AxiosResponse } from 'axios';
   import Fuse from 'fuse.js';
   import { writable } from 'svelte/store';
-  import { setContext, onMount } from 'svelte';
-  import { page } from '$app/stores';
+  import { onMount, setContext } from 'svelte';
   import { SNI_API_URL } from '@sni/constants';
+  import { page } from '$app/stores';
   export let campaign = 'hotel_hideaway';
-  import type { Web2DataState, AssetFeatured } from '$lib/types';
+  import type { AssetFeatured, Web2DataState } from '$lib/types';
   import { shuffleArray } from '$lib/utils';
 
   const url = $page.url;

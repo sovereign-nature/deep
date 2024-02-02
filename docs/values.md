@@ -17,4 +17,3 @@ The Sovereign Nature Initiative was inspired by the idea of self-owning and self
 It is precisely the respect for the complexity of this layering that makes our work stand out. In a time when the pressure for ever more accurate and ever less mediated eco-data is accelerated by technological innovation, the most important work is to hold space for the thick entangled fabric of life where technology is in service of facilitating conviviality.
 
 We do our part. But it neither constitutes a silver bullet, nor a final destination. It is the important next step that enables a larger socio-ecological transformation, or as we like to call it, that forges a pathway to flipping the economics of ecology.
-

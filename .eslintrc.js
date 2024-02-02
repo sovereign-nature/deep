@@ -4,11 +4,16 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:svelte/recommended',
+    'plugin:svelte/prettier',
+    'plugin:boundaries/recommended',
     'prettier',
     'turbo',
   ],
+  rules: {
+    'import/order': 'warn',
+  },
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'boundaries', 'import'],
   parserOptions: {
     sourceType: 'module',
     ecmaVersion: 2020,
@@ -29,4 +34,13 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    //TODO: seems no effect on linting
+    'boundaries/elements': [
+      {
+        type: 'packages',
+        pattern: 'packages/*',
+      },
+    ],
+  },
 };

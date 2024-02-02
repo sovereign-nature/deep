@@ -18,10 +18,10 @@ Creating such eco-linked assets is the key for generating substantial funding st
 
 DEEP Link is an ERC721 token that stores the connection between the linked asset and the ecological data set referencing an entity like an animal or a particular geographical area, enabling the creation of the eco-linked asset. It can link any ecological data set to a product - like nature-inspired in-game items, artworks, event tickets, etc. Such eco-linked assets can gain new properties, functions, and representations based on the data set they are connected to.
 
-DEEP Link has the following parameters: 
-id - unique DEEP Link ID which is a product of caching the address of the linked asset into a big integer number; 
-entity_id - ID of the ecological entity according to the protocol; 
-steward_id - ID of the biodiversity steward according to the protocol; 
+DEEP Link has the following parameters:
+id - unique DEEP Link ID which is a product of caching the address of the linked asset into a big integer number;
+entity_id - ID of the ecological entity according to the protocol;
+steward_id - ID of the biodiversity steward according to the protocol;
 funds_raised - amount of funds raised through the sale of the eco-linked asset.
 
 ## Derivative DID Address System
@@ -30,7 +30,7 @@ DEEP uses an address system based on the [Asset Decentralized Identifiers (DID) 
 
 ## Rarity Index
 
-The Rarity Index is a custom metric designed to quantify and communicate the uniqueness and importance of various ecological features captured in the eco-data provided by conservation organisations. This index is key for integrating eco-data into gaming as it responds to the request of assigning rarity to items and functionalities by connecting it to real scientific data.  The rarity attributes can be updated from real-life events so that the index evolves together with the linked eco-data.
+The Rarity Index is a custom metric designed to quantify and communicate the uniqueness and importance of various ecological features captured in the eco-data provided by conservation organisations. This index is key for integrating eco-data into gaming as it responds to the request of assigning rarity to items and functionalities by connecting it to real scientific data. The rarity attributes can be updated from real-life events so that the index evolves together with the linked eco-data.
 
 ## Contributing to DEEP
 

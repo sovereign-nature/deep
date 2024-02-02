@@ -1,10 +1,10 @@
+import fs from 'fs';
 import {
   SNI_CONTRACT_ADDRESS,
   SNI_CONTRACT_ADDRESS_STAGING,
   SNI_OWNER_ADDRESS,
 } from '@sni/constants';
 import { INITIAL_STATUS } from '@sni/constants/mocks/identifier';
-import fs from 'fs';
 import { ethers } from 'hardhat';
 import { SovereignNatureIdentifier } from '../typechain-types';
 import { makeIpfsUrl, pinData } from './utils';

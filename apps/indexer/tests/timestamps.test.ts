@@ -10,7 +10,6 @@ import {
 import { Address, BigInt, store } from '@graphprotocol/graph-ts';
 
 import { handleTransfer } from '../src/deep-link';
-import { createTransferEvent } from './events-mocks';
 
 import { SUBGRAPH_ENTITY_NAME } from '../../../packages/constants';
 
@@ -22,6 +21,7 @@ import {
   SECOND_OWNER_ADDRESS,
   TEMP_TOKEN_ID,
 } from '../../../packages/constants/mocks/deep-link';
+import { createTransferEvent } from './events-mocks';
 import { mockForToken } from './mocks/functions';
 
 const INITIAL_TOKEN_ID_INT = BigInt.fromI32(INITIAL_TOKEN_ID);

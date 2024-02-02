@@ -7,17 +7,18 @@
     "build": "turbo run build --no-daemon",
     "dev": "turbo run dev --parallel --no-daemon",
     "lint": "eslint --cache .",
+    "lint:fix": "eslint --fix --cache .",
     "test": "turbo run test --no-daemon",
     "codegen": "turbo run codegen --no-daemon",
     "format": "prettier --cache --write .",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "lint-staged": {
-    "*.{js,ts,vue}": [
-      "eslint --quiet"
-    ],
-    "*.{json,md,js,ts,vue}": [
+    "*.{json,md,js,ts}": [
       "prettier --write"
+    ],
+    "*.{json,md,js,ts,svelte}": [
+      "eslint --fix --quiet"
     ]
   },
   "devDependencies": {
@@ -26,12 +27,13 @@
     "turbo": "1.10.16",
     "turbo-ignore": "1.10.16",
     "prettier": "3.2.4",
-    "prettier-plugin-organize-imports": "3.2.4",
     "prettier-plugin-svelte": "3.1.2",
     "@typescript-eslint/eslint-plugin": "6.20.0",
     "@typescript-eslint/parser": "6.20.0",
     "eslint": "8.56.0",
     "eslint-plugin-svelte": "2.35.1",
+    "eslint-plugin-boundaries": "4.2.0",
+    "eslint-plugin-import": "2.29.1",
     "eslint-config-prettier": "9.1.0",
     "eslint-config-turbo": "1.10.16"
   },

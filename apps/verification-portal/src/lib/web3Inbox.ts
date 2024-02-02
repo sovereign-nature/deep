@@ -2,10 +2,10 @@ import { getContext, setContext } from 'svelte';
 import type { Writable } from 'svelte/store';
 import { get, writable } from 'svelte/store';
 
-import { projectId } from '$lib/config/web3Configs';
-import { onSign, type Web3Modal } from '$lib/web3Modal';
 import type { NotifyClientTypes } from '@walletconnect/notify-client';
 import { Web3InboxClient } from '@web3inbox/core';
+import { projectId } from '$lib/config/web3Configs';
+import { onSign, type Web3Modal } from '$lib/web3Modal';
 
 const domain = 'real.sovereignnature.com';
 const isLimited = process.env.NODE_ENV === 'production';

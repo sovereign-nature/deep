@@ -1,14 +1,14 @@
 <script lang="ts">
   import '../app.postcss';
   import { fade } from 'svelte/transition';
-  import { beforeNavigate, afterNavigate } from '$app/navigation';
+  import { getContext, onMount } from 'svelte';
+  import { afterNavigate, beforeNavigate } from '$app/navigation';
   import {
     initializeContext,
-    modalHandleTheme,
     initializeModal,
+    modalHandleTheme,
   } from '$lib/web3Modal';
   import { initThemeContext } from '$lib/themeContext';
-  import { getContext, onMount } from 'svelte';
   import { initializeInbox, setInboxContext } from '$lib/web3Inbox';
   import { browser } from '$app/environment';
   import Modal from '$lib/components/web3/inboxModal/index.svelte';

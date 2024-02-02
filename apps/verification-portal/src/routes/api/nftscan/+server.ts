@@ -1,7 +1,7 @@
-import { NFTSCAN_API_KEY } from '$env/static/private';
 import { getChainId } from '@sni/address-utils';
 import type { RequestHandler } from '@sveltejs/kit';
 import { json } from '@sveltejs/kit';
+import { NFTSCAN_API_KEY } from '$env/static/private';
 
 export const GET: RequestHandler = async ({ url }) => {
   const address = url.searchParams.get('address');

@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
-  import { browser } from '$app/environment';
+  import { onDestroy, onMount } from 'svelte';
   import { Howl } from 'howler';
   import { Howl as HowlType } from 'howler';
-  import { generateMediaURL, setCookie, getCookie } from '$lib/utils';
+  import { browser } from '$app/environment';
+  import { generateMediaURL, getCookie, setCookie } from '$lib/utils';
   import Play from '$lib/components/icons/Play.svelte';
   import Pause from '$lib/components/icons/Pause.svelte';
   import Mute from '$lib/components/icons/Mute.svelte';

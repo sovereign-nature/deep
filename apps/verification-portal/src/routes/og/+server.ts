@@ -1,6 +1,6 @@
+import type { RequestHandler } from '@sveltejs/kit';
 import { componentToImageResponse } from '$lib';
 import OgCard from '$lib/components/OgCard.svelte';
-import type { RequestHandler } from '@sveltejs/kit';
 const fontFile = await fetch(
   'https://cdn2.sovereignnature.com/fonts/clearface/Clearface-Serial-Med.woff'
 );

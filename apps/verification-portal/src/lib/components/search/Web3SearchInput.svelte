@@ -1,11 +1,12 @@
 <script lang="ts">
-  import { enhance } from '$app/forms';
   import type { Writable } from 'svelte/store';
   import { getContext } from 'svelte';
+  import { Button, ButtonGroup, Input } from 'flowbite-svelte';
+  import { onMount } from 'svelte';
+  import { enhance } from '$app/forms';
   import ConnectIcon from '$lib/components/icons/ConnectIcon.svelte';
   import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
-  import { Input, ButtonGroup, Button } from 'flowbite-svelte';
   export let collection = 'sub0';
   export let placeholder = 'Enter the token ID (1-1466)';
   export let goIcon = false;
@@ -13,7 +14,6 @@
   export let web3enabled = false;
   export let searchEnabled = true;
 
-  import { onMount } from 'svelte';
   import Web3ConnectBtn from '$lib/components/web3/Web3ConnectBtn.svelte';
 
   let showButton = false;

@@ -1,12 +1,12 @@
 <script lang="ts">
+  import { format, parseISO } from 'date-fns';
+  import { track } from '@vercel/analytics';
   import Carousel from './Carousel.svelte';
   import Subheader from '$lib/typography/Subheader.svelte';
   import CardHeader from '$lib/typography/CardHeader.svelte';
   import { generateAssetURL } from '$lib/utils';
   import type { NewsEntity } from '$lib/types';
-  import { format, parseISO } from 'date-fns';
   import { LL } from '$lib/i18n/i18n-svelte';
-  import { track } from '@vercel/analytics';
   import { dev } from '$app/environment';
 
   export let newsData: Array<NewsEntity>;

@@ -1,6 +1,11 @@
-import type { FeaturesConfig } from '$lib/types';
+import { SNI_API_URL, SNI_IPFS_CACHE } from '@sni/constants';
 import { ANIMAL_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
+import type { DeepAsset } from '@sni/types';
 import type { Page } from '@sveltejs/kit';
+import { browser } from '$app/environment';
+import { goto } from '$app/navigation';
+import config from '$lib/config/siteConfigs';
+import type { FeaturesConfig } from '$lib/types';
 
 export function shortenMoneyValue(value: string): string {
   const num = parseFloat(value);
@@ -40,8 +45,6 @@ export function getBaseUrl(page: Page) {
   return `${protocol}//${host}`;
 }
 
-import { SNI_IPFS_CACHE } from '@sni/constants';
-
 export function generateIPFSImageUrl(ipfsUrl: string): string | null {
   const ipfsGateway = SNI_IPFS_CACHE;
   if (!ipfsUrl) {
@@ -58,9 +61,6 @@ function getCID(url: string): string {
 export function isIPFSUrl(url: string): boolean {
   return url !== undefined && url.startsWith('ipfs://');
 }
-
-import { goto } from '$app/navigation';
-import { SNI_API_URL } from '@sni/constants';
 
 const API_BASE_URL = SNI_API_URL;
 const imageRequestConfig = '?format=auto&withoutEnlargement&quality=80';
@@ -110,8 +110,6 @@ export function shuffleArray(array: DeepAsset[]) {
   return array;
 }
 
-import { browser } from '$app/environment';
-
 export function isDarkModePreferred() {
   if (browser) {
     return (
@@ -121,8 +119,6 @@ export function isDarkModePreferred() {
   }
 }
 
-import config from '$lib/config/siteConfigs';
-import type { DeepAsset } from '@sni/types';
 export function isFeatureEnabled(feature: string) {
   let isEnabled = false;
 

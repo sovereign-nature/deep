@@ -1,6 +1,6 @@
 <script lang="ts">
-  import NFTImage from '$lib/components/NFTImage.svelte';
   import type { DeepAsset } from '@sni/types';
+  import NFTImage from '$lib/components/NFTImage.svelte';
   export let item: DeepAsset;
   let showId = item.tokenId !== undefined;
   const containerClass = showId ? 'sm:grid-cols-6' : 'sm:grid-cols-4';
