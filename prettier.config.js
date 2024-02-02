@@ -2,7 +2,6 @@
 const config = {
   singleQuote: true,
   trailingComma: 'es5',
-  plugins: ['prettier-plugin-organize-imports'],
   overrides: [
     {
       files: '*.sol',

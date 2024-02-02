@@ -1,3 +1,8 @@
+import { createWeb3Modal, defaultConfig } from '@web3modal/ethers';
+import { BrowserProvider } from 'ethers';
+import { getContext, setContext } from 'svelte';
+import { writable } from 'svelte/store';
+import { isDarkModePreferred } from '$lib/utils';
 import {
   chains,
   ethersConfig,
@@ -5,11 +10,6 @@ import {
   themeVariablesDark,
   themeVariablesLight,
 } from '$lib/config/web3Configs';
-import { isDarkModePreferred } from '$lib/utils';
-import { createWeb3Modal, defaultConfig } from '@web3modal/ethers';
-import { BrowserProvider } from 'ethers';
-import { getContext, setContext } from 'svelte';
-import { writable } from 'svelte/store';
 const modal = writable();
 export type Web3Modal = ReturnType<typeof createWeb3Modal>;
 let web3Modal: Web3Modal;

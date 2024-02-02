@@ -1,6 +1,6 @@
-import { dev } from '$app/environment';
 import * as Sentry from '@sentry/sveltekit';
 import { Replay, handleErrorWithSentry } from '@sentry/sveltekit';
+import { dev } from '$app/environment';
 
 if (!dev) {
   Sentry.init({

@@ -11,14 +11,14 @@
     "test": "turbo run test --no-daemon",
     "codegen": "turbo run codegen --no-daemon",
     "format": "prettier --cache --write .",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "lint-staged": {
-    "*.{js,ts,vue}": [
-      "eslint --quiet"
-    ],
-    "*.{json,md,js,ts,vue}": [
+    "*.{json,md,js,ts}": [
       "prettier --write"
+    ],
+    "*.{json,md,js,ts,svelte}": [
+      "eslint --fix --quiet"
     ]
   },
   "devDependencies": {
@@ -27,7 +27,6 @@
     "turbo": "1.10.16",
     "turbo-ignore": "1.10.16",
     "prettier": "3.2.4",
-    "prettier-plugin-organize-imports": "3.2.4",
     "prettier-plugin-svelte": "3.1.2",
     "@typescript-eslint/eslint-plugin": "6.20.0",
     "@typescript-eslint/parser": "6.20.0",
