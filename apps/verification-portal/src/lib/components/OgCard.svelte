@@ -1,6 +1,10 @@
 <script lang="ts">
   import { SOCIAL_CARD_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
-  import { generateIPFSImageUrl, isIPFSUrl, isLongTitle } from '$lib/utils';
+  import {
+    generateIPFSImageUrl,
+    isIPFSUrl,
+    isLongTitle,
+  } from '$lib/shared/utils';
   import Logo from '$lib/components/icons/Logo.svelte';
   import FundsWidget from '$lib/components/dashboard/FundsWidget.svelte';
   import LL from '$lib/i18n/i18n-svelte';

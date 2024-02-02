@@ -4,10 +4,10 @@
     CAMP_PLACEHOLDER,
   } from '@sni/constants/cdn/placeholders';
   import { getChainName } from '@sni/address-utils';
-  import Property from '$lib/typography/Property.svelte';
-  import Info from '$lib/typography/Info.svelte';
-  import Subheader from '$lib/typography/Subheader.svelte';
-  import CardHeader from '$lib/typography/CardHeader.svelte';
+  import Property from '$lib/shared/typography/Property.svelte';
+  import Info from '$lib/shared/typography/Info.svelte';
+  import Subheader from '$lib/shared/typography/Subheader.svelte';
+  import CardHeader from '$lib/shared/typography/CardHeader.svelte';
   import NFTImage from '$lib/components/NFTImage.svelte';
   import ImageSrcSet from '$lib/components/ImageSrcSet.svelte';
   import SocialShare from '$lib/components/SocialShare.svelte';

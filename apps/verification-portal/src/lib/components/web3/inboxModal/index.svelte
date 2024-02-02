@@ -10,7 +10,7 @@
   import { deleteMessage, updateScopes } from '$lib/web3Inbox';
   import { LL } from '$lib/i18n/i18n-svelte';
   import Toggle from '$lib/components/Toggle.svelte';
-  import Info from '$lib/typography/Info.svelte';
+  import Info from '$lib/shared/typography/Info.svelte';
   import Spinner from '$lib/components/icons/Spinner.svelte';
   import CogIcon from '$lib/components/icons/CogIcon.svelte';
   import ArrowBackIcon from '$lib/components/icons/ArrowBackIcon.svelte';

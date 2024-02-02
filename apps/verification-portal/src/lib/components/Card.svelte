@@ -1,6 +1,6 @@
 <script lang="ts">
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
-  import { generateAssetURL } from '$lib/utils';
+  import { generateAssetURL } from '$lib/shared/utils';
   import NFTImage from '$lib/components/NFTImage.svelte';
 
   export let name: string,

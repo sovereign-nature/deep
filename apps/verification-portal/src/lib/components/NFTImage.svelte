@@ -4,7 +4,7 @@
     generateAssetURL,
     generateIPFSImageUrl,
     isIPFSUrl,
-  } from '$lib/utils';
+  } from '$lib/shared/utils';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import VerifiedIcon from '$lib/components/icons/VerifiedIcon.svelte';
   import LL from '$lib/i18n/i18n-svelte';

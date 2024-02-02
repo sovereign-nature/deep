@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isLongTitle, shortenMoneyValue } from '$lib/utils';
+  import { isLongTitle, shortenMoneyValue } from '$lib/shared/utils';
   export let funds: string;
   export let className: string;
   export let size: 'sm' | 'lg' | 'xl' = 'sm';

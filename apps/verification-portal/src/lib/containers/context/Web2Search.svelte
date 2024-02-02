@@ -8,7 +8,7 @@
   import { page } from '$app/stores';
   export let campaign = 'hotel_hideaway';
   import type { AssetFeatured, Web2DataState } from '$lib/types';
-  import { shuffleArray } from '$lib/utils';
+  import { shuffleArray } from '$lib/shared/utils';
 
   const url = $page.url;
   const searchParams = url.searchParams.get('search') || '';

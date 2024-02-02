@@ -1,6 +1,6 @@
 <script lang="ts">
   import InfoIcon from '$lib/components/icons/InfoIcon.svelte';
-  import Info from '$lib/typography/Info.svelte';
+  import Info from '$lib/shared/typography/Info.svelte';
   export let className: string = '';
   export let info: string = '';
   export let url: string = '';
