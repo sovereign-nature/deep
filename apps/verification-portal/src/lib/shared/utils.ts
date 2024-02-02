@@ -1,13 +1,13 @@
 //TODO: Refactor utils dump
 
-import { browser } from '$app/environment';
-import { goto } from '$app/navigation';
-import config from '$lib/config/siteConfigs';
-import type { FeaturesConfig } from '$lib/types';
 import { SNI_API_URL, SNI_IPFS_CACHE } from '@sni/constants';
 import { ANIMAL_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
 import type { DeepAsset } from '@sni/types';
 import type { Page } from '@sveltejs/kit';
+import { browser } from '$app/environment';
+import { goto } from '$app/navigation';
+import config from '$lib/config/siteConfigs';
+import type { FeaturesConfig } from '$lib/types';
 
 export function shortenMoneyValue(value: string): string {
   const num = parseFloat(value);
