@@ -16,7 +16,7 @@
   import ShareCard from '$lib/components/ShareCard.svelte';
   import AudioPlayer from '$lib/components/media/AudioPlayer.svelte';
   import NewsCarousel from '$lib/components/carousel/NewsCarousel.svelte';
-  import LL from '$lib/i18n/i18n-svelte.js';
+  import LL from '$lib/shared/i18n/i18n-svelte.js';
 
   import { page } from '$app/stores';
 

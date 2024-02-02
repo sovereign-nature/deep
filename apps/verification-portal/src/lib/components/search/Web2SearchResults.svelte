@@ -6,7 +6,7 @@
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import type { AssetFeatured, Web2DataState } from '$lib/types';
   import FeaturedContainer from '$lib/components/featured/Web2Featured.svelte';
-  import { LL } from '$lib/i18n/i18n-svelte';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
 
   // Retrieve user store from context
   const results: Writable<[]> = getContext('results');

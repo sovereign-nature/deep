@@ -7,7 +7,7 @@
   } from '$lib/shared/utils';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import VerifiedIcon from '$lib/components/icons/VerifiedIcon.svelte';
-  import LL from '$lib/i18n/i18n-svelte';
+  import LL from '$lib/shared/i18n/i18n-svelte';
 
   export let url: string;
   export let alt: string;

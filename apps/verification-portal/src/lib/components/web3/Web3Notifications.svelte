@@ -4,7 +4,7 @@
   import RolloverBtn from '$lib/components/RolloverBtn.svelte';
   import BellIcon from '$lib/components/icons/BellIcon.svelte';
   import Spinner from '$lib/components/icons/Spinner.svelte';
-  import { LL } from '$lib/i18n/i18n-svelte';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
   import { registerInbox } from '$lib/web3Inbox';
 
   const web3Connected: Writable<boolean> = getContext('web3Connected');

@@ -2,7 +2,7 @@ import { createWeb3Modal, defaultConfig } from '@web3modal/ethers';
 import { BrowserProvider } from 'ethers';
 import { getContext, setContext } from 'svelte';
 import { writable } from 'svelte/store';
-import { isDarkModePreferred } from '$lib/utils';
+import { isDarkModePreferred } from '$lib/shared/utils';
 import {
   chains,
   ethersConfig,

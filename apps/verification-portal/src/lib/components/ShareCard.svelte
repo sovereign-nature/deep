@@ -2,7 +2,7 @@
 
 <script lang="ts">
   import { SOCIAL_CARD_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
-  import LL from '$lib/i18n/i18n-svelte';
+  import LL from '$lib/shared/i18n/i18n-svelte';
   export let title: string = $LL.social.shareCard.title(); //max 40 characters
   export let description: string = $LL.social.shareCard.description(); //max 200 characters
   export let image = SOCIAL_CARD_PLACEHOLDER;

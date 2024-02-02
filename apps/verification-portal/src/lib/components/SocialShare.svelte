@@ -1,6 +1,6 @@
 <script lang="ts">
   import HexagonIcon from './icons/HexagonIcon.svelte';
-  import LL from '$lib/i18n/i18n-svelte';
+  import LL from '$lib/shared/i18n/i18n-svelte';
 
   export let shareUrl: string = '';
 
