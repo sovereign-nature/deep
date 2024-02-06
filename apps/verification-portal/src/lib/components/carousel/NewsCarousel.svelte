@@ -29,10 +29,14 @@
   function updateSlide(slide: number) {
     index = slide;
   }
-
+  let hasBeenClicked = false; // Prevents double click
   function toggleExpanded() {
+    if (hasBeenClicked) return;
+    hasBeenClicked = true;
     expanded = !expanded;
-
+    setTimeout(() => {
+      hasBeenClicked = false;
+    }, 200);
     if (!dev) {
       track('news_read_more', {
         title: images[index]?.title,
