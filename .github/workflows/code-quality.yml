@@ -7,7 +7,6 @@ on:
 jobs:
   code-quality:
     runs-on: ubuntu-latest
-    # To use Remote Caching, uncomment the next lines and follow the steps below.
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -19,12 +18,14 @@ jobs:
       TURBO_REMOTE_ONLY: true
     steps:
       - uses: actions/checkout@v4
+      - run: corepack enable
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - uses: pnpm/action-setup@v2
-        with:
-          run_install: false
+          cache: 'pnpm'
+      # - uses: pnpm/action-setup@v2
+      #   with:
+      #     run_install: false
       - name: Get pnpm store directory
         shell: bash
         run: |
