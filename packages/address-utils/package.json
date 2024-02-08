@@ -6,7 +6,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "ethers": "6.11.0"
+    "viem": "2.7.8"
   },
   "devDependencies": {
     "vitest": "1.2.2"
