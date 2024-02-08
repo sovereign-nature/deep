@@ -1,4 +1,3 @@
-// import { sentrySvelteKit } from '@sentry/sveltekit'; //TODO: Return Sentry after sourcemaps upload is fixed
 import { sentrySvelteKit } from '@sentry/sveltekit';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { SvelteKitPWA } from '@vite-pwa/sveltekit';
