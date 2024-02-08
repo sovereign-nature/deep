@@ -16,7 +16,7 @@
     "@sni/types": "workspace:*"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20240129.0",
+    "@cloudflare/workers-types": "4.20240208.0",
     "env-cmd": "10.1.0",
     "wrangler": "3.27.0"
   }
