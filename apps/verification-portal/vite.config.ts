@@ -25,10 +25,5 @@ export default defineConfig({
       }) as PluginOption),
   ],
 
-  build: {
-    rollupOptions: {
-      treeshake: 'smallest',
-    },
-  },
   assetsInclude: ['**/*.glb'],
 });
