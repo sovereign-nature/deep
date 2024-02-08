@@ -15,7 +15,7 @@ let web3Modal: Web3Modal;
 
 // Stores
 export type Web3Modal = ReturnType<typeof createWeb3Modal>;
-const modal = writable<Web3Modal>();
+const modal = writable<Web3Modal>(); //TODO: Can it be a singleton?
 
 const web3Connected = writable<boolean>(false);
 const web3Address = writable<string>();
@@ -47,10 +47,7 @@ export function initializeModal() {
   });
 
   modal.set(web3Modal);
-  setSubscriptions();
-}
 
-function setSubscriptions() {
   watchAccount(wagmiConfig, {
     onChange(account) {
       web3Connected.set(account.isConnected);
