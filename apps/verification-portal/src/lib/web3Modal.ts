@@ -1,15 +1,14 @@
-import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi';
+import { createWeb3Modal } from '@web3modal/wagmi';
 import { reconnect, watchAccount, signMessage } from '@wagmi/core';
-import { arbitrum } from 'viem/chains';
 import { getContext, setContext } from 'svelte';
 import { writable } from 'svelte/store';
 import { isDarkModePreferred } from '$lib/shared/utils';
 import {
-  metadata,
   projectId,
   themeVariablesDark,
   themeVariablesLight,
-} from '$lib/config/web3Configs';
+  wagmiConfig,
+} from '$lib/shared/web3Configs';
 
 let web3Modal: Web3Modal;
 
@@ -28,14 +27,6 @@ export function initializeContext() {
   setContext('web3Address', web3Address);
   setContext('web3ChainId', web3ChainId);
 }
-
-const chains = [arbitrum] as const;
-
-const wagmiConfig = defaultWagmiConfig({
-  projectId,
-  chains,
-  metadata,
-});
 
 export function initializeModal() {
   reconnect(wagmiConfig);

@@ -1,11 +1,12 @@
 import { getContext, setContext } from 'svelte';
 import type { Writable } from 'svelte/store';
-import { get, writable } from 'svelte/store';
+import { writable } from 'svelte/store';
 
 import type { NotifyClientTypes } from '@walletconnect/notify-client';
 import { Web3InboxClient } from '@web3inbox/core';
-import { projectId } from '$lib/config/web3Configs';
-import { onSign, type Web3Modal } from '$lib/web3Modal';
+import { getAccount } from '@wagmi/core';
+import { projectId, wagmiConfig } from '$lib/shared/web3Configs';
+import { onSign } from '$lib/web3Modal';
 
 const domain = 'real.sovereignnature.com';
 const isLimited = process.env.NODE_ENV === 'production';
@@ -13,27 +14,27 @@ const isLimited = process.env.NODE_ENV === 'production';
 //Store context variables
 const web3InboxMessages = writable();
 const web3InboxTypes = writable();
-const web3InboxRegistered = writable(false);
-const web3InboxSubscribed = writable(false);
-const web3InboxModalOpen = writable(false);
-const web3InboxMessageCount = writable(0);
-const web3InboxLoading = writable(true); // Notify client loading state
-const web3InboxEnabling = writable(false); // state when registering, subscribing and setting up inbox are not resolved
+const web3InboxRegistered = writable<boolean>(false);
+const web3InboxSubscribed = writable<boolean>(false);
+const web3InboxModalOpen = writable<boolean>(false);
+const web3InboxMessageCount = writable<number>(0);
+const web3InboxLoading = writable<boolean>(true); // Notify client loading state
+const web3InboxEnabling = writable<boolean>(false); // state when registering, subscribing and setting up inbox are not resolved
 
 let web3InboxClient: Web3InboxClient | null;
 let web3ConnectedStore: Writable<boolean>;
 let web3AddressStore: Writable<string>;
-let web3ModalStore: Writable<Web3Modal>;
 
-//@TODO this is a bit hacky, but can be changed if all inbox code subscription functions will have unsubscribe callbacks
+//TODO: this is a bit hacky, but can be changed if all inbox code subscription functions will have unsubscribe callbacks
 let inboxInitialized = false;
 let accountWatchInitialized = false;
 let typeWatchInitialized = false;
 let messageWatchInitialized = false;
 
 const getWeb3InboxAccount = () => {
-  const address = get(web3ModalStore).getAddress();
-  const account = address ? `eip155:1:${address}` : undefined; //TODO: Proper handling of undefined account needed in downstream functions
+  const address = getAccount(wagmiConfig).address?.toString();
+
+  const account = address ? `eip155:1:${address}` : ''; //TODO: Are we sure to return empty string?
   return account;
 };
 
@@ -50,7 +51,6 @@ export function setInboxContext() {
 
   web3ConnectedStore = getContext('web3Connected');
   web3AddressStore = getContext('web3Address');
-  web3ModalStore = getContext('web3Modal');
 }
 
 export function initializeInbox() {
@@ -235,8 +235,8 @@ async function getNotificationTypes() {
 
   const updateTypes = () => {
     const account = getWeb3InboxAccount();
-    const types = web3InboxClient.getNotificationTypes(account, domain);
-    const transformTypes = Object.values(types);
+    const types = web3InboxClient?.getNotificationTypes(account, domain);
+    const transformTypes = Object.values(types); //TODO: Fix types
     console.log('Notification types:', transformTypes);
     web3InboxTypes.set(transformTypes);
   };

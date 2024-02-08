@@ -2,14 +2,13 @@ import { arbitrum } from 'viem/chains';
 
 import { PUBLIC_WALLET_CONNECT_PROJECT_ID } from '$env/static/public';
 import config from '$lib/config/siteConfigs';
+import { defaultWagmiConfig } from '@web3modal/wagmi';
 
 if (!PUBLIC_WALLET_CONNECT_PROJECT_ID) {
   throw new Error('VITE_PROJECT_ID is not set');
 }
 
 export const projectId = PUBLIC_WALLET_CONNECT_PROJECT_ID;
-
-export const chains = [arbitrum];
 
 // 3. Create modal
 export const metadata = {
@@ -35,3 +34,11 @@ export const themeVariablesLight = {
   '--w3m-color-mix': '#F5F5F5',
   '--w3m-color-mix-strength': 30,
 };
+
+export const chains = [arbitrum] as const;
+
+export const wagmiConfig = defaultWagmiConfig({
+  projectId,
+  chains,
+  metadata,
+});
