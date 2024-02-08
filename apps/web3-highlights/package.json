@@ -9,7 +9,7 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "hono": "3.12.11",
+    "hono": "3.12.12",
     "@sni/clients": "workspace:*",
     "@sni/constants": "workspace:*",
     "@sni/address-utils": "workspace:*",
