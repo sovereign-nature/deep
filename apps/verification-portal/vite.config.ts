@@ -2,7 +2,6 @@ import { sentrySvelteKit } from '@sentry/sveltekit';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { SvelteKitPWA } from '@vite-pwa/sveltekit';
 import { visualizer } from 'rollup-plugin-visualizer';
-import { splitVendorChunkPlugin } from 'vite';
 
 import { defineConfig, type PluginOption } from 'vite';
 
@@ -24,7 +23,6 @@ export default defineConfig({
         emitFile: true,
         filename: 'stats.html',
       }) as PluginOption),
-    splitVendorChunkPlugin(),
   ],
 
   build: {
