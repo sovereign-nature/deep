@@ -25,3 +25,9 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           workingDirectory: './apps/web3-highlights'
           packageManager: 'pnpm'
+      - name: Deploy Web3 Highlights
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          workingDirectory: './apps/api'
+          packageManager: 'pnpm'
