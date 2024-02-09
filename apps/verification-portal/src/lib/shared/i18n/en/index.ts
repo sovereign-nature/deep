@@ -94,10 +94,13 @@ const en: BaseTranslation = {
       token: 'Token ID:',
       source: 'Source:',
       fundsGenerated: 'Total funds generated to date:',
+      fundsGeneratedByDate: 'Total funds generated as of {date: string}:',
     },
     twitterPrefix: 'Look at my eco-linked asset by @sovereignnature',
     telegramPrefix:
       'Look at my eco-linked asset by Sovereign Nature Initiative',
+    shareImagePrefix:
+      'Look at my eco-linked asset by Sovereign Nature Initiative', //@TODO: text needed
   },
   footer: {
     mailing: 'Subscribe to our mailing list',

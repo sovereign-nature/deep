@@ -35,3 +35,41 @@ export const formSearch = {
     redirect(307, `/assets/${assetAddress}`);
   },
 };
+
+export const shareFile = async (
+  fileUrl: string,
+  name: string,
+  message: string
+) => {
+  try {
+    const response = await fetch(fileUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const fileData = await response.blob();
+
+    if (navigator.share) {
+      const fileWithProperties = new File([fileData], name, {
+        lastModified: Date.now(),
+        type: fileData.type,
+      });
+      try {
+        await navigator.share({
+          files: [fileWithProperties],
+          text: message,
+        });
+      } catch (err) {
+        console.error('Error sharing the file:', err);
+      }
+    } else {
+      const url = URL.createObjectURL(fileData);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = name;
+      link.click();
+      URL.revokeObjectURL(url); // Clean up memory by revoking the object URL
+    }
+  } catch (err) {
+    console.error('Error fetching the file:', err);
+  }
+};

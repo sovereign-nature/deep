@@ -48,6 +48,7 @@
   )}&funds=${encodeURIComponent(funds.toString())}&img=${encodeURIComponent(
     image
   )}&source=${encodeURIComponent(source)}`;
+  $: pageImageSquare = `${pageImage}&ratio=square`;
   // styling
   const cardHeaderClass = 'px-4 pt-6 sm:px-8 sm:pt-8 md:px-11 md:pt-11';
 </script>
@@ -113,7 +114,11 @@
         class="col-span-2 flex flex-col lg:flex-row lg:items-center gap-5 pb-4 lg:pb-0"
       >
         <span class="text-sm">{$LL.assets.shareText()}</span>
-        <SocialShare shareUrl={currentPath} />
+        <SocialShare
+          shareUrl={currentPath}
+          shareImage={pageImageSquare}
+          shareTitle={assetAddress}
+        />
       </div>
     </div>
   </div>

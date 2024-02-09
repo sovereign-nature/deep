@@ -265,6 +265,11 @@ type RootTranslation = {
 			 * T​o​t​a​l​ ​f​u​n​d​s​ ​g​e​n​e​r​a​t​e​d​ ​t​o​ ​d​a​t​e​:
 			 */
 			fundsGenerated: string
+			/**
+			 * T​o​t​a​l​ ​f​u​n​d​s​ ​g​e​n​e​r​a​t​e​d​ ​a​s​ ​o​f​ ​{​d​a​t​e​}​:
+			 * @param {string} date
+			 */
+			fundsGeneratedByDate: RequiredParams<'date'>
 		}
 		/**
 		 * L​o​o​k​ ​a​t​ ​m​y​ ​e​c​o​-​l​i​n​k​e​d​ ​a​s​s​e​t​ ​b​y​ ​@​s​o​v​e​r​e​i​g​n​n​a​t​u​r​e
@@ -274,6 +279,10 @@ type RootTranslation = {
 		 * L​o​o​k​ ​a​t​ ​m​y​ ​e​c​o​-​l​i​n​k​e​d​ ​a​s​s​e​t​ ​b​y​ ​S​o​v​e​r​e​i​g​n​ ​N​a​t​u​r​e​ ​I​n​i​t​i​a​t​i​v​e
 		 */
 		telegramPrefix: string
+		/**
+		 * L​o​o​k​ ​a​t​ ​m​y​ ​e​c​o​-​l​i​n​k​e​d​ ​a​s​s​e​t​ ​b​y​ ​S​o​v​e​r​e​i​g​n​ ​N​a​t​u​r​e​ ​I​n​i​t​i​a​t​i​v​e
+		 */
+		shareImagePrefix: string
 	}
 	footer: {
 		/**
@@ -575,6 +584,10 @@ export type TranslationFunctions = {
 			 * Total funds generated to date:
 			 */
 			fundsGenerated: () => LocalizedString
+			/**
+			 * Total funds generated as of {date}:
+			 */
+			fundsGeneratedByDate: (arg: { date: string }) => LocalizedString
 		}
 		/**
 		 * Look at my eco-linked asset by @sovereignnature
@@ -584,6 +597,10 @@ export type TranslationFunctions = {
 		 * Look at my eco-linked asset by Sovereign Nature Initiative
 		 */
 		telegramPrefix: () => LocalizedString
+		/**
+		 * Look at my eco-linked asset by Sovereign Nature Initiative
+		 */
+		shareImagePrefix: () => LocalizedString
 	}
 	footer: {
 		/**
