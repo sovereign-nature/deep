@@ -51,7 +51,7 @@ export const shareFile = async (
       navigator.share &&
       navigator.canShare({ files: [new File([], 'test')] })
     ) {
-      const fileWithProperties = new File([fileData], name, {
+      const fileWithProperties = new File([fileData], `${name}.png`, {
         lastModified: Date.now(),
         type: fileData.type,
       });
@@ -73,10 +73,11 @@ export const shareFile = async (
 };
 
 export const downloadFile = async (fileData: Blob, name: string) => {
+  console.log(fileData);
   const url = URL.createObjectURL(fileData);
   const link = document.createElement('a');
   link.href = url;
-  link.download = name;
+  link.download = `${name}.png`;
   link.click();
   URL.revokeObjectURL(url);
 };
