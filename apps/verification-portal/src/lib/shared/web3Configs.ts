@@ -1,3 +1,6 @@
+import { arbitrum } from 'viem/chains';
+import { defaultWagmiConfig } from '@web3modal/wagmi';
+
 import { PUBLIC_WALLET_CONNECT_PROJECT_ID } from '$env/static/public';
 import config from '$lib/config/siteConfigs';
 
@@ -7,35 +10,6 @@ if (!PUBLIC_WALLET_CONNECT_PROJECT_ID) {
 
 export const projectId = PUBLIC_WALLET_CONNECT_PROJECT_ID;
 
-const prodChains = [
-  {
-    chainId: 42161,
-    name: 'Arbitrum',
-    currency: 'ETH',
-    explorerUrl: 'https://arbiscan.io',
-    rpcUrl: 'https://arb1.arbitrum.io/rpc',
-  },
-  // {
-  //   chainId: 1,
-  //   name: 'Ethereum',
-  //   currency: 'ETH',
-  //   explorerUrl: 'https://etherscan.io',
-  //   rpcUrl: 'https://cloudflare-eth.com',
-  // },
-];
-
-// const devChains = [
-//   ...prodChains,
-//   {
-//     chainId: 11155111,
-//     name: 'Sepolia',
-//     currency: 'ETH',
-//     explorerUrl: 'https://sepolia.etherscan.io/',
-//     rpcUrl: 'https://ethereum-sepolia.publicnode.com',
-//   },
-// ];
-
-export const chains = prodChains;
 // 3. Create modal
 export const metadata = {
   name: config.siteName,
@@ -46,12 +20,6 @@ export const metadata = {
     'https://real.sovereignnature.com/android-chrome-192x192.png',
     'https://real.sovereignnature.com/android-chrome-512x512.png',
   ],
-};
-
-export const ethersConfig = {
-  metadata,
-  defaultChainId: 1,
-  enableCoinbase: false,
 };
 
 export const themeVariablesDark = {
@@ -66,3 +34,11 @@ export const themeVariablesLight = {
   '--w3m-color-mix': '#F5F5F5',
   '--w3m-color-mix-strength': 30,
 };
+
+export const chains = [arbitrum] as const;
+
+export const wagmiConfig = defaultWagmiConfig({
+  projectId,
+  chains,
+  metadata,
+});

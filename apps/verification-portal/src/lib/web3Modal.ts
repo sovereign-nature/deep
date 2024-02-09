@@ -1,75 +1,54 @@
-import { createWeb3Modal, defaultConfig } from '@web3modal/ethers';
-import { BrowserProvider } from 'ethers';
+import { createWeb3Modal } from '@web3modal/wagmi';
+import { reconnect, watchAccount, signMessage } from '@wagmi/core';
 import { getContext, setContext } from 'svelte';
 import { writable } from 'svelte/store';
 import { isDarkModePreferred } from '$lib/shared/utils';
 import {
-  chains,
-  ethersConfig,
   projectId,
   themeVariablesDark,
   themeVariablesLight,
-} from '$lib/config/web3Configs';
-const modal = writable();
-export type Web3Modal = ReturnType<typeof createWeb3Modal>;
+  wagmiConfig,
+} from '$lib/shared/web3Configs';
+
 let web3Modal: Web3Modal;
 
-const web3Connected = writable(false);
-const web3Address = writable();
-const web3ChainId = writable();
-const web3SelectedNetworkID = writable(1);
-let pendingChainSwitch = false;
+// Stores
+export type Web3Modal = ReturnType<typeof createWeb3Modal>;
+const modal = writable<Web3Modal>(); //TODO: Can it be a singleton?
 
+const web3Connected = writable<boolean>(false);
+const web3Address = writable<string>();
+const web3ChainId = writable<number>();
+
+// Stores initialization
 export function initializeContext() {
   setContext('web3Modal', modal);
   setContext('web3Connected', web3Connected);
   setContext('web3Address', web3Address);
   setContext('web3ChainId', web3ChainId);
-  setContext('web3SelectedNetworkID', web3SelectedNetworkID);
 }
 
 export function initializeModal() {
-  const modalConfig = defaultConfig({
-    ...ethersConfig,
-  });
+  reconnect(wagmiConfig);
+
   web3Modal = createWeb3Modal({
-    ethersConfig: modalConfig,
+    wagmiConfig,
     projectId,
-    chains,
     themeVariables: themeVariablesDark,
   });
+
   modal.set(web3Modal);
-  setSubscriptions();
-}
 
-function setSubscriptions() {
-  //Track network selected network to trigger chain switch after modal is connected or re-connected
-  web3Modal.subscribeState(async ({ selectedNetworkId }) => {
-    web3SelectedNetworkID.set(selectedNetworkId ? selectedNetworkId : 1);
+  watchAccount(wagmiConfig, {
+    onChange(account) {
+      web3Connected.set(account.isConnected);
 
-    if (selectedNetworkId && selectedNetworkId !== web3Modal.getChainId()) {
-      pendingChainSwitch = true;
-    } else {
-      pendingChainSwitch = false;
-    }
-  });
-
-  web3Modal.subscribeProvider(async ({ isConnected, address, chainId }) => {
-    web3Connected.set(isConnected);
-    if (isConnected) {
-      web3Address.set(address);
-      web3ChainId.set(chainId);
-      if (
-        pendingChainSwitch &&
-        web3SelectedNetworkID &&
-        web3SelectedNetworkID !== chainId //TODO: probably missing get from store
-      ) {
-        web3Modal.switchNetwork(web3SelectedNetworkID); //TODO: Are we sure that we need to enforce network switch?
+      if (account.address) {
+        web3Address.set(account.address.toString());
       }
-    } else {
-      web3Address.set(null);
-      web3ChainId.set(null);
-    }
+
+      web3ChainId.set(account.chainId ? account.chainId : 1);
+    },
   });
 }
 
@@ -96,20 +75,7 @@ export function modalHandleTheme(theme: string) {
 export async function onSign(message: string) {
   console.log('Signing message:', message);
 
-  if (!window) return '';
-
-  const walletProvider = web3Modal.getWalletProvider();
-
-  if (!walletProvider) throw new Error('No wallet provider found');
-
-  const ethersProvider = new BrowserProvider(walletProvider);
-  console.log('Provider:', ethersProvider);
-
-  const signer = await ethersProvider.getSigner();
-  console.log('Signer:', signer);
-
-  const signature = await signer?.signMessage(message);
-  console.log('Signature:', signature);
+  const signature = await signMessage(wagmiConfig, { message });
 
   return signature;
 }
