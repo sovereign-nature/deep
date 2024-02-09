@@ -70,8 +70,8 @@ importers:
         version: 3.12.12
     devDependencies:
       '@cloudflare/workers-types':
-        specifier: 4.20240129.0
-        version: 4.20240129.0
+        specifier: 4.20240208.0
+        version: 4.20240208.0
       env-cmd:
         specifier: 10.1.0
         version: 10.1.0
@@ -80,7 +80,7 @@ importers:
         version: 1.2.2
       wrangler:
         specifier: 3.28.0
-        version: 3.28.0(@cloudflare/workers-types@4.20240129.0)
+        version: 3.28.0(@cloudflare/workers-types@4.20240208.0)
 
   apps/assets-gateway:
     dependencies:
@@ -1801,10 +1801,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@cloudflare/workers-types@4.20240129.0:
-    resolution: {integrity: sha512-VyHbih/bqh/RN2FRxnXznG0bpBIg9RfSP1ldbAVnCXFinjOdv0zm2P/RWqOVN9+FgU5sanRltwwT7jGngxZy8w==}
-    dev: true
 
   /@cloudflare/workers-types@4.20240208.0:
     resolution: {integrity: sha512-MVGTTjZpJu4kJONvai5SdJzWIhOJbuweVZ3goI7FNyG+JdoQH41OoB+nMhLsX626vPLZVWGPIWsiSo/WZHzgQw==}
@@ -17831,39 +17827,6 @@ packages:
 
   /workerpool@6.2.1:
     resolution: {integrity: sha512-ILEIE97kDZvF9Wb9f6h5aXK4swSlKGUcOEGiIYb2OOu/IrDU9iwj0fD//SsA6E5ibwJxpEvhullJY4Sl4GcpAw==}
-    dev: true
-
-  /wrangler@3.28.0(@cloudflare/workers-types@4.20240129.0):
-    resolution: {integrity: sha512-28lqaO4THoGyvnRtrC5+GvyFthn8E9brRSiz4sMJU8Wf5UT8JRq31Pp4leHuQ3sCzSI2yqzB4+NTo6YZaoXMfw==}
-    engines: {node: '>=16.17.0'}
-    hasBin: true
-    peerDependencies:
-      '@cloudflare/workers-types': ^4.20230914.0
-    peerDependenciesMeta:
-      '@cloudflare/workers-types':
-        optional: true
-    dependencies:
-      '@cloudflare/kv-asset-handler': 0.2.0
-      '@cloudflare/workers-types': 4.20240129.0
-      '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
-      '@esbuild-plugins/node-modules-polyfill': 0.2.2(esbuild@0.17.19)
-      blake3-wasm: 2.1.5
-      chokidar: 3.5.3
-      esbuild: 0.17.19
-      miniflare: 3.20240129.1
-      nanoid: 3.3.7
-      path-to-regexp: 6.2.1
-      resolve: 1.22.8
-      resolve.exports: 2.0.2
-      selfsigned: 2.4.1
-      source-map: 0.6.1
-      xxhash-wasm: 1.0.2
-    optionalDependencies:
-      fsevents: 2.3.3
-    transitivePeerDependencies:
-      - bufferutil
-      - supports-color
-      - utf-8-validate
     dev: true
 
   /wrangler@3.28.0(@cloudflare/workers-types@4.20240208.0):

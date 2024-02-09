@@ -18,7 +18,7 @@
     "hono": "3.12.12"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20240129.0",
+    "@cloudflare/workers-types": "4.20240208.0",
     "env-cmd": "10.1.0",
     "vitest": "1.2.2",
     "wrangler": "3.28.0"
