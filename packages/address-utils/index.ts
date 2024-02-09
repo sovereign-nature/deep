@@ -1,7 +1,7 @@
-import { ethers } from 'ethers';
+import { keccak256, stringToBytes } from 'viem';
 
 export function stringToId(input: string): string {
-  const hash = ethers.keccak256(ethers.toUtf8Bytes(input.toLowerCase()));
+  const hash = keccak256(stringToBytes(input.toLowerCase()));
 
   return BigInt(hash).toString();
 }
