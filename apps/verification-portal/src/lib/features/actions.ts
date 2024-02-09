@@ -59,6 +59,7 @@ export const shareFile = async (
         await navigator.share({
           files: [fileWithProperties],
           text: message,
+          title: name,
         });
       } catch (err) {
         console.error('Error sharing the file:', err);
