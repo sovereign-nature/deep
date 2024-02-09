@@ -62,12 +62,13 @@ export const shareFile = async (
         });
       } catch (err) {
         console.error('Error sharing the file:', err);
+        downloadFile(fileData, name);
       }
     } else {
       downloadFile(fileData, name);
     }
   } catch (err) {
-    console.error('Error fetching the file:', err);
+    console.error('Error fetching the file:', err); //TODO: Add callback for retry and UX error handling
   }
 };
 
