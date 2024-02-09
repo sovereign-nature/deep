@@ -47,8 +47,10 @@ export const shareFile = async (
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const fileData = await response.blob();
-
-    if (navigator.share) {
+    if (
+      navigator.share &&
+      navigator.canShare({ files: [new File([], 'test')] })
+    ) {
       const fileWithProperties = new File([fileData], name, {
         lastModified: Date.now(),
         type: fileData.type,
@@ -62,14 +64,18 @@ export const shareFile = async (
         console.error('Error sharing the file:', err);
       }
     } else {
-      const url = URL.createObjectURL(fileData);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = name;
-      link.click();
-      URL.revokeObjectURL(url); // Clean up memory by revoking the object URL
+      downloadFile(fileData, name);
     }
   } catch (err) {
     console.error('Error fetching the file:', err);
   }
+};
+
+export const downloadFile = async (fileData: Blob, name: string) => {
+  const url = URL.createObjectURL(fileData);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = name;
+  link.click();
+  URL.revokeObjectURL(url);
 };
