@@ -93,7 +93,7 @@ export function getNftAsset(
   network: string,
   contractAddress: string,
   tokenId: number,
-  apiKey?: string
+  apiKey?: string //TODO: Rename to OPEN_SEA_API_KEY
 ) {
   switch (network) {
     case 'polkadot':

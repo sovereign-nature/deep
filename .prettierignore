@@ -19,5 +19,5 @@ cache/
 pnpm-lock.yaml
 
 # Generated
-formatters.ts
+i18n/formatters.ts
 i18n-*.ts

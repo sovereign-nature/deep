@@ -51,6 +51,37 @@ importers:
         specifier: 1.10.16
         version: 1.10.16
 
+  apps/api:
+    dependencies:
+      '@sni/address-utils':
+        specifier: workspace:*
+        version: link:../../packages/address-utils
+      '@sni/clients':
+        specifier: workspace:*
+        version: link:../../packages/clients
+      '@sni/constants':
+        specifier: workspace:*
+        version: link:../../packages/constants
+      '@sni/types':
+        specifier: workspace:*
+        version: link:../../packages/types
+      hono:
+        specifier: 3.12.12
+        version: 3.12.12
+    devDependencies:
+      '@cloudflare/workers-types':
+        specifier: 4.20240129.0
+        version: 4.20240129.0
+      env-cmd:
+        specifier: 10.1.0
+        version: 10.1.0
+      vitest:
+        specifier: 1.2.2
+        version: 1.2.2
+      wrangler:
+        specifier: 3.27.0
+        version: 3.27.0
+
   apps/assets-gateway:
     dependencies:
       '@sni/address-utils':
