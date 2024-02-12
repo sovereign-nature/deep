@@ -1,6 +1,6 @@
 import { SNI_API_URL } from '@sni/constants';
 import type { AxiosRequestConfig } from 'axios';
-import axios from 'axios';
+import axios from 'axios'; //TODO: Replace axios with fetch
 
 export function getEntity(
   collection: string,

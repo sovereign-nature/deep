@@ -47,6 +47,7 @@ export function getBaseUrl(page: Page) {
   return `${protocol}//${host}`;
 }
 
+//TODO: Move to client
 export function generateIPFSImageUrl(ipfsUrl: string): string {
   const ipfsGateway = SNI_IPFS_CACHE;
   if (!ipfsUrl) {
@@ -90,6 +91,7 @@ export function generateCachedUrl(url: string, size = '400:400'): string {
 
   return `${SNI_IMAGE_PROXY}/insecure/rs:fill/s:${size}/${btoa(url)}.webp`;
 }
+//
 
 export function generateMediaURL(assetID: string): string {
   if (!assetID) {

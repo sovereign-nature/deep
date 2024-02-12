@@ -1,5 +1,5 @@
 import { GraphQLClient } from 'graphql-request';
-
+import { SNI_API_URL } from '@sni/constants';
 import { getNftById } from './queries/polkadot';
 
 const POLKADOT_NFT_API = 'https://squid.subsquid.io/speck/graphql';
@@ -93,7 +93,7 @@ export function getNftAsset(
   network: string,
   contractAddress: string,
   tokenId: number,
-  apiKey?: string //TODO: Rename to OPEN_SEA_API_KEY
+  openSeaApiKey?: string
 ) {
   switch (network) {
     case 'polkadot':
@@ -104,8 +104,39 @@ export function getNftAsset(
     case 'arbitrum':
     case 'polygon':
     case 'optimism':
-      return getOpenSeaNft(contractAddress, tokenId, network, apiKey);
+      return getOpenSeaNft(contractAddress, tokenId, network, openSeaApiKey);
     default:
       throw new Error(`Unknown network: ${network}`);
+  }
+}
+
+export type DirectusAsset = {
+  data: {
+    id: string;
+    name: string;
+    description: string;
+    image: string;
+    collection: {
+      id: string;
+      name: string;
+      description: string;
+    };
+  };
+};
+
+export async function getHotelHideawayAsset(id: string) {
+  const web2Res = await fetch(
+    `${SNI_API_URL}/items/hotel_hideaway/${id}?fields=*,collection.*`
+  );
+
+  return (await web2Res.json()) as DirectusAsset;
+}
+
+export function getWeb2Asset(gameId: string, assetId: string) {
+  switch (gameId) {
+    case 'hotel-hideaway':
+      return getHotelHideawayAsset(assetId);
+    default:
+      throw new Error(`Unsupported game ID: ${gameId}`);
   }
 }

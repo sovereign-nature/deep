@@ -2,8 +2,8 @@ import {
   OpenSeaResponse,
   PolkadotResponse,
   getNftAsset,
-} from '@sni/clients/nft';
-import { getHotelHideawayAsset } from '@sni/clients/web2';
+} from '@sni/clients/assets';
+import { getHotelHideawayAsset } from '@sni/clients/assets';
 import { DeepAsset } from '@sni/types';
 import { getChainName, parseAddress } from '@sni/address-utils';
 import {
@@ -12,6 +12,7 @@ import {
   polkadotFormatter,
 } from './formatters';
 
+//TODO: Move to address-utils
 export function getNetworkId(chainNamespace: string, chainId: string): string {
   switch (chainNamespace) {
     case 'eip155':
@@ -23,6 +24,7 @@ export function getNetworkId(chainNamespace: string, chainId: string): string {
   }
 }
 
+//TODO: Should it be in client?
 export async function getAsset(
   networkId: string,
   assetId: string,
@@ -52,6 +54,7 @@ export async function getAsset(
   }
 }
 
+//TODO: Move to address-utils
 export function parseDID(did: string) {
   const { chain, asset } = parseAddress(did);
   const networkId = getNetworkId(chain.namespace, chain.reference);

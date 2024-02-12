@@ -25,6 +25,7 @@
   let errorMsg = $LL.errors.image();
 
   let imageUrl: string;
+  //TODO: getAssetUrl from clients
   $: imageUrl = generateCachedUrl(
     isIPFSUrl(url)
       ? generateIPFSImageUrl(url)

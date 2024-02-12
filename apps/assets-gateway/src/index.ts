@@ -3,8 +3,8 @@ import {
   OpenSeaResponse,
   PolkadotResponse,
   getNftAsset,
-} from '@sni/clients/nft';
-import { DirectusAsset, getHotelHideawayAsset } from '@sni/clients/web2';
+} from '@sni/clients/assets';
+import { DirectusAsset, getHotelHideawayAsset } from '@sni/clients/assets';
 import { SNI_API_URL } from '@sni/constants';
 import { DeepAsset } from '@sni/types';
 import { Hono } from 'hono';
