@@ -1,6 +1,6 @@
 //TODO: Refactor utils dump
 
-import { SNI_API_URL, SNI_IPFS_CACHE } from '@sni/constants';
+import { SNI_API_URL, SNI_IPFS_CACHE, SNI_IMAGE_PROXY } from '@sni/constants';
 import { ANIMAL_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
 import type { DeepAsset } from '@sni/types';
 import type { Page } from '@sveltejs/kit';
@@ -47,10 +47,10 @@ export function getBaseUrl(page: Page) {
   return `${protocol}//${host}`;
 }
 
-export function generateIPFSImageUrl(ipfsUrl: string): string | null {
+export function generateIPFSImageUrl(ipfsUrl: string): string {
   const ipfsGateway = SNI_IPFS_CACHE;
   if (!ipfsUrl) {
-    return null;
+    return '';
   }
   const cid = getCID(ipfsUrl);
   return `${ipfsGateway}/ipfs/${cid}`;
@@ -64,8 +64,7 @@ export function isIPFSUrl(url: string): boolean {
   return url !== undefined && url.startsWith('ipfs://');
 }
 
-const API_BASE_URL = SNI_API_URL;
-const imageRequestConfig = '?format=auto&withoutEnlargement&quality=80';
+const imageRequestConfig = '?format=webp&withoutEnlargement&quality=80'; //TODO: move to directus client
 
 export function generateAssetURL(
   assetID: string,
@@ -74,13 +73,29 @@ export function generateAssetURL(
   if (!assetID) {
     return ANIMAL_PLACEHOLDER;
   }
-  return `${API_BASE_URL}/assets/${assetID}${imageRequestConfig}&width=${width}`;
+  return `${SNI_API_URL}/assets/${assetID}${imageRequestConfig}&width=${width}`;
 }
+
+function getDomain(url: string): string {
+  return new URL(url).hostname;
+}
+
+export function generateCachedUrl(url: string, size = '400:400'): string {
+  const domain = getDomain(url);
+
+  //Avoid using the image proxy for Directus urls
+  if (domain === getDomain(SNI_API_URL)) {
+    return `${url}`;
+  }
+
+  return `${SNI_IMAGE_PROXY}/insecure/rs:fill/s:${size}/${btoa(url)}.webp`;
+}
+
 export function generateMediaURL(assetID: string): string {
   if (!assetID) {
     return ANIMAL_PLACEHOLDER;
   }
-  return `${API_BASE_URL}/assets/${assetID}?metadata`;
+  return `${SNI_API_URL}/assets/${assetID}?metadata`;
 }
 
 export function updateQueryParams(
@@ -147,12 +162,12 @@ export function isFeatureEnabled(feature: string) {
   return isEnabled;
 }
 
-export function getCookie(name) {
+export function getCookie(name: string) {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
+  if (parts.length === 2) return parts.pop()?.split(';').shift();
 }
-export function setCookie(name, value) {
+export function setCookie(name: string, value: string) {
   const date = new Date();
   date.setMonth(date.getMonth() + 1); // Set the cookie to expire in 1 month
   document.cookie = `${name}=${value}; expires=${date.toUTCString()};path=/`;

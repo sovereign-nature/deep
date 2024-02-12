@@ -92,7 +92,7 @@ function openSeaFormatter(assetData: OpenSeaResponse): DeepAsset {
 function directusFormatter(assetData: DirectusAsset): DeepAsset {
   const data = assetData.data;
 
-  const fullImageUrl = `${SNI_API_URL}/assets/${data.image}`;
+  const fullImageUrl = `${SNI_API_URL}/assets/${data.image}`; //TODO: Remove this for now, it breaks flow on front-end
   data.image = fullImageUrl;
 
   return { ...data, tokenId: data.id };

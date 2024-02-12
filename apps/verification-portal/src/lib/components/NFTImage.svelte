@@ -3,6 +3,7 @@
   import {
     generateAssetURL,
     generateIPFSImageUrl,
+    generateCachedUrl,
     isIPFSUrl,
   } from '$lib/shared/utils';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
@@ -12,7 +13,7 @@
   export let url: string;
   export let alt: string;
   export let verified = false;
-  export let size = '300';
+  export let size = 300;
   export let imgClass = 'object-cover w-full h-full rounded-lg fade-from-none';
   export let containerClass =
     'w-56 h-56 md:h-64 md:w-64 rounded-lg mb-2 overflow-hidden text-center bg-gray-400 dark:bg-deep-green';
@@ -23,12 +24,14 @@
   let isLoading = true;
   let errorMsg = $LL.errors.image();
 
-  let imageUrl: string | null;
-  $: imageUrl = isIPFSUrl(url)
-    ? generateIPFSImageUrl(url)
-    : isUrl(url)
-      ? url
-      : generateAssetURL(url, size);
+  let imageUrl: string;
+  $: imageUrl = generateCachedUrl(
+    isIPFSUrl(url)
+      ? generateIPFSImageUrl(url)
+      : isUrl(url)
+        ? url
+        : generateAssetURL(url, size)
+  );
 
   //check if id or url
   function isUrl(url: string): boolean {
@@ -77,7 +80,7 @@
     {#if isMounted && !isError}
       <!-- Render the image when it's loaded -->
       <img
-        loading="eager"
+        loading="lazy"
         src={imageUrl}
         {alt}
         class={imgClass}

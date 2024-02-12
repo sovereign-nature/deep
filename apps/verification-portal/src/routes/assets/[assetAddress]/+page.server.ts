@@ -68,11 +68,11 @@ export async function load(event) {
       deepData.news = stewardResponse.data ? stewardResponse.data?.news : [];
     }
   } catch (e) {
-    // @TODO Enable error handling once API responds correctly
+    //TODO: Enable error handling once API responds correctly
     // throw error(500, 'Oops, something went wrong');
   }
 
-  //@TODO maybe should be done API side?
+  //TODO: maybe should be done API side?
   interface ExtractedProperties {
     traces_recorded: {
       [key: string]: number;

@@ -1,18 +1,15 @@
 <script lang="ts">
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
-  import { generateAssetURL } from '$lib/shared/utils';
   import NFTImage from '$lib/components/NFTImage.svelte';
 
   export let name: string,
     image: string,
-    nftImage = false,
     source = 'Hotel Hideaway',
     id,
     collection: string,
     prefix,
     address: string | undefined;
 
-  const imgUrl = generateAssetURL(image, 120);
   const did = address ? address : `${prefix}${id}`;
 </script>
 
@@ -34,22 +31,13 @@
     rounded-lg dark:text-white overflow-hidden"
   >
     <div class="mr-4 flex-shrink-0">
-      {#if nftImage}
-        <NFTImage
-          containerClass=""
-          imgClass="w-[90px] h-[120px] sm:w-[120px] sm:h-[120px] object-cover"
-          url={image}
-          alt={name}
-          size="20"
-        />
-      {:else}
-        <img
-          class="w-[90px] h-[120px] sm:w-[120px] sm:h-[120px] object-cover"
-          src={imgUrl}
-          alt="Avatar"
-          loading="lazy"
-        />
-      {/if}
+      <NFTImage
+        containerClass=""
+        imgClass="w-[90px] h-[120px] sm:w-[120px] sm:h-[120px] object-cover"
+        url={image}
+        alt={name}
+        size={120}
+      />
     </div>
     <div class="flex-1 flex flex-col my-4">
       <div class="sm:text-xl font-serif leading-snug pe-2 sm:pe-0">
