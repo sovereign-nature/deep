@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "GPL-3.0",
   "scripts": {
-    "test:integration": "vitest integration"
+    "test:integration": "vitest integration",
+    "test": "vitest"
   },
   "dependencies": {
     "axios": "1.6.7",

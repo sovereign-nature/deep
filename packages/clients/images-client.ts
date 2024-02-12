@@ -6,14 +6,18 @@ export function getIPFSImageUrl(ipfsUrl: string): string {
   const cid = getCID(ipfsUrl);
   return `${SNI_IPFS_CACHE}/ipfs/${cid}`;
 }
+export const directusImageRequestConfig =
+  '?format=webp&withoutEnlargement&quality=80';
 
-export function getDirectusURL(assetID: string, width: number = 1000): string {
+export function getDirectusImageURL(
+  assetID: string,
+  width: number = 1000
+): string {
   if (!assetID) {
     return ANIMAL_PLACEHOLDER;
   }
-  const imageRequestConfig = '?format=webp&withoutEnlargement&quality=80';
 
-  return `${SNI_API_URL}/assets/${assetID}${imageRequestConfig}&width=${width}`;
+  return `${SNI_API_URL}/assets/${assetID}${directusImageRequestConfig}&width=${width}`;
 }
 
 export function getImgproxyUrl(url: string, width = 400): string {
@@ -34,6 +38,6 @@ export function getAssetUrl(url: string, width: number = 400): string {
       ? getIPFSImageUrl(url)
       : isUrl(url)
         ? url
-        : getDirectusURL(url, width)
+        : getDirectusImageURL(url, width)
   );
 }

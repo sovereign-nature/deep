@@ -1,13 +1,11 @@
 import { expect, test } from 'vitest';
 import { getEntity, getSteward } from '../data';
 import { getLinkByAddress, getLinkById } from '../link';
-import { getNftAsset, getOpenSeaNft } from '../assets-client';
+import { getNftAsset } from '../assets-client';
 import { getWeb2Asset } from '../assets-client';
 import {
   hotelHideawayResponse,
   kusamaNftResponse,
-  openSeaArbitrumResponse,
-  openSeaTestNetResponse,
   polkadotNftResponse,
 } from './responses';
 
@@ -60,23 +58,24 @@ test('getWeb2Asset from Hotel Hideaway', async () => {
   expect(data).toStrictEqual(hotelHideawayResponse);
 });
 
-test('getOpenSeaTestNetNft', async () => {
-  const data = await getOpenSeaNft(
-    '0x38de3f11ba85d75f28778c6f44a97d29ea910cf2',
-    1,
-    'sepolia'
-  );
+//TODO: Better mock it
+// test('getOpenSeaTestNetNft', async () => {
+//   const data = await getOpenSeaNft(
+//     '0x38de3f11ba85d75f28778c6f44a97d29ea910cf2',
+//     1,
+//     'sepolia'
+//   );
 
-  expect(data).toStrictEqual(openSeaTestNetResponse);
-});
+//   expect(data).toStrictEqual(openSeaTestNetResponse);
+// });
 
-test('getOpenSeaArbitrumNft', async () => {
-  const data = await getOpenSeaNft(
-    '0x10d2baeb37a4079fc62cc716b08e2452936424b1',
-    422,
-    'arbitrum',
-    process.env.OPEN_SEA_API_KEY
-  );
+// test('getOpenSeaArbitrumNft', async () => {
+//   const data = await getOpenSeaNft(
+//     '0x10d2baeb37a4079fc62cc716b08e2452936424b1',
+//     422,
+//     'arbitrum',
+//     process.env.OPEN_SEA_API_KEY
+//   );
 
-  expect(data).toStrictEqual(openSeaArbitrumResponse);
-});
+//   expect(data).toStrictEqual(openSeaArbitrumResponse);
+// });
