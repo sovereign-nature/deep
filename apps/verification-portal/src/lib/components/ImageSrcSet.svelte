@@ -8,7 +8,6 @@
   export let className = '';
   export let classNameImage = '';
 
-  const API_BASE_URL = SNI_API_URL;
   const imageRequestConfig = '?format=webp&withoutEnlargement&quality=80';
 
   $: imageLoaded = false;
@@ -37,11 +36,11 @@
     <!-- Render the image when it's loaded -->
     <img
       class="{classNameImage} fade-from-none w-full"
-      srcset="{`${API_BASE_URL}/assets/${assetID}${imageRequestConfig}&width=400 400w,`}
-        {`${API_BASE_URL}/assets/${assetID}${imageRequestConfig}&width=600 600w,`}
-        {`${API_BASE_URL}/assets/${assetID}${imageRequestConfig}&width=800 800w,`}"
+      srcset="{`${SNI_API_URL}/assets/${assetID}${imageRequestConfig}&width=400 400w,`}
+        {`${SNI_API_URL}/assets/${assetID}${imageRequestConfig}&width=600 600w,`}
+        {`${SNI_API_URL}/assets/${assetID}${imageRequestConfig}&width=800 800w,`}"
       sizes="(max-width: 600px) 400px, (max-width: 1024px) 800px, 1000px"
-      src={`${API_BASE_URL}/assets/${assetID}${imageRequestConfig}&width=1000`}
+      src={`${SNI_API_URL}/assets/${assetID}${imageRequestConfig}&width=1000`}
       alt={altText}
       on:load={handleImageLoad}
     />
