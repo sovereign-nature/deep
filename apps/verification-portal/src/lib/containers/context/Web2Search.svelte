@@ -4,7 +4,7 @@
   import Fuse from 'fuse.js';
   import { writable } from 'svelte/store';
   import { onMount, setContext } from 'svelte';
-  import { SNI_API_URL } from '@sni/constants';
+  import { SNI_DIRECTUS_URL } from '@sni/constants';
   import { page } from '$app/stores';
   export let campaign = 'hotel_hideaway';
   import type { AssetFeatured, Web2DataState } from '$lib/types';
@@ -84,7 +84,7 @@
   onMount(async () => {
     try {
       const { data: response }: AxiosResponse = await axios.get(
-        `${SNI_API_URL}/items/${campaign}?filter[status][_eq]=published`
+        `${SNI_DIRECTUS_URL}/items/${campaign}?filter[status][_eq]=published` //TODO: move to directus client
       );
       handleDataLoaded(response.data);
     } catch (error) {

@@ -1,5 +1,5 @@
 import { GraphQLClient } from 'graphql-request';
-import { SNI_API_URL } from '@sni/constants';
+import { SNI_DIRECTUS_URL } from '@sni/constants';
 import { getNftById } from './queries/polkadot';
 
 const POLKADOT_NFT_API = 'https://squid.subsquid.io/speck/graphql';
@@ -126,7 +126,7 @@ export type DirectusAsset = {
 
 export async function getHotelHideawayAsset(id: string) {
   const web2Res = await fetch(
-    `${SNI_API_URL}/items/hotel_hideaway/${id}?fields=*,collection.*`
+    `${SNI_DIRECTUS_URL}/items/hotel_hideaway/${id}?fields=*,collection.*`
   );
 
   return (await web2Res.json()) as DirectusAsset;

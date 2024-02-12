@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { SNI_API_URL } from '@sni/constants';
+  import { SNI_DIRECTUS_URL } from '@sni/constants';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
 
   export let assetID: string;
@@ -34,13 +34,14 @@
   {/if}
   {#if isMounted}
     <!-- Render the image when it's loaded -->
+    <!-- TODO: Use getDirectusImageURL from the client -->
     <img
       class="{classNameImage} fade-from-none w-full"
-      srcset="{`${SNI_API_URL}/assets/${assetID}${imageRequestConfig}&width=400 400w,`}
-        {`${SNI_API_URL}/assets/${assetID}${imageRequestConfig}&width=600 600w,`}
-        {`${SNI_API_URL}/assets/${assetID}${imageRequestConfig}&width=800 800w,`}"
+      srcset="{`${SNI_DIRECTUS_URL}/assets/${assetID}${imageRequestConfig}&width=400 400w,`}
+        {`${SNI_DIRECTUS_URL}/assets/${assetID}${imageRequestConfig}&width=600 600w,`}
+        {`${SNI_DIRECTUS_URL}/assets/${assetID}${imageRequestConfig}&width=800 800w,`}"
       sizes="(max-width: 600px) 400px, (max-width: 1024px) 800px, 1000px"
-      src={`${SNI_API_URL}/assets/${assetID}${imageRequestConfig}&width=1000`}
+      src={`${SNI_DIRECTUS_URL}/assets/${assetID}${imageRequestConfig}&width=1000`}
       alt={altText}
       on:load={handleImageLoad}
     />

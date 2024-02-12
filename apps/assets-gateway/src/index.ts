@@ -3,9 +3,10 @@ import {
   OpenSeaResponse,
   PolkadotResponse,
   getNftAsset,
-} from '@sni/clients/assets';
-import { DirectusAsset, getHotelHideawayAsset } from '@sni/clients/assets';
-import { SNI_API_URL } from '@sni/constants';
+  DirectusAsset,
+  getHotelHideawayAsset,
+} from '@sni/clients/assets-client';
+import { SNI_DIRECTUS_URL } from '@sni/constants';
 import { DeepAsset } from '@sni/types';
 import { Hono } from 'hono';
 import { env } from 'hono/adapter';
@@ -92,7 +93,7 @@ function openSeaFormatter(assetData: OpenSeaResponse): DeepAsset {
 function directusFormatter(assetData: DirectusAsset): DeepAsset {
   const data = assetData.data;
 
-  const fullImageUrl = `${SNI_API_URL}/assets/${data.image}`; //TODO: Remove this for now, it breaks flow on front-end
+  const fullImageUrl = `${SNI_DIRECTUS_URL}/assets/${data.image}`; //TODO: Remove this for now, it breaks flow on front-end
   data.image = fullImageUrl;
 
   return { ...data, tokenId: data.id };

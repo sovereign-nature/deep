@@ -1,5 +1,9 @@
 import { expect, test, describe, it } from 'vitest';
-import { SNI_API_URL, SNI_IMAGE_PROXY, SNI_IPFS_CACHE } from '@sni/constants';
+import {
+  SNI_DIRECTUS_URL,
+  SNI_IMAGE_PROXY,
+  SNI_IPFS_CACHE,
+} from '@sni/constants';
 import {
   directusImageRequestConfig,
   getAssetUrl,
@@ -14,7 +18,7 @@ test('getIPFSImageUrl', () => {
 
 test('getDirectusImageURL', () => {
   expect(getDirectusImageURL('123', 500)).toBe(
-    `${SNI_API_URL}/assets/123${directusImageRequestConfig}&width=500`
+    `${SNI_DIRECTUS_URL}/assets/123${directusImageRequestConfig}&width=500`
   );
 });
 
@@ -41,7 +45,7 @@ describe('getAssetUrl', () => {
 
   it('should return directus image url', () => {
     expect(getAssetUrl('123', 200)).toBe(
-      `${SNI_API_URL}/assets/123${directusImageRequestConfig}&width=200`
+      `${SNI_DIRECTUS_URL}/assets/123${directusImageRequestConfig}&width=200`
     );
   });
 });
