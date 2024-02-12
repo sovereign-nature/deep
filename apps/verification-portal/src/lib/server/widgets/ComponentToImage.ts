@@ -14,7 +14,7 @@ export const ImageResponse = async (
 
 export const componentToImageResponse = async (
   component: SvelteComponent,
-  props: Record<string, number>,
+  props: Record<string, unknown>,
   options?: ImageResponseOptions
 ) => {
   const ssrSvelte = component.render(props);
