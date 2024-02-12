@@ -42,7 +42,7 @@
     "@wagmi/connectors": "4.1.13",
     "@wagmi/core": "2.6.4",
     "@web3inbox/core": "0.0.25",
-    "@web3modal/wagmi": "4.0.1",
+    "@web3modal/wagmi": "4.0.2",
     "autoprefixer": "10.4.17",
     "date-fns": "3.3.1",
     "flowbite": "2.2.1",
