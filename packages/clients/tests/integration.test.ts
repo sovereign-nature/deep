@@ -1,8 +1,8 @@
 import { expect, test } from 'vitest';
 import { getEntity, getSteward } from '../data';
 import { getLinkByAddress, getLinkById } from '../link';
-import { getNftAsset, getOpenSeaNft } from '../nft';
-import { getWeb2Asset } from '../web2';
+import { getNftAsset, getOpenSeaNft } from '../assets-client';
+import { getWeb2Asset } from '../assets-client';
 import {
   hotelHideawayResponse,
   kusamaNftResponse,

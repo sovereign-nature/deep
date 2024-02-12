@@ -9,6 +9,7 @@
     "axios": "1.6.7",
     "@sni/constants": "workspace:*",
     "@sni/address-utils": "workspace:*",
+    "@sni/utils": "workspace:*",
     "graphql-request": "6.1.0"
   },
   "devDependencies": {

@@ -1,0 +1,8 @@
+{
+  "name": "@sni/utils",
+  "version": "0.0.0",
+  "license": "GPL-3.0",
+  "scripts": {
+    "test": "vitest"
+  }
+}

@@ -1,6 +1,6 @@
 import { SNI_API_URL, SNI_IMAGE_PROXY, SNI_IPFS_CACHE } from '@sni/constants';
 import { ANIMAL_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
-import { getCID, getDomain, isIPFSUrl, isUrl } from './utils';
+import { getCID, getDomain, isIPFSUrl, isUrl } from '@sni/utils/url-utils';
 
 export function getIPFSImageUrl(ipfsUrl: string): string {
   const cid = getCID(ipfsUrl);

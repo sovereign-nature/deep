@@ -397,6 +397,9 @@ importers:
       '@sni/constants':
         specifier: workspace:*
         version: link:../constants
+      '@sni/utils':
+        specifier: workspace:*
+        version: link:../utils
       axios:
         specifier: 1.6.7
         version: 1.6.7
@@ -417,6 +420,8 @@ importers:
   packages/solidity-interfaces: {}
 
   packages/types: {}
+
+  packages/utils: {}
 
 packages:
 
@@ -8229,6 +8234,13 @@ packages:
   /@web3modal/siwe@4.0.3(typescript@5.3.3):
     resolution: {integrity: sha512-7pbysK7/kP/C9nYgmx4lb7N55TsnTpRmCWj6aN5TY5GBfm3YsmRiHFPB7yemUo2RaiQzCkfzyvcmFMLliVRRRw==}
     requiresBuild: true
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+      vue:
+        optional: true
     dependencies:
       '@web3modal/core': 4.0.3(react@18.2.0)
       '@web3modal/scaffold-utils': 4.0.3(react@18.2.0)
@@ -8255,6 +8267,15 @@ packages:
       '@wagmi/connectors': '>=4.0.0'
       '@wagmi/core': '>=2.0.0'
       viem: '>=2.0.0'
+    peerDependenciesMeta:
+      '@web3modal/siwe':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+      vue:
+        optional: true
     dependencies:
       '@wagmi/connectors': 4.1.14(@wagmi/core@2.6.5)(react-dom@18.2.0)(react-native@0.73.4)(react@18.2.0)(rollup@2.79.1)(typescript@5.3.3)(viem@2.7.8)
       '@wagmi/core': 2.6.5(react@18.2.0)(typescript@5.3.3)(viem@2.7.8)
@@ -20225,7 +20246,6 @@ packages:
 
   /workbox-google-analytics@7.0.0:
     resolution: {integrity: sha512-MEYM1JTn/qiC3DbpvP2BVhyIH+dV/5BjHk756u9VbwuAhu0QHyKscTnisQuz21lfRpOwiS9z4XdqeVAKol0bzg==}
-    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 7.0.0
       workbox-core: 7.0.0
