@@ -43,12 +43,13 @@
     ? chainReference
     : getChainName(parseInt(chainReference));
   $: image = nftData.image;
-  $: pageImage = `${baseUrl}/og?title=${encodeURIComponent(
+  $: pageImagePath = `/og?title=${encodeURIComponent(
     name
   )}&funds=${encodeURIComponent(funds.toString())}&img=${encodeURIComponent(
     image
   )}&source=${encodeURIComponent(source)}`;
-  $: pageImageSquare = `${pageImage}&ratio=square`;
+  $: pageImage = `${baseUrl}/${pageImagePath}`;
+  $: pageImageSquare = `${pageImagePath}&ratio=square`;
   // styling
   const cardHeaderClass = 'px-4 pt-6 sm:px-8 sm:pt-8 md:px-11 md:pt-11';
 </script>
