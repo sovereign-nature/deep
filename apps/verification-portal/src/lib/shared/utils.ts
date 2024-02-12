@@ -64,7 +64,7 @@ export function isIPFSUrl(url: string): boolean {
   return url !== undefined && url.startsWith('ipfs://');
 }
 
-const imageRequestConfig = '?format=auto&withoutEnlargement&quality=80';
+const imageRequestConfig = '?format=webp&withoutEnlargement&quality=80';
 
 export function generateAssetURL(
   assetID: string,
@@ -85,14 +85,8 @@ export function generateCachedUrl(url: string, size = '400:400'): string {
 
   //TODO: Hack for Hotel Hideway because the image proxy is not working with Directus
   if (domain === getDomain(SNI_API_URL)) {
-    let formatString = '?format=auto&withoutEnlargement&quality=80&width=400';
-
-    if (url.includes('format')) {
-      formatString = '';
-    }
-    return `${url}${formatString}`;
+    return `${url}`;
   }
-  /////////////////////////////////////////////////////////////////////////////
 
   return `${SNI_IMAGE_PROXY}/insecure/rs:fill/s:${size}/${btoa(url)}.webp`;
 }

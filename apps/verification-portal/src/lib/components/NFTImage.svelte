@@ -80,7 +80,7 @@
     {#if isMounted && !isError}
       <!-- Render the image when it's loaded -->
       <img
-        loading="eager"
+        loading="lazy"
         src={imageUrl}
         {alt}
         class={imgClass}
