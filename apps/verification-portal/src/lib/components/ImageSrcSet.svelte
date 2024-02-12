@@ -9,7 +9,7 @@
   export let classNameImage = '';
 
   const API_BASE_URL = SNI_API_URL;
-  const imageRequestConfig = '?format=auto&withoutEnlargement&quality=80';
+  const imageRequestConfig = '?format=webp&withoutEnlargement&quality=80';
 
   $: imageLoaded = false;
   let isMounted = false;
