@@ -8,7 +8,7 @@
   export let className = '';
   export let classNameImage = '';
 
-  const imageRequestConfig = '?format=webp&withoutEnlargement&quality=80';
+  const imageRequestConfig = '?format=webp&withoutEnlargement&quality=80'; //TODO: move to directus client
 
   $: imageLoaded = false;
   let isMounted = false;
