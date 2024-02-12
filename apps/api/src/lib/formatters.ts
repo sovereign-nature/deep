@@ -1,5 +1,8 @@
-import { OpenSeaResponse, PolkadotResponse } from '@sni/clients/nft';
-import { DirectusAsset } from '@sni/clients/web2';
+import {
+  OpenSeaResponse,
+  PolkadotResponse,
+  DirectusAsset,
+} from '@sni/clients/assets-client';
 import { SNI_API_URL } from '@sni/constants';
 import { DeepAsset } from '@sni/types';
 

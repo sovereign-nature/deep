@@ -2,8 +2,8 @@ import {
   OpenSeaResponse,
   PolkadotResponse,
   getNftAsset,
-} from '@sni/clients/assets';
-import { getHotelHideawayAsset } from '@sni/clients/assets';
+  getHotelHideawayAsset,
+} from '@sni/clients/assets-client';
 import { DeepAsset } from '@sni/types';
 import { getChainName, parseAddress } from '@sni/address-utils';
 import {
