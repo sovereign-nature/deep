@@ -18,6 +18,7 @@
   export let containerClass =
     'w-56 h-56 md:h-64 md:w-64 rounded-lg mb-2 overflow-hidden text-center bg-gray-400 dark:bg-deep-green';
   export let imgPlaceholderClass = 'w-56 h-56 md:h-64 md:w-64';
+  export let loading: 'lazy' | 'eager' | null | undefined = 'lazy';
 
   let isMounted = false;
   let isError = false;
@@ -81,7 +82,7 @@
     {#if isMounted && !isError}
       <!-- Render the image when it's loaded -->
       <img
-        loading="lazy"
+        {loading}
         src={imageUrl}
         {alt}
         class={imgClass}
