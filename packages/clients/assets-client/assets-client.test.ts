@@ -1,13 +1,12 @@
 import { expect, test } from 'vitest';
 import { getEntity, getSteward } from '../data';
 import { getLinkByAddress, getLinkById } from '../link';
-import { getNftAsset } from '../assets-client';
-import { getWeb2Asset } from '../assets-client';
 import {
   hotelHideawayResponse,
   kusamaNftResponse,
   polkadotNftResponse,
-} from './responses';
+} from './fixtures';
+import { getNftAsset, getWeb2Asset } from '.';
 
 test('getLinkById', async () => {
   const response = await getLinkById(
@@ -58,7 +57,7 @@ test('getWeb2Asset from Hotel Hideaway', async () => {
   expect(data).toStrictEqual(hotelHideawayResponse);
 });
 
-//TODO: Better mock it
+//TODO: Better mock it https://vitest.dev/guide/mocking.html#requests
 // test('getOpenSeaTestNetNft', async () => {
 //   const data = await getOpenSeaNft(
 //     '0x38de3f11ba85d75f28778c6f44a97d29ea910cf2',
