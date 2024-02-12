@@ -79,8 +79,8 @@ importers:
         specifier: 1.2.2
         version: 1.2.2
       wrangler:
-        specifier: 3.28.0
-        version: 3.28.0(@cloudflare/workers-types@4.20240208.0)
+        specifier: 3.28.1
+        version: 3.28.1(@cloudflare/workers-types@4.20240208.0)
 
   apps/assets-gateway:
     dependencies:
@@ -110,8 +110,8 @@ importers:
         specifier: 1.2.2
         version: 1.2.2
       wrangler:
-        specifier: 3.28.0
-        version: 3.28.0(@cloudflare/workers-types@4.20240208.0)
+        specifier: 3.28.1
+        version: 3.28.1(@cloudflare/workers-types@4.20240208.0)
 
   apps/contracts:
     devDependencies:
@@ -186,8 +186,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0
       wrangler:
-        specifier: 3.28.0
-        version: 3.28.0(@cloudflare/workers-types@4.20240208.0)
+        specifier: 3.28.1
+        version: 3.28.1(@cloudflare/workers-types@4.20240208.0)
 
   apps/indexer:
     devDependencies:
@@ -373,8 +373,8 @@ importers:
         specifier: 10.1.0
         version: 10.1.0
       wrangler:
-        specifier: 3.28.0
-        version: 3.28.0(@cloudflare/workers-types@4.20240208.0)
+        specifier: 3.28.1
+        version: 3.28.1(@cloudflare/workers-types@4.20240208.0)
 
   packages/address-utils:
     dependencies:
@@ -20324,8 +20324,8 @@ packages:
     resolution: {integrity: sha512-ILEIE97kDZvF9Wb9f6h5aXK4swSlKGUcOEGiIYb2OOu/IrDU9iwj0fD//SsA6E5ibwJxpEvhullJY4Sl4GcpAw==}
     dev: true
 
-  /wrangler@3.28.0(@cloudflare/workers-types@4.20240208.0):
-    resolution: {integrity: sha512-28lqaO4THoGyvnRtrC5+GvyFthn8E9brRSiz4sMJU8Wf5UT8JRq31Pp4leHuQ3sCzSI2yqzB4+NTo6YZaoXMfw==}
+  /wrangler@3.28.1(@cloudflare/workers-types@4.20240208.0):
+    resolution: {integrity: sha512-3O8vCzd7IC71Kciu/+oDVO0VZ83ujlUuKwmCkv6/zzt4WAoYu0vk7PyEo4WvlsSbZL8aHuv3bS917rd6TM1/9Q==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
