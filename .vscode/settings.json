@@ -1,8 +1,5 @@
 {
   "editor.formatOnSave": true,
-  "eslint.workingDirectories": [
-    { "directory": "apps/explorer", "!cwd": false }
-  ],
   "cSpell.words": [
     "aimm",
     "arbitrum",
@@ -19,6 +16,7 @@
     "graphprotocol",
     "headwrap",
     "Hono",
+    "Imgproxy",
     "ipfs",
     "keccak",
     "Kusama",
@@ -55,10 +53,7 @@
     "walletconnect"
   ],
   "cSpell.language": "en-GB",
-  "grammarly.selectors": [
-    {
-      "language": "markdown",
-      "scheme": "file"
-    }
-  ],
+  "terminal.integrated.env.linux": {
+    "EDITOR": "code"
+  }
 }

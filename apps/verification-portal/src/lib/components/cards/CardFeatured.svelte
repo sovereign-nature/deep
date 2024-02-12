@@ -18,7 +18,7 @@
       imgClass="w-full h-32 md:h-48 lg:h-56  object-cover object-center lg:object-top"
       url={item.image}
       alt={item.name}
-      size="400"
+      size={400}
     />
   </div>
 
