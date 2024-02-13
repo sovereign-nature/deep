@@ -270,8 +270,8 @@ importers:
         specifier: 0.3.0
         version: 0.3.0(@sveltejs/kit@2.5.0)(vite-plugin-pwa@0.17.5)
       '@wagmi/connectors':
-        specifier: 4.1.13
-        version: 4.1.13(@wagmi/core@2.6.5)(react-dom@18.2.0)(react-native@0.73.4)(react@18.2.0)(rollup@2.79.1)(typescript@5.3.3)(viem@2.7.8)
+        specifier: 4.1.14
+        version: 4.1.14(@wagmi/core@2.6.5)(react-dom@18.2.0)(react-native@0.73.4)(react@18.2.0)(rollup@2.79.1)(typescript@5.3.3)(viem@2.7.8)
       '@wagmi/core':
         specifier: 2.6.5
         version: 2.6.5(react@18.2.0)(typescript@5.3.3)(viem@2.7.8)
@@ -280,7 +280,7 @@ importers:
         version: 0.0.25(react@18.2.0)
       '@web3modal/wagmi':
         specifier: 4.0.2
-        version: 4.0.2(@wagmi/connectors@4.1.13)(@wagmi/core@2.6.5)(typescript@5.3.3)(viem@2.7.8)
+        version: 4.0.2(@wagmi/connectors@4.1.14)(@wagmi/core@2.6.5)(typescript@5.3.3)(viem@2.7.8)
       autoprefixer:
         specifier: 10.4.17
         version: 10.4.17(postcss@8.4.35)
@@ -7447,10 +7447,10 @@ packages:
     requiresBuild: true
     dev: true
 
-  /@wagmi/connectors@4.1.13(@wagmi/core@2.6.5)(react-dom@18.2.0)(react-native@0.73.4)(react@18.2.0)(rollup@2.79.1)(typescript@5.3.3)(viem@2.7.8):
-    resolution: {integrity: sha512-icllYbAHyXBChZK1FdVobCdZFSJQO5NQWAxv5C8P/qJrXdQPeDIQtmdcschB6h0cqfU9zjSSOkmEBZBAcOT2TQ==}
+  /@wagmi/connectors@4.1.14(@wagmi/core@2.6.5)(react-dom@18.2.0)(react-native@0.73.4)(react@18.2.0)(rollup@2.79.1)(typescript@5.3.3)(viem@2.7.8):
+    resolution: {integrity: sha512-e8I89FsNBtzhIilU3nqmgMR9xvSgCfmkWLz9iCKBTqyitbK5EJU7WTEtjjYFm1v2J//JeAwaA2XEKtG9BLR9jQ==}
     peerDependencies:
-      '@wagmi/core': 2.6.4
+      '@wagmi/core': 2.6.5
       typescript: '>=5.0.4'
       viem: 2.x
     peerDependenciesMeta:
@@ -8229,13 +8229,6 @@ packages:
   /@web3modal/siwe@4.0.2(typescript@5.3.3):
     resolution: {integrity: sha512-YPprPNen3RGK9ImCF0M274+VIan07uQGxmiobDUm4ChCqgTKtgavPjPcbKKV6yvNuE0oc1xM0/JRMOS9g55ccw==}
     requiresBuild: true
-    peerDependenciesMeta:
-      react:
-        optional: true
-      react-dom:
-        optional: true
-      vue:
-        optional: true
     dependencies:
       '@web3modal/core': 4.0.2(react@18.2.0)
       '@web3modal/scaffold-utils': 4.0.2(react@18.2.0)
@@ -8256,23 +8249,14 @@ packages:
       qrcode: 1.5.3
     dev: true
 
-  /@web3modal/wagmi@4.0.2(@wagmi/connectors@4.1.13)(@wagmi/core@2.6.5)(typescript@5.3.3)(viem@2.7.8):
+  /@web3modal/wagmi@4.0.2(@wagmi/connectors@4.1.14)(@wagmi/core@2.6.5)(typescript@5.3.3)(viem@2.7.8):
     resolution: {integrity: sha512-xztDQLYbypsnHJ3MKROjg53VsKI9g+/yIcAvmNm5XNmz/Db5culIww8KG70NM53ifiihc+pzfTAfQkE08iTh7A==}
     peerDependencies:
       '@wagmi/connectors': '>=4.0.0'
       '@wagmi/core': '>=2.0.0'
       viem: '>=2.0.0'
-    peerDependenciesMeta:
-      '@web3modal/siwe':
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
-      vue:
-        optional: true
     dependencies:
-      '@wagmi/connectors': 4.1.13(@wagmi/core@2.6.5)(react-dom@18.2.0)(react-native@0.73.4)(react@18.2.0)(rollup@2.79.1)(typescript@5.3.3)(viem@2.7.8)
+      '@wagmi/connectors': 4.1.14(@wagmi/core@2.6.5)(react-dom@18.2.0)(react-native@0.73.4)(react@18.2.0)(rollup@2.79.1)(typescript@5.3.3)(viem@2.7.8)
       '@wagmi/core': 2.6.5(react@18.2.0)(typescript@5.3.3)(viem@2.7.8)
       '@web3modal/polyfills': 4.0.2
       '@web3modal/scaffold': 4.0.2(react@18.2.0)
