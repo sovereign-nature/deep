@@ -17,7 +17,7 @@
   export let imgClass = 'object-cover w-full h-full rounded-lg fade-from-none';
   export let containerClass =
     'w-56 h-56 md:h-64 md:w-64 rounded-lg mb-2 overflow-hidden text-center bg-gray-400 dark:bg-deep-green';
-  export let imgPlaceholderClass = 'w-56 h-56 md:h-64 md:w-64';
+  export let imgPlaceholderClass = 'w-56 h-56 md:h-64 md:w-64 absolute';
 
   let isMounted = false;
   let isError = false;
@@ -80,7 +80,6 @@
     {#if isMounted && !isError}
       <!-- Render the image when it's loaded -->
       <img
-        loading="lazy"
         src={imageUrl}
         {alt}
         class={imgClass}
