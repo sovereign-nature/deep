@@ -1,7 +1,7 @@
 <script lang="ts">
   import HexagonIcon from './icons/HexagonIcon.svelte';
   import LL from '$lib/shared/i18n/i18n-svelte';
-  import { shareFile } from '$lib/features/actions';
+  import { shareFile } from '$lib/features/UiActions';
 
   export let shareUrl: string = '';
   export let shareTitle: string = '';
