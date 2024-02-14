@@ -20,8 +20,8 @@ test('getDirectusImageURL', () => {
 });
 
 test('getImgproxyUrl', () => {
-  expect(getImgproxyUrl('https://example.com/image.jpg', 200)).toBe(
-    `${SNI_IMAGE_PROXY}/insecure/rs:fill/s:200:200/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc=.webp`
+  expect(getImgproxyUrl('https://example.com/image.jpg', 200, 200, 'jpg')).toBe(
+    `${SNI_IMAGE_PROXY}/insecure/rs:fill/s:200:200/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS5qcGc=.jpg`
   );
 });
 
