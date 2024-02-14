@@ -4,11 +4,11 @@
   import Fuse from 'fuse.js';
   import { writable } from 'svelte/store';
   import { onMount, setContext } from 'svelte';
-  import { SNI_DIRECTUS_URL } from '@sni/constants';
   import { page } from '$app/stores';
   export let campaign = 'hotel_hideaway';
   import type { AssetFeatured, Web2DataState } from '$lib/types';
   import { shuffleArray } from '$lib/shared/utils';
+  import { directusUrl } from '@sni/clients/config';
 
   const url = $page.url;
   const searchParams = url.searchParams.get('search') || '';
@@ -84,7 +84,7 @@
   onMount(async () => {
     try {
       const { data: response }: AxiosResponse = await axios.get(
-        `${SNI_DIRECTUS_URL}/items/${campaign}?filter[status][_eq]=published` //TODO: move to directus client
+        `${directusUrl}/items/${campaign}?filter[status][_eq]=published` //TODO: move to directus client
       );
       handleDataLoaded(response.data);
     } catch (error) {

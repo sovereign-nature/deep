@@ -3,7 +3,6 @@ import {
   PolkadotResponse,
   DirectusAsset,
 } from '@sni/clients/assets-client';
-import { SNI_DIRECTUS_URL } from '@sni/constants';
 import { DeepAsset } from '@sni/types';
 
 export function openSeaFormatter(assetData: OpenSeaResponse): DeepAsset {
@@ -22,9 +21,6 @@ export function openSeaFormatter(assetData: OpenSeaResponse): DeepAsset {
 
 export function directusFormatter(assetData: DirectusAsset): DeepAsset {
   const data = assetData.data;
-
-  const fullImageUrl = `${SNI_DIRECTUS_URL}/assets/${data.image}`;
-  data.image = fullImageUrl;
 
   return { ...data, tokenId: data.id };
 }

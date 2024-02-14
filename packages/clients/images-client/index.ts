@@ -1,11 +1,8 @@
-import {
-  SNI_DIRECTUS_URL,
-  SNI_IMAGE_PROXY,
-  SNI_IPFS_CACHE,
-} from '@sni/constants';
+import { SNI_IMAGE_PROXY, SNI_IPFS_CACHE } from '@sni/constants';
 //TODO: Move directus url to client config
 import { ANIMAL_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
 import { getCID, getDomain, isIPFSUrl, isUrl } from '@sni/utils/url-utils';
+import { directusUrl } from '../config';
 
 export function getIPFSImageUrl(ipfsUrl: string): string {
   const cid = getCID(ipfsUrl);
@@ -22,14 +19,14 @@ export function getDirectusImageURL(
     return ANIMAL_PLACEHOLDER;
   }
 
-  return `${SNI_DIRECTUS_URL}/assets/${assetID}${directusImageRequestConfig}&width=${width}`;
+  return `${directusUrl}/assets/${assetID}${directusImageRequestConfig}&width=${width}`;
 }
 
 export function getImgproxyUrl(url: string, width = 400): string {
   const domain = getDomain(url);
 
   //Avoid using the image proxy for Directus urls
-  if (domain === getDomain(SNI_DIRECTUS_URL)) {
+  if (domain === getDomain(directusUrl)) {
     return `${url}`;
   }
 
@@ -37,7 +34,11 @@ export function getImgproxyUrl(url: string, width = 400): string {
 }
 
 //TODO: Directus ID is not URL, probably refactoring is needed
-export function getAssetUrl(url: string, width: number = 400): string {
+export function getAssetImageUrl(url: string, width: number = 400): string {
+  if (!url) {
+    return ANIMAL_PLACEHOLDER;
+  }
+
   return getImgproxyUrl(
     isIPFSUrl(url)
       ? getIPFSImageUrl(url)

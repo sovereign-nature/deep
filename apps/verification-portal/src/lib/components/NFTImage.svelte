@@ -1,14 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import {
-    generateAssetURL,
-    generateIPFSImageUrl,
-    generateCachedUrl,
-    isIPFSUrl,
-  } from '$lib/shared/utils';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import VerifiedIcon from '$lib/components/icons/VerifiedIcon.svelte';
   import LL from '$lib/shared/i18n/i18n-svelte';
+  import { getAssetImageUrl } from '@sni/clients/images-client';
 
   export let url: string;
   export let alt: string;
@@ -17,8 +12,7 @@
   export let imgClass = 'object-cover w-full h-full rounded-lg fade-from-none';
   export let containerClass =
     'w-56 h-56 md:h-64 md:w-64 rounded-lg mb-2 overflow-hidden text-center bg-gray-400 dark:bg-deep-green';
-  export let imgPlaceholderClass = 'w-56 h-56 md:h-64 md:w-64';
-  export let loading: 'lazy' | 'eager' | null | undefined = 'lazy';
+  export let imgPlaceholderClass = 'w-56 h-56 md:h-64 md:w-64 absolute';
 
   let isMounted = false;
   let isError = false;
@@ -26,25 +20,8 @@
   let errorMsg = $LL.errors.image();
 
   let imageUrl: string;
-  //TODO: getAssetUrl from clients
-  $: imageUrl = generateCachedUrl(
-    isIPFSUrl(url)
-      ? generateIPFSImageUrl(url)
-      : isUrl(url)
-        ? url
-        : generateAssetURL(url, size)
-  );
+  $: imageUrl = getAssetImageUrl(url, size);
 
-  //check if id or url
-  function isUrl(url: string): boolean {
-    if (!url) {
-      return false;
-    }
-    return (
-      url.toLowerCase().startsWith('https://') ||
-      url.toLowerCase().startsWith('http://')
-    );
-  }
   // Function to handle image loading errors
   function handleImageError() {
     isError = true;
@@ -82,7 +59,6 @@
     {#if isMounted && !isError}
       <!-- Render the image when it's loaded -->
       <img
-        {loading}
         src={imageUrl}
         {alt}
         class={imgClass}

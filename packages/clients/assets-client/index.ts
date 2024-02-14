@@ -1,9 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
-import { SNI_DIRECTUS_URL } from '@sni/constants';
+import { kusamaApiUrl, polkadotApiUrl, directusUrl } from '../config';
 import { getNftById } from './queries/polkadot';
-
-const POLKADOT_NFT_API = 'https://squid.subsquid.io/speck/graphql';
-const KUSAMA_NFT_API = 'https://squid.subsquid.io/stick/graphql';
 
 export type PolkadotResponse = {
   nftEntity: {
@@ -39,8 +36,8 @@ export type OpenSeaResponse = OpenSeaNFTResponse & {
   collection: OpenSeaCollectionResponse;
 };
 
-const polkadotClient = new GraphQLClient(POLKADOT_NFT_API, { fetch });
-const kusamaClient = new GraphQLClient(KUSAMA_NFT_API, { fetch });
+const polkadotClient = new GraphQLClient(polkadotApiUrl, { fetch });
+const kusamaClient = new GraphQLClient(kusamaApiUrl, { fetch });
 
 export function getPolkadotNft(id: string) {
   return polkadotClient.request<PolkadotResponse>(getNftById, {
@@ -126,7 +123,7 @@ export type DirectusAsset = {
 
 export async function getHotelHideawayAsset(id: string) {
   const web2Res = await fetch(
-    `${SNI_DIRECTUS_URL}/items/hotel_hideaway/${id}?fields=*,collection.*`
+    `${directusUrl}/items/hotel_hideaway/${id}?fields=*,collection.*`
   );
 
   return (await web2Res.json()) as DirectusAsset;

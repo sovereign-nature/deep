@@ -4,7 +4,7 @@
   import Carousel from './Carousel.svelte';
   import Subheader from '$lib/shared/typography/Subheader.svelte';
   import CardHeader from '$lib/shared/typography/CardHeader.svelte';
-  import { generateAssetURL } from '$lib/shared/utils';
+  import { getAssetImageUrl } from '@sni/clients/images-client';
   import type { NewsEntity } from '$lib/types';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import { dev } from '$app/environment';
@@ -18,7 +18,7 @@
   let images = newsData.map((item, index) => ({
     index,
     date: format(parseISO(item?.date_created), 'd MMM yyyy'),
-    src: generateAssetURL(item?.image), //@TODO placeholder image, maybe server side?
+    src: getAssetImageUrl(item?.image), //@TODO placeholder image, maybe server side?
     title: item?.title,
     content: item?.content,
   }));
