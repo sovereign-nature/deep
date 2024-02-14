@@ -66,8 +66,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/types
       hono:
-        specifier: 4.0.1
-        version: 4.0.1
+        specifier: 4.0.2
+        version: 4.0.2
     devDependencies:
       '@cloudflare/workers-types':
         specifier: 4.20240208.0
@@ -97,8 +97,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/types
       hono:
-        specifier: 4.0.1
-        version: 4.0.1
+        specifier: 4.0.2
+        version: 4.0.2
     devDependencies:
       '@cloudflare/workers-types':
         specifier: 4.20240208.0
@@ -366,8 +366,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/types
       hono:
-        specifier: 4.0.1
-        version: 4.0.1
+        specifier: 4.0.2
+        version: 4.0.2
     devDependencies:
       '@cloudflare/workers-types':
         specifier: 4.20240208.0
@@ -12768,8 +12768,8 @@ packages:
     dependencies:
       react-is: 16.13.1
 
-  /hono@4.0.1:
-    resolution: {integrity: sha512-S9cREGPJIAK437RhroOf1PGlJPIlt5itl69OmQ6onPLo5pdCbSHGL8v4uAKxrdHjcTyuoyvKPqWm5jv0dGkdFA==}
+  /hono@4.0.2:
+    resolution: {integrity: sha512-ZW/13BsQmQHlFb3IYGuzgbzY0wBO6WTvOHbpmUfVhVvdMyBNGtuz55quxM7JXoG2orzmv5hEorOAm3ocwzaV0Q==}
     engines: {node: '>=16.0.0'}
     dev: false
 
