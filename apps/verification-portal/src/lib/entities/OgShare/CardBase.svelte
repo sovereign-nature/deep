@@ -1,11 +1,7 @@
 <script lang="ts">
   import { SOCIAL_CARD_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
 
-  import {
-    generateIPFSImageUrl,
-    isIPFSUrl,
-    isLongTitle,
-  } from '$lib/shared/utils';
+  import { isLongTitle } from '$lib/shared/utils';
 
   import LL from '$lib/shared/i18n/i18n-svelte';
 
@@ -15,7 +11,7 @@
 
   let fontSizeClass = baseFontSize;
 
-  $: imageUrl = isIPFSUrl(img) ? generateIPFSImageUrl(img) : img;
+  $: imageUrl = img;
 
   const mediumTitle = isLongTitle(title);
   const smallTitle = isLongTitle(title, 9, 3);

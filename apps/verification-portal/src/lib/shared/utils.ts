@@ -1,6 +1,5 @@
 //TODO: Refactor utils dump
 
-import { SNI_API_URL, SNI_IPFS_CACHE, SNI_IMAGE_PROXY } from '@sni/constants';
 import { ANIMAL_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
 import type { DeepAsset } from '@sni/types';
 import type { Page } from '@sveltejs/kit';
@@ -8,6 +7,7 @@ import { browser } from '$app/environment';
 import { goto } from '$app/navigation';
 import config from '$lib/config/siteConfigs';
 import type { FeaturesConfig } from '$lib/types';
+import { directusUrl } from '@sni/clients/config';
 
 export function shortenMoneyValue(value: string): string {
   const num = parseFloat(value);
@@ -47,55 +47,12 @@ export function getBaseUrl(page: Page) {
   return `${protocol}//${host}`;
 }
 
-export function generateIPFSImageUrl(ipfsUrl: string): string {
-  const ipfsGateway = SNI_IPFS_CACHE;
-  if (!ipfsUrl) {
-    return '';
-  }
-  const cid = getCID(ipfsUrl);
-  return `${ipfsGateway}/ipfs/${cid}`;
-}
-
-function getCID(url: string): string {
-  return url.substring(7); // 'ipfs://'.length === 7
-}
-
-export function isIPFSUrl(url: string): boolean {
-  return url !== undefined && url.startsWith('ipfs://');
-}
-
-const imageRequestConfig = '?format=webp&withoutEnlargement&quality=80'; //TODO: move to directus client
-
-export function generateAssetURL(
-  assetID: string,
-  width: number = 1000
-): string {
-  if (!assetID) {
-    return ANIMAL_PLACEHOLDER;
-  }
-  return `${SNI_API_URL}/assets/${assetID}${imageRequestConfig}&width=${width}`;
-}
-
-function getDomain(url: string): string {
-  return new URL(url).hostname;
-}
-
-export function generateCachedUrl(url: string, size = '400:400'): string {
-  const domain = getDomain(url);
-
-  //Avoid using the image proxy for Directus urls
-  if (domain === getDomain(SNI_API_URL)) {
-    return `${url}`;
-  }
-
-  return `${SNI_IMAGE_PROXY}/insecure/rs:fill/s:${size}/${btoa(url)}.webp`;
-}
-
+//TODO: Move to the client package
 export function generateMediaURL(assetID: string): string {
   if (!assetID) {
     return ANIMAL_PLACEHOLDER;
   }
-  return `${SNI_API_URL}/assets/${assetID}?metadata`;
+  return `${directusUrl}/assets/${assetID}?metadata`;
 }
 
 export function updateQueryParams(

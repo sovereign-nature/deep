@@ -1,14 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import {
-    generateAssetURL,
-    generateIPFSImageUrl,
-    generateCachedUrl,
-    isIPFSUrl,
-  } from '$lib/shared/utils';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import VerifiedIcon from '$lib/components/icons/VerifiedIcon.svelte';
   import LL from '$lib/shared/i18n/i18n-svelte';
+  import { getAssetImageUrl } from '@sni/clients/images-client';
 
   export let url: string;
   export let alt: string;
@@ -25,24 +20,8 @@
   let errorMsg = $LL.errors.image();
 
   let imageUrl: string;
-  $: imageUrl = generateCachedUrl(
-    isIPFSUrl(url)
-      ? generateIPFSImageUrl(url)
-      : isUrl(url)
-        ? url
-        : generateAssetURL(url, size)
-  );
+  $: imageUrl = getAssetImageUrl(url, size);
 
-  //check if id or url
-  function isUrl(url: string): boolean {
-    if (!url) {
-      return false;
-    }
-    return (
-      url.toLowerCase().startsWith('https://') ||
-      url.toLowerCase().startsWith('http://')
-    );
-  }
   // Function to handle image loading errors
   function handleImageError() {
     isError = true;

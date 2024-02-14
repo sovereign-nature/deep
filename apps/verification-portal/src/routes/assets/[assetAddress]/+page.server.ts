@@ -1,7 +1,7 @@
 import { parseAddress } from '@sni/address-utils';
+import { deepApiUrl } from '@sni/clients/config.js';
 import { getEntity, getNewsBySteward } from '@sni/clients/data.js'; //TODO: Do we need js postfix?
 import { getLinkByAddress } from '@sni/clients/link.js';
-import { DEEP_ASSETS_GATEWAY } from '@sni/constants';
 import { error } from '@sveltejs/kit';
 import { DIRECTUS_API_KEY, VERCEL_URL } from '$env/static/private';
 
@@ -23,10 +23,11 @@ export async function load(event) {
   let verifiedStatus: boolean = false;
   const assetAddress: string = event.params.assetAddress;
 
+  //TODO: Move to a @sni/clients/assets-client
   try {
     // Fetch Asset data
     const fetchedAsset: Asset = await (
-      await fetch(`${DEEP_ASSETS_GATEWAY}/${assetAddress}`)
+      await fetch(`${deepApiUrl}/assets/${assetAddress}`)
     ).json();
     // Check if NFT data exists
     if (!fetchedAsset) {

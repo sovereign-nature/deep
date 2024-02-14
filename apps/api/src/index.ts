@@ -6,9 +6,6 @@ import highlights from './routes/highlights';
 const app = new Hono();
 
 app.use('/*', cors({ origin: '*' }));
-// export interface Env {
-//   OPEN_SEA_API_KEY: string;
-// }
 
 app.get('/', (c) => c.text('DEEP API'));
 

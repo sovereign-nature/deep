@@ -1,9 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
-
+import { kusamaApiUrl, polkadotApiUrl, directusUrl } from '../config';
 import { getNftById } from './queries/polkadot';
-
-const POLKADOT_NFT_API = 'https://squid.subsquid.io/speck/graphql';
-const KUSAMA_NFT_API = 'https://squid.subsquid.io/stick/graphql';
 
 export type PolkadotResponse = {
   nftEntity: {
@@ -39,8 +36,8 @@ export type OpenSeaResponse = OpenSeaNFTResponse & {
   collection: OpenSeaCollectionResponse;
 };
 
-const polkadotClient = new GraphQLClient(POLKADOT_NFT_API, { fetch });
-const kusamaClient = new GraphQLClient(KUSAMA_NFT_API, { fetch });
+const polkadotClient = new GraphQLClient(polkadotApiUrl, { fetch });
+const kusamaClient = new GraphQLClient(kusamaApiUrl, { fetch });
 
 export function getPolkadotNft(id: string) {
   return polkadotClient.request<PolkadotResponse>(getNftById, {
@@ -93,7 +90,7 @@ export function getNftAsset(
   network: string,
   contractAddress: string,
   tokenId: number,
-  apiKey?: string //TODO: Rename to OPEN_SEA_API_KEY
+  openSeaApiKey?: string
 ) {
   switch (network) {
     case 'polkadot':
@@ -104,8 +101,39 @@ export function getNftAsset(
     case 'arbitrum':
     case 'polygon':
     case 'optimism':
-      return getOpenSeaNft(contractAddress, tokenId, network, apiKey);
+      return getOpenSeaNft(contractAddress, tokenId, network, openSeaApiKey);
     default:
       throw new Error(`Unknown network: ${network}`);
+  }
+}
+
+export type DirectusAsset = {
+  data: {
+    id: string;
+    name: string;
+    description: string;
+    image: string;
+    collection: {
+      id: string;
+      name: string;
+      description: string;
+    };
+  };
+};
+
+export async function getHotelHideawayAsset(id: string) {
+  const web2Res = await fetch(
+    `${directusUrl}/items/hotel_hideaway/${id}?fields=*,collection.*`
+  );
+
+  return (await web2Res.json()) as DirectusAsset;
+}
+
+export function getWeb2Asset(gameId: string, assetId: string) {
+  switch (gameId) {
+    case 'hotel-hideaway':
+      return getHotelHideawayAsset(assetId);
+    default:
+      throw new Error(`Unsupported game ID: ${gameId}`);
   }
 }

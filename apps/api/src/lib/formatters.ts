@@ -1,6 +1,8 @@
-import { OpenSeaResponse, PolkadotResponse } from '@sni/clients/nft';
-import { DirectusAsset } from '@sni/clients/web2';
-import { SNI_API_URL } from '@sni/constants';
+import {
+  OpenSeaResponse,
+  PolkadotResponse,
+  DirectusAsset,
+} from '@sni/clients/assets-client';
 import { DeepAsset } from '@sni/types';
 
 export function openSeaFormatter(assetData: OpenSeaResponse): DeepAsset {
@@ -19,9 +21,6 @@ export function openSeaFormatter(assetData: OpenSeaResponse): DeepAsset {
 
 export function directusFormatter(assetData: DirectusAsset): DeepAsset {
   const data = assetData.data;
-
-  const fullImageUrl = `${SNI_API_URL}/assets/${data.image}`;
-  data.image = fullImageUrl;
 
   return { ...data, tokenId: data.id };
 }
