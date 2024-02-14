@@ -1,6 +1,5 @@
 {
   "name": "@sni/constants",
-  "type": "module",
   "version": "0.0.0",
   "main": "index.ts",
   "license": "GPL-3.0"
