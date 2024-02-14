@@ -16,8 +16,7 @@ export const HH_ASSET = {
   date_updated: '2023-11-16T09:47:52.697Z',
   name: 'Upemba National Park Curls',
   description: null,
-  image:
-    'https://directus.sovereignnature.com/assets/586e426d-8f15-4cbd-b7f5-d1b15c51f5f7',
+  image: '586e426d-8f15-4cbd-b7f5-d1b15c51f5f7',
   status: 'published',
   collection: {
     id: 'fpf-upemba',
