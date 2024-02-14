@@ -82,37 +82,6 @@ importers:
         specifier: 3.28.1
         version: 3.28.1(@cloudflare/workers-types@4.20240208.0)
 
-  apps/assets-gateway:
-    dependencies:
-      '@sni/address-utils':
-        specifier: workspace:*
-        version: link:../../packages/address-utils
-      '@sni/clients':
-        specifier: workspace:*
-        version: link:../../packages/clients
-      '@sni/constants':
-        specifier: workspace:*
-        version: link:../../packages/constants
-      '@sni/types':
-        specifier: workspace:*
-        version: link:../../packages/types
-      hono:
-        specifier: 4.0.1
-        version: 4.0.1
-    devDependencies:
-      '@cloudflare/workers-types':
-        specifier: 4.20240208.0
-        version: 4.20240208.0
-      env-cmd:
-        specifier: 10.1.0
-        version: 10.1.0
-      vitest:
-        specifier: 1.2.2
-        version: 1.2.2
-      wrangler:
-        specifier: 3.28.1
-        version: 3.28.1(@cloudflare/workers-types@4.20240208.0)
-
   apps/contracts:
     devDependencies:
       '@nomicfoundation/hardhat-toolbox':
@@ -236,6 +205,9 @@ importers:
       '@sni/types':
         specifier: workspace:*
         version: link:../../packages/types
+      '@sni/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       '@sveltejs/adapter-auto':
         specifier: 3.1.1
         version: 3.1.1(@sveltejs/kit@2.5.0)
@@ -350,34 +322,6 @@ importers:
       vitest:
         specifier: 1.2.2
         version: 1.2.2
-
-  apps/web3-highlights:
-    dependencies:
-      '@sni/address-utils':
-        specifier: workspace:*
-        version: link:../../packages/address-utils
-      '@sni/clients':
-        specifier: workspace:*
-        version: link:../../packages/clients
-      '@sni/constants':
-        specifier: workspace:*
-        version: link:../../packages/constants
-      '@sni/types':
-        specifier: workspace:*
-        version: link:../../packages/types
-      hono:
-        specifier: 4.0.1
-        version: 4.0.1
-    devDependencies:
-      '@cloudflare/workers-types':
-        specifier: 4.20240208.0
-        version: 4.20240208.0
-      env-cmd:
-        specifier: 10.1.0
-        version: 10.1.0
-      wrangler:
-        specifier: 3.28.1
-        version: 3.28.1(@cloudflare/workers-types@4.20240208.0)
 
   packages/address-utils:
     dependencies:
