@@ -22,7 +22,7 @@
     ]
   },
   "devDependencies": {
-    "husky": "9.0.10",
+    "husky": "9.0.11",
     "lint-staged": "15.2.2",
     "turbo": "1.10.16",
     "turbo-ignore": "1.10.16",
