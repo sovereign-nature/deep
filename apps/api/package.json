@@ -15,12 +15,12 @@
     "@sni/clients": "workspace:*",
     "@sni/constants": "workspace:*",
     "@sni/types": "workspace:*",
-    "hono": "4.0.1"
+    "hono": "4.0.2"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20240208.0",
     "env-cmd": "10.1.0",
     "vitest": "1.2.2",
-    "wrangler": "3.28.1"
+    "wrangler": "3.28.2"
   }
 }
