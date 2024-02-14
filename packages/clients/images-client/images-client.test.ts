@@ -10,7 +10,7 @@ import {
   getDirectusImageURL,
   getIPFSImageUrl,
   getImgproxyUrl,
-} from './images-client';
+} from '.';
 
 test('getIPFSImageUrl', () => {
   expect(getIPFSImageUrl('ipfs://123')).toBe(`${SNI_IPFS_CACHE}/ipfs/123`);
