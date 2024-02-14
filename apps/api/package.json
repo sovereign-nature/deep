@@ -15,7 +15,7 @@
     "@sni/clients": "workspace:*",
     "@sni/constants": "workspace:*",
     "@sni/types": "workspace:*",
-    "hono": "4.0.1"
+    "hono": "4.0.2"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20240208.0",
