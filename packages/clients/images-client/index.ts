@@ -13,16 +13,22 @@ export const directusImageRequestConfig =
 
 export function getDirectusImageURL(
   assetID: string,
-  width: number = 1000
+  width: number = 1000,
+  format: 'webp' | 'jpg' = 'webp'
 ): string {
   if (!assetID) {
     return ANIMAL_PLACEHOLDER;
   }
 
-  return `${directusUrl}/assets/${assetID}${directusImageRequestConfig}&width=${width}`;
+  return `${directusUrl}/assets/${assetID}?format=${format}&withoutEnlargement&quality=80&width=${width}`;
 }
 
-export function getImgproxyUrl(url: string, width = 400): string {
+export function getImgproxyUrl(
+  url: string,
+  width = 400,
+  height = 400,
+  format = 'webp'
+): string {
   const domain = getDomain(url);
 
   //Avoid using the image proxy for Directus urls
@@ -30,11 +36,16 @@ export function getImgproxyUrl(url: string, width = 400): string {
     return `${url}`;
   }
 
-  return `${SNI_IMAGE_PROXY}/insecure/rs:fill/s:${width}:${width}/${btoa(url)}.webp`;
+  return `${SNI_IMAGE_PROXY}/insecure/rs:fill/s:${width}:${height}/${btoa(url)}.${format}`;
 }
 
 //TODO: Directus ID is not URL, probably refactoring is needed
-export function getAssetImageUrl(url: string, width: number = 400): string {
+export function getAssetImageUrl(
+  url: string,
+  width: number = 400,
+  height = 400,
+  format: 'webp' | 'jpg' = 'webp'
+): string {
   if (!url) {
     return ANIMAL_PLACEHOLDER;
   }
@@ -44,6 +55,9 @@ export function getAssetImageUrl(url: string, width: number = 400): string {
       ? getIPFSImageUrl(url)
       : isUrl(url)
         ? url
-        : getDirectusImageURL(url, width)
+        : getDirectusImageURL(url, width, format),
+    width,
+    height,
+    format
   );
 }

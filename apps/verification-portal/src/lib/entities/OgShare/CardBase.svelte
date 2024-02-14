@@ -4,8 +4,6 @@
   import { isLongTitle } from '$lib/shared/utils';
 
   import LL from '$lib/shared/i18n/i18n-svelte';
-  import { getIPFSImageUrl } from '@sni/clients/images-client';
-  import { isIPFSUrl } from '@sni/utils/url-utils';
 
   export let title = '';
   export let baseFontSize = 'text-72px'; // Default font size
@@ -13,7 +11,7 @@
 
   let fontSizeClass = baseFontSize;
 
-  $: imageUrl = isIPFSUrl(img) ? getIPFSImageUrl(img) : img;
+  $: imageUrl = img;
 
   const mediumTitle = isLongTitle(title);
   const smallTitle = isLongTitle(title, 9, 3);

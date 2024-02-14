@@ -1,5 +1,6 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import type { SvelteComponent } from 'svelte';
+import { getAssetImageUrl } from '@sni/clients/images-client';
 import { componentToImageResponse } from '$lib/server/widgets/ComponentToImage';
 import OgCard from '$lib/entities/OgShare/CardLandscape.svelte';
 import OgCardSquare from '$lib/entities/OgShare/CardSquare.svelte';
@@ -17,25 +18,25 @@ const robotoBoldFile = await fetch(
 );
 const robotoBoldData: ArrayBuffer = await robotoBoldFile.arrayBuffer();
 
+//TODO: Proper error handling, tests
 export const GET: RequestHandler = async ({ url }) => {
   const decodeQueryParam = (param: string | null) =>
     param ? decodeURIComponent(param) : undefined;
 
   const title: string =
     decodeQueryParam(url.searchParams.get('title')) || 'NFT';
-  const funds: string | undefined = decodeQueryParam(
-    url.searchParams.get('funds')
+  const funds: string = decodeQueryParam(url.searchParams.get('funds')) || '';
+  const tokenId: string =
+    decodeQueryParam(url.searchParams.get('tokenId')) || '';
+  const img: string = getAssetImageUrl(
+    decodeQueryParam(url.searchParams.get('img')) || '',
+    500,
+    500,
+    'jpg'
   );
-  const tokenId: string | undefined = decodeQueryParam(
-    url.searchParams.get('tokenId')
-  );
-  const img: string | undefined = decodeQueryParam(url.searchParams.get('img'));
-  const source: string | undefined = decodeQueryParam(
-    url.searchParams.get('source')
-  );
-  const ratio: string | undefined = decodeQueryParam(
-    url.searchParams.get('ratio')
-  );
+  const source: string = decodeQueryParam(url.searchParams.get('source')) || '';
+  const ratio: string | undefined =
+    decodeQueryParam(url.searchParams.get('ratio')) || 'landscape';
   const square: boolean = ratio === 'square' ? true : false;
   const width: number = square ? 1080 : 1200;
   const height: number = square ? 1080 : 630;
@@ -44,6 +45,10 @@ export const GET: RequestHandler = async ({ url }) => {
     ? (OgCardSquare as unknown as SvelteComponent<any, any, any>)
     : (OgCard as unknown as SvelteComponent<any, any, any>);
   /* eslint-enable @typescript-eslint/no-explicit-any */
+
+  console.log('RENDERING');
+  console.log('ratio', ratio);
+  console.log('img', img);
 
   return componentToImageResponse(
     component,
