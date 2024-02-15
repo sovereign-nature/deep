@@ -12,14 +12,6 @@ export type VerifiedResponse = {
   funds_raised: number;
 };
 
-export type Asset = {
-  id: string;
-  tokenId: number | string;
-  name: string;
-  description: string;
-  image: string;
-  collection: { id: string; name: string; description: string };
-};
 export type AssetFeatured = {
   id: string;
   tokenId: number | string;

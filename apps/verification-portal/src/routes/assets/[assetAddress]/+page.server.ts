@@ -1,11 +1,12 @@
 import { parseAddress } from '@sni/address-utils';
 import { deepApiUrl } from '@sni/clients/config.js';
-import { getEntity, getNewsBySteward } from '@sni/clients/data.js'; //TODO: Do we need js postfix?
-import { getLinkByAddress } from '@sni/clients/link.js';
+import { getEntity, getNewsBySteward } from '@sni/clients/data';
+import { getLinkByAddress } from '@sni/clients/link';
+import type { DeepAsset } from '@sni/clients/assets-client/types';
 import { error } from '@sveltejs/kit';
 import { DIRECTUS_API_KEY, VERCEL_URL } from '$env/static/private';
 
-import type { Address, Asset, DeepData, VerifiedResponse } from '$lib/types'; //@TODO better way to standardize types
+import type { Address, DeepData, VerifiedResponse } from '$lib/types'; //@TODO better way to standardize types
 
 const protocol = 'https://';
 const baseUrl = VERCEL_URL ? `${protocol}${VERCEL_URL}` : '';
@@ -14,7 +15,7 @@ const config = {
   headers: { Authorization: `Bearer ${DIRECTUS_API_KEY}` },
 };
 
-let assetData: Asset;
+let assetData: DeepAsset;
 let deepData: DeepData;
 let addressDetails: Address;
 const notFoundMessage = 'We’re sorry but that page can’t be found.';
@@ -26,9 +27,10 @@ export async function load(event) {
   //TODO: Move to a @sni/clients/assets-client
   try {
     // Fetch Asset data
-    const fetchedAsset: Asset = await (
+    const fetchedAsset: DeepAsset = await (
       await fetch(`${deepApiUrl}/assets/${assetAddress}`)
     ).json();
+
     // Check if NFT data exists
     if (!fetchedAsset) {
       throw new Error();
@@ -40,6 +42,7 @@ export async function load(event) {
     error(404, notFoundMessage);
   }
 
+  //TODO: Fetch data on API side
   //Fetch verified data
   try {
     const verifiedData: VerifiedResponse = await getLinkByAddress(
@@ -74,6 +77,7 @@ export async function load(event) {
   }
 
   //TODO: maybe should be done API side?
+  //TODO: Move to API
   interface ExtractedProperties {
     traces_recorded: {
       [key: string]: number;
