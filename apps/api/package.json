@@ -14,7 +14,6 @@
     "@sni/address-utils": "workspace:*",
     "@sni/clients": "workspace:*",
     "@sni/constants": "workspace:*",
-    "@sni/types": "workspace:*",
     "hono": "4.0.2"
   },
   "devDependencies": {

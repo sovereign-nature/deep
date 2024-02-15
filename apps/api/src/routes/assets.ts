@@ -2,7 +2,8 @@ import { Hono } from 'hono';
 import { env } from 'hono/adapter';
 import { zValidator } from '@hono/zod-validator';
 import { z } from 'zod';
-import { getAsset, parseDID } from '../lib/shared';
+import { getAsset } from '@sni/clients/assets-client';
+import { parseDID } from '@sni/address-utils';
 
 const app = new Hono();
 
@@ -22,6 +23,8 @@ const getAssetRoute = app.get(
     // Parsing DID
     try {
       const parsedData = parseDID(assetDID);
+
+      //TODO: Refactor getAsset to getAssetByDid
       const assetData = await getAsset(
         parsedData.networkId,
         parsedData.assetId,

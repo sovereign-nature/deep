@@ -62,9 +62,6 @@ importers:
       '@sni/constants':
         specifier: workspace:*
         version: link:../../packages/constants
-      '@sni/types':
-        specifier: workspace:*
-        version: link:../../packages/types
       hono:
         specifier: 4.0.2
         version: 4.0.2
@@ -208,9 +205,6 @@ importers:
       '@sni/constants':
         specifier: workspace:*
         version: link:../../packages/constants
-      '@sni/types':
-        specifier: workspace:*
-        version: link:../../packages/types
       '@sni/utils':
         specifier: workspace:*
         version: link:../../packages/utils
@@ -368,8 +362,6 @@ importers:
   packages/json-schemas: {}
 
   packages/solidity-interfaces: {}
-
-  packages/types: {}
 
   packages/utils: {}
 

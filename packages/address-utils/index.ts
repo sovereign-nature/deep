@@ -132,3 +132,24 @@ export function getChainName(chainId: number): string {
 
   return idToChainName[chainId] || '';
 }
+
+function getNetworkId(chainNamespace: string, chainId: string): string {
+  switch (chainNamespace) {
+    case 'eip155':
+      return getChainName(parseInt(chainId));
+    case 'deep':
+      return chainId;
+    default:
+      throw new Error(`Unknown namespace: ${chainNamespace}`);
+  }
+}
+
+//TODO: There is a confusion between parseAddress and parseDID
+export function parseDID(did: string) {
+  const { chain, asset } = parseAddress(did);
+  const networkId = getNetworkId(chain.namespace, chain.reference);
+  const assetId = asset.reference;
+  const tokenId = asset.identifier;
+
+  return { networkId, assetId, tokenId };
+}
