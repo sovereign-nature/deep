@@ -9,14 +9,14 @@ test("Should return 'DEEP API'", async () => {
 
 test('Should handle invalid DID', async () => {
   const res = await app.request('http://localhost/assets/invalidDID');
-  expect(await res.json()).toEqual({ error: 'Asset not found' });
+  expect(res.status).toEqual(404);
 });
 
 test('Should handle invalid Asset', async () => {
   const res = await app.request(
     'http://localhost/assets/did:asset:deep:polkadot.asset-hub:13:1000000'
   );
-  expect(await res.json()).toEqual({ error: 'Asset not found' });
+  expect(res.status).toEqual(404);
 });
 
 test('Should fetch Polkadot Web3 asset', async () => {
