@@ -28,7 +28,6 @@
     "@sni/address-utils": "workspace:*",
     "@sni/clients": "workspace:*",
     "@sni/constants": "workspace:*",
-    "@sni/types": "workspace:*",
     "@sni/utils": "workspace:*",
     "@sveltejs/adapter-auto": "3.1.1",
     "@sveltejs/adapter-vercel": "5.1.0",

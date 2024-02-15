@@ -2,8 +2,8 @@ import {
   OpenSeaResponse,
   PolkadotResponse,
   DirectusAsset,
-} from '@sni/clients/assets-client';
-import { DeepAsset } from '@sni/types';
+  DeepAsset,
+} from './types';
 
 export function openSeaFormatter(assetData: OpenSeaResponse): DeepAsset {
   return {

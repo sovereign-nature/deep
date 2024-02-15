@@ -1,57 +1,36 @@
 import { GraphQLClient } from 'graphql-request';
 import { kusamaApiUrl, polkadotApiUrl, directusUrl } from '../config';
 import { getNftById } from './queries/polkadot';
+import {
+  PolkadotResponse,
+  OpenSeaResponse,
+  OpenSeaCollectionResponse,
+  DirectusAsset,
+  DeepAsset,
+} from './types';
 
-export type PolkadotResponse = {
-  nftEntity: {
-    id: string;
-    sn: string;
-    meta: {
-      name: string;
-      description: string;
-      image: string;
-    };
-    collection: {
-      id: string;
-      name: string;
-    };
-  };
-};
-
-export type OpenSeaNFTResponse = {
-  nft: {
-    identifier: string;
-    name: string;
-    description: string;
-    image_url: string;
-  };
-};
-
-export type OpenSeaCollectionResponse = {
-  collection: string;
-  name: string;
-};
-
-export type OpenSeaResponse = OpenSeaNFTResponse & {
-  collection: OpenSeaCollectionResponse;
-};
+import {
+  directusFormatter,
+  openSeaFormatter,
+  polkadotFormatter,
+} from './formatters';
 
 const polkadotClient = new GraphQLClient(polkadotApiUrl, { fetch });
 const kusamaClient = new GraphQLClient(kusamaApiUrl, { fetch });
 
-export function getPolkadotNft(id: string) {
+function getPolkadotNft(id: string) {
   return polkadotClient.request<PolkadotResponse>(getNftById, {
     id,
   });
 }
 
-export function getKusamaNft(id: string) {
+function getKusamaNft(id: string) {
   return kusamaClient.request<PolkadotResponse>(getNftById, {
     id,
   });
 }
 
-export async function getOpenSeaNft(
+async function getOpenSeaNft(
   contractAddress: string,
   tokenId: number,
   network: string,
@@ -61,8 +40,6 @@ export async function getOpenSeaNft(
 
   const apiURL = `https://${testnetPrefix}api.opensea.io/api/v2/chain/${network}`;
 
-  //TODO: Rename OPEN_SEA to OPENSEA
-  //TODO: Unify client and server clients
   const headers = {
     'X-API-KEY': apiKey ? apiKey : '',
     Accept: 'application/json',
@@ -86,7 +63,7 @@ export async function getOpenSeaNft(
   return nftData;
 }
 
-export function getNftAsset(
+function getNftAsset(
   network: string,
   contractAddress: string,
   tokenId: number,
@@ -107,21 +84,7 @@ export function getNftAsset(
   }
 }
 
-export type DirectusAsset = {
-  data: {
-    id: string;
-    name: string;
-    description: string;
-    image: string;
-    collection: {
-      id: string;
-      name: string;
-      description: string;
-    };
-  };
-};
-
-export async function getHotelHideawayAsset(id: string) {
+async function getHotelHideawayAsset(id: string) {
   const web2Res = await fetch(
     `${directusUrl}/items/hotel_hideaway/${id}?fields=*,collection.*`
   );
@@ -129,11 +92,32 @@ export async function getHotelHideawayAsset(id: string) {
   return (await web2Res.json()) as DirectusAsset;
 }
 
-export function getWeb2Asset(gameId: string, assetId: string) {
-  switch (gameId) {
+//TODO: Cover with tests
+export async function getAsset(
+  networkId: string,
+  assetId: string,
+  tokenId: number,
+  apiKey?: string
+): Promise<DeepAsset> {
+  switch (networkId) {
+    case 'polkadot':
+    case 'kusama':
+      return polkadotFormatter(
+        (await getNftAsset(networkId, assetId, tokenId)) as PolkadotResponse
+      );
+    case 'sepolia':
+    case 'arbitrum':
+      return openSeaFormatter(
+        (await getNftAsset(
+          networkId,
+          assetId,
+          tokenId,
+          apiKey
+        )) as OpenSeaResponse
+      );
     case 'hotel-hideaway':
-      return getHotelHideawayAsset(assetId);
+      return directusFormatter(await getHotelHideawayAsset(assetId));
     default:
-      throw new Error(`Unsupported game ID: ${gameId}`);
+      throw new Error(`Unknown networkId: ${networkId}`);
   }
 }
