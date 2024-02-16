@@ -167,8 +167,8 @@ importers:
         specifier: 0.68.0
         version: 0.68.0(@types/node@20.11.17)(node-fetch@3.3.2)(typescript@5.3.3)
       '@graphprotocol/graph-ts':
-        specifier: 0.32.0
-        version: 0.32.0
+        specifier: 0.33.0
+        version: 0.33.0
       '@sni/constants':
         specifier: workspace:*
         version: link:../../packages/constants
@@ -3017,8 +3017,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@graphprotocol/graph-ts@0.32.0:
-    resolution: {integrity: sha512-YfKLT2w+ItXD/VPYQiAKtINQONVsAOkcqVFMHlhUy0fcEBVWuFBT53hJNI0/l5ujQa4TSxtzrKW/7EABAdgI8g==}
+  /@graphprotocol/graph-ts@0.33.0:
+    resolution: {integrity: sha512-HBUVblHUdjQZ/MEjjYPzVgmh+SiuF9VV0D8KubYfFAtzkqpVJlvdyk+RZTAJUiu8hpyYy0EVIcAnLEPtKlwMGQ==}
     dependencies:
       assemblyscript: 0.19.10
     dev: true
