@@ -79,8 +79,8 @@ importers:
         specifier: 1.3.1
         version: 1.3.1
       wrangler:
-        specifier: 3.28.2
-        version: 3.28.2(@cloudflare/workers-types@4.20240208.0)
+        specifier: 3.28.4
+        version: 3.28.4(@cloudflare/workers-types@4.20240208.0)
       zod:
         specifier: 3.22.4
         version: 3.22.4
@@ -158,8 +158,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0
       wrangler:
-        specifier: 3.28.2
-        version: 3.28.2(@cloudflare/workers-types@4.20240208.0)
+        specifier: 3.28.4
+        version: 3.28.4(@cloudflare/workers-types@4.20240208.0)
 
   apps/indexer:
     devDependencies:
@@ -14932,8 +14932,8 @@ packages:
     hasBin: true
     dev: true
 
-  /miniflare@3.20240129.2:
-    resolution: {integrity: sha512-BPUg8HsPmWQlRFUeiQk274i8M9L0gOvzbkjryuTvCX+M53EwBpP0gM2wyrRr/HokQoJcxWGh3InBu6L8+0bbPw==}
+  /miniflare@3.20240129.3:
+    resolution: {integrity: sha512-PCmLJ+UvtbpPj/fgNzTGbd+U5QBkt3akRNcdks9RBJU2SH+gUCp7iahsaI4GA344NX5MIbC6ctw1A6TfcA+aFA==}
     engines: {node: '>=16.13'}
     hasBin: true
     dependencies:
@@ -20126,8 +20126,8 @@ packages:
     resolution: {integrity: sha512-ILEIE97kDZvF9Wb9f6h5aXK4swSlKGUcOEGiIYb2OOu/IrDU9iwj0fD//SsA6E5ibwJxpEvhullJY4Sl4GcpAw==}
     dev: true
 
-  /wrangler@3.28.2(@cloudflare/workers-types@4.20240208.0):
-    resolution: {integrity: sha512-hlD4f2avBZuR1+qo9Um6D1prdWrSRtGTo9h6o/AKce+bHQEJWoJgJKHeLmrpZlLtHg/gGR1Xa1xzrexhuIzeJw==}
+  /wrangler@3.28.4(@cloudflare/workers-types@4.20240208.0):
+    resolution: {integrity: sha512-LDwW4KhplRhIEfQaZry8AMZIOTpkYZXLWjg1MDSC3a12BXSY37pXACmFxbZeg2TzcOi30j+KqwLfv15vCavIyA==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -20143,7 +20143,7 @@ packages:
       blake3-wasm: 2.1.5
       chokidar: 3.6.0
       esbuild: 0.17.19
-      miniflare: 3.20240129.2
+      miniflare: 3.20240129.3
       nanoid: 3.3.7
       path-to-regexp: 6.2.1
       resolve: 1.22.8
