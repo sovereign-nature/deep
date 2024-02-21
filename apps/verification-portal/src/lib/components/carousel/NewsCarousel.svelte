@@ -1,7 +1,7 @@
 <script lang="ts">
   import { format, parseISO } from 'date-fns';
   import { track } from '@vercel/analytics';
-  import Carousel from './Carousel.svelte';
+  import Carousel from './FlowbiteCarousel.svelte';
   import Subheader from '$lib/shared/typography/Subheader.svelte';
   import CardHeader from '$lib/shared/typography/CardHeader.svelte';
   import { getAssetImageUrl } from '@sni/clients/images-client';
@@ -11,26 +11,23 @@
 
   export let newsData: Array<NewsEntity>;
   let autoplay = true;
-  let index = 0;
   let expanded = false;
   const cardHeaderClass = 'px-4 pt-6 sm:px-8 sm:pt-8 md:px-11 md:pt-11';
 
-  let images = newsData.map((item, index) => ({
+  let items = newsData.map((item, index) => ({
     index,
     date: format(parseISO(item?.date_created), 'd MMM yyyy'),
     src: getAssetImageUrl(item?.image), //@TODO placeholder image, maybe server side?
     title: item?.title,
     content: item?.content,
+    video: item?.video,
   }));
 
   let mouseCursor =
-    images && images.length > 1 ? 'cursor-pointer' : 'cursor-default';
+    items && items.length > 1 ? 'cursor-pointer' : 'cursor-default';
 
-  function updateSlide(slide: number) {
-    index = slide;
-  }
   let hasBeenClicked = false; // Prevents double click
-  function toggleExpanded() {
+  function toggleExpanded(index: number) {
     if (hasBeenClicked) return;
     hasBeenClicked = true;
     expanded = !expanded;
@@ -39,14 +36,15 @@
     }, 200);
     if (!dev) {
       track('news_read_more', {
-        title: images[index]?.title,
+        title: items[index]?.title,
         expanded,
       });
     }
   }
+  $: isSliding = autoplay && !expanded;
 </script>
 
-{#if images.length > 0}
+{#if items.length > 0}
   <div
     class="max-w-full space-y-4 backface-visibility-none pb-11"
     on:mouseenter={() => (autoplay = false)}
@@ -56,49 +54,47 @@
     tabindex="0"
   >
     <Carousel
-      {images}
-      {index}
-      duration={autoplay && !expanded ? 5000 : undefined}
-      transition={null}
-      on:change={({ detail }) => (index = detail.index)}
-      class={`rounded-b-none ${mouseCursor}`}
+      {items}
+      let:index
+      let:changeSlide
+      {isSliding}
+      carouselClass={`rounded-b-none ${mouseCursor}`}
     >
       <div class={`${cardHeaderClass} mb-5 w-full cursor-default`}>
-        <Subheader>{images[index]?.date}</Subheader>
-        <CardHeader title={images[index]?.title} />
+        <Subheader>{items[index]?.date}</Subheader>
+        <CardHeader title={items[index]?.title} />
         <p class={`card-description ${expanded ? 'expanded' : 'collapsed'}`}>
-          {images[index]?.content.length > 300
+          {items[index]?.content.length > 300
             ? expanded
-              ? images[index]?.content
-              : `${images[index]?.content.substring(0, 300)}...`
-            : images[index]?.content}
+              ? items[index]?.content
+              : `${items[index]?.content.substring(0, 300)}...`
+            : items[index]?.content}
         </p>
         <div class="flex flex-row justify-end">
-          {#if images[index]?.content.length > 300}
+          {#if items[index]?.content.length > 300}
             <button
               class="text-primary-400 text-sm me-6 mt-3"
-              on:click={toggleExpanded}
+              on:click={() => toggleExpanded(index)}
             >
               {expanded ? $LL.news.close() : $LL.news.readMore()}
             </button>
           {/if}
         </div>
       </div>
+      {#if items.length > 1}
+        <div class="flex justify-start space-x-2 px-4 sm:px-8 md:px-11">
+          {#each items as item, i}
+            <button
+              class="w-3 h-3 rounded-full border block border-white {i === index
+                ? 'bg-primary-400'
+                : 'bg-gray-300'}"
+              title={item.title}
+              on:click={() => changeSlide(i)}
+            ></button>
+          {/each}
+        </div>
+      {/if}
     </Carousel>
-
-    {#if images.length > 1}
-      <div class="flex justify-start space-x-2 px-4 sm:px-8 md:px-11">
-        {#each images as image, i}
-          <button
-            class="w-3 h-3 rounded-full border block border-white {i === index
-              ? 'bg-primary-400'
-              : 'bg-gray-300'}"
-            title={image.title}
-            on:click={() => updateSlide(i)}
-          ></button>
-        {/each}
-      </div>
-    {/if}
   </div>
 {/if}
 

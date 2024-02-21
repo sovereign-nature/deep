@@ -22,10 +22,12 @@ export function getSteward(id: string, config: AxiosRequestConfig = {}) {
 export function getNewsBySteward(
   id: string,
   count: string | number, // set -1 to get all
-  config: AxiosRequestConfig = {}
+  config: AxiosRequestConfig = {},
+  draft: boolean = false
 ) {
+  const filterByStatus = !draft ? `[status][_eq]=published&` : '';
   return axios.get(
-    `${directusUrl}/items/stewards/${id}?deep[news][_filter][status][_eq]=published&deep[news][_limit]=${count}&fields=news.*`,
+    `${directusUrl}/items/stewards/${id}?deep[news][_filter]${filterByStatus}&deep[news][_limit]=${count}&fields=news.*`,
     config
   );
 }
