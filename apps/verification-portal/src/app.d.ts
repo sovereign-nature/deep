@@ -15,6 +15,10 @@ declare global {
     // interface PageData {}
     // interface Platform {}
   }
+  namespace svelteHTML {
+    interface HTMLAttributes<T> {
+      'on:enterViewport'?: CompositionEventHandler<T>;
+      'on:exitViewport'?: CompositionEventHandler<T>;
+    }
+  }
 }
-
-export {};
