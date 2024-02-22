@@ -23,7 +23,7 @@
 
   afterNavigate(() => (isLoading = false));
 
-  $: $themeStore, modalHandleTheme($themeStore);
+  $: modalHandleTheme($themeStore);
 
   if (browser) {
     initializeContext();
