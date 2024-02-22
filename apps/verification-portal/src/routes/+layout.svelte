@@ -34,6 +34,7 @@
     initializeModal();
     initializeInbox();
 
+    //TODO: Do we need it twice?
     modalHandleTheme($themeStore);
   });
 
