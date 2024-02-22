@@ -1,4 +1,3 @@
-// import { setContext } from 'svelte';
 import { readable } from 'svelte/store';
 import { isDarkModePreferred } from '$lib/shared/utils';
 
