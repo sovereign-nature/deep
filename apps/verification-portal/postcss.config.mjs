@@ -1,4 +1,5 @@
 import autoprefixer from 'autoprefixer';
+import postcssSVG from 'postcss-inline-svg';
 import tailwindcss from 'tailwindcss';
 
 const config = {
@@ -7,6 +8,7 @@ const config = {
     tailwindcss(),
     //But others, like autoprefixer, need to run after,
     autoprefixer,
+    postcssSVG(),
   ],
 };
 
