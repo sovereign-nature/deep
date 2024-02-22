@@ -1,14 +1,14 @@
 <script lang="ts">
   import '../app.postcss';
   import { fade } from 'svelte/transition';
-  import { getContext, onMount } from 'svelte';
+  import { onMount } from 'svelte';
   import { afterNavigate, beforeNavigate } from '$app/navigation';
   import {
     initializeContext,
     initializeModal,
     modalHandleTheme,
   } from '$lib/web3Modal';
-  import { initThemeContext } from '$lib/themeContext';
+  import { themeStore } from '$lib/features/themeSwitch';
   import { initializeInbox, setInboxContext } from '$lib/web3Inbox';
   import { browser } from '$app/environment';
   import Modal from '$lib/components/web3/inboxModal/index.svelte';
@@ -23,12 +23,7 @@
 
   afterNavigate(() => (isLoading = false));
 
-  initThemeContext();
-
-  //TODO: Type theme with writable interface or fix store definition
-  const theme = getContext('theme');
-
-  $: $theme, modalHandleTheme($theme);
+  $: $themeStore, modalHandleTheme($themeStore);
 
   if (browser) {
     initializeContext();
@@ -39,7 +34,7 @@
     initializeModal();
     initializeInbox();
 
-    modalHandleTheme($theme);
+    modalHandleTheme($themeStore);
   });
 
   export let data;
