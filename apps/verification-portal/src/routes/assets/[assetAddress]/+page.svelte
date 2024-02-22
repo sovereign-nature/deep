@@ -247,7 +247,7 @@
 
         {#if deepData.news?.length > 0}
           <div
-            class=" bg-gray-100 text-black sm:rounded-lg overflow-hidden relative z-20 mb-5 w-inherit"
+            class=" bg-gray-100 text-black sm:rounded-lg overflow-hidden relative z-20 sm:mb-5 w-inherit"
             style="width:inherit"
           >
             <NewsCarousel newsData={deepData.news}></NewsCarousel>
@@ -302,7 +302,7 @@
     grid-template-columns: 1fr;
     gap: 0em 1.25em;
     grid-auto-flow: row;
-    width: 100%;
+    //width: 100%;
   }
   .container-grid {
     grid-template-columns: 1fr;
