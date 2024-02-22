@@ -12,13 +12,9 @@
     'm-0 p-0 px-2 py-2 w-full text-base bg-transparent text-inherit';
 
   let selectedTheme: string;
-
-  themeStore.subscribe((value) => {
-    selectedTheme = value;
-  });
+  $: selectedTheme = $themeStore;
 
   let dropdownOpen = false;
-
   const handleThemeChange = () => {
     setTheme(selectedTheme);
 
