@@ -130,8 +130,8 @@ importers:
         specifier: 0.96.5
         version: 0.96.5(@graphql-mesh/types@0.96.5)(@graphql-mesh/utils@0.96.5)(graphql@16.8.1)(tslib@2.6.2)
       '@graphql-mesh/cli':
-        specifier: 0.88.7
-        version: 0.88.7(@types/node@20.11.17)(graphql-tag@2.12.6)(graphql-yoga@5.1.1)(graphql@16.8.1)
+        specifier: 0.88.8
+        version: 0.88.8(@types/node@20.11.17)(graphql-tag@2.12.6)(graphql-yoga@5.1.1)(graphql@16.8.1)
       '@graphql-mesh/graphql':
         specifier: 0.96.5
         version: 0.96.5(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/store@0.96.5)(@graphql-mesh/types@0.96.5)(@graphql-mesh/utils@0.96.5)(@graphql-tools/utils@10.0.13)(@types/node@20.11.17)(graphql@16.8.1)(tslib@2.6.2)
@@ -3255,8 +3255,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@graphql-mesh/cli@0.88.7(@types/node@20.11.17)(graphql-tag@2.12.6)(graphql-yoga@5.1.1)(graphql@16.8.1):
-    resolution: {integrity: sha512-pg+0kVyta3MKXURr6zZYLjhFsg8JRZSpaR9HetD0u1Qfyx+7bRi9+FiN1irBeaRsihy7rfymhpmP8moELWQtPQ==}
+  /@graphql-mesh/cli@0.88.8(@types/node@20.11.17)(graphql-tag@2.12.6)(graphql-yoga@5.1.1)(graphql@16.8.1):
+    resolution: {integrity: sha512-H8YE5VXloDuxBfpkQC3chgvPK45i0h29Fa1pDIkDJtsv1eGllOw1Oxm3twIa41YuWBYfAz8AgogQZgUwllRypg==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     peerDependencies:
