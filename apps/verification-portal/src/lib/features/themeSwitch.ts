@@ -31,7 +31,3 @@ export function setTheme(value: string) {
 
   setThemeStore(value);
 }
-
-// export function initThemeContext() {
-//   setContext('theme', themeStore);
-// }
