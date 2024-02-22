@@ -22,6 +22,7 @@
   });
 </script>
 
+//TODO: Move navbar to widgets?
 <Navbar color="none" class=" my-6 container px-4 ">
   <NavBrand href="/">
     <img src={logo} class="mr-2 sm:mr-4 xl:mr-9 h-10 lg:h-20" alt="SNI Logo" />
