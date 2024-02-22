@@ -1,277 +1,138 @@
-<!-- imported from  https://github.com/themesberg/flowbite-svelte/blob/main/src/lib/carousel/Carousel.svelte  and modified onDragStart to allow default scrolling-->
-<script lang="ts" context="module">
-  export type State = {
-    images: HTMLImgAttributes[];
-    index: number;
-    lastSlideChange: Date;
-    slideDuration: number; // ms
-    forward: boolean;
-  };
-</script>
-
 <script lang="ts">
-  import { createEventDispatcher, onMount, setContext } from 'svelte';
-  import type { HTMLImgAttributes } from 'svelte/elements';
+  import viewport from '$lib/features/useViewportActions';
+
+  import { onDestroy, onMount, setContext } from 'svelte';
   import { writable } from 'svelte/store';
-  import type { TransitionConfig } from 'svelte/transition';
-  import { twMerge } from 'tailwind-merge';
-  import Controls from 'flowbite-svelte/Controls.svelte';
-  import Indicators from 'flowbite-svelte/Indicators.svelte';
-  import Slide from 'flowbite-svelte/Slide.svelte';
-  import { canChangeSlide } from './CarouselSlide';
+  import { Carousel } from 'flowbite';
+  import VideoPlayer from '$lib/components/media/CloudflareStreamPlayer/VideoPlayer.svelte';
+  import type { CarouselEntity } from '$lib/types';
+  import { browser } from '$app/environment';
 
-  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-  type TransitionFunc = (node: HTMLElement, params: any) => TransitionConfig;
-  const SLIDE_DURATION_RATIO = 0.25; // TODO: Expose one day?
+  import type {
+    CarouselItem,
+    CarouselOptions,
+    CarouselInterface,
+  } from 'flowbite';
 
-  export let images: HTMLImgAttributes[];
-  export let index: number = 0;
-  export let slideDuration: number = 1000;
-  export let transition: TransitionFunc | null = null;
-  export let duration: number = 0;
-  export let ariaLabel: string = 'Draggable Carousel';
+  export let items: CarouselEntity[];
+  export let isSliding: boolean = true;
+  export let carouselClass: string;
 
-  // Carousel
-  let divClass: string =
-    'grid overflow-hidden relative rounded-lg h-56 sm:h-64 xl:h-80 2xl:h-96';
-  export let imgClass: string = '';
+  let carouselElement: HTMLElement | undefined = undefined;
+  let carousel: CarouselInterface;
+  let index = 0;
 
-  const dispatch = createEventDispatcher();
+  // handle fullscreen. picture-in-picture and mouse over carousel to pause sliding
+  const playerIsActive = writable(false);
+  setContext('playerIsActive', playerIsActive);
+  $: autoplay = isSliding && !$playerIsActive;
+  $: toggleIsSliding(autoplay);
 
-  const { set, subscribe, update } = writable<State>({
-    images,
-    index,
-    forward: true,
-    slideDuration,
-    lastSlideChange: new Date(),
+  type carouselSlides = {
+    el: HTMLElement | undefined;
+  };
+
+  let carouselItemsInit: carouselSlides[] = items.map((item, index: number) => {
+    return { position: index, el: undefined };
   });
 
-  const state = {
-    set: (_state: State) =>
-      set({
-        index: _state.index,
-        images: _state.images,
-        lastSlideChange: new Date(),
-        slideDuration,
-        forward,
-      }),
-    subscribe,
-    update,
-  };
-
-  let forward = true;
-
-  setContext('state', state);
-
-  subscribe((_state) => {
-    index = _state.index;
-    forward = _state.forward;
-    dispatch('change', images[index]);
-  });
-
-  onMount(() => {
-    dispatch('change', images[index]);
-  });
-
-  const nextSlide = () => {
-    update((_state) => {
-      if (
-        !canChangeSlide({
-          lastSlideChange: _state.lastSlideChange,
-          slideDuration,
-          slideDurationRatio: SLIDE_DURATION_RATIO,
-        })
-      )
-        return _state;
-
-      _state.index = _state.index >= images.length - 1 ? 0 : _state.index + 1;
-      _state.lastSlideChange = new Date();
-      return { ..._state };
-    });
-  };
-
-  const prevSlide = () => {
-    update((_state) => {
-      if (
-        !canChangeSlide({
-          lastSlideChange: _state.lastSlideChange,
-          slideDuration,
-          slideDurationRatio: SLIDE_DURATION_RATIO,
-        })
-      )
-        return _state;
-
-      _state.index = _state.index <= 0 ? images.length - 1 : _state.index - 1;
-      _state.lastSlideChange = new Date();
-      return { ..._state };
-    });
-  };
-
-  const loop = (node: HTMLElement, duration: number) => {
-    carouselDiv = node; // used by DragStart
-
-    // loop timer
-    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-    let intervalId: any;
-
-    if (duration > 0) intervalId = setInterval(nextSlide, duration);
-
-    return {
-      update: (duration: number) => {
-        clearInterval(intervalId);
-        if (duration > 0) intervalId = setInterval(nextSlide, duration);
-      },
-      destroy: () => clearInterval(intervalId),
-    };
-  };
-
-  type ActiveDragGesture = {
-    start: number;
-    position: number;
-    width: number;
-    timestamp: number;
-  };
-
-  let activeDragGesture: ActiveDragGesture | undefined;
-
-  let carouselDiv: HTMLElement;
-  let percentOffset: number = 0;
-  let touchEvent: MouseEvent | TouchEvent | null = null;
-
-  const getPositionFromEvent = (evt: MouseEvent | TouchEvent) => {
-    const mousePos = (evt as MouseEvent)?.clientX;
-    if (mousePos) return mousePos;
-
-    let touchEvt = evt as TouchEvent;
-    if (/^touch/.test(touchEvt?.type)) {
-      return touchEvt.touches[0].clientX;
+  function changeSlide(index: number) {
+    if (carousel) {
+      carousel.slideTo(index);
+      carousel.pause();
     }
-  };
-
-  const onDragStart = (evt: MouseEvent | TouchEvent) => {
-    touchEvent = evt;
-    // evt.cancelable && evt.preventDefault(); // @TODO Test if this temp fix, to prevent the bug of no scroll on carousel, doesn't cause other unexpected issues
-    const start = getPositionFromEvent(evt);
-    const width = carouselDiv.getBoundingClientRect().width;
-    if (start === undefined || width === undefined) return;
-    activeDragGesture = {
-      start,
-      position: start,
-      width,
-      timestamp: Date.now(),
+  }
+  function toggleIsSliding(autoplay: boolean) {
+    if (!carousel) return;
+    if (autoplay) {
+      carousel.cycle();
+    } else {
+      carousel.pause();
+    }
+  }
+  // TODO enable extra config to handle multiple carousel instances
+  // import type { InstanceOptions } from 'flowbite';
+  // instance options object
+  // const instanceOptions: InstanceOptions = {
+  //   id: 'carousel-example',
+  //   override: true,
+  // };
+  onMount(() => {
+    const options: CarouselOptions = {
+      defaultPosition: 0,
+      interval: 6000,
+      // callback functions
+      onNext: () => {
+        console.log('next slider item is shown');
+      },
+      onPrev: () => {
+        console.log('previous slider item is shown');
+      },
+      onChange: (carousel) => {
+        index = carousel._activeItem.position;
+      },
     };
-  };
+    if (browser) {
+      const carouselItems = mapToCarouselItems(carouselItemsInit);
+      carousel = new Carousel(carouselElement, carouselItems, options);
 
-  $: onDragMove =
-    activeDragGesture === undefined
-      ? undefined
-      : (evt: MouseEvent | TouchEvent) => {
-          const position = getPositionFromEvent(evt);
-          if (!activeDragGesture || position === undefined) return;
-          const { start, width } = activeDragGesture;
-          percentOffset = Math.min(
-            100,
-            Math.max(-100, ((position - start) / width) * 100)
-          );
-          activeDragGesture.position = position;
-        };
+      carousel.cycle();
+    }
+  });
+  onDestroy(() => {
+    if (carousel) carousel.destroyAndRemoveInstance();
+  });
 
-  $: onDragStop =
-    activeDragGesture === undefined
-      ? undefined
-      : () => {
-          // These might be exposed one day, keep them safely tucked away as constants.
-          const SWIPE_MAX_DURATION = 250;
-          const SWIPE_MIN_DISTANCE = 30;
-          const DRAG_MIN_PERCENT = 50;
-
-          if (activeDragGesture) {
-            const { timestamp, position, start } = activeDragGesture;
-            const duration = Date.now() - timestamp;
-            const distance = position - start;
-
-            if (
-              Math.abs(distance) >= SWIPE_MIN_DISTANCE &&
-              duration <= SWIPE_MAX_DURATION &&
-              duration > 0
-            ) {
-              if (distance > 0) prevSlide();
-              else nextSlide();
-            } else if (percentOffset > DRAG_MIN_PERCENT) prevSlide();
-            else if (percentOffset < -DRAG_MIN_PERCENT) nextSlide();
-            else {
-              // Only issue click event for touches
-              if (touchEvent?.constructor.name === 'TouchEvent') {
-                // The gesture is a tap not drag, so manually issue a click event to trigger tap click gestures lost via preventDefault
-                touchEvent?.target?.dispatchEvent(
-                  new Event('click', {
-                    bubbles: true,
-                  })
-                );
-              }
-            }
-          }
-
-          percentOffset = 0;
-          activeDragGesture = undefined;
-          touchEvent = null;
-        };
+  function mapToCarouselItems(
+    carouselItemsInit: carouselSlides[]
+  ): CarouselItem[] {
+    return carouselItemsInit
+      .filter((item) => item.el !== undefined)
+      .map((item, index) => ({
+        position: index,
+        el: item.el as HTMLElement,
+      }));
+  }
 </script>
 
-<!-- Preload all Carousel images for improved responsivity -->
 <svelte:head>
-  {#if images.length > 0}
-    {#each images as image}
+  {#if items.length > 0}
+    {#each items as image}
       <link rel="preload" href={image.src} as="image" />
     {/each}
   {/if}
 </svelte:head>
 
-<!-- The move listeners go here, so things keep working if the touch strays out of the element. -->
-<svelte:document
-  on:mousemove={onDragMove}
-  on:mouseup={onDragStop}
-  on:touchmove={onDragMove}
-  on:touchend={onDragStop}
-/>
 <div
-  bind:this={carouselDiv}
-  class="relative"
-  on:mousedown|nonpassive={onDragStart}
-  on:touchstart|nonpassive={onDragStart}
-  on:mousemove={onDragMove}
-  on:mouseup={onDragStop}
-  on:touchmove={onDragMove}
-  on:touchend={onDragStop}
-  role="button"
-  aria-label={ariaLabel}
-  tabindex="0"
+  bind:this={carouselElement}
+  use:viewport
+  on:enterViewport={() => (isSliding = true)}
+  on:exitViewport={() => (isSliding = false)}
+  class="relative w-full"
 >
   <div
-    {...$$restProps}
-    class={twMerge(
-      divClass,
-      activeDragGesture === undefined ? 'transition-transform' : '',
-      $$props.class
-    )}
-    use:loop={duration}
+    class={`${carouselClass} relative overflow-hidden md:rounded-lg aspect-video w-full`}
   >
-    <slot name="slide" {Slide} {index}>
-      <Slide image={images[index]} class={imgClass} {transition} />
-    </slot>
+    {#each items as item, i}
+      <div bind:this={carouselItemsInit[i].el} id={`slide-${i}`}>
+        <div
+          class={`${index === i ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+        >
+          {#if item.video}
+            <VideoPlayer
+              paused={index === i ? false : true}
+              extraClass="absolute block h-full !w-full aspect-video object-cover"
+            ></VideoPlayer>
+          {:else}
+            <img
+              src={item.src}
+              class="absolute block !w-full h-full object-cover"
+              alt={item.title}
+            />
+          {/if}
+        </div>
+      </div>
+    {/each}
   </div>
-  <slot {index} {Controls} {Indicators} />
 </div>
-
-<!--
-  @component
-  [Go to docs](https://flowbite-svelte.com/)
-  ## Props
-  @prop export let images: HTMLImgAttributes[];
-  @prop export let index: number = 0;
-  @prop export let slideDuration: number = 1000;
-  @prop export let transition: TransitionFunc | null = null;
-  @prop export let duration: number = 0;
-  @prop export let ariaLabel: string = 'Draggable Carousel';
-  @prop export let imgClass: string = '';
-  -->
+<slot {index} {changeSlide} />

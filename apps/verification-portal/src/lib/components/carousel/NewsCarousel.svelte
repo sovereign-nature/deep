@@ -1,7 +1,7 @@
 <script lang="ts">
   import { format, parseISO } from 'date-fns';
   import { track } from '@vercel/analytics';
-  import Carousel from './FlowbiteCarousel.svelte';
+  import Carousel from './Carousel.svelte';
   import Subheader from '$lib/shared/typography/Subheader.svelte';
   import CardHeader from '$lib/shared/typography/CardHeader.svelte';
   import { getAssetImageUrl } from '@sni/clients/images-client';
@@ -23,9 +23,6 @@
     video: item?.video,
   }));
 
-  let mouseCursor =
-    items && items.length > 1 ? 'cursor-pointer' : 'cursor-default';
-
   let hasBeenClicked = false; // Prevents double click
   function toggleExpanded(index: number) {
     if (hasBeenClicked) return;
@@ -46,7 +43,7 @@
 
 {#if items.length > 0}
   <div
-    class="max-w-full space-y-4 backface-visibility-none pb-11"
+    class="max-w-full space-y-4 backface-visibility-none"
     on:mouseenter={() => (autoplay = false)}
     on:mouseleave={() => (autoplay = true)}
     role="tablist"
@@ -58,42 +55,45 @@
       let:index
       let:changeSlide
       {isSliding}
-      carouselClass={`rounded-b-none ${mouseCursor}`}
+      carouselClass={`md:rounded-b-none`}
     >
-      <div class={`${cardHeaderClass} mb-5 w-full cursor-default`}>
-        <Subheader>{items[index]?.date}</Subheader>
-        <CardHeader title={items[index]?.title} />
-        <p class={`card-description ${expanded ? 'expanded' : 'collapsed'}`}>
-          {items[index]?.content.length > 300
-            ? expanded
-              ? items[index]?.content
-              : `${items[index]?.content.substring(0, 300)}...`
-            : items[index]?.content}
-        </p>
-        <div class="flex flex-row justify-end">
-          {#if items[index]?.content.length > 300}
-            <button
-              class="text-primary-400 text-sm me-6 mt-3"
-              on:click={() => toggleExpanded(index)}
-            >
-              {expanded ? $LL.news.close() : $LL.news.readMore()}
-            </button>
-          {/if}
+      <div class="pb-11">
+        <div class={`${cardHeaderClass} mb-5 w-full cursor-default`}>
+          <Subheader>{items[index]?.date}</Subheader>
+          <CardHeader title={items[index]?.title} />
+          <p class={`card-description ${expanded ? 'expanded' : 'collapsed'}`}>
+            {items[index]?.content.length > 300
+              ? expanded
+                ? items[index]?.content
+                : `${items[index]?.content.substring(0, 300)}...`
+              : items[index]?.content}
+          </p>
+          <div class="flex flex-row justify-end">
+            {#if items[index]?.content.length > 300}
+              <button
+                class="text-primary-400 text-sm me-6 mt-3"
+                on:click={() => toggleExpanded(index)}
+              >
+                {expanded ? $LL.news.close() : $LL.news.readMore()}
+              </button>
+            {/if}
+          </div>
         </div>
+        {#if items.length > 1}
+          <div class="flex justify-start space-x-2 px-4 sm:px-8 md:px-11">
+            {#each items as item, i}
+              <button
+                class="w-3 h-3 rounded-full border block border-white {i ===
+                index
+                  ? 'bg-primary-400'
+                  : 'bg-gray-300'}"
+                title={item.title}
+                on:click={() => changeSlide(i)}
+              ></button>
+            {/each}
+          </div>
+        {/if}
       </div>
-      {#if items.length > 1}
-        <div class="flex justify-start space-x-2 px-4 sm:px-8 md:px-11">
-          {#each items as item, i}
-            <button
-              class="w-3 h-3 rounded-full border block border-white {i === index
-                ? 'bg-primary-400'
-                : 'bg-gray-300'}"
-              title={item.title}
-              on:click={() => changeSlide(i)}
-            ></button>
-          {/each}
-        </div>
-      {/if}
     </Carousel>
   </div>
 {/if}
