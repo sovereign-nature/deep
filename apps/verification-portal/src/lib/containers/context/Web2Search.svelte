@@ -4,11 +4,12 @@
   import Fuse from 'fuse.js';
   import { writable } from 'svelte/store';
   import { onMount, setContext } from 'svelte';
+  import { directusUrl } from '@sni/clients/config';
   import { page } from '$app/stores';
-  export let campaign = 'hotel_hideaway';
   import type { AssetFeatured, Web2DataState } from '$lib/types';
   import { shuffleArray } from '$lib/shared/utils';
-  import { directusUrl } from '@sni/clients/config';
+
+  export let campaign = 'hotel_hideaway';
 
   const url = $page.url;
   const searchParams = url.searchParams.get('search') || '';

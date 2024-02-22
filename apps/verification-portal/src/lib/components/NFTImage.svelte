@@ -1,9 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { getAssetImageUrl } from '@sni/clients/images-client';
+
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import VerifiedIcon from '$lib/components/icons/VerifiedIcon.svelte';
   import LL from '$lib/shared/i18n/i18n-svelte';
-  import { getAssetImageUrl } from '@sni/clients/images-client';
 
   export let url: string;
   export let alt: string;
