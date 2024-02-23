@@ -33,19 +33,15 @@
   onMount(() => {
     player = videojs(playerId, playerOptions);
     if (player) {
-      const makeFullscreenEvents = [
-        'fullscreenchange',
-        'enterpictureinpicture',
-        'playing',
-      ];
-      const exitFullscreenEvents = ['pause', 'leavepictureinpicture'];
+      const isActiveEvents = ['enterpictureinpicture', 'playing'];
+      const isPassiveEvents = ['pause', 'leavepictureinpicture'];
 
-      makeFullscreenEvents.forEach((event) =>
+      isActiveEvents.forEach((event) =>
         player.on(event, () => {
           $playerIsActive = true;
         })
       );
-      exitFullscreenEvents.forEach((event) =>
+      isPassiveEvents.forEach((event) =>
         player.on(event, () => {
           $playerIsActive = false;
         })

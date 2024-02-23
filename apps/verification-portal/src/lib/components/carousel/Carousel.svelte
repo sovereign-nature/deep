@@ -13,6 +13,7 @@
     CarouselOptions,
     CarouselInterface,
   } from 'flowbite';
+  import ChevronDownIcon from '$lib/components/icons/ChevronDownIcon.svelte';
 
   export let items: CarouselEntity[];
   export let isSliding: boolean = true;
@@ -57,25 +58,31 @@
   //   id: 'carousel-example',
   //   override: true,
   // };
+
+  function nextSlide() {
+    if (!carousel) return;
+    isSliding = false;
+    carousel.next();
+    carousel.pause();
+  }
+  function prevSlide() {
+    if (!carousel) return;
+    isSliding = false;
+    carousel.prev();
+    carousel.pause();
+  }
   onMount(() => {
     const options: CarouselOptions = {
       defaultPosition: 0,
       interval: 6000,
-      // callback functions
-      onNext: () => {
-        console.log('next slider item is shown');
-      },
-      onPrev: () => {
-        console.log('previous slider item is shown');
-      },
       onChange: (carousel) => {
         index = carousel._activeItem.position;
+        isSliding = isSliding;
       },
     };
     if (browser) {
       const carouselItems = mapToCarouselItems(carouselItemsInit);
       carousel = new Carousel(carouselElement, carouselItems, options);
-
       carousel.cycle();
     }
   });
@@ -108,6 +115,11 @@
   use:viewport
   on:enterViewport={() => (isSliding = true)}
   on:exitViewport={() => (isSliding = false)}
+  on:mouseenter={() => (isSliding = false)}
+  on:mouseleave={() => (isSliding = true)}
+  role="tablist"
+  aria-label="News carousel"
+  tabindex="0"
   class="relative w-full"
 >
   <div
@@ -133,6 +145,17 @@
         </div>
       </div>
     {/each}
+    <button
+      class="button button-next flex items-center justify-center text-white text-opacity-20 hover:text-opacity-100 hover:bg-primary-200 hover:bg-opacity-50 rounded-full h-12 w-12 absolute z-50 right-2 transfrom -translate-y-1/2 top-[50%] -rotate-90"
+      type="button"
+      on:click={nextSlide}><ChevronDownIcon className="h-6 w-6" /></button
+    >
+    <button
+      class="button button-prev flex items-center justify-center text-white text-opacity-20 hover:text-opacity-100 hover:bg-primary-200 hover:bg-opacity-50 rounded-full h-12 w-12 absolute z-50 left-2 transfrom -translate-y-1/2 top-[50%] rotate-90"
+      type="button"
+      on:click={prevSlide}><ChevronDownIcon className="h-6 w-6" /></button
+    >
   </div>
 </div>
+
 <slot {index} {changeSlide} />
