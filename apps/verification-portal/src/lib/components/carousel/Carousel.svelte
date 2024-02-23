@@ -148,25 +148,27 @@
         </div>
       </div>
     {/each}
-    <button
-      class="button button-next flex items-center justify-center text-dark-green text-opacity-40 active:text-opacity-100 md:hover:text-opacity-100 active:bg-primary-200 active:bg-opacity-50 md:hover:bg-primary-200 md:hover:bg-opacity-50 rounded-full h-12 w-12 absolute z-50 right-2 transfrom -translate-y-1/2 top-[50%] -rotate-90"
-      type="button"
-      title=" {$LL.carousel.nextItem()}"
-      on:click={nextSlide}
-    >
-      <span class="sr-only"> {$LL.carousel.nextItem()}</span>
-      <ChevronDownIcon className="h-5 w-5" /></button
-    >
-    <button
-      class="button button-prev flex items-center justify-center text-dark-green text-opacity-40 active:text-opacity-100 md:hover:text-opacity-100 active:bg-primary-200 active:bg-opacity-50 md:hover:bg-primary-200 md:hover:bg-opacity-50 rounded-full h-12 w-12 absolute z-50 left-2 transfrom -translate-y-1/2 top-[50%] rotate-90"
-      type="button"
-      title=" {$LL.carousel.previousItem()}"
-      on:click={prevSlide}
-    >
-      <span class="sr-only"> {$LL.carousel.previousItem()}</span>
+    {#if items.length > 1}
+      <button
+        class="button button-next flex items-center justify-center text-dark-green text-opacity-40 active:text-opacity-100 md:hover:text-opacity-100 active:bg-primary-200 active:bg-opacity-50 md:hover:bg-primary-200 md:hover:bg-opacity-50 rounded-full h-12 w-12 absolute z-50 right-2 transfrom -translate-y-1/2 top-[50%] -rotate-90"
+        type="button"
+        title=" {$LL.carousel.nextItem()}"
+        on:click={nextSlide}
+      >
+        <span class="sr-only"> {$LL.carousel.nextItem()}</span>
+        <ChevronDownIcon className="h-5 w-5" /></button
+      >
+      <button
+        class="button button-prev flex items-center justify-center text-dark-green text-opacity-40 active:text-opacity-100 md:hover:text-opacity-100 active:bg-primary-200 active:bg-opacity-50 md:hover:bg-primary-200 md:hover:bg-opacity-50 rounded-full h-12 w-12 absolute z-50 left-2 transfrom -translate-y-1/2 top-[50%] rotate-90"
+        type="button"
+        title=" {$LL.carousel.previousItem()}"
+        on:click={prevSlide}
+      >
+        <span class="sr-only"> {$LL.carousel.previousItem()}</span>
 
-      <ChevronDownIcon className="h-5 w-5" /></button
-    >
+        <ChevronDownIcon className="h-5 w-5" /></button
+      >
+    {/if}
   </div>
 </div>
 
