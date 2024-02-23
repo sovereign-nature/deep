@@ -67,8 +67,8 @@ importers:
         version: 4.0.5
     devDependencies:
       '@cloudflare/workers-types':
-        specifier: 4.20240208.0
-        version: 4.20240208.0
+        specifier: 4.20240222.0
+        version: 4.20240222.0
       '@hono/zod-validator':
         specifier: 0.1.11
         version: 0.1.11(hono@4.0.5)(zod@3.22.4)
@@ -80,7 +80,7 @@ importers:
         version: 1.3.1
       wrangler:
         specifier: 3.28.4
-        version: 3.28.4(@cloudflare/workers-types@4.20240208.0)
+        version: 3.28.4(@cloudflare/workers-types@4.20240222.0)
       zod:
         specifier: 3.22.4
         version: 3.22.4
@@ -159,7 +159,7 @@ importers:
         version: 4.2.0
       wrangler:
         specifier: 3.28.4
-        version: 3.28.4(@cloudflare/workers-types@4.20240208.0)
+        version: 3.28.4(@cloudflare/workers-types@4.20240222.0)
 
   apps/indexer:
     devDependencies:
@@ -1911,8 +1911,8 @@ packages:
     dev: true
     optional: true
 
-  /@cloudflare/workers-types@4.20240208.0:
-    resolution: {integrity: sha512-MVGTTjZpJu4kJONvai5SdJzWIhOJbuweVZ3goI7FNyG+JdoQH41OoB+nMhLsX626vPLZVWGPIWsiSo/WZHzgQw==}
+  /@cloudflare/workers-types@4.20240222.0:
+    resolution: {integrity: sha512-luO0BdK3rLlCv3B240+cTrfqm+XSbHtpk+88aJtGwzyVK9QF/Xz8lBgE/oZZLN8nCTmOvxAZnszyxUuZ8GP8Cg==}
     dev: true
 
   /@coinbase/wallet-sdk@3.9.1:
@@ -20161,7 +20161,7 @@ packages:
     resolution: {integrity: sha512-ILEIE97kDZvF9Wb9f6h5aXK4swSlKGUcOEGiIYb2OOu/IrDU9iwj0fD//SsA6E5ibwJxpEvhullJY4Sl4GcpAw==}
     dev: true
 
-  /wrangler@3.28.4(@cloudflare/workers-types@4.20240208.0):
+  /wrangler@3.28.4(@cloudflare/workers-types@4.20240222.0):
     resolution: {integrity: sha512-LDwW4KhplRhIEfQaZry8AMZIOTpkYZXLWjg1MDSC3a12BXSY37pXACmFxbZeg2TzcOi30j+KqwLfv15vCavIyA==}
     engines: {node: '>=16.17.0'}
     hasBin: true
@@ -20172,7 +20172,7 @@ packages:
         optional: true
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.1
-      '@cloudflare/workers-types': 4.20240208.0
+      '@cloudflare/workers-types': 4.20240222.0
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
       '@esbuild-plugins/node-modules-polyfill': 0.2.2(esbuild@0.17.19)
       blake3-wasm: 2.1.5
