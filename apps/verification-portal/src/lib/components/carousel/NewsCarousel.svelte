@@ -1,10 +1,10 @@
 <script lang="ts">
   import { format, parseISO } from 'date-fns';
   import { track } from '@vercel/analytics';
+  import { getAssetImageUrl } from '@sni/clients/images-client';
   import Carousel from './Carousel.svelte';
   import Subheader from '$lib/shared/typography/Subheader.svelte';
   import CardHeader from '$lib/shared/typography/CardHeader.svelte';
-  import { getAssetImageUrl } from '@sni/clients/images-client';
   import type { NewsEntity } from '$lib/types';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import { dev } from '$app/environment';
