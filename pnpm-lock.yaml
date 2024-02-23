@@ -142,8 +142,8 @@ importers:
         specifier: 0.96.5
         version: 0.96.5(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql@16.8.1)(tslib@2.6.2)
       '@graphql-mesh/plugin-response-cache':
-        specifier: 0.96.7
-        version: 0.96.7(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql-yoga@5.1.1)(graphql@16.8.1)(tslib@2.6.2)
+        specifier: 0.96.8
+        version: 0.96.8(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql-yoga@5.1.1)(graphql@16.8.1)(tslib@2.6.2)
       '@graphql-mesh/transform-resolvers-composition':
         specifier: 0.96.5
         version: 0.96.5(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql@16.8.1)(tslib@2.6.2)
@@ -3503,13 +3503,13 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@graphql-mesh/plugin-response-cache@0.96.7(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql-yoga@5.1.1)(graphql@16.8.1)(tslib@2.6.2):
-    resolution: {integrity: sha512-aLcUybCz4K+zc2yItp8wOeRz+9aud6AHw3jL7Qb1Ilxpna5z0HvTOrzrHcFqZMt8BeIiqLRDQ04WrBaH7FLhSA==}
+  /@graphql-mesh/plugin-response-cache@0.96.8(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql-yoga@5.1.1)(graphql@16.8.1)(tslib@2.6.2):
+    resolution: {integrity: sha512-5Y5F4rLI53e0I/YyCDMSQ0PbIYTXWC9lyvGctVkZunDVsRe7MNOfiy6KzerIT+n07ssgsH2TBbn2yxFeSCJxAw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@graphql-mesh/cross-helpers': ^0.4.1
-      '@graphql-mesh/types': ^0.96.5
-      '@graphql-mesh/utils': ^0.96.5
+      '@graphql-mesh/types': ^0.96.6
+      '@graphql-mesh/utils': ^0.96.6
       graphql: '*'
       tslib: ^2.4.0
     dependencies:
@@ -8202,13 +8202,6 @@ packages:
   /@web3modal/siwe@4.0.9(typescript@5.3.3):
     resolution: {integrity: sha512-OB4z/lTHCAm3bjiuyPz4uBib46YU6kzp4eeSnAWZzAHj9mQnB4DZOoCdFQvFn+N1n3CzTZaMxz3CYjYn2A+Qhw==}
     requiresBuild: true
-    peerDependenciesMeta:
-      react:
-        optional: true
-      react-dom:
-        optional: true
-      vue:
-        optional: true
     dependencies:
       '@web3modal/core': 4.0.9(react@18.2.0)
       '@web3modal/scaffold-utils': 4.0.9(react@18.2.0)
@@ -8235,15 +8228,6 @@ packages:
       '@wagmi/connectors': '>=4.0.0'
       '@wagmi/core': '>=2.0.0'
       viem: '>=2.0.0'
-    peerDependenciesMeta:
-      '@web3modal/siwe':
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
-      vue:
-        optional: true
     dependencies:
       '@wagmi/connectors': 4.1.14(@wagmi/core@2.6.5)(react-dom@18.2.0)(react-native@0.73.4)(react@18.2.0)(rollup@2.79.1)(typescript@5.3.3)(viem@2.7.13)
       '@wagmi/core': 2.6.5(react@18.2.0)(typescript@5.3.3)(viem@2.7.13)
@@ -20409,6 +20393,7 @@ packages:
 
   /workbox-google-analytics@7.0.0:
     resolution: {integrity: sha512-MEYM1JTn/qiC3DbpvP2BVhyIH+dV/5BjHk756u9VbwuAhu0QHyKscTnisQuz21lfRpOwiS9z4XdqeVAKol0bzg==}
+    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 7.0.0
       workbox-core: 7.0.0
