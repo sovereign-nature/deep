@@ -1,33 +1,33 @@
 /* Addapted from videojs/forest theme */
 /* Because of the SVG inliner, these don't work for icons */
 .vjs-theme-sni {
-  --vjs-theme-sni--primary: #01AC75;
-  --vjs-theme-sni--secondary: #fff;
+  --vjs-theme-sni--primary: #00C67E;
+  --vjs-theme-sni--secondary: #08FFA6;
 }
 
 /* Big play Button */
 .vjs-theme-sni:hover .vjs-big-play-button,
 .vjs-theme-sni.vjs-big-play-button:focus {
   background-color: transparent;
-  background: svg-load('icons/play-btn.svg', fill=#01AC75);
+  background: svg-load('icons/play-btn.svg', fill=#08FFA6);
 }
 
 
 
 
 .vjs-theme-sni .vjs-big-play-button {
-  width: 88px;
-  height: 88px;
+  width: 66px;
+  height: 66px;
   background: none;
   background-repeat: no-repeat;
   background-position: center;
-  background: svg-load('icons/play-btn.svg', fill=#fff);
+  background: svg-load('icons/play-btn.svg', fill=#00C67E);
   border: none;
   top: 50%;
   left: 50%;
-  margin-top: -44px;
-  margin-left: -44px;
-  color: #01AC75;
+  margin-top: -33px;
+  margin-left: -33px;
+  color: #00C67E;
 }
 
 .vjs-theme-sni .vjs-big-play-button .vjs-icon-placeholder {
@@ -41,7 +41,7 @@
 
 .vjs-theme-sni .vjs-control:not(.vjs-disabled, .vjs-time-control):hover {
   color: var(--vjs-theme-sni--primary);
-  text-shadow: var(--vjs-theme-sni--secondary) 1px 0 10px;
+  //text-shadow: var(--vjs-theme-sni--secondary) 1px 0 10px;
 }
 
 .vjs-theme-sni .vjs-control-bar {
@@ -57,17 +57,17 @@
 }
 
 .vjs-theme-sni .vjs-play-control .vjs-icon-placeholder:before {
-  background-color: var(--vjs-theme-sni--secondary);
+  background-color: var(--vjs-theme-sni--primary);
   height: 1.5em;
   width: 1.5em;
   margin-top: 0.2em;
   border-radius: 1em;
-  color: var(--vjs-theme-sni--primary);
+  color: #002727;
 }
 
 .vjs-theme-sni .vjs-play-control:hover .vjs-icon-placeholder:before {
-  background-color: var(--vjs-theme-sni--primary);
-  color: var(--vjs-theme-sni--secondary);
+  background-color: var(--vjs-theme-sni--secondary);
+  color: #002727
 }
 
 /* Volume stuff */
@@ -127,7 +127,7 @@
 
   border-style: solid;
   border-width: 0 0 2em 3em;
-  border-color: transparent transparent var(--vjs-theme-sni--primary) transparent;
+  border-color: transparent transparent var(--vjs-theme-sni--secondary) transparent;
 }
 
 .vjs-theme-sni .vjs-volume-level {
@@ -146,7 +146,7 @@
 
   border-style: solid;
   border-width: 0 0 2em 3em;
-  border-color: transparent transparent var(--vjs-theme-sni--secondary) transparent;
+  border-color: transparent transparent var(--vjs-theme-sni--primary) transparent;
 }
 
 /* Progress Bar */
@@ -169,3 +169,14 @@
 .vjs-theme-sni .vjs-load-progress div {
   border-radius: 0.2em;
 }
+
+.vjs-theme-sni .vjs-play-progress  {
+  background: var(--vjs-theme-sni--secondary);
+}
+
+.vjs-theme-sni .vjs-load-progress div {
+  background: #002727;
+}
+
+
+

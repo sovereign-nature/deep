@@ -9,8 +9,7 @@
   export let extraClass: string;
   export let muted: boolean = false;
   export let controls: boolean = true;
-  export let srcUrl: string =
-    'https://customer-snrxyfao77x71o7j.cloudflarestream.com/bb94abda052fc3a644dbb27902133147';
+  export let srcUrl: string;
   export let paused: boolean = true;
   let player: Player;
   let playerId = generateUniqueId('player_');

@@ -128,11 +128,12 @@
     {#each items as item, i}
       <div bind:this={carouselItemsInit[i].el} id={`slide-${i}`}>
         <div
-          class={`${index === i ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+          class={`${index === i ? 'opacity-100' : 'opacity-0 -z-30'} transition-opacity duration-300`}
         >
           {#if item.video}
             <VideoPlayer
               paused={index === i ? false : true}
+              srcUrl={item.video}
               extraClass="absolute block h-full !w-full aspect-video object-cover"
             ></VideoPlayer>
           {:else}
@@ -146,14 +147,14 @@
       </div>
     {/each}
     <button
-      class="button button-next flex items-center justify-center text-white text-opacity-20 hover:text-opacity-100 hover:bg-primary-200 hover:bg-opacity-50 rounded-full h-12 w-12 absolute z-50 right-2 transfrom -translate-y-1/2 top-[50%] -rotate-90"
+      class="button button-next flex items-center justify-center text-dark-green text-opacity-40 active:text-opacity-100 md:hover:text-opacity-100 active:bg-primary-200 active:bg-opacity-50 md:hover:bg-primary-200 md:hover:bg-opacity-50 rounded-full h-12 w-12 absolute z-50 right-2 transfrom -translate-y-1/2 top-[50%] -rotate-90"
       type="button"
-      on:click={nextSlide}><ChevronDownIcon className="h-6 w-6" /></button
+      on:click={nextSlide}><ChevronDownIcon className="h-5 w-5" /></button
     >
     <button
-      class="button button-prev flex items-center justify-center text-white text-opacity-20 hover:text-opacity-100 hover:bg-primary-200 hover:bg-opacity-50 rounded-full h-12 w-12 absolute z-50 left-2 transfrom -translate-y-1/2 top-[50%] rotate-90"
+      class="button button-prev flex items-center justify-center text-dark-green text-opacity-40 active:text-opacity-100 md:hover:text-opacity-100 active:bg-primary-200 active:bg-opacity-50 md:hover:bg-primary-200 md:hover:bg-opacity-50 rounded-full h-12 w-12 absolute z-50 left-2 transfrom -translate-y-1/2 top-[50%] rotate-90"
       type="button"
-      on:click={prevSlide}><ChevronDownIcon className="h-6 w-6" /></button
+      on:click={prevSlide}><ChevronDownIcon className="h-5 w-5" /></button
     >
   </div>
 </div>
