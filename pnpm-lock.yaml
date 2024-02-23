@@ -164,8 +164,8 @@ importers:
   apps/indexer:
     devDependencies:
       '@graphprotocol/graph-cli':
-        specifier: 0.68.2
-        version: 0.68.2(@types/node@20.11.17)(node-fetch@3.3.2)(typescript@5.3.3)
+        specifier: 0.68.3
+        version: 0.68.3(@types/node@20.11.17)(node-fetch@3.3.2)(typescript@5.3.3)
       '@graphprotocol/graph-ts':
         specifier: 0.33.0
         version: 0.33.0
@@ -2976,8 +2976,8 @@ packages:
       three: 0.160.1
     dev: true
 
-  /@graphprotocol/graph-cli@0.68.2(@types/node@20.11.17)(node-fetch@3.3.2)(typescript@5.3.3):
-    resolution: {integrity: sha512-pOXrEW2bFIQAwqr8vZ04PTyqTICobtEd8R+EHub9ZUOhT3nuRuJ8mdh0Wt0M8Zo4I69MfBNU8sEmXxY9ychaig==}
+  /@graphprotocol/graph-cli@0.68.3(@types/node@20.11.17)(node-fetch@3.3.2)(typescript@5.3.3):
+    resolution: {integrity: sha512-0WMiS7DpxanADLhcj8mhfugx5r4WL8RL46eQ35GcaSfr3H61Pz5RtusEayxfrhtXnzNcFcbnE4fr5TrR9R0iaQ==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
