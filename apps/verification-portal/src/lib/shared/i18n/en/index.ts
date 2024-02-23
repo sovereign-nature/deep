@@ -122,6 +122,10 @@ const en: BaseTranslation = {
     notFoundTitle: 'Try searching for another asset...',
     errorPageTitle: 'Search for your asset to verify',
   },
+  carousel: {
+    nextItem: 'Next Item',
+    previousItem: 'Previous Item',
+  },
 } satisfies BaseTranslation;
 
 export default en;

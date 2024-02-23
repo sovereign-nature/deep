@@ -46,9 +46,8 @@
     class="max-w-full space-y-4 backface-visibility-none"
     on:mouseenter={() => (autoplay = false)}
     on:mouseleave={() => (autoplay = true)}
-    role="tablist"
+    role="region"
     aria-label="News carousel"
-    tabindex="0"
   >
     <Carousel
       {items}
