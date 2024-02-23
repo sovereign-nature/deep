@@ -76,6 +76,12 @@ export type NewsEntity = {
   content: string;
   image: string;
   steward: string;
+  video: string;
+};
+export type CarouselEntity = {
+  src: string;
+  title: string;
+  video: string | undefined;
 };
 
 export type Web2DataState = {

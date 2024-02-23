@@ -16,6 +16,7 @@ jobs:
       NFTSCAN_API_KEY: ${{ secrets.NFTSCAN_API_KEY }}
       VERCEL_URL: 'empty'
       TURBO_REMOTE_ONLY: true
+      FLAG_SHOW_DRAFT_NEWS: ${{ secrets.FLAG_SHOW_DRAFT_NEWS }}
     steps:
       - uses: actions/checkout@v4
         with:

@@ -337,6 +337,16 @@ type RootTranslation = {
 		 */
 		errorPageTitle: string
 	}
+	carousel: {
+		/**
+		 * N​e​x​t​ ​I​t​e​m
+		 */
+		nextItem: string
+		/**
+		 * P​r​e​v​i​o​u​s​ ​I​t​e​m
+		 */
+		previousItem: string
+	}
 }
 
 export type TranslationFunctions = {
@@ -654,6 +664,16 @@ export type TranslationFunctions = {
 		 * Search for your asset to verify
 		 */
 		errorPageTitle: () => LocalizedString
+	}
+	carousel: {
+		/**
+		 * Next Item
+		 */
+		nextItem: () => LocalizedString
+		/**
+		 * Previous Item
+		 */
+		previousItem: () => LocalizedString
 	}
 }
 

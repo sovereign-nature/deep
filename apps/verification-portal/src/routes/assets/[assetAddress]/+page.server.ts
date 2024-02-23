@@ -4,7 +4,11 @@ import { getEntity, getNewsBySteward } from '@sni/clients/data';
 import { getLinkByAddress } from '@sni/clients/link';
 import type { DeepAsset } from '@sni/clients/assets-client/types';
 import { error } from '@sveltejs/kit';
-import { DIRECTUS_API_KEY, VERCEL_URL } from '$env/static/private';
+import {
+  DIRECTUS_API_KEY,
+  VERCEL_URL,
+  FLAG_SHOW_DRAFT_NEWS,
+} from '$env/static/private';
 
 import type { Address, DeepData, VerifiedResponse } from '$lib/types'; //@TODO better way to standardize types
 
@@ -14,6 +18,7 @@ const baseUrl = VERCEL_URL ? `${protocol}${VERCEL_URL}` : '';
 const config = {
   headers: { Authorization: `Bearer ${DIRECTUS_API_KEY}` },
 };
+const showDraft: boolean = FLAG_SHOW_DRAFT_NEWS === 'true' ? true : false;
 
 let assetData: DeepAsset;
 let deepData: DeepData;
@@ -67,7 +72,8 @@ export async function load(event) {
       const { data: stewardResponse } = await getNewsBySteward(
         verifiedData.steward_id,
         5,
-        config
+        config,
+        showDraft
       );
       deepData.news = stewardResponse.data ? stewardResponse.data?.news : [];
     }
