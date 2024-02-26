@@ -1,10 +1,10 @@
 <script lang="ts">
   import { flip } from 'svelte/animate';
   import type { NotifyClientTypes } from '@walletconnect/notify-client';
-  import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import NotificationMessage from './Notification.svelte';
   import { getContext } from 'svelte';
   import type { Writable } from 'svelte/store';
+  import NotificationMessage from './Notification.svelte';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
 
   // export let isRead: boolean | undefined; TODO enable when isRead status is available
 

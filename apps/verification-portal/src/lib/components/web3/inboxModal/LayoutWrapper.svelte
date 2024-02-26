@@ -1,12 +1,12 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
+  import { Modal } from 'flowbite-svelte';
+  import { getContext } from 'svelte';
+  import type { Writable } from 'svelte/store';
   import CogIcon from '$lib/components/icons/CogIcon.svelte';
   import ArrowBackIcon from '$lib/components/icons/ArrowBackIcon.svelte';
   import ContentSlider from '$lib/shared/components/ContentSlider.svelte';
-  import { Modal } from 'flowbite-svelte';
-  import { getContext } from 'svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import type { Writable } from 'svelte/store';
   const openInboxModal: Writable<boolean> = getContext('web3InboxModalOpen');
 
   export let toggleTabValue = true;
