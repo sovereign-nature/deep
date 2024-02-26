@@ -133,8 +133,8 @@ importers:
         specifier: 0.88.8
         version: 0.88.8(@types/node@20.11.17)(graphql-tag@2.12.6)(graphql-yoga@5.1.1)(graphql@16.8.1)
       '@graphql-mesh/graphql':
-        specifier: 0.96.5
-        version: 0.96.5(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/store@0.96.6)(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(@graphql-tools/utils@10.0.13)(@types/node@20.11.17)(graphql@16.8.1)(tslib@2.6.2)
+        specifier: 0.96.6
+        version: 0.96.6(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/store@0.96.6)(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(@graphql-tools/utils@10.0.13)(@types/node@20.11.17)(graphql@16.8.1)(tslib@2.6.2)
       '@graphql-mesh/json-schema':
         specifier: 0.98.2
         version: 0.98.2(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/store@0.96.6)(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(@graphql-tools/utils@10.0.13)(graphql@16.8.1)(tslib@2.6.2)
@@ -3360,14 +3360,14 @@ packages:
       path-browserify: 1.0.1
     dev: false
 
-  /@graphql-mesh/graphql@0.96.5(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/store@0.96.6)(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(@graphql-tools/utils@10.0.13)(@types/node@20.11.17)(graphql@16.8.1)(tslib@2.6.2):
-    resolution: {integrity: sha512-0s3TCwV9kDopBdvPDW5/26en8E8rlyM8uPgCwsL6917Qx+MKOvVqq3+4JnV+qWAb7/DXITuVKfv19f3XRRQBbQ==}
+  /@graphql-mesh/graphql@0.96.6(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/store@0.96.6)(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(@graphql-tools/utils@10.0.13)(@types/node@20.11.17)(graphql@16.8.1)(tslib@2.6.2):
+    resolution: {integrity: sha512-9CwRmqwiPQkrSr0LUQX4VA3YzRsXv7h7F9KMPQuapHRMSzRWlmXXUGXzhoFZxWW5lXeLWfC+sryDSuQntZjVcQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@graphql-mesh/cross-helpers': ^0.4.1
-      '@graphql-mesh/store': ^0.96.5
-      '@graphql-mesh/types': ^0.96.5
-      '@graphql-mesh/utils': ^0.96.5
+      '@graphql-mesh/store': ^0.96.6
+      '@graphql-mesh/types': ^0.96.6
+      '@graphql-mesh/utils': ^0.96.6
       '@graphql-tools/utils': ^9.2.1 || ^10.0.0
       graphql: '*'
       tslib: ^2.4.0
