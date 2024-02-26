@@ -1,8 +1,8 @@
 <script lang="ts">
-  import InboxModalWrapper from '$lib/components/web3/inboxModal/LayoutWrapper.svelte';
+  import InboxModalWrapper from '$lib/widgets/InboxModal/LayoutWrapper.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import SettingsTab from '$lib/components/web3/inboxModal/SettingsTab.svelte';
-  import NotificationList from '$lib/components/web3/inboxModal/notifications/NotificationList.svelte';
+  import SettingsTab from '$lib/widgets/InboxSettingsList/SettingsList.svelte';
+  import NotificationList from '$lib/widgets/InboxNotificationList/NotificationList.svelte';
   import Info from '$lib/shared/typography/Info.svelte';
 </script>
 

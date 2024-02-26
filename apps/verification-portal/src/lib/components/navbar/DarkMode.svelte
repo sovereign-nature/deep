@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Dropdown, DropdownItem, Radio } from 'flowbite-svelte';
   import LL from '$lib/shared/i18n/i18n-svelte';
-  import RolloverBtn from '$lib/components/RolloverBtn.svelte';
+  import RolloverBtn from '$lib/shared/components/RolloverBtn.svelte';
   import { themeStore, setTheme } from '$lib/features/themeSwitch';
   export const btnClass: string =
     ' text-gray-500 dark:text-gray-400  hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700  cursor-pointer ';

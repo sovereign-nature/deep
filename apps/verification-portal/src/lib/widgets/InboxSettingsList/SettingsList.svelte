@@ -3,9 +3,9 @@
   import type { Writable } from 'svelte/store';
 
   import type { NotifyClientTypes } from '@walletconnect/notify-client';
-  import { updateScopes } from '$lib/web3Inbox';
+  import { updateScopes } from '$lib/features/web3Inbox';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import Toggle from '$lib/components/Toggle.svelte';
+  import Toggle from '$lib/shared/forms/Toggle.svelte';
   import Spinner from '$lib/components/icons/Spinner.svelte';
 
   let notificationTypes: NotifyClientTypes.ScopeMap[] = [];

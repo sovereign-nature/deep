@@ -1,7 +1,7 @@
 <!-- Toggle.svelte -->
 <script lang="ts">
   import { Toggle } from 'flowbite-svelte';
-  export let checked: boolean | undefined = false;
+  export let checked: boolean = false;
   export let color: string = 'green';
   export let disabled: boolean = false;
   export let toggleFunction: () => Promise<void>;

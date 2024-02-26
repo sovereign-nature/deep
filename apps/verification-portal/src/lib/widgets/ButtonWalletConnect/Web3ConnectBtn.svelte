@@ -2,10 +2,10 @@
   import { getChainName } from '@sni/address-utils';
   import { getContext, onMount } from 'svelte';
   import type { Writable } from 'svelte/store';
-  import RolloverBtn from '$lib/components/RolloverBtn.svelte';
+  import RolloverBtn from '$lib/shared/components/RolloverBtn.svelte';
   import ArbitrumIcon from '$lib/components/icons/ArbitrumIcon.svelte';
   import ConnectIcon from '$lib/components/icons/ConnectIcon.svelte';
-  import { getWeb3Modal } from '$lib/web3Modal';
+  import { getWeb3Modal } from '$lib/features/web3Modal';
 
   const web3Modal = getWeb3Modal();
   let isLoaded = false;

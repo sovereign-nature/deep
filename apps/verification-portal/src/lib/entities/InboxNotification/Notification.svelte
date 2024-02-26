@@ -10,7 +10,7 @@
 
   let type = findNotificationTypeByTopic(notification.message.type);
 
-  $: date = formatDate();
+  let date = formatDate();
 
   function formatDate() {
     try {

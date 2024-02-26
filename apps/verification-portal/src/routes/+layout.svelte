@@ -7,11 +7,11 @@
     initializeContext,
     initializeModal,
     modalHandleTheme,
-  } from '$lib/web3Modal';
+  } from '$lib/features/web3Modal';
   import { themeStore } from '$lib/features/themeSwitch';
-  import { initializeInbox, setInboxContext } from '$lib/web3Inbox';
+  import { initializeInbox, setInboxContext } from '$lib/features/web3Inbox';
   import { browser } from '$app/environment';
-  import Modal from '$lib/components/web3/inboxModal/InboxModal.svelte';
+  import Modal from '$lib/widgets/InboxModal/InboxModal.svelte';
 
   let isLoading = false;
 
