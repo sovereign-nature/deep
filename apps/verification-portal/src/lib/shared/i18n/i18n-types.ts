@@ -161,6 +161,18 @@ type RootTranslation = {
 		 * S​a​v​e​ ​p​r​e​f​e​r​e​n​c​e​s
 		 */
 		savePreferences: string
+		/**
+		 * M​a​r​k​ ​a​l​l​ ​r​e​a​d
+		 */
+		markAllRead: string
+		/**
+		 * N​e​w
+		 */
+		titleNewTab: string
+		/**
+		 * A​r​c​h​i​v​e
+		 */
+		titleArchiveTab: string
 	}
 	web2: {
 		search: {
@@ -491,6 +503,18 @@ export type TranslationFunctions = {
 		 * Save preferences
 		 */
 		savePreferences: () => LocalizedString
+		/**
+		 * Mark all read
+		 */
+		markAllRead: () => LocalizedString
+		/**
+		 * New
+		 */
+		titleNewTab: () => LocalizedString
+		/**
+		 * Archive
+		 */
+		titleArchiveTab: () => LocalizedString
 	}
 	web2: {
 		search: {

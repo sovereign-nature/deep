@@ -14,7 +14,7 @@
   export let web3enabled = false;
   export let searchEnabled = true;
 
-  import Web3ConnectBtn from '$lib/components/web3/Web3ConnectBtn.svelte';
+  import Web3ConnectBtn from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
 
   let showButton = false;
   const web3Connected: Writable<boolean> = getContext('web3Connected');

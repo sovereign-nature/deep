@@ -50,6 +50,9 @@ const en: BaseTranslation = {
     loading: 'loading...',
     connecting: 'connecting...',
     savePreferences: 'Save preferences',
+    markAllRead: 'Mark all read',
+    titleNewTab: 'New',
+    titleArchiveTab: 'Archive',
   },
   web2: {
     search: {

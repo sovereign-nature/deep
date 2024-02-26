@@ -30,6 +30,7 @@ const config = {
     extend: {
       height: {
         11: '44px',
+        inherit: 'inherit',
       },
       colors: {
         //SNI

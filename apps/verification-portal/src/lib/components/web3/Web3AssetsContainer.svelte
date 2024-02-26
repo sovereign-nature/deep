@@ -8,7 +8,7 @@
   import type { AssetFeatured, Web3DataState } from '$lib/types';
   import FeaturedContainer from '$lib/components/featured/Web3Featured.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import Web3Notifications from '$lib/components/web3/Web3Notifications.svelte';
+  import Web3Notifications from '$lib/widgets/ButtonInboxConnect/Web3Notifications.svelte';
 
   export let web3enabled = false;
   export let collectionName: string;
