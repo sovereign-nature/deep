@@ -10,7 +10,7 @@
   <svelte:fragment slot="title">
     <h2 class="font-sans bold font-semibold text-lg w-full text-center">
       {$LL.notifications.notificationCenter()}
-      <Info className="w-4 h-4 opacity-40 inline-block ms-2">
+      <Info className="w-4 h-4 opacity-40 inline-block ms-2 mb-1">
         Web3Inbox is still under development, new functionality coming soon!</Info
       >
     </h2>

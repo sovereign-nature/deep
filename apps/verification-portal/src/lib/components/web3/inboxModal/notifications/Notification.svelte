@@ -54,10 +54,10 @@
   <div class="flex flex-row justify-between">
     <div class="flex flex-col sm:flex-row gap-x-3 gap-y-3 sm:gap-y-0">
       <div class="flex flex-col flex-shrink-0 justify-start me-2">
-        {#if notification.message.icon === 'https://cdn.iconscout.com/icon/free/png-256/ethereum-1-283135.png'}
+        {#if notification.message.icon}
           <img
             alt={notification.message.title}
-            src="https://cdn.iconscout.com/icon/free/png-256/ethereum-1-283135.png"
+            src={notification.message.icon}
             class="w-12 h-12 rounded-full object-cover aspect-square"
           />
         {:else}
