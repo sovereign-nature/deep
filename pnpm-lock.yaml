@@ -145,8 +145,8 @@ importers:
         specifier: 0.96.8
         version: 0.96.8(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql-yoga@5.1.1)(graphql@16.8.1)(tslib@2.6.2)
       '@graphql-mesh/transform-resolvers-composition':
-        specifier: 0.96.5
-        version: 0.96.5(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql@16.8.1)(tslib@2.6.2)
+        specifier: 0.96.6
+        version: 0.96.6(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql@16.8.1)(tslib@2.6.2)
       graphql:
         specifier: 16.8.1
         version: 16.8.1
@@ -3609,12 +3609,12 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@graphql-mesh/transform-resolvers-composition@0.96.5(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql@16.8.1)(tslib@2.6.2):
-    resolution: {integrity: sha512-609cy4vBtynKghF2nZhtWq+EmSxpz+2r7lz7qj8yion4oD+OduturV3NvuSBJHTkqlfLdwk9BTznuTI4QsIa6Q==}
+  /@graphql-mesh/transform-resolvers-composition@0.96.6(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql@16.8.1)(tslib@2.6.2):
+    resolution: {integrity: sha512-SyKUh/lPIPiMIyXaJM2MbOgQHFp/G7YuvcqQ6zVbw4POYhQT301dgwEt5RqLY5a7DZSO77rkaQT8z6MAbSMUtA==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      '@graphql-mesh/types': ^0.96.5
-      '@graphql-mesh/utils': ^0.96.5
+      '@graphql-mesh/types': ^0.96.6
+      '@graphql-mesh/utils': ^0.96.6
       graphql: '*'
       tslib: ^2.4.0
     dependencies:
