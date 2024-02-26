@@ -139,8 +139,8 @@ importers:
         specifier: 0.98.2
         version: 0.98.2(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/store@0.96.6)(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(@graphql-tools/utils@10.0.13)(graphql@16.8.1)(tslib@2.6.2)
       '@graphql-mesh/plugin-http-cache':
-        specifier: 0.96.5
-        version: 0.96.5(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql@16.8.1)(tslib@2.6.2)
+        specifier: 0.96.6
+        version: 0.96.6(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql@16.8.1)(tslib@2.6.2)
       '@graphql-mesh/plugin-response-cache':
         specifier: 0.96.8
         version: 0.96.8(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql-yoga@5.1.1)(graphql@16.8.1)(tslib@2.6.2)
@@ -3486,12 +3486,12 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@graphql-mesh/plugin-http-cache@0.96.5(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql@16.8.1)(tslib@2.6.2):
-    resolution: {integrity: sha512-Fd2HD39hyZtYWpnHcaS2AMqQ4Eg2fvofAfxvu4kunqbi6zVflkTa17xfhD4ZPuBDszaltBiMoweB3sx9XQ676Q==}
+  /@graphql-mesh/plugin-http-cache@0.96.6(@graphql-mesh/types@0.96.6)(@graphql-mesh/utils@0.96.6)(graphql@16.8.1)(tslib@2.6.2):
+    resolution: {integrity: sha512-6qq/RaiI+I4kCw5GZzGyBErucWCIeTUyvSv0Qq1zKdtO3BSCP4X+aF7FgPa5FvOtfTpr71WinKrUcOSzg3knhg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      '@graphql-mesh/types': ^0.96.5
-      '@graphql-mesh/utils': ^0.96.5
+      '@graphql-mesh/types': ^0.96.6
+      '@graphql-mesh/utils': ^0.96.6
       graphql: '*'
       tslib: ^2.4.0
     dependencies:
