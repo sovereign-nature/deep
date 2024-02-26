@@ -2,9 +2,10 @@
   import { fade } from 'svelte/transition';
   import CogIcon from '$lib/components/icons/CogIcon.svelte';
   import ArrowBackIcon from '$lib/components/icons/ArrowBackIcon.svelte';
-  import ContentSlider from './ContentSlider.svelte';
+  import ContentSlider from '$lib/shared/components/ContentSlider.svelte';
   import { Modal } from 'flowbite-svelte';
   import { getContext } from 'svelte';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
   import type { Writable } from 'svelte/store';
   const openInboxModal: Writable<boolean> = getContext('web3InboxModalOpen');
 
@@ -16,6 +17,9 @@
   };
   const controlBtnClass =
     'me-auto text-white w-6 h-6 p-1 bg-gray-200/[.06] rounded-full hover:bg-gray-300/[.3] dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-50';
+  // hide settings tab on modal close
+  $: $openInboxModal,
+    (toggleTabValue = $openInboxModal === false ? true : toggleTabValue);
 </script>
 
 <Modal
@@ -23,7 +27,6 @@
   defaultClass="mt-5 md:mt-36 relative md:max-h-[calc(80vh-4rem)] max-w-full md:max-w-xl overflow-hidden"
   class=" bg-deep-green-800 dark:bg-deep-green-950 text-white border-none rounded-xl"
   bodyClass="border-none border-deep-green-900 pt-1 h-full overflow-y-auto "
-  scrollable
   color="none"
   outsideclose={true}
   bind:open={$openInboxModal}
@@ -41,7 +44,10 @@
     </header>
   </svelte:fragment>
   {#if toggleTabValue}
-    <ContentSlider titleTab1="new" titleTab2="archive" disabled>
+    <ContentSlider
+      titleTab1=" {$LL.notifications.titleNewTab()}"
+      titleTab2=" {$LL.notifications.titleArchiveTab()}"
+    >
       <svelte:fragment slot="controls">
         <slot name="controls" />
       </svelte:fragment>

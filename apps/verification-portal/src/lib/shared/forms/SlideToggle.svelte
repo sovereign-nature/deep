@@ -3,7 +3,7 @@
   export let checkedLabel = 'on';
   export let uncheckedLabel = 'off';
   export let disabled = false;
-  let id = 'toggle-switch-' + Math.floor(Math.random() * 1000);
+  export let id = 'toggle-switch-' + Math.floor(Math.random() * 1000);
 
   let labelClass = `text-center px-5 text-sm`;
   const toggleClass =

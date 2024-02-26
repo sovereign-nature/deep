@@ -8,9 +8,7 @@
 
   let notificationTypes: NotifyClientTypes.ScopeMap[] = [];
 
-  let type: string | undefined = findNotificationTypeByTopic(
-    notification.message.type
-  );
+  let type = findNotificationTypeByTopic(notification.message.type);
 
   $: date = formatDate();
 
@@ -28,11 +26,11 @@
   //   deleteMessage(id);
   // }
 
-  function findNotificationTypeByTopic(topic: string) {
-    if (!notificationTypes) return;
-    const type = notificationTypes.find((type) => type.id === topic);
+  function findNotificationTypeByTopic(topic: string | undefined) {
+    if (!notificationTypes || topic === undefined) return;
+    const type = notificationTypes.find((type) => type.id.id === topic);
 
-    return type;
+    return type ? type : undefined;
   }
 </script>
 
@@ -54,7 +52,7 @@
     </div>
   </div>
   <div class="flex flex-row justify-between">
-    <div class="flex flex-row gap-x-3">
+    <div class="flex flex-col sm:flex-row gap-x-3 gap-y-3 sm:gap-y-0">
       <div class="flex flex-col flex-shrink-0 justify-start me-2">
         {#if notification.message.icon === 'https://cdn.iconscout.com/icon/free/png-256/ethereum-1-283135.png'}
           <img
@@ -70,7 +68,7 @@
           </div>
         {/if}
       </div>
-      <div class="flex flex-col justify-center gap-2 text-sm">
+      <div class="flex flex-col justify-center gap-2 text-sm text-left">
         <h3 class="font-sans text-lg font-semibold">
           {notification.message.title}
         </h3>

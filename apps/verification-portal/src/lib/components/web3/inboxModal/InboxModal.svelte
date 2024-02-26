@@ -1,8 +1,8 @@
 <script lang="ts">
-  import InboxModalWrapper from '$lib/components/web3/inboxModal/InboxModalWrapper.svelte';
+  import InboxModalWrapper from '$lib/components/web3/inboxModal/LayoutWrapper.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import InboxSettings from './InboxModalSettings.svelte';
-  import NotificationList from './NotificationList.svelte';
+  import SettingsTab from '$lib/components/web3/inboxModal/SettingsTab.svelte';
+  import NotificationList from '$lib/components/web3/inboxModal/notifications/NotificationList.svelte';
   import Info from '$lib/shared/typography/Info.svelte';
 </script>
 
@@ -19,18 +19,18 @@
     <button
       class="disabled cursor-not-allowed opacity-50 flex flex-row items-center bg-deep-green-600 text-primary-300 text-sm px-4 rounded-lg h-9"
     >
-      mark all read</button
+      {$LL.notifications.markAllRead()}</button
     >
   </div>
 
   <div slot="tab1">
-    <NotificationList isRead={false} />
+    <NotificationList />
   </div>
   <div slot="tab2">
-    <NotificationList isRead={true} />
+    <span>Archive functionality coming soon!</span>
   </div>
 
   <svelte:fragment slot="settings">
-    <InboxSettings />
+    <SettingsTab />
   </svelte:fragment>
 </InboxModalWrapper>

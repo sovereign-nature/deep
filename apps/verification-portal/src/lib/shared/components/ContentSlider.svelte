@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
-  import SlideToggle from './SlideToggle.svelte';
+  import SlideToggle from '$lib/shared/forms/SlideToggle.svelte';
   export let titleTab1: string = 'on';
   export let titleTab2: string = 'off';
   export let disabled = false;
@@ -34,7 +34,7 @@
       </div>
     </div>
   </div>
-  <div class="h-inherit overflow-x-hidden overflow-y-auto w-full relative">
+  <div class="h-inherit overflow-x-hidden overflow-y-auto w-full relative pt-2">
     {#if toggleTabs}
       <div
         bind:this={subTab1}
