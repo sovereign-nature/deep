@@ -62,9 +62,9 @@ export function updateQueryParams(param: string, value: string) {
 
   // Replace the history state with the new URL
   goto(`/?${queryParams.toString()}`, {
-    replaceState: true,
+    // replaceState: true,
     keepFocus: true,
-    noScroll: true,
+    noScroll: true, //TODO: Noscroll is not working when switching between web2/web3 tabs
   });
 }
 
