@@ -11,7 +11,6 @@
   import Web3Connection from '$lib/containers/context/Web3Connection.svelte';
   import Web3SearchInput from '$lib/components/search/Web3SearchInput.svelte';
   import Web3Assets from '$lib/components/web3/Web3AssetsContainer.svelte';
-  import sub0Highlights from '$lib/data/Web3Featured.json'; //TODO: Fetch from API
   import type { DeepAsset } from '@sni/clients/assets-client/types';
 
   const url = $page.url;
@@ -104,10 +103,7 @@
       inputmode="numeric"
       placeholder={$LL.sub0.placeholder()}
     />
-    <Web3Assets
-      collectionName={$LL.sub0.collectionName()}
-      highlights={sub0Highlights}
-    />
+    <Web3Assets collectionName={$LL.sub0.collectionName()} {highlights} />
   </TabItem>
   <Web2SearchContainer campaign="hotel_hideaway">
     <TabItem
