@@ -1,17 +1,19 @@
-// export const load = async ({ fetch, url }) => {
-//   let collection = url.searchParams.get('q');
+import type { DeepAsset } from '@sni/clients/assets-client/types';
 
-//   if (!collection) collection = 'soundwaves'; //TODO: Should be default url, this fix should be removed
+export const load = async ({ fetch, url }) => {
+  let collection = url.searchParams.get('q');
 
-//   const highlightsResponse = await fetch(
-//     `https://web3-highlights.sovereign.workers.dev/${collection}`
-//   );
+  if (!collection) collection = 'soundwaves'; //TODO: Should be default url, this fix should be removed
 
-//   let highlights = [];
+  const highlightsResponse = await fetch(
+    `https://web3-highlights.sovereign.workers.dev/${collection}`
+  );
 
-//   if (highlightsResponse.ok) {
-//     highlights = await highlightsResponse.json();
-//   }
+  let highlights: DeepAsset[] = [];
 
-//   return { highlights };
-// };
+  if (highlightsResponse.ok) {
+    highlights = await highlightsResponse.json();
+  }
+
+  return { highlights };
+};
