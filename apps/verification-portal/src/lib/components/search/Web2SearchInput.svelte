@@ -13,9 +13,6 @@
   const search: Writable<string> = getContext('search');
   const results: Writable<string> = getContext('results');
 
-  function updateParams() {
-    updateQueryParams('search', $search);
-  }
   // Replace 'your-element-id' with the actual ID of the element you want to focus on
 
   function focusElement() {
@@ -65,7 +62,7 @@
       <Input
         id="web2-search"
         bind:value={$search}
-        on:input={updateParams}
+        on:input={() => updateQueryParams('search', $search)}
         on:keyup={onEnter}
         class="block border-none w-full border p-4 pl-10 text-sm sm:text-base font-aeonik text-gray-200 focus:border-white focus:ring-white dark:placeholder:text-primary-300 dark:bg-deep-green-700 rounded-sm !rounded-l-sm sm:rounded-none  ms-auto"
         {placeholder}

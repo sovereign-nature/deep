@@ -28,15 +28,6 @@
 
   let tabClass = '';
 
-  function handleTabClick(tab: string) {
-    activeTab = tab;
-    if (activeTab === 'hh') {
-      updateQueryParams('q', tab, true);
-    } else {
-      updateQueryParams('q', tab);
-    }
-  }
-
   onMount(() => {
     const qValue = url.searchParams.get('q');
     if (qValue) {
@@ -71,7 +62,7 @@
       defaultClass={classDefault}
       inactiveClasses={classInactive}
       activeClasses={classActive}
-      on:click={() => handleTabClick('soundwaves')}
+      on:click={() => updateQueryParams('q', 'soundwaves')}
     >
       <Web3SearchInput
         web3enabled
@@ -95,7 +86,7 @@
     defaultClass={classDefault}
     inactiveClasses={classInactive}
     activeClasses={classActive}
-    on:click={() => handleTabClick('sub0')}
+    on:click={() => updateQueryParams('q', 'sub0')}
   >
     <Web3SearchInput
       collection="sub0"
@@ -113,7 +104,7 @@
       defaultClass={classDefault}
       inactiveClasses={classInactive}
       activeClasses={classActive}
-      on:click={() => handleTabClick('hh')}
+      on:click={() => updateQueryParams('q', 'hh')}
     >
       <Web2SearchInput placeholder={$LL.web2.search.placeholder()} />
       <SearchResults />

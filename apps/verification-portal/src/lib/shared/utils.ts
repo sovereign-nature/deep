@@ -56,24 +56,16 @@ export function generateMediaURL(assetID: string): string {
   return `${directusUrl}/assets/${assetID}?metadata`;
 }
 
-export function updateQueryParams(
-  param: string,
-  value: string,
-  navigate = false
-) {
+export function updateQueryParams(param: string, value: string) {
   const queryParams = new URLSearchParams(window.location.search);
   queryParams.set(param, value);
-  const newUrl = `${window.location.pathname}?${queryParams.toString()}`;
-  if (navigate) {
-    goto(newUrl, { replaceState: true, keepFocus: true, noScroll: true });
-  } else {
-    // Replace the history state with the new URL
-    goto(`?${queryParams.toString()}`, {
-      replaceState: true,
-      keepFocus: true,
-      noScroll: true,
-    });
-  }
+
+  // Replace the history state with the new URL
+  goto(`/?${queryParams.toString()}`, {
+    replaceState: true,
+    keepFocus: true,
+    noScroll: true,
+  });
 }
 
 // Function to shuffle array randomly
