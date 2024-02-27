@@ -4,6 +4,7 @@ import { env } from 'hono/adapter';
 import { getAsset } from '@sni/clients/assets-client';
 import { DeepAsset } from '@sni/clients/assets-client/types';
 import { parseDID } from '@sni/address-utils';
+import { shuffle } from 'lodash';
 
 const app = new Hono();
 
@@ -26,8 +27,10 @@ async function fetchAssets(
   tokenIds: number[],
   apiKey: string
 ) {
+  const shuffledIds = shuffle(tokenIds).slice(0, 3);
+
   const fetchedAssets: DeepAsset[] = [];
-  for await (const tokenId of tokenIds) {
+  for await (const tokenId of shuffledIds) {
     const assetDID = `${collectionAddress}:${tokenId}`;
 
     const parsed = parseDID(assetDID);
