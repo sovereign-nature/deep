@@ -6,7 +6,7 @@
   import Card from '$lib/components/Card.svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import type { AssetFeatured, Web3DataState } from '$lib/types';
-  import FeaturedContainer from '$lib/components/featured/Web3Featured.svelte';
+  import FeaturedContainer from '$lib/components/featured/index.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import Web3Notifications from '$lib/widgets/ButtonInboxConnect/Web3Notifications.svelte';
 
@@ -78,6 +78,6 @@
       {/if}
     </div>
   {:else}
-    <FeaturedContainer {highlights} />
+    <FeaturedContainer featuredItems={highlights.slice(0, 3)} />
   {/if}
 {/key}
