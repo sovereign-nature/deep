@@ -12,12 +12,12 @@
   import Web3SearchInput from '$lib/components/search/Web3SearchInput.svelte';
   import Web3Assets from '$lib/components/web3/Web3AssetsContainer.svelte';
   import sub0Highlights from '$lib/data/Web3Featured.json'; //TODO: Fetch from API
-  import soundwavesHighlights from '$lib/data/SoundwavesFeatured.json'; //TODO: Fetch from API
-  // import type { DeepAsset } from '@sni/types';
+  import type { DeepAsset } from '@sni/clients/assets-client/types';
+
   const url = $page.url;
 
   let activeTab = 'soundwaves';
-  // export let highlights: DeepAsset[] = [];
+  export let highlights: DeepAsset[] = [];
 
   // tab classes
   let classDefault =
@@ -64,12 +64,9 @@
 
   <!-- TODO: Unify Web3 tabs architecture -->
   <!-- TODO: Rename to collectionAddress -->
-  <Web3Connection
-    collectionId="0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78"
-    highlights={soundwavesHighlights}
-  >
+  <Web3Connection collectionId="0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78">
     <TabItem
-      title="{$LL.soundwaves.collectionName()} "
+      title={$LL.soundwaves.collectionName()}
       open={activeTab === 'soundwaves'}
       class={tabClass}
       defaultClass={classDefault}
@@ -87,7 +84,7 @@
       />
       <Web3Assets
         collectionName={$LL.soundwaves.collectionName()}
-        highlights={soundwavesHighlights}
+        {highlights}
         web3enabled
       />
     </TabItem>

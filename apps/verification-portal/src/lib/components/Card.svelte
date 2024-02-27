@@ -5,15 +5,14 @@
   export let name: string,
     image: string,
     source = 'Hotel Hideaway',
-    id,
+    // id,
     collection: string,
-    prefix,
     address: string | undefined;
 
-  const did = address ? address : `${prefix}${id}`;
+  // const did = address ? address : `${prefix}${id}`;
 </script>
 
-<a href={`/assets/${did}`} class="card-link">
+<a href={`/assets/${address}`} class="card-link">
   <div
     class="
     asset-card

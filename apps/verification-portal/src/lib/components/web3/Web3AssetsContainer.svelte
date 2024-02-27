@@ -2,7 +2,7 @@
   import { getContext } from 'svelte';
   import type { Writable } from 'svelte/store';
   import { flip } from 'svelte/animate';
-  import type { DeepAsset } from '@sni/types';
+  import type { DeepAsset } from '@sni/clients/assets-client/types';
   import Card from '$lib/components/Card.svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import type { AssetFeatured, Web3DataState } from '$lib/types';
@@ -48,35 +48,17 @@
             ></Web3Notifications>
           </div>
         </div>
-        <!-- <div
-          class="flex flex-row flex-wrap sm:flew-nowrap justify-between mt-5 text-white text-xs sm:text-sm"
-        >
-          <span class="light"
-            >{$LL.wallet.assetsFor()}
-            <strong
-              >{$LL.wallet.assetsFor_pt2({
-                collection: collectionName,
-              })}</strong
-            ></span
-          >
-          <div class="flex">
-            <span class="italic">{$LL.wallet.nrAssets($web3Items.length)}</span>
-          </div>
-        </div> -->
         <div class="mt-5 sm:mt-8">
           {#if $web3Items.length > 0}
             <div class="flex flex-col gap-4">
               {#each $web3Items as result (result.id)}
                 <div animate:flip={{ duration: 250 }}>
                   <Card
-                    id={result.id}
                     name={result.name}
-                    nftImage
                     image={result.image}
                     collection={result.collection.name}
                     source="Web3"
                     address={result.address}
-                    isList
                   />
                 </div>
               {/each}
