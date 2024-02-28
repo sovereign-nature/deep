@@ -107,7 +107,7 @@
       on:click={() => updateQueryParams('q', 'hh')}
     >
       <Web2SearchInput placeholder={$LL.web2.search.placeholder()} />
-      <SearchResults />
+      <SearchResults {highlights} />
     </TabItem>
   </Web2SearchContainer>
 </Tabs>

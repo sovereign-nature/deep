@@ -5,15 +5,15 @@
   import type { DeepAsset } from '@sni/clients/assets-client/types';
   import Card from '$lib/components/Card.svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
-  import type { AssetFeatured, Web3DataState } from '$lib/types';
-  import FeaturedContainer from '$lib/components/featured/index.svelte';
+  import type { Web3DataState } from '$lib/types';
+  import FeaturedContainer from '$lib/entities/FeaturedContainer.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import Web3Notifications from '$lib/widgets/ButtonInboxConnect/Web3Notifications.svelte';
 
   export let web3enabled = false;
   export let collectionName: string;
   export let highlights: DeepAsset[] = [];
-  const web3Items: Writable<AssetFeatured[]> = getContext('web3Items');
+  const web3Items: Writable<DeepAsset[]> = getContext('web3Items');
   const web3Connected: Writable<boolean> = getContext('web3Connected');
   const web3Response: Writable<Web3DataState> = getContext('web3Response');
 </script>

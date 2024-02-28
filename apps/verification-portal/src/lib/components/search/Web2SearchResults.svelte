@@ -5,23 +5,22 @@
   import Card from '$lib/components/Card.svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import type { Web2DataState } from '$lib/types';
-  import FeaturedContainer from '$lib/components/featured/Web2Featured.svelte';
+  import FeaturedContainer from '$lib/entities/FeaturedContainer.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import type { FuseResult } from 'fuse.js';
   import type { DeepAsset } from '@sni/clients/assets-client/types';
 
-  //TODO: Use highlights from server
-  // export let highlights: DeepAsset[] = [];
+  export let highlights: DeepAsset[] = [];
+
   // Retrieve user store from context
   const results: Writable<Array<FuseResult<DeepAsset>>> = getContext('results');
   const search: Writable<string> = getContext('search');
   const web2data: Writable<Web2DataState> = getContext('web2data');
-  const featured: Writable<DeepAsset[]> = getContext('featured');
   const prefix = 'did:asset:deep:hotel-hideaway.asset:';
 </script>
 
-{#if !$search && $web2data.loaded && $featured.length > 0}
-  <FeaturedContainer />
+{#if !$search && $web2data.loaded && highlights.length > 0}
+  <FeaturedContainer featuredItems={highlights} />
 {/if}
 
 <div id="search-results" class="">
