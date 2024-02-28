@@ -20,12 +20,26 @@ const collections = {
       'did:asset:eip155:42161.erc721:0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78',
     highlightIds: [1, 2, 3, 4, 5, 6, 7, 8],
   },
+  hh: {
+    id: 'hh',
+    collectionAddress: 'did:asset:deep:hotel-hideaway.asset',
+    highlightIds: [
+      'buffalo-horns',
+      'hippopotamus-beanie',
+      'zebra-onesie-hood',
+      'upemba-mud-turtle-shell',
+      'hippopotamus-beanie',
+      'park-ranger-uniform',
+      'zebra-mohawk',
+      'upemba-mud-turtle-mask',
+    ],
+  },
 };
 
 async function fetchAssets(
   collectionAddress: string,
-  tokenIds: number[],
-  apiKey: string
+  tokenIds: number[] | string[],
+  apiKey?: string
 ) {
   const shuffledIds = shuffle(tokenIds).slice(0, 3);
 
@@ -60,8 +74,7 @@ app.get('/:collectionId', async (c) => {
     case collections.sub0.id:
       assets = await fetchAssets(
         collections.sub0.collectionAddress,
-        collections.sub0.highlightIds,
-        OPEN_SEA_API_KEY
+        collections.sub0.highlightIds
       );
       break;
     case collections.soundwaves.id:
@@ -69,6 +82,12 @@ app.get('/:collectionId', async (c) => {
         collections.soundwaves.collectionAddress,
         collections.soundwaves.highlightIds,
         OPEN_SEA_API_KEY
+      );
+      break;
+    case collections.hh.id:
+      assets = await fetchAssets(
+        collections.hh.collectionAddress,
+        collections.hh.highlightIds
       );
       break;
     default:
