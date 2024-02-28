@@ -1,4 +1,5 @@
 import type { DeepAsset } from '@sni/clients/assets-client/types';
+import { deepApiUrl } from '@sni/clients/config';
 
 export const load = async ({ fetch, url }) => {
   let collection = url.searchParams.get('q');
@@ -6,7 +7,7 @@ export const load = async ({ fetch, url }) => {
   if (!collection) collection = 'soundwaves'; //TODO: Should be default url, this fix should be removed
 
   const highlightsResponse = await fetch(
-    `https://api.sovereign.workers.dev/highlights/${collection}`
+    `${deepApiUrl}/highlights/${collection}`
   );
 
   let highlights: DeepAsset[] = [];

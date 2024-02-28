@@ -12,16 +12,6 @@ export type VerifiedResponse = {
   funds_raised: number;
 };
 
-export type AssetFeatured = {
-  id: string;
-  tokenId: number | string;
-  name: string;
-  description: string;
-  image: string;
-  collection: { id: string; name: string };
-  address: string;
-};
-
 export type NameValue = { name: string; value: number };
 
 export type DeepData = {

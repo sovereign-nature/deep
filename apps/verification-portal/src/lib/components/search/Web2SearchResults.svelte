@@ -4,17 +4,19 @@
   import { flip } from 'svelte/animate';
   import Card from '$lib/components/Card.svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
-  import type { AssetFeatured, Web2DataState } from '$lib/types';
+  import type { Web2DataState } from '$lib/types';
   import FeaturedContainer from '$lib/components/featured/Web2Featured.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-  // import type { DeepAsset } from '@sni/clients/assets-client/types';
+  import type { FuseResult } from 'fuse.js';
+  import type { DeepAsset } from '@sni/clients/assets-client/types';
 
+  //TODO: Use highlights from server
   // export let highlights: DeepAsset[] = [];
   // Retrieve user store from context
-  const results: Writable<[]> = getContext('results');
+  const results: Writable<Array<FuseResult<DeepAsset>>> = getContext('results');
   const search: Writable<string> = getContext('search');
   const web2data: Writable<Web2DataState> = getContext('web2data');
-  const featured: Writable<AssetFeatured[]> = getContext('featured');
+  const featured: Writable<DeepAsset[]> = getContext('featured');
   const prefix = 'did:asset:deep:hotel-hideaway.asset:';
 </script>
 
@@ -46,15 +48,14 @@
       {#if $results.length > 0}
         <div class="flex flex-col gap-4">
           {#each $results as result (result.item.id)}
+            <!-- TODO: What is practical meaning of item collection? -->
             <div animate:flip={{ duration: 250 }}>
               <Card
-                id={result.item.id}
                 name={result.item.name}
                 image={result.item.image}
-                collection={result.item.collection}
+                collection="fpf-upemba"
                 source="Hotel Hideaway"
-                {prefix}
-                isList
+                address={`${prefix}${result.item.id}`}
               />
             </div>
           {/each}

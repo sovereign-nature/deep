@@ -2,12 +2,11 @@
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
   import NFTImage from '$lib/components/NFTImage.svelte';
 
-  export let name: string,
-    image: string,
-    source = 'Hotel Hideaway',
-    // id,
-    collection: string,
-    address: string | undefined;
+  export let name: string;
+  export let image: string;
+  export let source = 'Hotel Hideaway';
+  export let collection: string;
+  export let address: string | undefined;
 
   // const did = address ? address : `${prefix}${id}`;
 </script>
