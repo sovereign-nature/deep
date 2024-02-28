@@ -2,8 +2,6 @@
 import { ANIMAL_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
 import { directusUrl } from '@sni/clients/config';
 
-import type { DeepAsset } from '@sni/clients/assets-client/types';
-
 import type { Page } from '@sveltejs/kit';
 import { browser } from '$app/environment';
 import { goto } from '$app/navigation';
@@ -56,33 +54,16 @@ export function generateMediaURL(assetID: string): string {
   return `${directusUrl}/assets/${assetID}?metadata`;
 }
 
-export function updateQueryParams(
-  param: string,
-  value: string,
-  navigate = false
-) {
+export function updateQueryParams(param: string, value: string) {
   const queryParams = new URLSearchParams(window.location.search);
   queryParams.set(param, value);
-  const newUrl = `${window.location.pathname}?${queryParams.toString()}`;
-  if (navigate) {
-    goto(newUrl, { replaceState: true, keepFocus: true, noScroll: true });
-  } else {
-    // Replace the history state with the new URL
-    goto(`?${queryParams.toString()}`, {
-      replaceState: true,
-      keepFocus: true,
-      noScroll: true,
-    });
-  }
-}
 
-// Function to shuffle array randomly
-export function shuffleArray(array: DeepAsset[]) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
+  // Replace the history state with the new URL
+  goto(`/?${queryParams.toString()}`, {
+    // replaceState: true,
+    keepFocus: true,
+    noScroll: true, //TODO: Noscroll is not working when switching between web2/web3 tabs
+  });
 }
 
 export function isDarkModePreferred() {

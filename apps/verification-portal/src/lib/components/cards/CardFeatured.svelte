@@ -1,10 +1,12 @@
 <script lang="ts">
-  import type { DeepAsset } from '@sni/types';
   import NFTImage from '$lib/components/NFTImage.svelte';
+  import type { DeepAsset } from '@sni/clients/assets-client/types';
   export let item: DeepAsset;
   let showId = item.tokenId !== undefined;
   const containerClass = showId ? 'sm:grid-cols-6' : 'sm:grid-cols-4';
   const titleClass = showId ? 'col-span-3 lg:col-span-4' : 'col-span-full';
+
+  import _ from 'lodash';
 </script>
 
 <div
@@ -35,7 +37,9 @@
         <div class="col-span-2 text-[#333333] flex flex-col">
           <p class="text-xs text-[#333333">Token Id:</p>
 
-          <p class="sm:text-xl text-[#333333] font-serif">{item.tokenId}</p>
+          <p class="sm:text-xl text-[#333333] font-serif">
+            {_.truncate(item.tokenId, { length: 8 })}
+          </p>
         </div>
       {/if}
       <div class="text-[#333333] lg:hidden">
@@ -45,8 +49,7 @@
         <span
           class="arrow-link duration-500 text-4xl leading-tight absolute right-3 bottom-2"
         >
-          →</span
-        >
+        </span>
       </div>
     </div>
   </div>
@@ -59,7 +62,6 @@
     </a>
     <span
       class="arrow-link duration-500 text-4xl leading-tight absolute right-3 bottom-2"
-      >→</span
-    >
+    ></span>
   </div>
 </div>

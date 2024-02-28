@@ -2,18 +2,14 @@
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
   import NFTImage from '$lib/components/NFTImage.svelte';
 
-  export let name: string,
-    image: string,
-    source = 'Hotel Hideaway',
-    id,
-    collection: string,
-    prefix,
-    address: string | undefined;
-
-  const did = address ? address : `${prefix}${id}`;
+  export let name: string;
+  export let image: string;
+  export let source = 'Hotel Hideaway';
+  export let collection: string;
+  export let address: string;
 </script>
 
-<a href={`/assets/${did}`} class="card-link">
+<a href={`/assets/${address}`} class="card-link">
   <div
     class="
     asset-card

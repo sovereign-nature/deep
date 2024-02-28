@@ -62,9 +62,15 @@ importers:
       '@sni/constants':
         specifier: workspace:*
         version: link:../../packages/constants
+      '@types/lodash':
+        specifier: 4.14.202
+        version: 4.14.202
       hono:
         specifier: 4.0.7
         version: 4.0.7
+      lodash:
+        specifier: 4.17.21
+        version: 4.17.21
     devDependencies:
       '@cloudflare/workers-types':
         specifier: 4.20240222.0
@@ -229,6 +235,9 @@ importers:
       '@types/leaflet':
         specifier: 1.9.8
         version: 1.9.8
+      '@types/lodash':
+        specifier: 4.14.202
+        version: 4.14.202
       '@vercel/analytics':
         specifier: 1.2.2
         version: 1.2.2(react@18.2.0)
@@ -277,6 +286,9 @@ importers:
       leaflet:
         specifier: 1.9.4
         version: 1.9.4
+      lodash:
+        specifier: 4.17.21
+        version: 4.17.21
       postcss:
         specifier: 8.4.35
         version: 8.4.35
@@ -6918,6 +6930,9 @@ packages:
     dependencies:
       '@types/geojson': 7946.0.14
     dev: true
+
+  /@types/lodash@4.14.202:
+    resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
 
   /@types/long@4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
@@ -20331,7 +20346,6 @@ packages:
 
   /workbox-google-analytics@7.0.0:
     resolution: {integrity: sha512-MEYM1JTn/qiC3DbpvP2BVhyIH+dV/5BjHk756u9VbwuAhu0QHyKscTnisQuz21lfRpOwiS9z4XdqeVAKol0bzg==}
-    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 7.0.0
       workbox-core: 7.0.0
