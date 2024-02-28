@@ -6,9 +6,7 @@
   export let image: string;
   export let source = 'Hotel Hideaway';
   export let collection: string;
-  export let address: string | undefined;
-
-  // const did = address ? address : `${prefix}${id}`;
+  export let address: string;
 </script>
 
 <a href={`/assets/${address}`} class="card-link">

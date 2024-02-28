@@ -63,13 +63,13 @@ importers:
         specifier: workspace:*
         version: link:../../packages/constants
       '@types/lodash':
-        specifier: ^4.14.202
+        specifier: 4.14.202
         version: 4.14.202
       hono:
         specifier: 4.0.7
         version: 4.0.7
       lodash:
-        specifier: ^4.17.21
+        specifier: 4.17.21
         version: 4.17.21
     devDependencies:
       '@cloudflare/workers-types':
@@ -235,6 +235,9 @@ importers:
       '@types/leaflet':
         specifier: 1.9.8
         version: 1.9.8
+      '@types/lodash':
+        specifier: 4.14.202
+        version: 4.14.202
       '@vercel/analytics':
         specifier: 1.2.2
         version: 1.2.2(react@18.2.0)
@@ -283,6 +286,9 @@ importers:
       leaflet:
         specifier: 1.9.4
         version: 1.9.4
+      lodash:
+        specifier: 4.17.21
+        version: 4.17.21
       postcss:
         specifier: 8.4.35
         version: 8.4.35
@@ -6927,7 +6933,6 @@ packages:
 
   /@types/lodash@4.14.202:
     resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
-    dev: false
 
   /@types/long@4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
