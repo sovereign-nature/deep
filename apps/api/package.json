@@ -15,7 +15,7 @@
     "@sni/clients": "workspace:*",
     "@sni/constants": "workspace:*",
     "@types/lodash": "4.14.202",
-    "hono": "4.0.7",
+    "hono": "4.0.8",
     "lodash": "4.17.21"
   },
   "devDependencies": {
