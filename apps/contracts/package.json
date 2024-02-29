@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "4.0.0",
-    "@openzeppelin/contracts": "4.9.5",
+    "@openzeppelin/contracts": "4.9.6",
     "@sni/constants": "workspace:*",
     "@web-std/fetch": "4.2.1",
     "axios": "1.6.7",
