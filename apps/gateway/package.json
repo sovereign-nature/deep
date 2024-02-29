@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@graphql-mesh/cache-cfw-kv": "0.96.6",
-    "@graphql-mesh/cli": "0.88.9",
+    "@graphql-mesh/cli": "0.89.0",
     "@graphql-mesh/graphql": "0.96.6",
     "@graphql-mesh/json-schema": "0.99.0",
     "@graphql-mesh/plugin-http-cache": "0.96.6",
