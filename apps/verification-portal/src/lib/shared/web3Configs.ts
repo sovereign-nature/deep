@@ -1,4 +1,4 @@
-import { arbitrum } from 'viem/chains';
+import { mainnet } from 'viem/chains';
 import { defaultWagmiConfig } from '@web3modal/wagmi';
 
 import { PUBLIC_WALLET_CONNECT_PROJECT_ID } from '$env/static/public';
@@ -35,10 +35,13 @@ export const themeVariablesLight = {
   '--w3m-color-mix-strength': 30,
 };
 
-export const chains = [arbitrum] as const;
+export const chains = [mainnet] as const;
 
 export const wagmiConfig = defaultWagmiConfig({
   projectId,
   chains,
   metadata,
+  enableEmail: true,
+  enableCoinbase: false,
+  enableWalletConnect: false,
 });

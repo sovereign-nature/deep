@@ -2,6 +2,7 @@ import { createWeb3Modal } from '@web3modal/wagmi';
 import { reconnect, watchAccount, signMessage } from '@wagmi/core';
 import { getContext, setContext } from 'svelte';
 import { writable } from 'svelte/store';
+import { mainnet } from '@wagmi/core/chains';
 import { isDarkModePreferred } from '$lib/shared/utils';
 import {
   projectId,
@@ -35,6 +36,7 @@ export function initializeModal() {
     wagmiConfig,
     projectId,
     themeVariables: themeVariablesDark,
+    defaultChain: mainnet,
   });
 
   modal.set(web3Modal);
