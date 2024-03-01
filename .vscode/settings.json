@@ -51,7 +51,8 @@
     "vitepress",
     "vueuse",
     "wagmi",
-    "walletconnect"
+    "walletconnect",
+    "xinvalid"
   ],
   "cSpell.language": "en-GB",
   "terminal.integrated.env.linux": {
