@@ -72,6 +72,7 @@ export function initializeInbox() {
         console.log(
           `Inbox address changed to ${account}, reconfiguring inbox client`
         );
+        resetInboxState();
         checkIfRegistered(account);
       } else {
         console.log(
@@ -98,6 +99,8 @@ async function connectToInbox() {
       web3InboxClient.watchAccount((account) => {
         console.log('Account changed from watch, registering', account);
         if (account) {
+          web3InboxEnabling.set(true);
+          resetInboxState();
           checkIfRegistered(account);
         }
       });
@@ -142,6 +145,7 @@ async function checkIfRegistered(account: string) {
 
   if (!isRegistered) {
     web3InboxLoading.set(false); // If client hasn't registered, don't proceed to register state automatically
+    web3InboxEnabling.set(false);
   } else {
     checkIfSubscribed(account);
   }
@@ -177,17 +181,20 @@ async function clearInboxClient() {
   if (!web3InboxClient) return;
 
   web3InboxClient = null;
+  web3InboxLoading.set(true);
+  resetInboxState();
+}
+
+async function resetInboxState() {
   web3InboxRegistered.set(false);
   web3InboxSubscribed.set(false);
   web3InboxMessages.set(null);
-  web3InboxTypes.set(null);
   web3InboxMessageCount.set(0);
-  web3InboxLoading.set(true);
 }
 
 async function getInboxContent() {
   getNotificationTypes();
-  getMessages();
+  await getMessages();
   web3InboxEnabling.set(false);
   web3InboxLoading.set(false);
 }
