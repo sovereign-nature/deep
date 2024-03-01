@@ -1,30 +1,25 @@
 <script lang="ts">
-  // import { CloseButton } from 'flowbite-svelte';
   import type { NotifyClientTypes } from '@walletconnect/notify-client';
   import { formatDistanceToNowStrict } from 'date-fns';
   import Info from '$lib/shared/typography/Info.svelte';
   import BellIcon from '$lib/components/icons/BellIcon.svelte';
-  export let notification: NotifyClientTypes.NotifyMessageRecord;
+  export let notification: NotifyClientTypes.NotifyNotification;
 
   let notificationTypes: NotifyClientTypes.ScopeMap[] = [];
 
-  let type = findNotificationTypeByTopic(notification.message.type);
+  let type = findNotificationTypeByTopic(notification.type);
 
   let date = formatDate();
 
   function formatDate() {
     try {
-      return formatDistanceToNowStrict(notification.publishedAt, {
+      return formatDistanceToNowStrict(notification.sentAt, {
         addSuffix: true,
       });
     } catch (error) {
       console.error(error);
     }
   }
-
-  // function closeNotification(id: number) {
-  //   deleteMessage(id);
-  // }
 
   function findNotificationTypeByTopic(topic: string | undefined) {
     if (!notificationTypes || topic === undefined) return;
@@ -45,48 +40,37 @@
       </span>
     {/if}
     <div class="flex flex-col justify-start items-end opacity-40">
-      <!-- <CloseButton
-        class="bg-red"
-        on:click={() => closeNotification(notification.id)}
-      /> -->
+      <!-- TODO add mark as read button -->
     </div>
   </div>
   <div class="flex flex-row justify-between">
     <div class="flex flex-col sm:flex-row gap-x-3 gap-y-3 sm:gap-y-0">
       <div class="flex flex-col flex-shrink-0 justify-start me-2">
-        {#if notification.message.icon}
-          <img
-            alt={notification.message.title}
-            src={notification.message.icon}
-            class="w-12 h-12 rounded-full object-cover aspect-square"
-          />
-        {:else}
-          <div
-            class="w-12 h-12 founded-full bg-orange-400 text-white aspect-square flex justify-center items-center rounded-full"
-          >
-            <BellIcon className="w-6 h-6" />
-          </div>
-        {/if}
+        <div
+          class="w-12 h-12 founded-full bg-orange-400 text-white aspect-square flex justify-center items-center rounded-full"
+        >
+          <BellIcon className="w-6 h-6" />
+        </div>
       </div>
       <div class="flex flex-col justify-center gap-2 text-sm text-left">
         <h3 class="font-sans text-lg font-semibold">
-          {notification.message.title}
+          {notification.title}
         </h3>
 
         <p class="text-lg">
-          {notification.message.body}
+          {notification.body}
         </p>
       </div>
     </div>
   </div>
   <div class="flex flex-row justify-end items-end ms-16 ps-1 mt-2">
-    {#if notification.message.url}
+    {#if notification.url}
       <a
-        href={notification.message.url}
+        href={notification.url}
         target="_blank"
         class="text-sm text-primary-300 me-auto dark:text-primary-200 truncate w-1/2"
       >
-        {notification.message.url}
+        {notification.url}
       </a>
     {/if}
     <p class="text-italic text-xs text-start italic opacity-30">
