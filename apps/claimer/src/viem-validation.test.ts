@@ -2,11 +2,19 @@ import { generatePrivateKey, privateKeyToAccount } from 'viem/accounts';
 import { verifyMessage } from 'viem';
 import { expect, describe, it } from 'vitest';
 
-describe('Claimer', async () => {
+describe('viem signature flow', async () => {
   const account = privateKeyToAccount(generatePrivateKey());
   const address = account.address;
-  const message = JSON.stringify({ email: '1@23.com', address: '0x123' });
+
+  console.log('Address:', address);
+
+  const message = JSON.stringify({ email: '1@23.com', address });
+
+  console.log('Message:', message);
+
   const signature = await account.signMessage({ message });
+
+  console.log('Signature:', signature);
 
   it('should verify signature', async () => {
     const isSignatureValid = await verifyMessage({
