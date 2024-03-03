@@ -11,7 +11,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "hono": "4.0.8",
+    "hono": "4.0.9",
     "@hono/zod-validator": "0.1.11",
     "zod": "3.22.4"
   },
