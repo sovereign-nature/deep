@@ -302,7 +302,6 @@
     grid-template-columns: 1fr;
     gap: 0em 1.25em;
     grid-auto-flow: row;
-    //width: 100%;
   }
   .container-grid {
     grid-template-columns: 1fr;

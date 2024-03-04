@@ -1,8 +1,8 @@
 /* Addapted from videojs/forest theme */
 /* Because of the SVG inliner, these don't work for icons */
 .vjs-theme-sni {
-  --vjs-theme-sni--primary: #00C67E;
-  --vjs-theme-sni--secondary: #08FFA6;
+  --vjs-theme-sni--primary: #00c67e;
+  --vjs-theme-sni--secondary: #08ffa6;
 }
 
 /* Big play Button */
@@ -11,9 +11,6 @@
   background-color: transparent;
   background: svg-load('icons/play-btn.svg', fill=#08FFA6);
 }
-
-
-
 
 .vjs-theme-sni .vjs-big-play-button {
   width: 66px;
@@ -27,7 +24,7 @@
   left: 50%;
   margin-top: -33px;
   margin-left: -33px;
-  color: #00C67E;
+  color: #00c67e;
 }
 
 .vjs-theme-sni .vjs-big-play-button .vjs-icon-placeholder {
@@ -41,7 +38,6 @@
 
 .vjs-theme-sni .vjs-control:not(.vjs-disabled, .vjs-time-control):hover {
   color: var(--vjs-theme-sni--primary);
-  //text-shadow: var(--vjs-theme-sni--secondary) 1px 0 10px;
 }
 
 .vjs-theme-sni .vjs-control-bar {
@@ -67,7 +63,7 @@
 
 .vjs-theme-sni .vjs-play-control:hover .vjs-icon-placeholder:before {
   background-color: var(--vjs-theme-sni--secondary);
-  color: #002727
+  color: #002727;
 }
 
 /* Volume stuff */
@@ -83,8 +79,12 @@
 
 .vjs-theme-sni .vjs-volume-panel,
 .vjs-theme-sni .vjs-volume-panel:hover,
-.vjs-theme-sni .vjs-volume-panel:hover .vjs-volume-control.vjs-volume-horizontal,
-.vjs-theme-sni .vjs-volume-panel:active .vjs-volume-control.vjs-volume-horizontal,
+.vjs-theme-sni
+  .vjs-volume-panel:hover
+  .vjs-volume-control.vjs-volume-horizontal,
+.vjs-theme-sni
+  .vjs-volume-panel:active
+  .vjs-volume-control.vjs-volume-horizontal,
 .vjs-theme-sni .vjs-volume-panel.vjs-volume-panel-horizontal:hover,
 .vjs-theme-sni .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-slider-active,
 .vjs-theme-sni .vjs-volume-bar.vjs-slider-horizontal {
@@ -127,7 +127,8 @@
 
   border-style: solid;
   border-width: 0 0 2em 3em;
-  border-color: transparent transparent var(--vjs-theme-sni--secondary) transparent;
+  border-color: transparent transparent var(--vjs-theme-sni--secondary)
+    transparent;
 }
 
 .vjs-theme-sni .vjs-volume-level {
@@ -146,7 +147,8 @@
 
   border-style: solid;
   border-width: 0 0 2em 3em;
-  border-color: transparent transparent var(--vjs-theme-sni--primary) transparent;
+  border-color: transparent transparent var(--vjs-theme-sni--primary)
+    transparent;
 }
 
 /* Progress Bar */
@@ -170,13 +172,10 @@
   border-radius: 0.2em;
 }
 
-.vjs-theme-sni .vjs-play-progress  {
+.vjs-theme-sni .vjs-play-progress {
   background: var(--vjs-theme-sni--secondary);
 }
 
 .vjs-theme-sni .vjs-load-progress div {
   background: #002727;
 }
-
-
-
