@@ -11,7 +11,7 @@ export default defineConfig({
   plugins: [
     splitVendorChunkPlugin(), //Not sure it's needed, but otherwise Sentry is broken
     sentrySvelteKit({
-      autoUploadSourceMaps: false,
+      autoUploadSourceMaps: false, //TODO: Fix sourcemap upload
       // sourceMapsUploadOptions: {
       //   org: 'sovereign-nature-initiative',
       //   project: 'real',
