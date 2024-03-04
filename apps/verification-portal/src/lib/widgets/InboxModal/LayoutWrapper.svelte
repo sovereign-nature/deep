@@ -24,7 +24,7 @@
 
 <Modal
   placement="top-center"
-  defaultClass="mt-5 md:mt-36 relative md:max-h-[calc(80vh-4rem)] max-w-full md:max-w-xl overflow-hidden"
+  defaultClass="mt-5 md:mt-36 relative md:max-h-[calc(80vh-4rem)] max-w-full md:max-w-xl overflow-hidden mx-auto"
   class=" bg-deep-green-800 dark:bg-deep-green-950 text-white border-none rounded-xl"
   bodyClass="border-none border-deep-green-900 pt-1 h-full overflow-y-auto "
   color="none"
