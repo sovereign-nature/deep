@@ -1,5 +1,5 @@
 import { DeepAsset } from '../../types';
-import { directusUrl } from './config';
+import { directusUrl } from '../../../config';
 import directusFormatter from './formatter';
 import { DirectusAsset } from './types';
 
