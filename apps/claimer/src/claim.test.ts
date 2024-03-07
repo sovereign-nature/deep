@@ -1,5 +1,5 @@
 import { expect, describe, it } from 'vitest';
-import app from '.';
+import { app } from '.';
 
 describe('Claim API', () => {
   it('should claim with valid signature', async () => {
