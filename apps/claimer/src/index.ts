@@ -34,4 +34,10 @@ app.post(
   }
 );
 
-export default app;
+export default {
+  fetch: app.fetch,
+  scheduled: async (batch, env) => {
+    console.log('Batch', batch);
+    console.log('env', env);
+  },
+};

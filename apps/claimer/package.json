@@ -7,6 +7,8 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
+    "dev:scheduled": "wrangler dev --test-scheduled",
+    "test:cron": "curl \"http://localhost:8787/__scheduled?cron=*+*+*+*+*\"",
     "deploy": "wrangler deploy",
     "test": "vitest"
   },
