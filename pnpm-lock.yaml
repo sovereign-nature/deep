@@ -66,8 +66,8 @@ importers:
         specifier: 4.14.202
         version: 4.14.202
       hono:
-        specifier: 4.0.9
-        version: 4.0.9
+        specifier: 4.0.10
+        version: 4.0.10
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -77,7 +77,7 @@ importers:
         version: 4.20240222.0
       '@hono/zod-validator':
         specifier: 0.2.0
-        version: 0.2.0(hono@4.0.9)(zod@3.22.4)
+        version: 0.2.0(hono@4.0.10)(zod@3.22.4)
       env-cmd:
         specifier: 10.1.0
         version: 10.1.0
@@ -95,10 +95,10 @@ importers:
     dependencies:
       '@hono/zod-validator':
         specifier: 0.2.0
-        version: 0.2.0(hono@4.0.9)(zod@3.22.4)
+        version: 0.2.0(hono@4.0.10)(zod@3.22.4)
       hono:
-        specifier: 4.0.9
-        version: 4.0.9
+        specifier: 4.0.10
+        version: 4.0.10
       zod:
         specifier: 3.22.4
         version: 3.22.4
@@ -4183,13 +4183,13 @@ packages:
       '@hapi/hoek': 9.3.0
     dev: true
 
-  /@hono/zod-validator@0.2.0(hono@4.0.9)(zod@3.22.4):
+  /@hono/zod-validator@0.2.0(hono@4.0.10)(zod@3.22.4):
     resolution: {integrity: sha512-PC7akbA/DCFY406BL3+ogjYb+7Fgfs/6XPvyURBYMczo0M7kYsTUMnF8hA9mez1RORNCWPqXuFGfKrkoUVPvrQ==}
     peerDependencies:
       hono: '>=3.9.0'
       zod: ^3.19.1
     dependencies:
-      hono: 4.0.9
+      hono: 4.0.10
       zod: 3.22.4
 
   /@humanwhocodes/config-array@0.11.14:
@@ -12942,8 +12942,8 @@ packages:
     dependencies:
       react-is: 16.13.1
 
-  /hono@4.0.9:
-    resolution: {integrity: sha512-XkFx6y6jAl08bGmoy53oGtHl8eHUixvmBulfcghrSySoJD3cW4UfFUa7JDGLOsIeJUv/a9d2pBFQUX7rzRnjvA==}
+  /hono@4.0.10:
+    resolution: {integrity: sha512-sq0RFAC3Ij+bkhZu90EGAQnVI1EhohRsjo9BU+BjXLbC71GSy41JjsFqCeg8MRpO2Gdu0A4MXF5licO89tn/rw==}
     engines: {node: '>=16.0.0'}
 
   /hosted-git-info@2.8.9:
