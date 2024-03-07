@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import { verifyMessage } from 'viem';
 
-const app = new Hono();
+export const app = new Hono();
 
 type ClaimBody = {
   message: { email: string; address: '0x{string}' };

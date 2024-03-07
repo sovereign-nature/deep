@@ -1,10 +1,9 @@
 import { Hono } from 'hono';
 import { env } from 'hono/adapter';
-
-import { getAsset } from '@sni/clients/assets-client';
 import { DeepAsset } from '@sni/clients/assets-client/types';
 import { parseDID } from '@sni/address-utils';
 import _ from 'lodash';
+import { getAsset } from '../shared';
 
 const app = new Hono();
 
