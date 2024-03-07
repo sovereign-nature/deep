@@ -2,8 +2,8 @@ import { Hono } from 'hono';
 import { env } from 'hono/adapter';
 import { zValidator } from '@hono/zod-validator';
 import { z } from 'zod';
-import { getAsset } from '@sni/clients/assets-client';
 import { parseDID } from '@sni/address-utils';
+import { getAsset } from '../shared';
 
 const app = new Hono();
 
