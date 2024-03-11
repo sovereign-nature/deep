@@ -4,7 +4,7 @@ import { MoonSamaResponse } from './types';
 export default function moonSamaFormatter(
   response: MoonSamaResponse
 ): DeepAsset {
-  const assetData = response.data.tokens[0];
+  const assetData = response.tokens[0];
 
   return {
     id: assetData.id,

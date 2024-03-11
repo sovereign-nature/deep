@@ -33,6 +33,12 @@ const collections = {
       'upemba-mud-turtle-mask',
     ],
   },
+  wildsama: {
+    id: 'wildsama',
+    collectionAddress:
+      'did:asset:eip155:2199.erc721:0xdd0a0a15efc11930354b3e1eb1a62a87bf9abf30',
+    highlightIds: [13, 277, 278, 279, 280, 281],
+  },
 };
 
 async function fetchAssets(
@@ -87,6 +93,12 @@ app.get('/:collectionId', async (c) => {
       assets = await fetchAssets(
         collections.hh.collectionAddress,
         collections.hh.highlightIds
+      );
+      break;
+    case collections.wildsama.id:
+      assets = await fetchAssets(
+        collections.wildsama.collectionAddress,
+        collections.wildsama.highlightIds
       );
       break;
     default:

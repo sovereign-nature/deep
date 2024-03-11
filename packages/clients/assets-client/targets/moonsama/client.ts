@@ -7,7 +7,7 @@ import moonSamaFormatter from './formatter';
 
 const moonSamaClient = new GraphQLClient(moonSamaApiUrl, { fetch });
 
-export async function getMoonSamaAsset(
+export async function getMoonsamaAsset(
   contractAddress: string,
   tokenId: number
 ): Promise<DeepAsset> {

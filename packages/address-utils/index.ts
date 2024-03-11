@@ -112,6 +112,7 @@ const chainNameToId: ChainNameToId = {
   okextest: 65,
   arbitrum: 42161,
   arbitrumtest: 421611,
+  moonsama: 2199,
 };
 
 export function getChainId(chainName: string): number {
@@ -121,6 +122,7 @@ export function getChainId(chainName: string): number {
   return 0;
 }
 
+//TODO: Rename to chainIdToName
 export function getChainName(chainId: number): string {
   const idToChainName: { [key: number]: string } = {};
 
@@ -133,6 +135,7 @@ export function getChainName(chainId: number): string {
   return idToChainName[chainId] || '';
 }
 
+//TODO: Rename to getChainName
 function getNetworkId(chainNamespace: string, chainId: string): string {
   switch (chainNamespace) {
     case 'eip155':

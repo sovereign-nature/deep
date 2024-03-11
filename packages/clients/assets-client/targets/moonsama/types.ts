@@ -5,4 +5,4 @@ export type MoonSamaToken = {
   metadata: { name: string; description: string; image: string };
 };
 
-export type MoonSamaResponse = { data: { tokens: MoonSamaToken[] } };
+export type MoonSamaResponse = { tokens: MoonSamaToken[] };

@@ -1,7 +1,7 @@
 import {
   getHotelHideawayAsset,
   getKusamaAsset,
-  getMoonSamaAsset,
+  getMoonsamaAsset,
   getOpenSeaAsset,
   getPolkadotAsset,
 } from '@sni/clients/assets-client';
@@ -20,7 +20,7 @@ export async function getAsset(
     case 'kusama':
       return getKusamaAsset(assetId, tokenId ? tokenId : 1);
     case 'moonsama':
-      return getMoonSamaAsset(assetId, tokenId ? tokenId : 1);
+      return getMoonsamaAsset(assetId, tokenId ? tokenId : 1);
     case 'sepolia':
     case 'arbitrum':
       return getOpenSeaAsset(assetId, tokenId ? tokenId : 1, network, apiKey);
