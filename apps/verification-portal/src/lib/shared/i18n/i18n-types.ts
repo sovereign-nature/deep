@@ -79,6 +79,16 @@ type RootTranslation = {
 		 */
 		placeholder: string
 	}
+	wildsama: {
+		/**
+		 * W​i​l​d​s​a​m​a
+		 */
+		collectionName: string
+		/**
+		 * F​i​n​d​ ​b​y​ ​t​o​k​e​n​ ​I​D
+		 */
+		placeholder: string
+	}
 	wallet: {
 		/**
 		 * S​h​o​w​i​n​g​ ​y​o​u​r​ 
@@ -420,6 +430,16 @@ export type TranslationFunctions = {
 	soundwaves: {
 		/**
 		 * Soundwaves
+		 */
+		collectionName: () => LocalizedString
+		/**
+		 * Find by token ID
+		 */
+		placeholder: () => LocalizedString
+	}
+	wildsama: {
+		/**
+		 * Wildsama
 		 */
 		collectionName: () => LocalizedString
 		/**

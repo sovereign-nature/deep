@@ -79,6 +79,31 @@
       />
     </TabItem>
   </Web3Connection>
+  <Web3Connection collectionId="0xdd0a0a15efc11930354b3e1eb1a62a87bf9abf30">
+    <TabItem
+      title={$LL.wildsama.collectionName()}
+      open={activeTab === 'wildsama'}
+      class={tabClass}
+      defaultClass={classDefault}
+      inactiveClasses={classInactive}
+      activeClasses={classActive}
+      on:click={() => updateQueryParams('q', 'wildsama')}
+    >
+      <Web3SearchInput
+        web3enabled={false}
+        collection="wildsama"
+        goIcon
+        inputmode="numeric"
+        placeholder={$LL.wildsama.placeholder()}
+        searchEnabled={false}
+      />
+      <Web3Assets
+        collectionName={$LL.wildsama.collectionName()}
+        {highlights}
+        web3enabled
+      />
+    </TabItem>
+  </Web3Connection>
   <TabItem
     title="{$LL.sub0.collectionName()} "
     open={activeTab === 'sub0'}

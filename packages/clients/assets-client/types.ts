@@ -8,5 +8,5 @@ export type DeepAsset = {
     id: string;
     name: string;
   };
-  address?: string;
+  address: string;
 };
