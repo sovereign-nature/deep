@@ -207,8 +207,10 @@
     >
       <div class={`${cardHeaderClass} mb-5`}>
         <Subheader>{$LL.assets.ecEntity.title()}</Subheader>
-        <CardHeader title={deepData?.name} />
-        <p class="card-description">{deepData.description}</p>
+        <CardHeader title={deepData.name ? deepData.name : 'Unnamed'} />
+        <p class="card-description">
+          {deepData.description ? deepData.description : '...'}
+        </p>
       </div>
       {#key properties}
         {#if Object.keys(properties).length > 0 && Object.keys(properties.traces_recorded).length > 0}
