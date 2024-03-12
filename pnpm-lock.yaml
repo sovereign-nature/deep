@@ -85,8 +85,8 @@ importers:
         specifier: 1.3.1
         version: 1.3.1
       wrangler:
-        specifier: 3.32.0
-        version: 3.32.0(@cloudflare/workers-types@4.20240222.0)
+        specifier: 3.33.0
+        version: 3.33.0(@cloudflare/workers-types@4.20240222.0)
       zod:
         specifier: 3.22.4
         version: 3.22.4
@@ -113,8 +113,8 @@ importers:
         specifier: 1.3.1
         version: 1.3.1
       wrangler:
-        specifier: 3.32.0
-        version: 3.32.0(@cloudflare/workers-types@4.20240222.0)
+        specifier: 3.33.0
+        version: 3.33.0(@cloudflare/workers-types@4.20240222.0)
 
   apps/contracts:
     devDependencies:
@@ -189,8 +189,8 @@ importers:
         specifier: 4.2.0
         version: 4.2.0
       wrangler:
-        specifier: 3.32.0
-        version: 3.32.0(@cloudflare/workers-types@4.20240222.0)
+        specifier: 3.33.0
+        version: 3.33.0(@cloudflare/workers-types@4.20240222.0)
 
   apps/indexer:
     devDependencies:
@@ -15294,8 +15294,8 @@ packages:
     hasBin: true
     dev: true
 
-  /miniflare@3.20240304.0:
-    resolution: {integrity: sha512-6bmFkwXbTy1x5dEfVCLg03Gd80OWUmKI8Li0BhG6nOO+bT3rlIYwctyyfXTfNMFjqbK07AnnPiMwgnfdaaAYVQ==}
+  /miniflare@3.20240304.1:
+    resolution: {integrity: sha512-U9Br62mV//dI5IiNxGX3qOf6/3tVGsWe94TF+Hy23F5w41AwF+cIgbGW4/JAQQI1rY5uNNmMoS9jqIyoSdw06Q==}
     engines: {node: '>=16.13'}
     hasBin: true
     dependencies:
@@ -20662,8 +20662,8 @@ packages:
     resolution: {integrity: sha512-ILEIE97kDZvF9Wb9f6h5aXK4swSlKGUcOEGiIYb2OOu/IrDU9iwj0fD//SsA6E5ibwJxpEvhullJY4Sl4GcpAw==}
     dev: true
 
-  /wrangler@3.32.0(@cloudflare/workers-types@4.20240222.0):
-    resolution: {integrity: sha512-UaOOn3fyv5C7y0NRPmkfS9LW3KElqGvUK+wLP9MClsuRgUrbwAkLt7jIR3fqhfxkXj5FbA6rXn/qjgEbGzEndw==}
+  /wrangler@3.33.0(@cloudflare/workers-types@4.20240222.0):
+    resolution: {integrity: sha512-1A8frPJSUQjkWAN4XhbykpEtqmfDYdTWPKlc4rTchNrERLwqHF87aCYblP4m5Wm43w4eVL+H4hGUgE2TySk9MA==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -20679,7 +20679,7 @@ packages:
       blake3-wasm: 2.1.5
       chokidar: 3.6.0
       esbuild: 0.17.19
-      miniflare: 3.20240304.0
+      miniflare: 3.20240304.1
       nanoid: 3.3.7
       path-to-regexp: 6.2.1
       resolve: 1.22.8
