@@ -17,7 +17,7 @@
   let items = newsData.map((item, index) => ({
     index,
     date: format(parseISO(item?.date_created), 'd MMM yyyy'),
-    src: getAssetImageUrl(item?.image), //@TODO placeholder image, maybe server side?
+    src: getAssetImageUrl(item?.image, 800), //TODO: placeholder image, maybe server side? Maybe add ImageSrcSet?
     title: item?.title,
     content: item?.content,
     video: item?.video,
