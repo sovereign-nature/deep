@@ -26,6 +26,10 @@ const en: BaseTranslation = {
     collectionName: 'Soundwaves',
     placeholder: 'Find by token ID',
   },
+  wildsama: {
+    collectionName: 'Wildsama',
+    placeholder: 'Find by token ID',
+  },
   wallet: {
     assetsFor: 'Showing your ',
     assetsFor_pt2: '{collection: string} assets',

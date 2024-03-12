@@ -20,8 +20,8 @@
   let isLoading = true;
   let errorMsg = $LL.errors.image();
 
-  let imageUrl: string;
-  $: imageUrl = getAssetImageUrl(url, size);
+  $: isVideo = url.endsWith('.mp4');
+  $: imageUrl = isVideo ? url : getAssetImageUrl(url, size);
 
   // Function to handle image loading errors
   function handleImageError() {
@@ -59,13 +59,25 @@
     {/if}
     {#if isMounted && !isError}
       <!-- Render the image when it's loaded -->
-      <img
-        src={imageUrl}
-        {alt}
-        class={imgClass}
-        on:error={handleImageError}
-        on:load={handleImageLoad}
-      />
+      {#if isVideo}
+        <video
+          src={imageUrl}
+          class={imgClass}
+          on:error={handleImageError}
+          on:canplay={handleImageLoad}
+          autoplay
+          loop
+          muted
+        />
+      {:else}
+        <img
+          src={imageUrl}
+          {alt}
+          class={imgClass}
+          on:error={handleImageError}
+          on:load={handleImageLoad}
+        />
+      {/if}
     {/if}
   </div>
 </div>

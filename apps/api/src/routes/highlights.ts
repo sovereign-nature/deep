@@ -7,6 +7,7 @@ import { getAsset } from '../shared';
 
 const app = new Hono();
 
+//TODO: Move to config
 const collections = {
   sub0: {
     id: 'sub0',

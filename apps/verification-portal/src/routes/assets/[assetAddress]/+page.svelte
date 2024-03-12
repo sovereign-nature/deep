@@ -36,7 +36,7 @@
   const chainReference = addressDetails?.chain?.reference;
 
   // Define specific share card data for a page
-  $: pageDescription = nftData?.collection?.description || '';
+  $: pageDescription = nftData?.collection?.description || ''; //TODO: Check why we need collection description, should be asset description probably
   $: name = nftData.name || '';
   $: funds = deepData?.steward?.funds_raised || 0;
   $: source = isNaN(parseInt(chainReference))
@@ -207,8 +207,10 @@
     >
       <div class={`${cardHeaderClass} mb-5`}>
         <Subheader>{$LL.assets.ecEntity.title()}</Subheader>
-        <CardHeader title={deepData?.name} />
-        <p class="card-description">{deepData.description}</p>
+        <CardHeader title={deepData.name ? deepData.name : 'Unnamed'} />
+        <p class="card-description">
+          {deepData.description ? deepData.description : '...'}
+        </p>
       </div>
       {#key properties}
         {#if Object.keys(properties).length > 0 && Object.keys(properties.traces_recorded).length > 0}
