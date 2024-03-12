@@ -1,7 +1,7 @@
 <script lang="ts">
   import FundsWidget from '$lib/components/dashboard/FundsWidget.svelte';
-  export let assetFunds: string = '';
-  export let assetFundsSubtitle: string;
+  // export let assetFunds: string = '';
+  // export let assetFundsSubtitle: string;
   export let totalFunds: string;
   export let totalFundsSubtitle: string;
 </script>
@@ -9,7 +9,7 @@
 <div
   class="flex flex-wrap md:flex-nowrap gap-8 lg:flex-col xl:flex-row items-end md:items-center xl:items-end justify-center"
 >
-  {#if assetFunds}
+  <!-- {#if assetFunds}
     <div class="funds-widget-container">
       <FundsWidget
         funds={assetFunds}
@@ -20,7 +20,7 @@
         >{assetFundsSubtitle}</span
       >
     </div>
-  {/if}
+  {/if} -->
 
   {#if totalFunds}
     <div class="funds-widget-container">
