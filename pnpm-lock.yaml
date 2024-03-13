@@ -226,7 +226,7 @@ importers:
         version: 2.11.8
       '@sentry/sveltekit':
         specifier: 7.106.1
-        version: 7.106.1(@sveltejs/kit@2.5.3)(svelte@4.2.12)
+        version: 7.106.1(@sveltejs/kit@2.5.4)(svelte@4.2.12)
       '@sni/address-utils':
         specifier: workspace:*
         version: link:../../packages/address-utils
@@ -241,13 +241,13 @@ importers:
         version: link:../../packages/utils
       '@sveltejs/adapter-auto':
         specifier: 3.1.1
-        version: 3.1.1(@sveltejs/kit@2.5.3)
+        version: 3.1.1(@sveltejs/kit@2.5.4)
       '@sveltejs/adapter-vercel':
         specifier: 5.1.1
-        version: 5.1.1(@sveltejs/kit@2.5.3)
+        version: 5.1.1(@sveltejs/kit@2.5.4)
       '@sveltejs/kit':
-        specifier: 2.5.3
-        version: 2.5.3(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
+        specifier: 2.5.4
+        version: 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
       '@sveltejs/vite-plugin-svelte':
         specifier: 3.0.2
         version: 3.0.2(svelte@4.2.12)(vite@5.1.6)
@@ -271,10 +271,10 @@ importers:
         version: 0.6.2
       '@vercel/speed-insights':
         specifier: 1.0.10
-        version: 1.0.10(@sveltejs/kit@2.5.3)(react@18.2.0)(svelte@4.2.12)(vue@3.4.21)
+        version: 1.0.10(@sveltejs/kit@2.5.4)(react@18.2.0)(svelte@4.2.12)(vue@3.4.21)
       '@vite-pwa/sveltekit':
         specifier: 0.4.0
-        version: 0.4.0(@sveltejs/kit@2.5.3)(vite-plugin-pwa@0.19.2)
+        version: 0.4.0(@sveltejs/kit@2.5.4)(vite-plugin-pwa@0.19.2)
       '@wagmi/connectors':
         specifier: 4.1.14
         version: 4.1.14(@wagmi/core@2.6.5)(react-dom@18.2.0)(react-native@0.73.5)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.2)(viem@2.8.5)
@@ -3333,7 +3333,7 @@ packages:
       tsconfig-paths: 4.2.0
       tslib: 2.6.2
       typescript: 5.3.3
-      uWebSockets.js: github.com/uNetworking/uWebSockets.js/f40213ec0a97d0d8721d9d32d92d6eb6ddcd22e7
+      uWebSockets.js: github.com/uNetworking/uWebSockets.js/1977b5039938ad863d42fc4958d48c17e5a1fa06
       yargs: 17.7.2
     optionalDependencies:
       node-libcurl: 4.0.0
@@ -6435,7 +6435,7 @@ packages:
       svelte: 4.2.12
     dev: true
 
-  /@sentry/sveltekit@7.106.1(@sveltejs/kit@2.5.3)(svelte@4.2.12):
+  /@sentry/sveltekit@7.106.1(@sveltejs/kit@2.5.4)(svelte@4.2.12):
     resolution: {integrity: sha512-kekiihrHwzJAjCGnk+Vov6NuunszypM6Iva19CiYoq4Q23CluRkrN6S9AYjFy/bVAAcz4kM5lUwa0XyeCWR/Fw==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -6449,7 +6449,7 @@ packages:
       '@sentry/types': 7.106.1
       '@sentry/utils': 7.106.1
       '@sentry/vite-plugin': 0.6.1
-      '@sveltejs/kit': 2.5.3(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
+      '@sveltejs/kit': 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
       magicast: 0.2.8
       sorcery: 0.11.0
     transitivePeerDependencies:
@@ -6712,21 +6712,21 @@ packages:
       string.prototype.matchall: 4.0.10
     dev: true
 
-  /@sveltejs/adapter-auto@3.1.1(@sveltejs/kit@2.5.3):
+  /@sveltejs/adapter-auto@3.1.1(@sveltejs/kit@2.5.4):
     resolution: {integrity: sha512-6LeZft2Fo/4HfmLBi5CucMYmgRxgcETweQl/yQoZo/895K3S9YWYN4Sfm/IhwlIpbJp3QNvhKmwCHbsqQNYQpw==}
     peerDependencies:
       '@sveltejs/kit': ^2.0.0
     dependencies:
-      '@sveltejs/kit': 2.5.3(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
+      '@sveltejs/kit': 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
       import-meta-resolve: 4.0.0
     dev: true
 
-  /@sveltejs/adapter-vercel@5.1.1(@sveltejs/kit@2.5.3):
+  /@sveltejs/adapter-vercel@5.1.1(@sveltejs/kit@2.5.4):
     resolution: {integrity: sha512-OBb4/she4MCat+topk8x2EHXX2qX3Ju3xGumHCDtVq4zLEZ3LEomhht79jO+7Q1qia2bKk9o6hYEO0JLZjv7XQ==}
     peerDependencies:
       '@sveltejs/kit': ^2.4.0
     dependencies:
-      '@sveltejs/kit': 2.5.3(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
+      '@sveltejs/kit': 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
       '@vercel/nft': 0.26.4
       esbuild: 0.19.12
     transitivePeerDependencies:
@@ -6734,8 +6734,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit@2.5.3(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6):
-    resolution: {integrity: sha512-s6x7HBn/Fp+UNvyhJohjIA0FcJ+BWHGUDQ4PCg1D0EboUlvbimJQYchINu8G6sspLXYmlcsuNsp8bbcrRk85iw==}
+  /@sveltejs/kit@2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6):
+    resolution: {integrity: sha512-eDxK2d4EGzk99QsZNoPXe7jlzA5EGqfcCpUwZ912bhnalsZ2ZsG5wGRthkydupVjYyqdmzEanVKFhLxU2vkPSQ==}
     engines: {node: '>=18.13'}
     hasBin: true
     requiresBuild: true
@@ -7305,7 +7305,7 @@ packages:
       yoga-wasm-web: 0.3.3
     dev: true
 
-  /@vercel/speed-insights@1.0.10(@sveltejs/kit@2.5.3)(react@18.2.0)(svelte@4.2.12)(vue@3.4.21):
+  /@vercel/speed-insights@1.0.10(@sveltejs/kit@2.5.4)(react@18.2.0)(svelte@4.2.12)(vue@3.4.21):
     resolution: {integrity: sha512-4uzdKB0RW6Ff2FkzshzjZ+RlJfLPxgm/00i0XXgxfMPhwnnsk92YgtqsxT9OcPLdJUyVU1DqFlSWWjIQMPkh0g==}
     requiresBuild: true
     peerDependencies:
@@ -7329,7 +7329,7 @@ packages:
       vue-router:
         optional: true
     dependencies:
-      '@sveltejs/kit': 2.5.3(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
+      '@sveltejs/kit': 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
       react: 18.2.0
       svelte: 4.2.12
       vue: 3.4.21(typescript@5.4.2)
@@ -7377,7 +7377,7 @@ packages:
       is-function: 1.0.2
     dev: true
 
-  /@vite-pwa/sveltekit@0.4.0(@sveltejs/kit@2.5.3)(vite-plugin-pwa@0.19.2):
+  /@vite-pwa/sveltekit@0.4.0(@sveltejs/kit@2.5.4)(vite-plugin-pwa@0.19.2):
     resolution: {integrity: sha512-pzIH5ohlXwbadYbKqnRiMtDSGa5DvzUGCT2X34kAAsrg9QhL5jLCMqiWfST8zJMgtbt/k7k/vWBI/p6Pgk5DNg==}
     engines: {node: '>=16.14 || >=18.13'}
     peerDependencies:
@@ -7388,7 +7388,7 @@ packages:
       '@vite-pwa/assets-generator':
         optional: true
     dependencies:
-      '@sveltejs/kit': 2.5.3(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
+      '@sveltejs/kit': 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6)
       kolorist: 1.8.0
       vite-plugin-pwa: 0.19.2(vite@5.1.6)(workbox-build@7.0.0)(workbox-window@7.0.0)
     dev: true
@@ -16921,6 +16921,7 @@ packages:
 
   /proxy-compare@2.5.1:
     resolution: {integrity: sha512-oyfc0Tx87Cpwva5ZXezSp5V9vht1c7dZBhvuV/y3ctkgMVUmiAGDVeeB0dKhGSyT0v1ZTEQYpe/RXlBVBNuCLA==}
+    requiresBuild: true
     dev: true
 
   /proxy-compare@2.6.0:
@@ -21053,8 +21054,8 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: true
 
-  github.com/uNetworking/uWebSockets.js/f40213ec0a97d0d8721d9d32d92d6eb6ddcd22e7:
-    resolution: {tarball: https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/f40213ec0a97d0d8721d9d32d92d6eb6ddcd22e7}
+  github.com/uNetworking/uWebSockets.js/1977b5039938ad863d42fc4958d48c17e5a1fa06:
+    resolution: {tarball: https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/1977b5039938ad863d42fc4958d48c17e5a1fa06}
     name: uWebSockets.js
-    version: 20.42.0
+    version: 20.43.0
     dev: false
