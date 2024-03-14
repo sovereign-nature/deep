@@ -158,8 +158,8 @@ importers:
   apps/gateway:
     dependencies:
       '@graphql-mesh/cache-cfw-kv':
-        specifier: 0.97.0
-        version: 0.97.0(@graphql-mesh/types@0.97.3)(@graphql-mesh/utils@0.97.3)(graphql@16.8.1)(tslib@2.6.2)
+        specifier: 0.97.3
+        version: 0.97.3(@graphql-mesh/types@0.97.3)(@graphql-mesh/utils@0.97.3)(graphql@16.8.1)(tslib@2.6.2)
       '@graphql-mesh/cli':
         specifier: 0.89.0
         version: 0.89.0(@types/node@20.11.24)(graphql-tag@2.12.6)(graphql-yoga@5.1.1)(graphql@16.8.1)
@@ -3264,12 +3264,12 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@graphql-mesh/cache-cfw-kv@0.97.0(@graphql-mesh/types@0.97.3)(@graphql-mesh/utils@0.97.3)(graphql@16.8.1)(tslib@2.6.2):
-    resolution: {integrity: sha512-N2pYni68t5MHCPw0WbpaaE13MXIASRl7XmqmWWNl7md3OUWgYmIzcZKvpmjFqfepvL742PbHb3LQDyUPTXEivg==}
+  /@graphql-mesh/cache-cfw-kv@0.97.3(@graphql-mesh/types@0.97.3)(@graphql-mesh/utils@0.97.3)(graphql@16.8.1)(tslib@2.6.2):
+    resolution: {integrity: sha512-DVOKboqXuCMsyORMQuw6HuQsiH5KvSB6komLCMFs38a0/7BbOSOFSf5BKp4HQbPY/CAlyAMyVCSQN5pOD6XXXw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      '@graphql-mesh/types': ^0.97.0
-      '@graphql-mesh/utils': ^0.97.0
+      '@graphql-mesh/types': ^0.97.3
+      '@graphql-mesh/utils': ^0.97.3
       graphql: '*'
       tslib: ^2.4.0
     dependencies:
