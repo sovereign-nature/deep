@@ -1,6 +1,6 @@
 import { createWeb3Modal } from '@web3modal/wagmi';
 import { reconnect, watchAccount, signMessage } from '@wagmi/core';
-import { getContext, setContext } from 'svelte';
+import { setContext } from 'svelte';
 import { writable } from 'svelte/store';
 import { mainnet } from '@wagmi/core/chains';
 import { isDarkModePreferred } from '$lib/shared/utils';
@@ -11,19 +11,16 @@ import {
   wagmiConfig,
 } from '$lib/shared/web3Configs';
 
+export type Web3Modal = ReturnType<typeof createWeb3Modal>;
 let web3Modal: Web3Modal;
 
 // Stores
-export type Web3Modal = ReturnType<typeof createWeb3Modal>;
-const modal = writable<Web3Modal>(); //TODO: Can it be a singleton?
-
 const web3Connected = writable<boolean>(false);
 const web3Address = writable<string>();
 const web3ChainId = writable<number>();
 
 // Stores initialization
 export function initializeContext() {
-  setContext('web3Modal', modal);
   setContext('web3Connected', web3Connected);
   setContext('web3Address', web3Address);
   setContext('web3ChainId', web3ChainId);
@@ -39,7 +36,7 @@ export function initializeModal() {
     defaultChain: mainnet,
   });
 
-  modal.set(web3Modal);
+  console.log('web3Modal init', web3Modal);
 
   watchAccount(wagmiConfig, {
     onChange(account) {
@@ -82,6 +79,7 @@ export async function onSign(message: string) {
   return signature;
 }
 
-export function getWeb3Modal() {
-  return getContext('web3Modal') as ReturnType<typeof createWeb3Modal>;
+export function getWeb3Modal(): Web3Modal {
+  console.log('web3Modal getting', web3Modal);
+  return web3Modal;
 }
