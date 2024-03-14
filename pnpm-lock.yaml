@@ -173,8 +173,8 @@ importers:
         specifier: 0.97.0
         version: 0.97.0(@graphql-mesh/types@0.97.3)(@graphql-mesh/utils@0.97.3)(graphql@16.8.1)(tslib@2.6.2)
       '@graphql-mesh/plugin-response-cache':
-        specifier: 0.97.0
-        version: 0.97.0(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/types@0.97.3)(@graphql-mesh/utils@0.97.3)(graphql-yoga@5.1.1)(graphql@16.8.1)(tslib@2.6.2)
+        specifier: 0.97.3
+        version: 0.97.3(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/types@0.97.3)(@graphql-mesh/utils@0.97.3)(graphql-yoga@5.1.1)(graphql@16.8.1)(tslib@2.6.2)
       '@graphql-mesh/transform-resolvers-composition':
         specifier: 0.97.3
         version: 0.97.3(@graphql-mesh/types@0.97.3)(@graphql-mesh/utils@0.97.3)(graphql@16.8.1)(tslib@2.6.2)
@@ -3540,13 +3540,13 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@graphql-mesh/plugin-response-cache@0.97.0(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/types@0.97.3)(@graphql-mesh/utils@0.97.3)(graphql-yoga@5.1.1)(graphql@16.8.1)(tslib@2.6.2):
-    resolution: {integrity: sha512-CSkpIgH8SLja843nJ37MaQEBE2+tvI2fIKVn6t+0AEKk1dJbcB3WhtyyyJJDnfewxWaXt3qLwB5F8NsM/R1UBQ==}
+  /@graphql-mesh/plugin-response-cache@0.97.3(@graphql-mesh/cross-helpers@0.4.1)(@graphql-mesh/types@0.97.3)(@graphql-mesh/utils@0.97.3)(graphql-yoga@5.1.1)(graphql@16.8.1)(tslib@2.6.2):
+    resolution: {integrity: sha512-BHjCFTO87/vqQdzKkmE545rCYgJ3d39cRFx973hGN67LRZ0yKLQPV16aX0VGKnA3ld7ch/MI750cq5Now7DUrg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@graphql-mesh/cross-helpers': ^0.4.1
-      '@graphql-mesh/types': ^0.97.0
-      '@graphql-mesh/utils': ^0.97.0
+      '@graphql-mesh/types': ^0.97.3
+      '@graphql-mesh/utils': ^0.97.3
       graphql: '*'
       tslib: ^2.4.0
     dependencies:
