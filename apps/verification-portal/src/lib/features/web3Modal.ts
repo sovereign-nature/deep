@@ -19,6 +19,7 @@ const web3Connected = writable<boolean>(false);
 const web3Address = writable<string>();
 const web3ChainId = writable<number>();
 
+//TODO: Remove stores, infer state from web3Modal
 // Stores initialization
 export function initializeContext() {
   setContext('web3Connected', web3Connected);
