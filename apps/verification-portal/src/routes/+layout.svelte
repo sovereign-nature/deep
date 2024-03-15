@@ -12,7 +12,7 @@
   import { initializeInbox, setInboxContext } from '$lib/features/web3Inbox';
   import { browser } from '$app/environment';
   import Modal from '$lib/widgets/InboxModal/InboxModal.svelte';
-  import { Toaster } from '$lib/shared/components/ui/sonner';
+  import { Toaster } from '@sni/ui-kit';
 
   let isLoading = false;
 
@@ -42,7 +42,8 @@
   export let data;
 </script>
 
-<Toaster />
+<!-- <Toaster /> -->
+<Toaster.Custom mode={$themeStore} />
 {#if isLoading}
   <div
     class="fixed top-0 left-0 h-1 bg-primary-300 w-0 animate-loading-bar z-50"
