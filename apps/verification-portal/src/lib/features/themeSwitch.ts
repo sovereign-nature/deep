@@ -25,7 +25,7 @@ export function setTheme(value: Theme) {
     localStorage?.removeItem('color-theme');
     document.documentElement.classList.toggle('dark', isDarkModePreferred());
   } else {
-    localStorage?.setItem('color-theme', value);
+    localStorage?.setItem('color-theme', value ?? '');
     document.documentElement.classList.toggle('dark', value === 'dark');
   }
 

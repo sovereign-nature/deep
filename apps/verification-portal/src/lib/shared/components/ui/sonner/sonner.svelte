@@ -12,7 +12,6 @@
 <Sonner
   theme={$themeStore}
   class="toaster group custom-toast"
-  gap={5000}
   closeButton={true}
   toastOptions={{
     unstyled: true,

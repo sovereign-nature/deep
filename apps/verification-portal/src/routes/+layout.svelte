@@ -24,7 +24,7 @@
 
   afterNavigate(() => (isLoading = false));
 
-  $: modalHandleTheme($themeStore);
+  $: modalHandleTheme($themeStore ?? '');
 
   if (browser) {
     initializeContext();
@@ -36,7 +36,7 @@
     initializeInbox();
 
     //TODO: Do we need it twice?
-    modalHandleTheme($themeStore);
+    modalHandleTheme($themeStore ?? '');
   });
 
   export let data;
