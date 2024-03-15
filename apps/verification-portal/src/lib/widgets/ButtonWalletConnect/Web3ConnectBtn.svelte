@@ -7,7 +7,6 @@
   import ConnectIcon from '$lib/components/icons/ConnectIcon.svelte';
   import { getWeb3Modal } from '$lib/features/web3Modal';
 
-  const web3Modal = getWeb3Modal();
   let isLoaded = false;
   export let alwaysOpen = false;
 
@@ -15,15 +14,15 @@
   const web3Address: Writable<string> = getContext('web3Address');
   const web3ChainId: Writable<number> = getContext('web3ChainId');
 
-  function openModal(showNetworks = false) {
-    if (showNetworks === true) {
-      return $web3Modal.open({ view: 'Networks' }); //TODO: Possible bug in web3modal access
-    }
-    $web3Modal.open(); //TODO: Possible bug in web3modal access
+  function openModal() {
+    getWeb3Modal().open();
   }
+
+  //TODO: Move to utils
   function shortenAddress(address: string) {
     return address.replace(/^(.{4})(.*)(.{4})$/, '$1...$3');
   }
+
   onMount(async () => {
     isLoaded = true;
   });
@@ -54,7 +53,7 @@
     <RolloverBtn
       type="primary"
       keepOpen={alwaysOpen}
-      on:click={() => openModal(true)}
+      on:click={() => openModal()}
     >
       Connect your wallet
       <ConnectIcon slot="icon" className="h-4 w-4 mx-1" />
