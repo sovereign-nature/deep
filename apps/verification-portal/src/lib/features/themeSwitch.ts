@@ -1,17 +1,18 @@
 import { readable } from 'svelte/store';
 import { isDarkModePreferred } from '$lib/shared/utils';
+type Theme = 'light' | 'dark' | 'system' | undefined;
 
-function getInitialTheme(): string {
+function getInitialTheme(): Theme {
   if (typeof window !== 'undefined' && localStorage.getItem('color-theme')) {
-    return localStorage.getItem('color-theme') || 'system';
+    return (localStorage.getItem('color-theme') as Theme) || 'system';
   }
 
   return 'system';
 }
 
-let setThemeStore: (value: string) => void;
+let setThemeStore: (value: Theme) => void;
 
-export const themeStore = readable(getInitialTheme(), (set) => {
+export const themeStore = readable<Theme>(getInitialTheme(), (set) => {
   setThemeStore = set;
 
   set(getInitialTheme());
@@ -19,7 +20,7 @@ export const themeStore = readable(getInitialTheme(), (set) => {
   return () => {};
 });
 
-export function setTheme(value: string) {
+export function setTheme(value: Theme) {
   if (value === 'system') {
     localStorage?.removeItem('color-theme');
     document.documentElement.classList.toggle('dark', isDarkModePreferred());

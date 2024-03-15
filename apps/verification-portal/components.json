@@ -1,0 +1,12 @@
+{
+  "style": "new-york",
+  "tailwind": {
+    "config": "tailwind.config.cjs",
+    "css": "src/app.postcss",
+    "baseColor": "gray"
+  },
+  "aliases": {
+    "utils": "$lib/shared/utils.ts",
+    "components": "$lib/shared/components"
+  }
+}
