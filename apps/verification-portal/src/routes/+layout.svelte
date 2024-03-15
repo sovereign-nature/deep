@@ -12,6 +12,7 @@
   import { initializeInbox, setInboxContext } from '$lib/features/web3Inbox';
   import { browser } from '$app/environment';
   import Modal from '$lib/widgets/InboxModal/InboxModal.svelte';
+  import { Toaster } from '$lib/shared/components/ui/sonner';
 
   let isLoading = false;
 
@@ -23,7 +24,7 @@
 
   afterNavigate(() => (isLoading = false));
 
-  $: modalHandleTheme($themeStore);
+  $: modalHandleTheme($themeStore ?? '');
 
   if (browser) {
     initializeContext();
@@ -35,12 +36,13 @@
     initializeInbox();
 
     //TODO: Do we need it twice?
-    modalHandleTheme($themeStore);
+    modalHandleTheme($themeStore ?? '');
   });
 
   export let data;
 </script>
 
+<Toaster />
 {#if isLoading}
   <div
     class="fixed top-0 left-0 h-1 bg-primary-300 w-0 animate-loading-bar z-50"

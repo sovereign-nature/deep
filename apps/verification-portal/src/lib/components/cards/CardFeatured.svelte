@@ -1,12 +1,11 @@
 <script lang="ts">
   import NFTImage from '$lib/components/NFTImage.svelte';
   import type { DeepAsset } from '@sni/clients/assets-client/types';
+  import truncate from 'lodash/truncate';
   export let item: DeepAsset;
   let showId = item.tokenId !== undefined;
   const containerClass = showId ? 'sm:grid-cols-6' : 'sm:grid-cols-4';
   const titleClass = showId ? 'col-span-3 lg:col-span-4' : 'col-span-full';
-
-  import _ from 'lodash';
 </script>
 
 <div
@@ -38,7 +37,7 @@
           <p class="text-xs text-[#333333">Token Id:</p>
 
           <p class="sm:text-xl text-[#333333] font-serif">
-            {_.truncate(item.tokenId, { length: 8 })}
+            {truncate(item.tokenId, { length: 8 })}
           </p>
         </div>
       {/if}

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { Toggle } from 'flowbite-svelte';
+  import { toast } from 'svelte-sonner';
   import { browser } from '$app/environment';
   import config from '$lib/config/siteConfigs';
   import type { FeaturesConfig } from '$lib/types';
@@ -64,6 +65,59 @@
           >
         {/key}
       {/each}
+    </div>
+  </div>
+  <div class="pt-10 max-w-xl mx-5">
+    <h2 class="text-xl font-semibold">Test features</h2>
+    <hr class="my-4" />
+    <div>
+      <h3>Toast</h3>
+      <div class="flex gap-4 flex-wrap">
+        <button
+          class="p-2 bg-primary-300 text-black rounded-xl"
+          on:click={() => toast('Hello world')}>Show toast</button
+        >
+        <button
+          class="p-2 bg-primary-300 text-black rounded-xl"
+          on:click={() => toast.success('Your settings have been saved')}
+          >Success</button
+        >
+
+        <button
+          class="p-2 bg-primary-300 text-black rounded-xl"
+          on:click={() => toast.warning('Warning action')}>Warning</button
+        >
+        <button
+          class="p-2 bg-primary-300 text-black rounded-xl"
+          on:click={() => toast.error('Item has been deleted')}
+          >Error/Delete
+        </button>
+        <button
+          class="p-2 bg-primary-300 text-black rounded-xl"
+          on:click={() =>
+            toast.info('Useful info', { description: 'More info here' })}
+          >Info</button
+        >
+        <button
+          class="p-2 bg-primary-300 text-black rounded-xl"
+          on:click={() =>
+            toast.success('Long Description', {
+              description:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta optio recusandae, voluptate velit perferendis officiis ea temporibus repudiandae dolor quisquam. Quas sequi expedita nostrum excepturi quae esse aut provident facere.',
+            })}>Long Description</button
+        >
+
+        <button
+          class="p-2 bg-primary-300 text-black rounded-xl"
+          on:click={() =>
+            toast.success('The item has been created', {
+              action: {
+                label: 'See item',
+                onClick: () => console.log('Toast Action'),
+              },
+            })}>With action</button
+        >
+      </div>
     </div>
   </div>
 </div>
