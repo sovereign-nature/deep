@@ -4,6 +4,7 @@
 </script>
 
 <div class="flex min-h-screen flex-col items-center justify-start pt-16 dark:text-white">
+	<h1>Ui-kit library</h1>
 	<Carousel.Root
 		opts={{
 			align: 'start'
