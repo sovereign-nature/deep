@@ -194,8 +194,8 @@ importers:
         specifier: 10.4.18
         version: 10.4.18(postcss@8.4.35)
       date-fns:
-        specifier: 3.5.0
-        version: 3.5.0
+        specifier: 3.6.0
+        version: 3.6.0
       flowbite:
         specifier: 2.3.0
         version: 2.3.0
@@ -7034,8 +7034,8 @@ packages:
       '@babel/runtime': 7.24.0
     dev: true
 
-  /date-fns@3.5.0:
-    resolution: {integrity: sha512-a+DwyXn7NOfdJireCzAA0B9p7jIXEu/Q9JKCyMYvH6+0vPUNbQceA0neXrdfJ/xzl3mhOh5vibQQ3936Tssm6A==}
+  /date-fns@3.6.0:
+    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
     dev: true
 
   /dayjs@1.11.10:
