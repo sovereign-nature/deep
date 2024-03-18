@@ -7,11 +7,11 @@
   import ConnectIcon from '$lib/components/icons/ConnectIcon.svelte';
   import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
-  export let collectionKey = 'sub0';
+  export let collectionAddress: string;
   export let placeholder = 'Enter the token ID (1-1466)';
   export let goIcon = false;
   export let inputmode = 'text';
-  export let web3enabled = false;
+  export let web3Enabled = false;
   export let searchEnabled = true;
 
   import Web3ConnectBtn from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
@@ -30,7 +30,7 @@
   <div
     class="flex gap-2 items-baseline justify-end text-white whitespace-nowrap mr-auto text-sm sm:text-base w-full sm:w-auto md:w-1/2 pe-5 mb-3 md:mb-0"
   >
-    {#if web3enabled}
+    {#if web3Enabled}
       {#if showButton}
         {#if $web3Connected}
           <span class="ms-3">Connected to</span>
@@ -52,7 +52,7 @@
   <form class="w-full sm:w-auto md:w-1/2" method="POST" use:enhance>
     <input
       name="collection"
-      value={collectionKey}
+      value={collectionAddress}
       type="text"
       readonly
       hidden

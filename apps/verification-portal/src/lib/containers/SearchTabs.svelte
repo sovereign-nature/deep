@@ -60,7 +60,10 @@
   <!-- TODO: Refactor Web3Connection to store -->
   {#each collections as collection}
     {#if collection.web3}
-      <Web3Connection collectionAddress={collection.collectionAddress}>
+      <Web3Connection
+        collectionAddress={collection.collectionAddress}
+        web3Enabled={collection.web3.web3Enabled}
+      >
         <TabItem
           title={$LL[collection.key].collectionName()}
           open={activeTab === collection.key}
@@ -71,9 +74,9 @@
           on:click={() => updateQueryParams('q', collection.key)}
         >
           <Web3SearchInput
-            web3enabled={collection.web3.walletEnabled}
+            web3Enabled={collection.web3.web3Enabled}
             searchEnabled={collection.searchInput.searchEnabled}
-            collectionKey={collection.key}
+            collectionAddress={collection.collectionAddress}
             goIcon
             inputmode={collection.searchInput.inputMode
               ? collection.searchInput.inputMode
@@ -88,12 +91,14 @@
           <Web3Assets
             collectionName={$LL[collection.key].collectionName()}
             {highlights}
-            web3enabled={collection.web3.walletEnabled}
+            web3Enabled={collection.web3.web3Enabled}
           />
         </TabItem>
       </Web3Connection>
-    {:else}
-      <Web2SearchContainer collectionAddress={collection.collectionAddress}>
+    {:else if collection.web2}
+      <Web2SearchContainer
+        directusCollectionId={collection.web2.directusCollectionId}
+      >
         <TabItem
           title={$LL[collection.key].collectionName()}
           open={activeTab === collection.key}

@@ -5,9 +5,13 @@ interface TabConfig {
 interface Collection {
   key: CollectionKeys; //used for tab query params and translations
   collectionAddress: string;
+  directusCollectionId?: string;
   web3?: {
     source: string;
-    walletEnabled: boolean;
+    web3Enabled: boolean;
+  };
+  web2?: {
+    directusCollectionId: string;
   };
   searchInput: {
     searchEnabled: boolean;
@@ -23,8 +27,9 @@ export const tabConfig: TabConfig = {
 export const collections: Collection[] = [
   {
     key: 'soundwaves',
-    collectionAddress: '0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78',
-    web3: { source: 'arbitrum', walletEnabled: true },
+    collectionAddress:
+      'did:asset:eip155:42161.erc721:0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78',
+    web3: { source: 'arbitrum', web3Enabled: true },
     searchInput: {
       searchEnabled: true,
       inputMode: 'numeric',
@@ -32,17 +37,18 @@ export const collections: Collection[] = [
   },
   {
     key: 'wildsama',
-    collectionAddress: '0xdd0a0a15efc11930354b3e1eb1a62a87bf9abf30',
-    web3: { source: 'moonsama', walletEnabled: false },
+    collectionAddress:
+      'did:asset:eip155:2199.erc721:0xdd0a0a15efc11930354b3e1eb1a62a87bf9abf30',
+    web3: { source: 'moonsama', web3Enabled: false },
     searchInput: {
       searchEnabled: false,
-      inputMode: 'numeric',
+      inputMode: 'text',
     },
   },
   {
     key: 'sub0',
-    collectionAddress: 'sub0',
-    web3: { source: 'polkadot', walletEnabled: false },
+    collectionAddress: 'did:asset:deep:polkadot.asset-hub:13',
+    web3: { source: 'polkadot', web3Enabled: false },
     searchInput: {
       searchEnabled: true,
       customPlaceholder: true,
@@ -50,7 +56,8 @@ export const collections: Collection[] = [
   },
   {
     key: 'hh',
-    collectionAddress: 'hotel_hideaway',
+    collectionAddress: 'did:asset:deep:hotel-hideaway.asset',
+    web2: { directusCollectionId: 'hotel_hideaway' },
     searchInput: {
       searchEnabled: true,
     },

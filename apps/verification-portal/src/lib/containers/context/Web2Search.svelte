@@ -6,7 +6,7 @@
   import { page } from '$app/stores';
   import type { DeepAsset } from '@sni/clients/assets-client/types';
 
-  export let collectionAddress = 'hotel_hideaway';
+  export let directusCollectionId: string;
 
   const url = $page.url;
   const searchParams = url.searchParams.get('search') || '';
@@ -64,7 +64,7 @@
   onMount(async () => {
     try {
       const response = await fetch(
-        `${directusUrl}/items/${collectionAddress}?filter[status][_eq]=published`
+        `${directusUrl}/items/${directusCollectionId}?filter[status][_eq]=published`
       );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

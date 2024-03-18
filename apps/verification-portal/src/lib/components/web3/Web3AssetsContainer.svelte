@@ -10,7 +10,7 @@
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import Web3Notifications from '$lib/widgets/ButtonInboxConnect/Web3Notifications.svelte';
 
-  export let web3enabled = false;
+  export let web3Enabled = false;
   export let collectionName: string;
   export let highlights: DeepAsset[] = [];
   const web3Items: Writable<DeepAsset[]> = getContext('web3Items');
@@ -19,7 +19,7 @@
 </script>
 
 {#key $web3Connected}
-  {#if web3enabled && $web3Connected}
+  {#if web3Enabled && $web3Connected}
     <div id="search-results" class="">
       {#if $web3Connected && !$web3Response.loaded}
         <div class="flex flex-row justify-between mt-16 text-white">
