@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js.js';
+	import { cn } from '$lib/utils.js';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { getEmblaContext } from './context.js';
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
