@@ -17,18 +17,33 @@ const en: BaseTranslation = {
     errorMessage:
       'Uh-oh! It looks like a hiccup in the wild! 🐾 \n Please lend a paw by refreshing the page and trying again.',
   },
-
+  web2: {
+    search: {
+      label: 'Search for your asset',
+      placeholder: 'Asset name',
+    },
+  },
+  web3: {
+    search: {
+      placeholder: 'Find by token ID',
+    },
+  },
+  //collections
   sub0: {
     collectionName: 'sub0 Biodiversity',
-    placeholder: 'Find by token ID (1-1466)',
+    searchPlaceholder: 'Find by token ID (1-1466)',
   },
   soundwaves: {
     collectionName: 'Soundwaves',
-    placeholder: 'Find by token ID',
+    searchPlaceholder: '',
+  },
+  hh: {
+    collectionName: 'Hotel Hideaway',
+    searchPlaceholder: '',
   },
   wildsama: {
     collectionName: 'Wildsama',
-    placeholder: 'Find by token ID',
+    searchPlaceholder: '',
   },
   wallet: {
     assetsFor: 'Showing your ',
@@ -58,12 +73,7 @@ const en: BaseTranslation = {
     titleNewTab: 'New',
     titleArchiveTab: 'Archive',
   },
-  web2: {
-    search: {
-      label: 'Search for your asset',
-      placeholder: 'Asset name',
-    },
-  },
+
   assets: {
     title: 'REAL by SNI | {assetName: string}',
     intro: {

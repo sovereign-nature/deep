@@ -59,6 +59,26 @@ type RootTranslation = {
 		 */
 		errorMessage: string
 	}
+	web2: {
+		search: {
+			/**
+			 * S​e​a​r​c​h​ ​f​o​r​ ​y​o​u​r​ ​a​s​s​e​t
+			 */
+			label: string
+			/**
+			 * A​s​s​e​t​ ​n​a​m​e
+			 */
+			placeholder: string
+		}
+	}
+	web3: {
+		search: {
+			/**
+			 * F​i​n​d​ ​b​y​ ​t​o​k​e​n​ ​I​D
+			 */
+			placeholder: string
+		}
+	}
 	sub0: {
 		/**
 		 * s​u​b​0​ ​B​i​o​d​i​v​e​r​s​i​t​y
@@ -67,27 +87,28 @@ type RootTranslation = {
 		/**
 		 * F​i​n​d​ ​b​y​ ​t​o​k​e​n​ ​I​D​ ​(​1​-​1​4​6​6​)
 		 */
-		placeholder: string
+		searchPlaceholder: string
 	}
 	soundwaves: {
 		/**
 		 * S​o​u​n​d​w​a​v​e​s
 		 */
 		collectionName: string
+		searchPlaceholder: string
+	}
+	hh: {
 		/**
-		 * F​i​n​d​ ​b​y​ ​t​o​k​e​n​ ​I​D
+		 * H​o​t​e​l​ ​H​i​d​e​a​w​a​y
 		 */
-		placeholder: string
+		collectionName: string
+		searchPlaceholder: string
 	}
 	wildsama: {
 		/**
 		 * W​i​l​d​s​a​m​a
 		 */
 		collectionName: string
-		/**
-		 * F​i​n​d​ ​b​y​ ​t​o​k​e​n​ ​I​D
-		 */
-		placeholder: string
+		searchPlaceholder: string
 	}
 	wallet: {
 		/**
@@ -183,18 +204,6 @@ type RootTranslation = {
 		 * A​r​c​h​i​v​e
 		 */
 		titleArchiveTab: string
-	}
-	web2: {
-		search: {
-			/**
-			 * S​e​a​r​c​h​ ​f​o​r​ ​y​o​u​r​ ​a​s​s​e​t
-			 */
-			label: string
-			/**
-			 * A​s​s​e​t​ ​n​a​m​e
-			 */
-			placeholder: string
-		}
 	}
 	assets: {
 		/**
@@ -417,6 +426,26 @@ export type TranslationFunctions = {
 		 */
 		errorMessage: () => LocalizedString
 	}
+	web2: {
+		search: {
+			/**
+			 * Search for your asset
+			 */
+			label: () => LocalizedString
+			/**
+			 * Asset name
+			 */
+			placeholder: () => LocalizedString
+		}
+	}
+	web3: {
+		search: {
+			/**
+			 * Find by token ID
+			 */
+			placeholder: () => LocalizedString
+		}
+	}
 	sub0: {
 		/**
 		 * sub0 Biodiversity
@@ -425,27 +454,28 @@ export type TranslationFunctions = {
 		/**
 		 * Find by token ID (1-1466)
 		 */
-		placeholder: () => LocalizedString
+		searchPlaceholder: () => LocalizedString
 	}
 	soundwaves: {
 		/**
 		 * Soundwaves
 		 */
 		collectionName: () => LocalizedString
+		searchPlaceholder: () => LocalizedString
+	}
+	hh: {
 		/**
-		 * Find by token ID
+		 * Hotel Hideaway
 		 */
-		placeholder: () => LocalizedString
+		collectionName: () => LocalizedString
+		searchPlaceholder: () => LocalizedString
 	}
 	wildsama: {
 		/**
 		 * Wildsama
 		 */
 		collectionName: () => LocalizedString
-		/**
-		 * Find by token ID
-		 */
-		placeholder: () => LocalizedString
+		searchPlaceholder: () => LocalizedString
 	}
 	wallet: {
 		/**
@@ -535,18 +565,6 @@ export type TranslationFunctions = {
 		 * Archive
 		 */
 		titleArchiveTab: () => LocalizedString
-	}
-	web2: {
-		search: {
-			/**
-			 * Search for your asset
-			 */
-			label: () => LocalizedString
-			/**
-			 * Asset name
-			 */
-			placeholder: () => LocalizedString
-		}
 	}
 	assets: {
 		/**

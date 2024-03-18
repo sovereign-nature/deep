@@ -4,7 +4,8 @@
   import { updateQueryParams } from '$lib/shared/utils';
   import { page } from '$app/stores';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-
+  import { tabConfig, collections } from '$lib/shared/collectionsConfig';
+  import type { CollectionKeys } from '$lib/shared/collectionsConfig';
   import SearchResults from '$lib/components/search/Web2SearchResults.svelte';
   import Web2SearchContainer from '$lib/containers/context/Web2Search.svelte';
   import Web2SearchInput from '$lib/components/search/Web2SearchInput.svelte';
@@ -15,7 +16,7 @@
 
   const url = $page.url;
 
-  let activeTab = 'soundwaves';
+  let activeTab: CollectionKeys = tabConfig.activeKey;
   export let highlights: DeepAsset[] = [];
 
   // tab classes
@@ -31,7 +32,11 @@
   onMount(() => {
     const qValue = url.searchParams.get('q');
     if (qValue) {
-      activeTab = ['hh', 'sub0', 'soundwaves'].includes(qValue) ? qValue : 'hh';
+      activeTab = collections
+        .map((collection) => collection.key)
+        .includes(qValue as CollectionKeys)
+        ? (qValue as CollectionKeys)
+        : tabConfig.activeKey;
     }
   });
 </script>
@@ -52,87 +57,67 @@
     {$LL.collection()}
   </h2>
 
-  <!-- TODO: Unify Web3 tabs architecture -->
-  <!-- TODO: Rename to collectionAddress -->
-  <Web3Connection collectionId="0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78">
-    <TabItem
-      title={$LL.soundwaves.collectionName()}
-      open={activeTab === 'soundwaves'}
-      class={tabClass}
-      defaultClass={classDefault}
-      inactiveClasses={classInactive}
-      activeClasses={classActive}
-      on:click={() => updateQueryParams('q', 'soundwaves')}
-    >
-      <Web3SearchInput
-        web3enabled
-        collection="soundwaves"
-        goIcon
-        inputmode="numeric"
-        placeholder={$LL.soundwaves.placeholder()}
-        searchEnabled={true}
-      />
-      <Web3Assets
-        collectionName={$LL.soundwaves.collectionName()}
-        {highlights}
-        web3enabled
-      />
-    </TabItem>
-  </Web3Connection>
-  <Web3Connection collectionId="0xdd0a0a15efc11930354b3e1eb1a62a87bf9abf30">
-    <TabItem
-      title={$LL.wildsama.collectionName()}
-      open={activeTab === 'wildsama'}
-      class={tabClass}
-      defaultClass={classDefault}
-      inactiveClasses={classInactive}
-      activeClasses={classActive}
-      on:click={() => updateQueryParams('q', 'wildsama')}
-    >
-      <Web3SearchInput
-        web3enabled={false}
-        collection="wildsama"
-        goIcon
-        inputmode="numeric"
-        placeholder={$LL.wildsama.placeholder()}
-        searchEnabled={false}
-      />
-      <Web3Assets
-        collectionName={$LL.wildsama.collectionName()}
-        {highlights}
-        web3enabled
-      />
-    </TabItem>
-  </Web3Connection>
-  <TabItem
-    title="{$LL.sub0.collectionName()} "
-    open={activeTab === 'sub0'}
-    class={tabClass}
-    defaultClass={classDefault}
-    inactiveClasses={classInactive}
-    activeClasses={classActive}
-    on:click={() => updateQueryParams('q', 'sub0')}
-  >
-    <Web3SearchInput
-      collection="sub0"
-      goIcon
-      inputmode="numeric"
-      placeholder={$LL.sub0.placeholder()}
-    />
-    <Web3Assets collectionName={$LL.sub0.collectionName()} {highlights} />
-  </TabItem>
-  <Web2SearchContainer campaign="hotel_hideaway">
-    <TabItem
-      title="Hotel Hideaway"
-      open={activeTab === 'hh'}
-      class={tabClass}
-      defaultClass={classDefault}
-      inactiveClasses={classInactive}
-      activeClasses={classActive}
-      on:click={() => updateQueryParams('q', 'hh')}
-    >
-      <Web2SearchInput placeholder={$LL.web2.search.placeholder()} />
-      <SearchResults {highlights} />
-    </TabItem>
-  </Web2SearchContainer>
+  <!-- TODO: Refactor Web3Connection to store -->
+  {#each collections as collection}
+    {#if collection.web3}
+      <Web3Connection collectionAddress={collection.collectionAddress}>
+        <TabItem
+          title={$LL[collection.key].collectionName()}
+          open={activeTab === collection.key}
+          class={tabClass}
+          defaultClass={classDefault}
+          inactiveClasses={classInactive}
+          activeClasses={classActive}
+          on:click={() => updateQueryParams('q', collection.key)}
+        >
+          <Web3SearchInput
+            web3enabled={collection.web3.walletEnabled}
+            searchEnabled={collection.searchInput.searchEnabled}
+            collectionKey={collection.key}
+            goIcon
+            inputmode={collection.searchInput.inputMode
+              ? collection.searchInput.inputMode
+              : 'text'}
+            placeholder={collection.searchInput.customPlaceholder
+              ? $LL[collection.key].searchPlaceholder() &&
+                $LL[collection.key].searchPlaceholder().length > 0
+                ? $LL[collection.key].searchPlaceholder()
+                : $LL.web3.search.placeholder()
+              : $LL.web3.search.placeholder()}
+          />
+          <Web3Assets
+            collectionName={$LL[collection.key].collectionName()}
+            {highlights}
+            web3enabled={collection.web3.walletEnabled}
+          />
+        </TabItem>
+      </Web3Connection>
+    {:else}
+      <Web2SearchContainer collectionAddress={collection.collectionAddress}>
+        <TabItem
+          title={$LL[collection.key].collectionName()}
+          open={activeTab === collection.key}
+          class={tabClass}
+          defaultClass={classDefault}
+          inactiveClasses={classInactive}
+          activeClasses={classActive}
+          on:click={() => updateQueryParams('q', collection.key)}
+        >
+          <Web2SearchInput
+            searchEnabled={collection.searchInput.searchEnabled}
+            placeholder={collection.searchInput.customPlaceholder
+              ? $LL[collection.key].searchPlaceholder() &&
+                $LL[collection.key].searchPlaceholder().length > 0
+                ? $LL[collection.key].searchPlaceholder()
+                : $LL.web2.search.placeholder()
+              : $LL.web2.search.placeholder()}
+            inputmode={collection.searchInput.inputMode
+              ? collection.searchInput.inputMode
+              : 'text'}
+          />
+          <SearchResults {highlights} />
+        </TabItem>
+      </Web2SearchContainer>
+    {/if}
+  {/each}
 </Tabs>

@@ -5,7 +5,8 @@
   import type { DeepAsset } from '@sni/clients/assets-client/types';
   import type { Web3DataState } from '$lib/types';
 
-  export let collectionId: string;
+  export let collectionAddress: string;
+  export let walletEnabled = true;
 
   const web3DataState: Web3DataState = {
     loaded: false,
@@ -27,11 +28,11 @@
   $: $web3Address, getWeb3Assets();
 
   async function getWeb3Assets() {
-    if ($web3Connected) {
+    if ($web3Connected && walletEnabled) {
       web3Response.set({ loaded: false, error: false });
       try {
         const response = await fetch(
-          `/api/nftscan?collection=${collectionId}&address=${$web3Address}`
+          `/api/nftscan?collection=${collectionAddress}&address=${$web3Address}`
         );
         if (!response.ok) throw new Error('Failed to fetch data');
         const data = await response.json();
