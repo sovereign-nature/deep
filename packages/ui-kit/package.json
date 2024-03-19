@@ -48,7 +48,7 @@
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
 		"prettier-plugin-tailwindcss": "^0.5.9",
-		"publint": "^0.1.9",
+		"publint": "^0.2.0",
 		"shadcn-svelte": "^0.8.2",
 		"sonner": "^1.4.3",
 		"svelte": "^4.2.7",
