@@ -315,8 +315,8 @@ importers:
   packages/ui-kit:
     dependencies:
       bits-ui:
-        specifier: ^0.19.7
-        version: 0.19.7(svelte@4.2.12)
+        specifier: 0.20.0
+        version: 0.20.0(svelte@4.2.12)
       clsx:
         specifier: ^2.1.0
         version: 2.1.0
@@ -330,8 +330,8 @@ importers:
         specifier: ^0.3.19
         version: 0.3.19(svelte@4.2.12)
       tailwind-merge:
-        specifier: ^2.2.1
-        version: 2.2.1
+        specifier: 2.2.2
+        version: 2.2.2
       tailwind-variants:
         specifier: ^0.2.1
         version: 0.2.1(tailwindcss@3.4.1)
@@ -6629,8 +6629,8 @@ packages:
       file-uri-to-path: 1.0.0
     dev: true
 
-  /bits-ui@0.19.7(svelte@4.2.12):
-    resolution: {integrity: sha512-GHUpKvN7QyazhnZNkUy0lxg6W1M6KJHWSZ4a/UGCjPE6nQgk6vKbGysY67PkDtQMknZTZAzVoMj1Eic4IKeCRQ==}
+  /bits-ui@0.20.0(svelte@4.2.12):
+    resolution: {integrity: sha512-cAQHnVV4anto6zrtTHGDa/Rxjhp2sFdCL1zLoqOvQIW8cJ5iz9V0+pKvi439pi5zllALM7WosXEz2E8twA50qA==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
@@ -13234,6 +13234,13 @@ packages:
     resolution: {integrity: sha512-o+2GTLkthfa5YUt4JxPfzMIpQzZ3adD1vLVkvKE1Twl9UAhGsEbIZhHHZVRttyW177S8PDJI3bTQNaebyofK3Q==}
     dependencies:
       '@babel/runtime': 7.24.0
+    dev: true
+
+  /tailwind-merge@2.2.2:
+    resolution: {integrity: sha512-tWANXsnmJzgw6mQ07nE3aCDkCK4QdT3ThPMCzawoYA2Pws7vSTCvz3Vrjg61jVUGfFZPJzxEP+NimbcW+EdaDw==}
+    dependencies:
+      '@babel/runtime': 7.24.0
+    dev: false
 
   /tailwind-variants@0.2.1(tailwindcss@3.4.1):
     resolution: {integrity: sha512-2xmhAf4UIc3PijOUcJPA1LP4AbxhpcHuHM2C26xM0k81r0maAO6uoUSHl3APmvHZcY5cZCY/bYuJdfFa4eGoaw==}
@@ -13241,7 +13248,7 @@ packages:
     peerDependencies:
       tailwindcss: '*'
     dependencies:
-      tailwind-merge: 2.2.1
+      tailwind-merge: 2.2.2
       tailwindcss: 3.4.1
     dev: false
 
