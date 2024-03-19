@@ -84,8 +84,6 @@ export type Web3DataState = {
   error: boolean;
 };
 
-export type CollectionKey = 'sub0' | 'hh';
-
 export type FeaturesConfig = {
   [key: string]: boolean;
 };

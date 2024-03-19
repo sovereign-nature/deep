@@ -156,3 +156,8 @@ export function parseDID(did: string) {
 
   return { networkId, assetId, tokenId };
 }
+
+export function getCollectionFromAddress(did: string): string {
+  const parts = did.split(':');
+  return parts[parts.length - 1];
+}

@@ -7,7 +7,8 @@
   import { LL } from '$lib/shared/i18n/i18n-svelte';
 
   export let placeholder = $LL.web2.search.placeholder();
-  export const inputmode = 'search';
+  export let inputmode = 'text';
+  export let searchEnabled = true;
 
   // Retrieve user store from context
   const search: Writable<string> = getContext('search');
@@ -66,6 +67,8 @@
         on:keyup={onEnter}
         class="block border-none w-full border p-4 pl-10 text-sm sm:text-base font-aeonik text-gray-200 focus:border-white focus:ring-white dark:placeholder:text-primary-300 dark:bg-deep-green-700 rounded-sm !rounded-l-sm sm:rounded-none  ms-auto"
         {placeholder}
+        {inputmode}
+        disabled={!searchEnabled}
         type="search"
         required
       />

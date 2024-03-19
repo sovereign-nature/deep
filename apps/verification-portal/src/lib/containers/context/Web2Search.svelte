@@ -1,6 +1,4 @@
 <script lang="ts">
-  import axios from 'axios';
-  import type { AxiosResponse } from 'axios';
   import Fuse, { type FuseResult } from 'fuse.js';
   import { writable } from 'svelte/store';
   import { onMount, setContext } from 'svelte';
@@ -8,7 +6,7 @@
   import { page } from '$app/stores';
   import type { DeepAsset } from '@sni/clients/assets-client/types';
 
-  export let campaign = 'hotel_hideaway';
+  export let directusCollectionId: string;
 
   const url = $page.url;
   const searchParams = url.searchParams.get('search') || '';
@@ -65,11 +63,14 @@
 
   onMount(async () => {
     try {
-      //TODO: Remove axios and migrate to fetch
-      const { data: response }: AxiosResponse = await axios.get(
-        `${directusUrl}/items/${campaign}?filter[status][_eq]=published` //TODO: move to directus client
+      const response = await fetch(
+        `${directusUrl}/items/${directusCollectionId}?filter[status][_eq]=published`
       );
-      handleDataLoaded(response.data);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      handleDataLoaded(data.data);
     } catch (e) {
       handleDataLoaded([], true);
       console.error((e as Error).message);
