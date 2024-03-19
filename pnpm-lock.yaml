@@ -188,8 +188,8 @@ importers:
         specifier: 2.6.9
         version: 2.6.9(react@18.2.0)(typescript@5.4.2)(viem@2.8.13)
       '@web3inbox/core':
-        specifier: 1.2.0
-        version: 1.2.0(react@18.2.0)
+        specifier: 1.2.1
+        version: 1.2.1(react@18.2.0)
       '@web3modal/wagmi':
         specifier: 4.1.1
         version: 4.1.1(@wagmi/connectors@4.1.14)(@wagmi/core@2.6.9)(@web3modal/wallet@4.1.1)(typescript@5.4.2)(viem@2.8.13)
@@ -5817,8 +5817,8 @@ packages:
       tslib: 1.14.1
     dev: true
 
-  /@web3inbox/core@1.2.0(react@18.2.0):
-    resolution: {integrity: sha512-sICpEW935rFacI8EmMgXhwdIumA4qP1d0yvIxbwI8Cp1N30qzw1W5EShJCiVyOkRAP7gK9k2VfQRjgAR2dupFg==}
+  /@web3inbox/core@1.2.1(react@18.2.0):
+    resolution: {integrity: sha512-eon3IJAkTTC69afq0SfZYHdKHbBkKZxUBxtosCz+8wupXxvcbdphUbSL4JnCi0CDG+tJWKfpouqavSeLxwwOxw==}
     dependencies:
       '@walletconnect/core': 2.11.0
       '@walletconnect/notify-client': 1.1.3
