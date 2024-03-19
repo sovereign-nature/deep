@@ -42,6 +42,6 @@ export const wagmiConfig = defaultWagmiConfig({
   chains,
   metadata,
   enableEmail: true,
-  enableCoinbase: false,
+  enableCoinbase: true,
   enableWalletConnect: false,
 });
