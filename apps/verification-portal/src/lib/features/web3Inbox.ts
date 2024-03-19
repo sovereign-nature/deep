@@ -7,6 +7,8 @@ import type { NotifyClientTypes } from '@walletconnect/notify-client';
 import { Web3InboxClient } from '@web3inbox/core';
 import { getAccount } from '@wagmi/core';
 import { projectId, wagmiConfig } from '$lib/shared/web3Configs';
+import * as Sentry from '@sentry/sveltekit';
+import { toast } from 'svelte-sonner';
 
 const domain = 'real.sovereignnature.com';
 const isLimited = process.env.NODE_ENV === 'production';
@@ -133,6 +135,8 @@ export async function registerInbox() {
     .catch((error) => {
       console.error('Error registering inbox:', error);
       web3InboxEnabling.set(false);
+      Sentry.captureException(error);
+      toast.error('Sorry there was a problem registering the Web3Inbox');
     });
 }
 async function checkIfRegistered(account: string) {
