@@ -28,7 +28,6 @@ const collections = {
       'hippopotamus-beanie',
       'zebra-onesie-hood',
       'upemba-mud-turtle-shell',
-      'hippopotamus-beanie',
       'park-ranger-uniform',
       'zebra-mohawk',
       'upemba-mud-turtle-mask',
