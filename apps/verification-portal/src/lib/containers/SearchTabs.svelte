@@ -1,6 +1,7 @@
 <script lang="ts">
   import { TabItem, Tabs } from 'flowbite-svelte';
   import { onMount } from 'svelte';
+  import { afterNavigate } from '$app/navigation';
   import { updateQueryParams } from '$lib/shared/utils';
   import { page } from '$app/stores';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
@@ -29,6 +30,10 @@
 
   let tabClass = '';
 
+  function updateActive(key: CollectionKeys) {
+    activeTab = key;
+    updateQueryParams('q', key);
+  }
   onMount(() => {
     const qValue = url.searchParams.get('q');
     if (qValue) {
@@ -37,6 +42,12 @@
         .includes(qValue as CollectionKeys)
         ? (qValue as CollectionKeys)
         : tabConfig.activeKey;
+    }
+  });
+  afterNavigate(() => {
+    const checkQ = $page.url.searchParams.get('q');
+    if (checkQ === null) {
+      activeTab = tabConfig.activeKey;
     }
   });
 </script>
@@ -71,7 +82,7 @@
           defaultClass={classDefault}
           inactiveClasses={classInactive}
           activeClasses={classActive}
-          on:click={() => updateQueryParams('q', collection.key)}
+          on:click={() => updateActive(collection.key)}
         >
           <Web3SearchInput
             web3Enabled={collection.web3.web3Enabled}
@@ -106,7 +117,7 @@
           defaultClass={classDefault}
           inactiveClasses={classInactive}
           activeClasses={classActive}
-          on:click={() => updateQueryParams('q', collection.key)}
+          on:click={() => updateActive(collection.key)}
         >
           <Web2SearchInput
             searchEnabled={collection.searchInput.searchEnabled}
