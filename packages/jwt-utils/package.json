@@ -1,0 +1,16 @@
+{
+  "name": "@sni/jwt-utils",
+  "version": "0.0.0",
+  "license": "GPL-3.0",
+  "type": "module",
+  "scripts": {
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@types/jsonwebtoken": "^9.0.6",
+    "jsonwebtoken": "9.0.2"
+  },
+  "devDependencies": {
+    "vitest": "1.4.0"
+  }
+}
