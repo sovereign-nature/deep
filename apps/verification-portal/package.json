@@ -55,7 +55,7 @@
     "howler": "2.2.4",
     "leaflet": "1.9.4",
     "lodash": "4.17.21",
-    "postcss": "8.4.36",
+    "postcss": "8.4.38",
     "postcss-inline-svg": "6.0.0",
     "postcss-load-config": "^4.0.0",
     "rollup-plugin-visualizer": "5.12.0",
