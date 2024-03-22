@@ -3,7 +3,7 @@
   import { Toggle } from 'flowbite-svelte';
   import { toast } from 'svelte-sonner';
   import { browser } from '$app/environment';
-  import config from '$lib/config/siteConfigs';
+  import config from '$lib/shared/siteConfigs';
   import type { FeaturesConfig } from '$lib/types';
 
   let featureState: FeaturesConfig = {};

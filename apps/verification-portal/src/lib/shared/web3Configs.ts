@@ -2,7 +2,7 @@ import { mainnet } from 'viem/chains';
 import { defaultWagmiConfig } from '@web3modal/wagmi';
 
 import { PUBLIC_WALLET_CONNECT_PROJECT_ID } from '$env/static/public';
-import config from '$lib/config/siteConfigs';
+import config from '$lib/shared/siteConfigs';
 
 if (!PUBLIC_WALLET_CONNECT_PROJECT_ID) {
   throw new Error('VITE_PROJECT_ID is not set');
