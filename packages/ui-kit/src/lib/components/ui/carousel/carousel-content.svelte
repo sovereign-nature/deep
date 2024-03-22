@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js';
 	import type { HTMLAttributes } from 'svelte/elements';
-	import { getEmblaContext } from './context.js';
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
+	import { getEmblaContext } from './context.js';
+	import { cn } from '$lib/utils.js';
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	type $$Props = HTMLAttributes<HTMLDivElement>;
 

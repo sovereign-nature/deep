@@ -23,6 +23,7 @@ export type CarouselProps = {
 	plugins?: CarouselPlugins;
 	api?: CarouselAPI;
 	orientation?: 'horizontal' | 'vertical';
+	activeItemIndex?: number;
 } & HTMLAttributes<HTMLDivElement>;
 
 const EMBLA_CAROUSEL_CONTEXT = Symbol('EMBLA_CAROUSEL_CONTEXT');
@@ -32,6 +33,8 @@ type EmblaContext = {
 	orientation: Writable<'horizontal' | 'vertical'>;
 	scrollNext: () => void;
 	scrollPrev: () => void;
+	scrollTo: (e: number) => void;
+	activeItem: Writable<number>;
 	canScrollNext: Readable<boolean>;
 	canScrollPrev: Readable<boolean>;
 	handleKeyDown: (e: KeyboardEvent) => void;
