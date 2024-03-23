@@ -55,20 +55,20 @@
   }
 </script>
 
-<h2 class="text-gray-400 lg:hidden mb-0 text-sm sm:text-xl">
-  {$LL.collection()}
-</h2>
-
 <MultiTabs.Root
   setStartIndex={activeTabIndex}
   setActiveIndex={activeTabIndex}
+  tabsTitle={$LL.collection()}
   on:change={onIndexChange}
 >
   <svelte:fragment slot="tabs-items">
     {#each collections as collection, index}
       <MultiTabs.Tab
         {index}
-        tabItem={{ label: $LL[collection.key].collectionName() }}
+        tabItem={{
+          label: $LL[collection.key].collectionName(),
+          img: collection.avatar,
+        }}
       >
         {#if collection.web3}
           <Web3Connection

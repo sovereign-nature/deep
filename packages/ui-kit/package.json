@@ -33,6 +33,7 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "1.42.1",
+		"@sni/constants": "workspace:*",
 		"@sveltejs/adapter-auto": "3.1.1",
 		"@sveltejs/kit": "2.5.4",
 		"@sveltejs/package": "2.3.0",

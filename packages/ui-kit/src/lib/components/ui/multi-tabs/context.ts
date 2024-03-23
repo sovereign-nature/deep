@@ -6,6 +6,7 @@ export type MultiTabsProps = {
 	startIndex?: number;
 	setStartIndex?: number;
 	setActiveIndex?: number;
+	tabsTitle?: string;
 };
 
 const MULTI_TABS_CONTEXT = Symbol('MULTI_TABS_CONTEXT');
@@ -14,6 +15,7 @@ type MultiTabsContext = {
 	activeTab: Writable<number>;
 	startIndex: Writable<number>;
 	tabs: Writable<MultiTabsTab[]>;
+	title?: Writable<string>;
 	addTab: (tab: MultiTabsTab, index: number) => void;
 };
 export type MultiTabsTab = {

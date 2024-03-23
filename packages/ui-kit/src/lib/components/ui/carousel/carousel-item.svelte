@@ -23,7 +23,7 @@
 	role="button"
 	tabindex={0}
 	aria-roledescription="slide"
-	class={cn('min-w-0 shrink-0 grow-0 ', $orientation === 'horizontal' ? 'pl-4' : 'pt-4', className)}
+	class={cn('min-w-0 shrink-0 grow-0 ', $orientation === 'horizontal' ? '' : 'pt-4', className)}
 	data-embla-slide=""
 	{...$$restProps}
 >

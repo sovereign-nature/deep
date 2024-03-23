@@ -4,6 +4,7 @@
 	import { cn } from '$lib/utils.js';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import * as Carousel from '$lib/components/ui/carousel/index.js';
+	import { SOCIAL_CARD_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	type $$Props = HTMLAttributes<HTMLDivElement> & {
@@ -16,7 +17,8 @@
 	export let carousel = true;
 	export let select = false;
 
-	const { activeTab, startIndex, tabs } = getMultiTabsContext();
+	const { activeTab, startIndex, tabs, title } = getMultiTabsContext();
+	const carouselWrapperClass = $title && $title.length > 0 ? 'xl:col-start-2' : '';
 </script>
 
 {#if select}
@@ -26,48 +28,56 @@
 		{/each}
 	</select>
 {/if}
-<div class="min-h-16">
-	{#if carousel}
-		<Carousel.Root
-			opts={{
-				align: 'start',
-				loop: true,
-				duration: 80,
-				startIndex: $startIndex,
-				inViewThreshold: 0.25
-			}}
-			class={cn('max-w-full', className)}
-			bind:activeItemIndex={$activeTab}
+<div class="grid min-h-16 w-full grid-flow-row grid-cols-9 gap-4">
+	{#if $title && $title.length > 0}
+		<h2
+			class="col-span-2 flex items-center text-xl text-gray-400 lg:flex xl:col-span-1"
+			role="contentinfo"
 		>
-			<Carousel.Content>
-				{#each $tabs as item, index}
-					<Carousel.Item {index} class="flex min-w-[260px] flex-row">
-						<div class=" w-full">
-							<Card.Root
-								class={`${$activeTab === index ? '  border-none transition dark:bg-opacity-60' : 'bg-deep-green hover:dark:text-primary-300 hover:text-primary-300 border-none bg-opacity-5 hover:bg-opacity-10 dark:bg-black dark:bg-opacity-20'} bg-deep-green mb-2 mt-0 rounded px-3 py-2 font-serif text-sm text-gray-400 transition sm:px-6 sm:py-4 sm:text-base lg:text-xl xl:text-2xl dark:bg-black dark:text-gray-400`}
-							>
-								<Card.Content
-									class={`${$activeTab === index ? 'text-primary-300 dark:text-primary-200' : ''} flex flex-row items-center gap-4  p-0`}
+			{$title}
+		</h2>
+	{/if}
+
+	{#if carousel}
+		<div class={cn('relative col-span-full ', carouselWrapperClass)}>
+			<Carousel.Root
+				opts={{
+					align: 'start',
+					loop: true,
+					duration: 80,
+					startIndex: $startIndex,
+					inViewThreshold: 0.5
+				}}
+				class={cn('max-w-full', className)}
+				bind:activeItemIndex={$activeTab}
+			>
+				<Carousel.Content>
+					{#each $tabs as item, index}
+						<Carousel.Item {index} class="min-w-200px flex flex-row ">
+							<div class=" w-full">
+								<Card.Root
+									class={`${$activeTab === index ? 'border-none transition dark:bg-opacity-60' : ' carousel-nav-card  bg-deep-green hover:dark:text-primary-300 hover:text-primary-300 border-none  bg-opacity-5 px-3 py-2 hover:bg-opacity-10 dark:bg-black dark:bg-opacity-20'} bg-deep-green 0 mb-2 mt-0 rounded px-4 py-4 font-serif text-sm text-gray-400 transition sm:px-6 sm:py-4 sm:text-base lg:text-xl xl:text-2xl dark:bg-black dark:text-gray-400`}
 								>
-									{#if item.img}
+									<Card.Content
+										class={`${$activeTab === index ? 'text-primary-300 dark:text-primary-200' : ''} flex flex-row items-center gap-4 p-0  `}
+									>
 										<img
-											src={item.img}
+											src={item.img ? item.img : SOCIAL_CARD_PLACEHOLDER}
 											alt={item.label}
-											class="aspect-square h-11 w-11 rounded-full object-cover"
+											class={`${$activeTab === index ? 'opacity-100' : 'opacity-60'} aspect-square h-11 w-11 rounded-full object-cover transition-opacity md:h-12 md:w-12`}
 										/>
-									{:else}
-										<div
-											class="bg-deep-green-700 aspect-square h-11 w-11 rounded-full object-cover"
-										></div>
-									{/if}
-									<span> {item.label} </span>
-								</Card.Content>
-							</Card.Root>
-						</div>
-					</Carousel.Item>
-				{/each}
-			</Carousel.Content>
-			<Carousel.Next class="bg-primary-300 right-1 border-none opacity-90 hover:opacity-100" />
-		</Carousel.Root>
+
+										<span> {item.label} </span>
+									</Card.Content>
+								</Card.Root>
+							</div>
+						</Carousel.Item>
+					{/each}
+				</Carousel.Content>
+				<Carousel.Previous class="bg-primary-300 left-1 border-none opacity-90 hover:opacity-100" />
+
+				<Carousel.Next class="bg-primary-300 right-1 border-none opacity-90 hover:opacity-100" />
+			</Carousel.Root>
+		</div>
 	{/if}
 </div>
