@@ -17,7 +17,6 @@
 	export let tabItem: MultiTabsTab;
 
 	const { activeTab, addTab } = getMultiTabsContext();
-
 	addTab(tabItem, index);
 
 	$: active = $activeTab == index;

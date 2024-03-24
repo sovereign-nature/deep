@@ -5,30 +5,25 @@
 	import * as Card from '$lib/components/ui/card/index.js';
 	import * as Carousel from '$lib/components/ui/carousel/index.js';
 	import { SOCIAL_CARD_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
+	import NavSelect from '$lib/components/ui/multi-tabs/tabs-nav-select.svelte';
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	type $$Props = HTMLAttributes<HTMLDivElement> & {
-		carousel?: boolean;
-		select?: boolean;
-	};
+	type $$Props = HTMLAttributes<HTMLDivElement>
 
 	let className: $$Props['class'] = undefined;
 	export { className as class };
-	export let carousel = true;
-	export let select = false;
+
 
 	const { activeTab, startIndex, tabs, title } = getMultiTabsContext();
 	const carouselWrapperClass = $title && $title.length > 0 ? 'xl:col-start-2' : '';
 </script>
-
-{#if select}
-	<select bind:value={$activeTab} class="rounded border border-gray-300 p-2">
-		{#each $tabs as item, index}
-			<option value={index}> {item.label}</option>
-		{/each}
-	</select>
+<div class="md:hidden">
+    {#if $tabs.length > 0}
+	<NavSelect></NavSelect>
 {/if}
-<div class="grid min-h-16 w-full grid-flow-row grid-cols-9 gap-4">
+</div>
+
+<div class="hidden md:grid min-h-16 w-full grid-flow-row grid-cols-9 gap-4">
 	{#if $title && $title.length > 0}
 		<h2
 			class="col-span-2 flex items-center text-xl text-gray-400 lg:flex xl:col-span-1"
@@ -38,7 +33,6 @@
 		</h2>
 	{/if}
 
-	{#if carousel}
 		<div class={cn('relative col-span-full ', carouselWrapperClass)}>
 			<Carousel.Root
 				opts={{
@@ -79,5 +73,5 @@
 				<Carousel.Next class="bg-primary-300 right-1 border-none opacity-90 hover:opacity-100" />
 			</Carousel.Root>
 		</div>
-	{/if}
+	
 </div>

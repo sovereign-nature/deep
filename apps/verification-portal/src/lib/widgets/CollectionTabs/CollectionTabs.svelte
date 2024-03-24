@@ -48,10 +48,10 @@
     );
   }
   function onIndexChange(event: CustomEvent<number>) {
-    if (event.detail !== undefined) {
+    if (event && event.detail !== undefined && collections[event.detail]) {
       activeTabKey = collections[event.detail].key;
       updateActive(activeTabKey);
-    }
+    } 
   }
 </script>
 
