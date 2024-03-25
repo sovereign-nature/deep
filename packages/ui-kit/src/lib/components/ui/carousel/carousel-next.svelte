@@ -20,7 +20,7 @@
 	{variant}
 	{size}
 	class={cn(
-		'block-bg-hover  absolute h-8 w-8 touch-manipulation rounded-full',
+		'block-bg-hover  absolute h-8 w-8 touch-manipulation rounded-full z-10',
 		$orientation === 'horizontal'
 			? '-right-12 top-1/2 -translate-y-1/2'
 			: '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',

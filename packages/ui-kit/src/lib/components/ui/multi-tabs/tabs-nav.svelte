@@ -23,7 +23,7 @@
 {/if}
 </div>
 
-<div class="hidden md:grid min-h-16 w-full grid-flow-row grid-cols-9 gap-4">
+<div class="hidden md:grid min-h-16 w-full grid-flow-row grid-cols-9 gap-4 ">
 	{#if $title && $title.length > 0}
 		<h2
 			class="col-span-2 flex items-center text-xl text-gray-400 lg:flex xl:col-span-1"
@@ -50,7 +50,7 @@
 						<Carousel.Item {index} class="min-w-200px flex flex-row ">
 							<div class=" w-full">
 								<Card.Root
-									class={`${$activeTab === index ? 'border-none transition dark:bg-opacity-60' : ' carousel-nav-card  bg-deep-green hover:dark:text-primary-300 hover:text-primary-300 border-none  bg-opacity-5 px-3 py-2 hover:bg-opacity-10 dark:bg-black dark:bg-opacity-20'} bg-deep-green 0 mb-2 mt-0 rounded px-4 py-4 font-serif text-sm text-gray-400 transition sm:px-6 sm:py-4 sm:text-base lg:text-xl xl:text-2xl dark:bg-black dark:text-gray-400`}
+									class={`${$activeTab === index ? 'border-none transition dark:bg-opacity-60' : ' carousel-nav-card  bg-deep-green hover:dark:text-primary-300 hover:text-primary-300 border-none  bg-opacity-5 px-3 py-2 hover:bg-opacity-10 dark:bg-black dark:bg-opacity-20'} bg-deep-green my-0 mt-0 rounded px-4 py-4 font-serif text-sm text-gray-400 transition sm:px-6 sm:py-4 sm:text-base lg:text-xl xl:text-2xl dark:bg-black dark:text-gray-400`}
 								>
 									<Card.Content
 										class={`${$activeTab === index ? 'text-primary-300 dark:text-primary-200' : ''} flex flex-row items-center gap-4 p-0  `}

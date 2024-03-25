@@ -111,7 +111,7 @@
 </script>
 
 <div
-	class={cn('relative', className)}
+	class={cn('relative carousel-wrapper', className, $canScrollNext && 'carousel-fade-end', $canScrollPrev && 'carousel-fade-start')}
 	on:mouseenter
 	on:mouseleave
 	role="region"
