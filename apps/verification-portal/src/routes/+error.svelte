@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import SearchTabs from '$lib/containers/SearchTabs.svelte';
+  import CollectionsTabs from '$lib/widgets/CollectionTabs/CollectionTabs.svelte';
   import LayoutLanding from '$lib/containers/LayoutLanding.svelte';
   import LL from '$lib/shared/i18n/i18n-svelte';
 </script>
@@ -18,5 +18,5 @@
   >
     {$LL.errors.errorPageTitle()}
   </h2>
-  <SearchTabs />
+  <CollectionsTabs/>
 </LayoutLanding>

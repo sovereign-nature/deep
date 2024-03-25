@@ -3,11 +3,9 @@
 
   import ShareCard from '$lib/components/ShareCard.svelte';
 
-  import SearchTabs from '$lib/containers/SearchTabs.svelte';
   import CollectionsTabs from '$lib/widgets/CollectionTabs/CollectionTabs.svelte';
 
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import { isFeatureEnabled } from '$lib/shared/utils.js';
 
   export let data;
 </script>
@@ -35,10 +33,5 @@
       {$LL.subtitle()}
     </span>
   </div>
-
-  {#if isFeatureEnabled('collectionRedesign')}
-    <CollectionsTabs highlights={data.highlights} />
-  {:else}
-    <SearchTabs highlights={data.highlights} />
-  {/if}
+  <CollectionsTabs highlights={data.highlights} />
 </LayoutLanding>
