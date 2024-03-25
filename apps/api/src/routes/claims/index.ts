@@ -24,6 +24,7 @@ app.post(
   ),
 
   async (c) => {
+    const { CROSSMINT_API_URL } = env<{ CROSSMINT_API_URL: string }>(c);
     const { CROSSMINT_API_KEY } = env<{ CROSSMINT_API_KEY: string }>(c);
     const { CLAIMS_SECRET } = env<{ CLAIMS_SECRET: string }>(c);
 
@@ -48,7 +49,7 @@ app.post(
     };
 
     const resp = await fetch(
-      `https://staging.crossmint.com/api/2022-06-09/collections/${collectionId}/nfts/${actionId}`,
+      `${CROSSMINT_API_URL}/${collectionId}/nfts/${actionId}`,
       {
         method: 'PUT',
         body: JSON.stringify(mintingConfig),

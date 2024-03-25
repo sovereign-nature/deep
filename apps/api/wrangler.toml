@@ -1,3 +1,9 @@
 name = "api"
 main = "src/index.ts"
 compatibility_date = "2023-10-10"
+
+[vars]
+CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections"
+
+[env.production.vars]
+CROSSMINT_API_URL = "https://crossmint.com/api/2022-06-09/collections"
