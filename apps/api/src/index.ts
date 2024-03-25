@@ -3,6 +3,7 @@ import { cors } from 'hono/cors';
 import { cache } from 'hono/cache';
 import assets from './routes/assets';
 import highlights from './routes/highlights';
+import claims from './routes/claims';
 
 const app = new Hono();
 
@@ -20,5 +21,6 @@ app.get('/', (c) => c.text('DEEP API'));
 
 app.route('/assets', assets);
 app.route('/highlights', highlights);
+app.route('/claims', claims);
 
 export default app;
