@@ -10,11 +10,15 @@
 	export let setStartIndex: number = 0;
 	export let setActiveIndex: number = setStartIndex;
 	export let tabsTitle: string = '';
+	export let tabsTitleFull: string = '';
+
 
 	const startIndex = writable(setStartIndex);
 	const activeTab = writable(setStartIndex);
 	const tabs = writable<MultiTabsTab[]>([]);
 	const title = writable(tabsTitle);
+	const titleFull = writable(tabsTitleFull);
+
 
 	$: updateIndex(setActiveIndex);
 
@@ -38,6 +42,7 @@
 		activeTab,
 		tabs,
 		title,
+		titleFull,
 		addTab
 	});
 </script>

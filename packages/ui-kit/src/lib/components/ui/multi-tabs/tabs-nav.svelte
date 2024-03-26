@@ -17,13 +17,13 @@
 	const { activeTab, startIndex, tabs, title } = getMultiTabsContext();
 	const carouselWrapperClass = $title && $title.length > 0 ? 'xl:col-start-2' : '';
 </script>
-<div class="md:hidden">
+<div class="sm:hidden">
     {#if $tabs.length > 0}
 	<NavSelect></NavSelect>
 {/if}
 </div>
 
-<div class="hidden md:grid min-h-16 w-full grid-flow-row grid-cols-9 gap-4 ">
+<div class="hidden sm:grid min-h-16 w-full grid-flow-row grid-cols-9 gap-4 ">
 	{#if $title && $title.length > 0}
 		<h2
 			class="col-span-2 flex items-center text-xl text-gray-400 lg:flex xl:col-span-1"
@@ -37,17 +37,16 @@
 			<Carousel.Root
 				opts={{
 					align: 'start',
-					loop: true,
-					duration: 80,
+					duration: 40,
+					loop:true,
 					startIndex: $startIndex,
-					inViewThreshold: 0.5
 				}}
 				class={cn('max-w-full', className)}
 				bind:activeItemIndex={$activeTab}
 			>
 				<Carousel.Content>
 					{#each $tabs as item, index}
-						<Carousel.Item {index} class="min-w-200px flex flex-row ">
+						<Carousel.Item {index} class="min-w-[200px] flex flex-row ">
 							<div class=" w-full">
 								<Card.Root
 									class={`${$activeTab === index ? 'border-none transition dark:bg-opacity-60' : ' carousel-nav-card  bg-deep-green hover:dark:text-primary-300 hover:text-primary-300 border-none  bg-opacity-5 px-3 py-2 hover:bg-opacity-10 dark:bg-black dark:bg-opacity-20'} bg-deep-green my-0 mt-0 rounded px-4 py-4 font-serif text-sm text-gray-400 transition sm:px-6 sm:py-4 sm:text-base lg:text-xl xl:text-2xl dark:bg-black dark:text-gray-400`}
@@ -61,7 +60,7 @@
 											class={`${$activeTab === index ? 'opacity-100' : 'opacity-60'} aspect-square h-11 w-11 rounded-full object-cover transition-opacity md:h-12 md:w-12`}
 										/>
 
-										<span> {item.label} </span>
+										<span class="text-nowrap"> {item.label} </span>
 									</Card.Content>
 								</Card.Root>
 							</div>

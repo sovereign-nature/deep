@@ -54,11 +54,11 @@
     } 
   }
 </script>
-
 <MultiTabs.Root
   setStartIndex={activeTabIndex}
   setActiveIndex={activeTabIndex}
   tabsTitle={$LL.collection()}
+  tabsTitleFull={$LL.collectionMobile()}
   on:change={onIndexChange}
 >
   <svelte:fragment slot="tabs-items">

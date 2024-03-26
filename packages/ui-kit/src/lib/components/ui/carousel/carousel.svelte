@@ -36,12 +36,22 @@
 	$: scrollTo(activeItemIndex);
 	$: activeItemIndex = $activeItem;
 	function scrollPrev() {
-		api?.scrollPrev();
-		setActive();
+		if(api?.canScrollPrev()) {
+			api?.scrollPrev();
+			$activeItem--
+		} else if($activeItem > 0)  {
+			$activeItem--
+			scrollTo($activeItem)
+		}
 	}
 	function scrollNext() {
-		api?.scrollNext();
-		setActive();
+		if(api?.canScrollNext()) {
+			api?.scrollNext();
+			$activeItem++
+		} else if($activeItem < (api?.containerNode()?.childElementCount ?? 0) - 1) {
+			$activeItem++
+			scrollTo($activeItem)
+		} 
 	}
 	function scrollTo(index: number) {
 		api?.scrollTo(index);
@@ -76,11 +86,6 @@
 			e.preventDefault();
 			scrollNext();
 		}
-	}
-	function setActive() {
-		console.log('Slides not in view', api?.slidesNotInView());
-		let active = api?.selectedScrollSnap() !== undefined ? api?.selectedScrollSnap() : startIndex;
-		activeItem.set(active);
 	}
 
 	setEmblaContex({

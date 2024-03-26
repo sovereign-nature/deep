@@ -27,7 +27,7 @@
 >
 	<div
 		class={cn(
-			'ms-8 flex  gap-3 md:ms-0',
+			'flex gap-3 md:ms-6 ms-8 ',
 			$orientation === 'horizontal' ? '-ml-4 ' : '-mt-4 flex-col',
 			className
 		)}

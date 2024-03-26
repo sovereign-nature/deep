@@ -8,19 +8,18 @@
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	type $$Props = HTMLAttributes<HTMLDivElement>;
 
-	const { activeTab, startIndex, tabs } = getMultiTabsContext();
+	const { activeTab, startIndex, tabs, titleFull } = getMultiTabsContext();
     function setTabFromSelect( e : Selected<unknown>| undefined) {
         const selected: number = e && typeof e.value === 'number' ? e.value : $startIndex;
 
     $activeTab = selected;
-  
 }
 		
 </script>
 
 <div class="flex flex-col  w-full max-w-xl">
 <Select.Root preventScroll="{false}" onSelectedChange={(e) => setTabFromSelect(e)}  selected={{value:$activeTab, label: $tabs[$activeTab].label}}>
-    <Select.Label> <span class="dark:text-gray-400 text-sm text-center w-full">Choose your collection:</span> </Select.Label>
+    <Select.Label class="text-center font-normal	"> <span class="dark:text-gray-400 text-sm  "> {$titleFull}</span> </Select.Label>
 		<Select.Trigger>
         <ItemCard item={$tabs[$activeTab]} active/>
 		</Select.Trigger>
@@ -30,7 +29,6 @@
 					<Select.Item
 						value={index}
 						label={item.label}
-                        selected={$activeTab === index }
 					>
                     <ItemCard item={item} active={$activeTab === index}/>
 					</Select.Item

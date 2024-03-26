@@ -23,7 +23,7 @@
 </script>
 
 {#if active}
-	<div class={cn('relative', 'visible', className)} transition:fade={{ duration: 200 }}>
+	<div class={cn('relative', 'visible', className)} in:fade={{ duration: 200 }}>
 		<slot />
 	</div>
 {/if}
