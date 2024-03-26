@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import type { DeepAsset } from '@sni/clients/assets-client/types';
   import { MultiTabs } from '@sni/ui-kit';
   import { afterNavigate } from '$app/navigation';
@@ -15,7 +14,8 @@
   import Web3SearchInput from '$lib/components/search/Web3SearchInput.svelte';
   import Web3Assets from '$lib/components/web3/Web3AssetsContainer.svelte';
 
-  const url = $page.url;
+  const {url, route} = $page;
+  
 
   let activeTabKey: CollectionKeys = tabConfig.activeKey;
   let activeTabIndex: number;
@@ -27,6 +27,7 @@
     activeTabKey = key;
     updateQueryParams('q', key);
   }
+
   const qValue = url.searchParams.get('q');
   if (qValue) {
     activeTabKey = collections
@@ -35,12 +36,14 @@
       ? (qValue as CollectionKeys)
       : tabConfig.activeKey;
   }
-  onMount(() => {});
   afterNavigate(() => {
+    //reset the active tab to default on in page nav that has no params (eg. logo click)
+   if(route?.id === $page?.route?.id) {
     const checkQ = $page.url.searchParams.get('q');
     if (checkQ === null) {
       activeTabKey = tabConfig.activeKey;
     }
+   } 
   });
   function setIndex(key: CollectionKeys) {
     activeTabIndex = collections.findIndex(

@@ -112,6 +112,8 @@
 	onDestroy(() => {
 		api?.off('select', onSelect);
 		api?.off('resize', onResize);
+		api?.off('reInit', onSelect);
+
 	});
 </script>
 
