@@ -36,22 +36,22 @@
 	$: scrollTo(activeItemIndex);
 	$: activeItemIndex = $activeItem;
 	function scrollPrev() {
-		if(api?.canScrollPrev()) {
-			api?.scrollPrev();
-			$activeItem--
-		} else if($activeItem > 0)  {
-			$activeItem--
-			scrollTo($activeItem)
-		}
+	if($activeItem > 0)  {
+		$activeItem--;
+		scrollTo($activeItem);
+	} else if(api?.canScrollPrev()) {
+		api?.scrollPrev();
+		$activeItem = (api?.containerNode()?.childElementCount ?? 0) - 1;
+	}
 	}
 	function scrollNext() {
-		if(api?.canScrollNext()) {
-			api?.scrollNext();
-			$activeItem++
-		} else if($activeItem < (api?.containerNode()?.childElementCount ?? 0) - 1) {
-			$activeItem++
-			scrollTo($activeItem)
-		} 
+		if($activeItem < (api?.containerNode()?.childElementCount ?? 0) - 1) {
+		$activeItem++;
+		scrollTo($activeItem);
+	} else if(api?.canScrollNext()) {
+		api?.scrollNext();
+		$activeItem = 0;
+		}
 	}
 	function scrollTo(index: number) {
 		api?.scrollTo(index);
