@@ -155,7 +155,7 @@ importers:
         version: 1.0.10(@sveltejs/kit@2.5.4)(react@18.2.0)(svelte@4.2.12)(vue@3.4.21)
       '@vite-pwa/sveltekit':
         specifier: 0.4.0
-        version: 0.4.0(@sveltejs/kit@2.5.4)(vite-plugin-pwa@0.19.5)
+        version: 0.4.0(@sveltejs/kit@2.5.4)(vite-plugin-pwa@0.19.7)
       '@wagmi/connectors':
         specifier: 4.1.18
         version: 4.1.18(@wagmi/core@2.6.9)(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)
@@ -392,7 +392,7 @@ importers:
         version: 0.9.3(typescript@5.4.3)
       sonner:
         specifier: ^1.4.3
-        version: 1.4.32(react-dom@18.2.0)(react@18.2.0)
+        version: 1.4.41(react-dom@18.2.0)(react@18.2.0)
       svelte:
         specifier: 4.2.12
         version: 4.2.12
@@ -5197,7 +5197,7 @@ packages:
       is-function: 1.0.2
     dev: true
 
-  /@vite-pwa/sveltekit@0.4.0(@sveltejs/kit@2.5.4)(vite-plugin-pwa@0.19.5):
+  /@vite-pwa/sveltekit@0.4.0(@sveltejs/kit@2.5.4)(vite-plugin-pwa@0.19.7):
     resolution: {integrity: sha512-pzIH5ohlXwbadYbKqnRiMtDSGa5DvzUGCT2X34kAAsrg9QhL5jLCMqiWfST8zJMgtbt/k7k/vWBI/p6Pgk5DNg==}
     engines: {node: '>=16.14 || >=18.13'}
     peerDependencies:
@@ -5210,7 +5210,7 @@ packages:
     dependencies:
       '@sveltejs/kit': 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.2.6)
       kolorist: 1.8.0
-      vite-plugin-pwa: 0.19.5(vite@5.2.6)(workbox-build@7.0.0)(workbox-window@7.0.0)
+      vite-plugin-pwa: 0.19.7(vite@5.2.6)(workbox-build@7.0.0)(workbox-window@7.0.0)
     dev: true
 
   /@vitest/expect@1.4.0:
@@ -10505,7 +10505,7 @@ packages:
     resolution: {integrity: sha512-9/mYV1tMGeoFSTMFr94oigJM2qMXJO3hvlibkaQ21HZjVyrfb54bSYyfIIRvAsjY2RCBRg9r2OrT+YbxnMypig==}
     engines: {node: '>=18'}
     dependencies:
-      terser: 5.29.2
+      terser: 5.30.0
     dev: true
 
   /metro-resolver@0.80.7:
@@ -12349,7 +12349,7 @@ packages:
       jest-worker: 26.6.2
       rollup: 2.79.1
       serialize-javascript: 4.0.0
-      terser: 5.29.2
+      terser: 5.30.0
     dev: true
 
   /rollup-plugin-visualizer@5.12.0(rollup@2.79.1):
@@ -12781,8 +12781,8 @@ packages:
       atomic-sleep: 1.0.0
     dev: true
 
-  /sonner@1.4.32(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-MYdvJgx2wM8a7fnzZr7KWZJY2ukSoqh7fsshZYEVljTSuJKNesMgfQ95+kyduGh6t500wxvLm6jjffxB4M58ZA==}
+  /sonner@1.4.41(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-uG511ggnnsw6gcn/X+YKkWPo5ep9il9wYi3QJxHsYe7yTZ4+cOd1wuodOUmOpFuXL+/RE3R04LczdNCDygTDgQ==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -13494,8 +13494,8 @@ packages:
       unique-string: 2.0.0
     dev: true
 
-  /terser@5.29.2:
-    resolution: {integrity: sha512-ZiGkhUBIM+7LwkNjXYJq8svgkd+QK3UUr0wJqY4MieaezBSAIPgbSPZyIx0idM6XWK5CMzSWa8MJIzmRcB8Caw==}
+  /terser@5.30.0:
+    resolution: {integrity: sha512-Y/SblUl5kEyEFzhMAQdsxVHh+utAxd4IuRNJzKywY/4uzSogh3G219jqbDDxYu4MXO9CzY3tSEqmZvW6AoEDJw==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -14192,8 +14192,8 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-pwa@0.19.5(vite@5.2.6)(workbox-build@7.0.0)(workbox-window@7.0.0):
-    resolution: {integrity: sha512-3xJEc2Gmq6SBf730UAV1N2/MqOm+MiyvaLToSTglg+pH9b9qm666yPVxrBBlcOhGoJJWjJpu+Z9tROKek2CODg==}
+  /vite-plugin-pwa@0.19.7(vite@5.2.6)(workbox-build@7.0.0)(workbox-window@7.0.0):
+    resolution: {integrity: sha512-18TECxoGPQE7tVZzKxbf5Icrl5688n1JGMPSgGotTsh89vLDxevY7ICfD3CFVfonZXh8ckuyJXg0NXE5+FAl2A==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@vite-pwa/assets-generator': ^0.2.4
