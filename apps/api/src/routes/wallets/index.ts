@@ -5,6 +5,7 @@ import { getChainId } from '@sni/address-utils';
 import { DeepAsset } from '@sni/clients/assets-client/types';
 import { env } from 'hono/adapter';
 import { zValidator } from '@hono/zod-validator';
+import { NftScanResponse } from './schemas';
 
 //TODO: @sni/clients
 async function listArbitrumWallet(
@@ -12,22 +13,6 @@ async function listArbitrumWallet(
   contractAddress: string,
   apiKey: string
 ): Promise<DeepAsset[]> {
-  const responseSchema = z.object({
-    data: z.object({
-      content: z.array(
-        z.object({
-          token_id: z.string(),
-          name: z.optional(z.string()),
-          description: z.optional(z.string()),
-          image_uri: z.optional(z.string()),
-          contract_address: z.string(),
-          contract_name: z.optional(z.string()),
-          erc_type: z.string(),
-        })
-      ),
-    }),
-  });
-
   const response = await fetch(
     `https://arbitrumapi.nftscan.com/api/v2/account/own/${walletAddress}?&contract_address=${contractAddress}&limit=50`,
     {
@@ -39,7 +24,7 @@ async function listArbitrumWallet(
   const responseJson = await response.json();
 
   if (response.ok && response.status === 200) {
-    const data = responseSchema.parse(responseJson).data;
+    const data = NftScanResponse.parse(responseJson).data;
 
     const assets: DeepAsset[] = data.content.map((asset) => ({
       id: asset.token_id,
@@ -96,6 +81,7 @@ app.get(
         }
       case 'polygon-sepolina':
         break;
+
       default:
         return c.json({ error: true, message: 'Invalid network' }, 400);
     }
