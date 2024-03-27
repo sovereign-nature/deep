@@ -7,14 +7,12 @@
   import ConnectIcon from '$lib/components/icons/ConnectIcon.svelte';
   import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
-  import Spinner from '$lib/components/icons/Spinner.svelte';
   export let collectionAddress: string;
   export let placeholder = 'Enter the token ID (1-1466)';
   export let goIcon = false;
   export let inputmode = 'text';
   export let web3Enabled = false;
   export let searchEnabled = true;
-  
 
   import Web3ConnectBtn from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
 
@@ -44,12 +42,7 @@
         {:else}
           <span class="ms-auto"></span>
         {/if}
-        {:else}
-        <Spinner
-        className="w-5 h-5 text-primary-400  dark:text-primary-200 fill-primary-600 dark:fill-primary-100"
-      ></Spinner>
       {/if}
-
     {:else}
       Wallet <Button color="none" size="sm" class="bg-primary-300" disabled
         >connect <ConnectIcon className="h-4 w-4 ms-2" /></Button

@@ -36,9 +36,22 @@ type RootTranslation = {
 	 */
 	collection: string
 	/**
-	 * L​a​t​e​s​t​ ​H​i​g​h​l​i​g​h​t​s
+	 * C​h​o​o​s​e​ ​y​o​u​r​ ​c​o​l​l​e​c​t​i​o​n​:
+	 */
+	collectionMobile: string
+	/**
+	 * E​x​p​l​o​r​e​ ​c​o​l​l​e​c​t​i​o​n​ ​h​i​g​h​l​i​g​h​t​s​:
 	 */
 	highlights: string
+	/**
+	 * E​x​p​l​o​r​e​ ​{​c​o​l​l​e​c​t​i​o​n​N​a​m​e​}​ ​h​i​g​h​l​i​g​h​t​s​:
+	 * @param {string} collectionName
+	 */
+	highlightsFor: RequiredParams<'collectionName'>
+	/**
+	 * S​e​l​e​c​t​ ​t​h​i​s​ ​t​o​k​e​n
+	 */
+	selectToken: string
 	results: {
 		/**
 		 * S​h​o​w​i​n​g​ ​r​e​s​u​l​t​s​ ​f​o​r
@@ -404,9 +417,21 @@ export type TranslationFunctions = {
 	 */
 	collection: () => LocalizedString
 	/**
-	 * Latest Highlights
+	 * Choose your collection:
+	 */
+	collectionMobile: () => LocalizedString
+	/**
+	 * Explore collection highlights:
 	 */
 	highlights: () => LocalizedString
+	/**
+	 * Explore {collectionName} highlights:
+	 */
+	highlightsFor: (arg: { collectionName: string }) => LocalizedString
+	/**
+	 * Select this token
+	 */
+	selectToken: () => LocalizedString
 	results: {
 		/**
 		 * Showing results for

@@ -13,7 +13,7 @@
     <Card.Content class="p-4 flex flex-row justify-start gap-4 items-center">
         <img
         src={item.img ? item.img : SOCIAL_CARD_PLACEHOLDER}
-        alt={item.label}
+        alt={`${item.label} avatar`}
         class={`${active ? 'opacity-100' : 'opacity-60'} aspect-square h-16 w-16 rounded-full object-cover transition-opacity`}
     />
 
