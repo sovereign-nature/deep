@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Button, type Props, buttonVariants } from '$lib/components/ui/button/index.js';
-	import { cn } from '$lib/utils.js';
 	import ArrowRight from 'svelte-radix/ArrowRight.svelte';
 	import type { VariantProps } from 'tailwind-variants';
 	import { getEmblaContext } from './context.js';
+	import { cn } from '$lib/utils.js';
+	import { Button, type Props, buttonVariants } from '$lib/components/ui/button/index.js';
 
 	type $$Props = Props;
 
@@ -20,10 +20,11 @@
 	{variant}
 	{size}
 	class={cn(
-		'absolute h-8 w-8 touch-manipulation rounded-full',
+		'block-bg-hover  absolute h-8 w-8 touch-manipulation rounded-full z-10',
 		$orientation === 'horizontal'
 			? '-right-12 top-1/2 -translate-y-1/2'
 			: '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
+		$canScrollNext ? '' : 'hidden',
 		className
 	)}
 	disabled={!$canScrollNext}

@@ -3,7 +3,7 @@
 
   import ShareCard from '$lib/components/ShareCard.svelte';
 
-  import SearchTabs from '$lib/containers/SearchTabs.svelte';
+  import CollectionsTabs from '$lib/widgets/CollectionTabs/CollectionTabs.svelte';
 
   import { LL } from '$lib/shared/i18n/i18n-svelte';
 
@@ -33,6 +33,5 @@
       {$LL.subtitle()}
     </span>
   </div>
-
-  <SearchTabs highlights={data.highlights} />
+  <CollectionsTabs highlights={data.highlights} />
 </LayoutLanding>

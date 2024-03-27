@@ -355,6 +355,9 @@ importers:
       '@playwright/test':
         specifier: 1.42.1
         version: 1.42.1
+      '@sni/constants':
+        specifier: workspace:*
+        version: link:../constants
       '@sveltejs/adapter-auto':
         specifier: 3.1.1
         version: 3.1.1(@sveltejs/kit@2.5.4)
@@ -367,6 +370,9 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: 3.0.2
         version: 3.0.2(svelte@4.2.12)(vite@5.2.2)
+      '@sveltejs/vite-plugin-svelte-inspector':
+        specifier: ^2.0.0
+        version: 2.0.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.2.2)
       '@types/eslint':
         specifier: 8.56.6
         version: 8.56.6

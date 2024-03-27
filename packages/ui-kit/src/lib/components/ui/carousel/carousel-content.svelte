@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js';
 	import type { HTMLAttributes } from 'svelte/elements';
-	import { getEmblaContext } from './context.js';
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
+	import { getEmblaContext } from './context.js';
+	import { cn } from '$lib/utils.js';
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	type $$Props = HTMLAttributes<HTMLDivElement>;
 
@@ -26,7 +26,11 @@
 	on:emblaInit={onInit}
 >
 	<div
-		class={cn('flex', $orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col', className)}
+		class={cn(
+			'flex gap-3 md:ms-6 ms-8 ',
+			$orientation === 'horizontal' ? '-ml-4 ' : '-mt-4 flex-col',
+			className
+		)}
 		data-embla-container=""
 		{...$$restProps}
 	>

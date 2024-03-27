@@ -9,6 +9,7 @@ const en: BaseTranslation = {
   subtitle:
     'Learn how your asset is helping real-world conservation efforts around the globe.',
   collection: 'Collection:',
+  collectionMobile: 'Choose your collection:',
   highlights: 'Latest Highlights',
   results: {
     resultsFor: 'Showing results for',

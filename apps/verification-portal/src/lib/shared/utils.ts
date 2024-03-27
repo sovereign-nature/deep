@@ -5,7 +5,7 @@ import { directusUrl } from '@sni/clients/config';
 import type { Page } from '@sveltejs/kit';
 import { browser } from '$app/environment';
 import { goto } from '$app/navigation';
-import config from '$lib/config/siteConfigs';
+import config from '$lib/shared/siteConfigs';
 import type { FeaturesConfig } from '$lib/types';
 
 export function shortenMoneyValue(value: string): string {
