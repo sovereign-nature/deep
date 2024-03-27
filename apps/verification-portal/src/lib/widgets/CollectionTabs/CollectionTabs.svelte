@@ -115,7 +115,7 @@
                 ? collection.searchInput.inputMode
                 : 'text'}
             />
-            <SearchResults {highlights} />
+            <SearchResults  collectionName={$LL[collection.key].collectionName()} {highlights} />
           </Web2SearchContainer>
         {/if}
       </MultiTabs.Tab>
