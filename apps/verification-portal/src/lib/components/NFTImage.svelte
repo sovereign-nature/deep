@@ -65,6 +65,7 @@
           class={imgClass}
           on:error={handleImageError}
           on:canplay={handleImageLoad}
+          playsinline
           autoplay
           loop
           muted
