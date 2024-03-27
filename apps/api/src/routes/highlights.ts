@@ -102,7 +102,7 @@ app.get('/:collectionId', async (c) => {
       );
       break;
     default:
-      return c.text('Collection not found', 404);
+      return c.json({ error: true, message: 'Invalid collection' }, 400);
   }
 
   return c.json(assets);

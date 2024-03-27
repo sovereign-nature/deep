@@ -77,6 +77,7 @@ app.get(
     const contractAddress = c.req.query('contractAddress') || '';
 
     let assets: DeepAsset[] = [];
+
     switch (networkId) {
       case 'arbitrum':
         try {
@@ -88,18 +89,16 @@ app.get(
           return c.json(assets);
         } catch (e) {
           if (e instanceof Error) {
-            return c.text(e.message, 500);
+            return c.json({ error: true, message: e.message }, 500);
           }
 
-          return c.text('Internal Server Error', 500);
+          return c.json({ error: true, message: 'Internal server error' }, 500);
         }
       case 'polygon-sepolina':
         break;
       default:
-        return c.text('Network not found', 404);
+        return c.json({ error: true, message: 'Invalid network' }, 400);
     }
-
-    return c.json({ network: networkId, walletAddress });
   }
 );
 

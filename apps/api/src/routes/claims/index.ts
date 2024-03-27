@@ -34,7 +34,7 @@ app.post(
     try {
       await verify(token, CLAIMS_SECRET);
     } catch (e) {
-      return c.json({ error: 'Invalid token' }, 400);
+      return c.json({ error: true, message: 'Invalid token' }, 400);
     }
 
     const { payload } = decode(token);
