@@ -1,7 +1,0 @@
-name = "claimer"
-main = "src/index.ts"
-compatibility_date = "2023-10-10"
-
-[triggers]
-# Run KV check every minute
-crons = ["* * * * *"]
