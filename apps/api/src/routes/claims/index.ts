@@ -3,12 +3,27 @@ import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
 import { decode, verify } from 'hono/jwt';
 import { env } from 'hono/adapter';
-import { base64EncodeURL } from '../../utils';
 import { collections } from './config';
 
+//TODO: Replace with zod schema
 type ClaimBody = {
   token: string;
   address: '0x{string}';
+};
+
+//TODO: Replace with zod schema
+type JWTPayload = { id: string; collection: string; seed: number };
+
+//TODO: Replace with zod schema
+type CrossmintResponse = {
+  id: string;
+  onchain: {
+    status: string;
+    chain: string;
+    contractAddress: string;
+    owner?: string;
+  };
+  actionId: string;
 };
 
 const app = new Hono();
@@ -37,8 +52,7 @@ app.post(
       return c.json({ error: true, message: 'Invalid token' }, 400);
     }
 
-    const { payload } = decode(token);
-    const actionId = base64EncodeURL(JSON.stringify(payload));
+    const { payload }: { payload: JWTPayload } = decode(token);
 
     const collectionId: string = payload.collection;
     const collectionConfig = collections[collectionId];
@@ -49,7 +63,7 @@ app.post(
     };
 
     const resp = await fetch(
-      `${CROSSMINT_API_URL}/${collectionId}/nfts/${actionId}`,
+      `${CROSSMINT_API_URL}/${collectionId}/nfts/${payload.id}`,
       {
         method: 'PUT',
         body: JSON.stringify(mintingConfig),
@@ -60,7 +74,17 @@ app.post(
       }
     );
 
-    const data = await resp.json();
+    const data = (await resp.json()) as CrossmintResponse;
+
+    if (data.onchain.owner && data.onchain.owner !== address) {
+      return c.json(
+        {
+          error: true,
+          message: 'Token was already claimed for different owner address',
+        },
+        400
+      );
+    }
 
     return c.json(data);
   }

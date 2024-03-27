@@ -1,3 +1,5 @@
+// TODO: Move to a @sni/jwt-utils
+
 //https://gist.github.com/themikefuller/c1de46cbbdad02645b9dc006baedf88e
 export function base64EncodeURL(url: string) {
   const utf8Encode = new TextEncoder();
