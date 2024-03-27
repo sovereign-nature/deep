@@ -37,10 +37,13 @@
 
 		<div class={cn('relative col-span-full ', carouselWrapperClass)}>
 			{#if !loaded}
-			<div class="flex flex-row gap-4">
-			<Skeleton className="w-[200px] h-20 rounded-lg bg-deep-green"></Skeleton>
-			<Skeleton className="w-[200px] h-20 rounded-lg bg-deep-green"></Skeleton>
-			<Skeleton className="w-[200px] h-20 rounded-lg bg-deep-green"></Skeleton>
+			<div class="flex flex-row gap-4 bg-pink h-20 items-stretch ">
+				<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+				{#each [1, 2, 3] as _}
+					<div class="rounded overflow-hidden w-full h-20 bg-gray-200 dark:bg-deep-green-900">
+						<Skeleton className="w-full h-full"></Skeleton>
+					</div>
+				{/each}
 			</div>
 			{/if}
 			<Carousel.Root
