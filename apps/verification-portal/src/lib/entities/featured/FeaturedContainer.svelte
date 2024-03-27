@@ -9,14 +9,14 @@
 
 {#if featuredItems && featuredItems.length > 0}
   <div class="mt-8 sm:mt-12">
-    <h5 class="text-gray-200 dark:text-gray-400 text-sm sm:text-xl font-sans sm:font-serif mb-5 text-center md:text-left">
+    <h2 class="text-gray-200 dark:text-gray-400 text-sm sm:text-xl font-sans sm:font-serif mb-5 text-center md:text-left">
       {#if collectionName}
       {$LL.highlightsFor({collectionName})}
       {:else}
       {$LL.highlights()}
       {/if}
     
-    </h5>
+    </h2>
     <div class="grid justify-center md:justify-start md:grid-cols-2 xl:grid-cols-3 gap-5">
       {#each featuredItems as item, index (item.address + index)}
         <CardFeatured {item} />

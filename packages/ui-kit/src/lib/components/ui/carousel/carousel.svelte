@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
-	import { onDestroy } from 'svelte';
+	import { createEventDispatcher, onDestroy } from 'svelte';
 	import {
 		setEmblaContex,
 		type CarouselProps,
@@ -8,6 +8,7 @@
 		type CarouselOptions
 	} from './context.js';
 	import { cn } from '$lib/utils.js';
+	const dispatch = createEventDispatcher()
 
 	type $$Props = CarouselProps;
 
@@ -105,7 +106,7 @@
 
 	function onInit(event: CustomEvent<CarouselAPI>) {
 		api = event.detail;
-
+		dispatch('init', true)
 		apiStore.set(api);
 	}
 
