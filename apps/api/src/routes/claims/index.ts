@@ -5,8 +5,6 @@ import { env } from 'hono/adapter';
 import { collections } from './config';
 import { ClaimBody, JWTToken, CrossmintResponse } from './schemas';
 
-//TODO: Replace with zod schema
-
 const app = new Hono();
 
 app.post(
@@ -52,7 +50,7 @@ app.post(
 
     const data = CrossmintResponse.parse(await resp.json());
 
-    if (data.onchain.owner && data.onchain.owner !== address) {
+    if (data.onChain.owner && data.onChain.owner !== address) {
       return c.json(
         {
           error: true,

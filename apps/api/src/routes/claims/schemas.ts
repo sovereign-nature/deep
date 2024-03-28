@@ -16,11 +16,15 @@ export const JWTToken = z.object({
 
 export const CrossmintResponse = z.object({
   id: z.string(),
-  onchain: z.object({
+  metadata: z.optional(
+    z.object({ name: z.string(), description: z.string(), image: z.string() })
+  ),
+  onChain: z.object({
     status: z.string(),
     chain: z.string(),
     contractAddress: z.string(),
     owner: z.optional(z.string()),
+    tokenId: z.optional(z.string()),
   }),
   actionId: z.string(),
 });
