@@ -223,8 +223,8 @@ importers:
         specifier: ^0.3.19
         version: 0.3.19(svelte@4.2.12)
       tailwindcss:
-        specifier: 3.4.1
-        version: 3.4.1
+        specifier: 3.4.3
+        version: 3.4.3
       tslib:
         specifier: 2.6.2
         version: 2.6.2
@@ -322,10 +322,10 @@ importers:
         version: 2.2.2
       tailwind-variants:
         specifier: ^0.2.1
-        version: 0.2.1(tailwindcss@3.4.1)
+        version: 0.2.1(tailwindcss@3.4.3)
       tailwindcss:
-        specifier: 3.4.1
-        version: 3.4.1
+        specifier: 3.4.3
+        version: 3.4.3
     devDependencies:
       '@playwright/test':
         specifier: 1.42.1
@@ -13413,18 +13413,18 @@ packages:
     dependencies:
       '@babel/runtime': 7.24.1
 
-  /tailwind-variants@0.2.1(tailwindcss@3.4.1):
+  /tailwind-variants@0.2.1(tailwindcss@3.4.3):
     resolution: {integrity: sha512-2xmhAf4UIc3PijOUcJPA1LP4AbxhpcHuHM2C26xM0k81r0maAO6uoUSHl3APmvHZcY5cZCY/bYuJdfFa4eGoaw==}
     engines: {node: '>=16.x', pnpm: '>=7.x'}
     peerDependencies:
       tailwindcss: '*'
     dependencies:
       tailwind-merge: 2.2.2
-      tailwindcss: 3.4.1
+      tailwindcss: 3.4.3
     dev: false
 
-  /tailwindcss@3.4.1:
-    resolution: {integrity: sha512-qAYmXRfk3ENzuPBakNK0SRrUDipP8NQnEY6772uDhflcQz5EhRdD7JNZxyrFHVQNCwULPBn6FNPp9brpO7ctcA==}
+  /tailwindcss@3.4.3:
+    resolution: {integrity: sha512-U7sxQk/n397Bmx4JHbJx/iSOOv5G+II3f1kpLpY2QeUv5DcPdcTsYLlusZfq1NthHS1c1cZoyFmmkex1rzke0A==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
