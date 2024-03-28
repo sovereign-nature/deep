@@ -1,49 +1,25 @@
-import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
 import { decode, verify } from 'hono/jwt';
 import { env } from 'hono/adapter';
 import { collections } from './config';
+import { ClaimBody, JWTToken, CrossmintResponse } from './schemas';
 
 //TODO: Replace with zod schema
-type ClaimBody = {
-  token: string;
-  address: '0x{string}';
-};
-
-//TODO: Replace with zod schema
-type JWTPayload = { id: string; collection: string; seed: number };
-
-//TODO: Replace with zod schema
-type CrossmintResponse = {
-  id: string;
-  onchain: {
-    status: string;
-    chain: string;
-    contractAddress: string;
-    owner?: string;
-  };
-  actionId: string;
-};
 
 const app = new Hono();
 
 app.post(
   '/',
-  zValidator(
-    'json',
-    z.object({
-      token: z.string(),
-      address: z.string(),
-    })
-  ),
+  zValidator('json', ClaimBody),
 
   async (c) => {
     const { CROSSMINT_API_URL } = env<{ CROSSMINT_API_URL: string }>(c);
     const { CROSSMINT_API_KEY } = env<{ CROSSMINT_API_KEY: string }>(c);
     const { CLAIMS_SECRET } = env<{ CLAIMS_SECRET: string }>(c);
 
-    const body: ClaimBody = await c.req.json();
+    const body = ClaimBody.parse(await c.req.json());
+
     const { token, address } = body;
 
     try {
@@ -52,7 +28,7 @@ app.post(
       return c.json({ error: true, message: 'Invalid token' }, 400);
     }
 
-    const { payload }: { payload: JWTPayload } = decode(token);
+    const { payload } = JWTToken.parse(decode(token));
 
     const collectionId: string = payload.collection;
     const collectionConfig = collections[collectionId];
@@ -74,7 +50,7 @@ app.post(
       }
     );
 
-    const data = (await resp.json()) as CrossmintResponse;
+    const data = CrossmintResponse.parse(await resp.json());
 
     if (data.onchain.owner && data.onchain.owner !== address) {
       return c.json(
