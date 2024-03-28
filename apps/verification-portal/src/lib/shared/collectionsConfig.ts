@@ -2,7 +2,7 @@ export type CollectionKeys = 'soundwaves' | 'wildsama' | 'sub0' | 'hh';
 interface TabConfig {
   activeKey: CollectionKeys;
 }
-interface Collection {
+export interface Collection {
   key: CollectionKeys; //used for tab query params and translations
   collectionAddress: string;
   avatar: string;
