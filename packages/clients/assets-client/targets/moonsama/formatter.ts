@@ -1,4 +1,4 @@
-import { DeepAsset } from '../../types';
+import { DeepAsset } from '@sni/types';
 import { MoonSamaResponse } from './types';
 
 export default function moonSamaFormatter(
@@ -6,6 +6,7 @@ export default function moonSamaFormatter(
 ): DeepAsset {
   const assetData = response.tokens[0];
 
+  //TODO: Add asset address to the response
   return {
     id: assetData.id,
     tokenId: assetData.numericId,

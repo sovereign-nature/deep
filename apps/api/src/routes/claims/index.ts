@@ -1,34 +1,23 @@
-import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
 import { decode, verify } from 'hono/jwt';
 import { env } from 'hono/adapter';
-import { base64EncodeURL } from '../../utils';
 import { collections } from './config';
-
-type ClaimBody = {
-  token: string;
-  address: '0x{string}';
-};
+import { ClaimBody, JWTToken, CrossmintResponse } from './schemas';
 
 const app = new Hono();
 
 app.post(
   '/',
-  zValidator(
-    'json',
-    z.object({
-      token: z.string(),
-      address: z.string(),
-    })
-  ),
+  zValidator('json', ClaimBody),
 
   async (c) => {
     const { CROSSMINT_API_URL } = env<{ CROSSMINT_API_URL: string }>(c);
     const { CROSSMINT_API_KEY } = env<{ CROSSMINT_API_KEY: string }>(c);
     const { CLAIMS_SECRET } = env<{ CLAIMS_SECRET: string }>(c);
 
-    const body: ClaimBody = await c.req.json();
+    const body = ClaimBody.parse(await c.req.json());
+
     const { token, address } = body;
 
     try {
@@ -37,8 +26,7 @@ app.post(
       return c.json({ error: true, message: 'Invalid token' }, 400);
     }
 
-    const { payload } = decode(token);
-    const actionId = base64EncodeURL(JSON.stringify(payload));
+    const { payload } = JWTToken.parse(decode(token));
 
     const collectionId: string = payload.collection;
     const collectionConfig = collections[collectionId];
@@ -49,7 +37,7 @@ app.post(
     };
 
     const resp = await fetch(
-      `${CROSSMINT_API_URL}/${collectionId}/nfts/${actionId}`,
+      `${CROSSMINT_API_URL}/${collectionId}/nfts/${payload.id}`,
       {
         method: 'PUT',
         body: JSON.stringify(mintingConfig),
@@ -60,7 +48,17 @@ app.post(
       }
     );
 
-    const data = await resp.json();
+    const data = CrossmintResponse.parse(await resp.json());
+
+    if (data.onChain.owner && data.onChain.owner !== address) {
+      return c.json(
+        {
+          error: true,
+          message: 'Token was already claimed for different owner address',
+        },
+        400
+      );
+    }
 
     return c.json(data);
   }

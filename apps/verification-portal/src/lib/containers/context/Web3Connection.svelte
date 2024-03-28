@@ -2,7 +2,7 @@
   import { getContext, setContext } from 'svelte';
   import { writable } from 'svelte/store';
   import type { Writable } from 'svelte/store';
-  import type { DeepAsset } from '@sni/clients/assets-client/types';
+  import type { DeepAsset } from '@sni/types';
   import { getCollectionFromAddress } from '@sni/address-utils';
   import type { Web3DataState } from '$lib/types';
 

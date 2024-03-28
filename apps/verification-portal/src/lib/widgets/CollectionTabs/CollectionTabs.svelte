@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DeepAsset } from '@sni/clients/assets-client/types';
+  import type { DeepAsset } from '@sni/types';
   import { MultiTabs } from '@sni/ui-kit';
   import { afterNavigate } from '$app/navigation';
   import { updateQueryParams } from '$lib/shared/utils';
@@ -14,8 +14,7 @@
   import Web3SearchInput from '$lib/components/search/Web3SearchInput.svelte';
   import Web3Assets from '$lib/components/web3/Web3AssetsContainer.svelte';
 
-  const {url, route} = $page;
-  
+  const { url, route } = $page;
 
   let activeTabKey: CollectionKeys = tabConfig.activeKey;
   let activeTabIndex: number;
@@ -38,12 +37,12 @@
   }
   afterNavigate(() => {
     //reset the active tab to default on in page nav that has no params (eg. logo click)
-   if(route?.id === $page?.route?.id) {
-    const checkQ = $page.url.searchParams.get('q');
-    if (checkQ === null) {
-      activeTabKey = tabConfig.activeKey;
+    if (route?.id === $page?.route?.id) {
+      const checkQ = $page.url.searchParams.get('q');
+      if (checkQ === null) {
+        activeTabKey = tabConfig.activeKey;
+      }
     }
-   } 
   });
   function setIndex(key: CollectionKeys) {
     activeTabIndex = collections.findIndex(
@@ -54,9 +53,10 @@
     if (event && event.detail !== undefined && collections[event.detail]) {
       activeTabKey = collections[event.detail].key;
       updateActive(activeTabKey);
-    } 
+    }
   }
 </script>
+
 <MultiTabs.Root
   setStartIndex={activeTabIndex}
   setActiveIndex={activeTabIndex}

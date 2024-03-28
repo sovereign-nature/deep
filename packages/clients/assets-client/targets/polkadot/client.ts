@@ -1,5 +1,5 @@
 import { GraphQLClient } from 'graphql-request';
-import { DeepAsset } from '../../types';
+import { DeepAsset } from '@sni/types';
 import { kusamaApiUrl, polkadotApiUrl } from './config';
 import { getNftById } from './queries';
 import { PolkadotResponse } from './types';

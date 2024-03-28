@@ -1,4 +1,4 @@
-import { DeepAsset } from '../../types';
+import { DeepAsset } from '@sni/types';
 import openSeaFormatter from './formatter';
 import { OpenSeaCollectionResponse, OpenSeaResponse } from './types';
 

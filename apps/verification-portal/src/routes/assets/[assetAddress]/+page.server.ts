@@ -2,7 +2,7 @@ import { parseAddress } from '@sni/address-utils';
 import { deepApiUrl } from '@sni/clients/config.js';
 import { getEntity, getNewsBySteward } from '@sni/clients/data';
 import { getLinkByAddress } from '@sni/clients/link';
-import type { DeepAsset } from '@sni/clients/assets-client/types';
+import type { DeepAsset } from '@sni/types';
 import { error } from '@sveltejs/kit';
 import {
   DIRECTUS_API_KEY,

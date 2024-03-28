@@ -2,7 +2,7 @@
   import { getContext } from 'svelte';
   import type { Writable } from 'svelte/store';
   import { flip } from 'svelte/animate';
-  import type { DeepAsset } from '@sni/clients/assets-client/types';
+  import type { DeepAsset } from '@sni/types';
   import Card from '$lib/components/Card.svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import type { Web3DataState } from '$lib/types';

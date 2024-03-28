@@ -8,7 +8,7 @@
   import FeaturedContainer from '$lib/entities/featured/FeaturedContainer.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import type { FuseResult } from 'fuse.js';
-  import type { DeepAsset } from '@sni/clients/assets-client/types';
+  import type { DeepAsset } from '@sni/types';
 
   export let highlights: DeepAsset[] = [];
   export let collectionName: string;

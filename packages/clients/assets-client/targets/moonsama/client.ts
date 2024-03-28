@@ -1,5 +1,5 @@
 import { GraphQLClient } from 'graphql-request';
-import { DeepAsset } from '../../types';
+import { DeepAsset } from '@sni/types';
 import { moonSamaApiUrl } from './config';
 import { MoonSamaResponse } from './types';
 import { getNFT } from './queries';

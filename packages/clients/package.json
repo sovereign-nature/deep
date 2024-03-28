@@ -12,6 +12,7 @@
     "@sni/constants": "workspace:*",
     "@sni/address-utils": "workspace:*",
     "@sni/utils": "workspace:*",
+    "@sni/types": "workspace:*",
     "graphql-request": "6.1.0"
   },
   "devDependencies": {

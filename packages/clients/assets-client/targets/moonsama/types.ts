@@ -1,3 +1,5 @@
+//TODO: Replace with Zod schemas.
+
 export type MoonSamaToken = {
   id: string;
   numericId: string;

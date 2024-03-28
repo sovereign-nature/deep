@@ -5,7 +5,7 @@ import {
   getOpenSeaAsset,
   getPolkadotAsset,
 } from '@sni/clients/assets-client';
-import { DeepAsset } from '@sni/clients/assets-client/types';
+import { DeepAsset } from '@sni/types';
 
 //TODO: Cover with tests
 export async function getAsset(

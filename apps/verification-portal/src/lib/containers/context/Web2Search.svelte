@@ -4,7 +4,7 @@
   import { onMount, setContext } from 'svelte';
   import { directusUrl } from '@sni/clients/config';
   import { page } from '$app/stores';
-  import type { DeepAsset } from '@sni/clients/assets-client/types';
+  import type { DeepAsset } from '@sni/types';
 
   export let directusCollectionId: string;
 

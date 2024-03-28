@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { decodeJWT, encodeJWT } from '.';
+import { decodeJWT, encodeJWT, base64EncodeURL } from '.';
 
 const testToken =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJjb2xsZWN0aW9uIjoiZW5naWUiLCJpYXQiOjE3MTEwMjA5MTR9.ctpihwUaxJt3JPrnXkAZOFKWXr_NVU78Ugc_Sude_Ws';
@@ -21,4 +21,13 @@ test('decode JWT token', () => {
 
 test('fail to decode JWT token with wrong secret', () => {
   expect(() => decodeJWT(testToken, 'wrong-secret')).toThrow();
+});
+
+test('base64Encode should encode valid string', () => {
+  const encoded = base64EncodeURL(
+    '{"email":"test@test.com","collection":"f5f7d73e-38b5-479d-a814-22c6d2199fcd"}'
+  );
+  expect(encoded).toEqual(
+    'eyJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJjb2xsZWN0aW9uIjoiZjVmN2Q3M2UtMzhiNS00NzlkLWE4MTQtMjJjNmQyMTk5ZmNkIn0'
+  );
 });

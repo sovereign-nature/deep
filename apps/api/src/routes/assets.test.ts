@@ -3,7 +3,6 @@ import { HH_ASSET, WHALE_ASSET } from '../../tests/responses';
 import app from './assets';
 
 //TODO: Mock responses
-
 describe('Assets API', () => {
   it('should handle invalid DID', async () => {
     const res = await app.request('http://localhost/invalidDID');

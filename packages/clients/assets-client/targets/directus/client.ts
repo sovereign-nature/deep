@@ -1,4 +1,4 @@
-import { DeepAsset } from '../../types';
+import { DeepAsset } from '@sni/types';
 import { directusUrl } from '../../../config';
 import directusFormatter from './formatter';
 import { DirectusAsset } from './types';
