@@ -1,5 +1,5 @@
 export type DeepAsset = {
-  id: string;
+  id: string; //TODO: Do we need id?
   tokenId: string;
   name: string;
   description: string;
@@ -8,5 +8,5 @@ export type DeepAsset = {
     id: string;
     name: string;
   };
-  address: string;
+  address: string; //TODO: Rename to did
 };

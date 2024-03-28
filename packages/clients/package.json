@@ -8,14 +8,15 @@
     "test": "vitest"
   },
   "dependencies": {
-    "axios": "1.6.8",
-    "@sni/constants": "workspace:*",
     "@sni/address-utils": "workspace:*",
-    "@sni/utils": "workspace:*",
+    "@sni/constants": "workspace:*",
     "@sni/types": "workspace:*",
+    "@sni/utils": "workspace:*",
+    "axios": "1.6.8",
     "graphql-request": "6.1.0"
   },
   "devDependencies": {
+    "msw": "2.2.13",
     "vitest": "1.4.0"
   }
 }

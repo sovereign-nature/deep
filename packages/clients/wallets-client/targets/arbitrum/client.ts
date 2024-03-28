@@ -2,6 +2,7 @@ import { getChainId } from '@sni/address-utils';
 import { DeepAsset } from '@sni/types';
 import { NftScanResponse } from './schemas';
 
+//TODO: Cover with tests
 export async function getArbitrumWalletAssets(
   walletAddress: string,
   contractAddress: string,
