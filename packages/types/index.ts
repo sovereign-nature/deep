@@ -1,6 +1,6 @@
 export type DeepAsset = {
-  id: string; //TODO: DeepAsset should have id as number. Do we need id?
-  tokenId: string; //TODO: DeepAsset should have tokenId as number
+  id: string; //TODO: Do we need id?
+  tokenId: string;
   name: string;
   description: string;
   image: string;

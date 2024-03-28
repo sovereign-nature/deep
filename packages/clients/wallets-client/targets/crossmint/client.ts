@@ -31,8 +31,8 @@ export async function getCrossmintWalletAssets(
   );
 
   return selectedNfts.map((nft) => ({
-    id: nft.tokenId.toString(),
-    tokenId: nft.tokenId.toString(), //TODO: DeepAsset should have tokenId as number
+    id: nft.tokenId,
+    tokenId: nft.tokenId,
     name: nft.metadata.name,
     description: nft.metadata.description,
     image: nft.metadata.image,

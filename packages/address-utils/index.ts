@@ -100,6 +100,8 @@ const chainNameToId: ChainNameToId = {
   arbitrum: 42161,
   'arbitrum-sepolia': 421611,
   moonsama: 2199,
+  optimism: 10,
+  'optimism-sepolia': 1011,
 };
 
 export function getChainId(chainName: string): number {
