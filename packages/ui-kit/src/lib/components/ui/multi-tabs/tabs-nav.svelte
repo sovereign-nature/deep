@@ -6,11 +6,14 @@
 	import * as Carousel from '$lib/components/ui/carousel/index.js';
 	import { SOCIAL_CARD_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
 	import NavSelect from '$lib/components/ui/multi-tabs/tabs-nav-select.svelte';
+	import Skeleton from '$lib/components/ui/skeleton/skeleton.svelte';
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	type $$Props = HTMLAttributes<HTMLDivElement>
 
 	let className: $$Props['class'] = undefined;
+	let loaded = false; 
+
 	export { className as class };
 
 
@@ -27,13 +30,22 @@
 	{#if $title && $title.length > 0}
 		<h2
 			class="col-span-2 flex items-center text-xl text-gray-400 lg:flex xl:col-span-1"
-			role="contentinfo"
 		>
 			{$title}
 		</h2>
 	{/if}
 
 		<div class={cn('relative col-span-full ', carouselWrapperClass)}>
+			{#if !loaded}
+			<div class="flex flex-row gap-4 bg-pink h-20 items-stretch ">
+				<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+				{#each [1, 2, 3] as _}
+					<div class="rounded overflow-hidden w-full h-20 bg-gray-200 dark:bg-deep-green-900">
+						<Skeleton className="w-full h-full"></Skeleton>
+					</div>
+				{/each}
+			</div>
+			{/if}
 			<Carousel.Root
 				opts={{
 					align: 'start',
@@ -41,8 +53,9 @@
 					loop:true,
 					startIndex: $startIndex,
 				}}
-				class={cn('max-w-full', className)}
+				class={cn('max-w-full', className, loaded ? 'visible' : 'hidden')}
 				bind:activeItemIndex={$activeTab}
+				on:init={()=> loaded = true}
 			>
 				<Carousel.Content>
 					{#each $tabs as item, index}
@@ -56,7 +69,7 @@
 									>
 										<img
 											src={item.img ? item.img : SOCIAL_CARD_PLACEHOLDER}
-											alt={item.label}
+											alt={`${item.label} avatar`}
 											class={`${$activeTab === index ? 'opacity-100' : 'opacity-60'} aspect-square h-11 w-11 rounded-full object-cover transition-opacity md:h-12 md:w-12`}
 										/>
 

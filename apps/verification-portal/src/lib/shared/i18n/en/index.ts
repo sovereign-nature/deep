@@ -10,7 +10,9 @@ const en: BaseTranslation = {
     'Learn how your asset is helping real-world conservation efforts around the globe.',
   collection: 'Collection:',
   collectionMobile: 'Choose your collection:',
-  highlights: 'Latest Highlights',
+  highlights: 'Explore collection highlights:',
+  highlightsFor: 'Explore {collectionName: string} highlights:',
+  selectToken: 'Select this token',
   results: {
     resultsFor: 'Showing results for',
     nrResults: '{0} result{{s}}',
