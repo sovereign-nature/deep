@@ -6,6 +6,7 @@ import {
   getPolkadotAsset,
 } from '@sni/clients/assets-client';
 import { DeepAsset } from '@sni/types';
+import { Context } from 'hono';
 
 //TODO: Cover with tests
 export async function getAsset(
@@ -29,4 +30,12 @@ export async function getAsset(
     default:
       throw new Error(`Unknown networkId: ${network}`);
   }
+}
+
+export function reportUnknownNetwork(e: unknown, c: Context) {
+  if (e instanceof Error) {
+    return c.json({ error: true, message: e.message }, 500);
+  }
+
+  return c.json({ error: true, message: 'Internal server error' }, 500);
 }
