@@ -1,8 +1,9 @@
 import { DeepAsset } from '@sni/types';
 import { CrossmintWalletResponse } from './schemas';
+import { getChainId } from '@sni/address-utils';
 
 //TODO: Cover with tests
-export async function listCrossmintWallet(
+export async function getCrossmintWalletAssets(
   network: string,
   walletAddress: string,
   contractAddress: string,
@@ -41,6 +42,6 @@ export async function listCrossmintWallet(
       name: nft.metadata.name,
       description: nft.metadata.description,
     },
-    address: `did:asset:eip155:${network}:${nft.contractAddress}:${nft.tokenId}`,
+    address: `did:asset:eip155:${getChainId(network)}:${nft.contractAddress}:${nft.tokenId}`,
   }));
 }
