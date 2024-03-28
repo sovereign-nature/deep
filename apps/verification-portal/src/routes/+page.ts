@@ -1,4 +1,4 @@
-import type { DeepAsset } from '@sni/clients/assets-client/types';
+import type { DeepAsset } from '@sni/types';
 import { deepApiUrl } from '@sni/clients/config';
 import { writable } from 'svelte/store'; // Make sure to import writable from svelte/store
 import { tabConfig } from '$lib/shared/collectionsConfig';

@@ -1,3 +1,5 @@
+//TODO: Replace with Zod schema
+
 type OpenSeaNFTResponse = {
   nft: {
     identifier: string;

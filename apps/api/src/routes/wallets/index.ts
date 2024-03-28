@@ -1,54 +1,11 @@
 import { Hono } from 'hono';
 const app = new Hono();
 import { z } from 'zod';
-import { getChainId } from '@sni/address-utils';
-import { DeepAsset } from '@sni/clients/assets-client/types';
+
+import { DeepAsset } from '@sni/types';
+import { getArbitrumWalletAssets } from '@sni/clients/wallets-client';
 import { env } from 'hono/adapter';
 import { zValidator } from '@hono/zod-validator';
-import { NftScanResponse } from './schemas';
-
-//TODO: @sni/clients
-async function listArbitrumWallet(
-  walletAddress: string,
-  contractAddress: string,
-  apiKey: string
-): Promise<DeepAsset[]> {
-  const response = await fetch(
-    `https://arbitrumapi.nftscan.com/api/v2/account/own/${walletAddress}?&contract_address=${contractAddress}&limit=50`,
-    {
-      method: 'GET',
-      headers: { 'X-API-KEY': apiKey, Accept: 'application/json' },
-    }
-  );
-
-  const responseJson = await response.json();
-
-  if (response.ok && response.status === 200) {
-    const data = NftScanResponse.parse(responseJson).data;
-
-    const assets: DeepAsset[] = data.content.map((asset) => ({
-      id: asset.token_id,
-      tokenId: asset.token_id,
-      name: asset.name || '',
-      description: asset.description || '',
-      image: asset.image_uri || '',
-      collection: {
-        id: asset.contract_address,
-        name: asset.contract_name || '',
-        description: '',
-      },
-      address: `did:asset:eip155:${getChainId('arbitrum')}.${asset.erc_type}:${
-        asset.contract_address
-      }:${asset.token_id}`,
-    }));
-
-    return assets;
-  } else {
-    throw new Error(
-      JSON.stringify(responseJson) || 'Failed to fetch data from NFT Scan'
-    );
-  }
-}
 
 app.get(
   '/:networkId/:address',
@@ -66,7 +23,7 @@ app.get(
     switch (networkId) {
       case 'arbitrum':
         try {
-          assets = await listArbitrumWallet(
+          assets = await getArbitrumWalletAssets(
             walletAddress,
             contractAddress,
             NFTSCAN_API_KEY

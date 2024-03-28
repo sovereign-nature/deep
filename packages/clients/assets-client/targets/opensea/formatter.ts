@@ -1,6 +1,7 @@
-import { DeepAsset } from '../../types';
+import { DeepAsset } from '@sni/types';
 import { OpenSeaResponse } from './types';
 
+//TODO: Add asset address to the response
 export default function openSeaFormatter(
   assetData: OpenSeaResponse
 ): DeepAsset {

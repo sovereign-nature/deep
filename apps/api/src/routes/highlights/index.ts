@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import { env } from 'hono/adapter';
-import { DeepAsset } from '@sni/clients/assets-client/types';
+import { DeepAsset } from '@sni/types';
 import { parseDID } from '@sni/address-utils';
 import _ from 'lodash';
 import { getAsset } from '../../shared';

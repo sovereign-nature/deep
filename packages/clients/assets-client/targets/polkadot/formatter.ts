@@ -1,6 +1,7 @@
-import { DeepAsset } from '../../types';
+import { DeepAsset } from '@sni/types';
 import { PolkadotResponse } from './types';
 
+//TODO: Add asset address to the response
 export default function polkadotFormatter(
   assetData: PolkadotResponse
 ): DeepAsset {

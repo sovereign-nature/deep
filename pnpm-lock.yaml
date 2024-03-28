@@ -62,6 +62,9 @@ importers:
       '@sni/constants':
         specifier: workspace:*
         version: link:../../packages/constants
+      '@sni/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       '@types/lodash':
         specifier: 4.17.0
         version: 4.17.0
@@ -91,31 +94,6 @@ importers:
         specifier: 3.22.4
         version: 3.22.4
 
-  apps/claimer:
-    dependencies:
-      '@hono/zod-validator':
-        specifier: 0.2.0
-        version: 0.2.0(hono@4.1.3)(zod@3.22.4)
-      hono:
-        specifier: 4.1.3
-        version: 4.1.3
-      zod:
-        specifier: 3.22.4
-        version: 3.22.4
-    devDependencies:
-      '@cloudflare/workers-types':
-        specifier: 4.20240320.1
-        version: 4.20240320.1
-      env-cmd:
-        specifier: 10.1.0
-        version: 10.1.0
-      vitest:
-        specifier: 1.4.0
-        version: 1.4.0
-      wrangler:
-        specifier: 3.38.0
-        version: 3.38.0(@cloudflare/workers-types@4.20240320.1)
-
   apps/verification-portal:
     devDependencies:
       '@google/model-viewer':
@@ -139,6 +117,9 @@ importers:
       '@sni/constants':
         specifier: workspace:*
         version: link:../../packages/constants
+      '@sni/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       '@sni/ui-kit':
         specifier: workspace:*
         version: link:../../packages/ui-kit
@@ -290,6 +271,9 @@ importers:
       '@sni/constants':
         specifier: workspace:*
         version: link:../constants
+      '@sni/types':
+        specifier: workspace:*
+        version: link:../types
       '@sni/utils':
         specifier: workspace:*
         version: link:../utils
@@ -324,6 +308,8 @@ importers:
         version: 1.4.0
 
   packages/solidity-interfaces: {}
+
+  packages/types: {}
 
   packages/ui-kit:
     dependencies:
@@ -3008,6 +2994,7 @@ packages:
     dependencies:
       hono: 4.1.3
       zod: 3.22.4
+    dev: true
 
   /@humanwhocodes/config-array@0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -14601,7 +14588,6 @@ packages:
 
   /workbox-google-analytics@7.0.0:
     resolution: {integrity: sha512-MEYM1JTn/qiC3DbpvP2BVhyIH+dV/5BjHk756u9VbwuAhu0QHyKscTnisQuz21lfRpOwiS9z4XdqeVAKol0bzg==}
-    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 7.0.0
       workbox-core: 7.0.0
@@ -14942,6 +14928,7 @@ packages:
 
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+    dev: true
 
   /zustand@4.4.1(react@18.2.0):
     resolution: {integrity: sha512-QCPfstAS4EBiTQzlaGP1gmorkh/UL1Leaj2tdj+zZCZ/9bm0WS7sI2wnfD5lpOszFqWJ1DcPnGoY8RDL61uokw==}

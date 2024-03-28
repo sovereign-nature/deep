@@ -1,3 +1,5 @@
+// TODO: Replace with Zod schema.
+
 export type DirectusAsset = {
   data: {
     id: string;
