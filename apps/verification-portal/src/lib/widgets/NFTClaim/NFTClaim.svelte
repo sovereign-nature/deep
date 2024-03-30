@@ -68,11 +68,11 @@
   >
     <Drawer.Trigger
       on:click={() => (drawerOpen = true)}
-      class="bg-primary-400 text-white rounded-full fixed bottom-10 right-10 z-10 px-4 py-2"
+      class="bg-primary-400 shadow-lg text-white rounded-full fixed bottom-4 right-4 sm:bottom-10 sm:right-10 z-20 px-4 py-2  "
     >
-      ⭐ Claim Your Token ( status: {$claimStatus})</Drawer.Trigger
+      ⭐ Claim Your Token ({$claimStatus})</Drawer.Trigger
     >
-    <Drawer.Content class="bg-deep-green text-white border-none">
+    <Drawer.Content class="bg-deep-green text-white border-none max-h-[96%]">
       <Drawer.Header class="container p-0 pt-4 relative">
         <Drawer.Close class="absolute right-5 top-4 ">Close X</Drawer.Close>
         <Drawer.Title class="text-2xl">Claim you token</Drawer.Title>
@@ -81,7 +81,7 @@
         >
       </Drawer.Header>
 
-      <div class="container pb-10 px-5 sm:px-0">
+      <div class="container pb-10 px-5 sm:px-0 overflow-auto">
         {#if $claimStatus === 'valid'}
           <ClaimData></ClaimData>
         {:else if $claimStatus === 'pending'}
