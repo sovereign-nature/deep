@@ -102,7 +102,6 @@
           class={inputClass}
           {placeholder}
           bind:value={$formManualAddress}
-          disabled={$formUseWallet}
           required
         />
       {/if}
