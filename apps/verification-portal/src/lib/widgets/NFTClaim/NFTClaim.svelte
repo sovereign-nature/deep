@@ -73,7 +73,7 @@
       ⭐ Claim Your Token ({$claimStatus})</Drawer.Trigger
     >
     <Drawer.Content class="bg-deep-green text-white border-none max-h-[96%]">
-      <Drawer.Header class="container p-0 pt-4 relative">
+      <Drawer.Header class="container px-5 md:px-0 pt-4 relative">
         <Drawer.Close class="absolute right-5 top-4 ">Close X</Drawer.Close>
         <Drawer.Title class="text-2xl">Claim you token</Drawer.Title>
         <Drawer.Description
@@ -81,7 +81,7 @@
         >
       </Drawer.Header>
 
-      <div class="container pb-10 px-5 sm:px-0 overflow-auto">
+      <div class="container pb-10 px-5 md:px-0 overflow-auto">
         {#if $claimStatus === 'valid'}
           <ClaimData></ClaimData>
         {:else if $claimStatus === 'pending'}
