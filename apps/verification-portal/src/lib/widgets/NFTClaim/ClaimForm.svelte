@@ -9,14 +9,10 @@
   import { toast } from 'svelte-sonner';
   import { getNFTClaimContext } from './context';
 
-  let web3Connected: Writable<boolean> = getContext('web3Connected');
-  let web3Address: Writable<string> = getContext('web3Address');
-  let manualAddress: string = '';
-  $: useWalletAddress = $web3Connected;
-  $: address =
-    $web3Connected && useWalletAddress ? $web3Address : manualAddress;
   const {
     formSending,
+    formUseWallet,
+    formManualAddress,
     claimSubmitted,
     claimResponse,
     claimToken,
@@ -24,6 +20,13 @@
     claimPending,
     claimAddress,
   } = getNFTClaimContext();
+
+  let web3Connected: Writable<boolean> = getContext('web3Connected');
+  let web3Address: Writable<string> = getContext('web3Address');
+
+  $: address =
+    $web3Connected && $formUseWallet ? $web3Address : $formManualAddress;
+
   let errorMsg: string | undefined;
   const submitClaim: SubmitFunction = () => {
     $formSending = true;
@@ -70,34 +73,18 @@
 </script>
 
 <form class=" max-w-2xl py-5" method="POST" use:enhance={submitClaim}>
-  {#if errorMsg}
-    <div class="text-red-500">
-      <p>{errorMsg}</p>
-    </div>
-  {/if}
-
   <input type="hidden" name="claim" value={$claimToken} />
   <input type="hidden" name="address" bind:value={address} />
 
   <div class="mb-4">
-    <div class="mt-4">
-      <label class="inline-flex items-center">
-        <input
-          type="radio"
-          class="form-radio disabled:opacity-30"
-          name="addressOption"
-          bind:group={useWalletAddress}
-          value={false}
-        />
-        <span class="ml-2">Enter address manually</span>
-      </label>
-      <label class="inline-flex items-center mt-2 ms-4">
+    <div class="flex flex-col gap-5 sm:flex-row items-baseline">
+      <label class="inline-flex gap-5 items-center mt-2">
         <input
           disabled={!$web3Connected}
           type="radio"
           class="form-radio disabled:opacity-30"
           name="addressOption"
-          bind:group={useWalletAddress}
+          bind:group={$formUseWallet}
           value={true}
         />
         <span class="ml-2">
@@ -108,41 +95,61 @@
           {/if}
         </span>
       </label>
+      <label class="inline-flex items-center">
+        <input
+          type="radio"
+          class="form-radio disabled:opacity-30"
+          name="addressOption"
+          bind:group={$formUseWallet}
+          value={false}
+        />
+        <span class="ml-2">Enter address manually</span>
+      </label>
     </div>
   </div>
   <label class="block text-sm font-bold mb-2" for="address"> Address </label>
-  {#if useWalletAddress && $web3Connected}
-    <input
-      id="addressWallet"
-      type="text"
-      class={inputClass}
-      bind:value={address}
-      readonly
-    />
-  {:else}
-    <input
-      id="addressManual"
-      type="text"
-      class={inputClass}
-      {placeholder}
-      bind:value={manualAddress}
-      disabled={useWalletAddress}
-    />
-  {/if}
-
-  <div class="flex items-center justify-between pt-4">
-    <button
-      class="bg-primary-400 hover:bg-primary-300 disabled:opacity-80 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex flex-row"
-      type="submit"
-      formaction="/?/claim"
-      disabled={$formSending}
-    >
-      Submit
-      {#if $formSending}
-        <Spinner className="ms-2 w-5 h-5 text-primary-200  fill-primary-400 "
-        ></Spinner>
-        <p class="sr-only">sending form</p>
+  <div class="flex flex-row w-full">
+    <div class="w-full">
+      {#if $formUseWallet && $web3Connected}
+        <input
+          id="addressWallet"
+          type="text"
+          class={inputClass}
+          bind:value={address}
+          readonly
+        />
+      {:else}
+        <input
+          id="addressManual"
+          type="text"
+          class={inputClass}
+          {placeholder}
+          bind:value={$formManualAddress}
+          disabled={$formUseWallet}
+        />
       {/if}
-    </button>
+    </div>
+
+    <div class="flex items-center justify-between">
+      <button
+        class="bg-primary-400 hover:bg-primary-300 disabled:opacity-80 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex flex-row"
+        type="submit"
+        formaction="/?/claim"
+        disabled={$formSending}
+      >
+        Submit
+        {#if $formSending}
+          <Spinner className="ms-2 w-5 h-5 text-primary-200  fill-primary-400 "
+          ></Spinner>
+          <p class="sr-only">sending form</p>
+        {/if}
+      </button>
+    </div>
+  </div>
+
+  <div class="text-red-500 h-8 mt-2">
+    {#if errorMsg}
+      <p>{errorMsg}</p>
+    {/if}
   </div>
 </form>

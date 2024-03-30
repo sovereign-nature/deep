@@ -11,6 +11,8 @@ export type ClaimStatus = 'unknown' | 'valid' | 'invalid' | 'pending';
 type NFTClaimContext = {
   claimToken: Readable<string | null>;
   formSending: Writable<boolean>;
+  formUseWallet: Writable<boolean>;
+  formManualAddress: Writable<string>;
   claimResponse: Writable<object>;
   claimSubmitted: Writable<boolean>;
   claimValid: Writable<boolean>;

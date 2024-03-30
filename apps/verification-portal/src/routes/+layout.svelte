@@ -13,7 +13,7 @@
   import { browser } from '$app/environment';
   import Modal from '$lib/widgets/InboxModal/InboxModal.svelte';
   import { Toaster } from '@sni/ui-kit';
-
+  import NftClaim from '$lib/widgets/NFTClaim/NFTClaim.svelte';
   let isLoading = false;
 
   beforeNavigate(({ to }) => {
@@ -41,6 +41,8 @@
 
   export let data;
 </script>
+
+<NftClaim></NftClaim>
 
 <!-- <Toaster /> -->
 <Toaster.Custom mode={$themeStore} />

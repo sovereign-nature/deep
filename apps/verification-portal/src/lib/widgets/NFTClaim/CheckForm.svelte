@@ -40,7 +40,7 @@
   };
 </script>
 
-<form class=" max-w-2xl py-5 text-black" method="POST" use:enhance={checkClaim}>
+<form class=" max-w-2xl text-black" method="POST" use:enhance={checkClaim}>
   <input name="address" type="text" value={$claimAddress} readonly hidden />
 
   <input name="claim" type="text" value={$claimToken} readonly hidden />

@@ -7,7 +7,7 @@
 </script>
 
 {#if $claimStatus === 'valid'}
-  <div class="flex flex-row gap-8 my-4">
+  <div class="flex flex-col md:flex-row gap-8 my-4">
     <NftImage
       url={$claimResponse.metadata.image}
       alt={$claimResponse.metadata.name}
