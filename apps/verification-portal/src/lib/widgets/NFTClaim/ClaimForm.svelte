@@ -84,7 +84,7 @@
   <label class="block text-sm font-bold mb-2 sr-only" for="address">
     Address
   </label>
-  <div class="flex flex-row w-full">
+  <div class="flex flex-row w-full relative">
     <div class="w-full">
       {#if $formUseWallet && $web3Connected}
         <input
