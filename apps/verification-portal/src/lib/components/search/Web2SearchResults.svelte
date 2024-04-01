@@ -19,7 +19,7 @@
   const results: Writable<Array<FuseResult<DeepAsset>>> = getContext('results');
   const search: Writable<string> = getContext('search');
   const web2data: Writable<Web2DataState> = getContext('web2data');
-  const prefix = collection.collectionAddress;
+  const prefix = `${collection.collectionAddress}:`;
 </script>
 
 {#if $search}
