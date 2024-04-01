@@ -44,8 +44,8 @@ export const collections: Collection[] = [
     avatar: '/collections/avatar_wildsama.jpg',
     web3: { source: 'moonsama', web3Enabled: false },
     searchInput: {
-      searchEnabled: false,
-      inputMode: 'text',
+      searchEnabled: true,
+      inputMode: 'numeric',
     },
   },
   {
