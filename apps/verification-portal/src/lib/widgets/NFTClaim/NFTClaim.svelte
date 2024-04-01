@@ -65,6 +65,7 @@
   <Drawer.Root
     bind:open={drawerOpen}
     closeOnOutsideClick={!$preventDrawerClose}
+    closeOnEscape={false}
   >
     <Drawer.Trigger
       on:click={() => (drawerOpen = true)}
@@ -72,16 +73,22 @@
     >
       ⭐ Claim Your Token ({$claimStatus})</Drawer.Trigger
     >
-    <Drawer.Content class="bg-deep-green text-white border-none max-h-[96%]">
-      <Drawer.Header class="container px-5 md:px-0 pt-4 relative">
-        <Drawer.Close class="absolute right-5 top-4 ">Close X</Drawer.Close>
-        <Drawer.Title class="text-2xl">Claim you token</Drawer.Title>
-        <Drawer.Description
-          >Enter your address to claim or check your claim status</Drawer.Description
+    <Drawer.Content
+      class="bg-deep-green text-white border-none max-h-[96%] h-[96%] sm:h-auto"
+    >
+      <Drawer.Header
+        class="container px-5 md:px-0 pt-4 relative w-full lg:w-4/5 mx-auto"
+      >
+        <Drawer.Title class="text-2xl">Claim your token</Drawer.Title>
+        <Drawer.Close
+          class="absolute right-5 top-5 bg-slate-100 text-gray-300 hover:bg-opacity-20 bg-opacity-10 p-2 w-7 h-7 rounded-full flex items-center justify-center text-sm "
+          >x</Drawer.Close
         >
       </Drawer.Header>
 
-      <div class="container pb-10 px-5 md:px-0 overflow-auto">
+      <div
+        class="container pb-10 px-5 md:px-0 sticky top-0 w-full lg:w-4/5 mx-auto"
+      >
         {#if $claimStatus === 'valid'}
           <ClaimData></ClaimData>
         {:else if $claimStatus === 'pending'}

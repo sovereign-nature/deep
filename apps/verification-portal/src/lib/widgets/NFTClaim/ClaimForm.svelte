@@ -1,6 +1,7 @@
 <script lang="ts">
   import { getContext } from 'svelte';
   import type { SubmitFunction } from '@sveltejs/kit';
+  import { Input, Button, ButtonGroup } from 'flowbite-svelte';
   import Spinner from '$lib/components/icons/Spinner.svelte';
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
 
@@ -69,61 +70,63 @@
   };
 
   const inputClass =
-    'disabled:cursor-not-allowed disabled:opacity-50 rtl:text-right dark:focus:border-primary-500 dark:focus:ring-primary-500 bg-gray-50 dark:text-white dark:placeholder-gray-400 border-gray-300 dark:border-gray-600 first:rounded-s-lg last:rounded-e-lg first:border-s last:border-e block border-none w-full border p-4 pe-14 sm:pe-4 xl:pl-10 text-lg font-aeonik text-gray-200 focus:border-white focus:ring-white dark:placeholder:text-primary-300 dark:bg-deep-green-700 rounded-lg sm:!rounded-l-sm sm:rounded-none ms-auto';
-  const placeholder = 'Enter your address';
+    'z-10 box-border disabled:cursor-not-allowed disabled:opacity-50 rtl:text-right dark:focus:border-primary-500 dark:focus:ring-primary-500 bg-gray-50 dark:text-white dark:placeholder-gray-400 border-gray-300 dark:border-gray-600 first:rounded-s-lg last:rounded-e-lg first:border-s last:border-e block border-none w-full border p-4 pe-14 sm:pe-4 xl:pl-10 text-lg font-aeonik text-gray-200 focus:border-white focus:ring-white dark:placeholder:text-primary-300 dark:bg-deep-green-700 rounded-lg sm:!rounded-l-sm sm:rounded-none ms-auto';
+  const placeholder = 'Enter your wallet address';
 </script>
 
-<form class=" max-w-2xl py-5" method="POST" use:enhance={submitClaim}>
+{#if errorMsg}
+  <div class="text-red-500 mb-2">
+    <p>{errorMsg}</p>
+  </div>
+{/if}
+<form class=" max-w-2xl py-5 px-1" method="POST" use:enhance={submitClaim}>
   <input type="hidden" name="claim" value={$claimToken} />
   <input type="hidden" name="address" bind:value={address} />
-  {#if errorMsg}
-    <div class="text-red-500 mb-2">
-      <p>{errorMsg}</p>
-    </div>
-  {/if}
-  <label class="block text-sm font-bold mb-2 sr-only" for="address">
-    Address
-  </label>
-  <div class="flex flex-row w-full relative">
-    <div class="w-full">
-      {#if $formUseWallet && $web3Connected}
-        <input
-          id="addressWallet"
-          type="text"
-          class={inputClass}
-          bind:value={address}
-          readonly
-        />
-      {:else}
-        <input
-          id="addressManual"
-          type="text"
-          name="address-manual"
-          class={inputClass}
-          {placeholder}
-          bind:value={$formManualAddress}
-          required
-        />
-      {/if}
-    </div>
+  <ButtonGroup
+    data-vaul-no-drag
+    divClass="-z-1 relative w-full flex flex-col  sm:flex-row sm:inline-flex  justify-items-stretch gap-y-4  sm:flex-row sm:inline-flex  justify-items-stretch gap-y-4 "
+  >
+    {#if $formUseWallet && $web3Connected}
+      <Input
+        id="addressWallet"
+        type="text"
+        class={inputClass}
+        bind:value={address}
+        readonly
+      />
+    {:else}
+      <Input
+        id="addressManual"
+        type="text"
+        name="address-manual"
+        tabindex="0"
+        class={inputClass}
+        {placeholder}
+        bind:value={$formManualAddress}
+        required
+      />
+    {/if}
 
-    <button
-      class="text-center font-medium focus-within:ring-2 focus-within:z-10 inline-flex items-center justify-center px-4 py-2 text-sm first:rounded-s-lg last:rounded-e-lg bg-primary-300 sm:w-20 border-none !p-2.5 rounded-lg sm:rounded-s-none ms-auto sm:!rounded-r-sm absolute top-1/2 right-3 transform -translate-y-1/2 sm:translate-y-0 sm:relative"
+    <Button
+      color="none"
+      class="z-50 bg-primary-300 sm:w-20 border-none !p-2.5 rounded-lg sm:rounded-s-none  ms-auto sm:!rounded-r-sm absolute top-1/2 right-3 transform -translate-y-1/2 sm:translate-y-0  sm:relative"
       type="submit"
+      tabindex="1"
       formaction="/?/claim"
       disabled={$formSending}
     >
-      <ArrowRight className="h-4 w-4 sm:h-7 sm:w-7 text-deep-green-900" />
-      {#if $formSending}
-        <Spinner className="ms-2 w-5 h-5 text-primary-200  fill-primary-400 "
+      {#if !$formSending}
+        <ArrowRight className="h-4 w-4 sm:h-7 sm:w-7 text-deep-green-900" />
+      {:else}
+        <Spinner className="h-4 w-4 sm:h-7 sm:w-7 text-white  fill-primary-200 "
         ></Spinner>
         <p class="sr-only">sending form</p>
       {/if}
-    </button>
-  </div>
+    </Button>
+  </ButtonGroup>
 
-  <div class="mt-6">
-    <div class="flex flex-col gap-5 sm:flex-row items-baseline mb-10">
+  <div class="pt-6 relative">
+    <div class="flex flex-col gap-5 sm:flex-row items-baseline mb-10 text-sm">
       <label class="inline-flex gap-5 items-center mt-2">
         <input
           disabled={!$web3Connected}
@@ -135,13 +138,13 @@
         />
         <span class="ml-2">
           {#if $web3Connected}
-            Use wallet address
+            Use Wallet Address
           {:else}
             <Web3ConnectBtn alwaysOpen></Web3ConnectBtn>
           {/if}
         </span>
       </label>
-      <label class="inline-flex items-center">
+      <label class="inline-flex gap-5 items-center">
         <input
           type="radio"
           class="form-radio disabled:opacity-30"
@@ -149,7 +152,7 @@
           bind:group={$formUseWallet}
           value={false}
         />
-        <span class="ml-2">Enter address manually</span>
+        <span class="ml-2">Enter Address Manually</span>
       </label>
     </div>
   </div>
