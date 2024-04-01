@@ -4,6 +4,7 @@
   import { Input, Button, ButtonGroup } from 'flowbite-svelte';
   import Spinner from '$lib/components/icons/Spinner.svelte';
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
 
   import type { Writable } from 'svelte/store';
   import Web3ConnectBtn from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
@@ -12,6 +13,7 @@
   import { getNFTClaimContext } from './context';
 
   const {
+    destroyOnClose,
     formSending,
     formUseWallet,
     formManualAddress,
@@ -40,18 +42,17 @@
           $claimSubmitted = true;
           $claimValid = true;
           $claimPending = result?.data?.onChain?.status !== 'success';
+          $destroyOnClose = !$claimPending;
           $claimResponse = result.data;
-          console.log(result);
           break;
         case 'failure':
-          console.log(result);
           if (result?.data?.message !== undefined) {
             errorMsg = result.data.message;
           } else if (result?.data !== undefined) {
             if (result.data === 'Invalid token') {
               $claimSubmitted = true;
               $claimValid = false;
-              toast.error(result.data);
+              $destroyOnClose = true;
             }
             errorMsg = result?.data;
           } else {
@@ -71,7 +72,7 @@
 
   const inputClass =
     'z-10 box-border disabled:cursor-not-allowed disabled:opacity-50 rtl:text-right dark:focus:border-primary-500 dark:focus:ring-primary-500 bg-gray-50 dark:text-white dark:placeholder-gray-400 border-gray-300 dark:border-gray-600 first:rounded-s-lg last:rounded-e-lg first:border-s last:border-e block border-none w-full border p-4 pe-14 sm:pe-4 xl:pl-10 text-lg font-aeonik text-gray-200 focus:border-white focus:ring-white dark:placeholder:text-primary-300 dark:bg-deep-green-700 rounded-lg sm:!rounded-l-sm sm:rounded-none ms-auto';
-  const placeholder = 'Enter your wallet address';
+  const placeholder = $LL.wallet.inputPlaceholder();
 </script>
 
 {#if errorMsg}
@@ -79,7 +80,7 @@
     <p>{errorMsg}</p>
   </div>
 {/if}
-<form class=" max-w-2xl py-5 px-1" method="POST" use:enhance={submitClaim}>
+<form class=" max-w-2xl pb-5 px-1" method="POST" use:enhance={submitClaim}>
   <input type="hidden" name="claim" value={$claimToken} />
   <input type="hidden" name="address" bind:value={address} />
   <ButtonGroup
@@ -136,12 +137,11 @@
           bind:group={$formUseWallet}
           value={true}
         />
-        <span class="ml-2">
+        <span class="ml-2 flex gap-2">
           {#if $web3Connected}
-            Use Wallet Address
-          {:else}
-            <Web3ConnectBtn alwaysOpen></Web3ConnectBtn>
+            {$LL.claim.useWallet()}
           {/if}
+          <Web3ConnectBtn alwaysOpen></Web3ConnectBtn>
         </span>
       </label>
       <label class="inline-flex gap-5 items-center">
@@ -152,7 +152,9 @@
           bind:group={$formUseWallet}
           value={false}
         />
-        <span class="ml-2">Enter Address Manually</span>
+        <span class="ml-2">
+          {$LL.claim.useManualInput()}
+        </span>
       </label>
     </div>
   </div>

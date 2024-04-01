@@ -6,7 +6,7 @@ export type NFTClaimProps = {
 };
 
 const NFT_CLAIM_CONTEXT = Symbol('NFT_CLAIM_CONTEXT');
-export type ClaimStatus = 'unknown' | 'valid' | 'invalid' | 'pending';
+export type ClaimStatus = 'unclaimed' | 'valid' | 'invalid' | 'pending';
 
 type NFTClaimContext = {
   claimToken: Readable<string | null>;

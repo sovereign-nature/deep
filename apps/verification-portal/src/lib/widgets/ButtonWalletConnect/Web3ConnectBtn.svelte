@@ -1,9 +1,7 @@
 <script lang="ts">
-  import { getChainName } from '@sni/address-utils';
   import { getContext, onMount } from 'svelte';
   import type { Writable } from 'svelte/store';
   import RolloverBtn from '$lib/shared/components/RolloverBtn.svelte';
-  import ArbitrumIcon from '$lib/components/icons/ArbitrumIcon.svelte';
   import ConnectIcon from '$lib/components/icons/ConnectIcon.svelte';
   import { getWeb3Modal } from '$lib/features/web3Modal';
 
@@ -35,14 +33,15 @@
       <button
         class=" dark:text-primary-200 pe-1 opacity-80 hover:opacity-100 active:opacity-100 flex items-center gap-2"
         on:click={openModal}
-        >{#key $web3ChainId}
+      >
+        <!-- {#key $web3ChainId}
           {#if $web3ChainId == 42161}
             <ArbitrumIcon className="h-4 w-4" />
             <span class="sr-only">Arbitrum</span>
           {:else}
             {getChainName($web3ChainId)}
           {/if}
-        {/key}
+        {/key} -->
         <span class="flex items-center gap-2">
           <span class="rounded-full h-3 w-3 block bg-primary-300"></span>
           {shortenAddress($web3Address)}

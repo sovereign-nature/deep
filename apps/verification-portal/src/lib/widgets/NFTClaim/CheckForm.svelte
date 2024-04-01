@@ -2,12 +2,19 @@
   import type { SubmitFunction } from '@sveltejs/kit';
   import { enhance, applyAction } from '$app/forms';
   import { toast } from 'svelte-sonner';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
 
   import { getNFTClaimContext } from './context';
   import Spinner from '$lib/components/icons/Spinner.svelte';
 
-  const { claimAddress, claimToken, formSending, claimPending, claimResponse } =
-    getNFTClaimContext();
+  const {
+    destroyOnClose,
+    claimAddress,
+    claimToken,
+    formSending,
+    claimPending,
+    claimResponse,
+  } = getNFTClaimContext();
 
   const checkClaim: SubmitFunction = () => {
     $formSending = true;
@@ -18,10 +25,10 @@
           $claimPending = result?.data?.onChain?.status !== 'success';
           if (!$claimPending) {
             $claimResponse = result.data;
+            $destroyOnClose = true;
           }
           break;
         case 'failure':
-          console.log(result);
           toast.error(
             result && result?.data?.message !== undefined
               ? String(result.data.message)
@@ -46,12 +53,12 @@
   <input name="claim" type="text" value={$claimToken} readonly hidden />
 
   <button
-    class="bg-primary-400 hover:bg-primary-300 disabled:opacity-80 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex"
+    class="bg-primary-400 hover:bg-primary-300 disabled:opacity-80 text-deep-green-900 font-aeonik font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline flex"
     type="submit"
     formaction="/?/claim"
     disabled={$formSending}
   >
-    Check Status
+    {$LL.claim.checkClaim()}
     {#if $formSending}
       <Spinner className="ms-2 w-5 h-5 text-primary-200  fill-primary-400 "
       ></Spinner>

@@ -20,7 +20,7 @@
   let isLoading = true;
   let errorMsg = $LL.errors.image();
 
-  $: isVideo = url.endsWith('.mp4');
+  $: isVideo = url?.endsWith('.mp4');
   $: imageUrl = isVideo ? url : getAssetImageUrl(url, size);
 
   // Function to handle image loading errors
