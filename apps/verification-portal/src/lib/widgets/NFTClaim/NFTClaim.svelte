@@ -2,14 +2,14 @@
   import { writable, readable, derived } from 'svelte/store';
   import { getContext } from 'svelte';
   import type { Writable, Readable } from 'svelte/store';
-  import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import { clearQueryParam } from '$lib/shared/utils';
   import { Drawer } from '@sni/ui-kit';
-  import { page } from '$app/stores';
   import ClaimForm from './ClaimForm.svelte';
   import CheckForm from './CheckForm.svelte';
   import ClaimData from './ClaimData.svelte';
   import { setNFTClaimContext } from './context.js';
+  import { page } from '$app/stores';
+  import { clearQueryParam } from '$lib/shared/utils';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
 
   const claim = $page.url.searchParams.get('claim');
   export let claimIsSubmitted = false;

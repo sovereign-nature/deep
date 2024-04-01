@@ -2,15 +2,15 @@
   import { getContext } from 'svelte';
   import type { SubmitFunction } from '@sveltejs/kit';
   import { Input, Button, ButtonGroup } from 'flowbite-svelte';
+  import type { Writable } from 'svelte/store';
+  import { toast } from 'svelte-sonner';
+  import { getNFTClaimContext } from './context';
   import Spinner from '$lib/components/icons/Spinner.svelte';
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
 
-  import type { Writable } from 'svelte/store';
   import Web3ConnectBtn from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
   import { enhance, applyAction } from '$app/forms';
-  import { toast } from 'svelte-sonner';
-  import { getNFTClaimContext } from './context';
 
   const {
     destroyOnClose,

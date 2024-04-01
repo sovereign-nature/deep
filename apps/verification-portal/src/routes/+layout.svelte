@@ -2,6 +2,7 @@
   import '../app.postcss';
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import { Toaster } from '@sni/ui-kit';
   import { afterNavigate, beforeNavigate } from '$app/navigation';
   import {
     initializeContext,
@@ -12,7 +13,6 @@
   import { initializeInbox, setInboxContext } from '$lib/features/web3Inbox';
   import { browser } from '$app/environment';
   import Modal from '$lib/widgets/InboxModal/InboxModal.svelte';
-  import { Toaster } from '@sni/ui-kit';
   import NftClaim from '$lib/widgets/NFTClaim/NFTClaim.svelte';
   let isLoading = false;
 

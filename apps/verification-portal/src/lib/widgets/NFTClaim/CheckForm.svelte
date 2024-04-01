@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { SubmitFunction } from '@sveltejs/kit';
-  import { enhance, applyAction } from '$app/forms';
   import { toast } from 'svelte-sonner';
+  import { getNFTClaimContext } from './context';
+  import { enhance, applyAction } from '$app/forms';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
 
-  import { getNFTClaimContext } from './context';
   import Spinner from '$lib/components/icons/Spinner.svelte';
 
   const {
