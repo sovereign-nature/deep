@@ -316,15 +316,15 @@ type RootTranslation = {
 			fundsGeneratedByDate: RequiredParams<'date'>
 		}
 		/**
-		 * L​o​o​k​ ​a​t​ ​m​y​ ​e​c​o​-​l​i​n​k​e​d​ ​a​s​s​e​t​ ​b​y​ ​@​s​o​v​e​r​e​i​g​n​n​a​t​u​r​e
+		 * C​h​e​c​k​ ​o​u​t​ ​m​y​ ​c​o​l​l​e​c​t​i​b​l​e​ ​l​i​n​k​e​d​ ​t​o​ ​r​e​a​l​-​w​o​r​l​d​ ​i​m​p​a​c​t​ ​b​y​ ​@​s​o​v​e​r​e​i​g​n​n​a​t​u​r​e
 		 */
 		twitterPrefix: string
 		/**
-		 * L​o​o​k​ ​a​t​ ​m​y​ ​e​c​o​-​l​i​n​k​e​d​ ​a​s​s​e​t​ ​b​y​ ​S​o​v​e​r​e​i​g​n​ ​N​a​t​u​r​e​ ​I​n​i​t​i​a​t​i​v​e
+		 * C​h​e​c​k​ ​o​u​t​ ​m​y​ ​c​o​l​l​e​c​t​i​b​l​e​ ​l​i​n​k​e​d​ ​t​o​ ​r​e​a​l​-​w​o​r​l​d​ ​i​m​p​a​c​t​ ​b​y​ ​S​o​v​e​r​e​i​g​n​ ​N​a​t​u​r​e​ ​I​n​i​t​i​a​t​i​v​e
 		 */
 		telegramPrefix: string
 		/**
-		 * L​o​o​k​ ​a​t​ ​m​y​ ​e​c​o​-​l​i​n​k​e​d​ ​a​s​s​e​t​ ​b​y​ ​S​o​v​e​r​e​i​g​n​ ​N​a​t​u​r​e​ ​I​n​i​t​i​a​t​i​v​e
+		 * C​h​e​c​k​ ​o​u​t​ ​m​y​ ​c​o​l​l​e​c​t​i​b​l​e​ ​l​i​n​k​e​d​ ​t​o​ ​r​e​a​l​-​w​o​r​l​d​ ​i​m​p​a​c​t​ ​b​y​ ​S​o​v​e​r​e​i​g​n​ ​N​a​t​u​r​e​ ​I​n​i​t​i​a​t​i​v​e
 		 */
 		shareImagePrefix: string
 	}
@@ -687,15 +687,15 @@ export type TranslationFunctions = {
 			fundsGeneratedByDate: (arg: { date: string }) => LocalizedString
 		}
 		/**
-		 * Look at my eco-linked asset by @sovereignnature
+		 * Check out my collectible linked to real-world impact by @sovereignnature
 		 */
 		twitterPrefix: () => LocalizedString
 		/**
-		 * Look at my eco-linked asset by Sovereign Nature Initiative
+		 * Check out my collectible linked to real-world impact by Sovereign Nature Initiative
 		 */
 		telegramPrefix: () => LocalizedString
 		/**
-		 * Look at my eco-linked asset by Sovereign Nature Initiative
+		 * Check out my collectible linked to real-world impact by Sovereign Nature Initiative
 		 */
 		shareImagePrefix: () => LocalizedString
 	}

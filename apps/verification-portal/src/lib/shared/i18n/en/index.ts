@@ -116,11 +116,12 @@ const en: BaseTranslation = {
       fundsGenerated: 'Total funds generated to date:',
       fundsGeneratedByDate: 'Total funds generated as of {date: string}:',
     },
-    twitterPrefix: 'Look at my eco-linked asset by @sovereignnature',
+    twitterPrefix:
+      'Check out my collectible linked to real-world impact by @sovereignnature',
     telegramPrefix:
-      'Look at my eco-linked asset by Sovereign Nature Initiative',
+      'Check out my collectible linked to real-world impact by Sovereign Nature Initiative',
     shareImagePrefix:
-      'Look at my eco-linked asset by Sovereign Nature Initiative', //@TODO: text needed
+      'Check out my collectible linked to real-world impact by Sovereign Nature Initiative',
   },
   footer: {
     mailing: 'Subscribe to our mailing list',
