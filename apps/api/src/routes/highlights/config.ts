@@ -27,6 +27,6 @@ export const collections = {
     id: 'wildsama',
     collectionAddress:
       'did:asset:eip155:2199.erc721:0xdd0a0a15efc11930354b3e1eb1a62a87bf9abf30',
-    highlightIds: [13, 277, 278, 279, 280, 281],
+    highlightIds: [13, 277, 3],
   },
 };
