@@ -1,5 +1,21 @@
 import { getContext, hasContext, setContext } from 'svelte';
 import type { Writable, Readable } from 'svelte/store';
+export type CrossmintResponse = {
+  id: string;
+  metadata?: {
+    name: string;
+    description: string;
+    image: string;
+  };
+  onChain: {
+    status: string;
+    chain: string;
+    contractAddress: string;
+    owner?: string;
+    tokenId?: string;
+  };
+  actionId: string;
+};
 
 export type NFTClaimProps = {
   claimIsSubmitted?: boolean;
@@ -13,7 +29,7 @@ type NFTClaimContext = {
   formSending: Writable<boolean>;
   formUseWallet: Writable<boolean>;
   formManualAddress: Writable<string>;
-  claimResponse: Writable<object>;
+  claimResponse: Writable<CrossmintResponse | null>;
   claimSubmitted: Writable<boolean>;
   claimValid: Writable<boolean>;
   claimPending: Writable<boolean>;

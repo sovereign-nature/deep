@@ -8,6 +8,7 @@
   import Spinner from '$lib/components/icons/Spinner.svelte';
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
+  import type { CrossmintResponse } from './context';
 
   import Web3ConnectBtn from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
   import { enhance, applyAction } from '$app/forms';
@@ -43,18 +44,21 @@
           $claimValid = true;
           $claimPending = result?.data?.onChain?.status !== 'success';
           $destroyOnClose = !$claimPending;
-          $claimResponse = result.data;
+          $claimResponse = (result.data as CrossmintResponse | null) ?? null;
           break;
         case 'failure':
           if (result?.data?.message !== undefined) {
             errorMsg = result.data.message;
           } else if (result?.data !== undefined) {
-            if (result.data === 'Invalid token') {
+            if (
+              typeof result.data === 'string' &&
+              result.data === 'Invalid token'
+            ) {
               $claimSubmitted = true;
               $claimValid = false;
               $destroyOnClose = true;
             }
-            errorMsg = result?.data;
+            errorMsg = result?.data?.toString();
           } else {
             toast.error('Something went wrong');
           }

@@ -4,6 +4,7 @@
   import { getNFTClaimContext } from './context';
   import { enhance, applyAction } from '$app/forms';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
+  import type { CrossmintResponse } from './context';
 
   import Spinner from '$lib/components/icons/Spinner.svelte';
 
@@ -24,7 +25,7 @@
         case 'success':
           $claimPending = result?.data?.onChain?.status !== 'success';
           if (!$claimPending) {
-            $claimResponse = result.data;
+            $claimResponse = (result.data as CrossmintResponse | null) ?? null;
             $destroyOnClose = true;
           }
           break;
