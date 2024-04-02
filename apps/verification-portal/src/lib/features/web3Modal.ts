@@ -18,6 +18,7 @@ let web3Modal: Web3Modal;
 const web3Connected = writable<boolean>(false);
 const web3Address = writable<string>();
 const web3ChainId = writable<number>();
+const web3ModalOpen = writable<boolean>(false);
 
 //TODO: Remove stores, infer state from web3Modal
 // Stores initialization
@@ -25,6 +26,7 @@ export function initializeContext() {
   setContext('web3Connected', web3Connected);
   setContext('web3Address', web3Address);
   setContext('web3ChainId', web3ChainId);
+  setContext('web3ModalOpen', web3ModalOpen);
 }
 
 export function initializeModal() {
@@ -36,6 +38,18 @@ export function initializeModal() {
     themeVariables: themeVariablesDark,
     defaultChain: mainnet,
   });
+  if (web3Modal) {
+    web3Modal.subscribeEvents((event) => {
+      if (event.data.event === 'MODAL_OPEN') {
+        web3ModalOpen.set(true);
+      } else if (
+        event.data.event === 'MODAL_CLOSE' ||
+        event.data.event === 'CONNECT_SUCCESS'
+      ) {
+        web3ModalOpen.set(false);
+      }
+    });
+  }
 
   console.log('web3Modal init', web3Modal);
 

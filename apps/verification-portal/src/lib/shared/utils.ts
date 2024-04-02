@@ -66,6 +66,15 @@ export function updateQueryParams(param: string, value: string) {
   });
 }
 
+export function clearQueryParam(param: string) {
+  const queryParams = new URLSearchParams(window.location.search);
+  queryParams.delete(param);
+  goto(`?${queryParams.toString()}`, {
+    keepFocus: true,
+    noScroll: true,
+  });
+}
+
 export function isDarkModePreferred() {
   if (browser) {
     return (

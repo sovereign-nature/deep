@@ -1,3 +1,3 @@
-import { formSearch } from '$lib/features/actions';
+import { formActions } from '$lib/features/actions';
 
-export const actions = formSearch;
+export const actions = formActions;

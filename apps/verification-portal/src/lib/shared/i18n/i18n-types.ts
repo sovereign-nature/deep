@@ -153,6 +153,52 @@ type RootTranslation = {
 	​ ​P​l​e​a​s​e​ ​l​e​n​d​ ​a​ ​p​a​w​ ​b​y​ ​r​e​f​r​e​s​h​i​n​g​ ​t​h​e​ ​p​a​g​e​ ​a​n​d​ ​t​r​y​i​n​g​ ​a​g​a​i​n​.
 		 */
 		errorMessage: string
+		/**
+		 * E​n​t​e​r​ ​y​o​u​r​ ​w​a​l​l​e​t​ ​a​d​d​r​e​s​s
+		 */
+		inputPlaceholder: string
+	}
+	claim: {
+		/**
+		 * U​s​e​ ​W​a​l​l​e​t​ ​A​d​d​r​e​s​s
+		 */
+		useWallet: string
+		/**
+		 * E​n​t​e​r​ ​A​d​d​r​e​s​s​ ​M​a​n​u​a​l​l​y
+		 */
+		useManualInput: string
+		/**
+		 * C​l​a​i​m​ ​y​o​u​r​ ​N​F​T
+		 */
+		titleClaim: string
+		/**
+		 * C​o​n​g​r​a​t​u​l​a​t​i​o​n​s​ ​o​n​ ​y​o​u​r​ ​N​F​T​!
+		 */
+		titleValid: string
+		/**
+		 * Y​o​u​r​ ​c​l​a​i​m​ ​i​s​ ​p​e​n​d​i​n​g
+		 */
+		titlePending: string
+		/**
+		 * I​n​v​a​l​i​d​ ​c​l​a​i​m
+		 */
+		titleInvalid: string
+		/**
+		 * S​o​r​r​y​,​ ​t​h​e​ ​s​u​b​m​i​t​t​e​d​ ​c​l​a​i​m​ ​t​o​k​e​n​ ​i​s​ ​i​n​v​a​l​i​d​.​ ​P​l​e​a​s​e​ ​t​r​y​ ​t​h​e​ ​c​l​a​i​m​ ​l​i​n​k​ ​a​g​a​i​n​ ​a​n​d​ ​i​f​ ​t​h​e​ ​p​r​o​b​l​e​m​ ​p​e​r​s​i​s​t​s​ ​r​e​a​c​h​ ​o​u​t​ ​t​o​ ​u​s​.
+		 */
+		invalidMessage: string
+		/**
+		 *  ​C​h​e​c​k​ ​t​h​e​ ​c​l​a​i​m​ ​s​t​a​t​u​s
+		 */
+		checkClaim: string
+		/**
+		 * ⭐​ ​C​l​a​i​m​ ​Y​o​u​r​ ​T​o​k​e​n
+		 */
+		buttonCTA: string
+		/**
+		 * C​h​e​c​k​ ​c​l​a​i​m​ ​s​t​a​t​u​s
+		 */
+		buttonPending: string
 	}
 	notifications: {
 		/**
@@ -528,6 +574,52 @@ export type TranslationFunctions = {
 	 Please lend a paw by refreshing the page and trying again.
 		 */
 		errorMessage: () => LocalizedString
+		/**
+		 * Enter your wallet address
+		 */
+		inputPlaceholder: () => LocalizedString
+	}
+	claim: {
+		/**
+		 * Use Wallet Address
+		 */
+		useWallet: () => LocalizedString
+		/**
+		 * Enter Address Manually
+		 */
+		useManualInput: () => LocalizedString
+		/**
+		 * Claim your NFT
+		 */
+		titleClaim: () => LocalizedString
+		/**
+		 * Congratulations on your NFT!
+		 */
+		titleValid: () => LocalizedString
+		/**
+		 * Your claim is pending
+		 */
+		titlePending: () => LocalizedString
+		/**
+		 * Invalid claim
+		 */
+		titleInvalid: () => LocalizedString
+		/**
+		 * Sorry, the submitted claim token is invalid. Please try the claim link again and if the problem persists reach out to us.
+		 */
+		invalidMessage: () => LocalizedString
+		/**
+		 *  Check the claim status
+		 */
+		checkClaim: () => LocalizedString
+		/**
+		 * ⭐ Claim Your Token
+		 */
+		buttonCTA: () => LocalizedString
+		/**
+		 * Check claim status
+		 */
+		buttonPending: () => LocalizedString
 	}
 	notifications: {
 		/**

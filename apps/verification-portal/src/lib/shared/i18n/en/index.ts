@@ -57,6 +57,20 @@ const en: BaseTranslation = {
     noAssets: 'No assets found',
     errorMessage:
       'Uh-oh! It looks like a hiccup in the wild! 🐾 \n Please lend a paw by refreshing the page and trying again.',
+    inputPlaceholder: 'Enter your wallet address',
+  },
+  claim: {
+    useWallet: 'Use Wallet Address',
+    useManualInput: 'Enter Address Manually',
+    titleClaim: 'Claim your NFT',
+    titleValid: 'Congratulations on your NFT!',
+    titlePending: 'Your claim is pending',
+    titleInvalid: 'Invalid claim',
+    invalidMessage:
+      'Sorry, the submitted claim token is invalid. Please try the claim link again and if the problem persists reach out to us.',
+    checkClaim: ' Check the claim status',
+    buttonCTA: '⭐ Claim Your Token',
+    buttonPending: 'Check claim status',
   },
   notifications: {
     seeAll: 'See all notifications',
