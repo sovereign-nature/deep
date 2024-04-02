@@ -402,8 +402,8 @@ importers:
         specifier: 0.2.7
         version: 0.2.7
       shadcn-svelte:
-        specifier: 0.9.4
-        version: 0.9.4(typescript@5.4.3)
+        specifier: 0.10.1
+        version: 0.10.1
       sonner:
         specifier: ^1.4.3
         version: 1.4.41(react-dom@18.2.0)(react@18.2.0)
@@ -12816,8 +12816,8 @@ packages:
       safe-buffer: 5.2.1
     dev: true
 
-  /shadcn-svelte@0.9.4(typescript@5.4.3):
-    resolution: {integrity: sha512-cMRQT1v8oCBASNPS6lnHysnc0BAbDCOe5QnZyXHSG8qx0n8H95qsa3MDWrs6gUm2VYSu2tr9lb1VCEIzdkQ38g==}
+  /shadcn-svelte@0.10.1:
+    resolution: {integrity: sha512-xK0DE1P2fw+eSN8YRzwviRA8whQwyusTgjlmhjm5J0a5EbKK5WO75U0Lj4d6CBDBp7Fb48RNrxkqrGc7h3Bi1g==}
     hasBin: true
     dependencies:
       '@clack/core': 0.3.4
@@ -12828,10 +12828,8 @@ packages:
       https-proxy-agent: 7.0.4
       is-unicode-supported: 2.0.0
       node-fetch: 3.3.2
-      tsconfck: 3.0.3(typescript@5.4.3)
     transitivePeerDependencies:
       - supports-color
-      - typescript
     dev: true
 
   /shallow-clone@3.0.1:
@@ -13789,19 +13787,6 @@ packages:
 
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
-
-  /tsconfck@3.0.3(typescript@5.4.3):
-    resolution: {integrity: sha512-4t0noZX9t6GcPTfBAbIbbIU4pfpCwh0ueq3S4O/5qXI1VwK1outmxhe9dOiEWqMz3MW2LKgDTpqWV+37IWuVbA==}
-    engines: {node: ^18 || >=20}
-    hasBin: true
-    peerDependencies:
-      typescript: ^5.0.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      typescript: 5.4.3
-    dev: true
 
   /tsconfig-paths@3.15.0:
     resolution: {integrity: sha512-2Ac2RgzDe/cn48GvOe3M+o82pEFewD3UPbyoUHHdKasHwJKjds4fLXWf/Ux5kATBKN20oaFGu+jbElp1pos0mg==}
