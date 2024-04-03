@@ -58,14 +58,14 @@
     </span>
 
     <ButtonGroup
-    divClass="relative w-full flex flex-col  sm:flex-row sm:inline-flex  justify-items-stretch gap-y-4  sm:flex-row sm:inline-flex  justify-items-stretch gap-y-4 "
+      divClass="relative w-full flex flex-col  sm:flex-row sm:inline-flex  justify-items-stretch gap-y-4  sm:flex-row sm:inline-flex  justify-items-stretch gap-y-4 "
     >
       <Input
         id="web2-search"
         bind:value={$search}
         on:input={() => updateQueryParams('search', $search)}
         on:keyup={onEnter}
-        class="block border-none w-full border p-4 pe-14 sm:pe-4 xl:pl-10  text-lg font-aeonik text-gray-200 focus:border-white focus:ring-white dark:placeholder:text-primary-300 dark:bg-deep-green-700 rounded-lg sm:!rounded-l-sm sm:rounded-none  ms-auto"
+        class="block border-none w-full border p-4 pe-14 sm:pe-4 xl:pl-10  text-lg font-aeonik text-gray-200 !ring-inset focus:border-primary focus:ring-primary-300 dark:placeholder:text-primary-300 dark:bg-deep-green-700 rounded-lg sm:!rounded-l-sm sm:rounded-none  ms-auto"
         {placeholder}
         {inputmode}
         disabled={!searchEnabled}
@@ -76,7 +76,7 @@
       <Button
         type="submit"
         color="none"
-        class="bg-primary-300 sm:w-20 border-none !p-2.5 rounded-lg sm:rounded-s-none  ms-auto sm:!rounded-r-sm absolute top-1/2 right-3 transform -translate-y-1/2 sm:translate-y-0  sm:relative"
+        class="bg-primary-300 sm:w-20 border-none !p-2.5 rounded-lg sm:rounded-s-none  ms-auto sm:!rounded-r-sm absolute top-1/2 right-3 sm:right-0 transform -translate-y-1/2 sm:translate-y-0  sm:relative"
         aria-label="search"
       >
         <SearchIcon className="h-4 w-4 sm:h-7 sm:w-7" />
