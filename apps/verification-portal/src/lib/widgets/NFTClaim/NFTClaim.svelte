@@ -4,16 +4,23 @@
   import type { Writable, Readable } from 'svelte/store';
   import { Drawer } from '@sni/ui-kit';
   import ClaimForm from './ClaimForm.svelte';
-  import CheckForm from './CheckForm.svelte';
   import ClaimData from './ClaimData.svelte';
   import { setNFTClaimContext } from './context';
   import { page } from '$app/stores';
   import { clearQueryParam } from '$lib/shared/utils';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
+  import { Confetti } from 'svelte-confetti';
+  import type { CrossmintResponse } from './context';
+  import { toast } from 'svelte-sonner';
+  import { deserialize } from '$app/forms';
+  import type { ActionResult } from '@sveltejs/kit';
+  import CheckButton from './ButtonCheck.svelte';
+  import TriggerButton from './ButtonTrigger.svelte';
+  import CloseButton from './ButtonClose.svelte';
 
-  const claim = $page.url.searchParams.get('claim');
   export let claimIsSubmitted = false;
 
+  const claim = $page.url.searchParams.get('claim');
   const claimToken = readable(claim);
   const formSending = writable(false);
   const formUseWallet = writable(true);
@@ -24,7 +31,11 @@
   const claimPending = writable(true);
   const destroyOnClose = writable(false);
   const claimAddress = writable('');
+  const preventDrawerClose: Readable<boolean> = getContext('web3ModalOpen'); // allow click outside drawer only when modal is open;
+  let web3Connected: Writable<boolean> = getContext('web3Connected');
+
   let drawerOpen = $claimToken && $claimToken.length > 0 ? true : false;
+  let intervalId: NodeJS.Timeout;
 
   const claimStatus = derived(
     [claimSubmitted, claimValid, claimPending],
@@ -42,6 +53,13 @@
       }
     }
   );
+  const drawerContentClass =
+    'bg-deep-green text-white border-none max-h-[96%] h-[96%] sm:h-auto pb-4';
+  const drawerHeaderClass =
+    'container px-5 lg:px-0 pt-4 pb-8 relative w-full lg:w-4/5 mx-auto';
+  const drawerTitleClass = 'text-2xl lg:text-3xl font-normal me-8 sm:me-auto';
+  const drawerBodyClass =
+    'container pb-10 px-5 lg:px-0 sticky top-0 w-full lg:w-4/5 mx-auto';
 
   setNFTClaimContext({
     claimToken,
@@ -56,17 +74,73 @@
     claimAddress,
     claimStatus,
   });
-  let web3Connected: Writable<boolean> = getContext('web3Connected');
-  const preventDrawerClose: Readable<boolean> = getContext('web3ModalOpen'); // allow click outside drawer only when modal is open;
 
   $: $formUseWallet = $web3Connected;
   $: if (!drawerOpen && $destroyOnClose) {
     clearClaim();
   }
 
+  $: if ($claimPending && $claimSubmitted) {
+    //return on interval
+    if (!intervalId) {
+      console.log('Set automatic check');
+      intervalId = setInterval(() => {
+        console.log('tick');
+        if (!$formSending) {
+          checkClaim();
+        }
+      }, 5000); //5 seconds
+    }
+  }
+  $: if ($destroyOnClose) {
+    console.log('destroyed');
+    clearInterval(intervalId);
+  }
+
   function clearClaim() {
     clearQueryParam('claim');
   }
+
+  const checkClaim = async () => {
+    $formSending = true;
+    try {
+      const response = await fetch('/?/claim', {
+        method: 'POST',
+        headers: {
+          'x-sveltekit-action': 'true',
+        },
+        body: new URLSearchParams({
+          address: $claimAddress,
+          claim: $claimToken,
+        }),
+      });
+      const result: ActionResult = deserialize(await response.text());
+
+      switch (result.type) {
+        case 'success':
+          $claimPending = result?.data?.onChain?.status !== 'success';
+          if (!$claimPending) {
+            $claimResponse = (result?.data as CrossmintResponse | null) ?? null;
+            clearInterval(intervalId);
+            // $destroyOnClose = drawerOpen;
+          }
+          break;
+        case 'failure':
+          toast.error(
+            result?.data?.message !== undefined
+              ? String(result?.data.message)
+              : 'Something went wrong'
+          );
+          break;
+        default:
+          break;
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      $formSending = false;
+    }
+  };
 </script>
 
 {#if $claimToken}
@@ -75,25 +149,10 @@
     closeOnOutsideClick={!$preventDrawerClose}
     closeOnEscape={false}
   >
-    {#if ($claimStatus === 'unclaimed' || $claimStatus === 'pending') && !$destroyOnClose}
-      <Drawer.Trigger
-        on:click={() => (drawerOpen = true)}
-        class="bg-primary-400 shadow-lg text-white rounded-full fixed bottom-4 right-4 sm:bottom-10 sm:right-10 z-20 px-4 py-2  "
-      >
-        {#if $claimStatus === 'unclaimed'}
-          {$LL.claim.buttonCTA()}
-        {:else if $claimStatus === 'pending'}
-          {$LL.claim.buttonPending()}
-        {/if}
-      </Drawer.Trigger>
-    {/if}
-    <Drawer.Content
-      class="bg-deep-green text-white border-none max-h-[96%] h-[96%] sm:h-auto pb-4"
-    >
-      <Drawer.Header
-        class="container px-5 lg:px-0 pt-4 pb-8 relative w-full lg:w-4/5 mx-auto"
-      >
-        <Drawer.Title class="text-2xl lg:text-3xl font-normal me-8 sm:me-auto">
+    <TriggerButton drawerOpen />
+    <Drawer.Content class={drawerContentClass}>
+      <Drawer.Header class={drawerHeaderClass}>
+        <Drawer.Title class={drawerTitleClass}>
           {#if $claimStatus === 'valid'}
             {$LL.claim.titleValid()}
           {:else if $claimStatus === 'pending'}
@@ -104,31 +163,21 @@
             {$LL.claim.titleClaim()}
           {/if}
         </Drawer.Title>
-        <Drawer.Close
-          class="absolute right-5 top-5 text-gray-200 hover:text-white  focus:outline-none whitespace-normal m-0.5 rounded-lg focus:ring-2 p-1.5 ms-auto flex items-center justify-center text-sm "
-          ><span class="sr-only">Close modal</span>
-          <svg
-            class="w-5 h-5"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-            ><path
-              fill-rule="evenodd"
-              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            ></path></svg
-          >
-        </Drawer.Close>
+        <CloseButton />
       </Drawer.Header>
 
-      <div
-        class="container pb-10 px-5 lg:px-0 sticky top-0 w-full lg:w-4/5 mx-auto"
-      >
+      <div class={drawerBodyClass}>
         {#if $claimStatus === 'valid'}
-          <ClaimData></ClaimData>
+          <ClaimData>
+            <Confetti
+              delay={[100, 250]}
+              rounded
+              colorRange={[75, 175]}
+            /></ClaimData
+          >
         {:else if $claimStatus === 'pending'}
           <ClaimData>
-            <CheckForm></CheckForm>
+            <CheckButton on:click={checkClaim}></CheckButton>
           </ClaimData>
         {:else if $claimStatus === 'invalid'}
           <div class="pb-20">

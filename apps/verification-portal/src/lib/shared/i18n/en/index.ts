@@ -65,12 +65,15 @@ const en: BaseTranslation = {
     titleClaim: 'Claim your NFT',
     titleValid: 'Congratulations on your NFT!',
     titlePending: 'Your claim is pending',
+    descriptionPending:
+      'Your token is being minted, this can take several minutes. In the meantime you can continue exploring the site.',
     titleInvalid: 'Invalid claim',
     invalidMessage:
       'Sorry, the submitted claim token is invalid. Please try the claim link again and if the problem persists reach out to us.',
     checkClaim: ' Check the claim status',
     buttonCTA: '⭐ Claim Your Token',
-    buttonPending: 'Check claim status',
+    buttonPending: '⏳ Claim Is Pending',
+    buttonSuccess: '⭐ Your Token is Minted!',
   },
   notifications: {
     seeAll: 'See all notifications',

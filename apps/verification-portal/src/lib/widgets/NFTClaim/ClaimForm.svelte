@@ -43,7 +43,7 @@
           $claimSubmitted = true;
           $claimValid = true;
           $claimPending = result?.data?.onChain?.status !== 'success';
-          $destroyOnClose = !$claimPending;
+          // $destroyOnClose = !$claimPending;
           $claimResponse = (result.data as CrossmintResponse | null) ?? null;
           break;
         case 'failure':
@@ -62,6 +62,9 @@
           } else {
             toast.error('Something went wrong');
           }
+          break;
+        case 'error':
+          toast.error('Something went wrong');
           break;
         default:
           break;

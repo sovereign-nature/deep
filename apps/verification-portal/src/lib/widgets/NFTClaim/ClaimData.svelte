@@ -1,5 +1,7 @@
 <script lang="ts">
   import { getNFTClaimContext } from './context';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
+
   import Property from '$lib/shared/typography/Property.svelte';
   import NftImage from '$lib/components/NFTImage.svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
@@ -16,10 +18,12 @@
         alt={$claimResponse?.metadata?.name}
       />
     {/if}
+
     <div>
       <div>
         <h2 class="text-2xl">{$claimResponse?.metadata?.name}</h2>
         <p>{$claimResponse?.metadata?.description}</p>
+        <slot />
         {#if $claimResponse?.onChain}
           <div class="mt-4">
             <Property name="Chain">
@@ -48,6 +52,8 @@
     <div>
       <div>
         <slot />
+        <p class="text-sm my-3">{$LL.claim.descriptionPending()}</p>
+
         {#if $claimResponse?.onChain}
           <div class="mt-4">
             <Property name="Chain">
