@@ -66,10 +66,16 @@ export function updateQueryParams(param: string, value: string) {
   });
 }
 
-export function clearQueryParam(param: string) {
+export function clearQueryParam(
+  param: string,
+  replaceState: boolean = false,
+  url: URL
+) {
   const queryParams = new URLSearchParams(window.location.search);
   queryParams.delete(param);
-  goto(`?${queryParams.toString()}`, {
+  const newUrl = `${url.origin}${url.pathname}?${queryParams.toString()}`;
+  goto(newUrl, {
+    replaceState: replaceState,
     keepFocus: true,
     noScroll: true,
   });

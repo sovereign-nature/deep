@@ -3,20 +3,20 @@
   import { getContext } from 'svelte';
   import type { Writable, Readable } from 'svelte/store';
   import { Drawer } from '@sni/ui-kit';
+  import { Confetti } from 'svelte-confetti';
+  import { toast } from 'svelte-sonner';
+  import type { ActionResult } from '@sveltejs/kit';
   import ClaimForm from './ClaimForm.svelte';
   import ClaimData from './ClaimData.svelte';
   import { setNFTClaimContext } from './context';
-  import { page } from '$app/stores';
-  import { clearQueryParam } from '$lib/shared/utils';
-  import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import { Confetti } from 'svelte-confetti';
   import type { CrossmintResponse } from './context';
-  import { toast } from 'svelte-sonner';
-  import { deserialize } from '$app/forms';
-  import type { ActionResult } from '@sveltejs/kit';
   import CheckButton from './ButtonCheck.svelte';
   import TriggerButton from './ButtonTrigger.svelte';
   import CloseButton from './ButtonClose.svelte';
+  import { page } from '$app/stores';
+  import { clearQueryParam } from '$lib/shared/utils';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
+  import { deserialize } from '$app/forms';
 
   export let claimIsSubmitted = false;
 
@@ -25,7 +25,7 @@
   const formSending = writable(false);
   const formUseWallet = writable(true);
   const formManualAddress = writable('');
-  const claimResponse = writable(null);
+  const claimResponse = writable<CrossmintResponse | null>(null);
   const claimSubmitted = writable(claimIsSubmitted);
   const claimValid = writable(false);
   const claimPending = writable(true);
@@ -76,29 +76,29 @@
   });
 
   $: $formUseWallet = $web3Connected;
+
+  // destroy the drawer fully only when it is closed
   $: if (!drawerOpen && $destroyOnClose) {
-    clearClaim();
+    clearClaim(false);
   }
 
+  //on pending state activate check interval
   $: if ($claimPending && $claimSubmitted) {
-    //return on interval
     if (!intervalId) {
-      console.log('Set automatic check');
       intervalId = setInterval(() => {
-        console.log('tick');
         if (!$formSending) {
           checkClaim();
         }
-      }, 5000); //5 seconds
+      }, 10000); //10 seconds
     }
   }
+  //clear interval if user dismisses CTA during pending state
   $: if ($destroyOnClose) {
-    console.log('destroyed');
     clearInterval(intervalId);
   }
 
-  function clearClaim() {
-    clearQueryParam('claim');
+  function clearClaim(replaceHistory: boolean) {
+    clearQueryParam('claim', replaceHistory, $page.url);
   }
 
   const checkClaim = async () => {
@@ -111,7 +111,7 @@
         },
         body: new URLSearchParams({
           address: $claimAddress,
-          claim: $claimToken,
+          claim: $claimToken || '',
         }),
       });
       const result: ActionResult = deserialize(await response.text());
@@ -120,9 +120,8 @@
         case 'success':
           $claimPending = result?.data?.onChain?.status !== 'success';
           if (!$claimPending) {
-            $claimResponse = (result?.data as CrossmintResponse | null) ?? null;
+            $claimResponse = result?.data as CrossmintResponse | null;
             clearInterval(intervalId);
-            // $destroyOnClose = drawerOpen;
           }
           break;
         case 'failure':

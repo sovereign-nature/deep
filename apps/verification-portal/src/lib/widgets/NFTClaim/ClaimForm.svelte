@@ -5,11 +5,12 @@
   import type { Writable } from 'svelte/store';
   import { toast } from 'svelte-sonner';
   import { getNFTClaimContext } from './context';
+  import type { CrossmintResponse } from './context';
   import Spinner from '$lib/components/icons/Spinner.svelte';
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import type { CrossmintResponse } from './context';
-
+  import { clearQueryParam } from '$lib/shared/utils';
+  import { page } from '$app/stores';
   import Web3ConnectBtn from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
   import { enhance, applyAction } from '$app/forms';
 
@@ -43,8 +44,8 @@
           $claimSubmitted = true;
           $claimValid = true;
           $claimPending = result?.data?.onChain?.status !== 'success';
-          // $destroyOnClose = !$claimPending;
           $claimResponse = (result.data as CrossmintResponse | null) ?? null;
+          clearQueryParam('claim', true, $page.url);
           break;
         case 'failure':
           if (result?.data?.message !== undefined) {
