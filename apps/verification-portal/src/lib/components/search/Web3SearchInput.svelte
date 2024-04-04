@@ -14,7 +14,6 @@
   export let inputmode = 'text';
   export let web3Enabled = false;
   export let searchEnabled = true;
-  
 
   import Web3ConnectBtn from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
 
@@ -44,19 +43,18 @@
         {:else}
           <span class="ms-auto"></span>
         {/if}
-        {:else}
+      {:else}
         <Spinner
-        className="w-5 h-5 text-primary-400  dark:text-primary-200 fill-primary-600 dark:fill-primary-100"
-      ></Spinner>
+          className="w-5 h-5 text-primary-400  dark:text-primary-200 fill-primary-600 dark:fill-primary-100"
+        ></Spinner>
       {/if}
-
     {:else}
       Wallet <Button color="none" size="sm" class="bg-primary-300" disabled
         >connect <ConnectIcon className="h-4 w-4 ms-2" /></Button
       > <span>coming soon</span>
     {/if}
   </div>
-  <form class="w-full sm:w-auto md:w-1/2 relative " method="POST" use:enhance>
+  <form class="w-full sm:w-auto md:w-1/2 relative" method="POST" use:enhance>
     <input
       name="collection"
       value={collectionAddress}
@@ -69,7 +67,7 @@
     >
       <Input
         id="default-search"
-        class="block border-none w-full border p-4 pe-14 sm:pe-4 xl:pl-10  text-lg font-aeonik text-gray-200 focus:border-white focus:ring-white dark:placeholder:text-primary-300 dark:bg-deep-green-700 rounded-lg sm:!rounded-l-sm sm:rounded-none  ms-auto"
+        class="block border-none w-full border p-4 pe-14 sm:pe-4 xl:pl-10  text-lg font-aeonik text-gray-200 !ring-inset focus:border-primary focus:ring-primary-300 dark:placeholder:text-primary-300 dark:bg-deep-green-700 rounded-lg sm:!rounded-l-sm sm:rounded-none  ms-auto"
         name="search"
         type="search"
         {placeholder}
@@ -81,7 +79,7 @@
 
       <Button
         color="none"
-        class="bg-primary-300 sm:w-20 border-none !p-2.5 rounded-lg sm:rounded-s-none  ms-auto sm:!rounded-r-sm absolute top-1/2 right-3 transform -translate-y-1/2 sm:translate-y-0  sm:relative"
+        class="bg-primary-300 sm:w-20 border-none !p-2.5 rounded-lg sm:rounded-s-none  ms-auto sm:!rounded-r-sm absolute top-1/2 right-3 sm:right-0 transform -translate-y-1/2 sm:translate-y-0  sm:relative"
         type="submit"
         aria-label="search"
         formaction="/?/formSearch"

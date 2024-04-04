@@ -180,6 +180,10 @@ type RootTranslation = {
 		 */
 		titlePending: string
 		/**
+		 * Y​o​u​r​ ​t​o​k​e​n​ ​i​s​ ​b​e​i​n​g​ ​m​i​n​t​e​d​,​ ​t​h​i​s​ ​c​a​n​ ​t​a​k​e​ ​s​e​v​e​r​a​l​ ​m​i​n​u​t​e​s​.​ ​I​n​ ​t​h​e​ ​m​e​a​n​t​i​m​e​ ​y​o​u​ ​c​a​n​ ​c​o​n​t​i​n​u​e​ ​e​x​p​l​o​r​i​n​g​ ​t​h​e​ ​s​i​t​e​.
+		 */
+		descriptionPending: string
+		/**
 		 * I​n​v​a​l​i​d​ ​c​l​a​i​m
 		 */
 		titleInvalid: string
@@ -196,9 +200,13 @@ type RootTranslation = {
 		 */
 		buttonCTA: string
 		/**
-		 * C​h​e​c​k​ ​c​l​a​i​m​ ​s​t​a​t​u​s
+		 * ⏳​ ​C​l​a​i​m​ ​I​s​ ​P​e​n​d​i​n​g
 		 */
 		buttonPending: string
+		/**
+		 * ⭐​ ​Y​o​u​r​ ​T​o​k​e​n​ ​i​s​ ​M​i​n​t​e​d​!
+		 */
+		buttonSuccess: string
 	}
 	notifications: {
 		/**
@@ -601,6 +609,10 @@ export type TranslationFunctions = {
 		 */
 		titlePending: () => LocalizedString
 		/**
+		 * Your token is being minted, this can take several minutes. In the meantime you can continue exploring the site.
+		 */
+		descriptionPending: () => LocalizedString
+		/**
 		 * Invalid claim
 		 */
 		titleInvalid: () => LocalizedString
@@ -617,9 +629,13 @@ export type TranslationFunctions = {
 		 */
 		buttonCTA: () => LocalizedString
 		/**
-		 * Check claim status
+		 * ⏳ Claim Is Pending
 		 */
 		buttonPending: () => LocalizedString
+		/**
+		 * ⭐ Your Token is Minted!
+		 */
+		buttonSuccess: () => LocalizedString
 	}
 	notifications: {
 		/**

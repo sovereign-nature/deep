@@ -5,11 +5,12 @@
   import type { Writable } from 'svelte/store';
   import { toast } from 'svelte-sonner';
   import { getNFTClaimContext } from './context';
+  import type { CrossmintResponse } from './context';
   import Spinner from '$lib/components/icons/Spinner.svelte';
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import type { CrossmintResponse } from './context';
-
+  import { clearQueryParam } from '$lib/shared/utils';
+  import { page } from '$app/stores';
   import Web3ConnectBtn from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
   import { enhance, applyAction } from '$app/forms';
 
@@ -43,8 +44,8 @@
           $claimSubmitted = true;
           $claimValid = true;
           $claimPending = result?.data?.onChain?.status !== 'success';
-          $destroyOnClose = !$claimPending;
           $claimResponse = (result.data as CrossmintResponse | null) ?? null;
+          clearQueryParam('claim', true, $page.url);
           break;
         case 'failure':
           if (result?.data?.message !== undefined) {
@@ -63,6 +64,9 @@
             toast.error('Something went wrong');
           }
           break;
+        case 'error':
+          toast.error('Something went wrong');
+          break;
         default:
           break;
       }
@@ -75,7 +79,7 @@
   };
 
   const inputClass =
-    'z-10 box-border disabled:cursor-not-allowed disabled:opacity-50 rtl:text-right dark:focus:border-primary-500 dark:focus:ring-primary-500 bg-gray-50 dark:text-white dark:placeholder-gray-400 border-gray-300 dark:border-gray-600 first:rounded-s-lg last:rounded-e-lg first:border-s last:border-e block border-none w-full border p-4 pe-14 sm:pe-4 xl:pl-10 text-lg font-aeonik text-gray-200 focus:border-white focus:ring-white dark:placeholder:text-primary-300 dark:bg-deep-green-700 rounded-lg sm:!rounded-l-sm sm:rounded-none ms-auto';
+    'z-10 box-border disabled:cursor-not-allowed disabled:opacity-50  !ring-inset  rtl:text-right  dark:focus:border-primary-500 dark:focus:ring-primary-500 bg-gray-50 dark:text-white dark:placeholder-gray-400 border-gray-300 dark:border-gray-600 first:rounded-s-lg last:rounded-e-lg first:border-s last:border-e block border-none w-full border p-4 pe-14 sm:pe-4 xl:pl-10 text-lg font-aeonik text-gray-500 focus:border-primary focus:ring-primary-300 dark:placeholder:text-primary-300 dark:bg-deep-green-700 rounded-lg sm:!rounded-l-sm sm:rounded-none ms-auto';
   const placeholder = $LL.wallet.inputPlaceholder();
 </script>
 
@@ -89,7 +93,7 @@
   <input type="hidden" name="address" bind:value={address} />
   <ButtonGroup
     data-vaul-no-drag
-    divClass="-z-1 relative w-full flex flex-col  sm:flex-row sm:inline-flex  justify-items-stretch gap-y-4  sm:flex-row sm:inline-flex  justify-items-stretch gap-y-4 "
+    divClass="-z-1 relative w-full flex flex-col  sm:flex-row sm:inline-flex  justify-items-stretch   sm:flex-row sm:inline-flex  justify-items-stretch  "
   >
     {#if $formUseWallet && $web3Connected}
       <Input
@@ -114,7 +118,7 @@
 
     <Button
       color="none"
-      class="z-50 bg-primary-300 sm:w-20 border-none !p-2.5 rounded-lg sm:rounded-s-none  ms-auto sm:!rounded-r-sm absolute top-1/2 right-3 transform -translate-y-1/2 sm:translate-y-0  sm:relative"
+      class="z-50  bg-primary-300 hover:bg-primary-200  sm:w-20 border-none !p-2.5 rounded-lg sm:rounded-s-none  ms-auto sm:!rounded-r-sm absolute top-1/2 right-3 transform  sm:right-0 -translate-y-1/2 sm:translate-y-0  sm:relative"
       type="submit"
       tabindex="1"
       formaction="/?/claim"
@@ -136,7 +140,7 @@
         <input
           disabled={!$web3Connected}
           type="radio"
-          class="form-radio disabled:opacity-30"
+          class=" form-radio disabled:opacity-30 accent-primary-200 !text-primary-300 focus:ring-deep-green"
           name="addressOption"
           bind:group={$formUseWallet}
           value={true}
@@ -151,7 +155,7 @@
       <label class="inline-flex gap-5 items-center">
         <input
           type="radio"
-          class="form-radio disabled:opacity-30"
+          class="form-radio disabled:opacity-30 accent-primary-200 !text-primary-300 focus:ring-deep-green"
           name="addressOption"
           bind:group={$formUseWallet}
           value={false}

@@ -25,6 +25,9 @@ module.exports = {
     mocha: true,
     node: true,
   },
+  globals: {
+    NodeJS: true,
+  },
   overrides: [
     {
       files: ['*.svelte'],
