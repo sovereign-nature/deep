@@ -1,77 +1,77 @@
 {
-	"name": "@sni/ui-kit",
-	"version": "0.0.1",
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build && npm run package",
-		"preview": "vite preview",
-		"package": "svelte-kit sync && svelte-package && publint",
-		"package:watch": "svelte-kit sync && svelte-package --watch",
-		"prepublishOnly": "npm run package",
-		"test": "npm run test:integration && npm run test:unit",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write .",
-		"test:integration": "playwright test",
-		"test:unit": "vitest"
-	},
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"svelte": "./dist/index.js"
-		}
-	},
-	"files": [
-		"dist",
-		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
-	],
-	"peerDependencies": {
-		"svelte": "4.2.12",
-		"tailwindcss": "3.4.3"
-	},
-	"devDependencies": {
-		"@playwright/test": "1.42.1",
-		"@sni/constants": "workspace:*",
-		"@sveltejs/adapter-auto": "3.2.0",
-		"@sveltejs/kit": "2.5.5",
-		"@sveltejs/package": "2.3.0",
-		"@sveltejs/vite-plugin-svelte": "3.0.2",
-		"@sveltejs/vite-plugin-svelte-inspector": "^2.0.0",
-		"@types/eslint": "8.56.7",
-		"@typescript-eslint/eslint-plugin": "7.4.0",
-		"@typescript-eslint/parser": "7.4.0",
-		"autoprefixer": "10.4.19",
-		"eslint": "8.57.0",
-		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-svelte": "^2.35.1",
-		"postcss": "8.4.38",
-		"postcss-load-config": "5.0.3",
-		"prettier": "3.2.5",
-		"prettier-plugin-svelte": "3.2.2",
-		"prettier-plugin-tailwindcss": "0.5.13",
-		"publint": "0.2.7",
-		"shadcn-svelte": "0.10.1",
-		"sonner": "^1.4.3",
-		"svelte": "4.2.12",
-		"svelte-check": "3.6.9",
-		"tslib": "2.6.2",
-		"typescript": "5.4.3",
-		"vite": "5.2.7",
-		"vitest": "1.4.0"
-	},
-	"svelte": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"type": "module",
-	"dependencies": {
-		"bits-ui": "0.21.1",
-		"clsx": "^2.1.0",
-		"embla-carousel-svelte": "^8.0.0",
-		"svelte-radix": "^1.1.0",
-		"svelte-sonner": "^0.3.19",
-		"tailwind-merge": "2.2.2",
-		"tailwind-variants": "^0.2.1",
-		"vaul-svelte": "^0.3.0"
-	}
+  "name": "@sni/ui-kit",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "svelte-kit sync && svelte-package --watch",
+    "build": "vite build && npm run package",
+    "preview": "vite preview",
+    "package": "svelte-kit sync && svelte-package && publint",
+    "package:watch": "svelte-kit sync && svelte-package --watch",
+    "prepublishOnly": "npm run package",
+    "test": "npm run test:integration && npm run test:unit",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "prettier --check . && eslint .",
+    "format": "prettier --write .",
+    "test:integration": "playwright test",
+    "test:unit": "vitest"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "!dist/**/*.test.*",
+    "!dist/**/*.spec.*"
+  ],
+  "peerDependencies": {
+    "svelte": "4.2.12",
+    "tailwindcss": "3.4.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.42.1",
+    "@sni/constants": "workspace:*",
+    "@sveltejs/adapter-auto": "3.2.0",
+    "@sveltejs/kit": "2.5.5",
+    "@sveltejs/package": "2.3.0",
+    "@sveltejs/vite-plugin-svelte": "3.0.2",
+    "@sveltejs/vite-plugin-svelte-inspector": "^2.0.0",
+    "@types/eslint": "8.56.7",
+    "@typescript-eslint/eslint-plugin": "7.4.0",
+    "@typescript-eslint/parser": "7.4.0",
+    "autoprefixer": "10.4.19",
+    "eslint": "8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-svelte": "^2.35.1",
+    "postcss": "8.4.38",
+    "postcss-load-config": "5.0.3",
+    "prettier": "3.2.5",
+    "prettier-plugin-svelte": "3.2.2",
+    "prettier-plugin-tailwindcss": "0.5.13",
+    "publint": "0.2.7",
+    "shadcn-svelte": "0.10.1",
+    "sonner": "^1.4.3",
+    "svelte": "4.2.12",
+    "svelte-check": "3.6.9",
+    "tslib": "2.6.2",
+    "typescript": "5.4.3",
+    "vite": "5.2.7",
+    "vitest": "1.4.0"
+  },
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "dependencies": {
+    "bits-ui": "0.21.1",
+    "clsx": "^2.1.0",
+    "embla-carousel-svelte": "^8.0.0",
+    "svelte-radix": "^1.1.0",
+    "svelte-sonner": "^0.3.19",
+    "tailwind-merge": "2.2.2",
+    "tailwind-variants": "^0.2.1",
+    "vaul-svelte": "^0.3.0"
+  }
 }
