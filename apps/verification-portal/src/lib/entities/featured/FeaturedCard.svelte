@@ -1,7 +1,7 @@
 <script lang="ts">
-  import NFTImage from '$lib/components/NFTImage.svelte';
   import type { DeepAsset } from '@sni/clients/assets-client/types';
   import truncate from 'lodash/truncate';
+  import NFTImage from '$lib/components/NFTImage.svelte';
   export let item: DeepAsset;
   let showId = item.tokenId !== undefined;
   import LL from '$lib/shared/i18n/i18n-svelte';

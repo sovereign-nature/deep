@@ -1,6 +1,6 @@
 import { DeepAsset } from '@sni/types';
-import { CrossmintWalletResponse } from './schemas';
 import { getChainId } from '@sni/address-utils';
+import { CrossmintWalletResponse } from './schemas';
 
 //TODO: Cover with tests
 export async function getCrossmintWalletAssets(

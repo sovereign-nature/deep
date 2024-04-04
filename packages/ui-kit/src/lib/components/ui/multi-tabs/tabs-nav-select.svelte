@@ -1,9 +1,9 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
+  import type { Selected } from 'bits-ui';
   import { getMultiTabsContext } from './context.js';
   import * as Select from '$lib/components/ui/select/index.js';
   import ItemCard from '$lib/components/ui/multi-tabs/tabs-nav-card-sm.svelte';
-  import type { Selected } from 'bits-ui';
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   type $$Props = HTMLAttributes<HTMLDivElement>;

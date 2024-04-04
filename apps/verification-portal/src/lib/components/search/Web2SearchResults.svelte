@@ -2,6 +2,8 @@
   import { getContext } from 'svelte';
   import type { Writable } from 'svelte/store';
   import { flip } from 'svelte/animate';
+  import type { FuseResult } from 'fuse.js';
+  import type { DeepAsset } from '@sni/types';
   import Card from '$lib/components/Card.svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import type { Web2DataState } from '$lib/types';
@@ -9,8 +11,6 @@
 
   import FeaturedContainer from '$lib/entities/featured/FeaturedContainer.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import type { FuseResult } from 'fuse.js';
-  import type { DeepAsset } from '@sni/types';
 
   export let highlights: DeepAsset[] = [];
   export let collection: Collection;

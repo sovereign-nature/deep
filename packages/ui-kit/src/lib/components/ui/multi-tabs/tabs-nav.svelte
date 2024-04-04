@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
+  import { SOCIAL_CARD_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
   import { getMultiTabsContext } from './context.js';
   import { cn } from '$lib/utils.js';
   import * as Card from '$lib/components/ui/card/index.js';
   import * as Carousel from '$lib/components/ui/carousel/index.js';
-  import { SOCIAL_CARD_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
   import NavSelect from '$lib/components/ui/multi-tabs/tabs-nav-select.svelte';
   import Skeleton from '$lib/components/ui/skeleton/skeleton.svelte';
 

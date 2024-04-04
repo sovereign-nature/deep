@@ -1,7 +1,7 @@
 <script lang="ts">
-  import * as Card from '$lib/components/ui/card';
-  import { type MultiTabsTab } from './context.js';
   import { SOCIAL_CARD_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
+  import { type MultiTabsTab } from './context.js';
+  import * as Card from '$lib/components/ui/card';
 
   export let item: MultiTabsTab;
   export let active = true;

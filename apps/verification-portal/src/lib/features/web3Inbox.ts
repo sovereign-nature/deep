@@ -6,9 +6,9 @@ import { signMessage } from '@wagmi/core';
 import type { NotifyClientTypes } from '@walletconnect/notify-client';
 import { Web3InboxClient } from '@web3inbox/core';
 import { getAccount } from '@wagmi/core';
-import { projectId, wagmiConfig } from '$lib/shared/web3Configs';
 import * as Sentry from '@sentry/sveltekit';
 import { toast } from 'svelte-sonner';
+import { projectId, wagmiConfig } from '$lib/shared/web3Configs';
 
 const domain = 'real.sovereignnature.com';
 const isLimited = process.env.NODE_ENV === 'production';

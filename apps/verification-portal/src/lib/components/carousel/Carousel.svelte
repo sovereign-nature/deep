@@ -1,19 +1,19 @@
 <script lang="ts">
-  import viewport from '$lib/features/useViewportActions';
-
   import { onDestroy, onMount, setContext } from 'svelte';
   import { writable } from 'svelte/store';
   import { Carousel } from 'flowbite';
-  import VideoPlayer from '$lib/components/media/CloudflareStreamPlayer/VideoPlayer.svelte';
-  import type { CarouselEntity } from '$lib/types';
-  import { browser } from '$app/environment';
-  import LL from '$lib/shared/i18n/i18n-svelte.js';
-
   import type {
     CarouselItem,
     CarouselOptions,
     CarouselInterface,
   } from 'flowbite';
+  import viewport from '$lib/features/useViewportActions';
+
+  import VideoPlayer from '$lib/components/media/CloudflareStreamPlayer/VideoPlayer.svelte';
+  import type { CarouselEntity } from '$lib/types';
+  import { browser } from '$app/environment';
+  import LL from '$lib/shared/i18n/i18n-svelte.js';
+
   import ChevronDownIcon from '$lib/components/icons/ChevronDownIcon.svelte';
 
   export let items: CarouselEntity[];

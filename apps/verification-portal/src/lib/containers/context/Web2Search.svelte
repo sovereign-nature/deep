@@ -3,8 +3,8 @@
   import { writable } from 'svelte/store';
   import { onMount, setContext } from 'svelte';
   import { directusUrl } from '@sni/clients/config';
-  import { page } from '$app/stores';
   import type { DeepAsset } from '@sni/types';
+  import { page } from '$app/stores';
 
   export let directusCollectionId: string;
 

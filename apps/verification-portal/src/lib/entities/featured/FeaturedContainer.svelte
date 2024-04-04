@@ -1,7 +1,7 @@
 <script lang="ts">
+  import type { DeepAsset } from '@sni/clients/assets-client/types';
   import CardFeatured from '$lib/entities/featured/FeaturedCard.svelte';
   import LL from '$lib/shared/i18n/i18n-svelte';
-  import type { DeepAsset } from '@sni/clients/assets-client/types';
 
   export let featuredItems: DeepAsset[];
   export let collectionName: string | undefined;
