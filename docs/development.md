@@ -46,7 +46,7 @@ pnpm build
 To develop all apps and packages, run the following command:
 
 ```shell
-pnpm dev
+pnpm -r --parallel run dev
 ```
 
 To develop specific package run:
