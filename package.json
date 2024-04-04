@@ -14,7 +14,7 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{json,md,js,ts}": [
+    "*.{json,md,js,ts,svelte}": [
       "prettier --write"
     ],
     "*.{json,js,ts,svelte}": [
