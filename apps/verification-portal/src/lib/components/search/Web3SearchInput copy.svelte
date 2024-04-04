@@ -49,7 +49,7 @@
       > <span>coming soon</span>
     {/if}
   </div>
-  <form class="w-full sm:w-auto md:w-1/2 relative " method="POST" use:enhance>
+  <form class="w-full sm:w-auto md:w-1/2 relative" method="POST" use:enhance>
     <input
       name="collection"
       value={collectionAddress}

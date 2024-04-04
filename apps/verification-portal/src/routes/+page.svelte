@@ -18,10 +18,10 @@
   >
     <h1
       data-testid="title"
-      class="text-[37px]  lg:text-[45px] font-regular mb-2 lg:mb-4 leading-none"
+      class="text-[37px] lg:text-[45px] font-regular mb-2 lg:mb-4 leading-none"
     >
-    <span class="block sm:inline"> {$LL.title.part1()}</span>
-     
+      <span class="block sm:inline"> {$LL.title.part1()}</span>
+
       <span
         class="font-aeonik font-bold text-primary-300 dark:text-primary-200"
       >
@@ -30,7 +30,10 @@
       {$LL.title.part3()}
     </h1>
 
-    <span data-testid="subtitle" class="font-serif font-regular text-base md:text-[22px] block w-11/12 sm:w-9/12  mx-auto md:mx-0">
+    <span
+      data-testid="subtitle"
+      class="font-serif font-regular text-base md:text-[22px] block w-11/12 sm:w-9/12 mx-auto md:mx-0"
+    >
       {$LL.subtitle()}
     </span>
   </div>

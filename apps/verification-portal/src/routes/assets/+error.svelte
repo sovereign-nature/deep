@@ -18,5 +18,5 @@
   >
     {$LL.errors.notFoundTitle()}
   </h2>
-  <CollectionsTabs/>
+  <CollectionsTabs />
 </LayoutLanding>

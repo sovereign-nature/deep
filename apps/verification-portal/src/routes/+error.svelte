@@ -18,5 +18,5 @@
   >
     {$LL.errors.errorPageTitle()}
   </h2>
-  <CollectionsTabs/>
+  <CollectionsTabs />
 </LayoutLanding>

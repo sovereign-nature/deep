@@ -1,39 +1,41 @@
 <script lang="ts">
-	import type { HTMLAttributes } from 'svelte/elements';
-	import emblaCarouselSvelte from 'embla-carousel-svelte';
-	import { getEmblaContext } from './context.js';
-	import { cn } from '$lib/utils.js';
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	type $$Props = HTMLAttributes<HTMLDivElement>;
+  import type { HTMLAttributes } from 'svelte/elements';
+  import emblaCarouselSvelte from 'embla-carousel-svelte';
+  import { getEmblaContext } from './context.js';
+  import { cn } from '$lib/utils.js';
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  type $$Props = HTMLAttributes<HTMLDivElement>;
 
-	let className: string | undefined | null = undefined;
-	export { className as class };
+  let className: string | undefined | null = undefined;
+  export { className as class };
 
-	const { orientation, options, plugins, onInit } = getEmblaContext('<Carousel.Content/>');
+  const { orientation, options, plugins, onInit } = getEmblaContext(
+    '<Carousel.Content/>'
+  );
 </script>
 
 <div
-	class="overflow-hidden"
-	use:emblaCarouselSvelte={{
-		options: {
-			container: '[data-embla-container]',
-			slides: '[data-embla-slide]',
-			...$options,
-			axis: $orientation === 'horizontal' ? 'x' : 'y'
-		},
-		plugins: $plugins
-	}}
-	on:emblaInit={onInit}
+  class="overflow-hidden"
+  use:emblaCarouselSvelte={{
+    options: {
+      container: '[data-embla-container]',
+      slides: '[data-embla-slide]',
+      ...$options,
+      axis: $orientation === 'horizontal' ? 'x' : 'y',
+    },
+    plugins: $plugins,
+  }}
+  on:emblaInit={onInit}
 >
-	<div
-		class={cn(
-			'flex gap-3 md:ms-6 ms-8 ',
-			$orientation === 'horizontal' ? '-ml-4 ' : '-mt-4 flex-col',
-			className
-		)}
-		data-embla-container=""
-		{...$$restProps}
-	>
-		<slot />
-	</div>
+  <div
+    class={cn(
+      'flex gap-3 md:ms-6 ms-8 ',
+      $orientation === 'horizontal' ? '-ml-4 ' : '-mt-4 flex-col',
+      className
+    )}
+    data-embla-container=""
+    {...$$restProps}
+  >
+    <slot />
+  </div>
 </div>

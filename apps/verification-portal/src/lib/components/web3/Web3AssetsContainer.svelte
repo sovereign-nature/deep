@@ -78,6 +78,9 @@
       {/if}
     </div>
   {:else}
-    <FeaturedContainer collectionName={collectionName} featuredItems={highlights.slice(0, 3)} />
+    <FeaturedContainer
+      {collectionName}
+      featuredItems={highlights.slice(0, 3)}
+    />
   {/if}
 {/key}
