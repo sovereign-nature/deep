@@ -163,8 +163,8 @@ importers:
         specifier: 0.4.0
         version: 0.4.0(@sveltejs/kit@2.5.5)(vite-plugin-pwa@0.19.7)
       '@wagmi/connectors':
-        specifier: 4.1.23
-        version: 4.1.23(@wagmi/core@2.6.14)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.9)
+        specifier: 4.1.24
+        version: 4.1.24(@wagmi/core@2.6.14)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.9)
       '@wagmi/core':
         specifier: 2.6.14
         version: 2.6.14(react@18.2.0)(typescript@5.4.3)(viem@2.9.9)
@@ -173,7 +173,7 @@ importers:
         version: 1.2.1(react@18.2.0)
       '@web3modal/wagmi':
         specifier: 4.1.5
-        version: 4.1.5(@wagmi/connectors@4.1.23)(@wagmi/core@2.6.14)(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)(viem@2.9.9)
+        version: 4.1.5(@wagmi/connectors@4.1.24)(@wagmi/core@2.6.14)(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)(viem@2.9.9)
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -3044,7 +3044,7 @@ packages:
     dependencies:
       '@inquirer/type': 1.2.1
       '@types/mute-stream': 0.0.4
-      '@types/node': 20.11.30
+      '@types/node': 20.12.2
       '@types/wrap-ansi': 3.0.0
       ansi-escapes: 4.3.2
       chalk: 4.1.2
@@ -4991,19 +4991,20 @@ packages:
   /@types/mute-stream@0.0.4:
     resolution: {integrity: sha512-CPM9nzrCPPJHQNA9keH9CVkVI+WR5kMa+7XEs5jcGQ0VoAGnLv242w8lIVgwAEfmE4oufJRaTc9PNLQl0ioAow==}
     dependencies:
-      '@types/node': 20.11.30
+      '@types/node': 20.12.2
     dev: true
 
   /@types/node-forge@1.3.11:
     resolution: {integrity: sha512-FQx220y22OKNTqaByeBGqHWYz4cl94tpcxeFdvBo3wjG6XPBuZ0BNgNZRV5J5TFmmcsJ4IzsLkmGRiQbnYsBEQ==}
     dependencies:
-      '@types/node': 20.11.30
+      '@types/node': 20.12.2
     dev: true
 
   /@types/node@20.11.30:
     resolution: {integrity: sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==}
     dependencies:
       undici-types: 5.26.5
+    dev: false
 
   /@types/node@20.12.2:
     resolution: {integrity: sha512-zQ0NYO87hyN6Xrclcqp7f8ZbXNbRfoGWNcMvHTPQp9UUrwI0mI7XBz+cu7/W6/VClYo2g63B0cjull/srU7LgQ==}
@@ -5028,7 +5029,7 @@ packages:
   /@types/secp256k1@4.0.6:
     resolution: {integrity: sha512-hHxJU6PAEUn0TP4S/ZOzuTUvJWuZ6eIKeNKb5RBpODvSl6hp1Wrw4s7ATY50rklRCScUDpHzVA/DQdSjJ3UoYQ==}
     dependencies:
-      '@types/node': 20.11.30
+      '@types/node': 20.12.2
     dev: true
 
   /@types/semver@7.5.8:
@@ -5375,10 +5376,10 @@ packages:
       pretty-format: 29.7.0
     dev: true
 
-  /@wagmi/connectors@4.1.23(@wagmi/core@2.6.14)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.9):
-    resolution: {integrity: sha512-IgGCJvQfvCBI9Kq0TvudYPnz/HQSqTuXrNKPHT+SIQaaHebDmPdJYPvj4fgdEPtU3Z5fDtQsBszVpbfcYXgWKA==}
+  /@wagmi/connectors@4.1.24(@wagmi/core@2.6.14)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.9):
+    resolution: {integrity: sha512-gFziI7E3m+ESJmEnsvlm/eMlboKwdfGqOOQIU068MoZ+ZcNxoLZe4gu8CqnrmG7ksdPtwG38prsMl96opZexIA==}
     peerDependencies:
-      '@wagmi/core': 2.6.14
+      '@wagmi/core': 2.6.15
       typescript: '>=5.0.4'
       viem: 2.x
     peerDependenciesMeta:
@@ -6216,7 +6217,7 @@ packages:
       qrcode: 1.5.3
     dev: true
 
-  /@web3modal/wagmi@4.1.5(@wagmi/connectors@4.1.23)(@wagmi/core@2.6.14)(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)(viem@2.9.9):
+  /@web3modal/wagmi@4.1.5(@wagmi/connectors@4.1.24)(@wagmi/core@2.6.14)(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)(viem@2.9.9):
     resolution: {integrity: sha512-1h1wo6tJCwsZs1D7ymnrHbXbkum3k3zxcr7u6HctP1Ur2BFr7+ndALR/WlnEenBJTu5LILd9iqaf9QvFOSOyvg==}
     peerDependencies:
       '@wagmi/connectors': '>=4.0.0'
@@ -6234,7 +6235,7 @@ packages:
       vue:
         optional: true
     dependencies:
-      '@wagmi/connectors': 4.1.23(@wagmi/core@2.6.14)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.9)
+      '@wagmi/connectors': 4.1.24(@wagmi/core@2.6.14)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.9)
       '@wagmi/core': 2.6.14(react@18.2.0)(typescript@5.4.3)(viem@2.9.9)
       '@web3modal/polyfills': 4.1.5
       '@web3modal/scaffold': 4.1.5(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)
