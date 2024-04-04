@@ -3,6 +3,8 @@
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
   import { Toaster } from '@sni/ui-kit';
+  import NavBar from '$lib/components/navbar/index.svelte';
+  import Footer from '$lib/components/Footer.svelte';
   import { afterNavigate, beforeNavigate } from '$app/navigation';
   import {
     initializeContext,
@@ -53,9 +55,23 @@
 {/if}
 
 {#key data.pathname}
-  <div in:fade={{ duration: 200, delay: 100 }} out:fade={{ duration: 100 }}>
+  <div>
     <Modal />
-    <slot />
+    <div
+      class="w-full flex flex-col min-h-screen content-center justify-center"
+    >
+      <NavBar></NavBar>
+      <div class="w-full flex-auto">
+        <div
+          class="container mx-auto py-8"
+          in:fade={{ duration: 200, delay: 100 }}
+          out:fade={{ duration: 100 }}
+        >
+          <slot />
+        </div>
+      </div>
+      <Footer></Footer>
+    </div>
   </div>
 {/key}
 
