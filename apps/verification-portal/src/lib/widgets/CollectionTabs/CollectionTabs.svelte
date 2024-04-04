@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { DeepAsset } from '@sni/types';
   import { MultiTabs } from '@sni/ui-kit';
   import { afterNavigate } from '$app/navigation';
   import { updateQueryParams } from '$lib/shared/utils';
@@ -18,7 +17,6 @@
 
   let activeTabKey: CollectionKeys = tabConfig.activeKey;
   let activeTabIndex: number;
-  export let highlights: DeepAsset[] = [];
 
   $: setIndex(activeTabKey);
 
@@ -95,9 +93,12 @@
             />
             <Web3Assets
               collectionName={$LL[collection.key].collectionName()}
-              {highlights}
               web3Enabled={collection.web3.web3Enabled}
-            />
+            >
+              <svelte:fragment slot="highlights">
+                <slot />
+              </svelte:fragment>
+            </Web3Assets>
           </Web3Connection>
         {:else if collection.web2}
           <Web2SearchContainer
@@ -115,7 +116,11 @@
                 ? collection.searchInput.inputMode
                 : 'text'}
             />
-            <SearchResults {collection} {highlights} />
+            <SearchResults {collection}>
+              <svelte:fragment slot="highlights">
+                <slot />
+              </svelte:fragment>
+            </SearchResults>
           </Web2SearchContainer>
         {/if}
       </MultiTabs.Tab>
