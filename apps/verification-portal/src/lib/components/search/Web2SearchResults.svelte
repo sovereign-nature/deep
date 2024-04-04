@@ -9,10 +9,8 @@
   import type { Web2DataState } from '$lib/types';
   import type { Collection } from '$lib/shared/collectionsConfig';
 
-  import FeaturedContainer from '$lib/entities/featured/FeaturedContainer.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
 
-  export let highlights: DeepAsset[] = [];
   export let collection: Collection;
 
   // Retrieve user store from context
@@ -73,9 +71,6 @@
       </div>
     {/if}
   </div>
-{:else if highlights.length > 0}
-  <FeaturedContainer
-    collectionName={$LL[collection.key].collectionName()}
-    featuredItems={highlights}
-  />
+{:else}
+  <slot name="highlights" />
 {/if}

@@ -2,7 +2,7 @@
   // import LayoutLanding from '$lib/containers/LayoutLanding.svelte';
 
   import ShareCard from '$lib/components/ShareCard.svelte';
-
+  import FeaturedContainer from '$lib/entities/featured/FeaturedContainer.svelte';
   import CollectionsTabs from '$lib/widgets/CollectionTabs/CollectionTabs.svelte';
 
   import { LL } from '$lib/shared/i18n/i18n-svelte';
@@ -37,6 +37,13 @@
         {$LL.subtitle()}
       </span>
     </div>
-    <CollectionsTabs highlights={data.highlights} />
+    <CollectionsTabs>
+      {#await data.streamed.highlights then highlights}
+        <FeaturedContainer
+          collectionName={$LL[data.collectionKey].collectionName()}
+          featuredItems={highlights}
+        />
+      {/await}
+    </CollectionsTabs>
   </div>
 </div>
