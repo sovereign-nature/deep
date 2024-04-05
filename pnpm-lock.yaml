@@ -163,8 +163,8 @@ importers:
         specifier: 0.4.0
         version: 0.4.0(@sveltejs/kit@2.5.5)(vite-plugin-pwa@0.19.7)
       '@wagmi/connectors':
-        specifier: 4.1.24
-        version: 4.1.24(@wagmi/core@2.6.15)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.4)(viem@2.9.9)
+        specifier: 4.1.25
+        version: 4.1.25(@wagmi/core@2.6.15)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.4)(viem@2.9.9)
       '@wagmi/core':
         specifier: 2.6.15
         version: 2.6.15(react@18.2.0)(typescript@5.4.4)(viem@2.9.9)
@@ -173,7 +173,7 @@ importers:
         version: 1.2.1(react@18.2.0)
       '@web3modal/wagmi':
         specifier: 4.1.5
-        version: 4.1.5(@wagmi/connectors@4.1.24)(@wagmi/core@2.6.15)(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)(viem@2.9.9)
+        version: 4.1.5(@wagmi/connectors@4.1.25)(@wagmi/core@2.6.15)(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)(viem@2.9.9)
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -2026,7 +2026,7 @@ packages:
     resolution: {integrity: sha512-m4HEDZleaaCH+XgDDsPF15Ht6wTLsgDTeR3WYj9Q/k76JtWhrJjcP4+/XlG8LGT/Rol9qUfOIztXeA84ATpqPQ==}
     dependencies:
       '@babel/helper-module-imports': 7.24.3
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       '@emotion/hash': 0.9.1
       '@emotion/memoize': 0.8.1
       '@emotion/serialize': 1.1.3
@@ -2071,7 +2071,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       '@emotion/babel-plugin': 11.11.0
       '@emotion/cache': 11.11.0
       '@emotion/serialize': 1.1.3
@@ -2106,7 +2106,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       '@emotion/babel-plugin': 11.11.0
       '@emotion/is-prop-valid': 1.2.2
       '@emotion/react': 11.11.4(react@18.2.0)
@@ -3071,7 +3071,7 @@ packages:
     dependencies:
       '@inquirer/type': 1.2.1
       '@types/mute-stream': 0.0.4
-      '@types/node': 20.11.30
+      '@types/node': 20.12.4
       '@types/wrap-ansi': 3.0.0
       ansi-escapes: 4.3.2
       chalk: 4.1.2
@@ -5018,25 +5018,20 @@ packages:
   /@types/mute-stream@0.0.4:
     resolution: {integrity: sha512-CPM9nzrCPPJHQNA9keH9CVkVI+WR5kMa+7XEs5jcGQ0VoAGnLv242w8lIVgwAEfmE4oufJRaTc9PNLQl0ioAow==}
     dependencies:
-      '@types/node': 20.11.30
+      '@types/node': 20.12.4
     dev: true
 
   /@types/node-forge@1.3.11:
     resolution: {integrity: sha512-FQx220y22OKNTqaByeBGqHWYz4cl94tpcxeFdvBo3wjG6XPBuZ0BNgNZRV5J5TFmmcsJ4IzsLkmGRiQbnYsBEQ==}
     dependencies:
-      '@types/node': 20.11.30
+      '@types/node': 20.12.4
     dev: true
 
   /@types/node@20.11.30:
     resolution: {integrity: sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==}
     dependencies:
       undici-types: 5.26.5
-
-  /@types/node@20.12.2:
-    resolution: {integrity: sha512-zQ0NYO87hyN6Xrclcqp7f8ZbXNbRfoGWNcMvHTPQp9UUrwI0mI7XBz+cu7/W6/VClYo2g63B0cjull/srU7LgQ==}
-    dependencies:
-      undici-types: 5.26.5
-    dev: true
+    dev: false
 
   /@types/node@20.12.4:
     resolution: {integrity: sha512-E+Fa9z3wSQpzgYQdYmme5X3OTuejnnTx88A6p6vkkJosR3KBz+HpE3kqNm98VE6cfLFcISx7zW7MsJkH6KwbTw==}
@@ -5061,7 +5056,7 @@ packages:
   /@types/secp256k1@4.0.6:
     resolution: {integrity: sha512-hHxJU6PAEUn0TP4S/ZOzuTUvJWuZ6eIKeNKb5RBpODvSl6hp1Wrw4s7ATY50rklRCScUDpHzVA/DQdSjJ3UoYQ==}
     dependencies:
-      '@types/node': 20.12.2
+      '@types/node': 20.12.4
     dev: true
 
   /@types/semver@7.5.8:
@@ -5317,7 +5312,7 @@ packages:
     peerDependencies:
       video.js: ^7 || ^8
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       '@videojs/vhs-utils': 4.0.0
       aes-decrypter: 4.0.1
       global: 4.4.0
@@ -5331,7 +5326,7 @@ packages:
     resolution: {integrity: sha512-PKVgdo8/GReqdx512F+ombhS+Bzogiofy1LgAj4tN8PfdBx3HSS7V5WfJotKTqtOWGwVfSWsrYN/t09/DSryrw==}
     engines: {node: '>=8', npm: '>=5'}
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       global: 4.4.0
       url-toolkit: 2.2.5
     dev: true
@@ -5340,7 +5335,7 @@ packages:
     resolution: {integrity: sha512-xJp7Yd4jMLwje2vHCUmi8MOUU76nxiwII3z4Eg3Ucb+6rrkFVGosrXlMgGnaLjq724j3wzNElRZ71D/CKrTtxg==}
     engines: {node: '>=8', npm: '>=5'}
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       global: 4.4.0
       url-toolkit: 2.2.5
     dev: true
@@ -5348,7 +5343,7 @@ packages:
   /@videojs/xhr@2.6.0:
     resolution: {integrity: sha512-7J361GiN1tXpm+gd0xz2QWr3xNWBE+rytvo8J3KuggFaLg+U37gZQ2BuPLcnkfGffy2e+ozY70RHC8jt7zjA6Q==}
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       global: 4.4.0
       is-function: 1.0.2
     dev: true
@@ -5408,10 +5403,10 @@ packages:
       pretty-format: 29.7.0
     dev: true
 
-  /@wagmi/connectors@4.1.24(@wagmi/core@2.6.15)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.4)(viem@2.9.9):
-    resolution: {integrity: sha512-gFziI7E3m+ESJmEnsvlm/eMlboKwdfGqOOQIU068MoZ+ZcNxoLZe4gu8CqnrmG7ksdPtwG38prsMl96opZexIA==}
+  /@wagmi/connectors@4.1.25(@wagmi/core@2.6.15)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.4)(viem@2.9.9):
+    resolution: {integrity: sha512-4Tot1Gtiv7uhiUAxZ9On37aai35l5S0sV7N2yQSNgzqXe55bAlI0cqyBAIJRvyKwOe1+hzKfoFqYQSaoCgj5Lg==}
     peerDependencies:
-      '@wagmi/core': 2.6.15
+      '@wagmi/core': 2.6.16
       typescript: '>=5.0.4'
       viem: 2.x
     peerDependenciesMeta:
@@ -6249,7 +6244,7 @@ packages:
       qrcode: 1.5.3
     dev: true
 
-  /@web3modal/wagmi@4.1.5(@wagmi/connectors@4.1.24)(@wagmi/core@2.6.15)(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)(viem@2.9.9):
+  /@web3modal/wagmi@4.1.5(@wagmi/connectors@4.1.25)(@wagmi/core@2.6.15)(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)(viem@2.9.9):
     resolution: {integrity: sha512-1h1wo6tJCwsZs1D7ymnrHbXbkum3k3zxcr7u6HctP1Ur2BFr7+ndALR/WlnEenBJTu5LILd9iqaf9QvFOSOyvg==}
     peerDependencies:
       '@wagmi/connectors': '>=4.0.0'
@@ -6267,7 +6262,7 @@ packages:
       vue:
         optional: true
     dependencies:
-      '@wagmi/connectors': 4.1.24(@wagmi/core@2.6.15)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.4)(viem@2.9.9)
+      '@wagmi/connectors': 4.1.25(@wagmi/core@2.6.15)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.4)(viem@2.9.9)
       '@wagmi/core': 2.6.15(react@18.2.0)(typescript@5.4.4)(viem@2.9.9)
       '@web3modal/polyfills': 4.1.5
       '@web3modal/scaffold': 4.1.5(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)
@@ -6373,7 +6368,7 @@ packages:
   /aes-decrypter@4.0.1:
     resolution: {integrity: sha512-H1nh/P9VZXUf17AA5NQfJML88CFjVBDuGkp5zDHa7oEhYN9TTpNLJknRY1ie0iSKWlDf6JRnJKaZVDSQdPy6Cg==}
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       '@videojs/vhs-utils': 3.0.5
       global: 4.4.0
       pkcs7: 1.0.4
@@ -6715,7 +6710,7 @@ packages:
     resolution: {integrity: sha512-Cg7TFGpIr01vOQNODXOOaGz2NpCU5gl8x1qJFbb6hbZxR7XrcE2vtbAsTAbJ7/xwJtUuJEw8K8Zr/AE0LHlesg==}
     engines: {node: '>=10', npm: '>=6'}
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       cosmiconfig: 7.1.0
       resolve: 1.22.8
     dev: true
@@ -7511,7 +7506,7 @@ packages:
     resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
     engines: {node: '>=0.11'}
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
     dev: true
 
   /date-fns@3.6.0:
@@ -9428,13 +9423,13 @@ packages:
   /i18next-browser-languagedetector@7.2.0:
     resolution: {integrity: sha512-U00DbDtFIYD3wkWsr2aVGfXGAj2TgnELzOX9qv8bT0aJtvPV9CRO77h+vgmHFBMe7LAxdwvT/7VkCWGya6L3tA==}
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
     dev: true
 
   /i18next@22.5.1:
     resolution: {integrity: sha512-8TGPgM3pAD+VRsMtUMNknRz3kzqwp/gPALrWMsDnmC1mKqJwpWyooQRLMcbTwq8z8YwSmuj+ZYvc+xCuEpkssA==}
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
     dev: true
 
   /idb-keyval@6.2.1:
@@ -10535,7 +10530,7 @@ packages:
   /m3u8-parser@7.1.0:
     resolution: {integrity: sha512-7N+pk79EH4oLKPEYdgRXgAsKDyA/VCo0qCHlUwacttQA0WqsjZQYmNfywMvjlY9MpEBVZEt0jKFd73Kv15EBYQ==}
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       '@videojs/vhs-utils': 3.0.5
       global: 4.4.0
     dev: true
@@ -11033,7 +11028,7 @@ packages:
     resolution: {integrity: sha512-WgeIwxAqkmb9uTn4ClicXpEQYCEduDqRKfmUdp4X8vmghKfBNXZLYpREn9eqrDx/Tf5LhzRcJLSpi4ohfV742Q==}
     hasBin: true
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       '@videojs/vhs-utils': 4.0.0
       '@xmldom/xmldom': 0.8.10
       global: 4.4.0
@@ -11110,7 +11105,7 @@ packages:
     engines: {node: '>=8', npm: '>=5'}
     hasBin: true
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       global: 4.4.0
     dev: true
 
@@ -11119,7 +11114,7 @@ packages:
     engines: {node: '>=8', npm: '>=5'}
     hasBin: true
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       global: 4.4.0
     dev: true
 
@@ -11733,7 +11728,7 @@ packages:
     resolution: {integrity: sha512-afRERtHn54AlwaF2/+LFszyAANTCggGilmcmILUzEjvs3XgFZT+xE6+QWQcAGmu4xajy+Xtj7acLOPdx5/eXWQ==}
     hasBin: true
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
     dev: true
 
   /pkg-dir@3.0.0:
@@ -12224,7 +12219,7 @@ packages:
       react-native:
         optional: true
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       html-parse-stringify: 3.0.1
       i18next: 22.5.1
       react: 18.2.0
