@@ -24,7 +24,7 @@
     "@hono/zod-validator": "0.2.1",
     "env-cmd": "10.1.0",
     "vitest": "1.4.0",
-    "wrangler": "3.47.1",
+    "wrangler": "3.48.0",
     "zod": "3.22.4"
   }
 }
