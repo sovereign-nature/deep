@@ -32,15 +32,17 @@
         </div>
       {:else if $web3Connected && $web3Response.loaded && !$web3Response.error}
         <div
-          class="flex flex-col-reverse gap-y-3 md:flex-row flex-wrap md:flew-nowrap md:items-end justify-between mt-16 text-white text-xs sm:text-sm"
+          class="flex flex-col gap-y-3 sm:flex-row flex-wrap sm:flew-nowrap sm:items-baseline justify-between mt-16 text-white text-xs sm:text-sm"
         >
-          <h2 class="text-2xl">
+          <h2
+            class="text-gray-200 dark:text-gray-400 text-sm sm:text-xl font-sans sm:font-serif mb-5 text-center md:text-left"
+          >
             {$LL.wallet.myAssets({
               collection: collectionName,
               nrOfAssets: $web3Items.length,
             })}
           </h2>
-          <div class="flex">
+          <div class="flex justify-center md:justify-end">
             <Web3Notifications
               alwaysOpen
               placeholder={$LL.notifications.subscribeCollection()}
@@ -63,14 +65,16 @@
               {/each}
             </div>
           {:else if $web3Items.length == 0}
-            <p class="text-xl text-center text-white">
+            <p class="text-base md:text-xl text-center text-gray-200">
               {$LL.wallet.noAssets()}
             </p>
           {/if}
         </div>
       {:else if $web3Connected && $web3Response.error}
         <div class="mt-24">
-          <p class="text-xl text-center text-white whitespace-pre-line">
+          <p
+            class="text-base md:text-xl text-center text-gray-200 whitespace-pre-line"
+          >
             {$LL.wallet.errorMessage()}
           </p>
         </div>
