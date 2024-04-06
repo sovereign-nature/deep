@@ -10,8 +10,9 @@
     'dark:bg-transparent p-0 mb-1 flex w-full items-baseline gap-2 text-primary-500 hover:text-primary-400 dark:text-primary-400 hover:dark:text-white dark:hover:bg-primary-400 bg-gray-100 dark:bg-primary-800 w-44 cursor-pointer px-2  rounded-full';
   const radioClass =
     'm-0 p-0 px-2 py-2 w-full text-base bg-transparent text-inherit';
+  export let containerClass: string;
+  let selectedTheme: string | undefined;
 
-  let selectedTheme: string;
   $: selectedTheme = $themeStore;
 
   let dropdownOpen = false;
@@ -25,7 +26,7 @@
 <RolloverBtn
   type="secondary"
   keepOpen={dropdownOpen}
-  customBtnClass={`theme-rollover  flex items-center `}
+  customBtnClass={`${containerClass} theme-rollover  flex items-center `}
   customLabelClass="w-28 text-start"
 >
   {#key selectedTheme}

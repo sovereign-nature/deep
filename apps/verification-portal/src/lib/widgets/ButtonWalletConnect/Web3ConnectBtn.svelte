@@ -7,6 +7,7 @@
 
   let isLoaded = false;
   export let alwaysOpen = false;
+  export let responsive = false;
 
   const web3Connected: Writable<boolean> = getContext('web3Connected');
   const web3Address: Writable<string> = getContext('web3Address');
@@ -31,19 +32,13 @@
     {#key $web3Address || $web3ChainId}
       <!-- TODO: Check if click assigned correctly -->
       <button
-        class=" dark:text-primary-200 pe-1 opacity-80 hover:opacity-100 active:opacity-100 flex items-center gap-2"
+        class={`${responsive ? 'h-8 md:h-11 md:text-base text-xs px-3 md:px-5' : 'text-base h-11 px-5'} text-white dark:text-primary-200 hover:bg-primary-300   hover:dark:bg-deep-green-400 active:opacity-100 flex items-center gap-2 rounded-full bg-primary-400 dark:bg-deep-green-500`}
         on:click={openModal}
       >
-        <!-- {#key $web3ChainId}
-          {#if $web3ChainId == 42161}
-            <ArbitrumIcon className="h-4 w-4" />
-            <span class="sr-only">Arbitrum</span>
-          {:else}
-            {getChainName($web3ChainId)}
-          {/if}
-        {/key} -->
         <span class="flex items-center gap-2">
-          <span class="rounded-full h-3 w-3 block bg-primary-300"></span>
+          <span
+            class="rounded-full h-3 w-3 block bg-deep-green-400 dark:bg-primary-200"
+          ></span>
           {shortenAddress($web3Address)}
         </span>
       </button>
@@ -51,10 +46,13 @@
   {:else}
     <RolloverBtn
       type="primary"
+      className="text-sm sm:text-base"
       keepOpen={alwaysOpen}
       on:click={() => openModal()}
+      customBtnClass={responsive ? 'h-8 md:h-11 md:text-base text-sm' : ''}
     >
-      Connect your wallet
+      <span class="hidden md:inline-block"> Connect your wallet </span>
+      <span class=" md:hidden"> Connect wallet </span>
       <ConnectIcon slot="icon" className="h-4 w-4 mx-1" />
     </RolloverBtn>
   {/if}

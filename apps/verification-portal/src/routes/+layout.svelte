@@ -1,5 +1,6 @@
 <script lang="ts">
   import '../app.postcss';
+  import { page } from '$app/stores';
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
   import { Toaster } from '@sni/ui-kit';
@@ -40,7 +41,7 @@
     //TODO: Do we need it twice?
     modalHandleTheme($themeStore ?? '');
   });
-
+  $: hasContentNav = $page.route.id === '/assets/[assetAddress]';
   export let data;
 </script>
 
@@ -60,7 +61,7 @@
     <div
       class="w-full flex flex-col min-h-screen content-center justify-center"
     >
-      <NavBar></NavBar>
+      <NavBar {hasContentNav}></NavBar>
       <div class="w-full flex-auto">
         <div
           class="container mx-auto py-8"

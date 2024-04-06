@@ -1,13 +1,20 @@
-<script>
+<script lang="ts">
   import { onMount } from 'svelte';
-  import { Dropdown, DropdownItem, NavBrand, Navbar } from 'flowbite-svelte';
+  import { beforeNavigate } from '$app/navigation';
+  import { slide } from 'svelte/transition';
+  import { browser } from '$app/environment';
+  import { NavBrand, Navbar } from 'flowbite-svelte';
   import BtnWeb3Connect from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
   import Web3Notifications from '$lib/widgets/ButtonInboxConnect/Web3Notifications.svelte';
   import ThemeSwitch from '$lib/components/navbar/ThemeSwitch.svelte';
+  import Hamburger from './Hamburger.svelte';
 
   import logo from '$lib/assets/brand/sni_logo_round.svg';
 
-  let dropdownOpen = false;
+  export let hasContentNav = false;
+  let menuOpen = false;
+
+  beforeNavigate(() => (menuOpen = false));
 
   onMount(() => {
     window
@@ -20,52 +27,69 @@
         }
       });
   });
+  $: toggleMobileMenu(menuOpen);
+  function toggleMobileMenu(open: boolean) {
+    if (browser) {
+      document.documentElement.classList.toggle('menu-open', open);
+    }
+  }
 </script>
 
 <!-- TODO: Move navbar to widgets? -->
-<Navbar color="none" class=" my-6 container px-4 ">
-  <NavBrand href="/">
-    <img src={logo} class="mr-2 sm:mr-4 xl:mr-9 h-10 lg:h-20" alt="SNI Logo" />
+<Navbar
+  color="none"
+  class={`${menuOpen ? 'dark' : ''} navbar my-3 mb-6 md:my-6  container px-4 md:!ps-0 z-navbar`}
+>
+  <NavBrand href="/" class="dark:text-gray-300">
+    <img
+      src={logo}
+      class="navbar-brand-logo mr-2 sm:mr-4 xl:mr-9 h-9 sm:h-12 lg:h-20 lg:ms-3"
+      alt="SNI Logo"
+    />
     <span
-      class="ms-2 text-base sm:text-xl lg:text-2xl font-serif dark:text-white"
+      class="hidden md:block ms-0 lg:ms-2 text-base md:text-xl lg:text-2xl font-serif"
     >
       <strong>Sovereign Nature</strong>
       <span class="font-light">Initiative</span>
     </span>
+    <span class="md:hidden text-[12px] sm:text-lg">
+      <strong class="text-primary-300 dark:text-primary-200">REAL</strong>
+      <span class="font-serif">Portal</span>
+    </span>
   </NavBrand>
 
-  <button class="nav-hamburger md:hidden dark:text-white"> &#9776;</button>
-  <div
-    class="hidden md:flex flex-col sm:flex-row justify-end items-start sm:items-center content-center md:w-1/2 lg:pt-0 gap-x-4"
-  >
-    <BtnWeb3Connect></BtnWeb3Connect>
+  <div class="ms-auto flex flex-row gap-x-2 sm:gap-x-4 text-white">
+    <Web3Notifications responsive></Web3Notifications>
 
-    <Web3Notifications></Web3Notifications>
-    <slot />
-    <ThemeSwitch></ThemeSwitch>
+    <BtnWeb3Connect responsive></BtnWeb3Connect>
+    <ThemeSwitch className="hidden md:flex"></ThemeSwitch>
+    <Hamburger open={menuOpen} on:click={() => (menuOpen = !menuOpen)} />
   </div>
-
-  <Dropdown
-    triggeredBy=".nav-hamburger"
-    bind:open={dropdownOpen}
-    containerClass="md:hidden min-h-[300px] z-50 relative dark:bg-deep-green-700 dark:text-white"
-  >
-    <DropdownItem
-      class=" h-12 py-3 flex justify-end hover:dark:bg-transparent hover:bg-transparent"
-    >
-      <BtnWeb3Connect></BtnWeb3Connect>
-    </DropdownItem>
-
-    <DropdownItem
-      class=" py-3 flex justify-end hover:dark:bg-transparent hover:bg-transparent"
-    >
-      <Web3Notifications></Web3Notifications>
-    </DropdownItem>
-
-    <DropdownItem
-      class=" py-3 flex justify-end hover:dark:bg-transparent hover:bg-transparent"
-    >
-      <ThemeSwitch></ThemeSwitch>
-    </DropdownItem>
-  </Dropdown>
 </Navbar>
+{#if menuOpen}
+  <div
+    transition:slide={{ axis: 'x', duration: 300 }}
+    class="mobile-menu fixed md:hidden w-[100vw] h-[100vh] bg-primary-500 block z-overlay top-0 right-0 z-overlay"
+  >
+    <div class="container px-6 mt-20 pt-6">
+      <ThemeSwitch className=""></ThemeSwitch>
+      {#if hasContentNav}
+        <!-- content nav component -->
+      {/if}
+    </div>
+  </div>
+{/if}
+
+<style>
+  @media only screen and (min-width: 768px) and (max-width: 830px) {
+    .navbar-brand-logo {
+      margin-left: 1rem;
+    }
+  }
+
+  @media only screen and (max-width: 340px) {
+    .navbar-brand-logo {
+      display: none;
+    }
+  }
+</style>
