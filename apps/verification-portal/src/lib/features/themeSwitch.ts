@@ -1,6 +1,6 @@
 import { readable } from 'svelte/store';
 import { isDarkModePreferred } from '$lib/shared/utils';
-type Theme = 'light' | 'dark' | 'system' | undefined;
+export type Theme = 'light' | 'dark' | 'system' | undefined;
 
 function getInitialTheme(): Theme {
   if (typeof window !== 'undefined' && localStorage.getItem('color-theme')) {

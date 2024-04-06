@@ -1,5 +1,5 @@
 <script lang="ts">
-  import DarkMode from '$lib/components/navbar/DarkMode.svelte';
+  import Menu from '$lib/widgets/ThemeSwitch/Menu.svelte';
   import MoonIcon from '$lib/components/icons/MoonIcon.svelte';
   import SunIcon from '$lib/components/icons/SunIcon.svelte';
   import SystemIcon from '$lib/components/icons/SystemIcon.svelte';
@@ -7,7 +7,7 @@
 </script>
 
 <div class={className}>
-  <DarkMode containerClass="">
+  <Menu containerClass="">
     <svelte:fragment slot="system">
       <SystemIcon className="w-4 h-4 mx-1" />
     </svelte:fragment>
@@ -17,5 +17,5 @@
     <svelte:fragment slot="dark">
       <MoonIcon className="w-4 h-4 mx-1" />
     </svelte:fragment>
-  </DarkMode>
+  </Menu>
 </div>

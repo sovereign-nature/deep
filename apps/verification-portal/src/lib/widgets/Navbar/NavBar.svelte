@@ -6,8 +6,8 @@
   import { NavBrand, Navbar } from 'flowbite-svelte';
   import BtnWeb3Connect from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
   import Web3Notifications from '$lib/widgets/ButtonInboxConnect/Web3Notifications.svelte';
-  import ThemeSwitch from '$lib/components/navbar/ThemeSwitch.svelte';
-  import Hamburger from './Hamburger.svelte';
+  import ThemeSwitch from '$lib/widgets/ThemeSwitch/ThemeSwitch.svelte';
+  import Hamburger from '$lib/widgets/Navbar/HamburgerButton.svelte';
 
   import logo from '$lib/assets/brand/sni_logo_round.svg';
 
