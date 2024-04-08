@@ -76,8 +76,8 @@ importers:
         version: 4.17.21
     devDependencies:
       '@cloudflare/workers-types':
-        specifier: 4.20240404.0
-        version: 4.20240404.0
+        specifier: 4.20240405.0
+        version: 4.20240405.0
       '@hono/zod-validator':
         specifier: 0.2.1
         version: 0.2.1(hono@4.2.2)(zod@3.22.4)
@@ -89,7 +89,7 @@ importers:
         version: 1.4.0
       wrangler:
         specifier: 3.48.0
-        version: 3.48.0(@cloudflare/workers-types@4.20240404.0)
+        version: 3.48.0(@cloudflare/workers-types@4.20240405.0)
       zod:
         specifier: 3.22.4
         version: 3.22.4
@@ -1979,8 +1979,8 @@ packages:
     dev: true
     optional: true
 
-  /@cloudflare/workers-types@4.20240404.0:
-    resolution: {integrity: sha512-lfnYnjX4/65MrVeMF/k3C7BzaLoU1fEIdzCs04ofrx7J6rH7LK3DHRNcnuchoSxKuzG2xVf940MKZ1XieGRCLQ==}
+  /@cloudflare/workers-types@4.20240405.0:
+    resolution: {integrity: sha512-sEVOhyOgXUwfLkgHqbLZa/sfkSYrh7/zLmI6EZNibPaVPvAnAcItbNNl3SAlLyLKuwf8m4wAIAgu9meKWCvXjg==}
     dev: true
 
   /@coinbase/wallet-sdk@3.9.1:
@@ -14749,7 +14749,7 @@ packages:
       '@cloudflare/workerd-windows-64': 1.20240404.0
     dev: true
 
-  /wrangler@3.48.0(@cloudflare/workers-types@4.20240404.0):
+  /wrangler@3.48.0(@cloudflare/workers-types@4.20240405.0):
     resolution: {integrity: sha512-Wv7JS6FyX1j9HkaM6WL3fmTzBMAYc4hPSyZCuxuH55hkJDX/7ts+YAgsaN1U8rKoDrV3FVSgBfI9TyqP9iuM8Q==}
     engines: {node: '>=16.17.0'}
     hasBin: true
@@ -14760,7 +14760,7 @@ packages:
         optional: true
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.1
-      '@cloudflare/workers-types': 4.20240404.0
+      '@cloudflare/workers-types': 4.20240405.0
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
       '@esbuild-plugins/node-modules-polyfill': 0.2.2(esbuild@0.17.19)
       blake3-wasm: 2.1.5
