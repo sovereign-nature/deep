@@ -90,6 +90,7 @@ const config = {
         sm: '.625rem',
         DEFAULT: '.625rem',
         lg: '1.25rem',
+        xl: '3rem',
         full: '9999px',
       },
       container: {

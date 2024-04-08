@@ -10,9 +10,10 @@
   export let alt: string;
   export let verified = false;
   export let size = 300;
-  export let imgClass = 'object-cover w-full h-full rounded-lg fade-from-none';
+  export let imgClass =
+    'object-cover w-full h-full rounded-xl sm:rounded-lg fade-from-none';
   export let containerClass =
-    'w-56 h-56 md:h-64 md:w-64 rounded-lg mb-2 overflow-hidden text-center bg-gray-400 dark:bg-deep-green';
+    'w-52 h-52 md:h-64 md:w-64 rounded-xl sm:rounded-lg  mb-2 overflow-hidden text-center bg-gray-400 dark:bg-deep-green';
   export let imgPlaceholderClass = 'w-56 h-56 md:h-64 md:w-64 absolute';
 
   let isMounted = false;

@@ -6,7 +6,9 @@
   export let url: string = '';
 </script>
 
-<h2 class={`${className} text-sm font-sans font-light mb-4 flex items-center`}>
+<h2
+  class={`${className} mb-4 flex items-center font-sans text-sm font-light mt-8 sm:mt-auto`}
+>
   <slot />
 
   {#if url}

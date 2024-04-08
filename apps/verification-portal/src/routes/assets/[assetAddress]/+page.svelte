@@ -51,7 +51,8 @@
   $: pageImage = `${baseUrl}/${pageImagePath}`;
   $: pageImageSquare = `${pageImagePath}&ratio=square`;
   // styling
-  const cardHeaderClass = 'px-4 pt-6 sm:px-8 sm:pt-8 md:px-11 md:pt-11';
+  const cardHeaderClass =
+    'px-12 pt-6 sm:px-8 sm:pt-8 md:px-11 md:pt-11 whitespace-pre-line';
 </script>
 
 {#key nftData}
@@ -64,10 +65,10 @@
 
 <!-- Header -->
 <div
-  class="grid grid-cols-1 lg:grid-cols-12 lg:gap-5 mb-4 lg:mb-10 xl:mb-16 px-4 lg:px-4 xl:px-16"
+  class="mb-4 grid grid-cols-1 px-10 md:px-8 lg:mb-10 lg:grid-cols-12 lg:gap-5 lg:px-4 xl:mb-16 xl:px-16"
 >
   <div
-    class="col-span-1 lg:col-span-4 xl:col-start-1 xl:col-span-4 flex justify-center w-100 mb-8 lg:mb-4 relative z-10"
+    class="w-100 relative z-10 col-span-1 mb-8 flex justify-center lg:col-span-4 lg:mb-4 xl:col-span-4 xl:col-start-1"
   >
     {#key nftData}
       <NFTImage
@@ -77,10 +78,10 @@
       />
     {/key}
   </div>
-  <div class="lg:col-span-8 xl:col-span-8 dark:text-white">
+  <div class="lg:col-span-8 xl:col-span-8">
     <div>
       <h1
-        class="dark:text-white text-2xl md:text-3xl lg:text-4xl leading-tight mb-6"
+        class="mb-4 text-[22px] sm:text-2xl leading-none md:text-3xl lg:text-4xl"
       >
         {#if verifiedStatus}
           <span class="text-primary-300">{$LL.assets.verified()}</span>
@@ -91,11 +92,13 @@
       </h1>
       <div class="mb-6">
         {#if nftData.description}
-          <span class="text-sm block pt-2"> {nftData.description}</span>
+          <span class="block pt-2 text-base sm:text-sm">
+            {nftData.description}</span
+          >
         {/if}
       </div>
     </div>
-    <div class="grid lg:grid-cols-5 gap-x-1 gap-y-5">
+    <div class="grid gap-x-1 gap-y-5 lg:grid-cols-5">
       <div class="col-span-3">
         <Property name="Source">
           <p>{source}</p>
@@ -112,7 +115,7 @@
       </div>
 
       <div
-        class="col-span-2 flex flex-col lg:flex-row lg:items-center gap-5 pb-4 lg:pb-0"
+        class="col-span-2 flex flex-col gap-5 pb-4 lg:flex-row lg:items-center lg:pb-0"
       >
         <span class="text-sm">{$LL.assets.shareText()}</span>
         <SocialShare
@@ -129,33 +132,31 @@
 
 {#if verifiedStatus}
   <div
-    class="container-grid text-white md:mx-4 xl:mx-0 grid grid-cols-1 xl:grid-cols-3 lg:px-4"
+    class="container-grid grid grid-cols-1 sm:mx-4 lg:px-4 xl:mx-0 xl:grid-cols-3"
   >
     <!-- Fund Data -->
     <div
-      class="Fund-Data mb-5 px-4 sm:px-8 md:px-11 xl:pt-11 xl:dark:bg-primary-100 xl:bg-primary-500 xl:rounded-lg xl:py-8"
+      class="Fund-Data xl:dark:bg-primary-100 xl:bg-primary-500 mb-5 px-12 sm:px-8 md:px-11 xl:rounded-lg xl:py-8 xl:pt-11 text-white"
     >
       <Subheader
-        className="!text-base font-normal text-black dark:text-white xl:text-white xl:dark:!text-black md:pt-8 xl:pt-0 flex justify-start lg:justify-center xl:justify-start "
+        className="md:!text-base !font-normal  text-black dark:text-white   xl:text-white xl:dark:!text-black md:pt-8 xl:pt-0 flex justify-start lg:justify-center xl:justify-start "
         >{$LL.assets.funds.cardTitle()}</Subheader
       >
       <FundsDashboard
         totalFunds={deepData.steward?.funds_raised.toString()}
         totalFundsSubtitle={$LL.assets.funds.labelTotal()}
-        assetFunds={deepData.link?.funds_raised.toString()}
-        assetFundsSubtitle={$LL.assets.funds.labelAsset()}
       ></FundsDashboard>
     </div>
 
     <!-- Animal Data -->
     <div
-      class="Animal-Data md:mb-4 xl:mb-0 min-h-100 bg-deep-green dark:bg-primary-500 sm:rounded-lg xl:rounded-b-none text-white overflow-hidden"
+      class="asset-content-card Animal-Data min-h-100 text-white bg-deep-green dark:bg-primary-500 overflow-hidden sm:rounded-lg md:mb-4 xl:mb-0 xl:rounded-b-none mt-8 sm:mt-auto"
     >
       <div class={`${cardHeaderClass} mb-8`}>
-        <Subheader className="!text-base font-normal"
+        <Subheader className="md:!text-base font-normal"
           >{$LL.assets.ecEntity.cardTitle()}</Subheader
         >
-        <h3 class="text-5xl">{deepData?.id}</h3>
+        <h3 class="text-6xl">{deepData?.id}</h3>
       </div>
       <div class="full">
         {#key deepData}
@@ -192,9 +193,9 @@
 
     <!-- Animal Data Map -->
     <div
-      class="Animal-Data-Map bg-deep-green dark:bg-primary-500 text-white sm:rounded-lg xl:rounded-t-none overflow-hidden relative z-20 border-t-2 md:border-t-none xl:border-t-2 dark:border-deep-green"
+      class="asset-content-card Animal-Data-Map sm:bg-deep-green sm:dark:bg-primary-500 md:border-t-none dark:border-deep-green relative z-20 overflow-hidden border-t-2 sm:rounded-lg xl:rounded-t-none xl:border-t-2"
     >
-      <div class="w-full aspect-video">
+      <div class="aspect-video w-full">
         {#key deepData.location}
           <SimpleMap geoJSONData={deepData.location} />
         {/key}
@@ -202,9 +203,7 @@
     </div>
 
     <!-- Animal Data Continued -->
-    <div
-      class="Animal-Data-Continued bg-transparent text-black dark:text-white mb-5"
-    >
+    <div class="asset-content-card Animal-Data-Continued mb-5 bg-transparent">
       <div class={`${cardHeaderClass} mb-5`}>
         <Subheader>{$LL.assets.ecEntity.title()}</Subheader>
         <CardHeader title={deepData.name ? deepData.name : 'Unnamed'} />
@@ -215,22 +214,24 @@
       {#key properties}
         {#if Object.keys(properties).length > 0 && Object.keys(properties.traces_recorded).length > 0}
           <div
-            class="p-11 bg-gray-300 dark:bg-black rounded-lg mx-6 dark:text-gray-300"
+            class="mx-4 sm:mx-6 rounded-lg bg-gray-300 p-11 dark:bg-black dark:text-gray-300"
           >
             <Subheader>{$LL.assets.ecEntity.propsTitle()}</Subheader>
 
             {#if Object.keys(properties.traces_recorded).length > 0}
-              <div class="font-serif text-[22px] mb-2">
+              <div class="mb-2 font-serif text-[26px]">
                 {$LL.assets.ecEntity.traces()}
               </div>
               <div
-                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2"
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-y-2"
               >
                 {#each Object.keys(properties.traces_recorded) as property}
                   {#if properties.traces_recorded[property] > 0}
-                    <div class="font-serif font-light col-span-1">
+                    <div
+                      class="col-span-1 font-serif font-light text-2xl sm:text-base"
+                    >
                       From {property}:
-                      <span class="text-primary-400 dark:text-primary-300"
+                      <span class="text-primary-400 dark:text-primary-300 ms-1"
                         >{properties.traces_recorded[property]}</span
                       >
                     </div>
@@ -249,15 +250,14 @@
 
         {#if deepData.news?.length > 0}
           <div
-            class=" bg-gray-100 text-black sm:rounded-lg overflow-hidden relative z-20 sm:mb-5 w-inherit"
-            style="width:inherit"
+            class=" w-inherit relative z-20 overflow-hidden bg-gray-100 mb-5 rounded-lg dark:text-black mx-4 sm:mx-0 mt-8 sm:mt-auto"
           >
             <NewsCarousel newsData={deepData.news}></NewsCarousel>
           </div>
         {/if}
         <!-- Steward Data -->
         <div
-          class=" bg-primary-100 dark:bg-deep-green text-black dark:text-white sm:rounded-lg overflow-hidden relative z-20"
+          class="asset-content-card sm:bg-primary-100 sm:dark:bg-deep-green relative z-20 overflow-hidden sm:rounded-lg"
         >
           <div class={`${cardHeaderClass} mb-8`}>
             <Subheader>{$LL.assets.ecSteward.title()}</Subheader>
@@ -269,10 +269,10 @@
               {deepData.steward?.description}
             </p>
           </div>
-          <div class="w-full aspect-video">
+          <div class="aspect-video w-full pt-8 sm:pt-auto">
             <SimpleMap geoJSONData={deepData?.steward?.area} />
           </div>
-          <div class="w-full flex flex-col">
+          <div class="flex w-full flex-col">
             {#if deepData.steward?.images?.length > 0}
               {#each deepData.steward?.images as image}
                 <ImageSrcSet
