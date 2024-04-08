@@ -105,8 +105,9 @@ const config = {
         },
       },
       zIndex: {
-        navbar: 70,
         overlay: 60,
+        navbar: 70,
+        modalOverlay: 75,
         drawer: 80,
       },
     },
