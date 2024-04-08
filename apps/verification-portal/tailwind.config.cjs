@@ -90,6 +90,7 @@ const config = {
         sm: '.625rem',
         DEFAULT: '.625rem',
         lg: '1.25rem',
+        xl: '3rem',
         full: '9999px',
       },
       container: {
@@ -104,8 +105,9 @@ const config = {
         },
       },
       zIndex: {
-        navbar: 70,
         overlay: 60,
+        navbar: 70,
+        modalOverlay: 75,
         drawer: 80,
       },
     },

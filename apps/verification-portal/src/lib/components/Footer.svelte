@@ -28,12 +28,12 @@
 
 <div class="w-full mt-8 mb-4">
   <div
-    class="container mx-auto md:text-center text-gray-600 h-28 py-8 px-4 xl:px-0"
+    class="container mx-auto md:text-center text-gray-600 md:h-28 py-8 sm:px-4 px-12 xl:px-0"
   >
-    <div class="grid md:grid-cols-12 gap-3 h-full">
-      <div class=" md:col-span-6">
+    <div class="grid md:grid-cols-10 gap-3 h-full">
+      <div class=" md:col-span-4">
         <a
-          class=" flex hover-arrow-link pt-1 items-center md:items-baseline dark:!text-primary-300 opacity-70 text-xs dark:text-gray-500 opacity-90 hover:opacity-100"
+          class=" flex hover-arrow-link pt-1 items-center md:items-baseline dark:!text-primary-300 opacity-79 text-sm mb-4 md:mb-0 hover:opacity-100"
           href={links.mailing.url}
           target="_blank"
         >
@@ -55,7 +55,7 @@
             <a
               class="{'linkClass' in value
                 ? value?.linkClass
-                : ''} text-xs font-light dark:text-gray-50 hover:opacity-80"
+                : ''} text-sm font-light dark:text-gray-50 hover:opacity-80"
               href={value.url}
               target="_blank">{value.title}</a
             >

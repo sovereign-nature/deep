@@ -30,7 +30,7 @@
 </script>
 
 <div
-  class="Notification-card bg-gray-100/90 hover:bg-gray-100 text-deep-green-950 dark:text-white dark:bg-deep-green-300/80 dark:hover:bg-deep-green-300 p-5 pt-4 rounded-xl"
+  class="Notification-card bg-gray-100/90 hover:bg-gray-100 text-deep-green-950 dark:text-white dark:bg-deep-green-300/80 dark:hover:bg-deep-green-300 p-5 pt-4 rounded-lg"
 >
   <div class="flex flex-row justify-end items-end ms-16 ps-1 pb-3">
     {#if type}

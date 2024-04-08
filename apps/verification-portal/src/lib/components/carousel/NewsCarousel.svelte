@@ -12,7 +12,7 @@
   export let newsData: Array<NewsEntity>;
   let autoplay = true;
   let expanded = false;
-  const cardHeaderClass = 'px-4 pt-6 sm:px-8 sm:pt-8 md:px-11 md:pt-11';
+  const cardHeaderClass = 'px-8 pt-6 sm:pt-8 md:px-11 md:pt-11';
 
   let items = newsData.map((item, index) => ({
     index,
