@@ -3,6 +3,7 @@
   import LL from '$lib/shared/i18n/i18n-svelte';
   import RolloverBtn from '$lib/shared/components/RolloverBtn.svelte';
   import { themeStore, setTheme } from '$lib/features/themeSwitch';
+  import type { Theme } from '$lib/features/themeSwitch';
   export const btnClass: string =
     ' text-gray-500 dark:text-gray-400  hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700  cursor-pointer ';
 
@@ -10,13 +11,14 @@
     'dark:bg-transparent p-0 mb-1 flex w-full items-baseline gap-2 text-primary-500 hover:text-primary-400 dark:text-primary-400 hover:dark:text-white dark:hover:bg-primary-400 bg-gray-100 dark:bg-primary-800 w-44 cursor-pointer px-2  rounded-full';
   const radioClass =
     'm-0 p-0 px-2 py-2 w-full text-base bg-transparent text-inherit';
+  export let containerClass: string;
+  let selectedTheme: string | undefined;
 
-  let selectedTheme: string;
   $: selectedTheme = $themeStore;
 
   let dropdownOpen = false;
   const handleThemeChange = () => {
-    setTheme(selectedTheme);
+    setTheme(selectedTheme as Theme);
 
     dropdownOpen = false;
   };
@@ -25,7 +27,7 @@
 <RolloverBtn
   type="secondary"
   keepOpen={dropdownOpen}
-  customBtnClass={`theme-rollover  flex items-center `}
+  customBtnClass={`${containerClass} theme-rollover  flex items-center `}
   customLabelClass="w-28 text-start"
 >
   {#key selectedTheme}

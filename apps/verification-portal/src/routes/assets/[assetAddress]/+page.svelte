@@ -129,7 +129,7 @@
 
 {#if verifiedStatus}
   <div
-    class="container-grid text-white md:mx-4 xl:mx-0 grid grid-cols-1 xl:grid-cols-3"
+    class="container-grid text-white md:mx-4 xl:mx-0 grid grid-cols-1 xl:grid-cols-3 lg:px-4"
   >
     <!-- Fund Data -->
     <div

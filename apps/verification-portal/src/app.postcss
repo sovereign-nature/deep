@@ -81,6 +81,21 @@ p {
 .font-aeonik {
   font-family: 'Aeonik' !important;
 }
+html {
+  scrollbar-gutter: stable;
+}
+@media only screen and (max-width: 767px) {
+  html.menu-open body {
+    overflow: hidden;
+  }
+
+  .menu-open nav.navbar {
+    @apply sticky top-0;
+  }
+  .menu-open nav.navbar .dark\:bg-deep-green-500:is(.dark *) {
+    @apply bg-deep-green-400;
+  }
+}
 
 img.leaflet-tile,
 img.leaflet-marker-icon,

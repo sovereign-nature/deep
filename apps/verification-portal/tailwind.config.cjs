@@ -44,6 +44,8 @@ const config = {
         'deep-green': {
           DEFAULT: '#002727',
           300: '#0C1A1A',
+          400: '#004731',
+          500: '#002E20',
           600: '#183C37',
           700: '#071E1B',
           800: '#002727', //dark bg
@@ -100,6 +102,11 @@ const config = {
           xl: '1280px',
           '2xl': '1300px',
         },
+      },
+      zIndex: {
+        navbar: 70,
+        overlay: 60,
+        drawer: 80,
       },
     },
   },

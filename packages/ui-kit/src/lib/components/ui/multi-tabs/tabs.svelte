@@ -48,7 +48,7 @@
 <div class="max-w-full flex-col items-start justify-start">
   <MultiTabs.Nav></MultiTabs.Nav>
   <div
-    class="bg-deep-green mt-3 min-h-[500px] w-full rounded-lg bg-opacity-100 p-6 pt-3 md:p-12 dark:bg-black dark:bg-opacity-60"
+    class="bg-deep-green mt-3 min-h-[500px] w-full rounded-lg bg-opacity-100 p-6 pb:16 pt-3 md:p-12 dark:bg-black dark:bg-opacity-60"
   >
     <slot name="tabs-items" />
   </div>

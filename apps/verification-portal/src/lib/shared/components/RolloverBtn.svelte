@@ -45,7 +45,7 @@
 
   $: btnClass = `btn disabled:opacity-80 disabled:cursor-not-allowed ${
     colorClasses[type as 'alert' | 'primary' | 'secondary']
-  } ${customBtnClass} ${hasNewClass} font-aeonik  text-base z-10 relative h-11  flex items-center justify-end rounded-full whitespace-nowrap overflow-hidden gap-2 px-3`;
+  } ${customBtnClass} ${hasNewClass} font-aeonik z-10 relative h-11 text-base flex items-center justify-end rounded-full whitespace-nowrap overflow-hidden gap-2 px-3 `;
 </script>
 
 <div class={`${className} ${alertAfter}  flex items-start`}>

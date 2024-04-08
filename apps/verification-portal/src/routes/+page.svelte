@@ -11,10 +11,10 @@
 </script>
 
 <ShareCard />
-<div class=" px-4 md:px-0 pb-8 lg:mt-[3vh]">
+<div class="  pb-8 lg:mt-[3vh]">
   <div class="w-full lg:w-4/5 mx-auto">
     <div
-      class="dark:text-gray-50 mb-6 sm:mb-12 md:mb-20 md:text-left text-center"
+      class="dark:text-gray-200 mb-6 sm:mb-12 md:mb-20 md:text-left text-center px-4 lg:px-0"
     >
       <h1
         data-testid="title"
@@ -32,18 +32,20 @@
 
       <span
         data-testid="subtitle"
-        class="font-serif font-regular text-base md:text-[22px] block w-11/12 sm:w-9/12 mx-auto md:mx-0"
+        class="font-serif font-regular text-base md:text-[22px] block xl:w-11/12 sm:w-9/12 mx-auto md:mx-0"
       >
         {$LL.subtitle()}
       </span>
     </div>
-    <CollectionsTabs>
-      {#await data.streamed.highlights then highlights}
-        <FeaturedContainer
-          collectionName={$LL[data.collectionKey].collectionName()}
-          featuredItems={highlights}
-        />
-      {/await}
-    </CollectionsTabs>
+    <div class="px-4 md:px-2 lg:px-0">
+      <CollectionsTabs>
+        {#await data.streamed.highlights then highlights}
+          <FeaturedContainer
+            collectionName={$LL[data.collectionKey].collectionName()}
+            featuredItems={highlights}
+          />
+        {/await}
+      </CollectionsTabs>
+    </div>
   </div>
 </div>

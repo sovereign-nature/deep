@@ -17,7 +17,7 @@
   }
 </script>
 
-<div class="flex flex-col w-full max-w-xl">
+<div class="flex flex-col w-full">
   <Select.Root
     preventScroll={false}
     onSelectedChange={(e) => setTabFromSelect(e)}

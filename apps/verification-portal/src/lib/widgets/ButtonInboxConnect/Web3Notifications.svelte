@@ -6,6 +6,7 @@
   import Spinner from '$lib/components/icons/Spinner.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import { registerInbox } from '$lib/features/web3Inbox';
+  export let responsive = false;
 
   const web3Connected: Writable<boolean> = getContext('web3Connected');
   const web3InboxRegistered: Writable<boolean> = getContext(
@@ -26,6 +27,7 @@
   let hasMessages = false;
   let keepOpen = false;
   let buttonLabel = '';
+  let buttonLabelSm: string | number = '';
 
   let alertNew = false;
   let previousMessageCount = $web3MessageCount;
@@ -60,6 +62,14 @@
           ? placeholder
           : $LL.notifications.subscribe();
   }
+  $: {
+    buttonLabelSm =
+      $web3InboxRegistered && $web3InboxSubscribed
+        ? $web3MessageCount
+        : placeholder
+          ? placeholder
+          : $LL.notifications.subscribe();
+  }
   onMount(async () => {
     isLoaded = true;
   });
@@ -68,6 +78,8 @@
 {#if isLoaded && (($web3InboxRegistered && $web3InboxSubscribed) || $web3Connected)}
   <RolloverBtn
     type="alert"
+    className="text-xs"
+    customBtnClass={responsive ? 'h-8 md:h-11 md:text-base text-sm' : ''}
     disabled={$web3InboxLoading || $web3InboxEnabling}
     hasNew={$web3InboxRegistered && $web3InboxSubscribed ? hasMessages : false}
     {keepOpen}
@@ -76,20 +88,24 @@
       : registerInbox}
   >
     {#if $web3InboxLoading}
-      {$LL.notifications.connecting()}
+      <span class="hidden md:inline-block"> {buttonLabel}</span>
     {:else if $web3InboxEnabling}
       {$LL.notifications.loading()}
+    {:else if responsive}
+      <span class="hidden md:inline-block"> {buttonLabel}</span>
+      <span class="md:hidden"> {buttonLabelSm}</span>
     {:else}
       {buttonLabel}
     {/if}
     <span slot="icon">
       {#if $web3InboxLoading || $web3InboxEnabling}
         <Spinner
-          className="w-5 h-5 text-orange-400  dark:text-orange-200 fill-orange-600 dark:fill-orange-400"
+          className="h-4 w-4 md:h-5 md:w-5 text-orange-400  dark:text-orange-200 fill-orange-600 dark:fill-orange-400"
         ></Spinner>
       {:else}
         <BellIcon
-          className="h-5 w-5  {$web3InboxRegistered && web3InboxSubscribed
+          className="h-4 w-4 md:h-5 md:w-5  {$web3InboxRegistered &&
+          web3InboxSubscribed
             ? ''
             : 'mx-1'}"
         ></BellIcon>
