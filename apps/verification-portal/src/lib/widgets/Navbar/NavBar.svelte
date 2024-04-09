@@ -1,15 +1,15 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { beforeNavigate } from '$app/navigation';
-  import { slide } from 'svelte/transition';
+  import { slide, fly, fade } from 'svelte/transition';
   import { browser } from '$app/environment';
   import { NavBrand, Navbar } from 'flowbite-svelte';
   import TableOfContents from '$lib/widgets/ToC/TableOfContents.svelte';
+  import ContentNavButton from '$lib/widgets/ToC/ContentNavButton.svelte';
   import BtnWeb3Connect from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
   import Web3Notifications from '$lib/widgets/ButtonInboxConnect/Web3Notifications.svelte';
   import ThemeSwitch from '$lib/widgets/ThemeSwitch/ThemeSwitch.svelte';
   import Hamburger from '$lib/widgets/Navbar/HamburgerButton.svelte';
-
   import logo from '$lib/assets/brand/sni_logo_round.svg';
 
   export let hasContentNav = false;
@@ -27,10 +27,6 @@
           console.log('change to light mode!');
         }
       });
-    // Add event listener for hash nav changes
-    window.addEventListener('hashchange', () => {
-      menuOpen = false;
-    });
   });
   $: toggleMobileMenu(menuOpen);
   function toggleMobileMenu(open: boolean) {
@@ -40,7 +36,6 @@
   }
 </script>
 
-<!-- TODO: Move navbar to widgets? -->
 <Navbar
   color="none"
   class={`${menuOpen ? 'dark' : ''} navbar my-3 mb-6 md:my-6  container px-4 md:!ps-0 z-navbar`}
@@ -73,16 +68,31 @@
 </Navbar>
 {#if menuOpen}
   <div
-    transition:slide={{ axis: 'x', duration: 300 }}
+    in:slide={{ axis: 'x', duration: 300 }}
+    out:slide={{ axis: 'x', duration: 300, delay: 300 }}
     class="mobile-menu fixed md:hidden w-[100vw] h-[100vh] bg-primary-500 block z-overlay top-0 right-0 z-overlay"
   >
-    <div class="container px-6 mt-20 pt-6">
-      {#if hasContentNav}
-        <TableOfContents></TableOfContents>
-      {/if}
-      <ThemeSwitch className=""></ThemeSwitch>
+    <div class="container px-6 mt-20 pt-6 h-full w-full">
+      <div
+        out:fade|local={{ x: 20, opacity: 0, duration: 150, delay: 0 }}
+        in:fly|local={{ x: 200, duration: 200, delay: 350 }}
+      >
+        {#if hasContentNav}
+          <TableOfContents on:linkClicked={() => (menuOpen = false)}
+          ></TableOfContents>
+        {/if}
+      </div>
+      <div
+        out:fade|local={{ x: 30, opacity: 0, duration: 150, delay: 0 }}
+        in:fly|local={{ x: 200, duration: 200, delay: 450 }}
+      >
+        <ThemeSwitch className=""></ThemeSwitch>
+      </div>
     </div>
   </div>
+{/if}
+{#if hasContentNav}
+  <ContentNavButton on:click={() => (menuOpen = !menuOpen)} />
 {/if}
 
 <style>
