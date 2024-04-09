@@ -10,6 +10,7 @@
   import Web3Notifications from '$lib/widgets/ButtonInboxConnect/Web3Notifications.svelte';
   import ThemeSwitch from '$lib/widgets/ThemeSwitch/ThemeSwitch.svelte';
   import Hamburger from '$lib/widgets/Navbar/HamburgerButton.svelte';
+  import SearchLink from '$lib/widgets/Navbar/SearchLink.svelte';
   import logo from '$lib/assets/brand/sni_logo_round.svg';
 
   export let hasContentNav = false;
@@ -38,9 +39,12 @@
 
 <Navbar
   color="none"
-  class={`${menuOpen ? 'dark' : ''} navbar my-3 mb-6 md:my-6  container px-4 md:!ps-0 z-navbar`}
+  class={`${menuOpen ? 'dark' : ''}  navbar my-3 mb-6 md:my-6  container px-4 md:!ps-0 z-navbar`}
 >
-  <NavBrand href="/" class="dark:text-gray-300">
+  <NavBrand
+    href="/"
+    class={`${menuOpen ? 'dark:text-gray-50' : 'dark:text-gray-300'} `}
+  >
     <img
       src={logo}
       class="navbar-brand-logo mr-2 sm:mr-4 xl:mr-9 h-9 sm:h-12 lg:h-20 lg:ms-3"
@@ -83,10 +87,18 @@
         {/if}
       </div>
       <div
+        class="mt-24"
         out:fade|local={{ x: 30, opacity: 0, duration: 150, delay: 0 }}
         in:fly|local={{ x: 200, duration: 200, delay: 450 }}
       >
-        <ThemeSwitch className=""></ThemeSwitch>
+        <SearchLink />
+      </div>
+      <div
+        class="mt-3"
+        out:fade|local={{ x: 30, opacity: 0, duration: 150, delay: 0 }}
+        in:fly|local={{ x: 200, duration: 200, delay: 500 }}
+      >
+        <ThemeSwitch />
       </div>
     </div>
   </div>
