@@ -4,6 +4,7 @@
   import RolloverBtn from '$lib/shared/components/RolloverBtn.svelte';
   import BellIcon from '$lib/components/icons/BellIcon.svelte';
   import Spinner from '$lib/components/icons/Spinner.svelte';
+  import PowerOn from '$lib/components/icons/PowerOnIcon.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import { registerInbox } from '$lib/features/web3Inbox';
   export let responsive = false;
@@ -93,7 +94,13 @@
       {$LL.notifications.loading()}
     {:else if responsive}
       <span class="hidden md:inline-block"> {buttonLabel}</span>
-      <span class="md:hidden"> {buttonLabelSm}</span>
+      <span class="md:hidden text-xs flex">
+        {#if !$web3InboxRegistered || !$web3InboxSubscribed}
+          <PowerOn className="h-4 w-4"></PowerOn>
+        {:else}
+          {buttonLabelSm}
+        {/if}
+      </span>
     {:else}
       {buttonLabel}
     {/if}
