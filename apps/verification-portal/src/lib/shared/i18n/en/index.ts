@@ -13,6 +13,7 @@ const en: BaseTranslation = {
   highlights: 'Explore collection highlights:',
   highlightsFor: 'Explore {collectionName: string} highlights:',
   selectToken: 'Select this token',
+  searchForTokens: 'Search for tokens',
   results: {
     resultsFor: 'Showing results for',
     nrResults: '{0} result{{s}}',
@@ -152,7 +153,10 @@ const en: BaseTranslation = {
   colorTheme: {
     auto: 'Auto',
     light: 'Light Mode',
-    dark: 'Night Mode',
+    lightSm: 'Light',
+    dark: 'Dark Mode',
+    darkSm: 'Dark',
+    switchTheme: 'Switch Mode ({name: string})',
   },
   errors: {
     image:
