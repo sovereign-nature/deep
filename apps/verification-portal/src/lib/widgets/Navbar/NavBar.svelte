@@ -4,6 +4,7 @@
   import { slide } from 'svelte/transition';
   import { browser } from '$app/environment';
   import { NavBrand, Navbar } from 'flowbite-svelte';
+  import TableOfContents from '$lib/widgets/ToC/TableOfContents.svelte';
   import BtnWeb3Connect from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
   import Web3Notifications from '$lib/widgets/ButtonInboxConnect/Web3Notifications.svelte';
   import ThemeSwitch from '$lib/widgets/ThemeSwitch/ThemeSwitch.svelte';
@@ -26,6 +27,10 @@
           console.log('change to light mode!');
         }
       });
+    // Add event listener for hash nav changes
+    window.addEventListener('hashchange', () => {
+      menuOpen = false;
+    });
   });
   $: toggleMobileMenu(menuOpen);
   function toggleMobileMenu(open: boolean) {
@@ -72,10 +77,10 @@
     class="mobile-menu fixed md:hidden w-[100vw] h-[100vh] bg-primary-500 block z-overlay top-0 right-0 z-overlay"
   >
     <div class="container px-6 mt-20 pt-6">
-      <ThemeSwitch className=""></ThemeSwitch>
       {#if hasContentNav}
-        <!-- content nav component -->
+        <TableOfContents></TableOfContents>
       {/if}
+      <ThemeSwitch className=""></ThemeSwitch>
     </div>
   </div>
 {/if}
