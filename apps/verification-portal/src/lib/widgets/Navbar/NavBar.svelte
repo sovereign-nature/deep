@@ -82,12 +82,14 @@
         in:fly|local={{ x: 200, duration: 200, delay: 350 }}
       >
         {#if hasContentNav}
-          <TableOfContents on:linkClicked={() => (menuOpen = false)}
+          <TableOfContents
+            className="mb-24"
+            on:linkClicked={() => (menuOpen = false)}
           ></TableOfContents>
         {/if}
       </div>
+
       <div
-        class="mt-24"
         out:fade|local={{ x: 30, opacity: 0, duration: 150, delay: 0 }}
         in:fly|local={{ x: 200, duration: 200, delay: 450 }}
       >

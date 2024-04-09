@@ -2,9 +2,10 @@
   import { toc, tocTitle } from '$lib/features/toc';
   import { createEventDispatcher } from 'svelte';
   const dispatch = createEventDispatcher();
+  export let className: string = '';
 </script>
 
-<nav class="mb-4 w-full">
+<nav class={`${className} w-full`}>
   <ul class="divide-y divide-primary-300 ms-4 list-inside list-disc">
     {#if $tocTitle}
       <h3 class="font-serif text-primary-200 py-3 text-base">
