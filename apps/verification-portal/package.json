@@ -72,7 +72,7 @@
     "typescript": "5.4.4",
     "video.js": "8.10.0",
     "vite": "5.2.8",
-    "vite-plugin-tailwind-purgecss": "0.2.1",
+    "vite-plugin-tailwind-purgecss": "0.3.0",
     "vitest": "1.4.0"
   },
   "type": "module"
