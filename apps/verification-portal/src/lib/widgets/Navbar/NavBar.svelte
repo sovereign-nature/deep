@@ -74,22 +74,25 @@
   <div
     in:slide={{ axis: 'x', duration: 300 }}
     out:slide={{ axis: 'x', duration: 300, delay: 300 }}
-    class="mobile-menu fixed md:hidden w-[100vw] h-[100vh] bg-primary-500 block z-overlay top-0 right-0 z-overlay"
+    class="mobile-menu fixed md:hidden w-[100vw] h-svh min-h-svh bg-primary-500 block z-overlay top-0 right-0 pt-16"
   >
-    <div class="container px-6 mt-20 pt-6 h-full w-full">
+    <div
+      class="container px-6 pt-8 pb-20 w-full h-full flex flex-col items-start overflow-y-scroll"
+    >
       <div
         out:fade|local={{ x: 20, opacity: 0, duration: 150, delay: 0 }}
         in:fly|local={{ x: 200, duration: 200, delay: 350 }}
       >
         {#if hasContentNav}
           <TableOfContents
-            className="mb-24"
+            className="mb-8"
             on:linkClicked={() => (menuOpen = false)}
           ></TableOfContents>
         {/if}
       </div>
 
       <div
+        class={hasContentNav ? 'mt-auto' : 'mt-5'}
         out:fade|local={{ x: 30, opacity: 0, duration: 150, delay: 0 }}
         in:fly|local={{ x: 200, duration: 200, delay: 450 }}
       >

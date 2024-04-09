@@ -6,7 +6,7 @@
 </script>
 
 <nav class={`${className} w-full`}>
-  <ul class="divide-y divide-primary-300 ms-4 list-inside list-disc">
+  <ul class="divide-y divide-primary-300 list-inside list-disc">
     {#if $tocTitle}
       <h3 class="font-serif text-primary-200 py-3 text-base">
         {$tocTitle}
