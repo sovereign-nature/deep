@@ -20,7 +20,7 @@ export const CrossmintResponse = z.object({
     z.object({ name: z.string(), description: z.string(), image: z.string() })
   ),
   onChain: z.object({
-    status: z.string(),
+    status: z.string(), //TODO: Enum
     chain: z.string(),
     contractAddress: z.string(),
     owner: z.optional(z.string()),

@@ -2,6 +2,7 @@ import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
 import { decode, verify } from 'hono/jwt';
 import { env } from 'hono/adapter';
+import { getChainId } from '@sni/address-utils';
 import { collections } from './config';
 import { ClaimBody, JWTToken, CrossmintResponse } from './schemas';
 
@@ -58,6 +59,14 @@ app.post(
         },
         400
       );
+    }
+
+    // If the token was successfully minted, return all the data plus DID address
+    if (data.onChain.status === 'success') {
+      const chainId = getChainId(data.onChain.chain);
+      const assetDID = `did:asset:eip155:${chainId}.erc721:${data.onChain.contractAddress}:${data.onChain.tokenId}`;
+
+      return c.json({ ...data, assetDID });
     }
 
     return c.json(data);
