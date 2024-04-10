@@ -259,8 +259,8 @@ importers:
   packages/address-utils:
     dependencies:
       viem:
-        specifier: 2.9.13
-        version: 2.9.13(typescript@5.4.4)
+        specifier: 2.9.15
+        version: 2.9.15(typescript@5.4.4)
     devDependencies:
       vitest:
         specifier: 1.4.0
@@ -14268,8 +14268,8 @@ packages:
       - zod
     dev: true
 
-  /viem@2.9.13(typescript@5.4.4):
-    resolution: {integrity: sha512-TxNZOWFwr2Pc6CeY4tViFL2NRq9v86HofAPkhBgScP8DUn3EeSbQhmDXbjMZNkZvXoMqWVl0AZM81rEOlaKrbg==}
+  /viem@2.9.15(typescript@5.4.4):
+    resolution: {integrity: sha512-7kcmHqybc3JhpjL8gKY7YxBYpZt1//qhoTZIU5Ez9JdyRCnYMMnJu20s7wd7Gv6a3zPbq8jV8dCp94a/NLJJcA==}
     peerDependencies:
       typescript: '>=5.0.4'
     peerDependenciesMeta:
