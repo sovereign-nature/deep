@@ -172,8 +172,8 @@ importers:
         specifier: 1.2.1
         version: 1.2.1(react@18.2.0)
       '@web3modal/wagmi':
-        specifier: 4.1.5
-        version: 4.1.5(@wagmi/connectors@4.1.25)(@wagmi/core@2.6.16)(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)(viem@2.9.15)
+        specifier: 4.1.6
+        version: 4.1.6(@wagmi/connectors@4.1.25)(@wagmi/core@2.6.16)(react@18.2.0)(viem@2.9.15)
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -6101,31 +6101,32 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@web3modal/common@4.1.5:
-    resolution: {integrity: sha512-VDvpUJt9lJz7p6zElZUSRkcbXBDVbqb5OWKvzvtIs+I7mvrrGrjb3q+h0HV1ssWwgl0WTuE9mR4r9BLlrG4osw==}
+  /@web3modal/common@4.1.6:
+    resolution: {integrity: sha512-wkrF7ubY1vPFm3+LJX/q13MTA22aXNBaJAfTj9zwGXF3naFE+0IAMnGpez/Klr4SOzOCKgmw3oPISAVCa1GaHA==}
     dependencies:
+      bignumber.js: 9.1.2
       dayjs: 1.11.10
     dev: true
 
-  /@web3modal/core@4.1.5(react@18.2.0):
-    resolution: {integrity: sha512-s+froXmRWjk6O+Ccq3/ksHz2WHc9/QtV8HBxxWE1Y+EXP8NkgujvT2ig9+asHIBxHkESCIUWE+llNBoim9C2KQ==}
+  /@web3modal/core@4.1.6(react@18.2.0):
+    resolution: {integrity: sha512-7+vIJxkp5gaIWZfYtL/zW/JgpncaKLPlAN994RbxoEfe5/XbV14oT2uRoWk4t05hqkgROnATM9pfxinK5vBqyQ==}
     dependencies:
-      '@web3modal/common': 4.1.5
-      '@web3modal/wallet': 4.1.5
+      '@web3modal/common': 4.1.6
+      '@web3modal/wallet': 4.1.6
       valtio: 1.11.2(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - react
     dev: true
 
-  /@web3modal/polyfills@4.1.5:
-    resolution: {integrity: sha512-74CGHzgNbB4BgF3Nr/YMhc3y6E3k08/o+VxOSvOlQvfK/nxrKWHcblOVh8A2+kFFP85HqAIy8OSmx8aV6j6vtA==}
+  /@web3modal/polyfills@4.1.6:
+    resolution: {integrity: sha512-gbzz9wQFfv6WkwV5PsNslsX5Mb6djyAWE277D+KivamrGIfuVMiUw+VSaTJ2GCjGGOmh5KZogPZTeObIgtY1Vw==}
     dependencies:
       buffer: 6.0.3
     dev: true
 
-  /@web3modal/scaffold-react@4.1.5(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0):
-    resolution: {integrity: sha512-bOEeh/xd8lYei82cqVYNvO+Ee2GbgqpMw74ih8uBPsQzCWOl1o983K33YFBN0nFzR/Q2gLHxccuRcoP698mhZA==}
+  /@web3modal/scaffold-react@4.1.6(react@18.2.0):
+    resolution: {integrity: sha512-HHPwA8aPp9O4aEmDZd+YYhIZl5zE8Y+S9UF77iayg2MYYcrLDH6dt1vgIOS5SVkdInCNqky1RKe6tVDI7ceWBQ==}
     peerDependencies:
       react: '>=17'
       react-dom: '>=17'
@@ -6135,63 +6136,56 @@ packages:
       react-dom:
         optional: true
     dependencies:
-      '@web3modal/scaffold': 4.1.5(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)
+      '@web3modal/scaffold': 4.1.6(react@18.2.0)
       react: 18.2.0
     transitivePeerDependencies:
       - '@types/react'
-      - '@web3modal/siwe'
-      - '@web3modal/wallet'
     dev: true
 
-  /@web3modal/scaffold-utils@4.1.5(react@18.2.0):
-    resolution: {integrity: sha512-fEptPNm5cgQgIYNDdb0IEnxtK5l45AKKKKQ+v4dO4MtIatduxWdkBAN6/FAiysxHIXKBx4zxpdcijgDr38zteA==}
+  /@web3modal/scaffold-utils@4.1.6(react@18.2.0):
+    resolution: {integrity: sha512-4M7y8wK9GkkYa4R/UVYJYa/CCY4suUCtMC/oQk48yDU8el/bG2J5ollDThywCO9EZUcQzaGYN3lxc1v1+8szOg==}
     dependencies:
-      '@web3modal/core': 4.1.5(react@18.2.0)
-      '@web3modal/polyfills': 4.1.5
+      '@web3modal/core': 4.1.6(react@18.2.0)
+      '@web3modal/polyfills': 4.1.6
       valtio: 1.11.2(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - react
     dev: true
 
-  /@web3modal/scaffold-vue@4.1.5(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0):
-    resolution: {integrity: sha512-rb7YD4GABlG4Wa1Kk2DJYIXpPjfmKqa/hdF5zqBi+E8S2M//od6smTaz6matZPV5OQ28kxvufdNoVBfNagbh4A==}
+  /@web3modal/scaffold-vue@4.1.6(react@18.2.0):
+    resolution: {integrity: sha512-1qHlhk9A7knGdl99O4SN4EkjSOmuA5cbWdQUns7GGmiCp7lf9t80fo6OcGKWC1IDBvfo/6ZnGU3vUZ33wPk9Tw==}
     peerDependencies:
       vue: '>=3'
     peerDependenciesMeta:
       vue:
         optional: true
     dependencies:
-      '@web3modal/scaffold': 4.1.5(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)
+      '@web3modal/scaffold': 4.1.6(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
-      - '@web3modal/siwe'
-      - '@web3modal/wallet'
       - react
     dev: true
 
-  /@web3modal/scaffold@4.1.5(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0):
-    resolution: {integrity: sha512-Sbbh51WkleMzfo3spWF11yrq/JKyf0e7tE36fL2OGVbVRBVjszZ+CHJjrUJhMw1UgySnkLOE2IL1PQlKNjESyQ==}
-    peerDependencies:
-      '@web3modal/siwe': 4.1.5
-      '@web3modal/wallet': 4.1.5
+  /@web3modal/scaffold@4.1.6(react@18.2.0):
+    resolution: {integrity: sha512-QfcYotKA9tcP4USc7HeyTnem4Dp/Ir/P5DLnhzv6gwzdSJFXlXqfOY2ZYJQw2OaSFP7OVusEIe3co4mqDFQ9lg==}
     dependencies:
-      '@web3modal/common': 4.1.5
-      '@web3modal/core': 4.1.5(react@18.2.0)
-      '@web3modal/siwe': 4.1.5(react@18.2.0)
-      '@web3modal/ui': 4.1.5
-      '@web3modal/wallet': 4.1.5
+      '@web3modal/common': 4.1.6
+      '@web3modal/core': 4.1.6(react@18.2.0)
+      '@web3modal/siwe': 4.1.6(react@18.2.0)
+      '@web3modal/ui': 4.1.6
+      '@web3modal/wallet': 4.1.6
       lit: 3.1.0
     transitivePeerDependencies:
       - '@types/react'
       - react
     dev: true
 
-  /@web3modal/siwe@4.1.5(react@18.2.0):
-    resolution: {integrity: sha512-TiE4p7EgGuXHviNVtJVMUg0cpiU9EVzF/qBgriPhBl/uUlSsv/ekeR6u6vkhlB5PuBUC/LdysHBJPuenhF7QQw==}
+  /@web3modal/siwe@4.1.6(react@18.2.0):
+    resolution: {integrity: sha512-LcbR5VLDBEI/ZEAME9c+8BPbkXhsg2MQTlN3P+RICZyDiKB4Rj0536L9hL8J2UMv6HCiVTurfHdSJkAIOqyVWw==}
     dependencies:
-      '@web3modal/core': 4.1.5(react@18.2.0)
-      '@web3modal/scaffold-utils': 4.1.5(react@18.2.0)
+      '@web3modal/core': 4.1.6(react@18.2.0)
+      '@web3modal/scaffold-utils': 4.1.6(react@18.2.0)
       lit: 3.1.0
       valtio: 1.11.2(react@18.2.0)
     transitivePeerDependencies:
@@ -6199,19 +6193,18 @@ packages:
       - react
     dev: true
 
-  /@web3modal/ui@4.1.5:
-    resolution: {integrity: sha512-aeSwOfnhS9zcJRj0cmelOWW3xYKN94JY1UwPDQCW0e12Abd2iXnxe1G8cO+gqJSai5SxP3ZWs+b2F4bRQ2ubnA==}
+  /@web3modal/ui@4.1.6:
+    resolution: {integrity: sha512-Xka5iYa1rgGsh+4aRflngq1uRADWQY18ntytDLX9HboD0fH75crLqzoTvZ3oS6T34A2IvP8LUtM0vplPr0ARZQ==}
     dependencies:
       lit: 3.1.0
       qrcode: 1.5.3
     dev: true
 
-  /@web3modal/wagmi@4.1.5(@wagmi/connectors@4.1.25)(@wagmi/core@2.6.16)(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)(viem@2.9.15):
-    resolution: {integrity: sha512-1h1wo6tJCwsZs1D7ymnrHbXbkum3k3zxcr7u6HctP1Ur2BFr7+ndALR/WlnEenBJTu5LILd9iqaf9QvFOSOyvg==}
+  /@web3modal/wagmi@4.1.6(@wagmi/connectors@4.1.25)(@wagmi/core@2.6.16)(react@18.2.0)(viem@2.9.15):
+    resolution: {integrity: sha512-NfXNL8HktiLAvO2n6pSJNYYgBr7BMR3Y22XzcMx2+8O/i8mLrLEGx1GLugmu1fNNgSPuGl6WXh6bY2kPtPon4A==}
     peerDependencies:
       '@wagmi/connectors': '>=4.0.0'
       '@wagmi/core': '>=2.0.0'
-      '@web3modal/siwe': 4.1.5
       react: '>=17'
       react-dom: '>=17'
       viem: '>=2.0.0'
@@ -6226,23 +6219,22 @@ packages:
     dependencies:
       '@wagmi/connectors': 4.1.25(@wagmi/core@2.6.16)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.4)(viem@2.9.15)
       '@wagmi/core': 2.6.16(react@18.2.0)(typescript@5.4.4)(viem@2.9.15)
-      '@web3modal/polyfills': 4.1.5
-      '@web3modal/scaffold': 4.1.5(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)
-      '@web3modal/scaffold-react': 4.1.5(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)
-      '@web3modal/scaffold-utils': 4.1.5(react@18.2.0)
-      '@web3modal/scaffold-vue': 4.1.5(@web3modal/siwe@4.1.5)(@web3modal/wallet@4.1.5)(react@18.2.0)
-      '@web3modal/siwe': 4.1.5(react@18.2.0)
+      '@web3modal/polyfills': 4.1.6
+      '@web3modal/scaffold': 4.1.6(react@18.2.0)
+      '@web3modal/scaffold-react': 4.1.6(react@18.2.0)
+      '@web3modal/scaffold-utils': 4.1.6(react@18.2.0)
+      '@web3modal/scaffold-vue': 4.1.6(react@18.2.0)
+      '@web3modal/siwe': 4.1.6(react@18.2.0)
       react: 18.2.0
       viem: 2.9.15(typescript@5.4.4)
     transitivePeerDependencies:
       - '@types/react'
-      - '@web3modal/wallet'
     dev: true
 
-  /@web3modal/wallet@4.1.5:
-    resolution: {integrity: sha512-IuvesjuDloI/J5K8QDFZhx9WbgVNP3cV6Xjp/olxoVDmMfTlFQs0LbYpcmRxsU3O6EZCSjd2rcKld1Z39VhEuw==}
+  /@web3modal/wallet@4.1.6:
+    resolution: {integrity: sha512-jOPt3CWTUvlZW6xwi18fHR9BX8Ii8hRygHuYNI1HWCyAkCoBv3xjjq/1gg4cuCQ3KzNdzCJFdKcOiimEH+YIgw==}
     dependencies:
-      '@web3modal/polyfills': 4.1.5
+      '@web3modal/polyfills': 4.1.6
       zod: 3.22.4
     dev: true
 
@@ -6734,6 +6726,10 @@ packages:
 
   /base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+    dev: true
+
+  /bignumber.js@9.1.2:
+    resolution: {integrity: sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug==}
     dev: true
 
   /binary-extensions@2.3.0:
