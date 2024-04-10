@@ -17,8 +17,14 @@
   import AudioPlayer from '$lib/components/media/AudioPlayer.svelte';
   import NewsCarousel from '$lib/components/carousel/NewsCarousel.svelte';
   import LL from '$lib/shared/i18n/i18n-svelte.js';
+  import { subscribeToPage, setTocTitle } from '$lib/features/toc';
+  import { onDestroy } from 'svelte';
 
   import { page } from '$app/stores';
+
+  const unsubscribe = subscribeToPage(page);
+
+  onDestroy(unsubscribe);
 
   $: currentPath = $page.url.toString();
   $: pageTitle = `${$LL.assets.title({ assetName: nftData.name })}`;
@@ -34,6 +40,7 @@
     properties,
   } = data;
   const chainReference = addressDetails?.chain?.reference;
+  setTocTitle(nftData.name);
 
   // Define specific share card data for a page
   $: pageDescription = nftData?.collection?.description || ''; //TODO: Check why we need collection description, should be asset description probably
@@ -139,6 +146,8 @@
       class="Fund-Data xl:dark:bg-primary-100 xl:bg-primary-500 mb-5 px-12 sm:px-8 md:px-11 xl:rounded-lg xl:py-8 xl:pt-11 text-white"
     >
       <Subheader
+        id="funds"
+        title={$LL.assets.funds.cardTitle()}
         className="md:!text-base !font-normal  text-black dark:text-white   xl:text-white xl:dark:!text-black md:pt-8 xl:pt-0 flex justify-start lg:justify-center xl:justify-start "
         >{$LL.assets.funds.cardTitle()}</Subheader
       >
@@ -153,7 +162,10 @@
       class="asset-content-card Animal-Data min-h-100 text-white bg-deep-green dark:bg-primary-500 overflow-hidden sm:rounded-lg md:mb-4 xl:mb-0 xl:rounded-b-none mt-8 sm:mt-auto"
     >
       <div class={`${cardHeaderClass} mb-8`}>
-        <Subheader className="md:!text-base font-normal"
+        <Subheader
+          id="entity"
+          title={$LL.assets.ecEntity.cardTitle()}
+          className="md:!text-base font-normal"
           >{$LL.assets.ecEntity.cardTitle()}</Subheader
         >
         <h3 class="text-6xl">{deepData?.id}</h3>
@@ -205,7 +217,9 @@
     <!-- Animal Data Continued -->
     <div class="asset-content-card Animal-Data-Continued mb-5 bg-transparent">
       <div class={`${cardHeaderClass} mb-5`}>
-        <Subheader>{$LL.assets.ecEntity.title()}</Subheader>
+        <Subheader id="ecological-entity" title={$LL.assets.ecEntity.title()}
+          >{$LL.assets.ecEntity.title()}</Subheader
+        >
         <CardHeader title={deepData.name ? deepData.name : 'Unnamed'} />
         <p class="card-description">
           {deepData.description ? deepData.description : '...'}
@@ -216,7 +230,11 @@
           <div
             class="mx-4 sm:mx-6 rounded-lg bg-gray-300 p-11 dark:bg-black dark:text-gray-300"
           >
-            <Subheader>{$LL.assets.ecEntity.propsTitle()}</Subheader>
+            <Subheader
+              id="tracking-data"
+              title={$LL.assets.ecEntity.propsTitle()}
+              >{$LL.assets.ecEntity.propsTitle()}</Subheader
+            >
 
             {#if Object.keys(properties.traces_recorded).length > 0}
               <div class="mb-2 font-serif text-[26px]">
@@ -260,7 +278,9 @@
           class="asset-content-card sm:bg-primary-100 sm:dark:bg-deep-green relative z-20 overflow-hidden sm:rounded-lg"
         >
           <div class={`${cardHeaderClass} mb-8`}>
-            <Subheader>{$LL.assets.ecSteward.title()}</Subheader>
+            <Subheader id="steward" title={$LL.assets.ecSteward.title()}
+              >{$LL.assets.ecSteward.title()}</Subheader
+            >
             <CardHeader
               title={deepData.steward?.name}
               url={deepData.steward?.website}
