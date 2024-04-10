@@ -10,6 +10,7 @@
   import Web3Notifications from '$lib/widgets/ButtonInboxConnect/Web3Notifications.svelte';
   import ThemeSwitch from '$lib/widgets/ThemeSwitch/ThemeSwitch.svelte';
   import Hamburger from '$lib/widgets/Navbar/HamburgerButton.svelte';
+  import SearchLink from '$lib/widgets/Navbar/SearchLink.svelte';
   import logo from '$lib/assets/brand/sni_logo_round.svg';
 
   export let hasContentNav = false;
@@ -38,9 +39,12 @@
 
 <Navbar
   color="none"
-  class={`${menuOpen ? 'dark' : ''} navbar my-3 mb-6 md:my-6  container px-4 md:!ps-0 z-navbar`}
+  class={`${menuOpen ? 'dark' : ''}  navbar my-3 mb-6 md:my-6  container px-4 md:!ps-0 z-navbar`}
 >
-  <NavBrand href="/" class="dark:text-gray-300">
+  <NavBrand
+    href="/"
+    class={`${menuOpen ? 'dark:text-gray-50' : 'dark:text-gray-300'} `}
+  >
     <img
       src={logo}
       class="navbar-brand-logo mr-2 sm:mr-4 xl:mr-9 h-9 sm:h-12 lg:h-20 lg:ms-3"
@@ -70,23 +74,36 @@
   <div
     in:slide={{ axis: 'x', duration: 300 }}
     out:slide={{ axis: 'x', duration: 300, delay: 300 }}
-    class="mobile-menu fixed md:hidden w-[100vw] h-[100vh] bg-primary-500 block z-overlay top-0 right-0 z-overlay"
+    class="mobile-menu fixed md:hidden w-[100vw] h-svh min-h-svh bg-primary-500 block z-overlay top-0 right-0 pt-16"
   >
-    <div class="container px-6 mt-20 pt-6 h-full w-full">
+    <div
+      class="container px-6 pt-8 pb-20 w-full h-full flex flex-col items-start overflow-y-scroll"
+    >
       <div
         out:fade|local={{ x: 20, opacity: 0, duration: 150, delay: 0 }}
         in:fly|local={{ x: 200, duration: 200, delay: 350 }}
       >
         {#if hasContentNav}
-          <TableOfContents on:linkClicked={() => (menuOpen = false)}
+          <TableOfContents
+            className="mb-8"
+            on:linkClicked={() => (menuOpen = false)}
           ></TableOfContents>
         {/if}
       </div>
+
       <div
+        class={hasContentNav ? 'mt-auto' : 'mt-5'}
         out:fade|local={{ x: 30, opacity: 0, duration: 150, delay: 0 }}
         in:fly|local={{ x: 200, duration: 200, delay: 450 }}
       >
-        <ThemeSwitch className=""></ThemeSwitch>
+        <SearchLink />
+      </div>
+      <div
+        class="mt-3"
+        out:fade|local={{ x: 30, opacity: 0, duration: 150, delay: 0 }}
+        in:fly|local={{ x: 200, duration: 200, delay: 500 }}
+      >
+        <ThemeSwitch />
       </div>
     </div>
   </div>
