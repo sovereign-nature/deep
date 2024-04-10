@@ -52,6 +52,10 @@ type RootTranslation = {
 	 * S​e​l​e​c​t​ ​t​h​i​s​ ​t​o​k​e​n
 	 */
 	selectToken: string
+	/**
+	 * S​e​a​r​c​h​ ​f​o​r​ ​t​o​k​e​n​s
+	 */
+	searchForTokens: string
 	results: {
 		/**
 		 * S​h​o​w​i​n​g​ ​r​e​s​u​l​t​s​ ​f​o​r
@@ -71,6 +75,14 @@ type RootTranslation = {
 	​ ​P​l​e​a​s​e​ ​l​e​n​d​ ​a​ ​p​a​w​ ​b​y​ ​r​e​f​r​e​s​h​i​n​g​ ​t​h​e​ ​p​a​g​e​ ​a​n​d​ ​t​r​y​i​n​g​ ​a​g​a​i​n​.
 		 */
 		errorMessage: string
+		/**
+		 * R​e​f​r​e​s​h​ ​f​e​e​d
+		 */
+		refreshFeed: string
+		/**
+		 * R​e​f​r​e​s​h​i​n​g​.​.​.
+		 */
+		refreshing: string
 	}
 	web2: {
 		search: {
@@ -416,9 +428,22 @@ type RootTranslation = {
 		 */
 		light: string
 		/**
-		 * N​i​g​h​t​ ​M​o​d​e
+		 * L​i​g​h​t
+		 */
+		lightSm: string
+		/**
+		 * D​a​r​k​ ​M​o​d​e
 		 */
 		dark: string
+		/**
+		 * D​a​r​k
+		 */
+		darkSm: string
+		/**
+		 * S​w​i​t​c​h​ ​M​o​d​e​ ​(​{​n​a​m​e​}​)
+		 * @param {string} name
+		 */
+		switchTheme: RequiredParams<'name'>
 	}
 	errors: {
 		/**
@@ -486,6 +511,10 @@ export type TranslationFunctions = {
 	 * Select this token
 	 */
 	selectToken: () => LocalizedString
+	/**
+	 * Search for tokens
+	 */
+	searchForTokens: () => LocalizedString
 	results: {
 		/**
 		 * Showing results for
@@ -504,6 +533,14 @@ export type TranslationFunctions = {
 	 Please lend a paw by refreshing the page and trying again.
 		 */
 		errorMessage: () => LocalizedString
+		/**
+		 * Refresh feed
+		 */
+		refreshFeed: () => LocalizedString
+		/**
+		 * Refreshing...
+		 */
+		refreshing: () => LocalizedString
 	}
 	web2: {
 		search: {
@@ -841,9 +878,21 @@ export type TranslationFunctions = {
 		 */
 		light: () => LocalizedString
 		/**
-		 * Night Mode
+		 * Light
+		 */
+		lightSm: () => LocalizedString
+		/**
+		 * Dark Mode
 		 */
 		dark: () => LocalizedString
+		/**
+		 * Dark
+		 */
+		darkSm: () => LocalizedString
+		/**
+		 * Switch Mode ({name})
+		 */
+		switchTheme: (arg: { name: string }) => LocalizedString
 	}
 	errors: {
 		/**

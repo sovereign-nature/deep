@@ -23,6 +23,7 @@
 
   setContext('web3Items', web3Items);
   setContext('web3Response', web3Response);
+  setContext('web3Assets', getWeb3Assets);
 
   // Reactively update web3 assets when web3Connected or web3Address changes
   $: $web3Connected, getWeb3Assets();

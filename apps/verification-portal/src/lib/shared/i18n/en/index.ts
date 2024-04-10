@@ -20,6 +20,8 @@ const en: BaseTranslation = {
     noResults: 'No results found',
     errorMessage:
       'Uh-oh! It looks like a hiccup in the wild! 🐾 \n Please lend a paw by refreshing the page and trying again.',
+    refreshFeed: 'Refresh feed',
+    refreshing: 'Refreshing...',
   },
   web2: {
     search: {
