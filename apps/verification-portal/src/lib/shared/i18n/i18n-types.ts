@@ -104,6 +104,16 @@ type RootTranslation = {
 			placeholder: string
 		}
 	}
+	test: {
+		/**
+		 * T​e​s​t​ ​c​o​l​l​e​c​t​i​o​n
+		 */
+		collectionName: string
+		/**
+		 * F​i​n​d​ ​b​y​ ​t​o​k​e​n​ ​I​D​ ​(​1​-​1​4​6​6​)
+		 */
+		searchPlaceholder: string
+	}
 	sub0: {
 		/**
 		 * s​u​b​0​ ​B​i​o​d​i​v​e​r​s​i​t​y
@@ -561,6 +571,16 @@ export type TranslationFunctions = {
 			 */
 			placeholder: () => LocalizedString
 		}
+	}
+	test: {
+		/**
+		 * Test collection
+		 */
+		collectionName: () => LocalizedString
+		/**
+		 * Find by token ID (1-1466)
+		 */
+		searchPlaceholder: () => LocalizedString
 	}
 	sub0: {
 		/**

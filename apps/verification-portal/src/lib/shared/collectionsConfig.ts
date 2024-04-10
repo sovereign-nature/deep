@@ -1,8 +1,9 @@
-export type CollectionKeys = 'soundwaves' | 'wildsama' | 'sub0' | 'hh';
+export type CollectionKeys = 'soundwaves' | 'wildsama' | 'sub0' | 'hh' | 'test';
 interface TabConfig {
   activeKey: CollectionKeys;
 }
 export interface Collection {
+  test?: boolean;
   key: CollectionKeys; //used for tab query params and translations
   collectionAddress: string;
   avatar: string;
@@ -28,6 +29,18 @@ export const tabConfig: TabConfig = {
 export const collections: Collection[] = [
   {
     key: 'soundwaves',
+    collectionAddress:
+      'did:asset:eip155:42161.erc721:0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78',
+    avatar: '/collections/avatar_soudwaves.jpg',
+    web3: { source: 'arbitrum', web3Enabled: true },
+    searchInput: {
+      searchEnabled: true,
+      inputMode: 'numeric',
+    },
+  },
+  {
+    test: true,
+    key: 'test',
     collectionAddress:
       'did:asset:eip155:42161.erc721:0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78',
     avatar: '/collections/avatar_soudwaves.jpg',
