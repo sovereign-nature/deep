@@ -6,6 +6,7 @@ export type CrossmintResponse = {
     name: string;
     description: string;
     image: string;
+    address: URL;
   };
   onChain: {
     status: string;

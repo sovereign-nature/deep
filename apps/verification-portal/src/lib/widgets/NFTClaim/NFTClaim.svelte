@@ -57,7 +57,7 @@
     'bg-deep-green text-white border-none max-h-[96%] h-[96%] sm:h-auto pb-4 z-drawer';
   const drawerHeaderClass =
     'container px-5 lg:px-0 pt-4 pb-8 relative w-full lg:w-4/5 mx-auto';
-  const drawerTitleClass = 'text-2xl lg:text-3xl font-normal me-8 sm:me-auto';
+  const drawerTitleClass = 'text-[26px]  font-normal me-8 sm:me-auto';
   const drawerBodyClass =
     'container pb-10 px-5 lg:px-0 sticky top-0 w-full lg:w-4/5 mx-auto';
 

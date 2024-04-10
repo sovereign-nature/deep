@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getNFTClaimContext } from './context';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-
+  import CardHeader from '$lib/shared/typography/CardHeader.svelte';
   import Property from '$lib/shared/typography/Property.svelte';
   import NftImage from '$lib/components/NFTImage.svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
@@ -21,7 +21,11 @@
 
     <div>
       <div>
-        <h2 class="text-2xl">{$claimResponse?.metadata?.name}</h2>
+        <CardHeader
+          className="mb-0"
+          title={$claimResponse?.metadata?.name}
+          url={$claimResponse?.metadata?.address}
+        />
         <p>{$claimResponse?.metadata?.description}</p>
         <slot />
         {#if $claimResponse?.onChain}

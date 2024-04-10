@@ -145,7 +145,7 @@
           bind:group={$formUseWallet}
           value={true}
         />
-        <span class="ml-1 flex gap-4 items-center">
+        <span class="ml-1 flex flex-wrap gap-4 items-center">
           {#if $web3Connected}
             {$LL.claim.useWallet()}
           {/if}
