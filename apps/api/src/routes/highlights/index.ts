@@ -68,6 +68,7 @@ app.get('/:collectionId', async (c) => {
         collections.wildsama.highlightIds
       );
       break;
+    //TODO: Add test claims collection
     default:
       return c.json({ error: true, message: 'Invalid collection' }, 400);
   }
