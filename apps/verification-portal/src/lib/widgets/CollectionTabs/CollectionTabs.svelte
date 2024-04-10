@@ -16,6 +16,9 @@
 
   const { url, route } = $page;
   const showTestCollections = isFeatureEnabled('collectionsTest');
+  const filteredCollections = collections.filter(
+    (collection) => showTestCollections || collection.key !== 'test'
+  );
 
   let activeTabKey: CollectionKeys = tabConfig.activeKey;
   let activeTabIndex: number;
@@ -29,7 +32,7 @@
 
   const qValue = url.searchParams.get('q');
   if (qValue) {
-    activeTabKey = collections
+    activeTabKey = filteredCollections
       .map((collection) => collection.key)
       .includes(qValue as CollectionKeys)
       ? (qValue as CollectionKeys)
@@ -45,13 +48,13 @@
     }
   });
   function setIndex(key: CollectionKeys) {
-    activeTabIndex = collections.findIndex(
+    activeTabIndex = filteredCollections.findIndex(
       (collection) => collection.key === key
     );
   }
   function onIndexChange(event: CustomEvent<number>) {
     if (event && event.detail !== undefined && collections[event.detail]) {
-      activeTabKey = collections[event.detail].key;
+      activeTabKey = filteredCollections[event.detail].key;
       updateActive(activeTabKey);
     }
   }
@@ -65,69 +68,67 @@
   on:change={onIndexChange}
 >
   <svelte:fragment slot="tabs-items">
-    {#each collections as collection, index}
-      {#if showTestCollections || !collection.test}
-        <MultiTabs.Tab
-          {index}
-          tabItem={{
-            label: $LL[collection.key].collectionName(),
-            img: collection.avatar,
-          }}
-        >
-          {#if collection.web3}
-            <Web3Connection
+    {#each filteredCollections as collection, index (collection.key)}
+      <MultiTabs.Tab
+        {index}
+        tabItem={{
+          label: $LL[collection.key].collectionName(),
+          img: collection.avatar,
+        }}
+      >
+        {#if collection.web3}
+          <Web3Connection
+            collectionAddress={collection.collectionAddress}
+            web3Enabled={collection.web3.web3Enabled}
+          >
+            <Web3SearchInput
+              web3Enabled={collection.web3.web3Enabled}
+              searchEnabled={collection.searchInput.searchEnabled}
               collectionAddress={collection.collectionAddress}
+              goIcon
+              inputmode={collection.searchInput.inputMode
+                ? collection.searchInput.inputMode
+                : 'text'}
+              placeholder={collection.searchInput.customPlaceholder
+                ? $LL[collection.key].searchPlaceholder() &&
+                  $LL[collection.key].searchPlaceholder().length > 0
+                  ? $LL[collection.key].searchPlaceholder()
+                  : $LL.web3.search.placeholder()
+                : $LL.web3.search.placeholder()}
+            />
+            <Web3Assets
+              collectionName={$LL[collection.key].collectionName()}
               web3Enabled={collection.web3.web3Enabled}
             >
-              <Web3SearchInput
-                web3Enabled={collection.web3.web3Enabled}
-                searchEnabled={collection.searchInput.searchEnabled}
-                collectionAddress={collection.collectionAddress}
-                goIcon
-                inputmode={collection.searchInput.inputMode
-                  ? collection.searchInput.inputMode
-                  : 'text'}
-                placeholder={collection.searchInput.customPlaceholder
-                  ? $LL[collection.key].searchPlaceholder() &&
-                    $LL[collection.key].searchPlaceholder().length > 0
-                    ? $LL[collection.key].searchPlaceholder()
-                    : $LL.web3.search.placeholder()
-                  : $LL.web3.search.placeholder()}
-              />
-              <Web3Assets
-                collectionName={$LL[collection.key].collectionName()}
-                web3Enabled={collection.web3.web3Enabled}
-              >
-                <svelte:fragment slot="highlights">
-                  <slot />
-                </svelte:fragment>
-              </Web3Assets>
-            </Web3Connection>
-          {:else if collection.web2}
-            <Web2SearchContainer
-              directusCollectionId={collection.web2.directusCollectionId}
-            >
-              <Web2SearchInput
-                searchEnabled={collection.searchInput.searchEnabled}
-                placeholder={collection.searchInput.customPlaceholder
-                  ? $LL[collection.key].searchPlaceholder() &&
-                    $LL[collection.key].searchPlaceholder().length > 0
-                    ? $LL[collection.key].searchPlaceholder()
-                    : $LL.web2.search.placeholder()
-                  : $LL.web2.search.placeholder()}
-                inputmode={collection.searchInput.inputMode
-                  ? collection.searchInput.inputMode
-                  : 'text'}
-              />
-              <SearchResults {collection}>
-                <svelte:fragment slot="highlights">
-                  <slot />
-                </svelte:fragment>
-              </SearchResults>
-            </Web2SearchContainer>
-          {/if}
-        </MultiTabs.Tab>
-      {/if}
+              <svelte:fragment slot="highlights">
+                <slot />
+              </svelte:fragment>
+            </Web3Assets>
+          </Web3Connection>
+        {:else if collection.web2}
+          <Web2SearchContainer
+            directusCollectionId={collection.web2.directusCollectionId}
+          >
+            <Web2SearchInput
+              searchEnabled={collection.searchInput.searchEnabled}
+              placeholder={collection.searchInput.customPlaceholder
+                ? $LL[collection.key].searchPlaceholder() &&
+                  $LL[collection.key].searchPlaceholder().length > 0
+                  ? $LL[collection.key].searchPlaceholder()
+                  : $LL.web2.search.placeholder()
+                : $LL.web2.search.placeholder()}
+              inputmode={collection.searchInput.inputMode
+                ? collection.searchInput.inputMode
+                : 'text'}
+            />
+            <SearchResults {collection}>
+              <svelte:fragment slot="highlights">
+                <slot />
+              </svelte:fragment>
+            </SearchResults>
+          </Web2SearchContainer>
+        {/if}
+      </MultiTabs.Tab>
     {/each}
   </svelte:fragment>
 </MultiTabs.Root>
