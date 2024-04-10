@@ -52,6 +52,10 @@ type RootTranslation = {
 	 * S​e​l​e​c​t​ ​t​h​i​s​ ​t​o​k​e​n
 	 */
 	selectToken: string
+	/**
+	 * S​e​a​r​c​h​ ​f​o​r​ ​t​o​k​e​n​s
+	 */
+	searchForTokens: string
 	results: {
 		/**
 		 * S​h​o​w​i​n​g​ ​r​e​s​u​l​t​s​ ​f​o​r
@@ -91,6 +95,16 @@ type RootTranslation = {
 			 */
 			placeholder: string
 		}
+	}
+	test: {
+		/**
+		 * T​e​s​t​ ​c​o​l​l​e​c​t​i​o​n
+		 */
+		collectionName: string
+		/**
+		 * F​i​n​d​ ​b​y​ ​t​o​k​e​n​ ​I​D​ ​(​1​-​1​4​6​6​)
+		 */
+		searchPlaceholder: string
 	}
 	sub0: {
 		/**
@@ -416,9 +430,22 @@ type RootTranslation = {
 		 */
 		light: string
 		/**
-		 * N​i​g​h​t​ ​M​o​d​e
+		 * L​i​g​h​t
+		 */
+		lightSm: string
+		/**
+		 * D​a​r​k​ ​M​o​d​e
 		 */
 		dark: string
+		/**
+		 * D​a​r​k
+		 */
+		darkSm: string
+		/**
+		 * S​w​i​t​c​h​ ​M​o​d​e​ ​(​{​n​a​m​e​}​)
+		 * @param {string} name
+		 */
+		switchTheme: RequiredParams<'name'>
 	}
 	errors: {
 		/**
@@ -486,6 +513,10 @@ export type TranslationFunctions = {
 	 * Select this token
 	 */
 	selectToken: () => LocalizedString
+	/**
+	 * Search for tokens
+	 */
+	searchForTokens: () => LocalizedString
 	results: {
 		/**
 		 * Showing results for
@@ -524,6 +555,16 @@ export type TranslationFunctions = {
 			 */
 			placeholder: () => LocalizedString
 		}
+	}
+	test: {
+		/**
+		 * Test collection
+		 */
+		collectionName: () => LocalizedString
+		/**
+		 * Find by token ID (1-1466)
+		 */
+		searchPlaceholder: () => LocalizedString
 	}
 	sub0: {
 		/**
@@ -841,9 +882,21 @@ export type TranslationFunctions = {
 		 */
 		light: () => LocalizedString
 		/**
-		 * Night Mode
+		 * Light
+		 */
+		lightSm: () => LocalizedString
+		/**
+		 * Dark Mode
 		 */
 		dark: () => LocalizedString
+		/**
+		 * Dark
+		 */
+		darkSm: () => LocalizedString
+		/**
+		 * Switch Mode ({name})
+		 */
+		switchTheme: (arg: { name: string }) => LocalizedString
 	}
 	errors: {
 		/**

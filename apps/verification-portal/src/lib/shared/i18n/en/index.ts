@@ -33,6 +33,10 @@ const en: BaseTranslation = {
     },
   },
   //collections
+  test: {
+    collectionName: 'Test collection',
+    searchPlaceholder: 'Find by token ID (1-1466)',
+  },
   sub0: {
     collectionName: 'sub0 Biodiversity',
     searchPlaceholder: 'Find by token ID (1-1466)',
