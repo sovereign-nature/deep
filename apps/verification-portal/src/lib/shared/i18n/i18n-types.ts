@@ -75,6 +75,14 @@ type RootTranslation = {
 	​ ​P​l​e​a​s​e​ ​l​e​n​d​ ​a​ ​p​a​w​ ​b​y​ ​r​e​f​r​e​s​h​i​n​g​ ​t​h​e​ ​p​a​g​e​ ​a​n​d​ ​t​r​y​i​n​g​ ​a​g​a​i​n​.
 		 */
 		errorMessage: string
+		/**
+		 * R​e​f​r​e​s​h​ ​f​e​e​d
+		 */
+		refreshFeed: string
+		/**
+		 * R​e​f​r​e​s​h​i​n​g​.​.​.
+		 */
+		refreshing: string
 	}
 	web2: {
 		search: {
@@ -525,6 +533,14 @@ export type TranslationFunctions = {
 	 Please lend a paw by refreshing the page and trying again.
 		 */
 		errorMessage: () => LocalizedString
+		/**
+		 * Refresh feed
+		 */
+		refreshFeed: () => LocalizedString
+		/**
+		 * Refreshing...
+		 */
+		refreshing: () => LocalizedString
 	}
 	web2: {
 		search: {
