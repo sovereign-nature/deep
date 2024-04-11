@@ -3,7 +3,7 @@
     ANIMAL_PLACEHOLDER,
     CAMP_PLACEHOLDER,
   } from '@sni/constants/cdn/placeholders';
-  import { getChainName } from '@sni/address-utils';
+  import { chainIdToName } from '@sni/address-utils';
   import Property from '$lib/shared/typography/Property.svelte';
   import Info from '$lib/shared/typography/Info.svelte';
   import Subheader from '$lib/shared/typography/Subheader.svelte';
@@ -48,7 +48,7 @@
   $: funds = deepData?.steward?.funds_raised || 0;
   $: source = isNaN(parseInt(chainReference))
     ? chainReference
-    : getChainName(parseInt(chainReference));
+    : chainIdToName(parseInt(chainReference));
   $: image = nftData.image;
   $: pageImagePath = `/og?title=${encodeURIComponent(
     name
