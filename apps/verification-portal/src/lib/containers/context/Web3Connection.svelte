@@ -3,8 +3,8 @@
   import { writable } from 'svelte/store';
   import type { Writable } from 'svelte/store';
   import type { DeepAsset } from '@sni/types';
-  import { getCollectionFromAddress } from '@sni/address-utils';
   import type { Web3DataState } from '$lib/types';
+  import { deepApiUrl } from '@sni/clients/config';
 
   export let collectionAddress: string;
   export let web3Enabled = false;
@@ -32,11 +32,9 @@
   async function getWeb3Assets() {
     if ($web3Connected && web3Enabled) {
       web3Response.set({ loaded: false, error: false });
-      // TODO: what to do with polkadot address
-      const collection = getCollectionFromAddress(collectionAddress);
       try {
         const response = await fetch(
-          `/api/nftscan?collection=${collection}&address=${$web3Address}`
+          `${deepApiUrl}/wallets/${$web3Address}?assetDID=${collectionAddress}`
         );
         if (!response.ok) throw new Error('Failed to fetch data');
         const data = await response.json();
