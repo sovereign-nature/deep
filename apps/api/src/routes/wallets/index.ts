@@ -39,7 +39,7 @@ app.get(
         } catch (e) {
           return errorResponse(e, c);
         }
-      case 'polygon-sepolina':
+      case 'polygon-sepolia':
       case 'optimism-sepolia':
         try {
           assets = await getCrossmintWalletAssets(
