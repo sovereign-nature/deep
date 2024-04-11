@@ -1,13 +1,24 @@
 import { keccak256, stringToBytes } from 'viem';
 
+//Off chain address example
+//did:asset:standard:vendorId.assetType:assetID
+//did:asset:deep:hh.asset:african-elephant-mask
+
+//EVM address example
+//'did:asset:eip155:1.erc721:0x06012c8cf97bead5deae237070f9587f8e7a266d:634446'
+
+//Polkadot address example
+//did:asset:deep:kusama.asset-hub:91:10
+
+//Hashing did address to numeric id like it's done in ENS
 export function stringToId(input: string): string {
   const hash = keccak256(stringToBytes(input.toLowerCase()));
 
   return BigInt(hash).toString();
 }
 
+//Resolving address to it's components according to the AssetDID standard
 //TODO: Rename to resolveAddress, make internal
-//did:asset:deep:hh.asset:african-elephant-mask
 export function parseAddress(address: string) {
   const [prefix, assetAddress] = address.split('.');
 
@@ -29,62 +40,6 @@ export function parseAddress(address: string) {
     },
   };
 }
-
-//TODO: Remove
-//did:asset:standard:vendorId.assetType:assetID
-//did:asset:deep:hh.asset:african-elephant-mask
-// function getOffChainAssetAddress(vendorId: string, assetName: string): string {
-//   return `did:asset:deep:${vendorId}.asset:${assetName
-//     .toLowerCase()
-//     .replace(' ', '-')}`;
-// }
-
-//TODO: Remove
-// function getOffChainAssetId(vendorId: string, assetName: string): string {
-//   return stringToId(getOffChainAssetAddress(vendorId, assetName));
-// }
-
-//TODO: Remove
-//'did:asset:eip155:1.erc721:0x06012c8cf97bead5deae237070f9587f8e7a266d:634446'
-// function getEVMAssetAddress(
-//   chainId: number,
-//   tokenStandard: string,
-//   contractAddress: string,
-//   tokenId: number
-// ) {
-//   return `did:asset:eip155:${chainId}.${tokenStandard}:${contractAddress}:${tokenId}`;
-// }
-
-//TODO: Remove
-// function getEVMAssetId(
-//   chainId: number,
-//   tokenStandard: string,
-//   contractAddress: string,
-//   tokenId: number
-// ): string {
-//   return stringToId(
-//     getEVMAssetAddress(chainId, tokenStandard, contractAddress, tokenId)
-//   );
-// }
-
-//TODO: Remove
-//did:asset:deep:kusama.asset-hub:91:10
-// function getPolkadotAssetHubAddress(
-//   chainId: string,
-//   collectionId: string,
-//   tokenId: number
-// ) {
-//   return `did:asset:deep:${chainId}.asset-hub:${collectionId}:${tokenId}`;
-// }
-
-//TODO: Remove
-// export function getPolkadotAssetId(
-//   chainId: string,
-//   collectionId: string,
-//   tokenId: number
-// ): string {
-//   return stringToId(getPolkadotAssetHubAddress(chainId, collectionId, tokenId));
-// }
 
 type ChainNameToId = {
   [key: string]: number;
@@ -113,7 +68,6 @@ export function getChainId(chainName: string): number {
   return 0;
 }
 
-//TODO: Rename to chainIdToName
 export function chainIdToName(chainId: number): string {
   const idToChainName: { [key: number]: string } = {};
 
@@ -126,7 +80,7 @@ export function chainIdToName(chainId: number): string {
   return idToChainName[chainId] || '';
 }
 
-//TODO: Rename to getChainName
+//Resolving chain name from it's namespace and ID
 function getChainName(chainNamespace: string, chainId: string): string {
   switch (chainNamespace) {
     case 'eip155':
@@ -138,7 +92,7 @@ function getChainName(chainNamespace: string, chainId: string): string {
   }
 }
 
-//TODO: Rename to parseAssetDID
+//Parsing AssetDID to it's components
 export function parseAssetDID(did: string) {
   const { chain, asset } = parseAddress(did);
   const network = getChainName(chain.namespace, chain.reference);
@@ -146,9 +100,4 @@ export function parseAssetDID(did: string) {
   const tokenId = asset.identifier;
 
   return { network, contractAddress, tokenId };
-}
-
-export function getCollectionFromAddress(did: string): string {
-  const parts = did.split(':');
-  return parts[parts.length - 1];
 }
