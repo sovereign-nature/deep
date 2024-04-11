@@ -142,10 +142,10 @@ function getChainName(chainNamespace: string, chainId: string): string {
 export function parseAssetDID(did: string) {
   const { chain, asset } = parseAddress(did);
   const network = getChainName(chain.namespace, chain.reference);
-  const assetId = asset.reference;
+  const contractAddress = asset.reference;
   const tokenId = asset.identifier;
 
-  return { network, assetId, tokenId };
+  return { network, contractAddress, tokenId };
 }
 
 export function getCollectionFromAddress(did: string): string {

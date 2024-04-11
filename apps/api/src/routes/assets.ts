@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import { env } from 'hono/adapter';
-import { parseDID } from '@sni/address-utils';
+import { parseAssetDID } from '@sni/address-utils';
 import { getAsset } from '../shared';
 
 const app = new Hono();
@@ -12,12 +12,12 @@ const getAssetRoute = app.get('/:assetDid', async (c) => {
 
   // Parsing DID
   try {
-    const parsedData = parseDID(assetDID);
+    const parsedData = parseAssetDID(assetDID);
 
     //TODO: Refactor getAsset to getAssetByDid
     const assetData = await getAsset(
-      parsedData.networkId,
-      parsedData.assetId,
+      parsedData.network,
+      parsedData.contractAddress,
       parsedData.tokenId,
       OPEN_SEA_API_KEY
     );

@@ -43,7 +43,7 @@
   setTocTitle(nftData.name);
 
   // Define specific share card data for a page
-  $: pageDescription = nftData?.collection?.description || ''; //TODO: Check why we need collection description, should be asset description probably
+  $: pageDescription = nftData?.collection?.description || ''; //TODO: Replace with asset description
   $: name = nftData.name || '';
   $: funds = deepData?.steward?.funds_raised || 0;
   $: source = isNaN(parseInt(chainReference))

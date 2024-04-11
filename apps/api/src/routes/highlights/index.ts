@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import { env } from 'hono/adapter';
 import { DeepAsset } from '@sni/types';
-import { parseDID } from '@sni/address-utils';
+import { parseAssetDID } from '@sni/address-utils';
 import _ from 'lodash';
 import { getAsset } from '../../shared';
 import { collections } from './config';
@@ -19,11 +19,12 @@ async function fetchAssets(
   for await (const tokenId of shuffledIds) {
     const assetDID = `${collectionAddress}:${tokenId}`;
 
-    const parsed = parseDID(assetDID);
+    const parsed = parseAssetDID(assetDID);
 
+    //TODO: Refactor to getAssetByDid
     const asset = await getAsset(
-      parsed.networkId,
-      parsed.assetId,
+      parsed.network,
+      parsed.contractAddress,
       parsed.tokenId,
       apiKey
     );
