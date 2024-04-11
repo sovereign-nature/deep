@@ -26,7 +26,7 @@ export async function getOptimismTestnetAsset(
     tokenId: nftResponse.tokenId,
     name: nftResponse.name,
     description: nftResponse.description,
-    image: nftResponse.image.originalUrl,
+    image: nftResponse.image.cachedUrl, //TODO: Check if this always works
     collection: {
       id: nftResponse.contract.address,
       name: nftResponse.contract.name,
