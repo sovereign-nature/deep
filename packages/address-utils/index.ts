@@ -94,10 +94,13 @@ function getChainName(chainNamespace: string, chainId: string): string {
 
 //Parsing AssetDID to it's components
 export function parseAssetDID(did: string) {
-  const { chain, asset } = parseAddress(did);
-  const network = getChainName(chain.namespace, chain.reference);
-  const contractAddress = asset.reference;
-  const tokenId = asset.identifier;
-
-  return { network, contractAddress, tokenId };
+  try {
+    const { chain, asset } = parseAddress(did);
+    const network = getChainName(chain.namespace, chain.reference);
+    const contractAddress = asset.reference;
+    const tokenId = asset.identifier;
+    return { network, contractAddress, tokenId };
+  } catch (e) {
+    throw new Error(`Invalid DID address: ${did}`);
+  }
 }
