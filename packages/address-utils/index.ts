@@ -58,14 +58,14 @@ const chainNameToId: ChainNameToId = {
   'arbitrum-sepolia': 421611,
   moonsama: 2199,
   optimism: 10,
-  'optimism-sepolia': 1011,
+  'optimism-sepolia': 11155420,
 };
 
 export function getChainId(chainName: string): number {
   if (typeof chainName === 'string') {
     return chainNameToId[chainName.toLowerCase()] || 0;
   }
-  return 0;
+  return 0; //TODO: Throw an error?
 }
 
 export function chainIdToName(chainId: number): string {
@@ -77,7 +77,7 @@ export function chainIdToName(chainId: number): string {
     idToChainName[id] = chainName;
   }
 
-  return idToChainName[chainId] || '';
+  return idToChainName[chainId] || ''; //TODO: Throw an error?
 }
 
 //Resolving chain name from it's namespace and ID

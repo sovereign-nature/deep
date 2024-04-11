@@ -31,6 +31,6 @@ export async function getOptimismTestnetAsset(
       id: nftResponse.contract.address,
       name: nftResponse.contract.name,
     },
-    address: `did:asset:eip155:1011.erc721:${nftResponse.contract.address}:${nftResponse.tokenId}`,
+    address: `did:asset:eip155:11155420.erc721:${nftResponse.contract.address}:${nftResponse.tokenId}`,
   };
 }
