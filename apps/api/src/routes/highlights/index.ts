@@ -7,6 +7,7 @@ import { collections } from './config';
 
 const app = new Hono();
 
+//TODO: Move to clients/assets-client
 async function fetchAssets(
   collectionAddress: string,
   tokenIds: number[] | string[],
