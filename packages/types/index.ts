@@ -6,8 +6,9 @@ export type DeepAsset = {
   image: string;
   animation_url?: string;
   collection: {
-    id: string;
+    id: string; //TODO: Do we need id?
     name: string;
+    //TODO: Optional collection description?
   };
-  address: string; //TODO: Rename to assetDID
+  address: string; //TODO: Rename to did?
 };
