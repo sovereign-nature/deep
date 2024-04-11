@@ -10,23 +10,24 @@ import {
 
 import { env } from 'hono/adapter';
 import { zValidator } from '@hono/zod-validator';
+import { parseAssetDID } from '@sni/address-utils';
 import { reportUnknownNetwork as errorResponse } from '../../shared';
 
 app.get(
-  '/:networkId/:address',
-  zValidator('query', z.object({ contractAddress: z.string() })),
+  '/:walletAddress',
+  zValidator('query', z.object({ assetDID: z.string() })),
   async (c) => {
     const { NFTSCAN_API_KEY } = env<{ NFTSCAN_API_KEY: string }>(c);
     const { CROSSMINT_API_KEY } = env<{ CROSSMINT_API_KEY: string }>(c); //TODO: Add both staging and production keys
 
-    const networkId = c.req.param('networkId');
-    const walletAddress = c.req.param('address');
+    const assetDID = c.req.query('assetDID') || '';
+    const walletAddress = c.req.param('walletAddress');
 
-    const contractAddress = c.req.query('contractAddress') || '';
-
+    const { network, contractAddress } = parseAssetDID(assetDID);
     let assets: DeepAsset[] = [];
 
-    switch (networkId) {
+    //TODO: Refactor to getWalletAssetsByDid from clients lib
+    switch (network) {
       case 'arbitrum':
         try {
           assets = await getArbitrumWalletAssets(
@@ -38,11 +39,11 @@ app.get(
         } catch (e) {
           return errorResponse(e, c);
         }
-      case 'polygon-sepolina':
+      case 'polygon-sepolia':
       case 'optimism-sepolia':
         try {
           assets = await getCrossmintWalletAssets(
-            networkId,
+            network,
             walletAddress,
             contractAddress,
             CROSSMINT_API_KEY,
