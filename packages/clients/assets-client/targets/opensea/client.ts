@@ -2,6 +2,7 @@ import { DeepAsset } from '@sni/types';
 import openSeaFormatter from './formatter';
 import { OpenSeaCollectionResponse, OpenSeaResponse } from './types';
 
+//TODO: Network should be first parameter
 export async function getOpenSeaAsset(
   contractAddress: string,
   tokenId: number,
