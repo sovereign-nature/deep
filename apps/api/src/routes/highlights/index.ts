@@ -10,7 +10,7 @@ const app = new Hono();
 async function fetchAssets(
   collectionAddress: string,
   tokenIds: number[] | string[],
-  apiKey?: string
+  keysConfig?: { openSeaAPIKey?: string; alchemyAPIKey?: string } //TODO: Replace type
 ) {
   const shuffledIds = _.shuffle(tokenIds).slice(0, 3);
 
@@ -18,7 +18,7 @@ async function fetchAssets(
   for await (const tokenId of shuffledIds) {
     const assetDID = `${collectionAddress}:${tokenId}`;
 
-    const asset = await getAssetByDID(assetDID, apiKey);
+    const asset = await getAssetByDID(assetDID, keysConfig);
     asset.address = assetDID;
 
     fetchedAssets.push(asset);
@@ -38,14 +38,15 @@ app.get('/:collectionId', async (c) => {
     case collections.sub0.id:
       assets = await fetchAssets(
         collections.sub0.collectionAddress,
-        collections.sub0.highlightIds
+        collections.sub0.highlightIds,
+        { openSeaAPIKey: OPEN_SEA_API_KEY }
       );
       break;
     case collections.soundwaves.id:
       assets = await fetchAssets(
         collections.soundwaves.collectionAddress,
         collections.soundwaves.highlightIds,
-        OPEN_SEA_API_KEY
+        { openSeaAPIKey: OPEN_SEA_API_KEY }
       );
       break;
     case collections.hh.id:
