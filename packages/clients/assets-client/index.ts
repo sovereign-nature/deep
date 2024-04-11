@@ -11,7 +11,7 @@ async function getAsset(
   network: string,
   assetId: string, //TODO: Better naming, so it illustrates contract address or Web2 asset ID
   tokenId: number,
-  apiKey?: string
+  keys: KeysConfig
 ): Promise<DeepAsset> {
   switch (network) {
     case 'polkadot':
@@ -22,9 +22,9 @@ async function getAsset(
       return getMoonsamaAsset(assetId, tokenId);
     case 'sepolia':
     case 'arbitrum':
-      return getOpenSeaAsset(assetId, tokenId, network, apiKey);
+      return getOpenSeaAsset(assetId, tokenId, network, keys.openSeaAPIKey);
     case 'optimism-sepolia':
-      return getOptimismAsset(assetId, tokenId, apiKey || '', true);
+      return getOptimismAsset(assetId, tokenId, keys.alchemyAPIKey || '', true);
     case 'hotel-hideaway':
       return getHotelHideawayAsset(assetId);
     default:
@@ -32,13 +32,18 @@ async function getAsset(
   }
 }
 
-export async function getAssetByDID(did: string, apiKey?: string) {
+type KeysConfig = {
+  openSeaAPIKey?: string;
+  alchemyAPIKey?: string;
+};
+
+export async function getAssetByDID(did: string, keys: KeysConfig) {
   const parsedData = parseAssetDID(did);
 
   return await getAsset(
     parsedData.network,
     parsedData.contractAddress,
     parsedData.tokenId,
-    apiKey
+    keys
   );
 }
