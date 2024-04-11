@@ -19,6 +19,7 @@ const getAssetRoute = app.get('/:assetDid', async (c) => {
     });
     return c.json(assetData);
   } catch (e) {
+    console.error(e);
     return c.json({ error: true, message: 'Asset not found' }, 404);
   }
 });

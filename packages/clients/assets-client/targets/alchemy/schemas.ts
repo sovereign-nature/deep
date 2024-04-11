@@ -56,6 +56,6 @@ export const AlchemyResponseSchema = z.object({
     timestamp: z.number().nullable(), //TODO: Check format
     transactionHash: z.string().nullable(),
   }),
-  owners: z.array(z.string()),
+  owners: z.array(z.string()).nullable(),
   timeLastUpdated: z.string(), //TODO: Date
 });
