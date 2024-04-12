@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "test:integration": "vitest"
+    "test": "vitest"
   },
   "dependencies": {
     "@sni/address-utils": "workspace:*",
