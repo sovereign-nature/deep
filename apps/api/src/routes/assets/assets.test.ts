@@ -1,6 +1,18 @@
 import { expect, describe, it } from 'vitest';
-import { env } from 'cloudflare:test';
+import { ProvidedEnv, env } from 'cloudflare:test';
 import app from '.';
+
+interface TestEnv extends ProvidedEnv {
+  OPEN_SEA_API_KEY: string;
+  ALCHEMY_API_KEY: string;
+}
+
+const testEnv = env as TestEnv;
+
+console.log(testEnv);
+
+console.log(import.meta.env);
+console.log(process.env);
 
 describe('Assets API', () => {
   it('should handle invalid DID', async () => {
