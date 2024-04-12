@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "test": "vitest"
+    "test:integration": "vitest"
   },
   "dependencies": {
     "@sni/address-utils": "workspace:*",
@@ -20,10 +20,11 @@
     "lodash": "4.17.21"
   },
   "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.1.19",
     "@cloudflare/workers-types": "4.20240405.0",
     "@hono/zod-validator": "0.2.1",
     "env-cmd": "10.1.0",
-    "vitest": "1.4.0",
+    "vitest": "1.3.0",
     "wrangler": "3.49.0",
     "zod": "3.22.4"
   }
