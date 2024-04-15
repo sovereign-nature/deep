@@ -6,7 +6,6 @@ export type CrossmintResponse = {
     name: string;
     description: string;
     image: string;
-    address: URL;
   };
   onChain: {
     status: string;
@@ -16,6 +15,7 @@ export type CrossmintResponse = {
     tokenId?: string;
   };
   actionId: string;
+  assetDID: string;
 };
 
 export type NFTClaimProps = {

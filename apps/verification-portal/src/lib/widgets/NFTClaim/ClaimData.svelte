@@ -24,7 +24,7 @@
         <CardHeader
           className="mb-0"
           title={$claimResponse?.metadata?.name}
-          url={$claimResponse?.metadata?.address}
+          url={`/assets/${$claimResponse?.assetDID}`}
         />
         <p>{$claimResponse?.metadata?.description}</p>
         <slot />
