@@ -167,16 +167,16 @@ importers:
         version: 0.4.0(@sveltejs/kit@2.5.6)(vite-plugin-pwa@0.19.8)
       '@wagmi/connectors':
         specifier: 4.1.25
-        version: 4.1.25(@wagmi/core@2.6.16)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.5)(viem@2.9.16)
+        version: 4.1.25(@wagmi/core@2.6.16)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.5)(viem@2.9.17)
       '@wagmi/core':
         specifier: 2.6.16
-        version: 2.6.16(react@18.2.0)(typescript@5.4.5)(viem@2.9.16)
+        version: 2.6.16(react@18.2.0)(typescript@5.4.5)(viem@2.9.17)
       '@web3inbox/core':
         specifier: 1.2.1
         version: 1.2.1(react@18.2.0)
       '@web3modal/wagmi':
         specifier: 4.1.7
-        version: 4.1.7(@wagmi/connectors@4.1.25)(@wagmi/core@2.6.16)(react@18.2.0)(viem@2.9.16)
+        version: 4.1.7(@wagmi/connectors@4.1.25)(@wagmi/core@2.6.16)(react@18.2.0)(viem@2.9.17)
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -262,8 +262,8 @@ importers:
   packages/address-utils:
     dependencies:
       viem:
-        specifier: 2.9.16
-        version: 2.9.16(typescript@5.4.5)
+        specifier: 2.9.17
+        version: 2.9.17(typescript@5.4.5)
     devDependencies:
       vitest:
         specifier: 1.4.0
@@ -5466,7 +5466,7 @@ packages:
       pretty-format: 29.7.0
     dev: true
 
-  /@wagmi/connectors@4.1.25(@wagmi/core@2.6.16)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.5)(viem@2.9.16):
+  /@wagmi/connectors@4.1.25(@wagmi/core@2.6.16)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.5)(viem@2.9.17):
     resolution: {integrity: sha512-4Tot1Gtiv7uhiUAxZ9On37aai35l5S0sV7N2yQSNgzqXe55bAlI0cqyBAIJRvyKwOe1+hzKfoFqYQSaoCgj5Lg==}
     peerDependencies:
       '@wagmi/core': 2.6.16
@@ -5480,11 +5480,11 @@ packages:
       '@metamask/sdk': 0.14.3(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)
       '@safe-global/safe-apps-provider': 0.18.1(typescript@5.4.5)
       '@safe-global/safe-apps-sdk': 8.1.0(typescript@5.4.5)
-      '@wagmi/core': 2.6.16(react@18.2.0)(typescript@5.4.5)(viem@2.9.16)
+      '@wagmi/core': 2.6.16(react@18.2.0)(typescript@5.4.5)(viem@2.9.17)
       '@walletconnect/ethereum-provider': 2.11.2(react@18.2.0)
       '@walletconnect/modal': 2.6.2(react@18.2.0)
       typescript: 5.4.5
-      viem: 2.9.16(typescript@5.4.5)
+      viem: 2.9.17(typescript@5.4.5)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -5512,7 +5512,7 @@ packages:
       - zod
     dev: true
 
-  /@wagmi/core@2.6.16(react@18.2.0)(typescript@5.4.5)(viem@2.9.16):
+  /@wagmi/core@2.6.16(react@18.2.0)(typescript@5.4.5)(viem@2.9.17):
     resolution: {integrity: sha512-95r+2CCf4Yz4CWG7UZMALIcGSUfpr9YbZ2HOqmz6gJEBaW9Cf9xUEZj2MXOHZIP+Ri/3CZJtbBEclDot4enZWA==}
     peerDependencies:
       '@tanstack/query-core': '>=5.0.0'
@@ -5527,7 +5527,7 @@ packages:
       eventemitter3: 5.0.1
       mipd: 0.0.5(typescript@5.4.5)
       typescript: 5.4.5
-      viem: 2.9.16(typescript@5.4.5)
+      viem: 2.9.17(typescript@5.4.5)
       zustand: 4.4.1(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
@@ -6301,7 +6301,7 @@ packages:
       qrcode: 1.5.3
     dev: true
 
-  /@web3modal/wagmi@4.1.7(@wagmi/connectors@4.1.25)(@wagmi/core@2.6.16)(react@18.2.0)(viem@2.9.16):
+  /@web3modal/wagmi@4.1.7(@wagmi/connectors@4.1.25)(@wagmi/core@2.6.16)(react@18.2.0)(viem@2.9.17):
     resolution: {integrity: sha512-lH4Q65DyMj6I9OICttglZ1QCUzEC1Rg4s5wftG5SqthcETfKU31TFTd0lE7I2eW7nO7+Rhdzurufvuk2/lRISg==}
     peerDependencies:
       '@wagmi/connectors': '>=4.0.0'
@@ -6318,8 +6318,8 @@ packages:
       vue:
         optional: true
     dependencies:
-      '@wagmi/connectors': 4.1.25(@wagmi/core@2.6.16)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.5)(viem@2.9.16)
-      '@wagmi/core': 2.6.16(react@18.2.0)(typescript@5.4.5)(viem@2.9.16)
+      '@wagmi/connectors': 4.1.25(@wagmi/core@2.6.16)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.5)(viem@2.9.17)
+      '@wagmi/core': 2.6.16(react@18.2.0)(typescript@5.4.5)(viem@2.9.17)
       '@web3modal/polyfills': 4.1.7
       '@web3modal/scaffold': 4.1.7(react@18.2.0)
       '@web3modal/scaffold-react': 4.1.7(react@18.2.0)
@@ -6327,7 +6327,7 @@ packages:
       '@web3modal/scaffold-vue': 4.1.7(react@18.2.0)
       '@web3modal/siwe': 4.1.7(react@18.2.0)
       react: 18.2.0
-      viem: 2.9.16(typescript@5.4.5)
+      viem: 2.9.17(typescript@5.4.5)
     transitivePeerDependencies:
       - '@types/react'
     dev: true
@@ -14381,8 +14381,8 @@ packages:
       - zod
     dev: true
 
-  /viem@2.9.16(typescript@5.4.5):
-    resolution: {integrity: sha512-FQRfN4G7uKEUs5DYvVrH/kZmTkwcSDpTBxnadpwG1EEP8nHm57WDpSaGN7PwSPVgJ6rMo5MENT5hgnqaNTlb2w==}
+  /viem@2.9.17(typescript@5.4.5):
+    resolution: {integrity: sha512-xMQ4JhgR1fPXQYagEeSsq9lmKXXooHP2gcnowb0eJRq3NTheyzpVBtMuH8DZnnWT4aeFepZktqSXlFul+Ou5Xg==}
     peerDependencies:
       typescript: '>=5.0.4'
     peerDependenciesMeta:
