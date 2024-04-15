@@ -69,8 +69,8 @@ importers:
         specifier: 4.17.0
         version: 4.17.0
       hono:
-        specifier: 4.2.3
-        version: 4.2.3
+        specifier: 4.2.4
+        version: 4.2.4
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -83,7 +83,7 @@ importers:
         version: 4.20240405.0
       '@hono/zod-validator':
         specifier: 0.2.1
-        version: 0.2.1(hono@4.2.3)(zod@3.22.4)
+        version: 0.2.1(hono@4.2.4)(zod@3.22.4)
       env-cmd:
         specifier: 10.1.0
         version: 10.1.0
@@ -3038,13 +3038,13 @@ packages:
       '@hapi/hoek': 9.3.0
     dev: true
 
-  /@hono/zod-validator@0.2.1(hono@4.2.3)(zod@3.22.4):
+  /@hono/zod-validator@0.2.1(hono@4.2.4)(zod@3.22.4):
     resolution: {integrity: sha512-HFoxln7Q6JsE64qz2WBS28SD33UB2alp3aRKmcWnNLDzEL1BLsWfbdX6e1HIiUprHYTIXf5y7ax8eYidKUwyaA==}
     peerDependencies:
       hono: '>=3.9.0'
       zod: ^3.19.1
     dependencies:
-      hono: 4.2.3
+      hono: 4.2.4
       zod: 3.22.4
     dev: true
 
@@ -5080,7 +5080,7 @@ packages:
   /@types/secp256k1@4.0.6:
     resolution: {integrity: sha512-hHxJU6PAEUn0TP4S/ZOzuTUvJWuZ6eIKeNKb5RBpODvSl6hp1Wrw4s7ATY50rklRCScUDpHzVA/DQdSjJ3UoYQ==}
     dependencies:
-      '@types/node': 20.12.7
+      '@types/node': 20.12.5
     dev: true
 
   /@types/semver@7.5.8:
@@ -9308,8 +9308,8 @@ packages:
       react-is: 16.13.1
     dev: true
 
-  /hono@4.2.3:
-    resolution: {integrity: sha512-yZDnPOp/XzjIB7KUWaOxwLSywnhxMvAKth8hfKhWQiWXeZhBfC6GlFnEst/FOOgn7rSWjShhQPS89PLEuHxq3Q==}
+  /hono@4.2.4:
+    resolution: {integrity: sha512-2T5Ahxh8tT0ISKCrNeA+OIwfD5W4EZ00iIMYBBCuiIivr+sOrZYOphinARSG7wL3nFsY6zkFHMMZbcR9CzEzug==}
     engines: {node: '>=16.0.0'}
 
   /howler@2.2.4:
@@ -10849,29 +10849,6 @@ packages:
   /mini-svg-data-uri@1.4.4:
     resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
     hasBin: true
-    dev: true
-
-  /miniflare@3.20240405.1:
-    resolution: {integrity: sha512-oShOR/ckr9JTO1bkPQH0nXvuSgJjoE+E5+M1tvP01Q8Z+Q0GJnzU2+FDYUH8yIK/atHv7snU8yy0X6KWVn1YdQ==}
-    engines: {node: '>=16.13'}
-    hasBin: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      acorn: 8.11.3
-      acorn-walk: 8.3.2
-      capnp-ts: 0.7.0
-      exit-hook: 2.2.1
-      glob-to-regexp: 0.4.1
-      stoppable: 1.1.0
-      undici: 5.28.4
-      workerd: 1.20240405.0
-      ws: 8.16.0
-      youch: 3.3.3
-      zod: 3.22.4
-    transitivePeerDependencies:
-      - bufferutil
-      - supports-color
-      - utf-8-validate
     dev: true
 
   /miniflare@3.20240405.1:
@@ -14942,40 +14919,6 @@ packages:
       '@cloudflare/workerd-linux-64': 1.20240405.0
       '@cloudflare/workerd-linux-arm64': 1.20240405.0
       '@cloudflare/workerd-windows-64': 1.20240405.0
-    dev: true
-
-  /wrangler@3.50.0(@cloudflare/workers-types@4.20240405.0):
-    resolution: {integrity: sha512-JlLuch+6DtaC5HGp8YD9Au++XvMv34g3ySdlB5SyPbaObELi8P9ZID5vgyf9AA75djzxL7cuNOk1YdKCJEuq0w==}
-    engines: {node: '>=16.17.0'}
-    hasBin: true
-    peerDependencies:
-      '@cloudflare/workers-types': ^4.20240405.0
-    peerDependenciesMeta:
-      '@cloudflare/workers-types':
-        optional: true
-    dependencies:
-      '@cloudflare/kv-asset-handler': 0.3.1
-      '@cloudflare/workers-types': 4.20240405.0
-      '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
-      '@esbuild-plugins/node-modules-polyfill': 0.2.2(esbuild@0.17.19)
-      blake3-wasm: 2.1.5
-      chokidar: 3.6.0
-      esbuild: 0.17.19
-      miniflare: 3.20240405.1
-      nanoid: 3.3.7
-      path-to-regexp: 6.2.2
-      resolve: 1.22.8
-      resolve.exports: 2.0.2
-      selfsigned: 2.4.1
-      source-map: 0.6.1
-      ts-json-schema-generator: 1.5.1
-      xxhash-wasm: 1.0.2
-    optionalDependencies:
-      fsevents: 2.3.3
-    transitivePeerDependencies:
-      - bufferutil
-      - supports-color
-      - utf-8-validate
     dev: true
 
   /wrangler@3.50.0(@cloudflare/workers-types@4.20240405.0):
