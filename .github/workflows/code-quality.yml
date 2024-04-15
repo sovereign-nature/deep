@@ -14,10 +14,10 @@ jobs:
       DIRECTUS_API_KEY: ${{ secrets.DIRECTUS_API_KEY }}
       PUBLIC_WALLET_CONNECT_PROJECT_ID: ${{ secrets.PUBLIC_WALLET_CONNECT_PROJECT_ID }}
       OPEN_SEA_API_KEY: ${{ secrets.OPEN_SEA_API_KEY }}
+      ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
       NFTSCAN_API_KEY: ${{ secrets.NFTSCAN_API_KEY }}
       VERCEL_URL: 'empty'
       TURBO_REMOTE_ONLY: true
-      FLAG_SHOW_DRAFT_NEWS: ${{ secrets.FLAG_SHOW_DRAFT_NEWS }}
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
