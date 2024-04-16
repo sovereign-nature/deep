@@ -253,8 +253,8 @@ importers:
         specifier: 5.2.8
         version: 5.2.8
       vite-plugin-tailwind-purgecss:
-        specifier: 0.3.0
-        version: 0.3.0(tailwindcss@3.4.3)(vite@5.2.8)
+        specifier: 0.3.1
+        version: 0.3.1(tailwindcss@3.4.3)(vite@5.2.8)
       vitest:
         specifier: 1.4.0
         version: 1.4.0
@@ -14229,8 +14229,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-tailwind-purgecss@0.3.0(tailwindcss@3.4.3)(vite@5.2.8):
-    resolution: {integrity: sha512-hm0yOZ2Z+Xn0T70lWa10IbgBgORGFj5da5NLUglvHSiZHSeJrQKcG1WAZjCBSBTrLPTffF+vYDbBLgVpbo2q0A==}
+  /vite-plugin-tailwind-purgecss@0.3.1(tailwindcss@3.4.3)(vite@5.2.8):
+    resolution: {integrity: sha512-woA+hT2vq2IDpJvc9zw/gMTKL4vINepiqsVvBm4AIZKGIUw7njXc2XiayuIo59wrasMQ7PGJxe6kiGpycGx1cg==}
     peerDependencies:
       tailwindcss: ^3.3.0
       vite: ^4.1.1 || ^5.0.0
