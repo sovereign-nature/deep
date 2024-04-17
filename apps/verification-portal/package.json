@@ -43,7 +43,7 @@
     "@vercel/og": "0.6.2",
     "@vercel/speed-insights": "1.0.10",
     "@vite-pwa/sveltekit": "0.4.0",
-    "@wagmi/connectors": "4.1.25",
+    "@wagmi/connectors": "4.1.26",
     "@wagmi/core": "2.6.17",
     "@web3inbox/core": "1.2.1",
     "@web3modal/wagmi": "4.1.9",
