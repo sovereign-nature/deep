@@ -64,11 +64,11 @@ const en: BaseTranslation = {
     noAssets: 'No assets found',
     errorMessage:
       'Uh-oh! It looks like a hiccup in the wild! 🐾 \n Please lend a paw by refreshing the page and trying again.',
-    inputPlaceholder: 'Enter your wallet address',
+    inputPlaceholder: 'Enter your wallet address (e.g. 0x1234...)',
   },
   claim: {
     useWallet: 'Use Wallet Address',
-    useManualInput: 'Enter Address Manually',
+    useManualInput: 'Enter Wallet Address Manually',
     titleClaim: 'Claim your NFT',
     titleValid: 'Congratulations on your NFT!',
     titlePending: 'Your claim is pending',

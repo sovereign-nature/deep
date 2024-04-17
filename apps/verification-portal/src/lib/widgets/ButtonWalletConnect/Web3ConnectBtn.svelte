@@ -51,7 +51,8 @@
       on:click={() => openModal()}
       customBtnClass={responsive ? 'h-8 md:h-11 md:text-base text-sm' : ''}
     >
-      <span class="hidden md:inline-block"> Connect your wallet </span>
+      <!-- TODO: Move string to translation config -->
+      <span class="hidden md:inline-block"> Login </span>
       <span class=" md:hidden"> Connect wallet </span>
       <ConnectIcon slot="icon" className="h-4 w-4 mx-1" />
     </RolloverBtn>
