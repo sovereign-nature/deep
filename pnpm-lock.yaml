@@ -166,8 +166,8 @@ importers:
         specifier: 0.4.0
         version: 0.4.0(@sveltejs/kit@2.5.6)(vite-plugin-pwa@0.19.8)
       '@wagmi/connectors':
-        specifier: 4.1.25
-        version: 4.1.25(@wagmi/core@2.6.17)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.5)(viem@2.9.17)
+        specifier: 4.1.26
+        version: 4.1.26(@wagmi/core@2.6.17)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.5)(viem@2.9.17)
       '@wagmi/core':
         specifier: 2.6.17
         version: 2.6.17(react@18.2.0)(typescript@5.4.5)(viem@2.9.17)
@@ -176,7 +176,7 @@ importers:
         version: 1.2.1(react@18.2.0)
       '@web3modal/wagmi':
         specifier: 4.1.9
-        version: 4.1.9(@wagmi/connectors@4.1.25)(@wagmi/core@2.6.17)(react@18.2.0)(viem@2.9.17)
+        version: 4.1.9(@wagmi/connectors@4.1.26)(@wagmi/core@2.6.17)(react@18.2.0)(viem@2.9.17)
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -2875,7 +2875,7 @@ packages:
     dependencies:
       '@inquirer/type': 1.2.1
       '@types/mute-stream': 0.0.4
-      '@types/node': 20.12.5
+      '@types/node': 20.12.7
       '@types/wrap-ansi': 3.0.0
       ansi-escapes: 4.3.2
       chalk: 4.1.2
@@ -4836,7 +4836,7 @@ packages:
   /@types/mute-stream@0.0.4:
     resolution: {integrity: sha512-CPM9nzrCPPJHQNA9keH9CVkVI+WR5kMa+7XEs5jcGQ0VoAGnLv242w8lIVgwAEfmE4oufJRaTc9PNLQl0ioAow==}
     dependencies:
-      '@types/node': 20.12.5
+      '@types/node': 20.12.7
     dev: true
 
   /@types/node-forge@1.3.11:
@@ -4849,6 +4849,7 @@ packages:
     resolution: {integrity: sha512-BD+BjQ9LS/D8ST9p5uqBxghlN+S42iuNxjsUGjeZobe/ciXzk2qb1B6IXc6AnRLS+yFJRpN2IPEHMzwspfDJNw==}
     dependencies:
       undici-types: 5.26.5
+    dev: false
 
   /@types/node@20.12.7:
     resolution: {integrity: sha512-wq0cICSkRLVaf3UGLMGItu/PtdY7oaXaI/RVU+xliKVOtRna3PRY57ZDfztpDL0n11vfymMUnXv8QwYCO7L1wg==}
@@ -4873,7 +4874,7 @@ packages:
   /@types/secp256k1@4.0.6:
     resolution: {integrity: sha512-hHxJU6PAEUn0TP4S/ZOzuTUvJWuZ6eIKeNKb5RBpODvSl6hp1Wrw4s7ATY50rklRCScUDpHzVA/DQdSjJ3UoYQ==}
     dependencies:
-      '@types/node': 20.12.5
+      '@types/node': 20.12.7
     dev: true
 
   /@types/semver@7.5.8:
@@ -5259,10 +5260,10 @@ packages:
       pretty-format: 29.7.0
     dev: true
 
-  /@wagmi/connectors@4.1.25(@wagmi/core@2.6.17)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.5)(viem@2.9.17):
-    resolution: {integrity: sha512-4Tot1Gtiv7uhiUAxZ9On37aai35l5S0sV7N2yQSNgzqXe55bAlI0cqyBAIJRvyKwOe1+hzKfoFqYQSaoCgj5Lg==}
+  /@wagmi/connectors@4.1.26(@wagmi/core@2.6.17)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.5)(viem@2.9.17):
+    resolution: {integrity: sha512-0bANLzi4gZcszPnCj3l7+DPztCG+L+W1Zm/a02YmEh2MaQC/blBsbAdb2JALdW66HJJE8m4cNZjPJPTsS2/MQQ==}
     peerDependencies:
-      '@wagmi/core': 2.6.16
+      '@wagmi/core': 2.6.17
       typescript: '>=5.0.4'
       viem: 2.x
     peerDependenciesMeta:
@@ -6094,7 +6095,7 @@ packages:
       qrcode: 1.5.3
     dev: true
 
-  /@web3modal/wagmi@4.1.9(@wagmi/connectors@4.1.25)(@wagmi/core@2.6.17)(react@18.2.0)(viem@2.9.17):
+  /@web3modal/wagmi@4.1.9(@wagmi/connectors@4.1.26)(@wagmi/core@2.6.17)(react@18.2.0)(viem@2.9.17):
     resolution: {integrity: sha512-+2F2NI5UtTEUQ4pMXsz2zwpdVcsXhy7HfwFf4afLdloY/eG4ckqACYyGVqm4TQ3IC2CqW9zIyPRNUYTYa0iZng==}
     peerDependencies:
       '@wagmi/connectors': '>=4.0.0'
@@ -6111,7 +6112,7 @@ packages:
       vue:
         optional: true
     dependencies:
-      '@wagmi/connectors': 4.1.25(@wagmi/core@2.6.17)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.5)(viem@2.9.17)
+      '@wagmi/connectors': 4.1.26(@wagmi/core@2.6.17)(react-native@0.73.6)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.5)(viem@2.9.17)
       '@wagmi/core': 2.6.17(react@18.2.0)(typescript@5.4.5)(viem@2.9.17)
       '@web3modal/polyfills': 4.1.9
       '@web3modal/scaffold': 4.1.9(react@18.2.0)
