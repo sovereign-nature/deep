@@ -176,7 +176,7 @@ type RootTranslation = {
 		 */
 		errorMessage: string
 		/**
-		 * E​n​t​e​r​ ​y​o​u​r​ ​w​a​l​l​e​t​ ​a​d​d​r​e​s​s
+		 * E​n​t​e​r​ ​y​o​u​r​ ​w​a​l​l​e​t​ ​a​d​d​r​e​s​s​ ​(​e​.​g​.​ ​0​x​1​2​3​4​.​.​.​)
 		 */
 		inputPlaceholder: string
 	}
@@ -186,7 +186,7 @@ type RootTranslation = {
 		 */
 		useWallet: string
 		/**
-		 * E​n​t​e​r​ ​A​d​d​r​e​s​s​ ​M​a​n​u​a​l​l​y
+		 * E​n​t​e​r​ ​W​a​l​l​e​t​ ​A​d​d​r​e​s​s​ ​M​a​n​u​a​l​l​y
 		 */
 		useManualInput: string
 		/**
@@ -640,7 +640,7 @@ export type TranslationFunctions = {
 		 */
 		errorMessage: () => LocalizedString
 		/**
-		 * Enter your wallet address
+		 * Enter your wallet address (e.g. 0x1234...)
 		 */
 		inputPlaceholder: () => LocalizedString
 	}
@@ -650,7 +650,7 @@ export type TranslationFunctions = {
 		 */
 		useWallet: () => LocalizedString
 		/**
-		 * Enter Address Manually
+		 * Enter Wallet Address Manually
 		 */
 		useManualInput: () => LocalizedString
 		/**
