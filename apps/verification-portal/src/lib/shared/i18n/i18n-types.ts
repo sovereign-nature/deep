@@ -104,13 +104,13 @@ type RootTranslation = {
 			placeholder: string
 		}
 	}
-	test: {
+	engie: {
 		/**
-		 * T​e​s​t​ ​c​o​l​l​e​c​t​i​o​n
+		 * E​n​g​i​e
 		 */
 		collectionName: string
 		/**
-		 * F​i​n​d​ ​b​y​ ​t​o​k​e​n​ ​I​D​ ​(​1​-​1​4​6​6​)
+		 * F​i​n​d​ ​b​y​ ​t​o​k​e​n​ ​I​D​ ​(​1​-​3​0​0​)
 		 */
 		searchPlaceholder: string
 	}
@@ -572,13 +572,13 @@ export type TranslationFunctions = {
 			placeholder: () => LocalizedString
 		}
 	}
-	test: {
+	engie: {
 		/**
-		 * Test collection
+		 * Engie
 		 */
 		collectionName: () => LocalizedString
 		/**
-		 * Find by token ID (1-1466)
+		 * Find by token ID (1-300)
 		 */
 		searchPlaceholder: () => LocalizedString
 	}

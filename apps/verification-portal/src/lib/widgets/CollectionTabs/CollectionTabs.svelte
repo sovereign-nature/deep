@@ -17,7 +17,7 @@
   const { url, route } = $page;
   const showTestCollections = isFeatureEnabled('collectionsTest');
   const filteredCollections = collections.filter(
-    (collection) => showTestCollections || collection.key !== 'test'
+    (collection) => showTestCollections || collection.test !== true
   );
 
   let activeTabKey: CollectionKeys = tabConfig.activeKey;
