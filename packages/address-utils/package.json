@@ -6,7 +6,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "viem": "2.9.17"
+    "viem": "2.9.21"
   },
   "devDependencies": {
     "vitest": "1.4.0"
