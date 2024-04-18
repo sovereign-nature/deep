@@ -28,7 +28,14 @@ async function getAsset(
         assetId,
         tokenId,
         keys?.alchemyAPIKey || '',
-        true
+        true //testnet
+      );
+    case 'optimism':
+      return getOptimismAsset(
+        assetId,
+        tokenId,
+        keys?.alchemyAPIKey || '',
+        false //mainnet
       );
     case 'hotel-hideaway':
       return getHotelHideawayAsset(assetId);

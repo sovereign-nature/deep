@@ -5,7 +5,7 @@ export const AlchemyResponseSchema = z.object({
     address: z.string(),
     name: z.string(),
     symbol: z.string(),
-    totalSupply: z.string(),
+    totalSupply: z.string().nullable(),
     tokenType: z.string(), //TODO: Enum
     contractDeployer: z.string().nullable(), //TODO: Address filter
     deployedBlockNumber: z.number().nullable(),
