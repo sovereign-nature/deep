@@ -69,8 +69,8 @@ const en: BaseTranslation = {
   claim: {
     useWallet: 'Use Wallet Address',
     useManualInput: 'Enter Wallet Address Manually',
-    titleClaim: 'Claim your NFT',
-    titleValid: 'Congratulations on your NFT!',
+    titleClaim: 'Claim your Eco-Badge',
+    titleValid: 'Congratulations on your Eco-Badge!',
     titlePending: 'Your claim is pending',
     descriptionPending:
       'Your token is being minted, this can take several minutes. In the meantime you can continue exploring the site.',
@@ -78,9 +78,9 @@ const en: BaseTranslation = {
     invalidMessage:
       'Sorry, the submitted claim token is invalid. Please try the claim link again and if the problem persists reach out to us.',
     checkClaim: ' Check the claim status',
-    buttonCTA: '⭐ Claim Your Token',
-    buttonPending: '⏳ Claim Is Pending',
-    buttonSuccess: '⭐ Your Token is Minted!',
+    buttonCTA: '⭐ Claim Your Badge',
+    buttonPending: '⏳ Badge Is Pending',
+    buttonSuccess: '⭐ Your Eco-Badge is Minted!',
   },
   notifications: {
     seeAll: 'See all notifications',

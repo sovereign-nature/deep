@@ -190,11 +190,11 @@ type RootTranslation = {
 		 */
 		useManualInput: string
 		/**
-		 * C​l​a​i​m​ ​y​o​u​r​ ​N​F​T
+		 * C​l​a​i​m​ ​y​o​u​r​ ​E​c​o​-​B​a​d​g​e
 		 */
 		titleClaim: string
 		/**
-		 * C​o​n​g​r​a​t​u​l​a​t​i​o​n​s​ ​o​n​ ​y​o​u​r​ ​N​F​T​!
+		 * C​o​n​g​r​a​t​u​l​a​t​i​o​n​s​ ​o​n​ ​y​o​u​r​ ​E​c​o​-​B​a​d​g​e​!
 		 */
 		titleValid: string
 		/**
@@ -218,15 +218,15 @@ type RootTranslation = {
 		 */
 		checkClaim: string
 		/**
-		 * ⭐​ ​C​l​a​i​m​ ​Y​o​u​r​ ​T​o​k​e​n
+		 * ⭐​ ​C​l​a​i​m​ ​Y​o​u​r​ ​B​a​d​g​e
 		 */
 		buttonCTA: string
 		/**
-		 * ⏳​ ​C​l​a​i​m​ ​I​s​ ​P​e​n​d​i​n​g
+		 * ⏳​ ​B​a​d​g​e​ ​I​s​ ​P​e​n​d​i​n​g
 		 */
 		buttonPending: string
 		/**
-		 * ⭐​ ​Y​o​u​r​ ​T​o​k​e​n​ ​i​s​ ​M​i​n​t​e​d​!
+		 * ⭐​ ​Y​o​u​r​ ​E​c​o​-​B​a​d​g​e​ ​i​s​ ​M​i​n​t​e​d​!
 		 */
 		buttonSuccess: string
 	}
@@ -654,11 +654,11 @@ export type TranslationFunctions = {
 		 */
 		useManualInput: () => LocalizedString
 		/**
-		 * Claim your NFT
+		 * Claim your Eco-Badge
 		 */
 		titleClaim: () => LocalizedString
 		/**
-		 * Congratulations on your NFT!
+		 * Congratulations on your Eco-Badge!
 		 */
 		titleValid: () => LocalizedString
 		/**
@@ -682,15 +682,15 @@ export type TranslationFunctions = {
 		 */
 		checkClaim: () => LocalizedString
 		/**
-		 * ⭐ Claim Your Token
+		 * ⭐ Claim Your Badge
 		 */
 		buttonCTA: () => LocalizedString
 		/**
-		 * ⏳ Claim Is Pending
+		 * ⏳ Badge Is Pending
 		 */
 		buttonPending: () => LocalizedString
 		/**
-		 * ⭐ Your Token is Minted!
+		 * ⭐ Your Eco-Badge is Minted!
 		 */
 		buttonSuccess: () => LocalizedString
 	}
