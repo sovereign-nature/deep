@@ -1,4 +1,9 @@
-export type CollectionKeys = 'soundwaves' | 'wildsama' | 'sub0' | 'hh' | 'test';
+export type CollectionKeys =
+  | 'soundwaves'
+  | 'wildsama'
+  | 'sub0'
+  | 'hh'
+  | 'engie';
 interface TabConfig {
   activeKey: CollectionKeys;
 }
@@ -40,11 +45,11 @@ export const collections: Collection[] = [
   },
   {
     test: true,
-    key: 'test',
+    key: 'engie',
     collectionAddress:
-      'did:asset:eip155:42161.erc721:0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78',
+      'did:asset:eip155:11155420.erc721:0xAA7f515b01C04E632c7837f1a80f67eA3f3Fc58B',
     avatar: '/collections/avatar_soudwaves.jpg',
-    web3: { source: 'arbitrum', web3Enabled: true },
+    web3: { source: 'optimism-sepolia', web3Enabled: true },
     searchInput: {
       searchEnabled: true,
       inputMode: 'numeric',

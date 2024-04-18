@@ -32,39 +32,29 @@ app.get('/:collectionId', async (c) => {
   const collectionId = c.req.param('collectionId');
 
   const { OPEN_SEA_API_KEY } = env<{ OPEN_SEA_API_KEY: string }>(c);
+  const { ALCHEMY_API_KEY } = env<{ ALCHEMY_API_KEY: string }>(c);
+
+  const keys = {
+    openSeaAPIKey: OPEN_SEA_API_KEY,
+    alchemyAPIKey: ALCHEMY_API_KEY,
+  };
+
+  if (!collections[collectionId]) {
+    return c.json({ error: true, message: 'Invalid collection' }, 400);
+  }
+
+  const currentCollection = collections[collectionId];
 
   let assets: DeepAsset[];
 
-  switch (collectionId) {
-    case collections.sub0.id:
-      assets = await fetchAssets(
-        collections.sub0.collectionAddress,
-        collections.sub0.highlightIds,
-        { openSeaAPIKey: OPEN_SEA_API_KEY }
-      );
-      break;
-    case collections.soundwaves.id:
-      assets = await fetchAssets(
-        collections.soundwaves.collectionAddress,
-        collections.soundwaves.highlightIds,
-        { openSeaAPIKey: OPEN_SEA_API_KEY }
-      );
-      break;
-    case collections.hh.id:
-      assets = await fetchAssets(
-        collections.hh.collectionAddress,
-        collections.hh.highlightIds
-      );
-      break;
-    case collections.wildsama.id:
-      assets = await fetchAssets(
-        collections.wildsama.collectionAddress,
-        collections.wildsama.highlightIds
-      );
-      break;
-    //TODO: Add test claims collection
-    default:
-      return c.json({ error: true, message: 'Invalid collection' }, 400);
+  try {
+    assets = await fetchAssets(
+      currentCollection.collectionAddress,
+      currentCollection.highlightIds,
+      keys
+    );
+  } catch (error) {
+    return c.json({ error: true, message: 'Internal server error' }, 500);
   }
 
   return c.json(assets);

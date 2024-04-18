@@ -1,4 +1,10 @@
-export const collections = {
+export const collections: {
+  [key: string]: {
+    id: string;
+    collectionAddress: string;
+    highlightIds: number[] | string[];
+  };
+} = {
   sub0: {
     id: 'sub0',
     collectionAddress: 'did:asset:deep:polkadot.asset-hub:13',
@@ -29,10 +35,10 @@ export const collections = {
       'did:asset:eip155:2199.erc721:0xdd0a0a15efc11930354b3e1eb1a62a87bf9abf30',
     highlightIds: [13, 277, 3],
   },
-  'f5f7d73e-38b5-479d-a814-22c6d2199fcd': {
-    id: 'f5f7d73e-38b5-479d-a814-22c6d2199fcd',
+  engie: {
+    id: 'engie',
     collectionAddress:
-      'did:asset:eip155:1011.erc721:0xAA7f515b01C04E632c7837f1a80f67eA3f3Fc58B',
-    highlightIds: [1, 2, 3, 4, 5, 6, 7],
+      'did:asset:eip155:11155420.erc721:0xAA7f515b01C04E632c7837f1a80f67eA3f3Fc58B',
+    highlightIds: [7, 7, 7],
   },
 };
