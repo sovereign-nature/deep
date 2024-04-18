@@ -43,18 +43,18 @@ export const collections: Collection[] = [
       inputMode: 'numeric',
     },
   },
-  {
-    test: true,
-    key: 'engie',
-    collectionAddress:
-      'did:asset:eip155:11155420.erc721:0xAA7f515b01C04E632c7837f1a80f67eA3f3Fc58B',
-    avatar: '/collections/avatar_soudwaves.jpg',
-    web3: { source: 'optimism-sepolia', web3Enabled: true },
-    searchInput: {
-      searchEnabled: true,
-      inputMode: 'numeric',
-    },
-  },
+  // {
+  //   test: true,
+  //   key: 'engie',
+  //   collectionAddress:
+  //     'did:asset:eip155:11155420.erc721:0xAA7f515b01C04E632c7837f1a80f67eA3f3Fc58B',
+  //   avatar: '/collections/avatar_soudwaves.jpg',
+  //   web3: { source: 'optimism-sepolia', web3Enabled: true },
+  //   searchInput: {
+  //     searchEnabled: true,
+  //     inputMode: 'numeric',
+  //   },
+  // },
   {
     key: 'wildsama',
     collectionAddress:
