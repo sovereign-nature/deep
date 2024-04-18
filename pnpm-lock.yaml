@@ -100,8 +100,8 @@ importers:
   apps/verification-portal:
     devDependencies:
       '@google/model-viewer':
-        specifier: 3.4.0
-        version: 3.4.0(three@0.160.1)
+        specifier: 3.5.0
+        version: 3.5.0(three@0.163.0)
       '@playwright/test':
         specifier: 1.43.1
         version: 1.43.1
@@ -2803,15 +2803,15 @@ packages:
   /@floating-ui/utils@0.2.1:
     resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
 
-  /@google/model-viewer@3.4.0(three@0.160.1):
-    resolution: {integrity: sha512-ZGZktE+uy7CiNOSrFdR1bTZDe9nfel2h8gWiRY6D5Eit77RAzIRYnPlkdQBoLSo8nnYS0faL/Z1tKP7nntvoGg==}
+  /@google/model-viewer@3.5.0(three@0.163.0):
+    resolution: {integrity: sha512-wyrJ0yi+9XHaGg4OMDG7odbzI3/Lkn55VjIZ6siw3uM0NdPlWIYY8ZQbysbwS6f6jC7GiScax5KaxQxLLk4eQw==}
     engines: {node: '>=6.0.0'}
     peerDependencies:
-      three: ^0.160.0
+      three: ^0.163.0
     dependencies:
-      '@monogrid/gainmap-js': 3.0.5(three@0.160.1)
+      '@monogrid/gainmap-js': 3.0.5(three@0.163.0)
       lit: 2.8.0
-      three: 0.160.1
+      three: 0.163.0
     dev: true
 
   /@graphql-typed-document-node/core@3.2.0(graphql@16.8.1):
@@ -3268,13 +3268,13 @@ packages:
       - supports-color
     dev: true
 
-  /@monogrid/gainmap-js@3.0.5(three@0.160.1):
+  /@monogrid/gainmap-js@3.0.5(three@0.163.0):
     resolution: {integrity: sha512-53sCTG4FaJBaAq/tcufARtVYDMDGqyBT9i7F453pWGhZ5LqubDHDWtYoHo9VhQqMcHTEexdJqSsR58y+9HVmQA==}
     peerDependencies:
       three: '>= 0.159.0'
     dependencies:
       promise-worker-transferable: 1.0.4
-      three: 0.160.1
+      three: 0.163.0
     dev: true
 
   /@motionone/animation@10.17.0:
@@ -13494,8 +13494,8 @@ packages:
       real-require: 0.1.0
     dev: true
 
-  /three@0.160.1:
-    resolution: {integrity: sha512-Bgl2wPJypDOZ1stAxwfWAcJ0WQf7QzlptsxkjYiURPz+n5k4RBDLsq+6f9Y75TYxn6aHLcWz+JNmwTOXWrQTBQ==}
+  /three@0.163.0:
+    resolution: {integrity: sha512-HlMgCb2TF/dTLRtknBnjUTsR8FsDqBY43itYop2+Zg822I+Kd0Ua2vs8CvfBVefXkBdNDrLMoRTGCIIpfCuDew==}
     dev: true
 
   /throat@5.0.0:
