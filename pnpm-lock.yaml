@@ -187,8 +187,8 @@ importers:
         specifier: 2.3.0
         version: 2.3.0
       flowbite-svelte:
-        specifier: 0.45.0
-        version: 0.45.0(svelte@4.2.15)
+        specifier: 0.46.0
+        version: 0.46.0(svelte@4.2.15)
       fuse.js:
         specifier: 7.0.0
         version: 7.0.0
@@ -4325,9 +4325,9 @@ packages:
     resolution: {integrity: sha512-HVzoK3r6Vsg+lKvlIZzaWNBVai+FXTX1wdYhz/wVlH13tb/gOdLXmlTqy6odmTBhT5UoWUbq0k8263Qhr9d88w==}
     engines: {node: '>=0.4.0'}
 
-  flowbite-svelte@0.45.0:
-    resolution: {integrity: sha512-laYG6CXvQ7huzrqI24jf8mYwBEw3kGesVCpS9WgIg6jUgBPzaYba/R4FPPdKei3LQBRj8V/pzzUERzUPizm7Aw==}
-    engines: {node: '>=20.0.0', pnpm: '>=8.0.0'}
+  flowbite-svelte@0.46.0:
+    resolution: {integrity: sha512-Qw4zX4nCbxP5ZemksC9/EVGE9WRnD8FsR5CrdZRxm1RGkMOv2nrKxDQ8MXHF/GwdEutFU5UeaQncQuqgY5DoVg==}
+    engines: {node: '>=18.0.0', pnpm: '>=8.0.0'}
     peerDependencies:
       svelte: ^4.0.0
 
@@ -6949,6 +6949,9 @@ packages:
 
   tailwind-merge@2.2.2:
     resolution: {integrity: sha512-tWANXsnmJzgw6mQ07nE3aCDkCK4QdT3ThPMCzawoYA2Pws7vSTCvz3Vrjg61jVUGfFZPJzxEP+NimbcW+EdaDw==}
+
+  tailwind-merge@2.3.0:
+    resolution: {integrity: sha512-vkYrLpIP+lgR0tQCG6AP7zZXCTLc1Lnv/CCRT3BqJ9CZ3ui2++GPaGb1x/ILsINIMSYqqvrpqjUFsMNLlW99EA==}
 
   tailwind-variants@0.2.1:
     resolution: {integrity: sha512-2xmhAf4UIc3PijOUcJPA1LP4AbxhpcHuHM2C26xM0k81r0maAO6uoUSHl3APmvHZcY5cZCY/bYuJdfFa4eGoaw==}
@@ -12998,13 +13001,13 @@ snapshots:
 
   flow-parser@0.206.0: {}
 
-  flowbite-svelte@0.45.0(svelte@4.2.15):
+  flowbite-svelte@0.46.0(svelte@4.2.15):
     dependencies:
       '@floating-ui/dom': 1.6.3
       apexcharts: 3.48.0
       flowbite: 2.3.0
       svelte: 4.2.15
-      tailwind-merge: 2.2.2
+      tailwind-merge: 2.3.0
 
   flowbite@2.3.0:
     dependencies:
@@ -15886,6 +15889,10 @@ snapshots:
   tabbable@6.2.0: {}
 
   tailwind-merge@2.2.2:
+    dependencies:
+      '@babel/runtime': 7.24.4
+
+  tailwind-merge@2.3.0:
     dependencies:
       '@babel/runtime': 7.24.4
 
