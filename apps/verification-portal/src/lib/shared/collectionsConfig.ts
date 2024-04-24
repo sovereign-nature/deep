@@ -47,9 +47,10 @@ export const collections: Collection[] = [
     test: true,
     key: 'engie',
     collectionAddress:
-      'did:asset:eip155:11155420.erc721:0xAA7f515b01C04E632c7837f1a80f67eA3f3Fc58B',
-    avatar: '/collections/avatar_soudwaves.jpg',
-    web3: { source: 'optimism-sepolia', web3Enabled: true },
+      'did:asset:eip155:10.erc721:0xf2D96c9CE9c10a0981857887eF1E0355A4fDB4C9',
+    avatar:
+      'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/0ca097dd-d487-4f7f-f2e7-86db8f2aa300/square300px',
+    web3: { source: 'optimism', web3Enabled: true },
     searchInput: {
       searchEnabled: true,
       inputMode: 'numeric',
