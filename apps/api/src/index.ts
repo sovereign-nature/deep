@@ -16,7 +16,7 @@ app.get(
   '*',
   cache({
     cacheName: 'deep-api',
-    cacheControl: 'max-age=3600',
+    cacheControl: 'max-age=60',
   })
 );
 
