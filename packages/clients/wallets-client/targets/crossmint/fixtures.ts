@@ -51,7 +51,7 @@ export const crossmintWalletDeepAssets = [
       description: 'My NFT created via the mint API!',
     },
     address:
-      'did:asset:eip155:137:0x684808644b21126b72DE69D93f6dC4c68Eb00165:7',
+      'did:asset:eip155:137.erc721:0x684808644b21126b72DE69D93f6dC4c68Eb00165:7',
   },
   {
     id: '6',
@@ -67,6 +67,6 @@ export const crossmintWalletDeepAssets = [
       description: 'My NFT created via the mint API!',
     },
     address:
-      'did:asset:eip155:137:0x684808644b21126b72DE69D93f6dC4c68Eb00165:6',
+      'did:asset:eip155:137.erc721:0x684808644b21126b72DE69D93f6dC4c68Eb00165:6',
   },
 ];
