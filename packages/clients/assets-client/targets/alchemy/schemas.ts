@@ -53,7 +53,7 @@ export const AlchemyResponseSchema = z.object({
   mint: z.object({
     mintAddress: z.string().nullable(),
     blockNumber: z.number().nullable(),
-    timestamp: z.number().nullable(), //TODO: Check format
+    timestamp: z.string().nullable(),
     transactionHash: z.string().nullable(),
   }),
   owners: z.array(z.string()).nullable(),

@@ -54,6 +54,7 @@ app.get('/:collectionId', async (c) => {
       keys
     );
   } catch (error) {
+    console.error(error);
     return c.json({ error: true, message: 'Internal server error' }, 500);
   }
 
