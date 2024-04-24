@@ -21,12 +21,14 @@ export async function getOptimismTestnetAsset(
 
   const nftResponse = AlchemyResponseSchema.parse(await response.json());
 
+  console.log('nftResponse', nftResponse);
+
   return {
     id: nftResponse.tokenId,
     tokenId: nftResponse.tokenId,
     name: nftResponse.name,
     description: nftResponse.description,
-    image: nftResponse.image.cachedUrl, //TODO: Check if this always works
+    image: nftResponse.image.originalUrl, //TODO: Check if this always works
     collection: {
       id: nftResponse.contract.address,
       name: nftResponse.contract.name,
