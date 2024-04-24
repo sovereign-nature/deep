@@ -28,7 +28,7 @@ export interface Collection {
 }
 
 export const tabConfig: TabConfig = {
-  activeKey: 'soundwaves',
+  activeKey: 'engie',
 };
 
 export const collections: Collection[] = [
