@@ -38,7 +38,7 @@ export const collections: {
   engie: {
     id: 'engie',
     collectionAddress:
-      'did:asset:eip155:11155420.erc721:0xAA7f515b01C04E632c7837f1a80f67eA3f3Fc58B',
+      'did:asset:eip155:10.erc721:0xf2D96c9CE9c10a0981857887eF1E0355A4fDB4C9',
     highlightIds: [7, 7, 7],
   },
 };
