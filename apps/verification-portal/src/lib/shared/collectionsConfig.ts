@@ -33,24 +33,23 @@ export const tabConfig: TabConfig = {
 
 export const collections: Collection[] = [
   {
-    key: 'soundwaves',
-    collectionAddress:
-      'did:asset:eip155:42161.erc721:0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78',
-    avatar: '/collections/avatar_soudwaves.jpg',
-    web3: { source: 'arbitrum', web3Enabled: true },
-    searchInput: {
-      searchEnabled: true,
-      inputMode: 'numeric',
-    },
-  },
-  {
-    test: true,
     key: 'engie',
     collectionAddress:
       'did:asset:eip155:10.erc721:0xf2D96c9CE9c10a0981857887eF1E0355A4fDB4C9',
     avatar:
       'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/0ca097dd-d487-4f7f-f2e7-86db8f2aa300/square300px',
     web3: { source: 'optimism', web3Enabled: true },
+    searchInput: {
+      searchEnabled: true,
+      inputMode: 'numeric',
+    },
+  },
+  {
+    key: 'soundwaves',
+    collectionAddress:
+      'did:asset:eip155:42161.erc721:0x6cc7c9b2aa5fdcc044f9a51d9d083fd16aeb0a78',
+    avatar: '/collections/avatar_soudwaves.jpg',
+    web3: { source: 'arbitrum', web3Enabled: true },
     searchInput: {
       searchEnabled: true,
       inputMode: 'numeric',
