@@ -19,7 +19,7 @@ export const collections: Collections = {
       description:
         'To celebrate ENGIE\'s commitment to Corporate Social and Environmental Responsibility, the Sovereign Nature Initiative proudly introduces the "Dakhla Bay Collection 1.0" eco-badges, developed in collaboration with ENGIE. These eco-badges present digital art inspired by the marine life of Dakhla Bay. Each badge merges abstract patterns with empirical data from Aquasearch, incorporating acoustic recordings and observational data that algorithmically shape the artwork\'s color, geometry, and dynamics. Discover the unique story of the dolphin linked to your eco-badge and share its tale with your community!',
       imagePrefix:
-        'https://cdn2.sovereignnature.com/images/dakhla-collection/dakhla_collection_final_',
+        'ipfs://QmPz44sT22UUtJSrTnzC8mA7znF1vWd5U4ZmzzBnpvdHYE/dakhla_collection_final_',
       name: 'ENGIE Bioacoustics Eco-Badge',
     },
     network: 'optimism',
