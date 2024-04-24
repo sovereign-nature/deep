@@ -101,6 +101,7 @@ export function parseAssetDID(did: string) {
     const tokenId = asset.identifier;
     return { network, contractAddress, tokenId };
   } catch (e) {
+    console.error(e);
     throw new Error(`Invalid DID address: ${did}`);
   }
 }

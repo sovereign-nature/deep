@@ -42,6 +42,9 @@ export async function getCrossmintWalletAssets(
       name: nft.metadata.name,
       description: nft.metadata.description,
     },
-    address: `did:asset:eip155:${getChainId(network)}:${nft.contractAddress}:${nft.tokenId}`,
+    //TODO: Create address formatter
+    //TODO: Create address validator
+    //TODO: Create formatter for Crossmint response so tokenStandard is always in the same format
+    address: `did:asset:eip155:${getChainId(network)}.${nft.tokenStandard.replace('-', '')}:${nft.contractAddress}:${nft.tokenId}`,
   }));
 }
