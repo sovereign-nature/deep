@@ -39,6 +39,7 @@ app.get(
         } catch (e) {
           return errorResponse(e, c);
         }
+      //TODO: Not working because of the production config
       case 'polygon-sepolia':
       case 'optimism-sepolia':
         try {
@@ -48,6 +49,20 @@ app.get(
             contractAddress,
             CROSSMINT_API_KEY,
             true
+          );
+          return c.json(assets);
+        } catch (e) {
+          return errorResponse(e, c);
+        }
+      case 'polygon':
+      case 'optimism':
+        try {
+          assets = await getCrossmintWalletAssets(
+            network,
+            walletAddress,
+            contractAddress,
+            CROSSMINT_API_KEY,
+            false
           );
           return c.json(assets);
         } catch (e) {
