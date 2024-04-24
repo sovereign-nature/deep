@@ -78,3 +78,7 @@ Next, you can link your Turborepo to your Remote Cache by running the following 
 ```shell
 npx turbo link
 ```
+
+## JWT Secret Generation
+
+`node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`

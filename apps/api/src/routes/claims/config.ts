@@ -2,7 +2,7 @@ export type CollectionConfig = {
   name: string;
   metadata: {
     description: string;
-    image: string;
+    imagePrefix: string;
     name: string;
   };
   network: string;
@@ -13,13 +13,14 @@ interface Collections {
 }
 
 export const collections: Collections = {
-  //Engie test collections
-  'f5f7d73e-38b5-479d-a814-22c6d2199fcd': {
-    name: 'engie-test',
+  '5f773e35-d5f2-41dc-ae80-c94e0e8e4821': {
+    name: 'engie',
     metadata: {
-      description: 'My NFT created via the mint API!',
-      image: 'https://www.crossmint.com/assets/crossmint/logo.png',
-      name: 'Crossmint Example NFT',
+      description:
+        'To celebrate ENGIE\'s commitment to Corporate Social and Environmental Responsibility, the Sovereign Nature Initiative proudly introduces the "Dakhla Bay Collection 1.0" eco-badges, developed in collaboration with ENGIE. These eco-badges present digital art inspired by the marine life of Dakhla Bay. Each badge merges abstract patterns with empirical data from Aquasearch, incorporating acoustic recordings and observational data that algorithmically shape the artwork\'s color, geometry, and dynamics. Discover the unique story of the dolphin linked to your eco-badge and share its tale with your community!',
+      imagePrefix:
+        'https://cdn2.sovereignnature.com/images/dakhla-collection/dakhla_collection_final_',
+      name: 'ENGIE Bioacoustics Eco-Badge',
     },
     network: 'optimism',
   },

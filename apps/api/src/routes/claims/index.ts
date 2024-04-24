@@ -32,8 +32,15 @@ app.post(
     const collectionId: string = payload.collection;
     const collectionConfig = collections[collectionId];
 
+    const image = `${collectionConfig.metadata.imagePrefix}${payload.seed}.jpg`;
+    const metadata = {
+      name: collectionConfig.metadata.name,
+      description: collectionConfig.metadata.description,
+      image,
+    };
+
     const mintingConfig = {
-      metadata: collectionConfig.metadata,
+      metadata,
       recipient: `${collectionConfig.network}:${address}`,
     };
 
