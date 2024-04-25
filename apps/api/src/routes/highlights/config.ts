@@ -39,6 +39,6 @@ export const collections: {
     id: 'engie',
     collectionAddress:
       'did:asset:eip155:10.erc721:0xf2D96c9CE9c10a0981857887eF1E0355A4fDB4C9',
-    highlightIds: [1, 1, 1],
+    highlightIds: [1, 2, 3, 4, 5, 6],
   },
 };
