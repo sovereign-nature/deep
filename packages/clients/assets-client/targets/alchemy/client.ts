@@ -14,6 +14,7 @@ export async function getOptimismTestnetAsset(
     Accept: 'application/json',
   };
 
+  //TODO: retry on 404 or error
   const response = await fetch(
     `${apiURL}/${apiKey}/getNFTMetadata?contractAddress=${contractAddress}&tokenId=${tokenId}&refreshCache=${refreshCache}`,
     { headers }
