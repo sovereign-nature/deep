@@ -36,7 +36,7 @@ const en: BaseTranslation = {
   },
   //collections
   engie: {
-    collectionName: 'Engie',
+    collectionName: 'ENGIE',
     searchPlaceholder: 'Find by token ID (1-300)',
   },
   sub0: {

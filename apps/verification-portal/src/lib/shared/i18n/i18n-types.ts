@@ -106,7 +106,7 @@ type RootTranslation = {
 	}
 	engie: {
 		/**
-		 * E​n​g​i​e
+		 * E​N​G​I​E
 		 */
 		collectionName: string
 		/**
@@ -574,7 +574,7 @@ export type TranslationFunctions = {
 	}
 	engie: {
 		/**
-		 * Engie
+		 * ENGIE
 		 */
 		collectionName: () => LocalizedString
 		/**
