@@ -187,8 +187,8 @@ importers:
         specifier: 2.3.0
         version: 2.3.0
       flowbite-svelte:
-        specifier: 0.46.0
-        version: 0.46.0(svelte@4.2.15)
+        specifier: 0.46.1
+        version: 0.46.1(svelte@4.2.15)
       fuse.js:
         specifier: 7.0.0
         version: 7.0.0
@@ -4471,11 +4471,11 @@ packages:
     resolution: {integrity: sha512-HVzoK3r6Vsg+lKvlIZzaWNBVai+FXTX1wdYhz/wVlH13tb/gOdLXmlTqy6odmTBhT5UoWUbq0k8263Qhr9d88w==}
     engines: {node: '>=0.4.0'}
 
-  flowbite-svelte@0.46.0:
-    resolution: {integrity: sha512-Qw4zX4nCbxP5ZemksC9/EVGE9WRnD8FsR5CrdZRxm1RGkMOv2nrKxDQ8MXHF/GwdEutFU5UeaQncQuqgY5DoVg==}
+  flowbite-svelte@0.46.1:
+    resolution: {integrity: sha512-GMQP4Fxn4mYu12XTNRbOHMYMklbP29sKFZUZYekryxhWak2zbSlI1ozhBtnrD2WDbFBPqZ64IcyButOkYpz+WQ==}
     engines: {node: '>=18.0.0', pnpm: '>=8.0.0'}
     peerDependencies:
-      svelte: ^4.0.0
+      svelte: ^3.55.1 || ^4.0.0
 
   flowbite@2.3.0:
     resolution: {integrity: sha512-pm3JRo8OIJHGfFYWgaGpPv8E+UdWy0Z3gEAGufw+G/1dusaU/P1zoBLiQpf2/+bYAi+GBQtPVG86KYlV0W+AFQ==}
@@ -13386,7 +13386,7 @@ snapshots:
 
   flow-parser@0.206.0: {}
 
-  flowbite-svelte@0.46.0(svelte@4.2.15):
+  flowbite-svelte@0.46.1(svelte@4.2.15):
     dependencies:
       '@floating-ui/dom': 1.6.3
       apexcharts: 3.49.0
