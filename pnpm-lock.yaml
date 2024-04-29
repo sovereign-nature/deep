@@ -69,8 +69,8 @@ importers:
         specifier: 4.17.0
         version: 4.17.0
       hono:
-        specifier: 4.2.7
-        version: 4.2.7
+        specifier: 4.2.9
+        version: 4.2.9
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -83,7 +83,7 @@ importers:
         version: 4.20240423.0
       '@hono/zod-validator':
         specifier: 0.2.1
-        version: 0.2.1(hono@4.2.7)(zod@3.23.4)
+        version: 0.2.1(hono@4.2.9)(zod@3.23.4)
       env-cmd:
         specifier: 10.1.0
         version: 10.1.0
@@ -4675,8 +4675,8 @@ packages:
   hmac-drbg@1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}
 
-  hono@4.2.7:
-    resolution: {integrity: sha512-k1xHi86tJnRIVvqhFMBDGFKJ8r5O+bEsT4P59ZK59r0F300Xd910/r237inVfuT/VmE86RQQffX4OYNda6dLXw==}
+  hono@4.2.9:
+    resolution: {integrity: sha512-59FAv52UxDWUt/NlC0NzrRCjeVCThUnVlqlrKYm+k80XujBu6uJwBIa5gACKKZWobjA0MJ6Vds0I3URKf383Cw==}
     engines: {node: '>=16.0.0'}
 
   howler@2.2.4:
@@ -9275,9 +9275,9 @@ snapshots:
     dependencies:
       '@hapi/hoek': 9.3.0
 
-  '@hono/zod-validator@0.2.1(hono@4.2.7)(zod@3.23.4)':
+  '@hono/zod-validator@0.2.1(hono@4.2.9)(zod@3.23.4)':
     dependencies:
-      hono: 4.2.7
+      hono: 4.2.9
       zod: 3.23.4
 
   '@humanwhocodes/config-array@0.11.14':
@@ -13473,7 +13473,7 @@ snapshots:
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
 
-  hono@4.2.7: {}
+  hono@4.2.9: {}
 
   howler@2.2.4: {}
 
