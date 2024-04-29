@@ -175,8 +175,8 @@ importers:
         specifier: 1.2.1
         version: 1.2.1(@react-native-async-storage/async-storage@1.23.1(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3)))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3)
       '@web3modal/wagmi':
-        specifier: 4.1.10
-        version: 4.1.10(@wagmi/connectors@4.1.28(@react-native-async-storage/async-storage@1.23.1(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3)))(@wagmi/core@2.6.19(bufferutil@4.0.8)(react@18.2.0)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4))(bufferutil@4.0.8)(react-dom@18.2.0(react@18.2.0))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.2.0(react@18.2.0))(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3))(react@18.2.0))(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3))(react@18.2.0)(rollup@4.16.1)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4))(@wagmi/core@2.6.19(bufferutil@4.0.8)(react@18.2.0)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))
+        specifier: 4.1.11
+        version: 4.1.11(@wagmi/connectors@4.1.28(@react-native-async-storage/async-storage@1.23.1(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3)))(@wagmi/core@2.6.19(bufferutil@4.0.8)(react@18.2.0)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4))(bufferutil@4.0.8)(react-dom@18.2.0(react@18.2.0))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.2.0(react@18.2.0))(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3))(react@18.2.0))(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3))(react@18.2.0)(rollup@4.16.1)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4))(@wagmi/core@2.6.19(bufferutil@4.0.8)(react@18.2.0)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -2915,17 +2915,17 @@ packages:
   '@web3inbox/core@1.2.1':
     resolution: {integrity: sha512-eon3IJAkTTC69afq0SfZYHdKHbBkKZxUBxtosCz+8wupXxvcbdphUbSL4JnCi0CDG+tJWKfpouqavSeLxwwOxw==}
 
-  '@web3modal/common@4.1.10':
-    resolution: {integrity: sha512-1svYYplOCFk3Ywbo6x28eboJ2eCAYngptsQYhb9MEgCsyJy3+LM/IXwakZU5R6cmKjePU4Oxj04h4vfswZZW5w==}
+  '@web3modal/common@4.1.11':
+    resolution: {integrity: sha512-zcoaixcI3dLC/D0QlhpT8MNCd717O1/3r1AemC5/9Wbk2F+YKXkzJZHmWlXoTvlTw9DH07rJzs9YTPxFyn855w==}
 
-  '@web3modal/core@4.1.10':
-    resolution: {integrity: sha512-TUQPAd1mpomjG/Hd6v0WzyEdz0LqRK1pDQOayHCMuGm5KwbqQUKKXJc4VWlBKWF0eBirACwnasm3eyx/J+XXQg==}
+  '@web3modal/core@4.1.11':
+    resolution: {integrity: sha512-e475IIWywEtgH1CCB2Pl1C/wgPu0NzAvtTMOPSGNoHsw1ID2n6j/o4CURQb2HJjOoYQjTKKVkzXa44vFh2p9xw==}
 
-  '@web3modal/polyfills@4.1.10':
-    resolution: {integrity: sha512-TWSpXL7aD0vN5tWHw2QLf1w1uAdf+JVkCxA5AuHCYlo7PxYm4BXWt9DzoCtfnCX2w/yjZQCMmnJHiAUnbYzvEQ==}
+  '@web3modal/polyfills@4.1.11':
+    resolution: {integrity: sha512-+aMmjGrLCKLo4gVAdWgFdOX2ZjExciSLw/YlZ01wLO8Yj3bZbCZ7sjBc9xndHOVMK0QyUzBtpCOpYMJzi+59jg==}
 
-  '@web3modal/scaffold-react@4.1.10':
-    resolution: {integrity: sha512-xsYBaPmmWLpx092cUNbELcuead2HGrKvbmq1gdJtlBXzwffY6GdkXxCZGEBiFcmREnOL0p0Sd+YhTu5aeIYKKg==}
+  '@web3modal/scaffold-react@4.1.11':
+    resolution: {integrity: sha512-vouJHj77ZNKvR/Uyb3Hfc2UFSA4ZrrHmA0vbioCbgIh+V1rYT5XcAZDEu4AAo1qJ5NBRU1pkClVwAmQuWGY43w==}
     peerDependencies:
       react: '>=17'
       react-dom: '>=17'
@@ -2935,28 +2935,28 @@ packages:
       react-dom:
         optional: true
 
-  '@web3modal/scaffold-utils@4.1.10':
-    resolution: {integrity: sha512-dhHJWsfowAxUc8wD2PTQIBu4KPsDThstmrEvLbrqOybDcFP2o3gUw8wt1NEbKzQfO2O9gTBqBl86oRI07iyA5g==}
+  '@web3modal/scaffold-utils@4.1.11':
+    resolution: {integrity: sha512-nsS9yK5tp1N/VfecLLPc8H/dGJCzn0jElWjRS92VfGPhOSiEh5PIrPyCl9o6wUZsp4fH1YUsoSY2EFpPsuCWgw==}
 
-  '@web3modal/scaffold-vue@4.1.10':
-    resolution: {integrity: sha512-XfEr11G46j2UkTR2KoeR7ES1umvOR6ZoU5GHB/vg75x/ebn5DD2bx+QzUE8zxa9VvEQs+2+Oh4bP/4JvZfOwNw==}
+  '@web3modal/scaffold-vue@4.1.11':
+    resolution: {integrity: sha512-PmIfD2TlKkZZa6V0sqwDtZ7t62BEk5JjCHd380QaZwGTbPEwS99leTWLKBTaxAPShK2p7+aj2Txss63wIXLRFg==}
     peerDependencies:
       vue: '>=3'
     peerDependenciesMeta:
       vue:
         optional: true
 
-  '@web3modal/scaffold@4.1.10':
-    resolution: {integrity: sha512-RAqUtzQxWtyCsDoAV6WAUxWXiIi6qJE4KRtjnxJHztNnRiXeHX06Rf7yq4OaSbVOT3Z0GBNgp0CHOjj2UwKpmA==}
+  '@web3modal/scaffold@4.1.11':
+    resolution: {integrity: sha512-n8bP3cJNQxV8OD3s8bSj8QDbZvjn8a1Ui81jo2a3rIxOUAlD/cKRM8ivmNxiUdBMae8GP5CLiWtkIptmSLw40Q==}
 
-  '@web3modal/siwe@4.1.10':
-    resolution: {integrity: sha512-naK4uprQvKB0MsnNONb/d3y5/9uXf+dfiwtUioCCDMa6ZhUGMXVgho/p73CHEd0EUu5Np7ABF53MwwW2pVBSmg==}
+  '@web3modal/siwe@4.1.11':
+    resolution: {integrity: sha512-gndcNA351mkAR0wUsO4dLS9CbpcFo+AQ2CUXF0Jx83DwaBStCVsX3yllfnYKh/gpVetF3B48mRUt9TTTJJ79dA==}
 
-  '@web3modal/ui@4.1.10':
-    resolution: {integrity: sha512-n5pmNnyaMdJXGHF3qVE76E78FZtg8RQknnLZPluQ8hh5+p+/O+ZmoJNqKK6HRAgonpKt2MqUE4b94SIEsOlP4A==}
+  '@web3modal/ui@4.1.11':
+    resolution: {integrity: sha512-lentHZvUpNjVasvNI8/jrVPIAV1M5zJKZ4Q4AeYwUJdEtlRon1uq10MRylmvlZAjWb98U130uJy245Fz87Th/w==}
 
-  '@web3modal/wagmi@4.1.10':
-    resolution: {integrity: sha512-5r9aDX9o+xQQ/iv8Bj1AlhUgRY36PC85uQ7YMCtUdB903hiaP+alH9V54kTUkO749c+UM8gMu2Kltb7ckWWemw==}
+  '@web3modal/wagmi@4.1.11':
+    resolution: {integrity: sha512-VoXV9idD0yV7jx0F2Xk722VXqQNCDKqDc+LR8WsuOU64TiTLJx9UDQpNcoigbC3bYCi/4Cpw41iSGgs7utbgyQ==}
     peerDependencies:
       '@wagmi/connectors': '>=4.0.0'
       '@wagmi/core': '>=2.0.0'
@@ -2972,8 +2972,8 @@ packages:
       vue:
         optional: true
 
-  '@web3modal/wallet@4.1.10':
-    resolution: {integrity: sha512-uv2So3E6nDu3OmkBPxAoAkjc4U3T+1VX4ONVvqs5smAcWjCQ5OzKtsew4fcw4nOnhQx80y7v9hMLinF6gSvLCA==}
+  '@web3modal/wallet@4.1.11':
+    resolution: {integrity: sha512-6eJSpNcrBxufJFEQu9+ZOMUZxPqa8438RvfYKCU9nLXwoBtweo6ecpQw2yhXDlrfG+uJZhFabtPxROabn2M8Kg==}
 
   '@webassemblyjs/ast@1.12.1':
     resolution: {integrity: sha512-EKfMUOPRRUTy5UII4qJDGPpqfwjOmZ5jeGFwid9mnoqIFK+e0vqoi1qH56JpmZSzEL53jKnNzScdmftJyG5xWg==}
@@ -11480,86 +11480,86 @@ snapshots:
       - uWebSockets.js
       - utf-8-validate
 
-  '@web3modal/common@4.1.10':
+  '@web3modal/common@4.1.11':
     dependencies:
       bignumber.js: 9.1.2
       dayjs: 1.11.10
 
-  '@web3modal/core@4.1.10(react@18.2.0)':
+  '@web3modal/core@4.1.11(react@18.2.0)':
     dependencies:
-      '@web3modal/common': 4.1.10
-      '@web3modal/wallet': 4.1.10
+      '@web3modal/common': 4.1.11
+      '@web3modal/wallet': 4.1.11
       valtio: 1.11.2(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - react
 
-  '@web3modal/polyfills@4.1.10':
+  '@web3modal/polyfills@4.1.11':
     dependencies:
       buffer: 6.0.3
 
-  '@web3modal/scaffold-react@4.1.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@web3modal/scaffold-react@4.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@web3modal/scaffold': 4.1.10(react@18.2.0)
+      '@web3modal/scaffold': 4.1.11(react@18.2.0)
     optionalDependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
 
-  '@web3modal/scaffold-utils@4.1.10(react@18.2.0)':
+  '@web3modal/scaffold-utils@4.1.11(react@18.2.0)':
     dependencies:
-      '@web3modal/core': 4.1.10(react@18.2.0)
-      '@web3modal/polyfills': 4.1.10
+      '@web3modal/core': 4.1.11(react@18.2.0)
+      '@web3modal/polyfills': 4.1.11
       valtio: 1.11.2(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - react
 
-  '@web3modal/scaffold-vue@4.1.10(react@18.2.0)':
+  '@web3modal/scaffold-vue@4.1.11(react@18.2.0)':
     dependencies:
-      '@web3modal/scaffold': 4.1.10(react@18.2.0)
+      '@web3modal/scaffold': 4.1.11(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - react
 
-  '@web3modal/scaffold@4.1.10(react@18.2.0)':
+  '@web3modal/scaffold@4.1.11(react@18.2.0)':
     dependencies:
-      '@web3modal/common': 4.1.10
-      '@web3modal/core': 4.1.10(react@18.2.0)
-      '@web3modal/siwe': 4.1.10(react@18.2.0)
-      '@web3modal/ui': 4.1.10
-      '@web3modal/wallet': 4.1.10
+      '@web3modal/common': 4.1.11
+      '@web3modal/core': 4.1.11(react@18.2.0)
+      '@web3modal/siwe': 4.1.11(react@18.2.0)
+      '@web3modal/ui': 4.1.11
+      '@web3modal/wallet': 4.1.11
       lit: 3.1.0
     transitivePeerDependencies:
       - '@types/react'
       - react
 
-  '@web3modal/siwe@4.1.10(react@18.2.0)':
+  '@web3modal/siwe@4.1.11(react@18.2.0)':
     dependencies:
-      '@web3modal/core': 4.1.10(react@18.2.0)
-      '@web3modal/scaffold-utils': 4.1.10(react@18.2.0)
+      '@web3modal/core': 4.1.11(react@18.2.0)
+      '@web3modal/scaffold-utils': 4.1.11(react@18.2.0)
       lit: 3.1.0
       valtio: 1.11.2(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - react
 
-  '@web3modal/ui@4.1.10':
+  '@web3modal/ui@4.1.11':
     dependencies:
       lit: 3.1.0
       qrcode: 1.5.3
 
-  ? '@web3modal/wagmi@4.1.10(@wagmi/connectors@4.1.28(@react-native-async-storage/async-storage@1.23.1(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3)))(@wagmi/core@2.6.19(bufferutil@4.0.8)(react@18.2.0)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4))(bufferutil@4.0.8)(react-dom@18.2.0(react@18.2.0))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.2.0(react@18.2.0))(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3))(react@18.2.0))(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3))(react@18.2.0)(rollup@4.16.1)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4))(@wagmi/core@2.6.19(bufferutil@4.0.8)(react@18.2.0)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))'
+  ? '@web3modal/wagmi@4.1.11(@wagmi/connectors@4.1.28(@react-native-async-storage/async-storage@1.23.1(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3)))(@wagmi/core@2.6.19(bufferutil@4.0.8)(react@18.2.0)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4))(bufferutil@4.0.8)(react-dom@18.2.0(react@18.2.0))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.2.0(react@18.2.0))(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3))(react@18.2.0))(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3))(react@18.2.0)(rollup@4.16.1)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4))(@wagmi/core@2.6.19(bufferutil@4.0.8)(react@18.2.0)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))'
   : dependencies:
       '@wagmi/connectors': 4.1.28(@react-native-async-storage/async-storage@1.23.1(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3)))(@wagmi/core@2.6.19(bufferutil@4.0.8)(react@18.2.0)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4))(bufferutil@4.0.8)(react-dom@18.2.0(react@18.2.0))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.2.0(react@18.2.0))(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3))(react@18.2.0))(react-native@0.73.7(@babel/core@7.24.4)(@babel/preset-env@7.24.4(@babel/core@7.24.4))(bufferutil@4.0.8)(react@18.2.0)(utf-8-validate@6.0.3))(react@18.2.0)(rollup@4.16.1)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4)
       '@wagmi/core': 2.6.19(bufferutil@4.0.8)(react@18.2.0)(typescript@5.4.5)(utf-8-validate@6.0.3)(viem@2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4))(zod@3.23.4)
-      '@web3modal/polyfills': 4.1.10
-      '@web3modal/scaffold': 4.1.10(react@18.2.0)
-      '@web3modal/scaffold-react': 4.1.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@web3modal/scaffold-utils': 4.1.10(react@18.2.0)
-      '@web3modal/scaffold-vue': 4.1.10(react@18.2.0)
-      '@web3modal/siwe': 4.1.10(react@18.2.0)
+      '@web3modal/polyfills': 4.1.11
+      '@web3modal/scaffold': 4.1.11(react@18.2.0)
+      '@web3modal/scaffold-react': 4.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@web3modal/scaffold-utils': 4.1.11(react@18.2.0)
+      '@web3modal/scaffold-vue': 4.1.11(react@18.2.0)
+      '@web3modal/siwe': 4.1.11(react@18.2.0)
       viem: 2.9.28(bufferutil@4.0.8)(typescript@5.4.5)(utf-8-validate@6.0.3)(zod@3.23.4)
     optionalDependencies:
       react: 18.2.0
@@ -11567,9 +11567,9 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  '@web3modal/wallet@4.1.10':
+  '@web3modal/wallet@4.1.11':
     dependencies:
-      '@web3modal/polyfills': 4.1.10
+      '@web3modal/polyfills': 4.1.11
       zod: 3.22.4
 
   '@webassemblyjs/ast@1.12.1':
