@@ -411,8 +411,8 @@ importers:
         specifier: 0.2.7
         version: 0.2.7
       shadcn-svelte:
-        specifier: 0.10.3
-        version: 0.10.3
+        specifier: 0.10.4
+        version: 0.10.4
       sonner:
         specifier: ^1.4.3
         version: 1.4.41(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -6675,8 +6675,8 @@ packages:
     resolution: {integrity: sha512-QMEp5B7cftE7APOjk5Y6xgrbWu+WkLVQwk8JNjZ8nKRciZaByEW6MubieAiToS7+dwvrjGhH8jRXz3MVd0AYqQ==}
     hasBin: true
 
-  shadcn-svelte@0.10.3:
-    resolution: {integrity: sha512-tVXuNY1qZx//Rtb2yi2ABgM/nD/RAma1U9uccRXAC9w/0Ea+rEFhXxoOIj2gHqNBDiCfLhhfU0da7o5TRz5NcQ==}
+  shadcn-svelte@0.10.4:
+    resolution: {integrity: sha512-U9jIOKmHAYtNcL4NzVdFv6S5vC5738CXxPqHmpDeH62b1maVu/5XH9KXn3jGM+eYowdyf4iA07ZCoS9WooUknQ==}
     hasBin: true
 
   shallow-clone@3.0.1:
@@ -15702,7 +15702,7 @@ snapshots:
       inherits: 2.0.4
       safe-buffer: 5.2.1
 
-  shadcn-svelte@0.10.3:
+  shadcn-svelte@0.10.4:
     dependencies:
       '@clack/core': 0.3.4
       chalk: 5.2.0
