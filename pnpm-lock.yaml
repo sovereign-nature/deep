@@ -330,7 +330,7 @@ importers:
         version: 2.1.1
       embla-carousel-svelte:
         specifier: ^8.0.0
-        version: 8.0.2(svelte@4.2.15)
+        version: 8.0.4(svelte@4.2.15)
       svelte-radix:
         specifier: ^1.1.0
         version: 1.1.0(svelte@4.2.15)
@@ -3961,18 +3961,18 @@ packages:
   elliptic@6.5.5:
     resolution: {integrity: sha512-7EjbcmUm17NQFu4Pmgmq2olYMj8nwMnpcddByChSUjArp8F5DQWcIcpriwO4ZToLNAJig0yiyjswfyGNje/ixw==}
 
-  embla-carousel-reactive-utils@8.0.2:
-    resolution: {integrity: sha512-nLZqDkQdO0hvOP49/dUwjkkepMnUXgIzhyRuDjwGqswpB4Ibnc5M+w7rSQQAM+uMj0cPaXnYOTlv8XD7I/zVNw==}
+  embla-carousel-reactive-utils@8.0.4:
+    resolution: {integrity: sha512-7lWM+8hanIF2roTAjxwfqfr0+VTbr9rYVlAs0r5PwPOVpz1G3/+bRelgAYvwcfWVm5Vydo2pKXVfFOPQjznF7w==}
     peerDependencies:
-      embla-carousel: 8.0.2
+      embla-carousel: 8.0.4
 
-  embla-carousel-svelte@8.0.2:
-    resolution: {integrity: sha512-pJ4mXcyqvd3sLVyeLTOjz9XuIuhlBe1mHLqJ7X7llpc55B4xs/HZT5qof6IfETCN5rtE+cQdsNEkxI6el7uJxQ==}
+  embla-carousel-svelte@8.0.4:
+    resolution: {integrity: sha512-ZaVF6q9FpekWrdizPB9UTXsQ9yGZbC12NBoMUzYKOXrmb/a2A9EK4I9ZNxH0WFxx/2o3HB0/mHwxMSKrWoFvMw==}
     peerDependencies:
       svelte: ^3.49.0 || ^4.0.0
 
-  embla-carousel@8.0.2:
-    resolution: {integrity: sha512-bogsDO8xosuh/l3PxIvA5AMl3+BnRVAse9sDW/60amzj4MbGS5re4WH5eVEXiuH8G1/3G7QUAX2QNr3Yx8z5rA==}
+  embla-carousel@8.0.4:
+    resolution: {integrity: sha512-INndmilrV9KY4Wnb4F2tI55DuQnFjf3GPOaPDT2LGYiKhIWVNUhv1nz/RI7CZ6WoIZ8MYHP4t6Qm/cqpcGHknA==}
 
   emoji-regex@10.3.0:
     resolution: {integrity: sha512-QpLs9D9v9kArv4lfDEgg1X/gN5XLnf/A6l9cs8SPZLRZR3ZkY9+kwIQTxm+fsSej5UMYGE8fdoaZVIBlqG0XTw==}
@@ -5003,8 +5003,8 @@ packages:
     resolution: {integrity: sha512-N3yCS/NegsOBokc8GAdM8UcmfsKiSS8cipheD/nivzr700H+nsMOxJjQnvwOcRYVuFkdH0wGUvW2WbXGmrZGbQ==}
     engines: {node: '>=14'}
 
-  jake@10.8.7:
-    resolution: {integrity: sha512-ZDi3aP+fG/LchyBzUM804VjddnwfSfsdeYkwt8NcbKRvo4rFkjhs456iLFn3k2ZUWvNe4i48WACDbza8fhq2+w==}
+  jake@10.9.1:
+    resolution: {integrity: sha512-61btcOHNnLnsOdtLgA5efqQWjnSi/vow5HbI7HMdKKWqvrKR1bLK3BPlJn9gcSaP2ewuamUSMB5XEy76KUIS2w==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -12560,7 +12560,7 @@ snapshots:
 
   ejs@3.1.10:
     dependencies:
-      jake: 10.8.7
+      jake: 10.9.1
 
   electron-to-chromium@1.4.745: {}
 
@@ -12584,17 +12584,17 @@ snapshots:
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
 
-  embla-carousel-reactive-utils@8.0.2(embla-carousel@8.0.2):
+  embla-carousel-reactive-utils@8.0.4(embla-carousel@8.0.4):
     dependencies:
-      embla-carousel: 8.0.2
+      embla-carousel: 8.0.4
 
-  embla-carousel-svelte@8.0.2(svelte@4.2.15):
+  embla-carousel-svelte@8.0.4(svelte@4.2.15):
     dependencies:
-      embla-carousel: 8.0.2
-      embla-carousel-reactive-utils: 8.0.2(embla-carousel@8.0.2)
+      embla-carousel: 8.0.4
+      embla-carousel-reactive-utils: 8.0.4(embla-carousel@8.0.4)
       svelte: 4.2.15
 
-  embla-carousel@8.0.2: {}
+  embla-carousel@8.0.4: {}
 
   emoji-regex@10.3.0: {}
 
@@ -13770,7 +13770,7 @@ snapshots:
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
 
-  jake@10.8.7:
+  jake@10.9.1:
     dependencies:
       async: 3.2.5
       chalk: 4.1.2
