@@ -109,8 +109,8 @@ importers:
         specifier: 2.11.8
         version: 2.11.8
       '@sentry/sveltekit':
-        specifier: 7.113.0
-        version: 7.113.0(@sveltejs/kit@2.5.7(@sveltejs/vite-plugin-svelte@3.1.0(svelte@4.2.16)(vite@5.2.11(@types/node@20.12.10)(terser@5.31.0)))(svelte@4.2.16)(vite@5.2.11(@types/node@20.12.10)(terser@5.31.0)))(svelte@4.2.16)
+        specifier: 7.114.0
+        version: 7.114.0(@sveltejs/kit@2.5.7(@sveltejs/vite-plugin-svelte@3.1.0(svelte@4.2.16)(vite@5.2.11(@types/node@20.12.10)(terser@5.31.0)))(svelte@4.2.16)(vite@5.2.11(@types/node@20.12.10)(terser@5.31.0)))(svelte@4.2.16)
       '@sni/address-utils':
         specifier: workspace:*
         version: link:../../packages/address-utils
@@ -2253,24 +2253,24 @@ packages:
   '@scure/bip39@1.2.2':
     resolution: {integrity: sha512-HYf9TUXG80beW+hGAt3TRM8wU6pQoYur9iNypTROm42dorCGmLnFe3eWjz3gOq6G62H2WRh0FCzAR1PI+29zIA==}
 
-  '@sentry-internal/feedback@7.113.0':
-    resolution: {integrity: sha512-eEmL8QXauUnM3FXGv0GT29RpL0Jo0pkn/uMu3aqjhQo7JKNqUGVYIUxJxiGWbVMbDXqPQ7L66bjjMS3FR1GM2g==}
+  '@sentry-internal/feedback@7.114.0':
+    resolution: {integrity: sha512-kUiLRUDZuh10QE9JbSVVLgqxFoD9eDPOzT0MmzlPuas8JlTmJuV4FtSANNcqctd5mBuLt2ebNXH0MhRMwyae4A==}
     engines: {node: '>=12'}
 
-  '@sentry-internal/replay-canvas@7.113.0':
-    resolution: {integrity: sha512-K8uA42aobNF/BAXf14el15iSAi9fonLBUrjZi6nPDq7zaA8rPvfcTL797hwCbqkETz2zDf52Jz7I3WFCshDoUw==}
+  '@sentry-internal/replay-canvas@7.114.0':
+    resolution: {integrity: sha512-6rTiqmKi/FYtesdM2TM2U+rh6BytdPjLP65KTUodtxohJ+r/3m+termj2o4BhIYPE1YYOZNmbZfwebkuQPmWeg==}
     engines: {node: '>=12'}
 
   '@sentry-internal/tracing@7.111.0':
     resolution: {integrity: sha512-CgXly8rsdu4loWVKi2RqpInH3C2cVBuaYsx4ZP5IJpzSinsUAMyyr3Pc0PZzCyoVpBBXGBGj/4HhFsY3q6Z0Vg==}
     engines: {node: '>=8'}
 
-  '@sentry-internal/tracing@7.113.0':
-    resolution: {integrity: sha512-8MDnYENRMnEfQjvN4gkFYFaaBSiMFSU/6SQZfY9pLI3V105z6JQ4D0PGMAUVowXilwNZVpKNYohE7XByuhEC7Q==}
+  '@sentry-internal/tracing@7.114.0':
+    resolution: {integrity: sha512-dOuvfJN7G+3YqLlUY4HIjyWHaRP8vbOgF+OsE5w2l7ZEn1rMAaUbPntAR8AF9GBA6j2zWNoSo8e7GjbJxVofSg==}
     engines: {node: '>=8'}
 
-  '@sentry/browser@7.113.0':
-    resolution: {integrity: sha512-PdyVHPOprwoxGfKGsP2dXDWO0MBDW1eyP7EZlfZvM1A4hjk6ZRNfCv30g+TrqX4hiZDKzyqN3+AdP7N/J2IX0Q==}
+  '@sentry/browser@7.114.0':
+    resolution: {integrity: sha512-ijJ0vOEY6U9JJADVYGkUbLrAbpGSQgA4zV+KW3tcsBLX9M1jaWq4BV1PWHdzDPPDhy4OgfOjIfaMb5BSPn1U+g==}
     engines: {node: '>=8'}
 
   '@sentry/bundler-plugin-core@0.6.1':
@@ -2327,30 +2327,30 @@ packages:
     resolution: {integrity: sha512-/ljeMjZu8CSrLGrseBi/7S2zRIFsqMcvfyG6Nwgfc07J9nbHt8/MqouE1bXZfiaILqDBpK7BK9MLAAph4mkAWg==}
     engines: {node: '>=8'}
 
-  '@sentry/core@7.113.0':
-    resolution: {integrity: sha512-pg75y3C5PG2+ur27A0Re37YTCEnX0liiEU7EOxWDGutH17x3ySwlYqLQmZsFZTSnvzv7t3MGsNZ8nT5O0746YA==}
+  '@sentry/core@7.114.0':
+    resolution: {integrity: sha512-YnanVlmulkjgZiVZ9BfY9k6I082n+C+LbZo52MTvx3FY6RE5iyiPMpaOh67oXEZRWcYQEGm+bKruRxLVP6RlbA==}
     engines: {node: '>=8'}
 
-  '@sentry/integrations@7.113.0':
-    resolution: {integrity: sha512-w0sspGBQ+6+V/9bgCkpuM3CGwTYoQEVeTW6iNebFKbtN7MrM3XsGAM9I2cW1jVxFZROqCBPFtd2cs5n0j14aAg==}
+  '@sentry/integrations@7.114.0':
+    resolution: {integrity: sha512-BJIBWXGKeIH0ifd7goxOS29fBA8BkEgVVCahs6xIOXBjX1IRS6PmX0zYx/GP23nQTfhJiubv2XPzoYOlZZmDxg==}
     engines: {node: '>=8'}
 
-  '@sentry/node@7.113.0':
-    resolution: {integrity: sha512-Vam4Ia0I9fhVw8GJOzcLP7MiiHJSKl8L9LzLMMLG3+2/dFnDQOyS7sOfk3GqgpwzqPiusP9vFu7CFSX7EMQbTg==}
+  '@sentry/node@7.114.0':
+    resolution: {integrity: sha512-cqvi+OHV1Hj64mIGHoZtLgwrh1BG6ntcRjDLlVNMqml5rdTRD3TvG21579FtlqHlwZpbpF7K5xkwl8e5KL2hGw==}
     engines: {node: '>=8'}
 
-  '@sentry/replay@7.113.0':
-    resolution: {integrity: sha512-UD2IaphOWKFdeGR+ZiaNAQ+wFsnwbJK6PNwcW6cHmWKv9COlKufpFt06lviaqFZ8jmNrM4H+r+R8YVTrqCuxgg==}
+  '@sentry/replay@7.114.0':
+    resolution: {integrity: sha512-UvEajoLIX9n2poeW3R4Ybz7D0FgCGXoFr/x/33rdUEMIdTypknxjJWxg6fJngIduzwrlrvWpvP8QiZXczYQy2Q==}
     engines: {node: '>=12'}
 
-  '@sentry/svelte@7.113.0':
-    resolution: {integrity: sha512-U+P30O/NNt/YFugCKVduQ3oEL4g5XICHF+T9Mta/gR8nrxQI2LssoACpGswIWsA8C4iqyPDJ4L/P5CLYWBxf+Q==}
+  '@sentry/svelte@7.114.0':
+    resolution: {integrity: sha512-5nAqGXDRh1R8PXN0oLiZf1P8SyVXvUjAuig1+AN+8hpGNd5JDSHxCBq2f3fto+Gc+I5WJGfTbfqCN8Fgn1XoZw==}
     engines: {node: '>=8'}
     peerDependencies:
       svelte: 3.x || 4.x
 
-  '@sentry/sveltekit@7.113.0':
-    resolution: {integrity: sha512-FAmxF5+TbTYm9S/QRV/mmIh0uJaCUO80YQzfZxMuA3ww/qwn0fibuv4pT0Mp1MM9RJCLFeBJakldsXPPpSiKvw==}
+  '@sentry/sveltekit@7.114.0':
+    resolution: {integrity: sha512-Pv015msOySpvOjLgH8tEaKs4S4GPkVfXpZCQ50COqwRg0hyseO/DYErVIs3r7DhVZyqDGpntKu7YzIntRDledA==}
     engines: {node: '>=16'}
     peerDependencies:
       '@sveltejs/kit': 1.x || 2.x
@@ -2363,16 +2363,16 @@ packages:
     resolution: {integrity: sha512-Oti4pgQ55+FBHKKcHGu51ZUxO1u52G5iVNK4mbtAN+5ArSCy/2s1H8IDJiOMswn3acfUnCR0oB/QsbEgAPZ26g==}
     engines: {node: '>=8'}
 
-  '@sentry/types@7.113.0':
-    resolution: {integrity: sha512-PJbTbvkcPu/LuRwwXB1He8m+GjDDLKBtu3lWg5xOZaF5IRdXQU2xwtdXXsjge4PZR00tF7MO7X8ZynTgWbYaew==}
+  '@sentry/types@7.114.0':
+    resolution: {integrity: sha512-tsqkkyL3eJtptmPtT0m9W/bPLkU7ILY7nvwpi1hahA5jrM7ppoU0IMaQWAgTD+U3rzFH40IdXNBFb8Gnqcva4w==}
     engines: {node: '>=8'}
 
   '@sentry/utils@7.111.0':
     resolution: {integrity: sha512-CB5rz1EgCSwj3xoXogsCZ5pQtfERrURc/ItcCuoaijUhkD0iMq5MCNWMHW3mBsBrqx/Oba+XGvDu0t/5+SWwBg==}
     engines: {node: '>=8'}
 
-  '@sentry/utils@7.113.0':
-    resolution: {integrity: sha512-nzKsErwmze1mmEsbW2AwL2oB+I5v6cDEJY4sdfLekA4qZbYZ8pV5iWza6IRl4XfzGTE1qpkZmEjPU9eyo0yvYw==}
+  '@sentry/utils@7.114.0':
+    resolution: {integrity: sha512-319N90McVpupQ6vws4+tfCy/03AdtsU0MurIE4+W5cubHME08HtiEWlfacvAxX+yuKFhvdsO4K4BB/dj54ideg==}
     engines: {node: '>=8'}
 
   '@sentry/vite-plugin@0.6.1':
@@ -10171,18 +10171,18 @@ snapshots:
       '@noble/hashes': 1.3.3
       '@scure/base': 1.1.6
 
-  '@sentry-internal/feedback@7.113.0':
+  '@sentry-internal/feedback@7.114.0':
     dependencies:
-      '@sentry/core': 7.113.0
-      '@sentry/types': 7.113.0
-      '@sentry/utils': 7.113.0
+      '@sentry/core': 7.114.0
+      '@sentry/types': 7.114.0
+      '@sentry/utils': 7.114.0
 
-  '@sentry-internal/replay-canvas@7.113.0':
+  '@sentry-internal/replay-canvas@7.114.0':
     dependencies:
-      '@sentry/core': 7.113.0
-      '@sentry/replay': 7.113.0
-      '@sentry/types': 7.113.0
-      '@sentry/utils': 7.113.0
+      '@sentry/core': 7.114.0
+      '@sentry/replay': 7.114.0
+      '@sentry/types': 7.114.0
+      '@sentry/utils': 7.114.0
 
   '@sentry-internal/tracing@7.111.0':
     dependencies:
@@ -10190,27 +10190,27 @@ snapshots:
       '@sentry/types': 7.111.0
       '@sentry/utils': 7.111.0
 
-  '@sentry-internal/tracing@7.113.0':
+  '@sentry-internal/tracing@7.114.0':
     dependencies:
-      '@sentry/core': 7.113.0
-      '@sentry/types': 7.113.0
-      '@sentry/utils': 7.113.0
+      '@sentry/core': 7.114.0
+      '@sentry/types': 7.114.0
+      '@sentry/utils': 7.114.0
 
-  '@sentry/browser@7.113.0':
+  '@sentry/browser@7.114.0':
     dependencies:
-      '@sentry-internal/feedback': 7.113.0
-      '@sentry-internal/replay-canvas': 7.113.0
-      '@sentry-internal/tracing': 7.113.0
-      '@sentry/core': 7.113.0
-      '@sentry/integrations': 7.113.0
-      '@sentry/replay': 7.113.0
-      '@sentry/types': 7.113.0
-      '@sentry/utils': 7.113.0
+      '@sentry-internal/feedback': 7.114.0
+      '@sentry-internal/replay-canvas': 7.114.0
+      '@sentry-internal/tracing': 7.114.0
+      '@sentry/core': 7.114.0
+      '@sentry/integrations': 7.114.0
+      '@sentry/replay': 7.114.0
+      '@sentry/types': 7.114.0
+      '@sentry/utils': 7.114.0
 
   '@sentry/bundler-plugin-core@0.6.1':
     dependencies:
       '@sentry/cli': 2.31.0
-      '@sentry/node': 7.113.0
+      '@sentry/node': 7.114.0
       '@sentry/tracing': 7.111.0
       find-up: 5.0.0
       glob: 9.3.2
@@ -10266,51 +10266,51 @@ snapshots:
       '@sentry/types': 7.111.0
       '@sentry/utils': 7.111.0
 
-  '@sentry/core@7.113.0':
+  '@sentry/core@7.114.0':
     dependencies:
-      '@sentry/types': 7.113.0
-      '@sentry/utils': 7.113.0
+      '@sentry/types': 7.114.0
+      '@sentry/utils': 7.114.0
 
-  '@sentry/integrations@7.113.0':
+  '@sentry/integrations@7.114.0':
     dependencies:
-      '@sentry/core': 7.113.0
-      '@sentry/types': 7.113.0
-      '@sentry/utils': 7.113.0
+      '@sentry/core': 7.114.0
+      '@sentry/types': 7.114.0
+      '@sentry/utils': 7.114.0
       localforage: 1.10.0
 
-  '@sentry/node@7.113.0':
+  '@sentry/node@7.114.0':
     dependencies:
-      '@sentry-internal/tracing': 7.113.0
-      '@sentry/core': 7.113.0
-      '@sentry/integrations': 7.113.0
-      '@sentry/types': 7.113.0
-      '@sentry/utils': 7.113.0
+      '@sentry-internal/tracing': 7.114.0
+      '@sentry/core': 7.114.0
+      '@sentry/integrations': 7.114.0
+      '@sentry/types': 7.114.0
+      '@sentry/utils': 7.114.0
 
-  '@sentry/replay@7.113.0':
+  '@sentry/replay@7.114.0':
     dependencies:
-      '@sentry-internal/tracing': 7.113.0
-      '@sentry/core': 7.113.0
-      '@sentry/types': 7.113.0
-      '@sentry/utils': 7.113.0
+      '@sentry-internal/tracing': 7.114.0
+      '@sentry/core': 7.114.0
+      '@sentry/types': 7.114.0
+      '@sentry/utils': 7.114.0
 
-  '@sentry/svelte@7.113.0(svelte@4.2.16)':
+  '@sentry/svelte@7.114.0(svelte@4.2.16)':
     dependencies:
-      '@sentry/browser': 7.113.0
-      '@sentry/core': 7.113.0
-      '@sentry/types': 7.113.0
-      '@sentry/utils': 7.113.0
+      '@sentry/browser': 7.114.0
+      '@sentry/core': 7.114.0
+      '@sentry/types': 7.114.0
+      '@sentry/utils': 7.114.0
       magic-string: 0.30.10
       svelte: 4.2.16
 
-  '@sentry/sveltekit@7.113.0(@sveltejs/kit@2.5.7(@sveltejs/vite-plugin-svelte@3.1.0(svelte@4.2.16)(vite@5.2.11(@types/node@20.12.10)(terser@5.31.0)))(svelte@4.2.16)(vite@5.2.11(@types/node@20.12.10)(terser@5.31.0)))(svelte@4.2.16)':
+  '@sentry/sveltekit@7.114.0(@sveltejs/kit@2.5.7(@sveltejs/vite-plugin-svelte@3.1.0(svelte@4.2.16)(vite@5.2.11(@types/node@20.12.10)(terser@5.31.0)))(svelte@4.2.16)(vite@5.2.11(@types/node@20.12.10)(terser@5.31.0)))(svelte@4.2.16)':
     dependencies:
-      '@sentry-internal/tracing': 7.113.0
-      '@sentry/core': 7.113.0
-      '@sentry/integrations': 7.113.0
-      '@sentry/node': 7.113.0
-      '@sentry/svelte': 7.113.0(svelte@4.2.16)
-      '@sentry/types': 7.113.0
-      '@sentry/utils': 7.113.0
+      '@sentry-internal/tracing': 7.114.0
+      '@sentry/core': 7.114.0
+      '@sentry/integrations': 7.114.0
+      '@sentry/node': 7.114.0
+      '@sentry/svelte': 7.114.0(svelte@4.2.16)
+      '@sentry/types': 7.114.0
+      '@sentry/utils': 7.114.0
       '@sentry/vite-plugin': 0.6.1
       '@sveltejs/kit': 2.5.7(@sveltejs/vite-plugin-svelte@3.1.0(svelte@4.2.16)(vite@5.2.11(@types/node@20.12.10)(terser@5.31.0)))(svelte@4.2.16)(vite@5.2.11(@types/node@20.12.10)(terser@5.31.0))
       magicast: 0.2.8
@@ -10326,15 +10326,15 @@ snapshots:
 
   '@sentry/types@7.111.0': {}
 
-  '@sentry/types@7.113.0': {}
+  '@sentry/types@7.114.0': {}
 
   '@sentry/utils@7.111.0':
     dependencies:
       '@sentry/types': 7.111.0
 
-  '@sentry/utils@7.113.0':
+  '@sentry/utils@7.114.0':
     dependencies:
-      '@sentry/types': 7.113.0
+      '@sentry/types': 7.114.0
 
   '@sentry/vite-plugin@0.6.1':
     dependencies:
