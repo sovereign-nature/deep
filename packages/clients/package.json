@@ -16,7 +16,7 @@
     "graphql-request": "6.1.0"
   },
   "devDependencies": {
-    "msw": "2.2.14",
+    "msw": "2.3.0",
     "vitest": "1.4.0"
   }
 }
