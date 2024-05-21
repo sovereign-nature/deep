@@ -69,8 +69,8 @@ importers:
         specifier: 4.17.4
         version: 4.17.4
       hono:
-        specifier: 4.3.6
-        version: 4.3.6
+        specifier: 4.3.9
+        version: 4.3.9
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -83,7 +83,7 @@ importers:
         version: 4.20240502.0
       '@hono/zod-validator':
         specifier: 0.2.1
-        version: 0.2.1(hono@4.3.6)(zod@3.23.8)
+        version: 0.2.1(hono@4.3.9)(zod@3.23.8)
       env-cmd:
         specifier: 10.1.0
         version: 10.1.0
@@ -2771,13 +2771,13 @@ packages:
       '@hapi/hoek': 9.3.0
     dev: true
 
-  /@hono/zod-validator@0.2.1(hono@4.3.6)(zod@3.23.8):
+  /@hono/zod-validator@0.2.1(hono@4.3.9)(zod@3.23.8):
     resolution: {integrity: sha512-HFoxln7Q6JsE64qz2WBS28SD33UB2alp3aRKmcWnNLDzEL1BLsWfbdX6e1HIiUprHYTIXf5y7ax8eYidKUwyaA==}
     peerDependencies:
       hono: '>=3.9.0'
       zod: ^3.19.1
     dependencies:
-      hono: 4.3.6
+      hono: 4.3.9
       zod: 3.23.8
     dev: true
 
@@ -8917,8 +8917,8 @@ packages:
       minimalistic-crypto-utils: 1.0.1
     dev: true
 
-  /hono@4.3.6:
-    resolution: {integrity: sha512-2IqXwrxWF4tG2AR7b5tMYn+KEnWK8UvdC/NUSbOKWj/Kj11OJqel58FxyiXLK5CcKLiL8aGtTe4lkBKXyaHMBQ==}
+  /hono@4.3.9:
+    resolution: {integrity: sha512-6c5LVE23HnIS8iBhY+XPmYJlPeeClznOi7mBNsAsJCgxo8Ciz75LTjqRUf5wv4RYq8kL+1KPLUZHCtKmbZssNg==}
     engines: {node: '>=16.0.0'}
 
   /howler@2.2.4:
