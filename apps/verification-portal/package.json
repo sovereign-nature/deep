@@ -38,7 +38,7 @@
     "@sveltejs/vite-plugin-svelte-inspector": "^2.0.0",
     "@types/howler": "2.2.11",
     "@types/leaflet": "1.9.12",
-    "@types/lodash": "4.17.1",
+    "@types/lodash": "4.17.4",
     "@vercel/analytics": "1.2.2",
     "@vercel/og": "0.6.2",
     "@vercel/speed-insights": "1.0.10",
