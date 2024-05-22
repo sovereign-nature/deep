@@ -411,8 +411,8 @@ importers:
         specifier: 0.2.8
         version: 0.2.8
       shadcn-svelte:
-        specifier: 0.10.5
-        version: 0.10.5
+        specifier: 0.10.6
+        version: 0.10.6
       sonner:
         specifier: ^1.4.3
         version: 1.4.41(react-dom@18.3.1)(react@18.3.1)
@@ -12395,8 +12395,8 @@ packages:
       safe-buffer: 5.2.1
     dev: true
 
-  /shadcn-svelte@0.10.5:
-    resolution: {integrity: sha512-GSjpmgERrbvIS24QoHtSMmqqzJq0Ofq5EhvqKJpV3GdvCWxil+McBQETIux4ZWsdqzwfuKRH5WRKqWg8gRO1Nw==}
+  /shadcn-svelte@0.10.6:
+    resolution: {integrity: sha512-LCoRTXgR3gVURN+/I6Uea0fN+zWtuzMpw6gcH0nlruvB6/RXLQhOu9DeXM6zLZWthW6WClidZiZOi5kCUB9sSA==}
     hasBin: true
     dependencies:
       '@clack/core': 0.3.4
