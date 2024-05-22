@@ -77,7 +77,7 @@ importers:
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: ^0.2.0
-        version: 0.2.11(@cloudflare/workers-types@4.20240502.0)(@vitest/runner@1.5.3)(@vitest/snapshot@1.5.3)(vitest@1.3.0)
+        version: 0.2.12(@cloudflare/workers-types@4.20240502.0)(@vitest/runner@1.5.3)(@vitest/snapshot@1.5.3)(vitest@1.3.0)
       '@cloudflare/workers-types':
         specifier: 4.20240502.0
         version: 4.20240502.0
@@ -167,16 +167,16 @@ importers:
         version: 0.5.0(@sveltejs/kit@2.5.10)(vite-plugin-pwa@0.20.0)
       '@wagmi/connectors':
         specifier: 4.3.10
-        version: 4.3.10(@wagmi/core@2.10.3)(react-i18next@13.5.0)(react-native@0.74.1)(react@18.3.1)(rollup@2.79.1)(typescript@5.4.5)(viem@2.10.2)
+        version: 4.3.10(@wagmi/core@2.10.3)(react-i18next@13.5.0)(react-native@0.74.1)(react@18.3.1)(rollup@2.79.1)(typescript@5.4.5)(viem@2.12.0)
       '@wagmi/core':
         specifier: 2.10.3
-        version: 2.10.3(react@18.3.1)(typescript@5.4.5)(viem@2.10.2)
+        version: 2.10.3(react@18.3.1)(typescript@5.4.5)(viem@2.12.0)
       '@web3inbox/core':
         specifier: 1.2.1
         version: 1.2.1(react@18.3.1)
       '@web3modal/wagmi':
         specifier: 4.1.11
-        version: 4.1.11(@wagmi/connectors@4.3.10)(@wagmi/core@2.10.3)(react@18.3.1)(viem@2.10.2)
+        version: 4.1.11(@wagmi/connectors@4.3.10)(@wagmi/core@2.10.3)(react@18.3.1)(viem@2.12.0)
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -1945,8 +1945,8 @@ packages:
       mime: 3.0.0
     dev: true
 
-  /@cloudflare/vitest-pool-workers@0.2.11(@cloudflare/workers-types@4.20240502.0)(@vitest/runner@1.5.3)(@vitest/snapshot@1.5.3)(vitest@1.3.0):
-    resolution: {integrity: sha512-Fted91pLzA5PCyNsZPPGJGcb72YJiasVDeYzFXf6+EPsiRUgC7bIZ5UB+VrWXWNsUDfVTQujBNkIgMAiR2U6jw==}
+  /@cloudflare/vitest-pool-workers@0.2.12(@cloudflare/workers-types@4.20240502.0)(@vitest/runner@1.5.3)(@vitest/snapshot@1.5.3)(vitest@1.3.0):
+    resolution: {integrity: sha512-j9ltaBbkUQnHOiA+T/19rhJsC23jPv+gsCMqM1slUntQBaLS/G2I3HlrUCQLEbN35n17UpMnxNYhri4vlAQ5Qg==}
     peerDependencies:
       '@vitest/runner': 1.3.x - 1.5.x
       '@vitest/snapshot': 1.3.x - 1.5.x
@@ -1961,7 +1961,7 @@ packages:
       miniflare: 3.20240512.0
       semver: 7.6.2
       vitest: 1.3.0
-      wrangler: 3.57.0(@cloudflare/workers-types@4.20240502.0)
+      wrangler: 3.57.1(@cloudflare/workers-types@4.20240502.0)
       zod: 3.23.8
     transitivePeerDependencies:
       - '@cloudflare/workers-types'
@@ -5238,7 +5238,7 @@ packages:
       pretty-format: 29.7.0
     dev: true
 
-  /@wagmi/connectors@4.3.10(@wagmi/core@2.10.3)(react-i18next@13.5.0)(react-native@0.74.1)(react@18.3.1)(rollup@2.79.1)(typescript@5.4.5)(viem@2.10.2):
+  /@wagmi/connectors@4.3.10(@wagmi/core@2.10.3)(react-i18next@13.5.0)(react-native@0.74.1)(react@18.3.1)(rollup@2.79.1)(typescript@5.4.5)(viem@2.12.0):
     resolution: {integrity: sha512-IZcsocBfDq6pe8sxkDgP2k9YNqv8udl2eSr2hx2JCESA44ixx5zRjoGNMAkKxlzM6uXjXLJKp/g1KYlpmoHkDg==}
     peerDependencies:
       '@wagmi/core': 2.9.8
@@ -5252,11 +5252,11 @@ packages:
       '@metamask/sdk': 0.20.3(react-i18next@13.5.0)(react-native@0.74.1)(react@18.3.1)(rollup@2.79.1)
       '@safe-global/safe-apps-provider': 0.18.1(typescript@5.4.5)
       '@safe-global/safe-apps-sdk': 8.1.0(typescript@5.4.5)
-      '@wagmi/core': 2.10.3(react@18.3.1)(typescript@5.4.5)(viem@2.10.2)
+      '@wagmi/core': 2.10.3(react@18.3.1)(typescript@5.4.5)(viem@2.12.0)
       '@walletconnect/ethereum-provider': 2.13.0(react@18.3.1)
       '@walletconnect/modal': 2.6.2(react@18.3.1)
       typescript: 5.4.5
-      viem: 2.10.2(typescript@5.4.5)
+      viem: 2.12.0(typescript@5.4.5)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -5285,7 +5285,7 @@ packages:
       - zod
     dev: true
 
-  /@wagmi/core@2.10.3(react@18.3.1)(typescript@5.4.5)(viem@2.10.2):
+  /@wagmi/core@2.10.3(react@18.3.1)(typescript@5.4.5)(viem@2.12.0):
     resolution: {integrity: sha512-Sx5tWFzbLnwJk/aYPsaG8o4SQ8pVs5ucV5AVyPzA9Ibg3+J1P7qxOcfwPDXSNk67vmCGyZWlmBF/IwQChOJYbQ==}
     peerDependencies:
       '@tanstack/query-core': '>=5.0.0'
@@ -5300,7 +5300,7 @@ packages:
       eventemitter3: 5.0.1
       mipd: 0.0.5(typescript@5.4.5)
       typescript: 5.4.5
-      viem: 2.10.2(typescript@5.4.5)
+      viem: 2.12.0(typescript@5.4.5)
       zustand: 4.4.1(react@18.3.1)
     transitivePeerDependencies:
       - '@types/react'
@@ -6036,7 +6036,7 @@ packages:
       qrcode: 1.5.3
     dev: true
 
-  /@web3modal/wagmi@4.1.11(@wagmi/connectors@4.3.10)(@wagmi/core@2.10.3)(react@18.3.1)(viem@2.10.2):
+  /@web3modal/wagmi@4.1.11(@wagmi/connectors@4.3.10)(@wagmi/core@2.10.3)(react@18.3.1)(viem@2.12.0):
     resolution: {integrity: sha512-VoXV9idD0yV7jx0F2Xk722VXqQNCDKqDc+LR8WsuOU64TiTLJx9UDQpNcoigbC3bYCi/4Cpw41iSGgs7utbgyQ==}
     peerDependencies:
       '@wagmi/connectors': '>=4.0.0'
@@ -6053,8 +6053,8 @@ packages:
       vue:
         optional: true
     dependencies:
-      '@wagmi/connectors': 4.3.10(@wagmi/core@2.10.3)(react-i18next@13.5.0)(react-native@0.74.1)(react@18.3.1)(rollup@2.79.1)(typescript@5.4.5)(viem@2.10.2)
-      '@wagmi/core': 2.10.3(react@18.3.1)(typescript@5.4.5)(viem@2.10.2)
+      '@wagmi/connectors': 4.3.10(@wagmi/core@2.10.3)(react-i18next@13.5.0)(react-native@0.74.1)(react@18.3.1)(rollup@2.79.1)(typescript@5.4.5)(viem@2.12.0)
+      '@wagmi/core': 2.10.3(react@18.3.1)(typescript@5.4.5)(viem@2.12.0)
       '@web3modal/polyfills': 4.1.11
       '@web3modal/scaffold': 4.1.11(react@18.3.1)
       '@web3modal/scaffold-react': 4.1.11(react@18.3.1)
@@ -6062,7 +6062,7 @@ packages:
       '@web3modal/scaffold-vue': 4.1.11(react@18.3.1)
       '@web3modal/siwe': 4.1.11(react@18.3.1)
       react: 18.3.1
-      viem: 2.10.2(typescript@5.4.5)
+      viem: 2.12.0(typescript@5.4.5)
     transitivePeerDependencies:
       - '@types/react'
     dev: true
@@ -9422,6 +9422,14 @@ packages:
     dependencies:
       ws: 8.13.0
 
+  /isows@1.0.4(ws@8.13.0):
+    resolution: {integrity: sha512-hEzjY+x9u9hPmBom9IIAqdJCwNLax+xrPb51vEPpERoFlIxgmZcHzsT5jKG06nvInKOBGvReAVz80Umed5CczQ==}
+    peerDependencies:
+      ws: '*'
+    dependencies:
+      ws: 8.13.0
+    dev: true
+
   /jackspeak@2.3.6:
     resolution: {integrity: sha512-N3yCS/NegsOBokc8GAdM8UcmfsKiSS8cipheD/nivzr700H+nsMOxJjQnvwOcRYVuFkdH0wGUvW2WbXGmrZGbQ==}
     engines: {node: '>=14'}
@@ -9467,7 +9475,7 @@ packages:
       '@types/stack-utils': 2.0.3
       chalk: 4.1.2
       graceful-fs: 4.2.11
-      micromatch: 4.0.6
+      micromatch: 4.0.7
       pretty-format: 29.7.0
       slash: 3.0.0
       stack-utils: 2.0.6
@@ -9585,7 +9593,7 @@ packages:
       chalk: 4.1.2
       flow-parser: 0.236.0
       graceful-fs: 4.2.11
-      micromatch: 4.0.6
+      micromatch: 4.0.7
       neo-async: 2.6.2
       node-dir: 0.1.17
       recast: 0.21.5
@@ -10206,7 +10214,7 @@ packages:
       graceful-fs: 4.2.11
       invariant: 2.2.4
       jest-worker: 29.7.0
-      micromatch: 4.0.6
+      micromatch: 4.0.7
       node-abort-controller: 3.1.1
       nullthrows: 1.1.1
       walker: 1.0.8
@@ -10375,6 +10383,14 @@ packages:
     dependencies:
       braces: 3.0.3
       picomatch: 4.0.2
+
+  /micromatch@4.0.7:
+    resolution: {integrity: sha512-LPP/3KorzCwBxfeUuZmaR6bG2kdeHSbe0P2tY3FLRU4vYrjYz5hI4QZwV0njUx3jeuKe67YukQ1LSPZBKDqO/Q==}
+    engines: {node: '>=8.6'}
+    dependencies:
+      braces: 3.0.3
+      picomatch: 2.3.1
+    dev: true
 
   /mime-db@1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
@@ -13942,6 +13958,30 @@ packages:
       - bufferutil
       - utf-8-validate
       - zod
+    dev: false
+
+  /viem@2.12.0(typescript@5.4.5):
+    resolution: {integrity: sha512-XBvORspE4x2/gfy7idH6IVFwkJiXirygFCU3lxUH6fttsj8zufLtgiokfvZF/LAZUEDvdxSgL08whSYgffM2fw==}
+    peerDependencies:
+      typescript: '>=5.0.4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@adraffy/ens-normalize': 1.10.0
+      '@noble/curves': 1.2.0
+      '@noble/hashes': 1.3.2
+      '@scure/bip32': 1.3.2
+      '@scure/bip39': 1.2.1
+      abitype: 1.0.0(typescript@5.4.5)
+      isows: 1.0.4(ws@8.13.0)
+      typescript: 5.4.5
+      ws: 8.13.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+      - zod
+    dev: true
 
   /vite-node@1.3.0:
     resolution: {integrity: sha512-D/oiDVBw75XMnjAXne/4feCkCEwcbr2SU1bjAhCcfI5Bq3VoOHji8/wCPAfUkDIeohJ5nSZ39fNxM3dNZ6OBOA==}
@@ -14499,8 +14539,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /wrangler@3.57.0(@cloudflare/workers-types@4.20240502.0):
-    resolution: {integrity: sha512-izK3AZtlFoTq8N0EZjLOQ7hqwsjaXCc1cbNKuhsLJjDX1jB1YZBDPhIhtXL4VVzkJAcH+0Zw2gguOePFCHNaxw==}
+  /wrangler@3.57.1(@cloudflare/workers-types@4.20240502.0):
+    resolution: {integrity: sha512-M8YnWUwdrb8AFiRePtVnzlDn02OX4osWvdl8oVh6eyZqqkqXYg7lwlYBr14Qj92pMN4JvMBmDZoukkYHvwpJRg==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
