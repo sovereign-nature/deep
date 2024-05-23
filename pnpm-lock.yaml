@@ -284,8 +284,8 @@ importers:
         specifier: workspace:*
         version: link:../utils
       axios:
-        specifier: 1.6.8
-        version: 1.6.8
+        specifier: 1.7.2
+        version: 1.7.2
       graphql-request:
         specifier: 6.1.0
         version: 6.1.0(graphql@16.8.1)
@@ -5467,7 +5467,7 @@ packages:
       '@walletconnect/did-jwt': 2.0.3
       '@walletconnect/types': 2.13.0
       '@walletconnect/utils': 2.13.0
-      axios: 1.6.8
+      axios: 1.7.2
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -5634,7 +5634,7 @@ packages:
       '@walletconnect/jsonrpc-utils': 1.0.7
       '@walletconnect/time': 1.0.2
       '@walletconnect/utils': 2.13.0
-      axios: 1.6.8
+      axios: 1.7.2
       jwt-decode: 3.1.2
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -6584,8 +6584,8 @@ packages:
       possible-typed-array-names: 1.0.0
     dev: true
 
-  /axios@1.6.8:
-    resolution: {integrity: sha512-v/ZHtJDU39mDpyBoFVkETcd/uNdxrWRrg3bKpOKzXFA6Bvqopts6ALSMU3y6ijYxbw2B+wPrIv46egTzJXCLGQ==}
+  /axios@1.7.2:
+    resolution: {integrity: sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==}
     dependencies:
       follow-redirects: 1.15.6
       form-data: 4.0.0
