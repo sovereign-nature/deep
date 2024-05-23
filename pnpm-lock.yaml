@@ -323,8 +323,8 @@ importers:
   packages/ui-kit:
     dependencies:
       bits-ui:
-        specifier: 0.21.7
-        version: 0.21.7(svelte@4.2.17)
+        specifier: 0.21.9
+        version: 0.21.9(svelte@4.2.17)
       clsx:
         specifier: ^2.1.0
         version: 2.1.1
@@ -6558,8 +6558,8 @@ packages:
     resolution: {integrity: sha512-37FHE8rqsYM5JEKCnXFyHpBCzvgHEExwVVTq+nUmloInU7l8ezD1TpOhKpS8oe1DTYFqEK27rFZVKG43oTqXRA==}
     dev: true
 
-  /bits-ui@0.21.7(svelte@4.2.17):
-    resolution: {integrity: sha512-1PKp90ly1R6jexIiAUj1Dk4u2pln7ok+L8Vc0rHMY7pi7YZvadFNZvkp1G5BtmL8qh2xsn4MVNgKjPAQMCxW0A==}
+  /bits-ui@0.21.9(svelte@4.2.17):
+    resolution: {integrity: sha512-tMoHi2QbsNKJsPDoXGi07OMx6F8LVMSNYMMcntFX4fPPvy+SJSeZYOKlBMmneiSg7smpWzg+h20q0q01OvyxZQ==}
     peerDependencies:
       svelte: ^4.0.0 || ^5.0.0-next.118
     dependencies:
@@ -13821,7 +13821,7 @@ packages:
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
-      bits-ui: 0.21.7(svelte@4.2.17)
+      bits-ui: 0.21.9(svelte@4.2.17)
       svelte: 4.2.17
     dev: false
 
