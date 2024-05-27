@@ -16,7 +16,7 @@
     "@sni/constants": "workspace:*",
     "@sni/types": "workspace:*",
     "@types/lodash": "4.17.4",
-    "hono": "4.3.9",
+    "hono": "4.4.0",
     "lodash": "4.17.21"
   },
   "devDependencies": {
