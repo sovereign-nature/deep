@@ -82,8 +82,8 @@ importers:
         specifier: 4.20240524.0
         version: 4.20240524.0
       '@hono/zod-validator':
-        specifier: 0.2.1
-        version: 0.2.1(hono@4.4.0)(zod@3.23.8)
+        specifier: 0.2.2
+        version: 0.2.2(hono@4.4.0)(zod@3.23.8)
       env-cmd:
         specifier: 10.1.0
         version: 10.1.0
@@ -2723,8 +2723,8 @@ packages:
       '@hapi/hoek': 9.3.0
     dev: true
 
-  /@hono/zod-validator@0.2.1(hono@4.4.0)(zod@3.23.8):
-    resolution: {integrity: sha512-HFoxln7Q6JsE64qz2WBS28SD33UB2alp3aRKmcWnNLDzEL1BLsWfbdX6e1HIiUprHYTIXf5y7ax8eYidKUwyaA==}
+  /@hono/zod-validator@0.2.2(hono@4.4.0)(zod@3.23.8):
+    resolution: {integrity: sha512-dSDxaPV70Py8wuIU2QNpoVEIOSzSXZ/6/B/h4xA7eOMz7+AarKTSGV8E6QwrdcCbBLkpqfJ4Q2TmBO0eP1tCBQ==}
     peerDependencies:
       hono: '>=3.9.0'
       zod: ^3.19.1
