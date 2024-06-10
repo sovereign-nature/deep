@@ -15,7 +15,7 @@
     "@sni/clients": "workspace:*",
     "@sni/constants": "workspace:*",
     "@sni/types": "workspace:*",
-    "@types/lodash": "4.17.4",
+    "@types/lodash": "4.17.5",
     "hono": "4.4.0",
     "lodash": "4.17.21"
   },
