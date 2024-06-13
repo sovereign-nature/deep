@@ -160,8 +160,8 @@ importers:
         specifier: 0.6.2
         version: 0.6.2
       '@vercel/speed-insights':
-        specifier: 1.0.11
-        version: 1.0.11(@sveltejs/kit@2.5.10)(react@18.3.1)(svelte@4.2.17)
+        specifier: 1.0.12
+        version: 1.0.12(@sveltejs/kit@2.5.10)(react@18.3.1)(svelte@4.2.17)
       '@vite-pwa/sveltekit':
         specifier: 0.5.0
         version: 0.5.0(@sveltejs/kit@2.5.10)(vite-plugin-pwa@0.20.0)
@@ -5019,8 +5019,8 @@ packages:
       yoga-wasm-web: 0.3.3
     dev: true
 
-  /@vercel/speed-insights@1.0.11(@sveltejs/kit@2.5.10)(react@18.3.1)(svelte@4.2.17):
-    resolution: {integrity: sha512-l9hzSNmJvb2Yqpgd/BzpiT0J0aQDdtqxOf3Xm+iW4PICxVvhY1ef7Otdx4GXI+88dVkws57qMzXiShz19gXzSQ==}
+  /@vercel/speed-insights@1.0.12(@sveltejs/kit@2.5.10)(react@18.3.1)(svelte@4.2.17):
+    resolution: {integrity: sha512-ZGQ+a7bcfWJD2VYEp2R1LHvRAMyyaFBYytZXsfnbOMkeOvzGNVxUL7aVUvisIrTZjXTSsxG45DKX7yiw6nq2Jw==}
     requiresBuild: true
     peerDependencies:
       '@sveltejs/kit': ^1 || ^2
