@@ -8,11 +8,14 @@ import { Web3InboxClient } from '@web3inbox/core';
 import { getAccount } from '@wagmi/core';
 import * as Sentry from '@sentry/sveltekit';
 import { toast } from 'svelte-sonner';
+import { PUBLIC_WEB3INBOX_ALL_APPS } from '$env/static/public';
+
 import { projectId, wagmiConfig } from '$lib/shared/web3Configs';
 
 const domain = 'real.sovereignnature.com';
-const isLimited = process.env.NODE_ENV === 'production';
-
+const allApps =
+  process.env.NODE_ENV !== 'production' ||
+  PUBLIC_WEB3INBOX_ALL_APPS === 'false';
 //Store context variables
 const web3InboxMessages = writable();
 const web3InboxTypes = writable();
@@ -94,7 +97,7 @@ async function connectToInbox() {
     web3InboxClient = await Web3InboxClient.init({
       projectId,
       domain,
-      allApps: !isLimited,
+      allApps,
     });
     if (!accountWatchInitialized) {
       accountWatchInitialized = true;
