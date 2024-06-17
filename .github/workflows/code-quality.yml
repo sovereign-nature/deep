@@ -17,6 +17,7 @@ jobs:
       ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
       NFTSCAN_API_KEY: ${{ secrets.NFTSCAN_API_KEY }}
       VERCEL_URL: 'empty'
+      PUBLIC_WEB3INBOX_ALL_APPS: false
       TURBO_REMOTE_ONLY: true
     steps:
       - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
