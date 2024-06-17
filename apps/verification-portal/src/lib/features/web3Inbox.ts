@@ -16,6 +16,9 @@ const domain = 'real.sovereignnature.com';
 const allApps =
   process.env.NODE_ENV !== 'production' ||
   PUBLIC_WEB3INBOX_ALL_APPS === 'false';
+console.log('!!ALL APPS ENV:', PUBLIC_WEB3INBOX_ALL_APPS);
+console.log('!!ALL APPS:', allApps);
+
 //Store context variables
 const web3InboxMessages = writable();
 const web3InboxTypes = writable();
