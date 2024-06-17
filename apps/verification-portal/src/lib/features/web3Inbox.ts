@@ -13,11 +13,8 @@ import { PUBLIC_WEB3INBOX_ALL_APPS } from '$env/static/public';
 import { projectId, wagmiConfig } from '$lib/shared/web3Configs';
 
 const domain = 'real.sovereignnature.com';
-const allApps =
-  process.env.NODE_ENV !== 'production' ||
-  PUBLIC_WEB3INBOX_ALL_APPS === 'false';
-console.log('!!ALL APPS ENV:', PUBLIC_WEB3INBOX_ALL_APPS);
-console.log('!!ALL APPS:', allApps);
+const WEB3INBOX_ALL_APPS = PUBLIC_WEB3INBOX_ALL_APPS === 'true';
+const allApps = WEB3INBOX_ALL_APPS || process.env.NODE_ENV === 'development';
 
 //Store context variables
 const web3InboxMessages = writable();
