@@ -110,7 +110,7 @@ importers:
         version: 2.11.8
       '@sentry/sveltekit':
         specifier: 7.116.0
-        version: 7.116.0(@sveltejs/kit@2.5.10)(svelte@4.2.17)
+        version: 7.116.0(@sveltejs/kit@2.5.16)(svelte@4.2.17)
       '@sni/address-utils':
         specifier: workspace:*
         version: link:../../packages/address-utils
@@ -131,13 +131,13 @@ importers:
         version: link:../../packages/utils
       '@sveltejs/adapter-auto':
         specifier: 3.2.1
-        version: 3.2.1(@sveltejs/kit@2.5.10)
+        version: 3.2.1(@sveltejs/kit@2.5.16)
       '@sveltejs/adapter-vercel':
         specifier: 5.3.2
-        version: 5.3.2(@sveltejs/kit@2.5.10)
+        version: 5.3.2(@sveltejs/kit@2.5.16)
       '@sveltejs/kit':
-        specifier: 2.5.10
-        version: 2.5.10(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12)
+        specifier: 2.5.16
+        version: 2.5.16(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12)
       '@sveltejs/vite-plugin-svelte':
         specifier: 3.1.1
         version: 3.1.1(svelte@4.2.17)(vite@5.2.12)
@@ -161,10 +161,10 @@ importers:
         version: 0.6.2
       '@vercel/speed-insights':
         specifier: 1.0.12
-        version: 1.0.12(@sveltejs/kit@2.5.10)(react@18.3.1)(svelte@4.2.17)
+        version: 1.0.12(@sveltejs/kit@2.5.16)(react@18.3.1)(svelte@4.2.17)
       '@vite-pwa/sveltekit':
         specifier: 0.5.0
-        version: 0.5.0(@sveltejs/kit@2.5.10)(vite-plugin-pwa@0.20.0)
+        version: 0.5.0(@sveltejs/kit@2.5.16)(vite-plugin-pwa@0.20.0)
       '@wagmi/connectors':
         specifier: 4.3.10
         version: 4.3.10(@wagmi/core@2.11.2)(react-i18next@13.5.0)(react-native@0.74.1)(react@18.3.1)(rollup@2.79.1)(typescript@5.4.5)(viem@2.13.1)
@@ -358,10 +358,10 @@ importers:
         version: link:../constants
       '@sveltejs/adapter-auto':
         specifier: 3.2.1
-        version: 3.2.1(@sveltejs/kit@2.5.10)
+        version: 3.2.1(@sveltejs/kit@2.5.16)
       '@sveltejs/kit':
-        specifier: 2.5.10
-        version: 2.5.10(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12)
+        specifier: 2.5.16
+        version: 2.5.16(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12)
       '@sveltejs/package':
         specifier: 2.3.1
         version: 2.3.1(svelte@4.2.17)(typescript@5.4.5)
@@ -4354,7 +4354,7 @@ packages:
       svelte: 4.2.17
     dev: true
 
-  /@sentry/sveltekit@7.116.0(@sveltejs/kit@2.5.10)(svelte@4.2.17):
+  /@sentry/sveltekit@7.116.0(@sveltejs/kit@2.5.16)(svelte@4.2.17):
     resolution: {integrity: sha512-6qsTHydHefjPxyQnrRVa94U3BtdPy2+usI4OZi6jWRUTcOlulLLAaTouoNA1vU3Ze0DmRt205szK6B7N+kLuEw==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -4368,7 +4368,7 @@ packages:
       '@sentry/types': 7.116.0
       '@sentry/utils': 7.116.0
       '@sentry/vite-plugin': 0.6.1
-      '@sveltejs/kit': 2.5.10(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12)
+      '@sveltejs/kit': 2.5.16(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12)
       magicast: 0.2.8
       sorcery: 0.11.0
     transitivePeerDependencies:
@@ -4586,21 +4586,21 @@ packages:
       string.prototype.matchall: 4.0.11
     dev: true
 
-  /@sveltejs/adapter-auto@3.2.1(@sveltejs/kit@2.5.10):
+  /@sveltejs/adapter-auto@3.2.1(@sveltejs/kit@2.5.16):
     resolution: {integrity: sha512-/3xx8ZFCD5UBc/7AbyXkFF3HNCzWAp2xncH8HA4doGjoGQEN7PmwiRx4Y9nOzi4mqDqYYUic0gaIAE2khWWU4Q==}
     peerDependencies:
       '@sveltejs/kit': ^2.0.0
     dependencies:
-      '@sveltejs/kit': 2.5.10(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12)
+      '@sveltejs/kit': 2.5.16(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12)
       import-meta-resolve: 4.1.0
     dev: true
 
-  /@sveltejs/adapter-vercel@5.3.2(@sveltejs/kit@2.5.10):
+  /@sveltejs/adapter-vercel@5.3.2(@sveltejs/kit@2.5.16):
     resolution: {integrity: sha512-3nRBF9OHS14kM8yAZgR4Mu5gO5bAs1HXYGZFZwZrOOClo+jWbeHFn86fkj7yP5CSAu9aw2zVFxJbJrh9ZDFLUg==}
     peerDependencies:
       '@sveltejs/kit': ^2.4.0
     dependencies:
-      '@sveltejs/kit': 2.5.10(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12)
+      '@sveltejs/kit': 2.5.16(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12)
       '@vercel/nft': 0.27.1
       esbuild: 0.20.2
     transitivePeerDependencies:
@@ -4608,8 +4608,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit@2.5.10(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12):
-    resolution: {integrity: sha512-OqoyTmFG2cYmCFAdBfW+Qxbg8m23H4dv6KqwEt7ofr/ROcfcIl3Z/VT56L22H9f0uNZyr+9Bs1eh2gedOCK9kA==}
+  /@sveltejs/kit@2.5.16(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12):
+    resolution: {integrity: sha512-09Ypy+ibuhTCTpRFRnR+cDI3VARiu16o7vVSjETAA43ZCLtqvrNrVxUkJ/fKHrAjx2peKWilcHE8+SbW2Z/AsQ==}
     engines: {node: '>=18.13'}
     hasBin: true
     requiresBuild: true
@@ -5019,7 +5019,7 @@ packages:
       yoga-wasm-web: 0.3.3
     dev: true
 
-  /@vercel/speed-insights@1.0.12(@sveltejs/kit@2.5.10)(react@18.3.1)(svelte@4.2.17):
+  /@vercel/speed-insights@1.0.12(@sveltejs/kit@2.5.16)(react@18.3.1)(svelte@4.2.17):
     resolution: {integrity: sha512-ZGQ+a7bcfWJD2VYEp2R1LHvRAMyyaFBYytZXsfnbOMkeOvzGNVxUL7aVUvisIrTZjXTSsxG45DKX7yiw6nq2Jw==}
     requiresBuild: true
     peerDependencies:
@@ -5043,7 +5043,7 @@ packages:
       vue-router:
         optional: true
     dependencies:
-      '@sveltejs/kit': 2.5.10(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12)
+      '@sveltejs/kit': 2.5.16(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12)
       react: 18.3.1
       svelte: 4.2.17
     dev: true
@@ -5090,7 +5090,7 @@ packages:
       is-function: 1.0.2
     dev: true
 
-  /@vite-pwa/sveltekit@0.5.0(@sveltejs/kit@2.5.10)(vite-plugin-pwa@0.20.0):
+  /@vite-pwa/sveltekit@0.5.0(@sveltejs/kit@2.5.16)(vite-plugin-pwa@0.20.0):
     resolution: {integrity: sha512-GkzKrlu76ccvUWK8lE6IM7Acdm63HTrMKYzNSL4uqqU6n3EFwoFo6o8jPMA8BnD/U4o9lRHZCpe/Sms39e2i5w==}
     engines: {node: '>=16.14 || >=18.13'}
     peerDependencies:
@@ -5101,7 +5101,7 @@ packages:
       '@vite-pwa/assets-generator':
         optional: true
     dependencies:
-      '@sveltejs/kit': 2.5.10(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12)
+      '@sveltejs/kit': 2.5.16(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.17)(vite@5.2.12)
       kolorist: 1.8.0
       vite-plugin-pwa: 0.20.0(vite@5.2.12)(workbox-build@7.1.0)(workbox-window@7.1.0)
     dev: true
