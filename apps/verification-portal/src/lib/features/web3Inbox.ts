@@ -20,6 +20,7 @@ const web3InboxMessages = writable();
 const web3InboxTypes = writable();
 const web3InboxRegistered = writable<boolean>(false);
 const web3InboxSubscribed = writable<boolean>(false);
+const web3InboxSubscription = writable();
 const web3InboxModalOpen = writable<boolean>(false);
 const web3InboxMessageCount = writable<number>(0);
 const web3InboxLoading = writable<boolean>(true); // Notify client loading state
@@ -200,9 +201,21 @@ async function resetInboxState() {
 
 async function getInboxContent() {
   getNotificationTypes();
+  getSubscription();
   await getMessages();
   web3InboxEnabling.set(false);
   web3InboxLoading.set(false);
+}
+
+async function getSubscription() {
+  if (!web3InboxClient) return;
+  const account = getWeb3InboxAccount();
+  const subscription = web3InboxClient.getSubscription(account, domain);
+  const newMessages = subscription?.unreadNotificationCount
+    ? subscription.unreadNotificationCount
+    : 0;
+  web3InboxMessageCount.set(newMessages);
+  web3InboxSubscription.set(subscription);
 }
 
 async function getMessages() {
@@ -219,7 +232,6 @@ async function getMessages() {
 
 function setupMessages(messages: NotifyClientTypes.NotifyNotification[]) {
   web3InboxMessages.set(messages);
-  web3InboxMessageCount.set(messages.length);
 }
 
 async function getNotificationTypes() {
