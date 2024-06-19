@@ -151,6 +151,7 @@ export async function registerInbox() {
     })
     .then(() => {
       console.log('Registered inbox');
+      checkIfRegistered(account);
     })
     .catch((error) => {
       console.error('Error registering inbox:', error);
