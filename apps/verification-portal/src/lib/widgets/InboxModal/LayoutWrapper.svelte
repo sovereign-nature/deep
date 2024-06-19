@@ -26,7 +26,7 @@
   placement="top-center"
   defaultClass="mt-24 md:mt-36 relative z-drawer md:max-h-[calc(80vh-4rem)] max-w-full md:max-w-xl overflow-hidden mx-auto "
   class=" bg-deep-green-800 dark:bg-deep-green-950 text-white border-none rounded-lg"
-  bodyClass="border-none border-deep-green-900 pt-1 h-full overflow-y-auto "
+  bodyClass="border-none border-deep-green-900 pt-1 h-full overflow-y-auto px-5 mb-4"
   backdropClass="fixed inset-0 z-modalOverlay bg-deep-blue bg-opacity-50 dark:bg-opacity-80"
   dialogClass="fixed top-0 start-0 end-0 h-modal md:inset-0 md:h-full z-drawer w-full p-4 flex"
   color="none"
@@ -47,6 +47,7 @@
   </svelte:fragment>
   {#if toggleTabValue}
     <ContentSlider
+      hideControls
       titleTab1=" {$LL.notifications.titleNewTab()}"
       titleTab2=" {$LL.notifications.titleArchiveTab()}"
     >
