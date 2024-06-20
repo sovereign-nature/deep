@@ -1,15 +1,11 @@
 <script lang="ts">
   import type { NotifyClientTypes } from '@walletconnect/notify-client';
+  import { formatDistanceToNowStrict } from 'date-fns';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import Info from '$lib/shared/typography/Info.svelte';
   import BellIcon from '$lib/components/icons/BellIcon.svelte';
   import MarkReadButton from '$lib/entities/InboxNotification/MarkReadButton.svelte';
-  import {
-    isPending,
-    markAsRead,
-    findNotificationTypeByTopic,
-    formatDate,
-  } from '$lib/features/web3InboxNotifications';
+  import { isPending, markAsRead } from '$lib/features/web3InboxNotifications';
 
   export let notification: NotifyClientTypes.NotifyNotification;
   export let types: NotifyClientTypes.ScopeMap[];
@@ -18,6 +14,25 @@
   const date = formatDate(notification.sentAt);
   const notificationClass =
     'bg-gray-100/90 hover:bg-gray-100 text-deep-green-950 dark:text-white dark:bg-deep-green-300/80 dark:hover:bg-deep-green-300 Notification-card  p-5 pt-4 rounded-lg';
+
+  function findNotificationTypeByTopic(
+    topic: string | undefined,
+    notificationTypes: NotifyClientTypes.ScopeMap[]
+  ) {
+    if (!notificationTypes || topic === undefined) return;
+    const type = notificationTypes.find((type) => String(type.id) === topic);
+    return type ? type : undefined;
+  }
+
+  function formatDate(sentAt: number) {
+    try {
+      return formatDistanceToNowStrict(sentAt, {
+        addSuffix: true,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
 </script>
 
 <div
