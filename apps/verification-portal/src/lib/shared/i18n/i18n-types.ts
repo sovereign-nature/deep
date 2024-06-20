@@ -282,9 +282,17 @@ type RootTranslation = {
 		 */
 		savePreferences: string
 		/**
+		 * M​a​r​k​ ​a​s​ ​r​e​a​d
+		 */
+		markAsRead: string
+		/**
 		 * M​a​r​k​ ​a​l​l​ ​r​e​a​d
 		 */
 		markAllRead: string
+		/**
+		 * N​e​w
+		 */
+		'new': string
 		/**
 		 * N​e​w
 		 */
@@ -744,9 +752,17 @@ export type TranslationFunctions = {
 		 */
 		savePreferences: () => LocalizedString
 		/**
+		 * Mark as read
+		 */
+		markAsRead: () => LocalizedString
+		/**
 		 * Mark all read
 		 */
 		markAllRead: () => LocalizedString
+		/**
+		 * New
+		 */
+		'new': () => LocalizedString
 		/**
 		 * New
 		 */

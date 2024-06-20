@@ -5,14 +5,15 @@
   import type { Writable } from 'svelte/store';
   import NotificationMessage from '$lib/entities/InboxNotification/Notification.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
+  let notificationTypes: Writable<NotifyClientTypes.ScopeMap[]> =
+    getContext('web3InboxTypes');
 
-  // export let isRead: boolean | undefined; TODO enable when isRead status is available
-
-  const web3Messages: Writable<NotifyClientTypes.NotifyMessageRecord[]> =
+  const web3Messages: Writable<NotifyClientTypes.NotifyNotification[]> =
     getContext('web3InboxMessages');
 
-  let notifications: NotifyClientTypes.NotifyMessageRecord[] = [];
-
+  let notifications: NotifyClientTypes.NotifyNotification[] = [];
+  let types: NotifyClientTypes.ScopeMap[] = [];
+  $: types = $notificationTypes;
   $: notifications = $web3Messages;
 </script>
 
@@ -20,7 +21,7 @@
   {#if notifications && notifications.length > 0}
     {#each notifications as notification (notification.id)}
       <div animate:flip={{ duration: 300 }}>
-        <NotificationMessage {notification}></NotificationMessage>
+        <NotificationMessage {types} {notification}></NotificationMessage>
       </div>
     {/each}
   {:else}

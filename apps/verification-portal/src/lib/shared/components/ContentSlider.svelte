@@ -4,6 +4,7 @@
   export let titleTab1: string = 'on';
   export let titleTab2: string = 'off';
   export let disabled = false;
+  export let hideControls = false;
 
   let toggleTabs = true;
 
@@ -24,14 +25,16 @@
           <slot name="controls-tab2" />
         </div>
       {/if}
-      <div class="ms-auto">
-        <SlideToggle
-          checkedLabel={titleTab1}
-          uncheckedLabel={titleTab2}
-          {disabled}
-          bind:checked={toggleTabs}
-        ></SlideToggle>
-      </div>
+      {#if !hideControls}
+        <div class="ms-auto">
+          <SlideToggle
+            checkedLabel={titleTab1}
+            uncheckedLabel={titleTab2}
+            {disabled}
+            bind:checked={toggleTabs}
+          ></SlideToggle>
+        </div>
+      {/if}
     </div>
   </div>
   <div class="h-inherit overflow-x-hidden overflow-y-auto w-full relative pt-2">
