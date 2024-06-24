@@ -50,7 +50,7 @@
     "autoprefixer": "10.4.19",
     "date-fns": "3.6.0",
     "flowbite": "2.3.0",
-    "flowbite-svelte": "0.46.4",
+    "flowbite-svelte": "0.46.5",
     "fuse.js": "7.0.0",
     "graphql-request": "^6.1.0",
     "howler": "2.2.4",
