@@ -20,7 +20,7 @@
     "lodash": "4.17.21"
   },
   "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "^0.2.0",
+    "@cloudflare/vitest-pool-workers": "^0.4.0",
     "@cloudflare/workers-types": "4.20240524.0",
     "@hono/zod-validator": "0.2.2",
     "env-cmd": "10.1.0",
