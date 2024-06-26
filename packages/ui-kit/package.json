@@ -50,7 +50,7 @@
     "postcss-load-config": "5.0.3",
     "prettier": "3.3.2",
     "prettier-plugin-svelte": "3.2.5",
-    "prettier-plugin-tailwindcss": "0.5.14",
+    "prettier-plugin-tailwindcss": "0.6.5",
     "publint": "0.2.8",
     "shadcn-svelte": "0.10.7",
     "sonner": "^1.4.3",
