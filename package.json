@@ -26,7 +26,7 @@
     "lint-staged": "15.2.7",
     "turbo": "1.10.16",
     "turbo-ignore": "1.10.16",
-    "prettier": "3.2.5",
+    "prettier": "3.3.2",
     "prettier-plugin-svelte": "3.2.5",
     "@typescript-eslint/eslint-plugin": "7.10.0",
     "@typescript-eslint/parser": "7.10.0",
