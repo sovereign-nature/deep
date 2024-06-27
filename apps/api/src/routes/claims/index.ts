@@ -5,6 +5,7 @@ import { env } from 'hono/adapter';
 import { collections } from './config';
 import { ClaimBody, JWTToken } from './schemas';
 import { mintOptimismToken } from './providers/crossmint';
+import { mintUniqueToken } from './providers/unique';
 
 const app = new Hono();
 
@@ -34,7 +35,7 @@ app.post(
       case 'optimism':
         return mintOptimismToken(address, payload, collectionConfig, c);
       case 'opal':
-        break;
+        return mintUniqueToken(address, payload, collectionConfig, c);
     }
   }
 );

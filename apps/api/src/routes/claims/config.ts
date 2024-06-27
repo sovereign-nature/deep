@@ -1,5 +1,6 @@
 export type CollectionConfig = {
   name: string;
+  externalId?: string;
   metadata: {
     description: string;
     imagePrefix: string;
@@ -24,8 +25,19 @@ export const collections: Collections = {
     },
     network: 'optimism',
   },
+  'f5f7d73e-38b5-479d-a814-22c6d2199fcd': {
+    name: 'test-collection',
+    metadata: {
+      description: 'Test collection',
+      imagePrefix:
+        'ipfs://QmPz44sT22UUtJSrTnzC8mA7znF1vWd5U4ZmzzBnpvdHYE/dakhla_collection_final_',
+      name: 'ENGIE Bioacoustics Eco-Badge',
+    },
+    network: 'optimism',
+  },
   'dotphin-poap-testnet': {
     name: 'dotphin-poap-testnet',
+    externalId: '3019',
     metadata: {
       description: 'The Dotphin POAP Collection is a series of unique badges.',
       imagePrefix: 'ipfs://QmXzECuBhrG2xy6ewRJCivZFiTYeuvoAosTjRADhuHaoUA',
