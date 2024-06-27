@@ -24,4 +24,13 @@ export const collections: Collections = {
     },
     network: 'optimism',
   },
+  'dotphin-poap-testnet': {
+    name: 'dotphin-poap-testnet',
+    metadata: {
+      description: 'The Dotphin POAP Collection is a series of unique badges.',
+      imagePrefix: 'ipfs://QmXzECuBhrG2xy6ewRJCivZFiTYeuvoAosTjRADhuHaoUA',
+      name: 'Dotphin POAP Test',
+    },
+    network: 'opal',
+  },
 };
