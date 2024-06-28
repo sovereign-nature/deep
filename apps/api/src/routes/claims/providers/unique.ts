@@ -2,6 +2,7 @@ import Sdk from '@unique-nft/sdk';
 import { Sr25519Account } from '@unique-nft/utils/sr25519';
 import { env } from 'hono/adapter';
 import { Context } from 'hono';
+import fetchAdapter from '@vespaiach/axios-fetch-adapter';
 import { Payload } from '../types';
 import { CollectionConfig } from '../config';
 
@@ -18,6 +19,7 @@ export async function mintUniqueToken(
   const sdk = new Sdk({
     baseUrl: 'https://rest.unique.network/opal/v1',
     account,
+    axiosConfig: { adapter: fetchAdapter },
   });
 
   if (!collectionConfig.externalId) {
@@ -27,7 +29,7 @@ export async function mintUniqueToken(
   const collectionId = parseInt(collectionConfig.externalId);
 
   const tokensMintingResult = await sdk.token.createMultipleV2({
-    collectionId: parseInt(payload.collection),
+    collectionId: parseInt(collectionConfig.externalId),
     tokens: [
       {
         owner: address,

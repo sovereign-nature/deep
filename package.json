@@ -40,5 +40,14 @@
   "engines": {
     "node": ">=20.0.0",
     "pnpm": "~8.15.8"
+  },
+  "pnpm": {
+    "packageExtensions": {
+      "@vespaiach/axios-fetch-adapter": {
+        "peerDependencies": {
+          "axios": "0.28.1"
+        }
+      }
+    }
   }
 }

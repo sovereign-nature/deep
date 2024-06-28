@@ -4,6 +4,8 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+packageExtensionsChecksum: 069173ce56fc76aaed358afc8e64a796
+
 importers:
 
   .:
@@ -72,14 +74,20 @@ importers:
         specifier: 0.3.7
         version: 0.3.7(@polkadot/api@12.0.1)(@polkadot/keyring@12.6.2)(@polkadot/ui-settings@3.6.6)(@polkadot/util-crypto@12.6.2)
       '@unique-nft/sdk':
-        specifier: 0.7.5
-        version: 0.7.5
+        specifier: 0.7.6
+        version: 0.7.6
       '@unique-nft/sr25519':
         specifier: 0.0.2
         version: 0.0.2
       '@unique-nft/utils':
         specifier: 0.3.19
         version: 0.3.19
+      '@vespaiach/axios-fetch-adapter':
+        specifier: 0.3.1
+        version: 0.3.1(axios@0.28.1)
+      axios:
+        specifier: 0.28.1
+        version: 0.28.1
       hono:
         specifier: 4.4.9
         version: 4.4.9
@@ -5987,13 +5995,13 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@unique-nft/sdk@0.7.5:
-    resolution: {integrity: sha512-RM1lM0gFuoRY0UZexb3YT/iH+Zpa/ysbNS0woK+PQivdU53kCB++eOMDOG8VKvCrRJlQSs/TNLGx6yEwe2K9hg==}
+  /@unique-nft/sdk@0.7.6:
+    resolution: {integrity: sha512-+08qoY/Elf+JE7JczwbNmXOHzP1JSo5QjNldcx8mTNilnneNqSG3hRcc3YqWu+0kXNGMCWemdrf7vTfxATchpA==}
     dependencies:
       '@unique-nft/sr25519': 0.0.2
       '@unique-nft/utils': 0.3.19
       abi-coder: 4.1.1
-      axios: 0.27.2
+      axios: 0.28.1
       form-data: 4.0.0
       socket.io-client: 4.7.5
     transitivePeerDependencies:
@@ -6094,6 +6102,14 @@ packages:
       react: 18.3.1
       svelte: 4.2.18
     dev: true
+
+  /@vespaiach/axios-fetch-adapter@0.3.1(axios@0.28.1):
+    resolution: {integrity: sha512-+1F52VWXmQHSRFSv4/H0wtnxfvjRMPK5531e880MIjypPdUSX6QZuoDgEVeCE1vjhzDdxCVX7rOqkub7StEUwQ==}
+    peerDependencies:
+      axios: '>=0.26.0'
+    dependencies:
+      axios: 0.28.1
+    dev: false
 
   /@videojs/http-streaming@3.12.1(video.js@8.12.0):
     resolution: {integrity: sha512-rpB5AMt0QZ9bMXzwiWhynF2NLNnm5g2DZjPOFX6OoFqqXhbe2ngY2nqm9lLRhRVe22YeysQCmAlvBNwGuWFI8Q==}
@@ -7643,11 +7659,12 @@ packages:
       possible-typed-array-names: 1.0.0
     dev: true
 
-  /axios@0.27.2:
-    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
+  /axios@0.28.1:
+    resolution: {integrity: sha512-iUcGA5a7p0mVb4Gm/sy+FSECNkPFT4y7wt6OM/CDpO/OnNCvSs3PoMG8ibrC9jRoGYU0gUK5pXVC4NPXq6lHRQ==}
     dependencies:
       follow-redirects: 1.15.6
       form-data: 4.0.0
+      proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
     dev: false
