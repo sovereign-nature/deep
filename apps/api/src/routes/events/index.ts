@@ -11,8 +11,6 @@ const getEventToken = app.get('/:eventId', async (c) => {
 
   const eventId = c.req.param('eventId');
 
-  console.log('eventId', eventId);
-
   try {
     const eventConfig = events[eventId];
 
