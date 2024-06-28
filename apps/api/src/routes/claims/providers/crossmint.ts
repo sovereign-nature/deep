@@ -27,7 +27,7 @@ export async function mintOptimismToken(
   };
 
   const resp = await fetch(
-    `${CROSSMINT_API_URL}/${payload.collection}/nfts/${payload.id}`,
+    `${CROSSMINT_API_URL}/${collectionConfig.externalId}/nfts/${payload.id}`,
     {
       method: 'PUT',
       body: JSON.stringify(mintingConfig),

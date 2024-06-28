@@ -3,12 +3,10 @@ import { Sr25519Account } from '@unique-nft/utils/sr25519';
 import { env } from 'hono/adapter';
 import { Context } from 'hono';
 import fetchAdapter from '@vespaiach/axios-fetch-adapter';
-import { Payload } from '../types';
 import { CollectionConfig } from '../config';
 
 export async function mintUniqueToken(
   address: string,
-  payload: Payload,
   collectionConfig: CollectionConfig,
   c: Context
 ) {
