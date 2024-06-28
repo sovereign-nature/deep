@@ -16,12 +16,13 @@
     "@sni/constants": "workspace:*",
     "@sni/types": "workspace:*",
     "@types/lodash": "4.17.5",
-    "hono": "4.4.9",
-    "lodash": "4.17.21",
     "@unique-nft/accounts": "0.3.7",
     "@unique-nft/sdk": "0.7.5",
     "@unique-nft/sr25519": "0.0.2",
-    "@unique-nft/utils": "0.3.19"
+    "@unique-nft/utils": "0.3.19",
+    "hono": "4.4.9",
+    "lodash": "4.17.21",
+    "nanoid": "^5.0.7"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "0.4.7",
