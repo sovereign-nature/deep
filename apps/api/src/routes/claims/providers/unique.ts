@@ -29,7 +29,6 @@ export async function mintUniqueToken(
 
   const collectionId = parseInt(collectionConfig.externalId);
   const contractAddress = Address.collection.idToAddress(collectionId);
-  const collectionMetadata = await sdk.collection.getV2({ collectionId });
 
   const tokensMintingResult = await sdk.token.createMultipleV2({
     collectionId: parseInt(collectionConfig.externalId),
@@ -70,7 +69,7 @@ export async function mintUniqueToken(
     id: payload.id,
     metadata: {
       name: tokenMetadata.name,
-      description: collectionMetadata.description,
+      description: tokenMetadata.description,
       image: tokenMetadata.image,
     },
     onChain: {
