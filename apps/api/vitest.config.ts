@@ -1,4 +1,4 @@
-import { defineWorkersConfig } from '@cloudflare/vitest-pool-workers/config';
+import { defineConfig } from 'vitest/config';
 
 const bindings: { [key: string]: string } = {};
 
@@ -10,16 +10,16 @@ if (process.env['ALCHEMY_API_KEY']) {
   bindings['ALCHEMY_API_KEY'] = process.env['ALCHEMY_API_KEY'];
 }
 
-export default defineWorkersConfig({
+export default defineConfig({
   test: {
     watch: false,
-    poolOptions: {
-      workers: {
-        wrangler: { configPath: './wrangler.toml' },
-        miniflare: {
-          bindings,
-        },
-      },
-    },
+    // poolOptions: {
+    //   workers: {
+    //     wrangler: { configPath: './wrangler.toml' },
+    //     miniflare: {
+    //       bindings,
+    //     },
+    //   },
+    // },
   },
 });
