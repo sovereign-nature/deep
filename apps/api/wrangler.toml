@@ -8,3 +8,10 @@ CROSSMINT_API_URL = "https://crossmint.com/api/2022-06-09/collections"
 
 [env.staging.vars]
 CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections"
+
+[[queues.producers]]
+  queue = "minting-queue"
+  binding = "MINTING_QUEUE"
+
+[[queues.consumers]]
+  queue = "minting-queue"
