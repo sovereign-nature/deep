@@ -1,6 +1,5 @@
 import Sdk from '@unique-nft/sdk';
 import { Sr25519Account } from '@unique-nft/utils/sr25519';
-import fetchAdapter from '@vespaiach/axios-fetch-adapter';
 // import { Address } from '@unique-nft/utils';
 import { CollectionConfig } from '../config';
 import { Payload } from '../types';
@@ -16,7 +15,7 @@ export async function mintUniqueToken(
   const sdk = new Sdk({
     baseUrl: 'https://rest.unique.network/opal/v1',
     account,
-    axiosConfig: { adapter: fetchAdapter },
+    axiosConfig: { adapter: 'fetch' },
   });
 
   if (!collectionConfig.externalId) {
