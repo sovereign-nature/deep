@@ -22,6 +22,7 @@ app.post(
 
   async (c) => {
     const { CLAIMS_SECRET } = env<{ CLAIMS_SECRET: string }>(c);
+    const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<MintRequest> }>(c);
 
     const body = ClaimBody.parse(await c.req.json());
 
@@ -42,54 +43,47 @@ app.post(
       case 'optimism':
         return mintOptimismToken(address, payload, collectionConfig, c);
       case 'opal':
-        return mintUniqueToken(address, payload, collectionConfig, c);
+        MINTING_QUEUE.send({ address, payload, collectionConfig });
+        return c.json({
+          id: payload.id,
+          onChain: {
+            status: 'pending',
+            chain: collectionConfig.network,
+            contractAddress: collectionConfig.externalId,
+          },
+          actionId: payload.id,
+        });
       default:
         return c.json({ error: true, message: 'Network not supported' }, 400);
     }
   }
 );
 
-app.post('/v2', zValidator('json', ClaimBody), async (c) => {
-  const { CLAIMS_SECRET } = env<{ CLAIMS_SECRET: string }>(c);
-  const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<MintRequest> }>(c);
+interface Env {
+  WALLET_MNEMONIC: string;
+}
 
-  const body = ClaimBody.parse(await c.req.json());
+export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
+  for (const message of batch.messages) {
+    const mintRequest = message.body;
 
-  const { token, address } = body;
+    const network = mintRequest.collectionConfig.network;
 
-  try {
-    await verify(token, CLAIMS_SECRET);
-  } catch (e) {
-    return c.json({ error: true, message: 'Invalid token' }, 400);
+    switch (network) {
+      case 'opal':
+        console.log(
+          await mintUniqueToken(
+            mintRequest.address,
+            mintRequest.payload,
+            mintRequest.collectionConfig,
+            env.WALLET_MNEMONIC
+          )
+        );
+        break;
+      default:
+        break;
+    }
   }
-
-  const { payload } = JWTToken.parse(decode(token));
-
-  const collectionConfig = collections[payload.collection];
-
-  MINTING_QUEUE.send({ address, payload, collectionConfig });
-
-  return c.json({ success: true });
-});
-
-export async function claimsQueue(batch: MessageBatch<MintRequest>) {
-  console.log('Processing batch', batch);
-
-  // for (const message of batch.messages) {
-  //   const mintRequest = message.body;
-
-  //   console.log('Processing minting request', mintRequest);
-  // }
-
-  const response = await fetch('https://httpbin.org/delay/40', {
-    headers: { Accept: 'application/json' },
-  });
-
-  const nftResponse = await response.json();
-
-  console.log('NFT Response', nftResponse);
-
-  console.log('Processed batch');
 }
 
 export default app;

@@ -1,9 +1,7 @@
 import Sdk from '@unique-nft/sdk';
 import { Sr25519Account } from '@unique-nft/utils/sr25519';
-import { env } from 'hono/adapter';
-import { Context } from 'hono';
 import fetchAdapter from '@vespaiach/axios-fetch-adapter';
-import { Address } from '@unique-nft/utils';
+// import { Address } from '@unique-nft/utils';
 import { CollectionConfig } from '../config';
 import { Payload } from '../types';
 
@@ -11,11 +9,9 @@ export async function mintUniqueToken(
   address: string,
   payload: Payload,
   collectionConfig: CollectionConfig,
-  c: Context
+  mnemonic: string
 ) {
-  const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c);
-
-  const account = Sr25519Account.fromUri(WALLET_MNEMONIC);
+  const account = Sr25519Account.fromUri(mnemonic);
 
   const sdk = new Sdk({
     baseUrl: 'https://rest.unique.network/opal/v1',
@@ -28,7 +24,7 @@ export async function mintUniqueToken(
   }
 
   const collectionId = parseInt(collectionConfig.externalId);
-  const contractAddress = Address.collection.idToAddress(collectionId);
+  // const contractAddress = Address.collection.idToAddress(collectionId);
 
   const tokensMintingResult = await sdk.token.createMultipleV2({
     collectionId: parseInt(collectionConfig.externalId),
@@ -75,7 +71,7 @@ export async function mintUniqueToken(
     onChain: {
       status: 'success',
       chain: collectionConfig.network,
-      contractAddress,
+      contractAddress: collectionConfig.externalId,
       owner: tokenMetadata.owner,
       tokenId,
     },
@@ -84,5 +80,5 @@ export async function mintUniqueToken(
       'did:asset:eip155:11155420.erc721:0xAA7f515b01C04E632c7837f1a80f67eA3f3Fc58B:74', //TODO: replace with real DID
   };
 
-  return c.json(response);
+  return response;
 }
