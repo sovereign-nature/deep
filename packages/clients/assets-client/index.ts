@@ -9,36 +9,41 @@ import { getOptimismTestnetAsset as getOptimismAsset } from './targets/alchemy/c
 //TODO: Cover with tests
 async function getAsset(
   network: string,
-  assetId: string, //TODO: Better naming, so it illustrates contract address or Web2 asset ID
+  collectionId: string, //TODO: Better naming, so it illustrates contract address or Web2 asset ID
   tokenId: number,
   keys?: KeysConfig
 ): Promise<DeepAsset> {
   switch (network) {
     case 'polkadot':
-      return getPolkadotAsset(assetId, tokenId);
+      return getPolkadotAsset(collectionId, tokenId);
     case 'kusama':
-      return getKusamaAsset(assetId, tokenId);
+      return getKusamaAsset(collectionId, tokenId);
     case 'moonsama':
-      return getMoonsamaAsset(assetId, tokenId);
+      return getMoonsamaAsset(collectionId, tokenId);
     case 'sepolia':
     case 'arbitrum':
-      return getOpenSeaAsset(assetId, tokenId, network, keys?.openSeaAPIKey);
+      return getOpenSeaAsset(
+        collectionId,
+        tokenId,
+        network,
+        keys?.openSeaAPIKey
+      );
     case 'optimism-sepolia':
       return getOptimismAsset(
-        assetId,
+        collectionId,
         tokenId,
         keys?.alchemyAPIKey || '',
         true //testnet
       );
     case 'optimism':
       return getOptimismAsset(
-        assetId,
+        collectionId,
         tokenId,
         keys?.alchemyAPIKey || '',
         false //mainnet
       );
     case 'hotel-hideaway':
-      return getHotelHideawayAsset(assetId);
+      return getHotelHideawayAsset(collectionId);
     default:
       throw new Error(`Unknown networkId: ${network}`);
   }
