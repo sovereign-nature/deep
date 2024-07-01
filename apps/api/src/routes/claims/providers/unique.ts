@@ -3,10 +3,13 @@ import { Sr25519Account } from '@unique-nft/utils/sr25519';
 import { env } from 'hono/adapter';
 import { Context } from 'hono';
 import fetchAdapter from '@vespaiach/axios-fetch-adapter';
+import { Address } from '@unique-nft/utils';
 import { CollectionConfig } from '../config';
+import { Payload } from '../types';
 
 export async function mintUniqueToken(
   address: string,
+  payload: Payload,
   collectionConfig: CollectionConfig,
   c: Context
 ) {
@@ -25,6 +28,8 @@ export async function mintUniqueToken(
   }
 
   const collectionId = parseInt(collectionConfig.externalId);
+  const contractAddress = Address.collection.idToAddress(collectionId);
+  const collectionMetadata = await sdk.collection.getV2({ collectionId });
 
   const tokensMintingResult = await sdk.token.createMultipleV2({
     collectionId: parseInt(collectionConfig.externalId),
@@ -54,5 +59,31 @@ export async function mintUniqueToken(
     );
   }
 
-  return c.json({ tokenIds });
+  const tokenId = tokenIds[0];
+
+  const tokenMetadata = await sdk.token.getV2({
+    collectionId,
+    tokenId,
+  });
+
+  const response = {
+    id: payload.id,
+    metadata: {
+      name: tokenMetadata.name,
+      description: collectionMetadata.description,
+      image: tokenMetadata.image,
+    },
+    onChain: {
+      status: 'success',
+      chain: collectionConfig.network,
+      contractAddress,
+      owner: tokenMetadata.owner,
+      tokenId,
+    },
+    actionId: payload.id,
+    assetDID:
+      'did:asset:eip155:11155420.erc721:0xAA7f515b01C04E632c7837f1a80f67eA3f3Fc58B:74', //TODO: replace with real DID
+  };
+
+  return c.json(response);
 }

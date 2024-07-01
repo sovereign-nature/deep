@@ -35,7 +35,7 @@ app.post(
       case 'optimism':
         return mintOptimismToken(address, payload, collectionConfig, c);
       case 'opal':
-        return mintUniqueToken(address, collectionConfig, c);
+        return mintUniqueToken(address, payload, collectionConfig, c);
       default:
         return c.json({ error: true, message: 'Network not supported' }, 400);
     }
