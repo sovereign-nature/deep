@@ -72,4 +72,24 @@ app.post('/v2', zValidator('json', ClaimBody), async (c) => {
   return c.json({ success: true });
 });
 
+export async function claimsQueue(batch: MessageBatch<MintRequest>) {
+  console.log('Processing batch', batch);
+
+  // for (const message of batch.messages) {
+  //   const mintRequest = message.body;
+
+  //   console.log('Processing minting request', mintRequest);
+  // }
+
+  const response = await fetch('https://httpbin.org/delay/40', {
+    headers: { Accept: 'application/json' },
+  });
+
+  const nftResponse = await response.json();
+
+  console.log('NFT Response', nftResponse);
+
+  console.log('Processed batch');
+}
+
 export default app;
