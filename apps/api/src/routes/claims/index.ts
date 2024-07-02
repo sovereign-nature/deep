@@ -87,17 +87,24 @@ export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
     switch (network) {
       case 'opal':
         {
-          //TODO: Add proper logger
-          console.log('Minting unique token');
           const mintId = mintRequest.payload.id;
-          const successResponse = await mintUniqueToken(
-            mintRequest.address,
-            mintRequest.payload,
-            mintRequest.collectionConfig,
-            env.WALLET_MNEMONIC
-          );
+          try {
+            //TODO: Add proper logger
+            console.log('Minting unique token');
 
-          await env.MINTING_KV.put(mintId, JSON.stringify(successResponse));
+            const successResponse = await mintUniqueToken(
+              mintRequest.address,
+              mintRequest.payload,
+              mintRequest.collectionConfig,
+              env.WALLET_MNEMONIC
+            );
+            await env.MINTING_KV.put(mintId, JSON.stringify(successResponse));
+          } catch (e) {
+            console.log('Error minting token');
+            console.error(e);
+
+            await env.MINTING_KV.delete(mintId);
+          }
         }
         break;
       default:
