@@ -6,7 +6,16 @@ import { directusUrl } from '../config';
 
 export function getIPFSImageUrl(ipfsUrl: string): string {
   const cid = getCID(ipfsUrl);
-  return `${SNI_IPFS_CACHE}/ipfs/${cid}`;
+  // Check if the URL already contains the "ipfs/" prefix
+  const hasIpfsPrefix = ipfsUrl.includes('ipfs/');
+
+  // If the URL already contains "ipfs/", use the CID directly without adding the prefix again
+  if (hasIpfsPrefix) {
+    return `${SNI_IPFS_CACHE}/${cid}`;
+  } else {
+    // If the URL does not contain "ipfs/", add it
+    return `${SNI_IPFS_CACHE}/ipfs/${cid}`;
+  }
 }
 export const directusImageRequestConfig =
   '?format=webp&withoutEnlargement&quality=80';
