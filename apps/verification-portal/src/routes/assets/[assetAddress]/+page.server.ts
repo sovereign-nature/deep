@@ -15,14 +15,14 @@ const config = {
   headers: { Authorization: `Bearer ${DIRECTUS_API_KEY}` },
 };
 
-let assetData: DeepAsset;
-let deepData: DeepData;
-let addressDetails: Address;
 const notFoundMessage = 'We’re sorry but that page can’t be found.';
 
-export async function load(event) {
+export async function load({ params }) {
+  let assetData: DeepAsset;
+  let deepData: DeepData;
+  let addressDetails: Address;
+  const assetAddress: string = params.assetAddress;
   let verifiedStatus: boolean = false;
-  const assetAddress: string = event.params.assetAddress;
 
   //TODO: Move to a @sni/clients/assets-client
   try {
