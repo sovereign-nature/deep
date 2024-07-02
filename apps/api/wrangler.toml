@@ -1,7 +1,7 @@
 name = "api"
 main = "src/index.ts"
 compatibility_date = "2024-01-01"
-compatibility_flags = [ "nodejs_compat" ]
+compatibility_flags = ["nodejs_compat"]
 
 [vars]
 CROSSMINT_API_URL = "https://crossmint.com/api/2022-06-09/collections"
@@ -10,8 +10,13 @@ CROSSMINT_API_URL = "https://crossmint.com/api/2022-06-09/collections"
 CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections"
 
 [[queues.producers]]
-  queue = "minting-queue"
-  binding = "MINTING_QUEUE"
+queue = "minting-queue"
+binding = "MINTING_QUEUE"
 
 [[queues.consumers]]
-  queue = "minting-queue"
+queue = "minting-queue"
+
+[[kv_namespaces]]
+binding = "MINTING_KV"
+id = "0f4988a01242450187f4ee6ca522a5d6"
+preview_id = "0f4988a01242450187f4ee6ca522a5d6"

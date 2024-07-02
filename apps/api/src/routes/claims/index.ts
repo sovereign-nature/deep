@@ -23,6 +23,7 @@ app.post(
   async (c) => {
     const { CLAIMS_SECRET } = env<{ CLAIMS_SECRET: string }>(c);
     const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<MintRequest> }>(c);
+    const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c);
 
     const body = ClaimBody.parse(await c.req.json());
 
@@ -35,6 +36,7 @@ app.post(
     }
 
     const { payload } = JWTToken.parse(decode(token));
+    const mintId = payload.id;
 
     const collectionConfig = collections[payload.collection];
     const network = collectionConfig.network;
@@ -42,17 +44,29 @@ app.post(
     switch (network) {
       case 'optimism':
         return mintOptimismToken(address, payload, collectionConfig, c);
-      case 'opal':
-        MINTING_QUEUE.send({ address, payload, collectionConfig });
-        return c.json({
-          id: payload.id,
-          onChain: {
-            status: 'pending',
-            chain: collectionConfig.network,
-            contractAddress: collectionConfig.externalId,
-          },
-          actionId: payload.id,
-        });
+      case 'opal': {
+        const mintResponse = await MINTING_KV.get(mintId);
+
+        if (mintResponse === null) {
+          const pendingResponse = {
+            id: payload.id,
+            onChain: {
+              status: 'pending',
+              chain: collectionConfig.network,
+              contractAddress: collectionConfig.externalId,
+            },
+            actionId: payload.id,
+          };
+
+          await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
+
+          MINTING_QUEUE.send({ address, payload, collectionConfig });
+
+          return c.json(pendingResponse);
+        }
+
+        return c.json(JSON.parse(mintResponse));
+      }
       default:
         return c.json({ error: true, message: 'Network not supported' }, 400);
     }
@@ -61,6 +75,7 @@ app.post(
 
 interface Env {
   WALLET_MNEMONIC: string;
+  MINTING_KV: KVNamespace;
 }
 
 export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
@@ -71,14 +86,19 @@ export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
 
     switch (network) {
       case 'opal':
-        console.log(
-          await mintUniqueToken(
+        {
+          //TODO: Add proper logger
+          console.log('Minting unique token');
+          const mintId = mintRequest.payload.id;
+          const successResponse = await mintUniqueToken(
             mintRequest.address,
             mintRequest.payload,
             mintRequest.collectionConfig,
             env.WALLET_MNEMONIC
-          )
-        );
+          );
+
+          await env.MINTING_KV.put(mintId, JSON.stringify(successResponse));
+        }
         break;
       default:
         break;
