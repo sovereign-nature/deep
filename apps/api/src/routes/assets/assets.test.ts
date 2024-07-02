@@ -5,10 +5,10 @@ import app from '.';
 describe('Assets API', () => {
   it('should handle invalid DID', async () => {
     const res = await app.request('http://localhost/invalidDID');
-    expect(res.status).toEqual(404);
+    expect(res.status).toEqual(400);
   });
 
-  it('should handle invalid Asset', async () => {
+  it('should handle missing Asset', async () => {
     const res = await app.request(
       'http://localhost/did:asset:deep:polkadot.asset-hub:13:1000000'
     );

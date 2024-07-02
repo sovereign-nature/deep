@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import { env } from 'hono/adapter';
-import { getAssetByDID } from '@sni/clients/assets-client';
+import { AssetNotFoundError, getAssetByDID } from '@sni/clients/assets-client';
 import { AddressParsingError } from '@sni/address-utils';
 import { logger } from '../../utils/logger';
 
@@ -25,12 +25,13 @@ app.get('/:assetDid', async (c) => {
       return c.json({ error: true, message: e.message }, 400);
     }
 
+    if (e instanceof AssetNotFoundError) {
+      return c.json({ error: true, message: e.message }, 404);
+    }
+
     if (e instanceof Error) {
       return c.json({ error: true, message: e.message }, 500);
     }
-
-    //TODO: Check if axios is raising an error on 404
-    return c.json({ error: true, message: 'Asset not found' }, 404);
   }
 });
 

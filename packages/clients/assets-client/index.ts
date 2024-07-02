@@ -54,6 +54,13 @@ type KeysConfig = {
   alchemyAPIKey?: string;
 };
 
+export class AssetNotFoundError extends Error {
+  constructor() {
+    super('Asset not found');
+    this.name = 'AssetNotFoundError';
+  }
+}
+
 export async function getAssetByDID(did: string, keys?: KeysConfig) {
   const parsedData = parseAssetDID(did);
 
