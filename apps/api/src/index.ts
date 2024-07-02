@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { cache } from 'hono/cache';
+import { logger } from 'hono/logger';
 
 // Importing routes
 import assets from './routes/assets';
@@ -10,6 +11,7 @@ import wallets from './routes/wallets';
 import events from './routes/events';
 const app = new Hono();
 
+app.use(logger());
 app.use('/*', cors({ origin: '*' }));
 
 app.get(

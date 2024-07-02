@@ -15,6 +15,7 @@ binding = "MINTING_QUEUE"
 
 [[queues.consumers]]
 queue = "minting-queue"
+dead_letter_queue = "minting-queue-dlq"
 
 [[kv_namespaces]]
 binding = "MINTING_KV"
