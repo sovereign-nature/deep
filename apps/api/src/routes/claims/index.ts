@@ -48,6 +48,7 @@ app.post(
         const mintResponse = await MINTING_KV.get(mintId);
 
         if (mintResponse === null) {
+          console.log('First time minting token');
           const pendingResponse = {
             id: payload.id,
             onChain: {
@@ -60,10 +61,14 @@ app.post(
 
           await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
 
-          MINTING_QUEUE.send({ address, payload, collectionConfig });
+          console.log('Sending to queue');
+          await MINTING_QUEUE.send({ address, payload, collectionConfig });
+          console.log('Message sent to queue');
 
           return c.json(pendingResponse);
         }
+
+        console.log('Returning previous mint response');
 
         return c.json(JSON.parse(mintResponse));
       }
