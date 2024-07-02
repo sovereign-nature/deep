@@ -2,6 +2,7 @@ import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
 import { decode, verify } from 'hono/jwt';
 import { env } from 'hono/adapter';
+import { logger } from '../../utils/logger';
 import { CollectionConfig, collections } from './config';
 import { ClaimBody, CrossmintResponse, JWTToken } from './schemas';
 import { mintOptimismToken } from './providers/crossmint';
@@ -32,6 +33,7 @@ app.post(
     try {
       await verify(token, CLAIMS_SECRET);
     } catch (e) {
+      logger.error(e);
       return c.json({ error: true, message: 'Invalid token' }, 400);
     }
 
@@ -48,7 +50,7 @@ app.post(
         const mintResponse = await MINTING_KV.get(mintId);
 
         if (mintResponse === null) {
-          console.log('First time minting token');
+          logger.info(`Minting ${mintId}`);
 
           const pendingResponse = {
             id: payload.id,
@@ -60,11 +62,24 @@ app.post(
             actionId: payload.id,
           };
 
-          await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
+          try {
+            CrossmintResponse.parse(pendingResponse);
+          } catch (e) {
+            logger.error(e);
+            return c.json(
+              {
+                error: true,
+                message: `Internal server error`,
+              },
+              500
+            );
+          }
 
-          console.log('Sending to queue');
+          logger.info(`Sending minting ${mintId} to queue`);
+          await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
           await MINTING_QUEUE.send({ address, payload, collectionConfig });
-          console.log('Message sent to queue');
+
+          logger.debug(`Message queue received ${mintId}`);
 
           return c.json(pendingResponse);
         }
@@ -93,10 +108,10 @@ app.post(
   }
 );
 
-interface Env {
+type Env = {
   WALLET_MNEMONIC: string;
   MINTING_KV: KVNamespace;
-}
+};
 
 export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
   for (const message of batch.messages) {
@@ -110,7 +125,7 @@ export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
           const mintId = mintRequest.payload.id;
           try {
             //TODO: Add proper logger
-            console.log('Minting unique token');
+            logger.info(`Minting ${mintId} on ${network} network`);
 
             const successResponse = await mintUniqueToken(
               mintRequest.address,
@@ -123,9 +138,10 @@ export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
 
             await env.MINTING_KV.put(mintId, JSON.stringify(parsedResponse));
           } catch (e) {
-            console.log('Error minting token');
-            console.error(e);
+            logger.error(`Error minting token on ${network} network`);
+            logger.error(e);
 
+            //Not sure if cleaning is needed on queue retries
             await env.MINTING_KV.delete(mintId);
           }
         }

@@ -57,6 +57,7 @@ type KeysConfig = {
 export async function getAssetByDID(did: string, keys?: KeysConfig) {
   const parsedData = parseAssetDID(did);
 
+  //TODO: Add error handling here
   return await getAsset(
     parsedData.network,
     parsedData.contractAddress,
