@@ -5,6 +5,7 @@ export type CollectionConfig = {
     description: string;
     imagePrefix: string;
     name: string;
+    attributes?: [{ trait_type: string; value: string }[]];
   };
   network: string;
 };
@@ -44,6 +45,12 @@ export const collections: Collections = {
       description: 'The Dotphin POAP Collection is a series of unique badges.',
       imagePrefix: 'ipfs://QmXzECuBhrG2xy6ewRJCivZFiTYeuvoAosTjRADhuHaoUA',
       name: 'Dotphin POAP Test',
+      attributes: [
+        [
+          { trait_type: 'element', value: 'air' },
+          { trait_type: 'event', value: 'polkadot-decoded-2024' },
+        ],
+      ],
     },
     network: 'opal',
   },

@@ -23,8 +23,8 @@ export const CrossmintResponse = z.object({
     status: z.string(), //TODO: Enum
     chain: z.string(),
     contractAddress: z.string(),
-    owner: z.optional(z.string()),
-    tokenId: z.optional(z.string()),
+    owner: z.string().optional(),
+    tokenId: z.string().optional(),
   }),
   actionId: z.string(),
 });

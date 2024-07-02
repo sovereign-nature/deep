@@ -3,7 +3,7 @@ import { Hono } from 'hono';
 import { decode, verify } from 'hono/jwt';
 import { env } from 'hono/adapter';
 import { CollectionConfig, collections } from './config';
-import { ClaimBody, JWTToken } from './schemas';
+import { ClaimBody, CrossmintResponse, JWTToken } from './schemas';
 import { mintOptimismToken } from './providers/crossmint';
 import { mintUniqueToken } from './providers/unique';
 import { Payload } from './types';
@@ -49,6 +49,7 @@ app.post(
 
         if (mintResponse === null) {
           console.log('First time minting token');
+
           const pendingResponse = {
             id: payload.id,
             onChain: {
@@ -68,7 +69,21 @@ app.post(
           return c.json(pendingResponse);
         }
 
-        console.log('Returning previous mint response');
+        const parsedMintResponse = CrossmintResponse.parse(
+          JSON.parse(mintResponse)
+        );
+
+        const owner = parsedMintResponse.onChain.owner;
+
+        if (owner && owner.toLocaleLowerCase() !== address.toLowerCase()) {
+          return c.json(
+            {
+              error: true,
+              message: 'Token was already claimed for different owner address',
+            },
+            400
+          );
+        }
 
         return c.json(JSON.parse(mintResponse));
       }
@@ -103,7 +118,10 @@ export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
               mintRequest.collectionConfig,
               env.WALLET_MNEMONIC
             );
-            await env.MINTING_KV.put(mintId, JSON.stringify(successResponse));
+
+            const parsedResponse = CrossmintResponse.parse(successResponse);
+
+            await env.MINTING_KV.put(mintId, JSON.stringify(parsedResponse));
           } catch (e) {
             console.log('Error minting token');
             console.error(e);

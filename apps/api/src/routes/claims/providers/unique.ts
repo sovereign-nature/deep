@@ -30,9 +30,12 @@ export async function mintUniqueToken(
     tokens: [
       {
         owner: address,
-        name: 'demo token',
+        name: collectionConfig.metadata.name,
         image: collectionConfig.metadata.imagePrefix,
-        attributes: [{ trait_type: 'color', value: 'YElLLow' }],
+        description: collectionConfig.metadata.description,
+        attributes: collectionConfig.metadata.attributes
+          ? collectionConfig.metadata.attributes[0]
+          : [],
       },
     ],
   });
@@ -64,7 +67,7 @@ export async function mintUniqueToken(
     id: payload.id,
     metadata: {
       name: tokenMetadata.name,
-      description: tokenMetadata.description,
+      description: tokenMetadata.description || '',
       image: tokenMetadata.image,
     },
     onChain: {
@@ -72,7 +75,7 @@ export async function mintUniqueToken(
       chain: collectionConfig.network,
       contractAddress: collectionConfig.externalId,
       owner: tokenMetadata.owner,
-      tokenId,
+      tokenId: tokenId.toString(),
     },
     actionId: payload.id,
     assetDID:
