@@ -2,20 +2,28 @@ import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
 import { decode, verify } from 'hono/jwt';
 import { env } from 'hono/adapter';
-import { getChainId } from '@sni/address-utils';
-import { collections } from './config';
-import { ClaimBody, JWTToken, CrossmintResponse } from './schemas';
+import { CollectionConfig, collections } from './config';
+import { ClaimBody, JWTToken } from './schemas';
+import { mintOptimismToken } from './providers/crossmint';
+import { mintUniqueToken } from './providers/unique';
+import { Payload } from './types';
 
 const app = new Hono();
+
+export type MintRequest = {
+  address: string;
+  payload: Payload;
+  collectionConfig: CollectionConfig;
+};
 
 app.post(
   '/',
   zValidator('json', ClaimBody),
 
   async (c) => {
-    const { CROSSMINT_API_URL } = env<{ CROSSMINT_API_URL: string }>(c);
-    const { CROSSMINT_API_KEY } = env<{ CROSSMINT_API_KEY: string }>(c);
     const { CLAIMS_SECRET } = env<{ CLAIMS_SECRET: string }>(c);
+    const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<MintRequest> }>(c);
+    const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c);
 
     const body = ClaimBody.parse(await c.req.json());
 
@@ -28,56 +36,74 @@ app.post(
     }
 
     const { payload } = JWTToken.parse(decode(token));
+    const mintId = payload.id;
 
-    const collectionId: string = payload.collection;
-    const collectionConfig = collections[collectionId];
+    const collectionConfig = collections[payload.collection];
+    const network = collectionConfig.network;
 
-    const image = `${collectionConfig.metadata.imagePrefix}${payload.seed}.jpg`;
-    const metadata = {
-      name: collectionConfig.metadata.name,
-      description: collectionConfig.metadata.description,
-      image,
-    };
+    switch (network) {
+      case 'optimism':
+        return mintOptimismToken(address, payload, collectionConfig, c);
+      case 'opal': {
+        const mintResponse = await MINTING_KV.get(mintId);
 
-    const mintingConfig = {
-      metadata,
-      recipient: `${collectionConfig.network}:${address}`,
-    };
+        if (mintResponse === null) {
+          const pendingResponse = {
+            id: payload.id,
+            onChain: {
+              status: 'pending',
+              chain: collectionConfig.network,
+              contractAddress: collectionConfig.externalId,
+            },
+            actionId: payload.id,
+          };
 
-    const resp = await fetch(
-      `${CROSSMINT_API_URL}/${collectionId}/nfts/${payload.id}`,
-      {
-        method: 'PUT',
-        body: JSON.stringify(mintingConfig),
-        headers: {
-          'Content-Type': 'application/json',
-          'X-API-KEY': CROSSMINT_API_KEY,
-        },
+          await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
+
+          MINTING_QUEUE.send({ address, payload, collectionConfig });
+
+          return c.json(pendingResponse);
+        }
+
+        return c.json(JSON.parse(mintResponse));
       }
-    );
-
-    const data = CrossmintResponse.parse(await resp.json());
-
-    if (data.onChain.owner && data.onChain.owner !== address) {
-      return c.json(
-        {
-          error: true,
-          message: 'Token was already claimed for different owner address',
-        },
-        400
-      );
+      default:
+        return c.json({ error: true, message: 'Network not supported' }, 400);
     }
-
-    // If the token was successfully minted, return all the data plus DID address
-    if (data.onChain.status === 'success') {
-      const chainId = getChainId(data.onChain.chain);
-      const assetDID = `did:asset:eip155:${chainId}.erc721:${data.onChain.contractAddress}:${data.onChain.tokenId}`;
-
-      return c.json({ ...data, assetDID });
-    }
-
-    return c.json(data);
   }
 );
+
+interface Env {
+  WALLET_MNEMONIC: string;
+  MINTING_KV: KVNamespace;
+}
+
+export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
+  for (const message of batch.messages) {
+    const mintRequest = message.body;
+
+    const network = mintRequest.collectionConfig.network;
+
+    switch (network) {
+      case 'opal':
+        {
+          //TODO: Add proper logger
+          console.log('Minting unique token');
+          const mintId = mintRequest.payload.id;
+          const successResponse = await mintUniqueToken(
+            mintRequest.address,
+            mintRequest.payload,
+            mintRequest.collectionConfig,
+            env.WALLET_MNEMONIC
+          );
+
+          await env.MINTING_KV.put(mintId, JSON.stringify(successResponse));
+        }
+        break;
+      default:
+        break;
+    }
+  }
+}
 
 export default app;

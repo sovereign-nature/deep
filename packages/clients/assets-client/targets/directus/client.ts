@@ -3,9 +3,11 @@ import { directusUrl } from '../../../config';
 import directusFormatter from './formatter';
 import { DirectusAsset } from './types';
 
-export async function getHotelHideawayAsset(id: string): Promise<DeepAsset> {
+export async function getHotelHideawayAsset(
+  assetId: string
+): Promise<DeepAsset> {
   const web2Res = await fetch(
-    `${directusUrl}/items/hotel_hideaway/${id}?fields=*,collection.*`
+    `${directusUrl}/items/hotel_hideaway/${assetId}?fields=*,collection.*`
   );
 
   const directusAsset = (await web2Res.json()) as DirectusAsset;

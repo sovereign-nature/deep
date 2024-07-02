@@ -2,6 +2,7 @@ import { DeepAsset } from '@sni/types';
 import { PolkadotResponse } from './types';
 
 //TODO: Add asset address to the response
+//TODO: Remove formatter and format inside of the client
 export default function polkadotFormatter(
   assetData: PolkadotResponse
 ): DeepAsset {

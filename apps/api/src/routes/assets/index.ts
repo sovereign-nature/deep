@@ -17,7 +17,7 @@ const getAssetRoute = app.get('/:assetDid', async (c) => {
     });
     return c.json(assetData);
   } catch (e) {
-    console.error(JSON.stringify(e)); //TODO: standardize error logging
+    //console.error(JSON.stringify(e)); //TODO: standardize error logging
     return c.json({ error: true, message: 'Asset not found' }, 404);
   }
 });

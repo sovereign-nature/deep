@@ -59,13 +59,17 @@ const chainNameToId: ChainNameToId = {
   moonsama: 2199,
   optimism: 10,
   'optimism-sepolia': 11155420,
+  unique: 8880,
+  quartz: 8881,
+  opal: 8882,
 };
 
+//TODO: Throw an error if chainName is not found
 export function getChainId(chainName: string): number {
   if (typeof chainName === 'string') {
     return chainNameToId[chainName.toLowerCase()] || 0;
   }
-  return 0; //TODO: Throw an error?
+  return 0;
 }
 
 export function chainIdToName(chainId: number): string {
@@ -101,7 +105,7 @@ export function parseAssetDID(did: string) {
     const tokenId = asset.identifier;
     return { network, contractAddress, tokenId };
   } catch (e) {
-    console.error(e);
+    // console.error(e); //TODO: Proper logging?
     throw new Error(`Invalid DID address: ${did}`);
   }
 }
