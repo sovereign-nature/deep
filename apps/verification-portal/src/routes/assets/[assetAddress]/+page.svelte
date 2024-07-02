@@ -55,7 +55,7 @@
   )}&funds=${encodeURIComponent(funds.toString())}&img=${encodeURIComponent(
     image
   )}&source=${encodeURIComponent(source)}`;
-  $: pageImage = `${baseUrl}/${pageImagePath}`;
+  $: pageImage = `${baseUrl}${pageImagePath}`;
   $: pageImageSquare = `${pageImagePath}&ratio=square`;
   // styling
   const cardHeaderClass =
