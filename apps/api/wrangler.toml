@@ -17,6 +17,8 @@ binding = "MINTING_QUEUE"
 [[queues.consumers]]
 queue = "minting-queue"
 dead_letter_queue = "minting-queue-dlq"
+max_concurrency = 15
+max_batch_size = 1
 
 [[kv_namespaces]]
 binding = "MINTING_KV"
