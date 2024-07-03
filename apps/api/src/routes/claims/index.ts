@@ -125,7 +125,9 @@ export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
           const mintId = mintRequest.payload.id;
           try {
             //TODO: Add proper logger
-            logger.info(`Minting ${mintId} on ${network} network`);
+            logger.info(
+              `Queue job is started to mint ${mintId} on ${network} network`
+            );
 
             const successResponse = await mintUniqueToken(
               mintRequest.address,
@@ -137,6 +139,10 @@ export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
             const parsedResponse = CrossmintResponse.parse(successResponse);
 
             await env.MINTING_KV.put(mintId, JSON.stringify(parsedResponse));
+
+            logger.info(
+              `Queue job is finished to mint ${mintId} on ${network} network`
+            );
           } catch (e) {
             logger.error(`Error minting token on ${network} network`);
             logger.error(e);
