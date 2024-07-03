@@ -96,6 +96,8 @@ function getChainName(chainNamespace: string, chainId: string): string {
   }
 }
 
+export class AddressParsingError extends Error {}
+
 //Parsing AssetDID to it's components
 export function parseAssetDID(did: string) {
   try {
@@ -105,7 +107,7 @@ export function parseAssetDID(did: string) {
     const tokenId = asset.identifier;
     return { network, contractAddress, tokenId };
   } catch (e) {
-    // console.error(e); //TODO: Proper logging?
-    throw new Error(`Invalid DID address: ${did}`);
+    //TODO: Throw custom address parsing error
+    throw new AddressParsingError(`Invalid DID address: ${did}`);
   }
 }
