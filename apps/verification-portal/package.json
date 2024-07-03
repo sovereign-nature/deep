@@ -49,7 +49,7 @@
     "@web3modal/wagmi": "4.2.3",
     "autoprefixer": "10.4.19",
     "date-fns": "3.6.0",
-    "flowbite": "2.4.1",
+    "flowbite": "2.3.0",
     "flowbite-svelte": "0.46.13",
     "fuse.js": "7.0.0",
     "graphql-request": "^6.1.0",
