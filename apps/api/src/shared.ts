@@ -1,8 +1,9 @@
 import { Context } from 'hono';
+import { logger } from './utils/logger';
 
-export function reportUnknownNetwork(e: unknown, c: Context) {
+export function errorResponse(e: unknown, c: Context) {
   if (e instanceof Error) {
-    return c.json({ error: true, message: e.message }, 500);
+    logger.error(e);
   }
 
   return c.json({ error: true, message: 'Internal server error' }, 500);

@@ -1,5 +1,6 @@
 import { DeepAsset } from '@sni/types';
 import { UniqueNFTResponseSchema } from './schemas';
+import { createAssetDID } from '@sni/address-utils';
 
 export async function getUniqueAsset(
   network: string,
@@ -29,6 +30,11 @@ export async function getUniqueAsset(
       id: nftResponse.collectionId.toString(),
       name: '', //TODO: Make name optional in the schema
     },
-    address: `did:asset:eip155:11155420.unique2:${collectionId}:${nftResponse.tokenId}`, //TODO: Proper network ID
+    address: createAssetDID(
+      network,
+      'unique2',
+      nftResponse.collectionId,
+      nftResponse.tokenId
+    ),
   };
 }

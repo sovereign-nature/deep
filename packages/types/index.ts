@@ -12,3 +12,5 @@ export type DeepAsset = {
   };
   address: string; //TODO: Rename to did?
 };
+
+export class ExternalApiError extends Error {}
