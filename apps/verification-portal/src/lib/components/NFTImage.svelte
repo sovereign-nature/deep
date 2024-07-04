@@ -2,13 +2,17 @@
   import { onMount } from 'svelte';
   import { getAssetImageUrl } from '@sni/clients/images-client';
 
+  import { Tooltip } from 'flowbite-svelte';
+
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
   import VerifiedIcon from '$lib/components/icons/VerifiedIcon.svelte';
+  import HexagonGridIcon from '$lib/components/icons/HexagonGridIcon.svelte';
   import LL from '$lib/shared/i18n/i18n-svelte';
 
   export let url: string;
   export let alt: string;
   export let verified = false;
+  export let multiPass = false;
   export let size = 300;
   export let imgClass =
     'object-cover w-full h-full rounded-xl sm:rounded-lg fade-from-none';
@@ -42,11 +46,24 @@
 </script>
 
 <div class="relative">
-  {#if verified}
-    <VerifiedIcon
-      className="text-white dark:text-primary-200 absolute z-50 right-0 top-5 translate-x-1/2 fill-primary-300 dark:fill-deep-green"
-    />
-  {/if}
+  <div class="absolute z-50 right-0 top-5 translate-x-1/2 flex flex-col gap-2">
+    {#if verified}
+      <VerifiedIcon
+        className="text-white dark:text-primary-200  fill-primary-300 dark:fill-deep-green"
+      />
+      <Tooltip placement="left" class="text-center p-4 z-50 break-all"
+        >{$LL.assets.infoEcoLinked()}</Tooltip
+      >
+    {/if}
+    {#if multiPass}
+      <HexagonGridIcon
+        className=" fill-primary-500 text-deep-green-500 h-[63px]"
+      />
+      <Tooltip placement="left" class="text-center p-4 z-50 break-all"
+        >{$LL.assets.multiPass.info()}</Tooltip
+      >
+    {/if}
+  </div>
 
   <div class={containerClass}>
     <!-- Loading placeholder  -->
