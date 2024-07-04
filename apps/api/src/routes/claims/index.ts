@@ -123,33 +123,24 @@ export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
       case 'opal':
         {
           const mintId = mintRequest.payload.id;
-          try {
-            //TODO: Add proper logger
-            logger.info(
-              `Queue job is started to mint ${mintId} on ${network} network`
-            );
+          logger.info(
+            `Queue job is started to mint ${mintId} on ${network} network`
+          );
 
-            const successResponse = await mintUniqueToken(
-              mintRequest.address,
-              mintRequest.payload,
-              mintRequest.collectionConfig,
-              env.WALLET_MNEMONIC
-            );
+          const successResponse = await mintUniqueToken(
+            mintRequest.address,
+            mintRequest.payload,
+            mintRequest.collectionConfig,
+            env.WALLET_MNEMONIC
+          );
 
-            const parsedResponse = CrossmintResponse.parse(successResponse);
+          const parsedResponse = CrossmintResponse.parse(successResponse);
 
-            await env.MINTING_KV.put(mintId, JSON.stringify(parsedResponse));
+          await env.MINTING_KV.put(mintId, JSON.stringify(parsedResponse));
 
-            logger.info(
-              `Queue job is finished to mint ${mintId} on ${network} network`
-            );
-          } catch (e) {
-            logger.error(`Error minting token on ${network} network`);
-            logger.error(e);
-
-            //Not sure if cleaning is needed on queue retries
-            await env.MINTING_KV.delete(mintId);
-          }
+          logger.info(
+            `Queue job is finished to mint ${mintId} on ${network} network`
+          );
         }
         break;
       default:
