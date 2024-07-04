@@ -108,7 +108,7 @@ const en: BaseTranslation = {
     intro: {
       sub0: 'Welcome to the Polkadot sub0 biodiversity collection. Your contribution makes a REAL difference. Connect with the marine biodiversity served by the organisation AIMM Portugal.',
     },
-    verified: 'Verified:',
+    ecoLinked: 'Eco-Linked:',
     shareText: 'Share your asset',
     funds: {
       cardTitle: 'Funds generated so far:',

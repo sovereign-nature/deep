@@ -315,9 +315,9 @@ type RootTranslation = {
 			sub0: string
 		}
 		/**
-		 * V​e​r​i​f​i​e​d​:
+		 * E​c​o​-​L​i​n​k​e​d​:
 		 */
-		verified: string
+		ecoLinked: string
 		/**
 		 * S​h​a​r​e​ ​y​o​u​r​ ​a​s​s​e​t
 		 */
@@ -784,9 +784,9 @@ export type TranslationFunctions = {
 			sub0: () => LocalizedString
 		}
 		/**
-		 * Verified:
+		 * Eco-Linked:
 		 */
-		verified: () => LocalizedString
+		ecoLinked: () => LocalizedString
 		/**
 		 * Share your asset
 		 */

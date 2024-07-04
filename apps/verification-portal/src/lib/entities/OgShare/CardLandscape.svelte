@@ -7,11 +7,13 @@
   export let funds = '';
   export let source = '';
   export let img = '';
+  export let ecoLinked = false;
 </script>
 
 <CardBase
-  {title}
   {img}
+  {title}
+  let:sanitizedTitle
   let:imageUrl
   let:fontSizeClass
   let:sourceText
@@ -34,7 +36,7 @@
       <h1
         class="font-serif text-white capitalize leading-snug max-h-199px max-w-352px overflow-hidden break-all {fontSizeClass}"
       >
-        {title}
+        {sanitizedTitle}
       </h1>
       {#if source}
         <div
@@ -55,7 +57,7 @@
         </div>
       {/if}
     </div>
-    {#if funds}
+    {#if ecoLinked}
       <span
         class="absolute left-58px top-510px text-[#00C67E] text-21px"
         style="font-family: Roboto; font-weight:400">{fundsText}</span
