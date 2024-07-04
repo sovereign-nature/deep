@@ -24,3 +24,8 @@ max_batch_size = 1
 binding = "MINTING_KV"
 id = "0f4988a01242450187f4ee6ca522a5d6"
 preview_id = "0f4988a01242450187f4ee6ca522a5d6"
+
+# [[d1_databases]]
+# binding = "NONCES_DB"
+# database_name = "nonces-db"
+# database_id = "6ff3b865-0fd3-4aac-9f7a-8e281a84477e"

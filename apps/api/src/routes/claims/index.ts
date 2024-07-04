@@ -2,13 +2,13 @@ import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
 import { decode, verify } from 'hono/jwt';
 import { env } from 'hono/adapter';
+import { createAssetDID } from '@sni/address-utils';
 import { logger } from '../../utils/logger';
 import { CollectionConfig, collections } from './config';
 import { ClaimBody, CrossmintResponse, JWTToken } from './schemas';
 import { mintOptimismToken } from './providers/crossmint';
 import { mintUniqueToken } from './providers/unique';
 import { Payload } from './types';
-import { createAssetDID } from '@sni/address-utils';
 
 const app = new Hono();
 
