@@ -12,6 +12,7 @@
   let fontSizeClass = baseFontSize;
 
   $: imageUrl = img;
+  $: sanitizedTitle = sanitizeTitle(title);
 
   const mediumTitle = isLongTitle(title);
   const smallTitle = isLongTitle(title, 9, 3);
@@ -29,6 +30,18 @@
   } else if (mediumTitle) {
     fontSizeClass = 'text-62px'; // Medium font size
   }
+
+  // Function to sanitize title from any hashtags, workaround for Satori generator text wrap bug
+  function sanitizeTitle(title: string): string {
+    return title.replace(/#/g, '').trim();
+  }
 </script>
 
-<slot {imageUrl} {sourceText} {tokenText} {fundsText} {fontSizeClass} />
+<slot
+  {sanitizedTitle}
+  {imageUrl}
+  {sourceText}
+  {tokenText}
+  {fundsText}
+  {fontSizeClass}
+/>

@@ -18,11 +18,11 @@ const config = {
 const notFoundMessage = 'We’re sorry but that page can’t be found.';
 
 export async function load({ params }) {
-  let assetData: DeepAsset;
-  let deepData: DeepData;
+  let nftData: DeepAsset;
+  let deepData: DeepData | undefined = undefined;
   let addressDetails: Address;
   const assetAddress: string = params.assetAddress;
-  let verifiedStatus: boolean = false;
+  let ecoLinked: boolean = false;
 
   //TODO: Move to a @sni/clients/assets-client
   try {
@@ -36,7 +36,7 @@ export async function load({ params }) {
       throw new Error();
     }
 
-    assetData = fetchedAsset;
+    nftData = fetchedAsset;
     addressDetails = parseAddress(assetAddress);
   } catch (e) {
     error(404, notFoundMessage);
@@ -50,11 +50,11 @@ export async function load({ params }) {
       config
     ).then((response) => {
       if (response.data && response.data.data) {
-        verifiedStatus = true;
+        ecoLinked = true;
       }
       return response.data.data;
     });
-    if (verifiedStatus) {
+    if (ecoLinked) {
       // Fetch deep entity data
       const { data: entityResponse } = await getEntity(
         verifiedData.collection_id,
@@ -62,6 +62,7 @@ export async function load({ params }) {
         config
       );
       deepData = entityResponse.data;
+      if (!deepData) return;
       deepData.link = verifiedData;
 
       const { data: stewardResponse } = await getNewsBySteward(
@@ -96,13 +97,18 @@ export async function load({ params }) {
 
     return { traces_recorded: tracesRecorded };
   }
+  let extractedProperties: ExtractedProperties;
+  if (deepData !== undefined) {
+    extractedProperties = processDeepData(deepData);
+  } else {
+    extractedProperties = { traces_recorded: {} };
+  }
 
-  const extractedProperties: ExtractedProperties = processDeepData(deepData);
   return {
     assetAddress,
     addressDetails,
-    nftData: assetData,
-    verifiedStatus,
+    nftData,
+    ecoLinked,
     deepData,
     baseUrl,
     properties: extractedProperties,

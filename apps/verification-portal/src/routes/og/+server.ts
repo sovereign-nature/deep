@@ -25,7 +25,10 @@ export const GET: RequestHandler = async ({ url }) => {
 
   const title: string =
     decodeQueryParam(url.searchParams.get('title')) || 'NFT';
-  const funds: string = decodeQueryParam(url.searchParams.get('funds')) || '';
+  const ecoLinked: boolean = url.searchParams.has('ecoLinked');
+  const funds: string = ecoLinked
+    ? decodeQueryParam(url.searchParams.get('funds')) || ''
+    : '';
   const tokenId: string =
     decodeQueryParam(url.searchParams.get('tokenId')) || '';
   const img: string = getAssetImageUrl(
@@ -46,10 +49,6 @@ export const GET: RequestHandler = async ({ url }) => {
     : (OgCard as unknown as SvelteComponent<any, any, any>);
   /* eslint-enable @typescript-eslint/no-explicit-any */
 
-  console.log('RENDERING');
-  console.log('ratio', ratio);
-  console.log('img', img);
-
   return componentToImageResponse(
     component,
     {
@@ -58,6 +57,7 @@ export const GET: RequestHandler = async ({ url }) => {
       tokenId,
       img,
       source,
+      ecoLinked,
     },
     {
       width: width,
