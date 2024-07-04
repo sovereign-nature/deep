@@ -11,7 +11,7 @@
 
   export let url: string;
   export let alt: string;
-  export let verified = false;
+  export let ecoLinked = false;
   export let multiPass = false;
   export let size = 300;
   export let imgClass =
@@ -47,7 +47,7 @@
 
 <div class="relative">
   <div class="absolute z-50 right-0 top-5 translate-x-1/2 flex flex-col gap-2">
-    {#if verified}
+    {#if ecoLinked}
       <VerifiedIcon
         className="text-white dark:text-primary-200  fill-primary-300 dark:fill-deep-green"
       />
