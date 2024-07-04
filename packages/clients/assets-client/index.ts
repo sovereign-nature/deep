@@ -5,6 +5,7 @@ import { getKusamaAsset, getPolkadotAsset } from './targets/polkadot/client';
 import { getMoonsamaAsset } from './targets/moonsama/client';
 import { getOpenSeaAsset } from './targets/opensea/client';
 import { getOptimismTestnetAsset as getOptimismAsset } from './targets/alchemy/client';
+import { getUniqueAsset } from './targets/unique/client';
 
 //TODO: Cover with tests
 async function getAsset(
@@ -44,6 +45,9 @@ async function getAsset(
       );
     case 'hotel-hideaway':
       return getHotelHideawayAsset(collectionId);
+    case 'unique':
+    case 'opal':
+      return getUniqueAsset(network, Number.parseInt(collectionId), tokenId);
     default:
       throw new Error(`Unknown networkId: ${network}`);
   }

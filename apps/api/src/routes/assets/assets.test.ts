@@ -29,6 +29,14 @@ describe('Assets API', () => {
     expect(res.status).toEqual(200);
   });
 
+  it('should fetch Opal asset', async () => {
+    const res = await app.request(
+      'http://localhost/assets/did:asset:eip155:8882.unique2:3019:327'
+    );
+
+    expect(res.status).toEqual(200);
+  });
+
   //TODO: Fix OpenSea and Optimism tests
   // it('should fetch OpenSea asset', async () => {
   //   const res = await app.request(
