@@ -128,6 +128,12 @@ const en: BaseTranslation = {
         'Ecological Entity: an identified piece of ecology the Ecological Steward (ES) focuses on, that being a specific species population (predators of the Maasai Mara) or an ecosystem (the Upemba National Park)',
       traces: 'Traces Recorded',
     },
+    multiPass: {
+      cardTitle: 'Part of multi-pass collection:',
+      comingSoon: 'Coming soon:',
+      CTA: 'Begin the adventure',
+      aboutLink: 'About {multiPassName: string}',
+    },
   },
   social: {
     shareCard: {

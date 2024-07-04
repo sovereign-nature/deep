@@ -368,6 +368,25 @@ type RootTranslation = {
 			 */
 			traces: string
 		}
+		multiPass: {
+			/**
+			 * P​a​r​t​ ​o​f​ ​m​u​l​t​i​-​p​a​s​s​ ​c​o​l​l​e​c​t​i​o​n​:
+			 */
+			cardTitle: string
+			/**
+			 * C​o​m​i​n​g​ ​s​o​o​n​:
+			 */
+			comingSoon: string
+			/**
+			 * B​e​g​i​n​ ​t​h​e​ ​a​d​v​e​n​t​u​r​e
+			 */
+			CTA: string
+			/**
+			 * A​b​o​u​t​ ​{​m​u​l​t​i​P​a​s​s​N​a​m​e​}
+			 * @param {string} multiPassName
+			 */
+			aboutLink: RequiredParams<'multiPassName'>
+		}
 	}
 	social: {
 		shareCard: {
@@ -836,6 +855,24 @@ export type TranslationFunctions = {
 			 * Traces Recorded
 			 */
 			traces: () => LocalizedString
+		}
+		multiPass: {
+			/**
+			 * Part of multi-pass collection:
+			 */
+			cardTitle: () => LocalizedString
+			/**
+			 * Coming soon:
+			 */
+			comingSoon: () => LocalizedString
+			/**
+			 * Begin the adventure
+			 */
+			CTA: () => LocalizedString
+			/**
+			 * About {multiPassName}
+			 */
+			aboutLink: (arg: { multiPassName: string }) => LocalizedString
 		}
 	}
 	social: {
