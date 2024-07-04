@@ -6,12 +6,13 @@ import { DeepAsset } from '@sni/types';
 import {
   getArbitrumWalletAssets,
   getCrossmintWalletAssets,
+  getUniqueWalletAssets,
 } from '@sni/clients/wallets-client';
 
 import { env } from 'hono/adapter';
 import { zValidator } from '@hono/zod-validator';
 import { parseAssetDID } from '@sni/address-utils';
-import { reportUnknownNetwork as errorResponse } from '../../shared';
+import { errorResponse } from '../../shared';
 
 app.get(
   '/:walletAddress',
@@ -63,6 +64,18 @@ app.get(
             contractAddress,
             CROSSMINT_API_KEY,
             false
+          );
+          return c.json(assets);
+        } catch (e) {
+          return errorResponse(e, c);
+        }
+      case 'unique':
+      case 'opal':
+        try {
+          assets = await getUniqueWalletAssets(
+            network,
+            walletAddress,
+            Number.parseInt(contractAddress)
           );
           return c.json(assets);
         } catch (e) {
