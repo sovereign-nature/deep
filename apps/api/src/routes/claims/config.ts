@@ -1,3 +1,5 @@
+import { TokenStandard } from '@sni/address-utils';
+
 export type CollectionConfig = {
   name: string;
   externalId: string;
@@ -8,6 +10,7 @@ export type CollectionConfig = {
     attributes?: [{ trait_type: string; value: string }[]];
   };
   network: string;
+  tokenStandard: TokenStandard;
 };
 
 interface Collections {
@@ -26,6 +29,7 @@ export const collections: Collections = {
       name: 'ENGIE Bioacoustics Eco-Badge',
     },
     network: 'optimism',
+    tokenStandard: 'erc721',
   },
   'f5f7d73e-38b5-479d-a814-22c6d2199fcd': {
     name: 'test-collection',
@@ -37,6 +41,7 @@ export const collections: Collections = {
       name: 'ENGIE Bioacoustics Eco-Badge',
     },
     network: 'optimism',
+    tokenStandard: 'erc721',
   },
   'dotphin-poap-testnet': {
     name: 'dotphin-poap-testnet',
@@ -53,5 +58,6 @@ export const collections: Collections = {
       ],
     },
     network: 'opal',
+    tokenStandard: 'unique2',
   },
 };

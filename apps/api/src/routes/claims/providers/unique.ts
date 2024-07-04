@@ -78,8 +78,6 @@ export async function mintUniqueToken(
       tokenId: tokenId.toString(),
     },
     actionId: payload.id,
-    assetDID:
-      'did:asset:eip155:11155420.erc721:0xAA7f515b01C04E632c7837f1a80f67eA3f3Fc58B:74', //TODO: replace with real DID
   };
 
   return response;

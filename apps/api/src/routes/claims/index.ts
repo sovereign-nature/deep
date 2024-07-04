@@ -8,6 +8,7 @@ import { ClaimBody, CrossmintResponse, JWTToken } from './schemas';
 import { mintOptimismToken } from './providers/crossmint';
 import { mintUniqueToken } from './providers/unique';
 import { Payload } from './types';
+import { createAssetDID } from '@sni/address-utils';
 
 const app = new Hono();
 
@@ -100,7 +101,15 @@ app.post(
           );
         }
 
-        return c.json(JSON.parse(mintResponse));
+        return c.json({
+          ...parsedMintResponse,
+          assetDID: createAssetDID(
+            collectionConfig.network,
+            collectionConfig.tokenStandard,
+            collectionConfig.externalId,
+            parsedMintResponse.onChain.tokenId || '' //TODO: Separate success or pending response parsers so tokeId is defined
+          ),
+        });
       }
       default:
         return c.json({ error: true, message: 'Network not supported' }, 400);

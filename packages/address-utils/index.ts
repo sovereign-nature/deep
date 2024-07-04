@@ -64,14 +64,17 @@ const chainNameToId: ChainNameToId = {
   opal: 8882,
 };
 
-//TODO: Throw an error if chainName is not found
+export class ChainParsingError extends Error {}
+//TODO: Rename to chainNameToEIP155Id
 export function getChainId(chainName: string): number {
-  if (typeof chainName === 'string') {
-    return chainNameToId[chainName.toLowerCase()] || 0;
+  try {
+    return chainNameToId[chainName.toLowerCase()];
+  } catch (e) {
+    throw new ChainParsingError(`Unknown chain name: ${chainName}`);
   }
-  return 0;
 }
 
+//TODO: Make internal
 export function chainIdToName(chainId: number): string {
   const idToChainName: { [key: number]: string } = {};
 
@@ -81,9 +84,14 @@ export function chainIdToName(chainId: number): string {
     idToChainName[id] = chainName;
   }
 
-  return idToChainName[chainId] || ''; //TODO: Throw an error?
+  try {
+    return idToChainName[chainId];
+  } catch (e) {
+    throw new ChainParsingError(`Unknown chain id: ${chainId}`);
+  }
 }
 
+//TODO: Use this function insead of chainIdToName
 //Resolving chain name from it's namespace and ID
 function getChainName(chainNamespace: string, chainId: string): string {
   switch (chainNamespace) {
@@ -97,7 +105,6 @@ function getChainName(chainNamespace: string, chainId: string): string {
 }
 
 export class AddressParsingError extends Error {}
-
 //Parsing AssetDID to it's components
 export function parseAssetDID(did: string) {
   try {
@@ -110,4 +117,15 @@ export function parseAssetDID(did: string) {
     //TODO: Throw custom address parsing error
     throw new AddressParsingError(`Invalid DID address: ${did}`);
   }
+}
+
+export type TokenStandard = 'erc721' | 'erc1155' | 'unique2';
+export function createAssetDID(
+  chainName: string,
+  contractStandard: TokenStandard,
+  contractAddress: string | number,
+  tokenId: number | string
+) {
+  const chainId = getChainId(chainName);
+  return `did:asset:eip155:${chainId}.${contractStandard}:${contractAddress}:${tokenId}`;
 }
