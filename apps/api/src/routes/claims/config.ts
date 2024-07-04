@@ -48,12 +48,20 @@ export const collections: Collections = {
     externalId: '3019',
     metadata: {
       description: 'The Dotphin POAP Collection is a series of unique badges.',
-      imagePrefix: 'ipfs://QmXzECuBhrG2xy6ewRJCivZFiTYeuvoAosTjRADhuHaoUA',
+      imagePrefix:
+        'https://real.myfilebase.com/ipfs/QmXzECuBhrG2xy6ewRJCivZFiTYeuvoAosTjRADhuHaoUA',
       name: 'Dotphin POAP Test',
       attributes: [
         [
           { trait_type: 'element', value: 'air' },
-          { trait_type: 'event', value: 'polkadot-decoded-2024' },
+          { trait_type: 'eventId', value: 'polkadot-decoded-2024' },
+          {
+            trait_type: 'eventURL',
+            value: 'https://decoded.polkadot.network/', //TODO: Check if there any updated event URL
+          },
+          { trait_type: 'country', value: 'Belgium' },
+          { trait_type: 'city', value: 'Brussels' },
+          { trait_type: 'virtual', value: 'false' },
         ],
       ],
     },

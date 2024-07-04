@@ -101,15 +101,21 @@ app.post(
           );
         }
 
-        return c.json({
-          ...parsedMintResponse,
-          assetDID: createAssetDID(
+        if (parsedMintResponse.onChain.tokenId) {
+          const assetDID = createAssetDID(
             collectionConfig.network,
             collectionConfig.tokenStandard,
             collectionConfig.externalId,
-            parsedMintResponse.onChain.tokenId || '' //TODO: Separate success or pending response parsers so tokeId is defined
-          ),
-        });
+            parsedMintResponse.onChain.tokenId
+          );
+
+          return c.json({
+            ...parsedMintResponse,
+            assetDID,
+          });
+        }
+
+        return c.json(parsedMintResponse);
       }
       default:
         return c.json({ error: true, message: 'Network not supported' }, 400);
