@@ -3,9 +3,11 @@ import { Sr25519Account } from '@unique-nft/utils/sr25519';
 // import { Address } from '@unique-nft/utils';
 import { CollectionConfig } from '../config';
 import { Payload } from '../types';
+import { logger } from '../../../utils/logger';
 
 export async function mintUniqueToken(
-  address: string,
+  network: 'opal' | 'unique',
+  address: string, //TODO: Would be cool to validate this address like 0x${string}
   payload: Payload,
   collectionConfig: CollectionConfig,
   mnemonic: string
@@ -13,13 +15,20 @@ export async function mintUniqueToken(
   const account = Sr25519Account.fromUri(mnemonic);
 
   const sdk = new Sdk({
-    baseUrl: 'https://rest.unique.network/opal/v1',
+    baseUrl: `https://rest.unique.network/${network}/v1`,
     account,
     axiosConfig: { adapter: 'fetch' },
   });
 
+  class MintingError extends Error {
+    constructor(message: string) {
+      super(message);
+      this.name = 'MintingError';
+    }
+  }
+
   if (!collectionConfig.externalId) {
-    throw new Error('Collection externalId is not set');
+    throw new MintingError('Collection externalId is not set');
   }
 
   const collectionId = parseInt(collectionConfig.externalId);
@@ -34,7 +43,7 @@ export async function mintUniqueToken(
         image: collectionConfig.metadata.imagePrefix,
         description: collectionConfig.metadata.description,
         attributes: collectionConfig.metadata.attributes
-          ? collectionConfig.metadata.attributes[0]
+          ? collectionConfig.metadata.attributes[0] //TODO: Randomize attributes via seed
           : [],
       },
     ],
@@ -46,15 +55,15 @@ export async function mintUniqueToken(
 
   const tokenIds = tokensMintingResult.parsed.map(({ tokenId }) => tokenId);
 
-  console.log(
-    `Tokens minted in collection ${collectionId}, ids ${tokenIds.join(', ')}`
+  logger.info(
+    `Tokens minted in collection ${collectionId}, ids ${tokenIds.join(', ')}, job ${payload.id}`
   );
 
-  for (const tokenId of tokenIds) {
-    console.log(
-      `${sdk.options.baseUrl}/tokens/v2?collectionId=${collectionId}&tokenId=${tokenId}`
-    );
-  }
+  // for (const tokenId of tokenIds) {
+  //   console.log(
+  //     `${sdk.options.baseUrl}/tokens/v2?collectionId=${collectionId}&tokenId=${tokenId}`
+  //   );
+  // }
 
   const tokenId = tokenIds[0];
 

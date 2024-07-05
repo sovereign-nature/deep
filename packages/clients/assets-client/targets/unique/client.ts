@@ -1,9 +1,9 @@
 import { DeepAsset } from '@sni/types';
-import { UniqueNFTResponseSchema } from './schemas';
 import { createAssetDID } from '@sni/address-utils';
+import { UniqueNFTResponseSchema } from './schemas';
 
 export async function getUniqueAsset(
-  network: string,
+  network: 'opal' | 'unique',
   collectionId: number,
   tokenId: number
 ): Promise<DeepAsset> {

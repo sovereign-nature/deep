@@ -136,6 +136,7 @@ export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
 
     switch (network) {
       case 'opal':
+      case 'unique':
         {
           const mintId = mintRequest.payload.id;
           logger.info(
@@ -143,6 +144,7 @@ export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
           );
 
           const successResponse = await mintUniqueToken(
+            network,
             mintRequest.address,
             mintRequest.payload,
             mintRequest.collectionConfig,
