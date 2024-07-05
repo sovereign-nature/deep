@@ -7,7 +7,7 @@ export type CollectionConfig = {
     description: string;
     imagePrefix: string;
     name: string;
-    attributes?: [{ trait_type: string; value: string }[]];
+    attributes?: { trait_type: string; value: string }[][];
   };
   network: string;
   tokenStandard: TokenStandard;
@@ -16,6 +16,17 @@ export type CollectionConfig = {
 interface Collections {
   [key: string]: CollectionConfig;
 }
+
+const decodeBrusselsAttributes = [
+  { trait_type: 'eventId', value: 'polkadot-decoded-2024' },
+  {
+    trait_type: 'eventURL',
+    value: 'https://decoded.polkadot.network/', //TODO: Check if there any updated event URL
+  },
+  { trait_type: 'country', value: 'Belgium' },
+  { trait_type: 'city', value: 'Brussels' },
+  { trait_type: 'virtual', value: 'false' },
+];
 
 export const collections: Collections = {
   '5f773e35-d5f2-41dc-ae80-c94e0e8e4821': {
@@ -52,16 +63,14 @@ export const collections: Collections = {
         'https://real.myfilebase.com/ipfs/QmXzECuBhrG2xy6ewRJCivZFiTYeuvoAosTjRADhuHaoUA',
       name: 'Dotphin POAP Test',
       attributes: [
+        [{ trait_type: 'element', value: 'air' }, ...decodeBrusselsAttributes],
         [
-          { trait_type: 'element', value: 'air' },
-          { trait_type: 'eventId', value: 'polkadot-decoded-2024' },
-          {
-            trait_type: 'eventURL',
-            value: 'https://decoded.polkadot.network/', //TODO: Check if there any updated event URL
-          },
-          { trait_type: 'country', value: 'Belgium' },
-          { trait_type: 'city', value: 'Brussels' },
-          { trait_type: 'virtual', value: 'false' },
+          { trait_type: 'element', value: 'earth' },
+          ...decodeBrusselsAttributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...decodeBrusselsAttributes,
         ],
       ],
     },

@@ -2,16 +2,20 @@ import { Hono } from 'hono';
 import { env } from 'hono/adapter';
 import { sign } from 'hono/jwt';
 import { nanoid } from 'nanoid';
+import { logger } from '../../utils/logger';
 import { events } from './config';
 
 const app = new Hono();
 
-const getEventToken = app.get('/:eventId', async (c) => {
+app.get('/:eventId', async (c) => {
+  // c.res.headers.set('Cache-Control', 'no-store'); // Disable caching, maybe let's enable in production later
+
   const { CLAIMS_SECRET } = env<{ CLAIMS_SECRET: string }>(c);
 
   const eventId = c.req.param('eventId');
 
   try {
+    //TODO: Scope error handling for invalid eventIds
     const eventConfig = events[eventId];
 
     const token = await sign(
@@ -24,19 +28,14 @@ const getEventToken = app.get('/:eventId', async (c) => {
       'HS256'
     );
 
-    console.log('token', token);
-
-    c.res.headers.set('Cache-Control', 'no-store');
     return c.redirect(
       `https://real.sovereignnature.com/?q=${eventConfig.realCollection}&claim=${token}`,
       301
     );
   } catch (e) {
-    console.error(JSON.stringify(e)); //TODO: standardize error logging
+    logger.error(e);
     return c.json({ error: true, message: 'Event was not found' }, 404);
   }
 });
-
-export type GetAssetRoute = typeof getEventToken;
 
 export default app;

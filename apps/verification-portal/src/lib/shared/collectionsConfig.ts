@@ -3,7 +3,8 @@ export type CollectionKeys =
   | 'wildsama'
   | 'sub0'
   | 'hh'
-  | 'engie';
+  | 'engie'
+  | 'decoded2024';
 interface TabConfig {
   activeKey: CollectionKeys;
 }
@@ -32,6 +33,18 @@ export const tabConfig: TabConfig = {
 };
 
 export const collections: Collection[] = [
+  {
+    key: 'decoded2024',
+    collectionAddress: 'did:asset:eip155:8882.unique2:3019', //TODO: Switch to production address
+    avatar:
+      'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/0ca097dd-d487-4f7f-f2e7-86db8f2aa300/square300px', //TODO: Switch to production image
+    web3: { source: 'opal', web3Enabled: true },
+    searchInput: {
+      searchEnabled: true,
+      inputMode: 'numeric',
+    },
+    test: true,
+  },
   {
     key: 'engie',
     collectionAddress:

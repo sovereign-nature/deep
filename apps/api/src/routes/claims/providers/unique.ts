@@ -43,7 +43,7 @@ export async function mintUniqueToken(
         image: collectionConfig.metadata.imagePrefix,
         description: collectionConfig.metadata.description,
         attributes: collectionConfig.metadata.attributes
-          ? collectionConfig.metadata.attributes[0] //TODO: Randomize attributes via seed
+          ? collectionConfig.metadata.attributes[payload.seed]
           : [],
       },
     ],

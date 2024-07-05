@@ -34,7 +34,12 @@ const en: BaseTranslation = {
       placeholder: 'Find by token ID',
     },
   },
+  //TODO: Move collection names out of translations
   //collections
+  decoded2024: {
+    collectionName: 'Decoded 2024',
+    searchPlaceholder: '',
+  },
   engie: {
     collectionName: 'ENGIE',
     searchPlaceholder: 'Find by token ID (1-300)',
