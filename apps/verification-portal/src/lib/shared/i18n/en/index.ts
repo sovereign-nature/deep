@@ -109,6 +109,7 @@ const en: BaseTranslation = {
       sub0: 'Welcome to the Polkadot sub0 biodiversity collection. Your contribution makes a REAL difference. Connect with the marine biodiversity served by the organisation AIMM Portugal.',
     },
     ecoLinked: 'Eco-Linked:',
+    infoEcoLinked: 'Eco-Linked with real world entity',
     shareText: 'Share your asset',
     funds: {
       cardTitle: 'Funds generated so far:',
@@ -127,6 +128,13 @@ const en: BaseTranslation = {
       description:
         'Ecological Entity: an identified piece of ecology the Ecological Steward (ES) focuses on, that being a specific species population (predators of the Maasai Mara) or an ecosystem (the Upemba National Park)',
       traces: 'Traces Recorded',
+    },
+    multiPass: {
+      cardTitle: 'Part of multi-pass collection:',
+      comingSoon: 'Coming soon:',
+      CTA: 'Begin the adventure',
+      info: 'Part of a multi-pass collection',
+      aboutLink: 'About {multiPassName: string}',
     },
   },
   social: {

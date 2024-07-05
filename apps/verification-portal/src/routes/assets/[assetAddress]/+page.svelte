@@ -17,6 +17,8 @@
   import ShareCard from '$lib/components/ShareCard.svelte';
   import AudioPlayer from '$lib/components/media/AudioPlayer.svelte';
   import NewsCarousel from '$lib/components/carousel/NewsCarousel.svelte';
+  import MultipassCta from '$lib/widgets/MultipassCTA/MultipassCTA.svelte';
+
   import LL from '$lib/shared/i18n/i18n-svelte.js';
   import { subscribeToPage, setTocTitle } from '$lib/features/toc';
 
@@ -25,6 +27,8 @@
   const unsubscribe = subscribeToPage(page);
 
   onDestroy(unsubscribe);
+
+  const multiPass = false; //TODO: replace with server variable from api
 
   $: currentPath = $page.url.toString();
   $: pageTitle = `${$LL.assets.title({ assetName: nftData!.name })}`;
@@ -79,7 +83,12 @@
       class="w-100 relative z-10 col-span-1 mb-8 flex justify-center lg:col-span-4 lg:mb-4 xl:col-span-4 xl:col-start-1"
     >
       {#key nftData}
-        <NFTImage verified={ecoLinked} url={nftData.image} alt={nftData.name} />
+        <NFTImage
+          {ecoLinked}
+          {multiPass}
+          url={nftData.image}
+          alt={nftData.name}
+        />
       {/key}
     </div>
     <div class="lg:col-span-8 xl:col-span-8">
@@ -133,6 +142,9 @@
   </div>
 
   <!-- /header -->
+  {#if multiPass}
+    <MultipassCta></MultipassCta>
+  {/if}
 
   {#if ecoLinked && deepData}
     <div

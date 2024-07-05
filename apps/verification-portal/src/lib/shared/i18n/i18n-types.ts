@@ -319,6 +319,10 @@ type RootTranslation = {
 		 */
 		ecoLinked: string
 		/**
+		 * E​c​o​-​L​i​n​k​e​d​ ​w​i​t​h​ ​r​e​a​l​ ​w​o​r​l​d​ ​e​n​t​i​t​y
+		 */
+		infoEcoLinked: string
+		/**
 		 * S​h​a​r​e​ ​y​o​u​r​ ​a​s​s​e​t
 		 */
 		shareText: string
@@ -367,6 +371,29 @@ type RootTranslation = {
 			 * T​r​a​c​e​s​ ​R​e​c​o​r​d​e​d
 			 */
 			traces: string
+		}
+		multiPass: {
+			/**
+			 * P​a​r​t​ ​o​f​ ​m​u​l​t​i​-​p​a​s​s​ ​c​o​l​l​e​c​t​i​o​n​:
+			 */
+			cardTitle: string
+			/**
+			 * C​o​m​i​n​g​ ​s​o​o​n​:
+			 */
+			comingSoon: string
+			/**
+			 * B​e​g​i​n​ ​t​h​e​ ​a​d​v​e​n​t​u​r​e
+			 */
+			CTA: string
+			/**
+			 * P​a​r​t​ ​o​f​ ​a​ ​m​u​l​t​i​-​p​a​s​s​ ​c​o​l​l​e​c​t​i​o​n
+			 */
+			info: string
+			/**
+			 * A​b​o​u​t​ ​{​m​u​l​t​i​P​a​s​s​N​a​m​e​}
+			 * @param {string} multiPassName
+			 */
+			aboutLink: RequiredParams<'multiPassName'>
 		}
 	}
 	social: {
@@ -788,6 +815,10 @@ export type TranslationFunctions = {
 		 */
 		ecoLinked: () => LocalizedString
 		/**
+		 * Eco-Linked with real world entity
+		 */
+		infoEcoLinked: () => LocalizedString
+		/**
 		 * Share your asset
 		 */
 		shareText: () => LocalizedString
@@ -836,6 +867,28 @@ export type TranslationFunctions = {
 			 * Traces Recorded
 			 */
 			traces: () => LocalizedString
+		}
+		multiPass: {
+			/**
+			 * Part of multi-pass collection:
+			 */
+			cardTitle: () => LocalizedString
+			/**
+			 * Coming soon:
+			 */
+			comingSoon: () => LocalizedString
+			/**
+			 * Begin the adventure
+			 */
+			CTA: () => LocalizedString
+			/**
+			 * Part of a multi-pass collection
+			 */
+			info: () => LocalizedString
+			/**
+			 * About {multiPassName}
+			 */
+			aboutLink: (arg: { multiPassName: string }) => LocalizedString
 		}
 	}
 	social: {
