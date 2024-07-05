@@ -64,7 +64,7 @@
 
 <style>
   .bg-multipass {
-    background-image: url('');
+    background-image: url('https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/5c63ac43-4c0d-4495-f767-815bd3284a00/public');
     background-size: cover;
     background-repeat: no-repeat;
   }
