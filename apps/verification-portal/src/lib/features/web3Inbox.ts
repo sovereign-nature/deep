@@ -43,6 +43,7 @@ let accountWatchInitialized = false;
 let typeWatchInitialized = false;
 let notificationWatchInitialized = false;
 let notifications: PageNotificationsReturnType | undefined;
+let lastProcessedAccount: string | undefined = undefined;
 
 const getWeb3InboxAccount = () => {
   const address = getAccount(wagmiConfig).address?.toString();
@@ -76,7 +77,9 @@ export function initializeInbox() {
 
       connectToInbox();
     } else {
-      clearInboxClient();
+      if (web3InboxClient) {
+        clearInboxClient();
+      }
     }
   });
   web3AddressStore.subscribe(async () => {
@@ -108,7 +111,6 @@ async function connectToInbox() {
       domain,
       allApps,
     });
-    let lastProcessedAccount: string | null = null;
 
     await web3InboxClient.setAccount(account as string);
 
@@ -124,6 +126,7 @@ async function connectToInbox() {
           checkIfRegistered(account);
           lastProcessedAccount = newAccount;
         } else {
+          lastProcessedAccount = newAccount;
           console.log('Account is same or undefined');
         }
       });
@@ -206,6 +209,8 @@ async function clearInboxClient() {
   if (!web3InboxClient) return;
 
   web3InboxClient = null;
+  lastProcessedAccount = undefined;
+
   web3InboxLoading.set(true);
   resetInboxState();
 }
