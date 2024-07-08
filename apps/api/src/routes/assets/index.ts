@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import { env } from 'hono/adapter';
 import { AssetNotFoundError, getAssetByDID } from '@sni/clients/assets-client';
-import { AddressParsingError } from '@sni/address-utils';
+import { AddressParsingError, parseAssetDID } from '@sni/address-utils';
 import { logger } from '../../utils/logger';
 
 const app = new Hono();
@@ -17,6 +17,22 @@ app.get('/:assetDid', async (c) => {
       openSeaAPIKey: OPEN_SEA_API_KEY,
       alchemyAPIKey: ALCHEMY_API_KEY,
     });
+
+    const { network, contractAddress } = parseAssetDID(assetDID);
+
+    if (
+      ['unique', 'opal'].includes(network) &&
+      ['3019'].includes(contractAddress)
+    ) {
+      return c.json({
+        ...assetData,
+        multipass: {
+          name: 'DOTphin',
+          infoLink: 'https://sovereignnature.com/',
+        },
+      });
+    }
+
     return c.json(assetData);
   } catch (e) {
     logger.error(e);
