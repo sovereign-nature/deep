@@ -41,4 +41,9 @@ export const collections: {
       'did:asset:eip155:10.erc721:0xf2D96c9CE9c10a0981857887eF1E0355A4fDB4C9',
     highlightIds: [1, 2, 3, 4, 5, 6],
   },
+  'dotphin-proofs': {
+    id: 'dotphin-proofs',
+    collectionAddress: 'did:asset:eip155:8880.unique2:665',
+    highlightIds: [1],
+  },
 };
