@@ -45,11 +45,11 @@ app.post(
     const claim = await CLAIMS_KV.get(`${address}-${payload.collection}`);
     const mintResponse = await MINTING_KV.get(mintId);
 
-    if (mintResponse === null && claim === null) {
+    if (claim && mintResponse === null) {
       return c.json(
         {
           error: true,
-          message: 'Eco-badge was already claimed for this wallet',
+          message: 'Token was already claimed for this wallet',
         },
         400
       );
