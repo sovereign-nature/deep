@@ -62,7 +62,8 @@ app.post(
     switch (network) {
       case 'optimism':
         return mintOptimismToken(address, payload, collectionConfig, c);
-      case 'opal': {
+      case 'opal':
+      case 'unique': {
         if (mintResponse === null) {
           logger.info(`Minting ${mintId}`);
 
