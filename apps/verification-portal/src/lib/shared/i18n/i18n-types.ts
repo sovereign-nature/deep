@@ -197,11 +197,11 @@ type RootTranslation = {
 		 */
 		useManualInput: string
 		/**
-		 * C​l​a​i​m​ ​y​o​u​r​ ​E​c​o​-​B​a​d​g​e
+		 * C​l​a​i​m​ ​y​o​u​r​ ​t​o​k​e​n
 		 */
 		titleClaim: string
 		/**
-		 * C​o​n​g​r​a​t​u​l​a​t​i​o​n​s​ ​o​n​ ​y​o​u​r​ ​E​c​o​-​B​a​d​g​e​!
+		 * C​o​n​g​r​a​t​u​l​a​t​i​o​n​s​ ​o​n​ ​y​o​u​r​ ​n​e​w​ ​t​o​k​e​n​!
 		 */
 		titleValid: string
 		/**
@@ -233,7 +233,7 @@ type RootTranslation = {
 		 */
 		buttonPending: string
 		/**
-		 * ⭐​ ​Y​o​u​r​ ​E​c​o​-​B​a​d​g​e​ ​i​s​ ​M​i​n​t​e​d​!
+		 * ⭐​ ​Y​o​u​r​ ​T​o​k​e​n​ ​I​s​ ​M​i​n​t​e​d​!
 		 */
 		buttonSuccess: string
 	}
@@ -703,11 +703,11 @@ export type TranslationFunctions = {
 		 */
 		useManualInput: () => LocalizedString
 		/**
-		 * Claim your Eco-Badge
+		 * Claim your token
 		 */
 		titleClaim: () => LocalizedString
 		/**
-		 * Congratulations on your Eco-Badge!
+		 * Congratulations on your new token!
 		 */
 		titleValid: () => LocalizedString
 		/**
@@ -739,7 +739,7 @@ export type TranslationFunctions = {
 		 */
 		buttonPending: () => LocalizedString
 		/**
-		 * ⭐ Your Eco-Badge is Minted!
+		 * ⭐ Your Token Is Minted!
 		 */
 		buttonSuccess: () => LocalizedString
 	}

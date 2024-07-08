@@ -74,8 +74,8 @@ const en: BaseTranslation = {
   claim: {
     useWallet: 'Use Wallet Address',
     useManualInput: 'Enter Wallet Address Manually',
-    titleClaim: 'Claim your Eco-Badge',
-    titleValid: 'Congratulations on your Eco-Badge!',
+    titleClaim: 'Claim your token',
+    titleValid: 'Congratulations on your new token!',
     titlePending: 'Your claim is pending',
     descriptionPending:
       'Your token is being minted, this can take several minutes. In the meantime you can continue exploring the site.',
@@ -85,7 +85,7 @@ const en: BaseTranslation = {
     checkClaim: ' Check the claim status',
     buttonCTA: '⭐ Claim Your Badge',
     buttonPending: '⏳ Badge Is Pending',
-    buttonSuccess: '⭐ Your Eco-Badge is Minted!',
+    buttonSuccess: '⭐ Your Token Is Minted!',
   },
   notifications: {
     seeAll: 'See all notifications',
