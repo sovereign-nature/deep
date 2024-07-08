@@ -14,7 +14,7 @@ export async function mintOptimismToken(
   const { CROSSMINT_API_URL } = env<{ CROSSMINT_API_URL: string }>(c);
   const { CROSSMINT_API_KEY } = env<{ CROSSMINT_API_KEY: string }>(c);
 
-  const image = `${collectionConfig.metadata.imagePrefix}${payload.seed}.jpg`;
+  const image = `${collectionConfig.metadata.image}${payload.seed}.jpg`;
   const metadata = {
     name: collectionConfig.metadata.name,
     description: collectionConfig.metadata.description,

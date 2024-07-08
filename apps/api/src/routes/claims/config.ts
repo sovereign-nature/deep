@@ -5,7 +5,7 @@ export type CollectionConfig = {
   externalId: string;
   metadata: {
     description: string;
-    imagePrefix: string;
+    image: string[];
     name: string;
     attributes?: { trait_type: string; value: string }[][];
   };
@@ -21,11 +21,14 @@ const decodeBrusselsAttributes = [
   { trait_type: 'eventId', value: 'polkadot-decoded-2024' },
   {
     trait_type: 'eventURL',
-    value: 'https://decoded.polkadot.network/', //TODO: Check if there any updated event URL
+    value: 'https://events.polkadot.network/event/polkadot-decoded-2024',
   },
   { trait_type: 'country', value: 'Belgium' },
   { trait_type: 'city', value: 'Brussels' },
-  { trait_type: 'virtual', value: 'false' },
+  { trait_type: 'virtualEvent', value: 'false' },
+  { trait_type: 'startDate', value: '11-Jul-2024' },
+  { trait_type: 'endDate', value: '12-Jul-2024' },
+  { trait_type: 'proofOf', value: 'attendance' },
 ];
 
 export const collections: Collections = {
@@ -35,8 +38,9 @@ export const collections: Collections = {
     metadata: {
       description:
         'To celebrate ENGIE\'s commitment to Corporate Social and Environmental Responsibility, the Sovereign Nature Initiative proudly introduces the "Dakhla Bay Collection 1.0" eco-badges, developed in collaboration with ENGIE. These eco-badges present digital art inspired by the marine life of Dakhla Bay. Each badge merges abstract patterns with empirical data from Aquasearch, incorporating acoustic recordings and observational data that algorithmically shape the artwork\'s color, geometry, and dynamics. Discover the unique story of the dolphin linked to your eco-badge and share its tale with your community!',
-      imagePrefix:
+      image: [
         'ipfs://QmPz44sT22UUtJSrTnzC8mA7znF1vWd5U4ZmzzBnpvdHYE/dakhla_collection_final_',
+      ],
       name: 'ENGIE Bioacoustics Eco-Badge',
     },
     network: 'optimism',
@@ -47,8 +51,9 @@ export const collections: Collections = {
     externalId: 'f5f7d73e-38b5-479d-a814-22c6d2199fcd',
     metadata: {
       description: 'Test collection',
-      imagePrefix:
+      image: [
         'ipfs://QmPz44sT22UUtJSrTnzC8mA7znF1vWd5U4ZmzzBnpvdHYE/dakhla_collection_final_',
+      ],
       name: 'ENGIE Bioacoustics Eco-Badge',
     },
     network: 'optimism',
@@ -59,8 +64,11 @@ export const collections: Collections = {
     externalId: '3019',
     metadata: {
       description: 'The Dotphin POAP Collection is a series of unique badges.',
-      imagePrefix:
-        'https://real.myfilebase.com/ipfs/QmXzECuBhrG2xy6ewRJCivZFiTYeuvoAosTjRADhuHaoUA',
+      image: [
+        'https://real.myfilebase.com/ipfs/QmemH8F2f1AAJGzFHLPt7mmi1M37VVVu537K5VNrzBx9U9/polkadot-decoded-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmemH8F2f1AAJGzFHLPt7mmi1M37VVVu537K5VNrzBx9U9/polkadot-decoded-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmemH8F2f1AAJGzFHLPt7mmi1M37VVVu537K5VNrzBx9U9/polkadot-decoded-2024-water.png',
+      ],
       name: 'Dotphin POAP Test',
       attributes: [
         [{ trait_type: 'element', value: 'air' }, ...decodeBrusselsAttributes],
