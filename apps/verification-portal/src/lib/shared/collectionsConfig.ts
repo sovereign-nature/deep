@@ -43,7 +43,6 @@ export const collections: Collection[] = [
       searchEnabled: true,
       inputMode: 'numeric',
     },
-    test: true,
   },
   {
     key: 'engie',
