@@ -4,7 +4,7 @@ export type CollectionKeys =
   | 'sub0'
   | 'hh'
   | 'engie'
-  | 'decoded2024';
+  | 'dotphin-proofs';
 interface TabConfig {
   activeKey: CollectionKeys;
 }
@@ -34,11 +34,11 @@ export const tabConfig: TabConfig = {
 
 export const collections: Collection[] = [
   {
-    key: 'decoded2024',
-    collectionAddress: 'did:asset:eip155:8882.unique2:3019', //TODO: Switch to production address
+    key: 'dotphin-proofs',
+    collectionAddress: 'did:asset:eip155:8880.unique2:665',
     avatar:
-      'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/0ca097dd-d487-4f7f-f2e7-86db8f2aa300/square300px', //TODO: Switch to production image
-    web3: { source: 'opal', web3Enabled: true },
+      'https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/e820f9f7-5ac1-4d2a-6387-2e69c7a81a00/square300px',
+    web3: { source: 'unique', web3Enabled: true },
     searchInput: {
       searchEnabled: true,
       inputMode: 'numeric',
