@@ -28,8 +28,6 @@
 
   onDestroy(unsubscribe);
 
-  const multiPass = false; //TODO: replace with server variable from api
-
   $: currentPath = $page.url.toString();
   $: pageTitle = `${$LL.assets.title({ assetName: nftData!.name })}`;
 
@@ -85,7 +83,7 @@
       {#key nftData}
         <NFTImage
           {ecoLinked}
-          {multiPass}
+          multipass={nftData?.multipass ? true : false}
           url={nftData.image}
           alt={nftData.name}
         />
@@ -142,8 +140,8 @@
   </div>
 
   <!-- /header -->
-  {#if multiPass}
-    <MultipassCta></MultipassCta>
+  {#if nftData?.multipass}
+    <MultipassCta {...nftData.multipass}></MultipassCta>
   {/if}
 
   {#if ecoLinked && deepData}

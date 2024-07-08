@@ -12,7 +12,7 @@
   export let url: string;
   export let alt: string;
   export let ecoLinked = false;
-  export let multiPass = false;
+  export let multipass = false;
   export let size = 300;
   export let imgClass =
     'object-cover w-full h-full rounded-xl sm:rounded-lg fade-from-none';
@@ -55,12 +55,12 @@
         >{$LL.assets.infoEcoLinked()}</Tooltip
       >
     {/if}
-    {#if multiPass}
+    {#if multipass}
       <HexagonGridIcon
         className=" fill-primary-500 text-deep-green-500 h-[63px]"
       />
       <Tooltip placement="left" class="text-center p-4 z-50 break-all"
-        >{$LL.assets.multiPass.info()}</Tooltip
+        >{$LL.assets.multipass.info()}</Tooltip
       >
     {/if}
   </div>
