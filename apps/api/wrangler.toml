@@ -24,3 +24,8 @@ max_batch_size = 1
 binding = "MINTING_KV"
 id = "0f4988a01242450187f4ee6ca522a5d6"
 preview_id = "0f4988a01242450187f4ee6ca522a5d6"
+
+[[kv_namespaces]]
+binding = "CLAIMS_KV"
+id = "974b532adcea43e8b9b90bffe8c834cf"
+preview_id = "974b532adcea43e8b9b90bffe8c834cf"

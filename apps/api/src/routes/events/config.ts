@@ -12,7 +12,7 @@ interface Events {
 export const events: Events = {
   decoded2024: {
     collectionId: 'dotphin-poap-testnet',
-    realCollection: 'dotphin-decoded',
+    realCollection: 'decoded2024',
     seed: () => random(0, 2, false),
   },
 };
