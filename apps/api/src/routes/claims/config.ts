@@ -66,9 +66,9 @@ export const collections: Collections = {
       description:
         'This is the first DOTphin Proof of Attendance!\nYour proof of attendance at Decoded 2024 in Brussels! This isn’t just any badge; it’s the key to unlocking your DOTphin journey. Get ready to dive into a world where your engagement drives real-world marine conservation.\nYour proof of attendance is the first step in making waves with DOTphin. This trailblazing project merges dynamic, evolving NFTs with sustainability, supporting marine conservation through every interaction. Join us in transforming community engagement and making a tangible impact on our oceans.',
       image: [
-        'https://real.myfilebase.com/ipfs/QmemH8F2f1AAJGzFHLPt7mmi1M37VVVu537K5VNrzBx9U9/polkadot-decoded-2024-air.png',
-        'https://real.myfilebase.com/ipfs/QmemH8F2f1AAJGzFHLPt7mmi1M37VVVu537K5VNrzBx9U9/polkadot-decoded-2024-earth.png',
-        'https://real.myfilebase.com/ipfs/QmemH8F2f1AAJGzFHLPt7mmi1M37VVVu537K5VNrzBx9U9/polkadot-decoded-2024-water.png',
+        'https://real.myfilebase.com/ipfs/QmagUnan8yPS7fFRL6hxk2VkdXbroD4AJGfLPDFzAgFEis/polkadot-decoded-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmagUnan8yPS7fFRL6hxk2VkdXbroD4AJGfLPDFzAgFEis/polkadot-decoded-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmagUnan8yPS7fFRL6hxk2VkdXbroD4AJGfLPDFzAgFEis/polkadot-decoded-2024-water.png',
       ],
       name: 'DOTphin Proof of Attendance ‒ Decoded 2024',
       attributes: [

@@ -26,7 +26,7 @@
   let errorMsg = $LL.errors.image();
 
   $: isVideo = url?.endsWith('.mp4');
-  $: imageUrl = isVideo ? url : getAssetImageUrl(url, size);
+  $: imageUrl = isVideo ? url : getAssetImageUrl(url, size, size);
 
   // Function to handle image loading errors
   function handleImageError() {
