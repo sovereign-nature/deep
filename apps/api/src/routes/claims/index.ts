@@ -26,6 +26,7 @@ app.post(
     const { CLAIMS_SECRET } = env<{ CLAIMS_SECRET: string }>(c);
     const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<MintRequest> }>(c);
     const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c);
+    const { CLAIMS_KV } = env<{ CLAIMS_KV: KVNamespace }>(c);
 
     const body = ClaimBody.parse(await c.req.json());
 
@@ -41,6 +42,19 @@ app.post(
     const { payload } = JWTToken.parse(decode(token));
     const mintId = payload.id;
 
+    const claim = await CLAIMS_KV.get(`${address}-${payload.collection}`);
+    const mintResponse = await MINTING_KV.get(mintId);
+
+    if (claim && mintResponse === null) {
+      return c.json(
+        {
+          error: true,
+          message: 'Token was already claimed for this wallet',
+        },
+        400
+      );
+    }
+
     const collectionConfig = collections[payload.collection];
     const network = collectionConfig.network;
 
@@ -48,8 +62,6 @@ app.post(
       case 'optimism':
         return mintOptimismToken(address, payload, collectionConfig, c);
       case 'opal': {
-        const mintResponse = await MINTING_KV.get(mintId);
-
         if (mintResponse === null) {
           logger.info(`Minting ${mintId}`);
 
@@ -79,6 +91,8 @@ app.post(
           logger.info(`Sending minting ${mintId} to queue`);
           await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
           await MINTING_QUEUE.send({ address, payload, collectionConfig });
+
+          await CLAIMS_KV.put(`${address}-${payload.collection}`, payload.id);
 
           logger.debug(`Message queue received ${mintId}`);
 
@@ -126,6 +140,7 @@ app.post(
 type Env = {
   WALLET_MNEMONIC: string;
   MINTING_KV: KVNamespace;
+  CLAIMS_KV: KVNamespace;
 };
 
 export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {

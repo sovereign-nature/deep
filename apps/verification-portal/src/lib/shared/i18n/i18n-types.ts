@@ -104,6 +104,13 @@ type RootTranslation = {
 			placeholder: string
 		}
 	}
+	decoded2024: {
+		/**
+		 * D​e​c​o​d​e​d​ ​2​0​2​4
+		 */
+		collectionName: string
+		searchPlaceholder: string
+	}
 	engie: {
 		/**
 		 * E​N​G​I​E
@@ -606,6 +613,13 @@ export type TranslationFunctions = {
 			 */
 			placeholder: () => LocalizedString
 		}
+	}
+	decoded2024: {
+		/**
+		 * Decoded 2024
+		 */
+		collectionName: () => LocalizedString
+		searchPlaceholder: () => LocalizedString
 	}
 	engie: {
 		/**
