@@ -49,10 +49,18 @@
   </div>
 {:else if $claimStatus === 'pending'}
   <div class="flex flex-col md:flex-row gap-x-12 gap-y-4">
-    <div class="hidden md:block w-48 h-48 rounded-lg overflow-hidden">
-      <ImagePlaceholder className="w-48 h-48 block "></ImagePlaceholder>
-    </div>
-
+    {#if $claimResponse?.metadata?.image}
+      <NftImage
+        containerClass="w-48 h-48  rounded-lg mb-2 overflow-hidden text-center bg-deep-green-900"
+        imgClass="w-48 h-48"
+        url={$claimResponse?.metadata?.image}
+        alt={$claimResponse?.metadata?.name}
+      />
+    {:else}
+      <div class="hidden md:block w-48 h-48 rounded-lg overflow-hidden">
+        <ImagePlaceholder className="w-48 h-48 block "></ImagePlaceholder>
+      </div>
+    {/if}
     <div>
       <div>
         <slot />
