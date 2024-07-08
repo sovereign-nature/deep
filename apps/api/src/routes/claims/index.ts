@@ -40,6 +40,8 @@ app.post(
     }
 
     const { payload } = JWTToken.parse(decode(token));
+    const collectionConfig = collections[payload.collection];
+
     const mintId = payload.id;
 
     const claim = await CLAIMS_KV.get(`${address}-${payload.collection}`);
@@ -49,13 +51,12 @@ app.post(
       return c.json(
         {
           error: true,
-          message: 'Token was already claimed for this wallet',
+          message: `Token from ${collectionConfig.name} was already claimed for this wallet`,
         },
         400
       );
     }
 
-    const collectionConfig = collections[payload.collection];
     const network = collectionConfig.network;
 
     switch (network) {
@@ -65,6 +66,9 @@ app.post(
         if (mintResponse === null) {
           logger.info(`Minting ${mintId}`);
 
+          const image = collectionConfig.metadata.image[payload.seed];
+          console.log('image', image);
+          console.log(payload.seed);
           const pendingResponse = {
             id: payload.id,
             onChain: {
@@ -73,7 +77,7 @@ app.post(
               contractAddress: collectionConfig.externalId,
             },
             metadata: {
-              image: collectionConfig.metadata.image[payload.seed],
+              image: image,
             },
             actionId: payload.id,
           };
