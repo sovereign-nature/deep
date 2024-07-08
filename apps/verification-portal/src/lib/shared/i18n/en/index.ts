@@ -36,8 +36,8 @@ const en: BaseTranslation = {
   },
   //TODO: Move collection names out of translations
   //collections
-  decoded2024: {
-    collectionName: 'Decoded 2024',
+  'dotphin-proofs': {
+    collectionName: 'DOTphin Proofs',
     searchPlaceholder: '',
   },
   engie: {

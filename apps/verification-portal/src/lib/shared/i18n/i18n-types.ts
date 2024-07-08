@@ -104,9 +104,9 @@ type RootTranslation = {
 			placeholder: string
 		}
 	}
-	decoded2024: {
+	'dotphin-proofs': {
 		/**
-		 * D​e​c​o​d​e​d​ ​2​0​2​4
+		 * D​O​T​p​h​i​n​ ​P​r​o​o​f​s
 		 */
 		collectionName: string
 		searchPlaceholder: string
@@ -614,9 +614,9 @@ export type TranslationFunctions = {
 			placeholder: () => LocalizedString
 		}
 	}
-	decoded2024: {
+	'dotphin-proofs': {
 		/**
-		 * Decoded 2024
+		 * DOTphin Proofs
 		 */
 		collectionName: () => LocalizedString
 		searchPlaceholder: () => LocalizedString
