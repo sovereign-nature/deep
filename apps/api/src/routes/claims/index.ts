@@ -72,6 +72,9 @@ app.post(
               chain: collectionConfig.network,
               contractAddress: collectionConfig.externalId,
             },
+            metadata: {
+              image: collectionConfig.metadata.image[payload.seed],
+            },
             actionId: payload.id,
           };
 
