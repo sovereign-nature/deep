@@ -3,8 +3,8 @@
   import Subheader from '$lib/shared/typography/Subheader.svelte';
   import { Button } from 'flowbite-svelte';
   import LL from '$lib/shared/i18n/i18n-svelte';
-  export let passTitle = 'DOTphin';
-  export let aboutLink = '/dotphin';
+  export let name: string;
+  export let infoLink: string | undefined;
 </script>
 
 <div
@@ -25,11 +25,11 @@
       <div class="col-span-4 col-start-1 sm:col-start-2">
         <Subheader
           id="multipass"
-          title={$LL.assets.multiPass.cardTitle()}
+          title={$LL.assets.multipass.cardTitle()}
           className="md:!text-base font-normal text-black dark:text-deep-green"
-          >{$LL.assets.multiPass.cardTitle()}</Subheader
+          >{$LL.assets.multipass.cardTitle()}</Subheader
         >
-        <h3 class="text-6xl">{passTitle}</h3>
+        <h3 class="text-6xl">{name}</h3>
       </div>
     </div>
     <div
@@ -37,7 +37,7 @@
     >
       <div class="flex gap-1 flex-col">
         <span class="text-sm font-aeonik font-bold text-gray-200">
-          {$LL.assets.multiPass.comingSoon()}</span
+          {$LL.assets.multipass.comingSoon()}</span
         >
         <Button
           color="none"
@@ -46,18 +46,22 @@
           tabindex="1"
           disabled={true}
         >
-          {$LL.assets.multiPass.CTA()}
+          {$LL.assets.multipass.CTA()}
         </Button>
       </div>
-      <Button
-        color="none"
-        class="z-50 hover:bg-primary-300 bg-primary-400 text-white rounded-sm  border-none !py-2.5 !px-4 text-lg uppercase"
-        type="button"
-        tabindex="1"
-        href={aboutLink}
-      >
-        {$LL.assets.multiPass.aboutLink({ multiPassName: passTitle })}
-      </Button>
+
+      {#if infoLink}
+        <Button
+          color="none"
+          class="z-50 hover:bg-primary-300 bg-primary-400 text-white rounded-sm  border-none !py-2.5 !px-4 text-lg uppercase"
+          type="button"
+          tabindex="1"
+          href={infoLink}
+          target="_blank"
+        >
+          {$LL.assets.multipass.infoLink({ multipassName: name })}
+        </Button>
+      {/if}
     </div>
   </div>
 </div>

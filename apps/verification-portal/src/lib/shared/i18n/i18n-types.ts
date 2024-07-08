@@ -379,7 +379,7 @@ type RootTranslation = {
 			 */
 			traces: string
 		}
-		multiPass: {
+		multipass: {
 			/**
 			 * P​a​r​t​ ​o​f​ ​m​u​l​t​i​-​p​a​s​s​ ​c​o​l​l​e​c​t​i​o​n​:
 			 */
@@ -397,10 +397,10 @@ type RootTranslation = {
 			 */
 			info: string
 			/**
-			 * A​b​o​u​t​ ​{​m​u​l​t​i​P​a​s​s​N​a​m​e​}
-			 * @param {string} multiPassName
+			 * A​b​o​u​t​ ​{​m​u​l​t​i​p​a​s​s​N​a​m​e​}
+			 * @param {string} multipassName
 			 */
-			aboutLink: RequiredParams<'multiPassName'>
+			infoLink: RequiredParams<'multipassName'>
 		}
 	}
 	social: {
@@ -882,7 +882,7 @@ export type TranslationFunctions = {
 			 */
 			traces: () => LocalizedString
 		}
-		multiPass: {
+		multipass: {
 			/**
 			 * Part of multi-pass collection:
 			 */
@@ -900,9 +900,9 @@ export type TranslationFunctions = {
 			 */
 			info: () => LocalizedString
 			/**
-			 * About {multiPassName}
+			 * About {multipassName}
 			 */
-			aboutLink: (arg: { multiPassName: string }) => LocalizedString
+			infoLink: (arg: { multipassName: string }) => LocalizedString
 		}
 	}
 	social: {

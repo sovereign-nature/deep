@@ -10,6 +10,10 @@ export type DeepAsset = {
     name: string; //TODO: Do we need name?
     //TODO: Optional collection description?
   };
+  multipass: {
+    name: string;
+    infoLink: string | undefined;
+  };
   address: string; //TODO: Rename to assetDID?
 };
 
