@@ -70,7 +70,7 @@ export const collections: Collections = {
         'https://real.myfilebase.com/ipfs/QmemH8F2f1AAJGzFHLPt7mmi1M37VVVu537K5VNrzBx9U9/polkadot-decoded-2024-earth.png',
         'https://real.myfilebase.com/ipfs/QmemH8F2f1AAJGzFHLPt7mmi1M37VVVu537K5VNrzBx9U9/polkadot-decoded-2024-water.png',
       ],
-      name: 'Dotphin POAP Test',
+      name: 'DOTphin Proof of Attendance ‒ Decoded 2024',
       attributes: [
         [{ trait_type: 'element', value: 'air' }, ...decodeBrusselsAttributes],
         [
