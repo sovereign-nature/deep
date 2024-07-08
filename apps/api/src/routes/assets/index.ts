@@ -28,7 +28,7 @@ app.get('/:assetDid', async (c) => {
         ...assetData,
         multipass: {
           name: 'DOTphin',
-          infoLink: 'https://sovereignnature.com/',
+          infoLink: 'https://sovereignnature.com/dotphin',
         },
       });
     }
