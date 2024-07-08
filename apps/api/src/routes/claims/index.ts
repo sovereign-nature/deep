@@ -67,8 +67,6 @@ app.post(
           logger.info(`Minting ${mintId}`);
 
           const image = collectionConfig.metadata.image[payload.seed];
-          console.log('image', image);
-          console.log(payload.seed);
           const pendingResponse = {
             id: payload.id,
             onChain: {
