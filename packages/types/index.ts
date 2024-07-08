@@ -6,10 +6,9 @@ export type DeepAsset = {
   image: string;
   animation_url?: string;
   collection: {
-    id: string; //TODO: Do we need id?
+    id: string; //TODO: Stores collection address. Do we need to name it id? Rename to contractAddress or collectionAddress?
     name: string; //TODO: Do we need name?
     //TODO: Optional collection description?
-    //TODO: Where is the collection address?
   };
   address: string; //TODO: Rename to assetDID?
 };

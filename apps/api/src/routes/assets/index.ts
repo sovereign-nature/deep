@@ -22,7 +22,7 @@ app.get('/:assetDid', async (c) => {
 
     if (
       ['unique', 'opal'].includes(network) &&
-      ['3019'].includes(contractAddress)
+      ['3019', '3030'].includes(contractAddress)
     ) {
       return c.json({
         ...assetData,
