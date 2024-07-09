@@ -15,7 +15,23 @@ app.use(logger());
 app.use('/*', cors({ origin: '*' }));
 
 app.get(
-  '*',
+  '/assets/*',
+  cache({
+    cacheName: 'deep-api',
+    cacheControl: 'max-age=60',
+  })
+);
+
+app.get(
+  '/highlights/*',
+  cache({
+    cacheName: 'deep-api',
+    cacheControl: 'max-age=60',
+  })
+);
+
+app.get(
+  '/wallets/*',
   cache({
     cacheName: 'deep-api',
     cacheControl: 'max-age=60',
