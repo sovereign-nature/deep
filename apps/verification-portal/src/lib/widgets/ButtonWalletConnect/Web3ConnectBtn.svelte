@@ -53,7 +53,7 @@
     >
       <!-- TODO: Move string to translation config -->
       <span class="hidden md:inline-block"> Login </span>
-      <span class=" md:hidden"> Connect wallet </span>
+      <span class=" md:hidden"> Login </span>
       <ConnectIcon slot="icon" className="h-4 w-4 mx-1" />
     </RolloverBtn>
   {/if}
