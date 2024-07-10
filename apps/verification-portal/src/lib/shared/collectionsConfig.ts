@@ -29,7 +29,7 @@ export interface Collection {
 }
 
 export const tabConfig: TabConfig = {
-  activeKey: 'engie',
+  activeKey: 'dotphin-proofs',
 };
 
 export const collections: Collection[] = [

@@ -44,6 +44,6 @@ export const collections: {
   'dotphin-proofs': {
     id: 'dotphin-proofs',
     collectionAddress: 'did:asset:eip155:8880.unique2:665',
-    highlightIds: [1],
+    highlightIds: [1, 14, 12],
   },
 };
