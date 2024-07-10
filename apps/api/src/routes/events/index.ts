@@ -8,7 +8,7 @@ import { events } from './config';
 const app = new Hono();
 
 app.get('/:eventId', async (c) => {
-  // c.res.headers.set('Cache-Control', 'no-store'); // Disable caching, maybe let's enable in production later
+  c.res.headers.set('Cache-Control', 'no-store'); // Disable caching, maybe let's enable in production later
 
   const { CLAIMS_SECRET } = env<{ CLAIMS_SECRET: string }>(c);
 
@@ -19,6 +19,7 @@ app.get('/:eventId', async (c) => {
     const eventConfig = events[eventId];
 
     const seed = eventConfig.seed();
+    console.log('seed', seed);
     const token = await sign(
       {
         id: nanoid(),
