@@ -24,7 +24,7 @@ app.post(
 
   async (c) => {
     const { CLAIMS_SECRET } = env<{ CLAIMS_SECRET: string }>(c);
-    const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<MintRequest> }>(c);
+    const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<string> }>(c);
     const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c);
     const { CLAIMS_KV } = env<{ CLAIMS_KV: KVNamespace }>(c);
 
@@ -96,7 +96,10 @@ app.post(
 
           logger.info(`Sending minting ${mintId} to queue`);
           await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
-          await MINTING_QUEUE.send({ address, payload, collectionConfig });
+          await MINTING_QUEUE.send(
+            JSON.stringify({ address, payload, collectionConfig }),
+            { contentType: 'json' }
+          );
 
           await CLAIMS_KV.put(`${address}-${payload.collection}`, payload.id);
 
@@ -149,9 +152,9 @@ type Env = {
   CLAIMS_KV: KVNamespace;
 };
 
-export async function claimsQueue(batch: MessageBatch<MintRequest>, env: Env) {
+export async function claimsQueue(batch: MessageBatch<string>, env: Env) {
   for (const message of batch.messages) {
-    const mintRequest = message.body;
+    const mintRequest = JSON.parse(message.body) as MintRequest;
 
     const network = mintRequest.collectionConfig.network;
 
