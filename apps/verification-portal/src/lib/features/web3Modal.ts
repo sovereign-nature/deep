@@ -37,11 +37,12 @@ export function initializeModal() {
     projectId,
     themeVariables: themeVariablesDark,
     defaultChain: mainnet,
-    featuredWalletIds: [
-      '9ce87712b99b3eb57396cc8621db8900ac983c712236f48fb70ad28760be3f6a',
-      'c57ca95b47569778a828d19178114f4db188b89b763c899ba0be274e97267d96',
-      '43fd1a0aeb90df53ade012cca36692a46d265f0b99b7561e645af42d752edb92',
-    ],
+    // featuredWalletIds: [
+    //   '9ce87712b99b3eb57396cc8621db8900ac983c712236f48fb70ad28760be3f6a',
+    //   'c57ca95b47569778a828d19178114f4db188b89b763c899ba0be274e97267d96',
+    //   '43fd1a0aeb90df53ade012cca36692a46d265f0b99b7561e645af42d752edb92',
+    // ],
+    // allWallets: 'ONLY_MOBILE',
   });
   if (web3Modal) {
     web3Modal.subscribeEvents((event) => {
