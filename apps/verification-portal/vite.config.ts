@@ -12,10 +12,10 @@ export default defineConfig({
     // splitVendorChunkPlugin(),
     sentrySvelteKit({
       autoUploadSourceMaps: false, //TODO: Fix sourcemap upload
-      // sourceMapsUploadOptions: {
-      //   org: 'sovereign-nature-initiative',
-      //   project: 'real',
-      // },
+      sourceMapsUploadOptions: {
+        org: 'sovereign-nature-initiative',
+        project: 'real',
+      },
     }),
     sveltekit(),
     SvelteKitPWA(),
