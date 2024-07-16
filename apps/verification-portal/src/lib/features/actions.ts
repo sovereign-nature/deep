@@ -19,6 +19,7 @@ export const formActions = {
     const address = form.get('address') as string;
     const setHeaders = new Headers();
     setHeaders.append('Content-Type', 'application/json');
+    setHeaders.append('Cache-Control', 'no-cache');
     const raw = JSON.stringify({
       token: claim,
       address: address,
