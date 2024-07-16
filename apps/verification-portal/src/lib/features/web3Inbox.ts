@@ -147,21 +147,44 @@ export async function registerInbox() {
   );
   const signature = await signMessage(wagmiConfig, { message });
 
-  await web3InboxClient
-    .register({
-      registerParams,
-      signature,
-    })
-    .then(() => {
-      console.log('Registered inbox');
-      checkIfRegistered(account);
-    })
-    .catch((error) => {
-      console.error('Error registering inbox:', error);
-      web3InboxEnabling.set(false);
-      Sentry.captureException(error);
-      toast.error('Sorry there was a problem registering the Web3Inbox');
-    });
+  let registrationAttempts = 0;
+
+  const attemptRegistration = async () => {
+    if (!web3InboxClient) return;
+    registrationAttempts++;
+    await web3InboxClient
+      .register({
+        registerParams,
+        signature,
+      })
+      .then(() => {
+        console.log('Registered inbox');
+        checkIfRegistered(account);
+        registrationAttempts = 0;
+      })
+      .catch(async (error) => {
+        if (
+          error.message.includes('stale identity') &&
+          web3InboxClient &&
+          registrationAttempts < 2
+        ) {
+          console.log(
+            'Handling stale identity, unregistering and trying again...'
+          );
+          await web3InboxClient.unregister({ account: account });
+          // Retry registration without asking for a new signature
+          attemptRegistration();
+        } else {
+          console.error('Error registering inbox:', error);
+          web3InboxEnabling.set(false);
+          Sentry.captureException(error);
+          registrationAttempts = 0;
+          toast.error('Sorry there was a problem registering the Web3Inbox');
+        }
+      });
+  };
+
+  await attemptRegistration();
 }
 async function checkIfRegistered(account: string) {
   if (!web3InboxClient) return;
