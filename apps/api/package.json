@@ -17,7 +17,7 @@
     "@sni/clients": "workspace:*",
     "@sni/constants": "workspace:*",
     "@sni/types": "workspace:*",
-    "@types/lodash": "4.17.6",
+    "@types/lodash": "4.17.7",
     "@unique-nft/accounts": "0.3.7",
     "@unique-nft/sdk": "0.7.7",
     "@unique-nft/sr25519": "0.0.2",
