@@ -32,7 +32,7 @@
     "tailwindcss": "3.4.4"
   },
   "devDependencies": {
-    "@playwright/test": "1.45.1",
+    "@playwright/test": "1.45.2",
     "@sni/constants": "workspace:*",
     "@sveltejs/adapter-auto": "3.2.2",
     "@sveltejs/kit": "2.5.18",
