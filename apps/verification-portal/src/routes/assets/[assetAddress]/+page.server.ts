@@ -1,3 +1,4 @@
+//TODO: parseAddress is deprecated
 import { parseAddress } from '@sni/address-utils';
 import { deepApiUrl } from '@sni/clients/config.js';
 import { getEntity, getNewsBySteward } from '@sni/clients/data';
@@ -37,7 +38,7 @@ export async function load({ params }) {
     }
 
     nftData = fetchedAsset;
-    addressDetails = parseAddress(assetAddress);
+    addressDetails = parseAddress(assetAddress); //TODO: parseAddress is deprecated
   } catch (e) {
     error(404, notFoundMessage);
   }
