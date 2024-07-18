@@ -93,8 +93,8 @@ importers:
         specifier: 5.0.7
         version: 5.0.7
       pino:
-        specifier: 9.2.0
-        version: 9.2.0
+        specifier: 9.3.1
+        version: 9.3.1
       zod:
         specifier: 3.23.8
         version: 3.23.8
@@ -13415,8 +13415,8 @@ packages:
       thread-stream: 0.15.2
     dev: true
 
-  /pino@9.2.0:
-    resolution: {integrity: sha512-g3/hpwfujK5a4oVbaefoJxezLzsDgLcNJeITvC6yrfwYeT9la+edCK42j5QpEQSQCZgTKapXvnQIdgZwvRaZug==}
+  /pino@9.3.1:
+    resolution: {integrity: sha512-afSfrq/hUiW/MFmQcLEwV9Zh8Ry6MrMTOyBU53o/fc0gEl+1OZ/Fks/xQCM2nOC0C/OfDtQMnT2d8c3kpcfSzA==}
     hasBin: true
     dependencies:
       atomic-sleep: 1.0.0
