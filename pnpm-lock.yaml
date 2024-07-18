@@ -100,8 +100,8 @@ importers:
         version: 3.23.8
     devDependencies:
       '@cloudflare/workers-types':
-        specifier: 4.20240620.0
-        version: 4.20240620.0
+        specifier: 4.20240712.0
+        version: 4.20240712.0
       env-cmd:
         specifier: 10.1.0
         version: 10.1.0
@@ -110,7 +110,7 @@ importers:
         version: 1.6.0
       wrangler:
         specifier: 3.62.0
-        version: 3.62.0(@cloudflare/workers-types@4.20240620.0)
+        version: 3.62.0(@cloudflare/workers-types@4.20240712.0)
 
   apps/verification-portal:
     devDependencies:
@@ -3279,8 +3279,8 @@ packages:
     dev: true
     optional: true
 
-  /@cloudflare/workers-types@4.20240620.0:
-    resolution: {integrity: sha512-CQD8YS6evRob7LChvIX3gE3zYo0KVgaLDOu1SwNP1BVIS2Sa0b+FC8S1e1hhrNN8/E4chYlVN+FDAgA4KRDUEQ==}
+  /@cloudflare/workers-types@4.20240712.0:
+    resolution: {integrity: sha512-C+C0ZnkRrxR2tPkZKAXwBsWEse7bWaA7iMbaG6IKaxaPTo/5ilx7Ei3BkI2izxmOJMsC05VS1eFUf95urXzhmw==}
     dev: true
 
   /@coinbase/wallet-sdk@3.9.3:
@@ -17847,7 +17847,7 @@ packages:
       '@cloudflare/workerd-windows-64': 1.20240620.1
     dev: true
 
-  /wrangler@3.62.0(@cloudflare/workers-types@4.20240620.0):
+  /wrangler@3.62.0(@cloudflare/workers-types@4.20240712.0):
     resolution: {integrity: sha512-TM1Bd8+GzxFw/JzwsC3i/Oss4LTWvIEWXXo1vZhx+7PHcsxdbnQGBBwPurHNJDSu2Pw22+2pCZiUGKexmgJksw==}
     engines: {node: '>=16.17.0'}
     hasBin: true
@@ -17858,7 +17858,7 @@ packages:
         optional: true
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
-      '@cloudflare/workers-types': 4.20240620.0
+      '@cloudflare/workers-types': 4.20240712.0
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
       '@esbuild-plugins/node-modules-polyfill': 0.2.2(esbuild@0.17.19)
       blake3-wasm: 2.1.5
