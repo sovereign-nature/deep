@@ -1,6 +1,6 @@
 import { DeepAsset } from '@sni/types';
 import { createAssetDID } from '@sni/address-utils';
-import { AssetNotFoundError } from '../..';
+import { fetchWithRetry } from '../../../lib';
 import { UniqueNFTResponseSchema } from './schemas';
 
 export async function getUniqueAsset(
@@ -9,21 +9,13 @@ export async function getUniqueAsset(
   tokenId: number
 ): Promise<DeepAsset> {
   const apiURL = `https://rest.unique.network/${network}/v1/`;
-  const headers = {
-    Accept: 'application/json',
-  };
 
-  //TODO: retry on connection error
-  const response = await fetch(
+  const data = await fetchWithRetry(
     `${apiURL}/tokens/v2?collectionId=${collectionId}&tokenId=${tokenId}`,
-    { headers }
+    { headers: { Accept: 'application/json' }, method: 'GET' }
   );
 
-  if (!response.ok) {
-    throw new AssetNotFoundError();
-  }
-
-  const nftResponse = UniqueNFTResponseSchema.parse(await response.json());
+  const nftResponse = UniqueNFTResponseSchema.parse(data);
 
   return {
     id: nftResponse.tokenId.toString(),
