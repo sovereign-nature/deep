@@ -18,6 +18,7 @@ app.get('/:assetDid', async (c) => {
       alchemyAPIKey: ALCHEMY_API_KEY,
     });
 
+    //TODO: This is a hack, need to stabilize on API level
     const { network, contractAddress } = parseAssetDID(assetDID);
 
     if (
