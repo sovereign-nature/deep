@@ -82,6 +82,9 @@ function getChainName(chainNamespace: string, chainId: string): string {
 
 //Resolving address to it's components according to the AssetDID standard
 //TODO: Make internal
+/**
+ * @deprecated The method is deprecated and will be internal in the future. Use parseAssetDID instead.
+ */
 export function parseAddress(address: string) {
   const [prefix, assetAddress] = address.split('.');
 
