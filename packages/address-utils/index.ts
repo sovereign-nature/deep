@@ -17,30 +17,6 @@ export function stringToId(input: string): string {
   return BigInt(hash).toString();
 }
 
-//Resolving address to it's components according to the AssetDID standard
-//TODO: Rename to resolveAddress, make internal
-export function parseAddress(address: string) {
-  const [prefix, assetAddress] = address.split('.');
-
-  const [scheme, didMethod, chainNamespace, chainReference] = prefix.split(':');
-
-  const [assetNamespace, assetReference, tokenId] = assetAddress.split(':');
-
-  return {
-    scheme,
-    didMethod,
-    chain: {
-      namespace: chainNamespace,
-      reference: chainReference,
-    },
-    asset: {
-      namespace: assetNamespace,
-      reference: assetReference,
-      identifier: Number(tokenId),
-    },
-  };
-}
-
 type ChainNameToId = {
   [key: string]: number;
 };
@@ -104,17 +80,56 @@ function getChainName(chainNamespace: string, chainId: string): string {
   }
 }
 
+//Resolving address to it's components according to the AssetDID standard
+//TODO: Make internal
+/**
+ * @deprecated The method is deprecated and will be internal in the future. Use parseAssetDID instead.
+ */
+export function parseAddress(address: string) {
+  const [prefix, assetAddress] = address.split('.');
+
+  const [scheme, didMethod, chainNamespace, chainReference] = prefix.split(':');
+
+  const [assetNamespace, assetReference, tokenId] = assetAddress.split(':');
+
+  return {
+    scheme,
+    didMethod,
+    chain: {
+      namespace: chainNamespace,
+      reference: chainReference,
+    },
+    asset: {
+      namespace: assetNamespace,
+      reference: assetReference,
+      identifier: tokenId ? Number(tokenId) : -1,
+    },
+  };
+}
+
 export class AddressParsingError extends Error {}
 //Parsing AssetDID to it's components
 export function parseAssetDID(did: string) {
   try {
     const { chain, asset } = parseAddress(did);
     const network = getChainName(chain.namespace, chain.reference);
+
     const contractAddress = asset.reference;
+    if (!contractAddress) {
+      throw new AddressParsingError('Contract address is missing');
+    }
+
     const tokenId = asset.identifier;
+    if (isNaN(tokenId)) {
+      throw new AddressParsingError('Invalid token id');
+    }
+
     return { network, contractAddress, tokenId };
   } catch (e) {
-    //TODO: Throw custom address parsing error
+    if (e instanceof AddressParsingError) {
+      throw e;
+    }
+
     throw new AddressParsingError(`Invalid DID address: ${did}`);
   }
 }
