@@ -1,5 +1,4 @@
 import { SNI_IMAGE_PROXY, SNI_IPFS_CACHE } from '@sni/constants';
-//TODO: Move directus url to client config
 import { ANIMAL_PLACEHOLDER } from '@sni/constants/cdn/placeholders';
 import { getCID, getDomain, isIPFSUrl, isUrl } from '@sni/utils/url-utils';
 import { directusUrl } from '../config';
