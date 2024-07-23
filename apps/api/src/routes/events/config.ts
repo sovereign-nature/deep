@@ -2,6 +2,7 @@ export type EventConfig = {
   collectionId: string;
   realCollection: string;
   seed: () => number | string;
+  going: boolean;
 };
 
 interface Events {
@@ -26,5 +27,6 @@ export const events: Events = {
     collectionId: 'polkadot-decoded2024',
     realCollection: 'dotphin-proofs',
     seed: () => getRandomInt(0, 2),
+    going: false,
   },
 };
