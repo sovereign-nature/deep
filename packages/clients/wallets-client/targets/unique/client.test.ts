@@ -38,4 +38,10 @@ describe('Unique wallets client', () => {
 
     expect(assets).toStrictEqual(expectedWalletAssets);
   });
+
+  it('should through error when rate limited', async () => {
+    expect(getUniqueWalletAssets('opal', 'limited', 3019)).rejects.toThrowError(
+      'External API error: Too Many Requests'
+    );
+  });
 });
