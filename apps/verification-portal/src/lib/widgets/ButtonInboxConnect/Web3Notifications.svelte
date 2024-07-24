@@ -7,6 +7,7 @@
   import PowerOn from '$lib/components/icons/PowerOnIcon.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import { registerInbox } from '$lib/features/web3Inbox';
+  import { notificationCount } from '$lib/features/web3InboxNotifications';
   export let responsive = false;
 
   const web3Connected: Writable<boolean> = getContext('web3Connected');
@@ -17,9 +18,7 @@
     'web3InboxSubscribed'
   );
   const openInboxModal: Writable<boolean> = getContext('web3InboxModalOpen');
-  const web3MessageCount: Writable<number> = getContext(
-    'web3InboxMessageCount'
-  );
+
   const web3InboxLoading: Writable<boolean> = getContext('web3InboxLoading');
   const web3InboxEnabling: Writable<boolean> = getContext('web3InboxEnabling');
   export let alwaysOpen = false;
@@ -31,17 +30,17 @@
   let buttonLabelSm: string | number = '';
 
   let alertNew = false;
-  let previousMessageCount = $web3MessageCount;
+  let previousMessageCount = $notificationCount;
 
   $: {
-    hasMessages = $web3MessageCount > 0;
-    if ($web3MessageCount > previousMessageCount) {
+    hasMessages = $notificationCount > 0;
+    if ($notificationCount > previousMessageCount) {
       alertNew = true;
       setTimeout(() => {
         alertNew = false;
       }, 4000);
     }
-    previousMessageCount = $web3MessageCount;
+    previousMessageCount = $notificationCount;
   }
 
   $: {
@@ -58,7 +57,7 @@
   $: {
     buttonLabel =
       $web3InboxRegistered && $web3InboxSubscribed
-        ? $LL.notifications.nrNotification($web3MessageCount)
+        ? $LL.notifications.nrNotification($notificationCount)
         : placeholder
           ? placeholder
           : $LL.notifications.subscribe();
@@ -66,7 +65,7 @@
   $: {
     buttonLabelSm =
       $web3InboxRegistered && $web3InboxSubscribed
-        ? $web3MessageCount
+        ? $notificationCount
         : placeholder
           ? placeholder
           : $LL.notifications.subscribe();

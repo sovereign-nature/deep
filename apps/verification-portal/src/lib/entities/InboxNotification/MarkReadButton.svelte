@@ -13,6 +13,7 @@
 {#if !isPending}
   <button
     on:click={() => dispatch('click')}
+    type="button"
     class="rounded-full text-semibold transition-all text-deep-green-400 hover:text-white bg-primary-400 hover:bg-primary-300 w-5 h-5"
   >
     <CheckMark className="h-5 w-5" />

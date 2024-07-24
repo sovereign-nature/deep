@@ -1,35 +1,33 @@
 import { getContext, setContext } from 'svelte';
 import type { Writable } from 'svelte/store';
-import { writable, get } from 'svelte/store';
+import { writable } from 'svelte/store';
 import { signMessage } from '@wagmi/core';
 
-import type { NotifyClientTypes } from '@walletconnect/notify-client';
-import type { GetNotificationsReturn } from '@web3inbox/core';
 import { Web3InboxClient } from '@web3inbox/core';
 import { getAccount } from '@wagmi/core';
 import * as Sentry from '@sentry/sveltekit';
 import { toast } from 'svelte-sonner';
+import {
+  stopNotificationWatch,
+  setupNotifications,
+  manualNewMessageCount,
+  notificationCount,
+} from './web3InboxNotifications';
+
 import { PUBLIC_WEB3INBOX_ALL_APPS } from '$env/static/public';
 
 import { projectId, wagmiConfig } from '$lib/shared/web3Configs';
-type PageNotificationsFunctionType = ReturnType<
-  Web3InboxClient['pageNotifications']
->;
-type PageNotificationsReturnType = ReturnType<PageNotificationsFunctionType>;
 
 const domain = 'real.sovereignnature.com';
 const WEB3INBOX_ALL_APPS = PUBLIC_WEB3INBOX_ALL_APPS === 'true';
 const allApps = WEB3INBOX_ALL_APPS || process.env.NODE_ENV === 'development';
-const notificationsPerPage = 25;
-const isInfiniteScroll = true;
+
 //Store context variables
-const web3InboxMessages = writable();
 const web3InboxTypes = writable();
 const web3InboxRegistered = writable<boolean>(false);
 const web3InboxSubscribed = writable<boolean>(false);
 const web3InboxSubscription = writable();
 const web3InboxModalOpen = writable<boolean>(false);
-const web3InboxMessageCount = writable<number>(0);
 const web3InboxLoading = writable<boolean>(true); // Notify client loading state
 const web3InboxEnabling = writable<boolean>(false); // state when registering, subscribing and setting up inbox are not resolved
 
@@ -41,8 +39,7 @@ let web3AddressStore: Writable<string>;
 let inboxInitialized = false;
 let accountWatchInitialized = false;
 let typeWatchInitialized = false;
-let notificationWatchInitialized = false;
-let notifications: PageNotificationsReturnType | undefined;
+
 let lastProcessedAccount: string | undefined = undefined;
 
 const getWeb3InboxAccount = () => {
@@ -54,12 +51,10 @@ const getWeb3InboxAccount = () => {
 
 // Web3Inbox Context Setup
 export function setInboxContext() {
-  setContext('web3InboxMessages', web3InboxMessages);
   setContext('web3InboxTypes', web3InboxTypes);
   setContext('web3InboxRegistered', web3InboxRegistered);
   setContext('web3InboxSubscribed', web3InboxSubscribed);
   setContext('web3InboxModalOpen', web3InboxModalOpen);
-  setContext('web3InboxMessageCount', web3InboxMessageCount);
   setContext('web3InboxLoading', web3InboxLoading);
   setContext('web3InboxEnabling', web3InboxEnabling);
 
@@ -186,6 +181,7 @@ export async function registerInbox() {
 
   await attemptRegistration();
 }
+
 async function checkIfRegistered(account: string) {
   if (!web3InboxClient) return;
 
@@ -201,6 +197,7 @@ async function checkIfRegistered(account: string) {
     checkIfSubscribed(account);
   }
 }
+
 async function checkIfSubscribed(account: string) {
   if (!web3InboxClient) return;
 
@@ -230,10 +227,9 @@ async function checkIfSubscribed(account: string) {
 
 async function clearInboxClient() {
   if (!web3InboxClient) return;
-
+  stopNotificationWatch();
   web3InboxClient = null;
   lastProcessedAccount = undefined;
-
   web3InboxLoading.set(true);
   resetInboxState();
 }
@@ -241,14 +237,13 @@ async function clearInboxClient() {
 async function resetInboxState() {
   web3InboxRegistered.set(false);
   web3InboxSubscribed.set(false);
-  web3InboxMessages.set(null);
-  web3InboxMessageCount.set(0);
 }
 
 async function getInboxContent() {
+  const account = getWeb3InboxAccount();
   getNotificationTypes();
   getSubscription();
-  await getNotifications();
+  await setupNotifications(account, domain);
   web3InboxEnabling.set(false);
   web3InboxLoading.set(false);
 }
@@ -260,82 +255,11 @@ async function getSubscription() {
   const newMessages = subscription?.unreadNotificationCount
     ? subscription.unreadNotificationCount
     : 0;
-  web3InboxMessageCount.set(newMessages);
   web3InboxSubscription.set(subscription);
-  console.log('New Message Count:', newMessages);
+  notificationCount.set(newMessages);
+  console.log('New Message Count:', newMessages, ' for account:', account);
   //Hack workaround for message count not being updated
-  manualNewMessageCount();
-}
-
-function manualNewMessageCount() {
-  if (Array.isArray(notifications?.data?.notifications)) {
-    const unreadMessages: NotifyClientTypes.NotifyNotification[] =
-      notifications.data.notifications.filter(
-        (notification) => !notification.isRead
-      );
-    const unreadMessageCount = unreadMessages.length;
-    const newMessageCount = get(web3InboxMessageCount) || 0;
-    const updatedMessageCount = Math.min(unreadMessageCount, newMessageCount);
-    if (updatedMessageCount < newMessageCount) {
-      console.log(
-        'Updated to use manual Notification Count',
-        updatedMessageCount
-      );
-      web3InboxMessageCount.set(updatedMessageCount);
-    }
-  }
-}
-
-async function getNotifications() {
-  if (!web3InboxClient) return;
-
-  if (notificationWatchInitialized) {
-    notifications?.stopWatchingNotifications();
-    notifications = undefined;
-    notificationWatchInitialized = false;
-    console.log('Stopped Notification Watch');
-  }
-  console.log('Started Notification Watch');
-
-  const account = getWeb3InboxAccount();
-  notifications = await web3InboxClient.pageNotifications(
-    notificationsPerPage,
-    isInfiniteScroll,
-    account,
-    domain,
-    true
-  )(onUpdateNotifications);
-
-  notificationWatchInitialized = true;
-  console.log('Notifications:', notifications);
-}
-
-function onUpdateNotifications(e: GetNotificationsReturn) {
-  console.log('Updating notifications');
-  getSubscription();
-  setupNotifications(e.notifications);
-}
-
-function setupNotifications(messages: NotifyClientTypes.NotifyNotification[]) {
-  web3InboxMessages.set(messages);
-  console.log('Updated Notifications:', messages);
-}
-
-export async function markNotificationsAsRead(notifications: string[]) {
-  if (!web3InboxClient)
-    return { success: false, error: 'Web3InboxClient is not initialized' };
-  const account = getWeb3InboxAccount();
-  try {
-    await web3InboxClient.markNotificationsAsRead(
-      notifications,
-      account,
-      domain
-    );
-    return { success: true };
-  } catch (error) {
-    console.error(error);
-    return { success: false, error: 'Failed to mark notifications as read' };
-  }
+  manualNewMessageCount(newMessages);
 }
 
 async function getNotificationTypes() {
@@ -364,3 +288,5 @@ export async function updateScopes(scopes: string[]) {
     console.error('Error updating scopes:', error);
   }
 }
+
+export { web3InboxClient };
