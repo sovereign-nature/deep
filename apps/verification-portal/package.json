@@ -24,7 +24,7 @@
     "@google/model-viewer": "3.5.0",
     "@playwright/test": "1.45.3",
     "@popperjs/core": "2.11.8",
-    "@sentry/sveltekit": "8.18.0",
+    "@sentry/sveltekit": "8.20.0",
     "@sni/address-utils": "workspace:*",
     "@sni/clients": "workspace:*",
     "@sni/constants": "workspace:*",
