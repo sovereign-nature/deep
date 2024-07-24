@@ -1,5 +1,6 @@
-import { DeepAsset, ExternalApiError } from '@sni/types';
+import { DeepAsset } from '@sni/types';
 import { getUniqueAsset } from '../../../assets-client/targets/unique/client'; //TODO: Add path aliases
+import { fetchWithRetry } from '../../../lib';
 import { AccountTokensResponseSchema } from './schemas';
 
 //TODO: Cover with tests
@@ -8,7 +9,7 @@ export async function getUniqueWalletAssets(
   walletAddress: string,
   collectionId: number
 ): Promise<DeepAsset[]> {
-  const response = await fetch(
+  const data = await fetchWithRetry(
     `https://rest.unique.network/${network}/v1/tokens/account-tokens?address=${walletAddress.toLowerCase()}&collectionId=${collectionId}`,
     {
       method: 'GET',
@@ -16,13 +17,7 @@ export async function getUniqueWalletAssets(
     }
   );
 
-  if (response.status !== 200) {
-    throw new ExternalApiError(
-      `Failed to fetch wallet data from ${network} network. ${response.statusText}`
-    );
-  }
-
-  const nfts = AccountTokensResponseSchema.parse(await response.json()).tokens;
+  const nfts = AccountTokensResponseSchema.parse(data).tokens;
 
   const deepAssets = await Promise.all(
     nfts.map((nft) => getUniqueAsset(network, nft.collectionId, nft.tokenId))

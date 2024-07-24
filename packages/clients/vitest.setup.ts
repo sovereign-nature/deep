@@ -1,13 +1,16 @@
 import { afterAll, afterEach, beforeAll } from 'vitest';
 import { setupServer } from 'msw/node';
 import { HttpResponse, graphql, http } from 'msw';
-import { crossmintWalletNFTs } from './wallets-client/targets/crossmint/fixtures';
+import { crossmintWalletNFTs } from './wallets-client/targets/crossmint/mocks';
+import { uniqueAccountTokensHandler } from './wallets-client/targets/unique/mocks';
 
 export const restHandlers = [
   // Mocking a REST API for Crossmint get NFTs from wallet
   http.get(crossmintWalletNFTs.url, () => {
     return HttpResponse.json(crossmintWalletNFTs.payload);
-  }),
+  }), //TODO: Move to mocks.ts
+
+  uniqueAccountTokensHandler,
 ];
 
 const graphqlHandlers = [

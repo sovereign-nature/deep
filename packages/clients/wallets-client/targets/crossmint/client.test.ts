@@ -1,6 +1,6 @@
 import { test, expect } from 'vitest';
 import { getCrossmintWalletAssets } from './client';
-import { crossmintWalletDeepAssets } from './fixtures';
+import { crossmintWalletDeepAssets } from './mocks';
 
 test('list nfts in crossmint wallet', async () => {
   const assets = await getCrossmintWalletAssets(
