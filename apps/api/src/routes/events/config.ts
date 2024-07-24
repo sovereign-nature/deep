@@ -27,6 +27,6 @@ export const events: Events = {
     collectionId: 'polkadot-decoded2024',
     realCollection: 'dotphin-proofs',
     seed: () => getRandomInt(0, 2),
-    going: false,
+    going: true,
   },
 };
