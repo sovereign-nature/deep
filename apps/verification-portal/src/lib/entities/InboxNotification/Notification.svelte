@@ -5,10 +5,11 @@
   import Info from '$lib/shared/typography/Info.svelte';
   import BellIcon from '$lib/components/icons/BellIcon.svelte';
   import MarkReadButton from '$lib/entities/InboxNotification/MarkReadButton.svelte';
-  import { isPending, markAsRead } from '$lib/features/web3InboxNotifications';
+  import { markAsRead } from '$lib/features/web3InboxNotifications';
 
   export let notification: NotifyClientTypes.NotifyNotification;
   export let types: NotifyClientTypes.ScopeMap[];
+  export let isPending = false;
 
   $: type = findNotificationTypeByTopic(notification.type, types);
   const date = formatDate(notification.sentAt);
@@ -33,10 +34,16 @@
       console.error(error);
     }
   }
+  async function markRead() {
+    isPending = true;
+    await markAsRead(notification).finally(() => {
+      isPending = false;
+    });
+  }
 </script>
 
 <div
-  class={`${notification.isRead && 'opacity-60 hover:opacity-70'} ${notificationClass}`}
+  class={`${notification.isRead && 'opacity-85 hover:opacity-90 dark:opacity-60 hover:dark:opacity-70'} ${notificationClass}`}
 >
   <div class="flex flex-row justify-between">
     <div class="flex flex-col sm:flex-row gap-x-3 gap-y-3 sm:gap-y-0 w-full">
@@ -50,10 +57,7 @@
         </div>
         {#if !notification.isRead}
           <div class="flex flex-col justify-start items-end sm:hidden">
-            <MarkReadButton
-              {isPending}
-              on:click={() => markAsRead(notification)}
-            />
+            <MarkReadButton {isPending} on:click={() => markRead()} />
           </div>
         {/if}
       </div>
