@@ -11,8 +11,5 @@ vite.config.ts.timestamp-*
 .vercel/
 $houdini
 
-# Sentry Auth Token
-.sentryclirc
-
 # Sentry Config File
 .sentryclirc
