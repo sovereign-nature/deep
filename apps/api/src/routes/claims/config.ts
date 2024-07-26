@@ -78,23 +78,17 @@ export const collections: Collections = {
     externalId: '3030',
     metadata: {
       description:
-        'This is the first DOTphin Proof of Attendance!\nYour proof of attendance at Decoded 2024 in Brussels! This isn’t just any badge; it’s the key to unlocking your DOTphin journey. Get ready to dive into a world where your engagement drives real-world marine conservation.\nYour proof of attendance is the first step in making waves with DOTphin. This trailblazing project merges dynamic, evolving NFTs with sustainability, supporting marine conservation through every interaction. Join us in transforming community engagement and making a tangible impact on our oceans.',
+        'This is the DOTphin Proof of Attendance!\nYour proof of attendance at EDCON 2024 in Tokyo! This isn’t just any badge; it’s the key to unlocking your DOTphin journey. Get ready to dive into a world where your engagement drives real-world marine conservation.\nYour proof of attendance is the first step in making waves with DOTphin. This trailblazing project merges dynamic, evolving NFTs with sustainability, supporting marine conservation through every interaction. Join us in transforming community engagement and making a tangible impact on our oceans.',
       image: [
-        'https://real.myfilebase.com/ipfs/QmagUnan8yPS7fFRL6hxk2VkdXbroD4AJGfLPDFzAgFEis/polkadot-decoded-2024-air.png',
-        'https://real.myfilebase.com/ipfs/QmagUnan8yPS7fFRL6hxk2VkdXbroD4AJGfLPDFzAgFEis/polkadot-decoded-2024-earth.png',
-        'https://real.myfilebase.com/ipfs/QmagUnan8yPS7fFRL6hxk2VkdXbroD4AJGfLPDFzAgFEis/polkadot-decoded-2024-water.png',
+        'https://real.myfilebase.com/ipfs/QmcChQevauNAkydapjU2xhcnCQhReiqzSRigd7U8nKHTvw/edcon2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmcChQevauNAkydapjU2xhcnCQhReiqzSRigd7U8nKHTvw/edcon2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmcChQevauNAkydapjU2xhcnCQhReiqzSRigd7U8nKHTvw/edcon2024-water.png',
       ],
-      name: 'DOTphin Proof of Attendance ‒ Decoded 2024',
+      name: 'DOTphin Proof of Attendance ‒ EDCON 2024',
       attributes: [
-        [{ trait_type: 'element', value: 'air' }, ...decodeBrusselsAttributes],
-        [
-          { trait_type: 'element', value: 'earth' },
-          ...decodeBrusselsAttributes,
-        ],
-        [
-          { trait_type: 'element', value: 'water' },
-          ...decodeBrusselsAttributes,
-        ],
+        [{ trait_type: 'element', value: 'air' }, ...edcon2024Attributes],
+        [{ trait_type: 'element', value: 'earth' }, ...edcon2024Attributes],
+        [{ trait_type: 'element', value: 'water' }, ...edcon2024Attributes],
       ],
     },
     network: 'opal',
