@@ -31,6 +31,20 @@ const decodeBrusselsAttributes = [
   { trait_type: 'proofOf', value: 'attendance' },
 ];
 
+const edcon2024Attributes = [
+  { trait_type: 'eventId', value: 'edcon-2024' },
+  {
+    trait_type: 'eventURL',
+    value: 'https://www.edcon.io',
+  },
+  { trait_type: 'country', value: 'Japan' },
+  { trait_type: 'city', value: 'Tokyo' },
+  { trait_type: 'virtualEvent', value: 'false' },
+  { trait_type: 'startDate', value: '24-Jul-2024' },
+  { trait_type: 'endDate', value: '30-Jul-2024' },
+  { trait_type: 'proofOf', value: 'attendance' },
+];
+
 export const collections: Collections = {
   '5f773e35-d5f2-41dc-ae80-c94e0e8e4821': {
     name: 'engie',
@@ -108,6 +122,27 @@ export const collections: Collections = {
           { trait_type: 'element', value: 'water' },
           ...decodeBrusselsAttributes,
         ],
+      ],
+    },
+    network: 'unique',
+    tokenStandard: 'unique2',
+  },
+  edcon2024: {
+    name: 'edcon2024',
+    externalId: '665',
+    metadata: {
+      description:
+        'This is the DOTphin Proof of Attendance!\nYour proof of attendance at EDCON 2024 in Tokyo! This isn’t just any badge; it’s the key to unlocking your DOTphin journey. Get ready to dive into a world where your engagement drives real-world marine conservation.\nYour proof of attendance is the first step in making waves with DOTphin. This trailblazing project merges dynamic, evolving NFTs with sustainability, supporting marine conservation through every interaction. Join us in transforming community engagement and making a tangible impact on our oceans.',
+      image: [
+        'https://real.myfilebase.com/ipfs/QmcChQevauNAkydapjU2xhcnCQhReiqzSRigd7U8nKHTvw/edcon2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmcChQevauNAkydapjU2xhcnCQhReiqzSRigd7U8nKHTvw/edcon2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmcChQevauNAkydapjU2xhcnCQhReiqzSRigd7U8nKHTvw/edcon2024-water.png',
+      ],
+      name: 'DOTphin Proof of Attendance ‒ EDCON 2024',
+      attributes: [
+        [{ trait_type: 'element', value: 'air' }, ...edcon2024Attributes],
+        [{ trait_type: 'element', value: 'earth' }, ...edcon2024Attributes],
+        [{ trait_type: 'element', value: 'water' }, ...edcon2024Attributes],
       ],
     },
     network: 'unique',
