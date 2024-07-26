@@ -29,4 +29,10 @@ export const events: Events = {
     seed: () => getRandomInt(0, 2),
     going: true,
   },
+  edcon2024: {
+    collectionId: 'edcon2024',
+    realCollection: 'dotphin-proofs',
+    seed: () => getRandomInt(0, 2),
+    going: false,
+  },
 };
