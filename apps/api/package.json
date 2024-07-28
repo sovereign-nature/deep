@@ -22,7 +22,7 @@
     "@unique-nft/sdk": "0.7.7",
     "@unique-nft/sr25519": "0.0.2",
     "@unique-nft/utils": "0.3.20",
-    "hono": "4.5.1",
+    "hono": "4.5.2",
     "lodash": "4.17.21",
     "nanoid": "5.0.7",
     "pino": "9.3.2",
