@@ -4,7 +4,7 @@ import type { GetNotificationsReturn } from '@web3inbox/core';
 import { web3InboxClient } from '$lib/features/web3Inbox';
 
 //Notification config
-const NOTIFICATIONS_PER_PAGE = 25;
+const NOTIFICATIONS_PER_PAGE = 10;
 const IS_INFINITE_SCROLL = true;
 const UNREAD_FIRST = true;
 //Notification store values
