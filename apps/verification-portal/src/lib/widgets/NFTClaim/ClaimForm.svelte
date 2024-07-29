@@ -81,6 +81,17 @@
   const inputClass =
     'z-10 box-border disabled:cursor-not-allowed disabled:opacity-50  !ring-inset rtl:text-right dark:focus:border-primary-500 dark:focus:ring-primary-500 bg-gray-50 dark:text-white dark:placeholder-gray-400 border-gray-300 dark:border-gray-600 first:rounded-s-lg last:rounded-e-lg first:border-s last:border-e block border-none w-full border p-4 pe-14 sm:pe-4 xl:pl-10 text-lg font-aeonik text-deep-green-400 placeholder:text-deep-green-900 placeholder:text-opacity-80  focus:border-primary focus:ring-primary-300 dark:placeholder:text-primary-300 dark:bg-deep-green-700 rounded-lg sm:!rounded-l-sm sm:rounded-none ms-auto';
   const placeholder = $LL.wallet.inputPlaceholder();
+
+  let inputField;
+
+  // Function to handle focus event
+  function handleFocus() {
+    setTimeout(() => {
+      if (document.activeElement !== inputField) {
+        inputField.focus();
+      }
+    }, 100);
+  }
 </script>
 
 {#if errorMsg}
@@ -111,6 +122,8 @@
         tabindex="0"
         class={inputClass}
         {placeholder}
+        autocorrect="off"
+        spellcheck="false"
         bind:value={$formManualAddress}
         required
       />
@@ -134,10 +147,29 @@
     </Button>
   </ButtonGroup>
   <div class="flex gap-3 flex-col my-4 text-blue-400">
-    <input autocorrect="off" spellcheck="false" />
-    <input type="text" />
+    <input
+      class={inputClass}
+      {placeholder}
+      autocorrect="off"
+      spellcheck="false"
+    />
 
-    <textarea></textarea>
+    <input
+      type="text"
+      class={inputClass}
+      {placeholder}
+      autocorrect="off"
+      spellcheck="false"
+    />
+
+    <input class={inputClass} autocorrect="off" spellcheck="false" />
+
+    <input
+      class={inputClass}
+      bind:this={inputField}
+      on:focus={handleFocus}
+      placeholder="Paste here"
+    />
   </div>
 
   <div class="pt-6 relative">
