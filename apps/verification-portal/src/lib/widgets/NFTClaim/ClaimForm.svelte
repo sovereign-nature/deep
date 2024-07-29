@@ -133,6 +133,12 @@
       {/if}
     </Button>
   </ButtonGroup>
+  <div class="flex gap-3 flex-col my-4 text-blue-400">
+    <input autocorrect="off" spellcheck="false" />
+    <input type="text" />
+
+    <textarea></textarea>
+  </div>
 
   <div class="pt-6 relative">
     <div class="flex flex-col gap-5 sm:flex-row items-baseline mb-10 text-sm">
