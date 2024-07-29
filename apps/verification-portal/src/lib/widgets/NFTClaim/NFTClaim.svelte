@@ -164,7 +164,7 @@
         <CloseButton />
       </Drawer.Header>
 
-      <div class={drawerBodyClass}>
+      <div data-vaul-no-drag class={drawerBodyClass}>
         {#if $claimStatus === 'valid'}
           <ClaimData>
             <Confetti
