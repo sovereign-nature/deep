@@ -58,7 +58,7 @@
     'container px-5 lg:px-0 pt-4 pb-8 relative w-full lg:w-4/5 mx-auto';
   const drawerTitleClass = 'text-[26px]  font-normal me-8 sm:me-auto';
   const drawerBodyClass =
-    'container pb-10 px-5 lg:px-0 sticky top-0 w-full lg:w-4/5 mx-auto  sm:overflow-hidden';
+    'container pb-10 px-5 lg:px-0 sticky top-0 w-full lg:w-4/5 mx-auto overflow-auto sm:overflow-hidden';
 
   setNFTClaimContext({
     claimToken,
