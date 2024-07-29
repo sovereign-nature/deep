@@ -147,25 +147,13 @@
     </Button>
   </ButtonGroup>
   <div class="flex gap-3 flex-col my-4 text-blue-400">
-    <input
-      class={inputClass}
-      {placeholder}
-      autocorrect="off"
-      spellcheck="false"
-    />
+    <input {placeholder} autocorrect="off" spellcheck="false" />
+
+    <input type="text" {placeholder} autocorrect="off" spellcheck="false" />
+
+    <input autocorrect="off" spellcheck="false" />
 
     <input
-      type="text"
-      class={inputClass}
-      {placeholder}
-      autocorrect="off"
-      spellcheck="false"
-    />
-
-    <input class={inputClass} autocorrect="off" spellcheck="false" />
-
-    <input
-      class={inputClass}
       bind:this={inputField}
       on:focus={handleFocus}
       placeholder="Paste here"
