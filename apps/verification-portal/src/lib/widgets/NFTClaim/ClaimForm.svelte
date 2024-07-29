@@ -92,6 +92,10 @@
       }
     }, 100);
   }
+  function handleBlur(event) {
+    event.preventDefault();
+    inputField.focus();
+  }
 </script>
 
 {#if errorMsg}
@@ -147,15 +151,13 @@
     </Button>
   </ButtonGroup>
   <div class="flex gap-3 flex-col my-4 text-blue-400">
-    <input {placeholder} autocorrect="off" spellcheck="false" />
-
-    <input type="text" {placeholder} autocorrect="off" spellcheck="false" />
-
-    <input autocorrect="off" spellcheck="false" />
-
     <input
+      class="h-10"
       bind:this={inputField}
       on:focus={handleFocus}
+      on:blur={handleBlur}
+      autocorrect="off"
+      spellcheck="false"
       placeholder="Paste here"
     />
   </div>
