@@ -79,23 +79,8 @@
   };
 
   const inputClass =
-    'z-10 box-border disabled:cursor-not-allowed disabled:opacity-50  !ring-inset rtl:text-right dark:focus:border-primary-500 dark:focus:ring-primary-500 bg-gray-50 dark:text-white dark:placeholder-gray-400 border-gray-300 dark:border-gray-600 first:rounded-s-lg last:rounded-e-lg first:border-s last:border-e block border-none w-full border p-4 pe-14 sm:pe-4 xl:pl-10 text-lg font-aeonik text-deep-green-400 placeholder:text-deep-green-900 placeholder:text-opacity-80  focus:border-primary focus:ring-primary-300 dark:placeholder:text-primary-300 dark:bg-deep-green-700 rounded-lg sm:!rounded-l-sm sm:rounded-none ms-auto';
+    'z-10 box-border relative disabled:cursor-not-allowed disabled:opacity-50  !ring-inset rtl:text-right dark:focus:border-primary-500 dark:focus:ring-primary-500 bg-gray-50 dark:text-white dark:placeholder-gray-400 border-gray-300 dark:border-gray-600 first:rounded-s-lg last:rounded-e-lg first:border-s last:border-e block border-none w-full border p-4 pe-14 sm:pe-4 xl:pl-10 text-lg font-aeonik text-deep-green-400 placeholder:text-deep-green-900 placeholder:text-opacity-80  focus:border-primary focus:ring-primary-300 dark:placeholder:text-primary-300 dark:bg-deep-green-700 rounded-lg sm:!rounded-l-sm sm:rounded-none ms-auto';
   const placeholder = $LL.wallet.inputPlaceholder();
-
-  let inputField;
-
-  // Function to handle focus event
-  function handleFocus() {
-    setTimeout(() => {
-      if (document.activeElement !== inputField) {
-        inputField.focus();
-      }
-    }, 100);
-  }
-  function handleBlur(event) {
-    event.preventDefault();
-    inputField.focus();
-  }
 </script>
 
 {#if errorMsg}
@@ -107,8 +92,7 @@
   <input type="hidden" name="claim" value={$claimToken} />
   <input type="hidden" name="address" bind:value={address} />
   <ButtonGroup
-    data-vaul-no-drag
-    divClass="-z-1 relative w-full flex flex-col  sm:flex-row sm:inline-flex  justify-items-stretch   sm:flex-row sm:inline-flex  justify-items-stretch  "
+    divClass="relative w-full flex flex-col sm:flex-row sm:inline-flex  justify-items-stretch   sm:flex-row sm:inline-flex  justify-items-stretch  "
   >
     {#if $formUseWallet && $web3Connected}
       <Input
@@ -150,18 +134,6 @@
       {/if}
     </Button>
   </ButtonGroup>
-  <div class="flex gap-3 flex-col my-4 text-blue-400">
-    <input
-      class="h-10"
-      bind:this={inputField}
-      on:focus={handleFocus}
-      on:blur={handleBlur}
-      autocorrect="off"
-      spellcheck="false"
-      placeholder="Paste here"
-    />
-  </div>
-
   <div class="pt-6 relative">
     <div class="flex flex-col gap-5 sm:flex-row items-baseline mb-10 text-sm">
       <label class="inline-flex gap-5 items-center mt-2">
