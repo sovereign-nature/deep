@@ -281,6 +281,14 @@ type RootTranslation = {
 		 */
 		loading: string
 		/**
+		 * L​o​a​d​ ​m​o​r​e
+		 */
+		loadMore: string
+		/**
+		 * L​o​a​d​i​n​g
+		 */
+		loadingFeed: string
+		/**
 		 * c​o​n​n​e​c​t​i​n​g​.​.​.
 		 */
 		connecting: string
@@ -784,6 +792,14 @@ export type TranslationFunctions = {
 		 * loading...
 		 */
 		loading: () => LocalizedString
+		/**
+		 * Load more
+		 */
+		loadMore: () => LocalizedString
+		/**
+		 * Loading
+		 */
+		loadingFeed: () => LocalizedString
 		/**
 		 * connecting...
 		 */

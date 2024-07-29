@@ -99,6 +99,8 @@ const en: BaseTranslation = {
     notFound: 'No notifications found',
     deleted: 'Message Deleted',
     loading: 'loading...',
+    loadMore: 'Load more',
+    loadingFeed: 'Loading',
     connecting: 'connecting...',
     savePreferences: 'Save preferences',
     markAsRead: 'Mark as read',

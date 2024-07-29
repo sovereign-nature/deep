@@ -6,6 +6,7 @@
   import NotificationMessage from '$lib/entities/InboxNotification/Notification.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import { notifications } from '$lib/features/web3InboxNotifications';
+  import NextPageBtn from '$lib/widgets/InboxNotificationList/NextPageBtn.svelte';
   let notificationTypes: Writable<NotifyClientTypes.ScopeMap[]> =
     getContext('web3InboxTypes');
 
@@ -20,6 +21,7 @@
         <NotificationMessage {types} {notification}></NotificationMessage>
       </div>
     {/each}
+    <NextPageBtn />
   {:else}
     <span>{$LL.notifications.notFound()}</span>
   {/if}
