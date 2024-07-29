@@ -134,6 +134,8 @@
     </Button>
   </ButtonGroup>
 
+  <input class={inputClass} type="text" {placeholder} />
+
   <div class="pt-6 relative">
     <div class="flex flex-col gap-5 sm:flex-row items-baseline mb-10 text-sm">
       <label class="inline-flex gap-5 items-center mt-2">
