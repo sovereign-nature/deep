@@ -73,8 +73,8 @@ export const collections: Collections = {
     network: 'optimism',
     tokenStandard: 'erc721',
   },
-  'dotphin-poap-testnet': {
-    name: 'dotphin-poap-testnet',
+  'testnet-edcon2024': {
+    name: 'testnet-edcon2024',
     externalId: '3030',
     metadata: {
       description:
