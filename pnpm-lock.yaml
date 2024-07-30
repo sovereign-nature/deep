@@ -338,8 +338,8 @@ importers:
   packages/ui-kit:
     dependencies:
       bits-ui:
-        specifier: 0.21.12
-        version: 0.21.12(svelte@4.2.18)
+        specifier: 0.21.13
+        version: 0.21.13(svelte@4.2.18)
       clsx:
         specifier: ^2.1.0
         version: 2.1.1
@@ -3839,8 +3839,8 @@ packages:
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
-  bits-ui@0.21.12:
-    resolution: {integrity: sha512-Cf0iB+ZKwA0ZjkpixrhrZK9PC6pGPFleW/65Xc/z0lpGvWaFtdOhiYEntCHHxZ0VihP3aJaG0OBhUBIbmAePaA==}
+  bits-ui@0.21.13:
+    resolution: {integrity: sha512-7nmOh6Ig7ND4DXZHv1FhNsY9yUGrad0+mf3tc4YN//3MgnJT1LnHtk4HZAKgmxCOe7txSX7/39LtYHbkrXokAQ==}
     peerDependencies:
       svelte: ^4.0.0 || ^5.0.0-next.118
 
@@ -13818,7 +13818,7 @@ snapshots:
     dependencies:
       file-uri-to-path: 1.0.0
 
-  bits-ui@0.21.12(svelte@4.2.18):
+  bits-ui@0.21.13(svelte@4.2.18):
     dependencies:
       '@internationalized/date': 3.5.5
       '@melt-ui/svelte': 0.76.2(svelte@4.2.18)
@@ -18332,7 +18332,7 @@ snapshots:
 
   vaul-svelte@0.3.2(svelte@4.2.18):
     dependencies:
-      bits-ui: 0.21.12(svelte@4.2.18)
+      bits-ui: 0.21.13(svelte@4.2.18)
       svelte: 4.2.18
 
   video.js@8.16.1:
