@@ -24,8 +24,8 @@
   "devDependencies": {
     "husky": "9.1.4",
     "lint-staged": "15.2.7",
-    "turbo": "1.10.16",
-    "turbo-ignore": "1.10.16",
+    "turbo": "2.0.11",
+    "turbo-ignore": "2.0.11",
     "prettier": "3.3.3",
     "prettier-plugin-svelte": "3.2.6",
     "@typescript-eslint/eslint-plugin": "7.17.0",
@@ -35,7 +35,7 @@
     "eslint-plugin-boundaries": "4.2.2",
     "eslint-plugin-import": "2.29.1",
     "eslint-config-prettier": "9.1.0",
-    "eslint-config-turbo": "1.10.16"
+    "eslint-config-turbo": "2.0.11"
   },
   "engines": {
     "node": ">=20.0.0",
