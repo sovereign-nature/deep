@@ -92,7 +92,6 @@
   <input type="hidden" name="claim" value={$claimToken} />
   <input type="hidden" name="address" bind:value={address} />
   <ButtonGroup
-    data-vaul-no-drag
     divClass="-z-1 relative w-full flex flex-col  sm:flex-row sm:inline-flex  justify-items-stretch   sm:flex-row sm:inline-flex  justify-items-stretch  "
   >
     {#if $formUseWallet && $web3Connected}

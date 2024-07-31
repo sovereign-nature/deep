@@ -361,9 +361,6 @@ importers:
       tailwindcss:
         specifier: 3.4.7
         version: 3.4.7
-      vaul-svelte:
-        specifier: ^0.3.0
-        version: 0.3.2(svelte@4.2.18)
     devDependencies:
       '@playwright/test':
         specifier: 1.45.3
@@ -7966,11 +7963,6 @@ packages:
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
-
-  vaul-svelte@0.3.2:
-    resolution: {integrity: sha512-X4OGWttSTVUl417qGDsSFgOvIx24DoiMRY/jaP9z0v9FL8LQQJ0RQ1ZM0QpdyQPRlNd24ewjNQHh5EgYDtfNpw==}
-    peerDependencies:
-      svelte: ^4.0.0 || ^5.0.0-next.1
 
   video.js@8.17.1:
     resolution: {integrity: sha512-MKW/oRs5B9UeN6TiF+CsVNGacxV4mPWlyDt1VzRkNXy6gPkCK04oQKB2XEhHHQCtACv3PeOkOXnr5b1ID2LwPg==}
@@ -18329,11 +18321,6 @@ snapshots:
       react: 18.3.1
 
   vary@1.1.2: {}
-
-  vaul-svelte@0.3.2(svelte@4.2.18):
-    dependencies:
-      bits-ui: 0.21.13(svelte@4.2.18)
-      svelte: 4.2.18
 
   video.js@8.17.1:
     dependencies:
