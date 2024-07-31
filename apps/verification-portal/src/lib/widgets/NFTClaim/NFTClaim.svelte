@@ -2,7 +2,8 @@
   import { writable, readable, derived } from 'svelte/store';
   import { getContext } from 'svelte';
   import type { Writable, Readable } from 'svelte/store';
-  import { Drawer } from '@sni/ui-kit';
+  import { Drawer } from 'flowbite-svelte';
+  import { sineInOut } from 'svelte/easing';
   import { Confetti } from 'svelte-confetti';
   import { toast } from 'svelte-sonner';
   import type { ActionResult } from '@sveltejs/kit';
@@ -34,7 +35,7 @@
   const preventDrawerClose: Readable<boolean> = getContext('web3ModalOpen'); // allow click outside drawer only when modal is open;
   let web3Connected: Writable<boolean> = getContext('web3Connected');
 
-  let drawerOpen = $claimToken && $claimToken.length > 0 ? true : false;
+  let drawerHidden = $claimToken && $claimToken.length > 0 ? false : true;
   let intervalId: NodeJS.Timeout;
   const claimStatus = derived(
     [claimSubmitted, claimValid, claimPending],
@@ -53,12 +54,17 @@
     }
   );
   const drawerContentClass =
-    'bg-deep-green text-white border-none max-h-[96%] h-[96%] sm:h-auto pb-4 z-drawer';
+    'bg-deep-green text-white border-none max-h-[96%] h-[96%] sm:h-auto pb-4 z-drawer rounded-t-lg lg:rounded-t-xl lg:pt-5 pt-2';
   const drawerHeaderClass =
     'container px-5 lg:px-0 pt-4 pb-8 relative w-full lg:w-4/5 mx-auto';
   const drawerTitleClass = 'text-[26px]  font-normal me-8 sm:me-auto';
   const drawerBodyClass =
     'container pb-10 px-5 lg:px-0 sticky top-0 w-full lg:w-4/5 mx-auto overflow-auto sm:overflow-hidden';
+  const transitionParamsBottom = {
+    y: 320,
+    duration: 200,
+    easing: sineInOut,
+  };
 
   setNFTClaimContext({
     claimToken,
@@ -77,7 +83,7 @@
   $: $formUseWallet = $web3Connected;
 
   // destroy the drawer fully only when it is closed
-  $: if (!drawerOpen && $destroyOnClose) {
+  $: if (!drawerHidden && $destroyOnClose) {
     clearClaim(false);
   }
 
@@ -142,49 +148,56 @@
 </script>
 
 {#if $claimToken}
-  <Drawer.Root
-    bind:open={drawerOpen}
-    closeOnOutsideClick={!$preventDrawerClose}
-    closeOnEscape={false}
+  <TriggerButton
+    isOpen={!drawerHidden}
+    on:click={() => (drawerHidden = false)}
+  />
+  <Drawer
+    placement="bottom"
+    width="w-full"
+    divClass={drawerContentClass}
+    bgOpacity="bg-opacity-75 z-modalOverlay"
+    transitionType="fly"
+    transitionParams={transitionParamsBottom}
+    bind:hidden={drawerHidden}
+    activateClickOutside={!$preventDrawerClose}
+    id="claimDrawer"
   >
-    <TriggerButton drawerOpen />
-    <Drawer.Content class={drawerContentClass}>
-      <Drawer.Header class={drawerHeaderClass}>
-        <Drawer.Title class={drawerTitleClass}>
-          {#if $claimStatus === 'valid'}
-            {$LL.claim.titleValid()}
-          {:else if $claimStatus === 'pending'}
-            {$LL.claim.titlePending()}
-          {:else if $claimStatus === 'invalid'}
-            {$LL.claim.titleInvalid()}
-          {:else}
-            {$LL.claim.titleClaim()}
-          {/if}
-        </Drawer.Title>
-        <CloseButton />
-      </Drawer.Header>
-
-      <div class={drawerBodyClass}>
+    <div class={drawerHeaderClass}>
+      <h2 class={drawerTitleClass}>
         {#if $claimStatus === 'valid'}
-          <ClaimData>
-            <Confetti
-              delay={[100, 250]}
-              rounded
-              colorRange={[75, 175]}
-            /></ClaimData
-          >
+          {$LL.claim.titleValid()}
         {:else if $claimStatus === 'pending'}
-          <ClaimData>
-            <CheckButton on:click={checkClaim}></CheckButton>
-          </ClaimData>
+          {$LL.claim.titlePending()}
         {:else if $claimStatus === 'invalid'}
-          <div class="pb-20">
-            {$LL.claim.invalidMessage()}
-          </div>
+          {$LL.claim.titleInvalid()}
         {:else}
-          <ClaimForm></ClaimForm>
+          {$LL.claim.titleClaim()}
         {/if}
-      </div>
-    </Drawer.Content>
-  </Drawer.Root>
+      </h2>
+      <CloseButton on:click={() => (drawerHidden = true)} />
+    </div>
+
+    <div class={drawerBodyClass}>
+      {#if $claimStatus === 'valid'}
+        <ClaimData>
+          <Confetti
+            delay={[100, 250]}
+            rounded
+            colorRange={[75, 175]}
+          /></ClaimData
+        >
+      {:else if $claimStatus === 'pending'}
+        <ClaimData>
+          <CheckButton on:click={checkClaim}></CheckButton>
+        </ClaimData>
+      {:else if $claimStatus === 'invalid'}
+        <div class="pb-20">
+          {$LL.claim.invalidMessage()}
+        </div>
+      {:else}
+        <ClaimForm></ClaimForm>
+      {/if}
+    </div>
+  </Drawer>
 {/if}
