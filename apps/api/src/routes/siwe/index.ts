@@ -41,6 +41,8 @@ const app = new Hono<{
 app.use(csrf({ origin: ['real.sovereignnature.com', 'localhost'] })); //TODO: Localhost in dev
 
 app.use('*', async (c, next) => {
+  console.log('SESSION MIDDLEWARE');
+
   const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
 
   const lucia = initializeLucia(SESSIONS_DB);
@@ -88,53 +90,45 @@ app.post('/verify', async (c) => {
 
   const body = await c.req.json();
 
-  try {
-    if (!body.message || !body.signature) {
-      return c.json(
-        { error: true, message: 'SIWE message and signature is required' },
-        400
-      );
-    }
+  if (!body.message || !body.signature) {
+    return c.json(
+      { error: true, message: 'SIWE message and signature is required' },
+      400
+    );
+  }
 
-    const siweMessage = new SiweMessage(body.message);
+  const siweMessage = new SiweMessage(body.message);
 
-    const { data: message } = await siweMessage.verify({
-      signature: body.signature,
-      // nonce: session.nonce,
+  const { data: message } = await siweMessage.verify({
+    signature: body.signature,
+    // nonce: session.nonce,
+  });
+
+  const address = message.address;
+  const chainId = message.chainId;
+
+  let session = c.get('session');
+
+  if (!session) {
+    console.log('Creating new session');
+    await SESSIONS_DB.exec(
+      `INSERT INTO user (id) VALUES ('${address}') ON CONFLICT DO NOTHING;`
+    );
+
+    session = await lucia.createSession(address, { chainId });
+
+    c.header('Set-Cookie', lucia.createSessionCookie(session.id).serialize(), {
+      append: true,
     });
 
-    const address = message.address;
-    const chainId = message.chainId;
-
-    let session = c.get('session');
-
-    if (!session) {
-      SESSIONS_DB.exec(`INSERT INTO user (id) VALUES ('${address}');`);
-
-      session = await lucia.createSession(address, { chainId });
-
-      c.header(
-        'Set-Cookie',
-        lucia.createSessionCookie(session.id).serialize(),
-        {
-          append: true,
-        }
-      );
-    } else {
-      session.userId = address;
-      session.chainId = chainId;
-    }
-
-    c.json({ message: 'Successfully verified' });
-  } catch (e) {
-    console.error(e);
-
-    // const session = c.get('session');
-
-    // session.siwe = null;
-    // session.nonce = null;
-    // session.save(() => res.status(500).json({ message: e.message }));
+    console.log('Session created', session);
+  } else {
+    console.log('Updating existing session');
+    session.userId = address;
+    session.chainId = chainId;
   }
+
+  return c.text('true');
 });
 
 // get the session
@@ -149,5 +143,19 @@ app.get('/session', (c) => {
 });
 
 //TODO: Add signout route
+app.get('/signout', (c) => {
+  const session = c.get('session');
+
+  const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
+  const lucia = initializeLucia(SESSIONS_DB);
+
+  if (!session) {
+    return c.json({ message: 'No session found' }, 404);
+  }
+
+  lucia.invalidateSession(session.id);
+
+  return c.json({ message: 'Successfully signed out' });
+});
 
 export default app;
