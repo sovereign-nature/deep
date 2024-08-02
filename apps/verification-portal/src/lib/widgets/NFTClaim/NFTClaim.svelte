@@ -1,13 +1,13 @@
 <script lang="ts">
   import { writable, readable, derived } from 'svelte/store';
   import { getContext } from 'svelte';
-  import type { Writable, Readable } from 'svelte/store';
+  import type { Readable } from 'svelte/store';
   import { Drawer } from 'flowbite-svelte';
   import { sineInOut } from 'svelte/easing';
   import { Confetti } from 'svelte-confetti';
   import { toast } from 'svelte-sonner';
   import type { ActionResult } from '@sveltejs/kit';
-  import ClaimForm from './ClaimForm.svelte';
+  import ClaimForm from './ClaimForm/ClaimForm.svelte';
   import ClaimData from './ClaimData.svelte';
   import { setNFTClaimContext } from './context';
   import type { CrossmintResponse } from './context';
@@ -33,7 +33,6 @@
   const destroyOnClose = writable(false);
   const claimAddress = writable('');
   const preventDrawerClose: Readable<boolean> = getContext('web3ModalOpen'); // allow click outside drawer only when modal is open;
-  let web3Connected: Writable<boolean> = getContext('web3Connected');
 
   let drawerHidden = $claimToken && $claimToken.length > 0 ? false : true;
   let intervalId: NodeJS.Timeout;
@@ -56,7 +55,7 @@
   const drawerContentClass =
     'bg-deep-green text-white border-none max-h-[96%] h-[96%] sm:h-auto pb-4 z-drawer rounded-t-lg lg:rounded-t-xl lg:pt-5 pt-2';
   const drawerHeaderClass =
-    'container px-5 lg:px-0 pt-4 pb-8 relative w-full lg:w-4/5 mx-auto';
+    'container px-5 lg:px-0 pt-4 pb-8 relative w-full lg:w-4/5 mx-auto text-center md:text-start';
   const drawerTitleClass = 'text-[26px]  font-normal me-8 sm:me-auto';
   const drawerBodyClass =
     'container pb-10 px-5 lg:px-0 sticky top-0 w-full lg:w-4/5 mx-auto overflow-auto sm:overflow-hidden';
@@ -80,7 +79,7 @@
     claimStatus,
   });
 
-  $: $formUseWallet = $web3Connected;
+  $: $formUseWallet = true;
 
   // destroy the drawer fully only when it is closed
   $: if (!drawerHidden && $destroyOnClose) {
@@ -192,7 +191,7 @@
           <CheckButton on:click={checkClaim}></CheckButton>
         </ClaimData>
       {:else if $claimStatus === 'invalid'}
-        <div class="pb-20">
+        <div class="pb-20 max-w-md md:max-w-full mx-auto">
           {$LL.claim.invalidMessage()}
         </div>
       {:else}

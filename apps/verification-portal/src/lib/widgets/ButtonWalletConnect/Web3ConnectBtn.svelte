@@ -8,6 +8,7 @@
   let isLoaded = false;
   export let alwaysOpen = false;
   export let responsive = false;
+  export let buttonClass = '';
 
   const web3Connected: Writable<boolean> = getContext('web3Connected');
   const web3Address: Writable<string> = getContext('web3Address');
@@ -50,7 +51,9 @@
       className="text-sm sm:text-base"
       keepOpen={alwaysOpen}
       on:click={() => openModal()}
-      customBtnClass={responsive ? 'h-8 md:h-11 md:text-base text-sm' : ''}
+      customBtnClass={responsive
+        ? 'h-8 md:h-11 md:text-base text-sm ' + buttonClass
+        : buttonClass}
     >
       <!-- TODO: Move string to translation config -->
       <span class="hidden md:inline-block"> Login </span>
