@@ -2,16 +2,15 @@
 <script lang="ts">
   import { getContext } from 'svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-
   import { Input } from 'flowbite-svelte';
   import type { Writable } from 'svelte/store';
   import { Button, ButtonGroup } from 'flowbite-svelte';
+  import { shortenAddress } from '$lib/shared/utils';
   import Spinner from '$lib/components/icons/Spinner.svelte';
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
   import Web3ConnectBtn from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
 
   export let formUseWallet: Writable<boolean>;
-
   export let formManualAddress: Writable<string>;
   export let formSending: Writable<boolean>;
   export let errorMsg: string | undefined;
@@ -28,12 +27,12 @@
 
 <div class="flex flex-col w-full items-center md:hidden gap-4">
   {#if $formUseWallet && $web3Connected}
-    <div class="flex flex-col w-full gap-2 mb-4 max-w-md">
+    <div class="flex flex-col gap-2 mb-4 max-w-md">
       <label class="text-sm text-gray-200" for="addressWallet">
-        Claiming address:
+        {$LL.claim.labelWalletAddress}
       </label>
       <span class="truncate max-w-full h-10 text-primary-300 text-base">
-        {address}
+        {shortenAddress(address, 8)}
       </span>
 
       <!-- <Web3ConnectBtn alwaysOpen></Web3ConnectBtn> -->
@@ -41,14 +40,14 @@
     </div>
   {:else if $formUseWallet}
     <div>
-      <span class="block pb-2">Connect your ETH wallet</span>
+      <span class="block pb-2">{$LL.claim.labelConnectWallet()}</span>
       <Web3ConnectBtn buttonClass=" w-64 justify-center" alwaysOpen
       ></Web3ConnectBtn>
     </div>
   {:else}
     <div class="flex flex-col w-full gap-2 max-w-md">
       <label class="text-sm text-gray-200" for="addressManual">
-        Enter a valid wallet address:
+        {$LL.claim.labelManualAddress()}
       </label>
       <Input
         id="addressManual"
@@ -79,7 +78,7 @@
       formaction="/?/claim"
       disabled={$formSending}
     >
-      Submit Claim
+      {$LL.claim.buttonSubmit()}
       {#if $formSending}
         <Spinner
           className="h-4 w-4 sm:h-7 sm:w-7 text-white fill-primary-200"

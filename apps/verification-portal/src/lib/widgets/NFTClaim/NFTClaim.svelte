@@ -53,7 +53,7 @@
     }
   );
   const drawerContentClass =
-    'bg-deep-green text-white border-none max-h-[96%] h-[96%] sm:h-auto pb-4 z-drawer rounded-t-lg lg:rounded-t-xl lg:pt-5 pt-2';
+    'bg-deep-green text-white border-none max-h-[86%]  sm:h-auto pb-4 z-drawer rounded-t-lg lg:rounded-t-xl lg:pt-5 pt-2';
   const drawerHeaderClass =
     'container px-5 lg:px-0 pt-4 pb-8 relative w-full lg:w-4/5 mx-auto text-center md:text-start';
   const drawerTitleClass = 'text-[26px]  font-normal me-8 sm:me-auto';

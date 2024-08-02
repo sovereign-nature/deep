@@ -3,6 +3,7 @@
   import type { Writable } from 'svelte/store';
   import RolloverBtn from '$lib/shared/components/RolloverBtn.svelte';
   import ConnectIcon from '$lib/components/icons/ConnectIcon.svelte';
+  import { shortenAddress } from '$lib/shared/utils';
   import { getWeb3Modal } from '$lib/features/web3Modal';
 
   let isLoaded = false;
@@ -16,11 +17,6 @@
 
   function openModal() {
     getWeb3Modal().open();
-  }
-
-  //TODO: Move to utils
-  function shortenAddress(address: string) {
-    return address.replace(/^(.{4})(.*)(.{4})$/, '$1...$3');
   }
 
   onMount(async () => {

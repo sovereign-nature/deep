@@ -236,6 +236,35 @@ type RootTranslation = {
 		 * ⭐​ ​Y​o​u​r​ ​T​o​k​e​n​ ​I​s​ ​M​i​n​t​e​d​!
 		 */
 		buttonSuccess: string
+		/**
+		 * S​u​b​m​i​t​ ​C​l​a​i​m
+		 */
+		buttonSubmit: string
+		/**
+		 * E​n​t​e​r​ ​a​ ​v​a​l​i​d​ ​w​a​l​l​e​t​ ​a​d​d​r​e​s​s​:
+		 */
+		labelManualAddress: string
+		/**
+		 * C​o​n​n​e​c​t​ ​y​o​u​r​ ​E​T​H​ ​w​a​l​l​e​t
+		 */
+		labelConnectWallet: string
+		/**
+		 * C​l​a​i​m​i​n​g​ ​a​d​d​r​e​s​s​:
+		 */
+		labelWalletAddress: string
+		/**
+		 * S​w​i​t​c​h​ ​t​o​ ​m​a​n​u​a​l​ ​i​n​p​u​t
+		 */
+		toggleLinkManual: string
+		/**
+		 * C​o​n​n​e​c​t​ ​a​ ​w​a​l​l​e​t
+		 */
+		toggleLinkWallet: string
+		/**
+		 * T​r​o​u​b​l​e​ ​c​o​n​n​e​c​t​i​n​g​?​ ​
+	​ ​T​r​y​ ​m​a​n​u​a​l​ ​i​n​p​u​t
+		 */
+		manualAddressPrompt: string
 	}
 	notifications: {
 		/**
@@ -750,6 +779,35 @@ export type TranslationFunctions = {
 		 * ⭐ Your Token Is Minted!
 		 */
 		buttonSuccess: () => LocalizedString
+		/**
+		 * Submit Claim
+		 */
+		buttonSubmit: () => LocalizedString
+		/**
+		 * Enter a valid wallet address:
+		 */
+		labelManualAddress: () => LocalizedString
+		/**
+		 * Connect your ETH wallet
+		 */
+		labelConnectWallet: () => LocalizedString
+		/**
+		 * Claiming address:
+		 */
+		labelWalletAddress: () => LocalizedString
+		/**
+		 * Switch to manual input
+		 */
+		toggleLinkManual: () => LocalizedString
+		/**
+		 * Connect a wallet
+		 */
+		toggleLinkWallet: () => LocalizedString
+		/**
+		 * Trouble connecting? 
+	 Try manual input
+		 */
+		manualAddressPrompt: () => LocalizedString
 	}
 	notifications: {
 		/**
