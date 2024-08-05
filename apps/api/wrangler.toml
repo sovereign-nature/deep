@@ -3,7 +3,7 @@ main = "src/index.ts"
 compatibility_date = "2024-01-01"
 compatibility_flags = ["nodejs_compat"]
 logpush = false
-tail_consumers = [{service = "api-tail"}]
+tail_consumers = [{ service = "api-tail" }]
 
 [vars]
 CROSSMINT_API_URL = "https://crossmint.com/api/2022-06-09/collections"
@@ -30,3 +30,8 @@ preview_id = "0f4988a01242450187f4ee6ca522a5d6"
 binding = "CLAIMS_KV"
 id = "974b532adcea43e8b9b90bffe8c834cf"
 preview_id = "974b532adcea43e8b9b90bffe8c834cf"
+
+[[d1_databases]]
+binding = "SESSIONS_DB"                       # available in your Worker on env.DB
+database_name = "dev-d1-test"
+database_id = "<unique-ID-for-your-database>"

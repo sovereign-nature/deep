@@ -9,10 +9,18 @@ import highlights from './routes/highlights';
 import claims, { claimsQueue } from './routes/claims';
 import wallets from './routes/wallets';
 import events from './routes/events';
+import siwe from './routes/siwe';
+
 const app = new Hono();
 
 app.use(logger());
-app.use('/*', cors({ origin: '*' }));
+app.use(
+  '/*',
+  cors({
+    origin: ['http://localhost:5174', 'real.sovereignnature.com'],
+    credentials: true,
+  })
+);
 
 app.get(
   '/assets/*',
@@ -45,6 +53,7 @@ app.route('/highlights', highlights);
 app.route('/claims', claims);
 app.route('/wallets', wallets);
 app.route('/events', events);
+app.route('/siwe', siwe);
 
 // export default app;
 
