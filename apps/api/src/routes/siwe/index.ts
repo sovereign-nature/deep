@@ -20,7 +20,7 @@ app.use(csrf({ origin: ['real.sovereignnature.com', 'localhost'] })); //TODO: Lo
 
 app.use('*', session);
 
-app.get('/nonce', (c) => {
+app.post('/nonce', (c) => {
   return c.text(generateNonce());
 });
 
@@ -70,7 +70,7 @@ app.post('/verify', async (c) => {
 });
 
 // Get the session
-app.get('/session', (c) => {
+app.post('/session', (c) => {
   const session = c.get('session');
 
   if (!session) {
@@ -80,7 +80,7 @@ app.get('/session', (c) => {
   return c.json({ address: session.userId, chainId: session.chainId });
 });
 
-app.get('/signout', (c) => {
+app.post('/signout', (c) => {
   const session = c.get('session');
   const lucia = c.get('lucia');
 
