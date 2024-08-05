@@ -13,7 +13,7 @@ const BASE_URL = `${deepApiUrl}/siwe`;
 //Call the server to get a nonce
 const getNonce = async (): Promise<string> => {
   const res = await fetch(BASE_URL + '/nonce', {
-    method: 'GET',
+    method: 'POST',
     credentials: 'include',
   });
   if (!res.ok) {
@@ -52,7 +52,7 @@ const verifyMessage = async ({ message, signature }: SIWEVerifyMessageArgs) => {
 //Call the server to get the session
 const getSession = async () => {
   const res = await fetch(BASE_URL + '/session', {
-    method: 'GET',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -71,7 +71,7 @@ const getSession = async () => {
 //Call the server to sign out
 const signOut = async (): Promise<boolean> => {
   const res = await fetch(BASE_URL + '/signout', {
-    method: 'GET',
+    method: 'POST',
     credentials: 'include',
   });
   if (!res.ok) {

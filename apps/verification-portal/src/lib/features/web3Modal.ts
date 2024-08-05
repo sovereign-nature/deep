@@ -10,7 +10,7 @@ import {
   themeVariablesLight,
   wagmiConfig,
 } from '$lib/shared/wallet/web3Configs';
-import { createSIWE } from '$lib/shared/wallet/siweMethods';
+import { createSIWE } from '$lib/shared/wallet/siweConfig';
 
 export type Web3Modal = ReturnType<typeof createWeb3Modal>;
 let web3Modal: Web3Modal;
