@@ -7,22 +7,23 @@ import { initializeLucia } from '../lib/lucia';
  * @see {@link https://lucia-auth.com/guides/validate-session-cookies/hono}
  */
 export async function session(c: Context, next: Next) {
-  console.log('SESSION MIDDLEWARE');
+  console.debug('SESSION MIDDLEWARE'); //TODO: Convert into logging with pinia?
 
   const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
 
   const lucia = initializeLucia(SESSIONS_DB);
+  c.set('lucia', lucia);
 
-  console.log('sessionCookieName', lucia.sessionCookieName);
+  console.debug('sessionCookieName', lucia.sessionCookieName);
 
   const sessionId = getCookie(c, lucia.sessionCookieName) ?? null;
-  console.log('sessionId', sessionId);
+  console.debug('sessionId', sessionId);
 
   if (!sessionId) {
     c.set('user', null);
     c.set('session', null);
 
-    console.log('NO SESSION ID');
+    console.debug('NO SESSION ID');
     return next();
   }
   const { session, user } = await lucia.validateSession(sessionId);
@@ -39,8 +40,6 @@ export async function session(c: Context, next: Next) {
       append: true,
     });
   }
-
-  c.set('lucia', lucia);
 
   c.set('user', user);
   c.set('session', session);

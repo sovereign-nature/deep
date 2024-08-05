@@ -6,6 +6,7 @@ import { Lucia, Session, User } from 'lucia';
 import { env } from 'hono/adapter';
 import { csrf } from 'hono/csrf';
 import { session } from '../../middleware/session';
+import { addUser } from '../../lib/lucia';
 
 const app = new Hono<{
   Variables: {
@@ -49,10 +50,8 @@ app.post('/verify', async (c) => {
   let session = c.get('session');
 
   if (!session) {
-    console.log('Creating new session');
-    await SESSIONS_DB.exec(
-      `INSERT INTO user (id) VALUES ('${address}') ON CONFLICT DO NOTHING;`
-    );
+    console.debug('Creating new session'); //TODO: Convert into logging with pinia?
+    await addUser(SESSIONS_DB, address);
 
     session = await lucia.createSession(address, { chainId });
 
@@ -60,9 +59,9 @@ app.post('/verify', async (c) => {
       append: true,
     });
 
-    console.log('Session created', session);
+    console.debug('Session created', session);
   } else {
-    console.log('Updating existing session');
+    console.debug('Updating existing session');
     session.userId = address;
     session.chainId = chainId;
   }
