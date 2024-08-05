@@ -53,12 +53,12 @@
     }
   );
   const drawerContentClass =
-    'bg-deep-green text-white border-none max-h-[86%]  sm:h-auto pb-4 z-drawer rounded-t-lg lg:rounded-t-xl lg:pt-5 pt-2';
-  const drawerHeaderClass =
-    'container px-5 lg:px-0 pt-4 pb-8 relative w-full lg:w-4/5 mx-auto text-center md:text-start';
+    'overflow-y-auto bg-deep-green text-white border-none max-h-[86%]  sm:h-auto pb-4 z-drawer rounded-t-lg lg:rounded-t-xl';
+  const drawerHeaderClass = `container sticky md:relative top-0 md:top-unset z-50 mx-auto w-full lg:w-4/5 px-5 lg:px-0 pt-6 lg:pt-8 pb-6 text-center md:text-start bg-deep-green outline outline-1 outline-deep-green`;
   const drawerTitleClass = 'text-[26px]  font-normal me-8 sm:me-auto';
   const drawerBodyClass =
     'container pb-10 px-5 lg:px-0 sticky top-0 w-full lg:w-4/5 mx-auto overflow-auto sm:overflow-hidden';
+
   const transitionParamsBottom = {
     y: 320,
     duration: 200,

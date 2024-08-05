@@ -262,7 +262,7 @@ type RootTranslation = {
 		toggleLinkWallet: string
 		/**
 		 * T​r​o​u​b​l​e​ ​c​o​n​n​e​c​t​i​n​g​?​ ​
-	​ ​T​r​y​ ​m​a​n​u​a​l​ ​i​n​p​u​t
+	​ ​T​r​y​ ​m​a​n​u​a​l​ ​i​n​p​u​t​.
 		 */
 		manualAddressPrompt: string
 	}
@@ -805,7 +805,7 @@ export type TranslationFunctions = {
 		toggleLinkWallet: () => LocalizedString
 		/**
 		 * Trouble connecting? 
-	 Try manual input
+	 Try manual input.
 		 */
 		manualAddressPrompt: () => LocalizedString
 	}

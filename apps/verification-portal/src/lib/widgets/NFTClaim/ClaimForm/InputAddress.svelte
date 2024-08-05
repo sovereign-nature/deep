@@ -49,19 +49,27 @@
       <label class="text-sm text-gray-200" for="addressManual">
         {$LL.claim.labelManualAddress()}
       </label>
-      <Input
-        id="addressManual"
-        type="text"
-        name="address-manual"
-        autocomplete="off"
-        autocorrect="off"
-        spellcheck="false"
-        tabindex="0"
-        class={inputClassBase}
-        placeholder="e.g.0x1234.."
-        bind:value={$formManualAddress}
-        required
-      />
+      <div class="clearable-input">
+        <Input
+          id="addressManual"
+          type="text"
+          name="address-manual"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+          tabindex="0"
+          class={inputClassBase}
+          placeholder="e.g.0x1234.."
+          bind:value={$formManualAddress}
+          required
+        />
+        <button
+          type="button"
+          class="clear-btn"
+          on:click={() => ($formManualAddress = '')}
+          ><span class="sr-only">clear input</span>
+        </button>
+      </div>
     </div>
   {/if}
   {#if ($formUseWallet && $web3Connected) || !$formUseWallet}
