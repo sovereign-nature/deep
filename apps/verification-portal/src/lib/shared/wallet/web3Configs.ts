@@ -10,7 +10,6 @@ if (!PUBLIC_WALLET_CONNECT_PROJECT_ID) {
 
 export const projectId = PUBLIC_WALLET_CONNECT_PROJECT_ID;
 
-// 3. Create modal
 export const metadata = {
   name: config.siteName,
   description: config.siteDescription,
@@ -36,6 +35,7 @@ export const themeVariablesLight = {
 };
 
 export const chains = [mainnet] as const;
+export const chainIds = chains.map((chain) => chain.id) as number[];
 
 export const wagmiConfig = defaultWagmiConfig({
   projectId,

@@ -16,7 +16,7 @@ import {
 
 import { PUBLIC_WEB3INBOX_ALL_APPS } from '$env/static/public';
 
-import { projectId, wagmiConfig } from '$lib/shared/web3Configs';
+import { projectId, wagmiConfig } from '$lib/shared/wallet/web3Configs';
 
 const domain = 'real.sovereignnature.com';
 const WEB3INBOX_ALL_APPS = PUBLIC_WEB3INBOX_ALL_APPS === 'true';

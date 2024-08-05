@@ -9,7 +9,8 @@ import {
   themeVariablesDark,
   themeVariablesLight,
   wagmiConfig,
-} from '$lib/shared/web3Configs';
+} from '$lib/shared/wallet/web3Configs';
+import { createSIWE } from '$lib/shared/wallet/siweMethods';
 
 export type Web3Modal = ReturnType<typeof createWeb3Modal>;
 let web3Modal: Web3Modal;
@@ -35,6 +36,7 @@ export function initializeModal() {
   web3Modal = createWeb3Modal({
     wagmiConfig,
     projectId,
+    siweConfig: createSIWE(),
     themeVariables: themeVariablesDark,
     defaultChain: mainnet,
     featuredWalletIds: [
