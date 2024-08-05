@@ -5,6 +5,7 @@ import { Lucia, Session, User } from 'lucia';
 
 import { env } from 'hono/adapter';
 // import { csrf } from 'hono/csrf';
+import { setCookie } from 'hono/cookie';
 import { session } from '../../middleware/session';
 import { addUser } from '../../lib/lucia';
 
@@ -55,9 +56,15 @@ app.post('/verify', async (c) => {
 
     session = await lucia.createSession(address, { chainId });
 
-    c.header('Set-Cookie', lucia.createSessionCookie(session.id).serialize(), {
-      append: true,
-    });
+    setCookie(
+      c,
+      lucia.sessionCookieName,
+      lucia.createSessionCookie(session.id).serialize(),
+      { secure: true, sameSite: 'Strict', maxAge: 60 * 60 * 24 * 7 }
+    );
+    // c.header('Set-Cookie', lucia.createSessionCookie(session.id).serialize(), {
+    //   append: true,
+    // });
 
     console.debug('Session created', session);
   } else {
