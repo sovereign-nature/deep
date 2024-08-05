@@ -32,6 +32,6 @@ id = "974b532adcea43e8b9b90bffe8c834cf"
 preview_id = "974b532adcea43e8b9b90bffe8c834cf"
 
 [[d1_databases]]
-binding = "SESSIONS_DB"                       # available in your Worker on env.DB
-database_name = "dev-d1-test"
-database_id = "<unique-ID-for-your-database>"
+binding = "SESSIONS_DB"
+database_name = "sessions-db"
+database_id = "4fff6376-d5de-4b1c-a8ec-b9ea13ed4eec"
