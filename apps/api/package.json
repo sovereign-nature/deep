@@ -32,7 +32,7 @@
     "@lucia-auth/adapter-sqlite": "3.0.2"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20240725.0",
+    "@cloudflare/workers-types": "4.20240729.0",
     "env-cmd": "10.1.0",
     "vitest": "2.0.5",
     "wrangler": "3.67.1"
