@@ -1,10 +1,10 @@
 <!-- AddressInput.svelte -->
 <script lang="ts">
   import { getContext } from 'svelte';
-  import { LL } from '$lib/shared/i18n/i18n-svelte';
   import { Input } from 'flowbite-svelte';
   import type { Writable } from 'svelte/store';
   import { Button, ButtonGroup } from 'flowbite-svelte';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
   import { shortenAddress } from '$lib/shared/utils';
   import Spinner from '$lib/components/icons/Spinner.svelte';
   import ArrowRight from '$lib/components/icons/ArrowRight.svelte';

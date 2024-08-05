@@ -2,17 +2,16 @@
   import { getContext } from 'svelte';
   import type { SubmitFunction } from '@sveltejs/kit';
   import { toast } from 'svelte-sonner';
+  import { type Writable } from 'svelte/store';
   import { getNFTClaimContext } from '../context';
   import type { CrossmintResponse } from '../context';
-
-  import { clearQueryParam } from '$lib/shared/utils';
-  import { page } from '$app/stores';
-  import { enhance, applyAction } from '$app/forms';
-  import { type Writable } from 'svelte/store';
 
   import ToggleLink from './ToggleLink.svelte';
   import InputAddress from './InputAddress.svelte';
   import ToggleRadio from './ToggleRadio.svelte';
+  import { clearQueryParam } from '$lib/shared/utils';
+  import { page } from '$app/stores';
+  import { enhance, applyAction } from '$app/forms';
 
   const {
     destroyOnClose,

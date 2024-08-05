@@ -1,6 +1,6 @@
 <script lang="ts">
-  import CloseIcon from '$lib/components/icons/CloseIcon.svelte';
   import { createEventDispatcher } from 'svelte';
+  import CloseIcon from '$lib/components/icons/CloseIcon.svelte';
   const dispatch = createEventDispatcher();
 </script>
 

@@ -1,10 +1,10 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
   import { Confetti } from 'svelte-confetti';
+  import { createEventDispatcher } from 'svelte';
   import { getNFTClaimContext } from './context';
   import CloseIcon from '$lib/components/icons/CloseIcon.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import { createEventDispatcher } from 'svelte';
   const dispatch = createEventDispatcher();
   const { claimStatus, destroyOnClose } = getNFTClaimContext();
   const triggerBtnClass =
