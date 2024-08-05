@@ -253,8 +253,8 @@ importers:
         specifier: 3.8.5
         version: 3.8.5(@babel/core@7.24.9)(postcss-load-config@4.0.2(postcss@8.4.40))(postcss@8.4.40)(svelte@4.2.18)
       svelte-confetti:
-        specifier: 1.4.0
-        version: 1.4.0(svelte@4.2.18)
+        specifier: 2.1.1
+        version: 2.1.1(svelte@4.2.18)
       svelte-sonner:
         specifier: 0.3.27
         version: 0.3.27(svelte@4.2.18)
@@ -7685,10 +7685,10 @@ packages:
     peerDependencies:
       svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
 
-  svelte-confetti@1.4.0:
-    resolution: {integrity: sha512-B0woNwpsFGwhkEoP48BIDQgvW0bMxPhavLVD+E+tsTWevlpr1aiz1S2wA8ArIXX957BiaZWHRHKmI5/pFRDbdg==}
+  svelte-confetti@2.1.1:
+    resolution: {integrity: sha512-pjmxXm/BoO5Th2ojIOFqdMMFuUSmDFnq/mdDx/JZ49yLTl6eBshLu4fMLbR9Z/ROrctyFoGqsn7cZPkKoI9cAA==}
     peerDependencies:
-      svelte: ^4.0.0
+      svelte: ^5.0.0
 
   svelte-eslint-parser@0.41.0:
     resolution: {integrity: sha512-L6f4hOL+AbgfBIB52Z310pg1d2QjRqm7wy3kI1W6hhdhX5bvu7+f0R6w4ykp5HoDdzq+vGhIJmsisaiJDGmVfA==}
@@ -14623,7 +14623,7 @@ snapshots:
 
   core-js-compat@3.37.1:
     dependencies:
-      browserslist: 4.23.2
+      browserslist: 4.23.3
 
   core-util-is@1.0.3: {}
 
@@ -18339,7 +18339,7 @@ snapshots:
       - stylus
       - sugarss
 
-  svelte-confetti@1.4.0(svelte@4.2.18):
+  svelte-confetti@2.1.1(svelte@4.2.18):
     dependencies:
       svelte: 4.2.18
 
