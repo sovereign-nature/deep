@@ -17,7 +17,11 @@ app.use(logger());
 app.use(
   '/*',
   cors({
-    origin: ['http://localhost:5174', 'real.sovereignnature.com'],
+    origin: [
+      'https://real.sovereignnature.com',
+      'http://localhost:5174', //TODO: Add only in dev version
+      'http://localhost:5173',
+    ],
     credentials: true,
   })
 );
