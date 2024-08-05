@@ -1,4 +1,4 @@
-import { Hono } from 'hono';
+import { Context, Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { cache } from 'hono/cache';
 import { logger } from 'hono/logger';
@@ -17,7 +17,15 @@ app.use(logger());
 app.use(
   '/*',
   cors({
-    origin: ['http://localhost:5174', 'real.sovereignnature.com'],
+    //TODO: Underscore should disable unused warnings
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    origin: (origin, _c: Context) => {
+      return origin.endsWith('.sovereignnature.com') ||
+        origin.endsWith('.vercel.app') || //TODO: Harden by providing proper vercel pattern or by moving Vercel to staging environment
+        origin.includes('localhost') //TODO: Should we allow localhost origin in prod?
+        ? origin
+        : 'https://real.sovereignnature.com';
+    },
     credentials: true,
   })
 );
