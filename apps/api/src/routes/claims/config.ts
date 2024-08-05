@@ -75,7 +75,7 @@ export const collections: Collections = {
   },
   'testnet-edcon2024': {
     name: 'testnet-edcon2024',
-    externalId: '3030',
+    externalId: '3551',
     metadata: {
       description:
         "This is the DOTphin Proof of Attendance for EDCON 2024 in Tokyo.\nThe DOTphin adventure continues. This badge is more than just a collectible; it's the key to a multi-chain and multi-event journey that supports real-world biodiversity conservation. It's an opportunity to connect communities and promote interoperability while supporting marine conservation efforts. This Proof of Attendance extends a greeting from Polkadot to the ETH community, as all Proofs and DOTphin NFTs are supported by EVM and Substrate. Join us in shaping a regenerative future through active community involvement and real-world conservation action.",
