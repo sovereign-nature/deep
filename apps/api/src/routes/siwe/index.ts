@@ -56,15 +56,8 @@ app.post('/verify', async (c) => {
 
     session = await lucia.createSession(address, { chainId });
 
-    setCookie(
-      c,
-      lucia.sessionCookieName,
-      lucia.createSessionCookie(session.id).serialize(),
-      { secure: true, sameSite: 'Strict', maxAge: 60 * 60 * 24 * 7 }
-    );
-    // c.header('Set-Cookie', lucia.createSessionCookie(session.id).serialize(), {
-    //   append: true,
-    // });
+    const cookie = lucia.createSessionCookie(session.id);
+    setCookie(c, cookie.name, cookie.value, cookie.attributes);
 
     console.debug('Session created', session);
   } else {

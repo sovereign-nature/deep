@@ -1,6 +1,6 @@
 import { Context, Next } from 'hono';
 import { env } from 'hono/adapter';
-import { getCookie } from 'hono/cookie';
+import { getCookie, setCookie } from 'hono/cookie';
 import { initializeLucia } from '../lib/lucia';
 
 /** Session middleware
@@ -29,16 +29,13 @@ export async function session(c: Context, next: Next) {
   const { session, user } = await lucia.validateSession(sessionId);
 
   if (session && session.fresh) {
-    // use `header()` instead of `setCookie()` to avoid TS errors
-    c.header('Set-Cookie', lucia.createSessionCookie(session.id).serialize(), {
-      append: true,
-    });
+    const cookie = lucia.createSessionCookie(session.id);
+    setCookie(c, cookie.name, cookie.value, cookie.attributes);
   }
 
   if (!session) {
-    c.header('Set-Cookie', lucia.createBlankSessionCookie().serialize(), {
-      append: true,
-    });
+    const cookie = lucia.createBlankSessionCookie();
+    setCookie(c, cookie.name, cookie.value, cookie.attributes);
   }
 
   c.set('user', user);
