@@ -126,3 +126,9 @@ export function setCookie(name: string, value: string) {
   date.setMonth(date.getMonth() + 1); // Set the cookie to expire in 1 month
   document.cookie = `${name}=${value}; expires=${date.toUTCString()};path=/`;
 }
+
+export function shortenAddress(address: string, length = 4) {
+  const regex = new RegExp(`^(.{${length}})(.*)(.{${length}})$`);
+
+  return address.replace(regex, '$1...$3');
+}

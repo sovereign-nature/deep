@@ -13,6 +13,7 @@ export function initializeLucia(db: D1Database) {
         chainId: attr.chainId,
       };
     },
+    sessionCookie: { attributes: { sameSite: 'none' } }, //TODO: Add only on staging
   });
 }
 

@@ -86,6 +86,13 @@ const en: BaseTranslation = {
     buttonCTA: '⭐ Claim Your Badge',
     buttonPending: '⏳ Badge Is Pending',
     buttonSuccess: '⭐ Your Token Is Minted!',
+    buttonSubmit: 'Submit Claim',
+    labelManualAddress: 'Enter a valid wallet address:',
+    labelConnectWallet: 'Connect your ETH wallet',
+    labelWalletAddress: 'Claiming address:',
+    toggleLinkManual: 'Switch to manual input',
+    toggleLinkWallet: 'Connect a wallet',
+    manualAddressPrompt: 'Trouble connecting? \n Try manual input.',
   },
   notifications: {
     seeAll: 'See all notifications',

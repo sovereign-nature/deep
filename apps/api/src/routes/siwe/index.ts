@@ -4,7 +4,8 @@ import { generateNonce, SiweMessage } from 'siwe';
 import { Lucia, Session, User } from 'lucia';
 
 import { env } from 'hono/adapter';
-import { csrf } from 'hono/csrf';
+// import { csrf } from 'hono/csrf';
+import { setCookie } from 'hono/cookie';
 import { session } from '../../middleware/session';
 import { addUser } from '../../lib/lucia';
 
@@ -16,7 +17,7 @@ const app = new Hono<{
   };
 }>();
 
-app.use(csrf({ origin: ['real.sovereignnature.com', 'localhost'] })); //TODO: Localhost in dev
+//app.use(csrf({ origin: ['real.sovereignnature.com', 'localhost'] })); //TODO: Localhost in dev
 
 app.use('*', session);
 
@@ -55,9 +56,8 @@ app.post('/verify', async (c) => {
 
     session = await lucia.createSession(address, { chainId });
 
-    c.header('Set-Cookie', lucia.createSessionCookie(session.id).serialize(), {
-      append: true,
-    });
+    const cookie = lucia.createSessionCookie(session.id);
+    setCookie(c, cookie.name, cookie.value, cookie.attributes);
 
     console.debug('Session created', session);
   } else {

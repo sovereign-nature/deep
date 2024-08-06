@@ -9,7 +9,9 @@
 </script>
 
 {#if $claimStatus === 'valid'}
-  <div class="flex flex-col md:flex-row gap-x-12 gap-y-4">
+  <div
+    class="flex flex-col items-center md:items-start md:flex-row gap-x-12 gap-y-4"
+  >
     {#if $claimResponse?.metadata?.image}
       <NftImage
         containerClass="w-48 h-48  rounded-lg mb-2 overflow-hidden text-center bg-deep-green-900"
@@ -20,7 +22,7 @@
     {/if}
 
     <div>
-      <div>
+      <div class="flex flex-col items-center md:items-start">
         <CardHeader
           className="mb-0"
           title={$claimResponse?.metadata?.name}
@@ -29,7 +31,7 @@
         <p>{$claimResponse?.metadata?.description}</p>
         <slot />
         {#if $claimResponse?.onChain}
-          <div class="mt-4">
+          <div class="mt-4 self-start">
             <Property name="Chain">
               <p>{$claimResponse.onChain?.chain}</p>
             </Property>
@@ -48,7 +50,9 @@
     </div>
   </div>
 {:else if $claimStatus === 'pending'}
-  <div class="flex flex-col md:flex-row gap-x-12 gap-y-4">
+  <div
+    class="flex flex-col items-center md:items-start md:flex-row gap-x-12 gap-y-4"
+  >
     {#if $claimResponse?.metadata?.image}
       <NftImage
         containerClass="w-48 h-48  rounded-lg mb-2 overflow-hidden text-center bg-deep-green-900"
@@ -62,12 +66,12 @@
       </div>
     {/if}
     <div>
-      <div>
+      <div class="flex flex-col items-center md:items-start">
         <slot />
         <p class="text-sm my-3">{$LL.claim.descriptionPending()}</p>
 
         {#if $claimResponse?.onChain}
-          <div class="mt-4">
+          <div class="mt-4 self-start">
             <Property name="Chain">
               <p>{$claimResponse.onChain?.chain}</p>
             </Property>
