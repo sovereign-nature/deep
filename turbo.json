@@ -4,19 +4,17 @@
     "build": {
       "dependsOn": ["^build"],
       "env": [
-        "GQL_HOST",
-        "NITRO_PRESET",
-        "NUXT_PUBLIC_MAPBOX_TOKEN",
-        "PRIVATE_KEY",
-        "NFT_STORAGE_API_KEY",
-        "PINATA_API_KEY",
         "NODE_ENV",
-        "PINATA_TOKEN",
         "ENVIRONMENT_URL",
         "VITE_VISUALIZE_BUILD",
         "OPEN_SEA_API_KEY",
         "ALCHEMY_API_KEY",
-        "NFTSCAN_API_KEY"
+        "NFTSCAN_API_KEY",
+        "DIRECTUS_API_KEY",
+        "PUBLIC_WALLET_CONNECT_PROJECT_ID",
+        "SENTRY_AUTH_TOKEN",
+        "FLAG_SHOW_DRAFT_NEWS",
+        "PUBLIC_WEB3INBOX_ALL_APPS"
       ],
       "outputs": [
         "artifacts/**",
