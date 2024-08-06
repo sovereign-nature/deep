@@ -5,7 +5,7 @@ import { Lucia, Session, User } from 'lucia';
 
 import { env } from 'hono/adapter';
 // import { csrf } from 'hono/csrf';
-import { setCookie } from 'hono/cookie';
+import { getCookie, setCookie } from 'hono/cookie';
 import { session } from '../../middleware/session';
 import { addUser } from '../../lib/lucia';
 
@@ -17,12 +17,15 @@ const app = new Hono<{
   };
 }>();
 
-//app.use(csrf({ origin: ['real.sovereignnature.com', 'localhost'] })); //TODO: Localhost in dev
+// app.use(csrf({ origin: ['real.sovereignnature.com', 'localhost'] })); //TODO: Localhost in dev
 
 app.use('*', session);
 
 app.post('/nonce', (c) => {
-  return c.text(generateNonce());
+  const nonce = generateNonce();
+
+  setCookie(c, 'siwe-nonce', nonce, { sameSite: 'none', secure: true }); //TODO: Secure only in production, sameSite: 'none' in dev
+  return c.text(nonce);
 });
 
 app.post('/verify', async (c) => {
@@ -40,9 +43,11 @@ app.post('/verify', async (c) => {
 
   const siweMessage = new SiweMessage(body.message);
 
+  const nonce = getCookie(c, 'siwe-nonce');
+
   const { data: message } = await siweMessage.verify({
     signature: body.signature,
-    // nonce: session.nonce, //TODO: Add nonce to session
+    nonce: nonce,
   });
 
   const address = message.address;
