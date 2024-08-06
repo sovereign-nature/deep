@@ -15,7 +15,8 @@
         "ENVIRONMENT_URL",
         "VITE_VISUALIZE_BUILD",
         "OPEN_SEA_API_KEY",
-        "ALCHEMY_API_KEY"
+        "ALCHEMY_API_KEY",
+        "NFTSCAN_API_KEY"
       ],
       "outputs": [
         "artifacts/**",
