@@ -14,7 +14,8 @@
         "PUBLIC_WALLET_CONNECT_PROJECT_ID",
         "SENTRY_AUTH_TOKEN",
         "FLAG_SHOW_DRAFT_NEWS",
-        "PUBLIC_WEB3INBOX_ALL_APPS"
+        "PUBLIC_WEB3INBOX_ALL_APPS",
+        "PRIVATE_KEY"
       ],
       "outputs": [
         "artifacts/**",
