@@ -198,6 +198,9 @@ importers:
       '@web3inbox/core':
         specifier: 1.4.0
         version: 1.4.0(bufferutil@4.0.8)(react@18.3.1)(utf-8-validate@5.0.10)
+      '@web3modal/siwe':
+        specifier: ^5.0.11
+        version: 5.0.11(react@18.3.1)
       '@web3modal/wagmi':
         specifier: 5.0.11
         version: 5.0.11(74l5vixadwii3dy5truaaczk5u)
