@@ -71,7 +71,7 @@
     "tslib": "2.6.3",
     "typesafe-i18n": "5.26.2",
     "typescript": "5.5.4",
-    "video.js": "8.17.1",
+    "video.js": "8.17.2",
     "vite": "5.3.5",
     "vite-plugin-tailwind-purgecss": "0.3.3",
     "vitest": "2.0.5"
