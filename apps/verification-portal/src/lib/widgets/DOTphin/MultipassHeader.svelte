@@ -2,6 +2,7 @@
   import HexagonGridIcon from '$lib/components/icons/HexagonGridIcon.svelte';
   import Subheader from '$lib/shared/typography/Subheader.svelte';
   import HexagonEggIcon from '$lib/components/icons/HexagonEggIcon.svelte';
+  import SocialQuestForm from '../SocialquestForm/SocialQuestForm.svelte';
   export let name: string;
   const description =
     'A multi-month, multi-event and multi-chain initiative that evolves with your engagement.';
@@ -20,20 +21,9 @@
       >
       <h3 class="text-6xl">{name}</h3>
       <p>{description}</p>
-      <form class="my-4 mt-8 flex flex-col">
-        <h4>Virtual Proof Of Attendance</h4>
-        <p class="text-sm font-normal text-gray-500 dark:text-gray-400"></p>
-        <label for="email" class="text-xs mt-4">Email:</label>
-        <input
-          id="email"
-          class="rounded h-10 mb-4 mt-1 border border-primary-300"
-        />
-        <button
-          type="button"
-          class="px-3 py-2 rounded-full whitespace-nowrap disabled:opacity-80 disabled:cursor-not-allowed drop-shadow-sm text-white bg-primary-400 hover:bg-primary-300 font-aeonik text-base"
-          >Get Free Proof</button
-        >
-      </form>
+      <div class="my-4">
+        <SocialQuestForm />
+      </div>
     </div>
     <div
       class="bg-multipass text-white px-12 sm:px-8 md:px-11 py-8 xl:pt-11 col-span-2 flex flex-col sm:flex-row justify-start sm:items-center gap-5"

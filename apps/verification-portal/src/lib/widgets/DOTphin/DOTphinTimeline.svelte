@@ -2,6 +2,7 @@
   import { Timeline } from 'flowbite-svelte';
   import TimelineItem from './TimelineItem/TimelineItem.svelte';
   import FeaturedCard from '$lib/entities/featured/FeaturedCardSM.svelte';
+  import SocialQuestForm from '../SocialquestForm/SocialQuestForm.svelte';
   const text = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ea commodi nihil iusto iure odio nisi sit accusantium cumque accusamus magnam.`;
   const text2 = `Consequuntur in ipsa maxime quibusdam doloremque necessitatibus eaque possimus!`;
   const item = {
@@ -31,12 +32,18 @@
           <h3 class="text-xl">You don't own any DOTphin proofs</h3>
         </svelte:fragment>
         <svelte:fragment slot="content">
-          <p class="my-4 text-sm font-normal text-gray-500 dark:text-gray-400">
-            {text}
-          </p>
-          <a href="/#collections" class="text-xs text-primary"
-            >Upcoming Events</a
-          >
+          <div class="my-4 flex items-start flex-wrap gap-3">
+            <p class=" text-sm font-normal text-gray-500 dark:text-gray-400">
+              {text}
+            </p>
+            <button
+              type="button"
+              disabled
+              class="px-4 py-3 rounded-full whitespace-nowrap disabled:cursor-not-allowed drop-shadow-sm text-primary-200 bg-deep-blue font-aeonik text-sm"
+              >How to get proofs?</button
+            >
+            <SocialQuestForm />
+          </div>
         </svelte:fragment>
       </TimelineItem>
 
