@@ -1,6 +1,6 @@
 {
-  "name": "Sovereign Nature Initiative",
-  "short_name": "SNI",
+  "name": "REAL by SNI",
+  "short_name": "REAL",
   "icons": [
     {
       "src": "/apple-touch-icon.png",
@@ -29,7 +29,7 @@
     }
   ],
   "theme_color": "#001512",
-  "background_color": "#ffffff",
+  "background_color": "#cecece",
   "display": "minimal-ui",
   "start_url": "/"
 }
