@@ -9,6 +9,7 @@ interface Events {
   [key: string]: EventConfig;
 }
 
+//TODO: Move to lib or utils package
 /**
  * Returns a random integer between min (inclusive) and max (inclusive).
  * The value is no lower than min (or the next integer greater than min
@@ -34,5 +35,11 @@ export const events: Events = {
     realCollection: 'dotphin-proofs',
     seed: () => getRandomInt(0, 2),
     going: true,
+  },
+  web3summit2024: {
+    collectionId: 'web3summit2024',
+    realCollection: 'dotphin-proofs',
+    seed: () => getRandomInt(0, 2),
+    going: false,
   },
 };
