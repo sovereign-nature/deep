@@ -2,7 +2,7 @@ import { Hono } from 'hono';
 import { env } from 'hono/adapter';
 import { AssetNotFoundError, getAssetByDID } from '@sni/clients/assets-client';
 import { AddressParsingError, parseAssetDID } from '@sni/address-utils';
-import { logger } from '../../utils/logger';
+import { logger } from '$lib/logger';
 
 const app = new Hono();
 

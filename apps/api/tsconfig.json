@@ -18,6 +18,10 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "$lib/*": ["./src/lib/*"],
+      "$middleware/*": ["./src/middleware/*"]
+    }
   }
 }

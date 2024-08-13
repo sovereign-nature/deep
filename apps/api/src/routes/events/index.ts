@@ -2,8 +2,8 @@ import { Hono } from 'hono';
 import { env } from 'hono/adapter';
 import { sign } from 'hono/jwt';
 import { nanoid } from 'nanoid';
-import { logger } from '../../utils/logger';
 import { events } from './config';
+import { logger } from '$lib/logger';
 
 const app = new Hono();
 
