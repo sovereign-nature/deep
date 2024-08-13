@@ -1,5 +1,5 @@
 import { Context } from 'hono';
-import { logger } from './lib/logger';
+import { logger } from './logger';
 
 export function errorResponse(e: unknown, c: Context) {
   if (e instanceof Error) {
