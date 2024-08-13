@@ -9,7 +9,6 @@ import { ClaimBody, CrossmintResponse, JWTToken } from './schemas';
 import { mintOptimismToken } from './providers/crossmint';
 import { mintUniqueToken } from './providers/unique';
 import { Payload } from './types';
-import { addressIsValid } from './validators';
 
 const app = new Hono();
 
@@ -29,14 +28,9 @@ app.post(
     const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c); //TODO: Join KVs into one table
     const { CLAIMS_KV } = env<{ CLAIMS_KV: KVNamespace }>(c);
 
-    const body = ClaimBody.parse(await c.req.json());
+    const body = c.req.valid('json');
 
     const { token, address } = body;
-
-    // Verify address
-    if (!addressIsValid(address)) {
-      return c.json({ error: true, message: 'Invalid address' }, 400);
-    }
 
     // Verify token
     try {
