@@ -36,6 +36,6 @@
     "@cloudflare/workers-types": "4.20240806.0",
     "env-cmd": "10.1.0",
     "vitest": "2.0.5",
-    "wrangler": "3.70.0"
+    "wrangler": "3.71.0"
   }
 }
