@@ -4,12 +4,14 @@ import { decode, verify } from 'hono/jwt';
 import { env } from 'hono/adapter';
 import { createAssetDID } from '@sni/address-utils';
 import { logger } from '../../utils/logger';
+import { sendTokenEmail } from '../../lib/resend';
+import { createClaimLink } from '../../lib/claim';
+import { getRandomInt } from '../../lib/utils';
 import { CollectionConfig, collections } from './config';
 import { ClaimBody, CrossmintResponse, JWTToken } from './schemas';
 import { mintOptimismToken } from './providers/crossmint';
 import { mintUniqueToken } from './providers/unique';
 import { Payload } from './types';
-import { addressIsValid } from './validators';
 
 const app = new Hono();
 
@@ -28,15 +30,11 @@ app.post(
     const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<string> }>(c);
     const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c); //TODO: Join KVs into one table
     const { CLAIMS_KV } = env<{ CLAIMS_KV: KVNamespace }>(c);
+    const { RESEND_API_KEY } = env<{ RESEND_API_KEY: string }>(c);
 
-    const body = ClaimBody.parse(await c.req.json());
+    const body = c.req.valid('json');
 
-    const { token, address } = body;
-
-    // Verify address
-    if (!addressIsValid(address)) {
-      return c.json({ error: true, message: 'Invalid address' }, 400);
-    }
+    const { token, address, email } = body;
 
     // Verify token
     try {
@@ -111,6 +109,31 @@ app.post(
           await CLAIMS_KV.put(`${address}-${payload.collection}`, payload.id);
 
           logger.debug(`Message queue received ${mintId}`);
+
+          if (email) {
+            logger.info(`Sending email`);
+
+            const claimLink = await createClaimLink(
+              {
+                collectionId: collectionConfig.name,
+                seed: getRandomInt(0, 2), //TODO: Fetch seed range from config
+                realCollection: 'dotphin-proofs', //TODO: Fetch real collection from config
+              },
+              CLAIMS_SECRET
+            );
+
+            //TODO: Move to queue if there are errors
+            const res = await sendTokenEmail(
+              { to: email, claimLink },
+              RESEND_API_KEY
+            );
+
+            if (res.error) {
+              logger.error(`Error sending email: ${res.error.message}`);
+            } else {
+              logger.info(`Email sent`);
+            }
+          }
 
           return c.json(pendingResponse);
         }

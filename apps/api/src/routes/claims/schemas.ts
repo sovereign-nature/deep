@@ -1,8 +1,12 @@
 import { z } from 'zod';
+import { addressIsValid } from './validators';
 
 export const ClaimBody = z.object({
   token: z.string(),
-  address: z.string(),
+  address: z.string().refine((address) => {
+    return addressIsValid(address);
+  }, 'Invalid address'),
+  email: z.string().email().optional(),
 });
 
 export const JWTToken = z.object({
