@@ -122,7 +122,17 @@ app.post(
               CLAIMS_SECRET
             );
 
-            sendTokenEmail({ to: email, claimLink }, RESEND_API_KEY);
+            //TODO: Move to queue if there are errors
+            const res = await sendTokenEmail(
+              { to: email, claimLink },
+              RESEND_API_KEY
+            );
+
+            if (res.error) {
+              logger.error(`Error sending email: ${res.error.message}`);
+            } else {
+              logger.info(`Email sent`);
+            }
           }
 
           return c.json(pendingResponse);
