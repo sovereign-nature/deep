@@ -37,6 +37,6 @@
     "env-cmd": "10.1.0",
     "vite-tsconfig-paths": "5.0.1",
     "vitest": "2.0.5",
-    "wrangler": "3.70.0"
+    "wrangler": "3.71.0"
   }
 }
