@@ -3,15 +3,15 @@ import { Hono } from 'hono';
 import { decode, verify } from 'hono/jwt';
 import { env } from 'hono/adapter';
 import { createAssetDID } from '@sni/address-utils';
-import { logger } from '../../utils/logger';
-import { sendTokenEmail } from '../../lib/resend';
-import { createClaimLink } from '../../lib/claim';
-import { getRandomInt } from '../../lib/utils';
 import { CollectionConfig, collections } from './config';
 import { ClaimBody, CrossmintResponse, JWTToken } from './schemas';
 import { mintOptimismToken } from './providers/crossmint';
 import { mintUniqueToken } from './providers/unique';
 import { Payload } from './types';
+import { logger } from '$lib/logger';
+import { getRandomInt } from '$lib/utils';
+import { createClaimLink } from '$lib/claim';
+import { sendTokenEmail } from '$lib/resend';
 
 const app = new Hono();
 

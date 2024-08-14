@@ -3,7 +3,7 @@ import { Sr25519Account } from '@unique-nft/utils/sr25519';
 // import { Address } from '@unique-nft/utils';
 import { CollectionConfig } from '../config';
 import { Payload } from '../types';
-import { logger } from '../../../utils/logger';
+import { logger } from '$lib/logger';
 
 export async function mintUniqueToken(
   network: 'opal' | 'unique',

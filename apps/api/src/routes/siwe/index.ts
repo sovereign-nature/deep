@@ -6,8 +6,8 @@ import { Lucia, Session, User } from 'lucia';
 import { env } from 'hono/adapter';
 // import { csrf } from 'hono/csrf';
 import { getCookie, setCookie } from 'hono/cookie';
-import { session } from '../../middleware/session';
-import { addUser } from '../../lib/lucia';
+import { session } from '$middleware/session';
+import { addUser } from '$lib/lucia';
 
 const app = new Hono<{
   Variables: {
