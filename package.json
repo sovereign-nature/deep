@@ -24,7 +24,7 @@
   "devDependencies": {
     "husky": "9.1.4",
     "lint-staged": "15.2.9",
-    "turbo": "2.0.11",
+    "turbo": "2.0.13",
     "turbo-ignore": "2.0.11",
     "prettier": "3.3.3",
     "prettier-plugin-svelte": "3.2.6",
