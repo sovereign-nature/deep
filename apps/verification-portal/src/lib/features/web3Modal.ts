@@ -48,7 +48,10 @@ export function initializeModal() {
   });
   if (web3Modal) {
     web3Modal.subscribeEvents((event) => {
-      if (event.data.event === 'MODAL_OPEN') {
+      if (
+        event.data.event === 'MODAL_OPEN' ||
+        event.data.event === 'CLICK_SIGN_SIWE_MESSAGE'
+      ) {
         web3ModalOpen.set(true);
       } else if (
         event.data.event === 'MODAL_CLOSE' ||
