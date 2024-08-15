@@ -28,6 +28,6 @@ export const events: Events = {
     collectionId: 'web3summit2024',
     realCollection: 'dotphin-proofs',
     seed: () => getRandomInt(0, 2),
-    going: false,
+    going: true,
   },
 };
