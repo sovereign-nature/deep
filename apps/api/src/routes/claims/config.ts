@@ -108,6 +108,33 @@ export const collections: Collections = {
     network: 'opal',
     tokenStandard: 'unique2',
   },
+  'testnet-web3summit2024': {
+    name: 'testnet-web3summit2024',
+    externalId: '3551',
+    metadata: {
+      description:
+        "You've just unlocked the next chapter in your DOTphin journey with this exclusive Proof of Presence (PoP) from Web3 Summit 2024 in Berlin. As you mark your presence at this summit, dedicated to advancing a fully functional and user-friendly decentralised web, your DOTphin evolves alongside you. Each interaction with the community not only enhances your DOTphin but also contributes to AI-driven research decoding whale songs in the Caribbean. This trailblazing project merges the playful evolution of your DOTphin with a meaningful mission to support marine conservation. Get ready to make a positive impact on our oceans—your presence here isn't just a step forward for you; it's a leap towards a more connected, nature-positive future.",
+      image: [
+        'https://real.myfilebase.com/ipfs/QmaCeoQ5yCHBphJ2oX5uTkFKL9GmQbEfarUckwaLMLtt82/web3summit2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmaCeoQ5yCHBphJ2oX5uTkFKL9GmQbEfarUckwaLMLtt82/web3summit2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmaCeoQ5yCHBphJ2oX5uTkFKL9GmQbEfarUckwaLMLtt82/web3summit2024-water.png',
+      ],
+      name: 'DOTphin Proof of Presence ‒ Web3Summit 2024',
+      attributes: [
+        [{ trait_type: 'element', value: 'air' }, ...web3summit2024Attributes],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...web3summit2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...web3summit2024Attributes,
+        ],
+      ],
+    },
+    network: 'opal',
+    tokenStandard: 'unique2',
+  },
   'dev-edcon2024': {
     name: 'dev-edcon2024',
     externalId: '3030',
@@ -182,7 +209,7 @@ export const collections: Collections = {
     externalId: '665',
     metadata: {
       description:
-        'This is the DOTphin Proof of Presence for Web3Summit 2024 in Berlin.',
+        "You've just unlocked the next chapter in your DOTphin journey with this exclusive Proof of Presence (PoP) from Web3 Summit 2024 in Berlin. As you mark your presence at this summit, dedicated to advancing a fully functional and user-friendly decentralised web, your DOTphin evolves alongside you. Each interaction with the community not only enhances your DOTphin but also contributes to AI-driven research decoding whale songs in the Caribbean. This trailblazing project merges the playful evolution of your DOTphin with a meaningful mission to support marine conservation. Get ready to make a positive impact on our oceans—your presence here isn't just a step forward for you; it's a leap towards a more connected, nature-positive future.",
       image: [
         'https://real.myfilebase.com/ipfs/QmaCeoQ5yCHBphJ2oX5uTkFKL9GmQbEfarUckwaLMLtt82/web3summit2024-air.png',
         'https://real.myfilebase.com/ipfs/QmaCeoQ5yCHBphJ2oX5uTkFKL9GmQbEfarUckwaLMLtt82/web3summit2024-earth.png',
