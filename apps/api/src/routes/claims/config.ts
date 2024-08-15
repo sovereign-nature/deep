@@ -45,6 +45,20 @@ const edcon2024Attributes = [
   { trait_type: 'proofOf', value: 'attendance' },
 ];
 
+const web3summit2024Attributes = [
+  { trait_type: 'eventId', value: 'web3summit-2024' },
+  {
+    trait_type: 'eventURL',
+    value: 'https://web3summit.com/',
+  },
+  { trait_type: 'country', value: 'Germany' },
+  { trait_type: 'city', value: 'Berlin' },
+  { trait_type: 'virtualEvent', value: 'false' },
+  { trait_type: 'startDate', value: '19-Aug-2024' },
+  { trait_type: 'endDate', value: '21-Aug-2024' },
+  { trait_type: 'proofOf', value: 'presence' },
+];
+
 export const collections: Collections = {
   '5f773e35-d5f2-41dc-ae80-c94e0e8e4821': {
     name: 'engie',
@@ -158,6 +172,33 @@ export const collections: Collections = {
         [{ trait_type: 'element', value: 'air' }, ...edcon2024Attributes],
         [{ trait_type: 'element', value: 'earth' }, ...edcon2024Attributes],
         [{ trait_type: 'element', value: 'water' }, ...edcon2024Attributes],
+      ],
+    },
+    network: 'unique',
+    tokenStandard: 'unique2',
+  },
+  web3summit2024: {
+    name: 'web3summit2024',
+    externalId: '665',
+    metadata: {
+      description:
+        'This is the DOTphin Proof of Presence for Web3Summit 2024 in Berlin.',
+      image: [
+        'https://real.myfilebase.com/ipfs/QmaCeoQ5yCHBphJ2oX5uTkFKL9GmQbEfarUckwaLMLtt82/web3summit2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmaCeoQ5yCHBphJ2oX5uTkFKL9GmQbEfarUckwaLMLtt82/web3summit2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmaCeoQ5yCHBphJ2oX5uTkFKL9GmQbEfarUckwaLMLtt82/web3summit2024-water.png',
+      ],
+      name: 'DOTphin Proof of Presence ‒ Web3Summit 2024',
+      attributes: [
+        [{ trait_type: 'element', value: 'air' }, ...web3summit2024Attributes],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...web3summit2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...web3summit2024Attributes,
+        ],
       ],
     },
     network: 'unique',

@@ -245,7 +245,7 @@ type RootTranslation = {
 		 */
 		labelManualAddress: string
 		/**
-		 * C​o​n​n​e​c​t​ ​y​o​u​r​ ​E​T​H​ ​w​a​l​l​e​t
+		 * L​o​g​i​n​ ​o​r​ ​c​o​n​n​e​c​t​ ​y​o​u​r​ ​w​a​l​l​e​t
 		 */
 		labelConnectWallet: string
 		/**
@@ -788,7 +788,7 @@ export type TranslationFunctions = {
 		 */
 		labelManualAddress: () => LocalizedString
 		/**
-		 * Connect your ETH wallet
+		 * Login or connect your wallet
 		 */
 		labelConnectWallet: () => LocalizedString
 		/**

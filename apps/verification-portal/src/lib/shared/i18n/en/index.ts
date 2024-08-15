@@ -88,7 +88,7 @@ const en: BaseTranslation = {
     buttonSuccess: '⭐ Your Token Is Minted!',
     buttonSubmit: 'Submit Claim',
     labelManualAddress: 'Enter a valid wallet address:',
-    labelConnectWallet: 'Connect your ETH wallet',
+    labelConnectWallet: 'Login or connect your wallet',
     labelWalletAddress: 'Claiming address:',
     toggleLinkManual: 'Switch to manual input',
     toggleLinkWallet: 'Connect a wallet',
