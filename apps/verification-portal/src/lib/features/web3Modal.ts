@@ -47,18 +47,9 @@ export function initializeModal() {
     allWallets: 'SHOW',
   });
   if (web3Modal) {
-    web3Modal.subscribeEvents((event) => {
-      if (
-        event.data.event === 'MODAL_OPEN' ||
-        event.data.event === 'CLICK_SIGN_SIWE_MESSAGE'
-      ) {
-        web3ModalOpen.set(true);
-      } else if (
-        event.data.event === 'MODAL_CLOSE' ||
-        event.data.event === 'CONNECT_SUCCESS'
-      ) {
-        web3ModalOpen.set(false);
-      }
+    web3Modal.subscribeEvents(() => {
+      const { open } = web3Modal.getState();
+      web3ModalOpen.set(open);
     });
   }
 
