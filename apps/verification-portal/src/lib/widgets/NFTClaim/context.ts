@@ -30,6 +30,7 @@ type NFTClaimContext = {
   formSending: Writable<boolean>;
   formUseWallet: Writable<boolean>;
   formManualAddress: Writable<string>;
+  formEmail: Writable<string>;
   claimResponse: Writable<CrossmintResponse | null>;
   claimSubmitted: Writable<boolean>;
   claimValid: Writable<boolean>;

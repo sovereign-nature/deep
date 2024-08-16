@@ -69,7 +69,7 @@ const en: BaseTranslation = {
     noAssets: 'No assets found',
     errorMessage:
       'Uh-oh! It looks like a hiccup in the wild! 🐾 \n Please lend a paw by refreshing the page and trying again.',
-    inputPlaceholder: 'Enter your wallet address (e.g. 0x1234...)',
+    inputPlaceholder: 'e.g. 0x1234...',
   },
   claim: {
     useWallet: 'Use Wallet Address',
@@ -90,6 +90,9 @@ const en: BaseTranslation = {
     labelManualAddress: 'Enter a valid wallet address:',
     labelConnectWallet: 'Login or connect your wallet',
     labelWalletAddress: 'Claiming address:',
+    labelEmailAddress: 'Email address (Optional)',
+    placeholderEmail: 'example@example.com',
+    descriptionEmail: '*Get one extra token by linking your email',
     toggleLinkManual: 'Switch to manual input',
     toggleLinkWallet: 'Connect a wallet',
     manualAddressPrompt: 'Trouble connecting? \n Try manual input.',

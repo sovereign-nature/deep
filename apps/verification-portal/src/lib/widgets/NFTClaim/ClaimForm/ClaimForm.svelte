@@ -5,19 +5,21 @@
   import { type Writable } from 'svelte/store';
   import { getNFTClaimContext } from '../context';
   import type { CrossmintResponse } from '../context';
+  import ToggleInline from './ToggleInline.svelte';
 
   import ToggleLink from './ToggleLink.svelte';
   import InputAddress from './InputAddress.svelte';
-  import ToggleRadio from './ToggleRadio.svelte';
   import { clearQueryParam } from '$lib/shared/utils';
   import { page } from '$app/stores';
   import { enhance, applyAction } from '$app/forms';
+  export let showEmailField: boolean;
 
   const {
     destroyOnClose,
     formSending,
     formUseWallet,
     formManualAddress,
+    formEmail,
     claimSubmitted,
     claimResponse,
     claimToken,
@@ -82,16 +84,23 @@
   <input type="hidden" name="claim" value={$claimToken} />
   <input type="hidden" name="address" bind:value={address} />
 
-  <InputAddress {formUseWallet} {formManualAddress} {formSending} {errorMsg} />
+  <InputAddress
+    {showEmailField}
+    {formUseWallet}
+    {formManualAddress}
+    {formEmail}
+    {formSending}
+    {errorMsg}
+  />
 
-  <div class="pt-6 relative">
+  <div class=" md:hidden pt-6 relative">
     <div class="flex flex-col gap-5 sm:flex-row items-baseline mb-10 text-sm">
-      <div class="md:hidden w-full">
+      <div class=" w-full">
         <ToggleLink {formUseWallet} />
       </div>
-      <div class="hidden md:flex gap-5 items-center">
-        <ToggleRadio {formUseWallet} />
-      </div>
     </div>
+  </div>
+  <div class=" hidden md:block">
+    <ToggleInline {formUseWallet} />
   </div>
 </form>
