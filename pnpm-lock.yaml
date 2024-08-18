@@ -55,7 +55,7 @@ importers:
     dependencies:
       '@hono/zod-validator':
         specifier: 0.2.2
-        version: 0.2.2(hono@4.5.5)(zod@3.23.8)
+        version: 0.2.2(hono@4.5.6)(zod@3.23.8)
       '@lucia-auth/adapter-sqlite':
         specifier: 3.0.2
         version: 3.0.2(lucia@3.2.0)
@@ -87,8 +87,8 @@ importers:
         specifier: 0.3.20
         version: 0.3.20
       hono:
-        specifier: 4.5.5
-        version: 4.5.5
+        specifier: 4.5.6
+        version: 4.5.6
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -5444,8 +5444,8 @@ packages:
   hmac-drbg@1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}
 
-  hono@4.5.5:
-    resolution: {integrity: sha512-fXBXHqaVfimWofbelLXci8pZyIwBMkDIwCa4OwZvK+xVbEyYLELVP4DfbGaj1aEM6ZY3hHgs4qLvCO2ChkhgQw==}
+  hono@4.5.6:
+    resolution: {integrity: sha512-9SuUC/zLQv8YAcnIxJko0KCeLI0Q6menPsDWuJ9jaH+r8ZkVXeLqeLs1QJXCPKKbURAWj9x0SJBSFh803EnAUw==}
     engines: {node: '>=16.0.0'}
 
   howler@2.2.4:
@@ -10362,9 +10362,9 @@ snapshots:
     dependencies:
       '@hapi/hoek': 9.3.0
 
-  '@hono/zod-validator@0.2.2(hono@4.5.5)(zod@3.23.8)':
+  '@hono/zod-validator@0.2.2(hono@4.5.6)(zod@3.23.8)':
     dependencies:
-      hono: 4.5.5
+      hono: 4.5.6
       zod: 3.23.8
 
   '@humanwhocodes/config-array@0.11.14':
@@ -16062,7 +16062,7 @@ snapshots:
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
 
-  hono@4.5.5: {}
+  hono@4.5.6: {}
 
   howler@2.2.4: {}
 
