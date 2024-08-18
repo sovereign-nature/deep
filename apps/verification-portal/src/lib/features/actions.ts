@@ -19,21 +19,28 @@ export const formActions = {
     const address = form.get('address') as string;
     const email = form.get('email') as string;
 
-    const setHeaders = new Headers();
-    setHeaders.append('Content-Type', 'application/json');
-    setHeaders.append('Cache-Control', 'no-cache');
-    const raw = JSON.stringify({
+    const body: { token: string; address: string; email?: string } = {
       token: claim,
       address: address,
-      email: email,
-    });
-    const requestOptions = {
-      method: 'POST',
-      headers: setHeaders,
-      body: raw,
     };
+
+    if (email) {
+      body.email = email;
+    }
+
+    //TODO: Add server side logging
+
     try {
-      const fetchResponse = await fetch(`${deepApiUrl}/claims`, requestOptions);
+      const fetchResponse = await fetch(`${deepApiUrl}/claims`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache',
+        },
+        body: JSON.stringify(body),
+      });
+
       if (fetchResponse.status === 500) {
         return fail(fetchResponse.status, { message: 'Internal server error' });
       }
