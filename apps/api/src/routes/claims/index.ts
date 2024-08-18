@@ -27,9 +27,13 @@ app.post(
 
   async (c) => {
     const { CLAIMS_SECRET } = env<{ CLAIMS_SECRET: string }>(c);
+
     const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<string> }>(c);
+
     const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c); //TODO: Join KVs into one table
     const { CLAIMS_KV } = env<{ CLAIMS_KV: KVNamespace }>(c);
+    const { EMAILS_KV } = env<{ EMAILS_KV: KVNamespace }>(c);
+
     const { RESEND_API_KEY } = env<{ RESEND_API_KEY: string }>(c);
 
     const body = c.req.valid('json');
@@ -132,6 +136,7 @@ app.post(
               logger.error(`Error sending email: ${res.error.message}`);
             } else {
               logger.info(`Email sent`);
+              await EMAILS_KV.put(address, email);
             }
           }
 

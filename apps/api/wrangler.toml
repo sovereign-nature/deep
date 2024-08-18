@@ -31,6 +31,11 @@ binding = "CLAIMS_KV"
 id = "974b532adcea43e8b9b90bffe8c834cf"
 preview_id = "974b532adcea43e8b9b90bffe8c834cf"
 
+[[kv_namespaces]]
+binding = "EMAILS_KV"
+id = "a008ae3da87c4f0ebf3efc2812b2cde4"
+preview_id = "a008ae3da87c4f0ebf3efc2812b2cde4"
+
 [[d1_databases]]
 binding = "SESSIONS_DB"
 database_name = "sessions-db"
