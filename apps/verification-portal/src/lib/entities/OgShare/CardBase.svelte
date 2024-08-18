@@ -16,6 +16,8 @@
 
   const mediumTitle = isLongTitle(title);
   const smallTitle = isLongTitle(title, 9, 3);
+  const xsTitle = isLongTitle(title, 9, 4);
+
   const sourceText = $LL.social.og.source()
     ? $LL.social.og.source()
     : 'Source:';
@@ -25,7 +27,9 @@
     : 'Total funds generated to date:';
   const tokenText = $LL.social.og.token() ? $LL.social.og.token() : 'Token ID:';
 
-  if (smallTitle) {
+  if (xsTitle) {
+    fontSizeClass = 'text-42px';
+  } else if (smallTitle) {
     fontSizeClass = 'text-48px'; // Small font size
   } else if (mediumTitle) {
     fontSizeClass = 'text-62px'; // Medium font size

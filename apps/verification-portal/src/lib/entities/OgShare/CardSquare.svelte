@@ -45,7 +45,7 @@
     <Logo className="absolute top-65px left-58px w-120px h-120px text-white" />
     <div class="flex flex-col absolute w-340px left-58px top-640px">
       <h1
-        class="font-serif text-white capitalize leading-snug max-h-199px max-w-352px overflow-hidden break-all {fontSizeClass}"
+        class="font-serif text-white capitalize leading-snug max-h-199px max-w-325px overflow-hidden break-all {fontSizeClass}"
       >
         {sanitizedTitle}
       </h1>
