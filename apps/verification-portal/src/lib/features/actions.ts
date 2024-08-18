@@ -17,12 +17,15 @@ export const formActions = {
     const form = await event.request.formData();
     const claim = form.get('claim') as string;
     const address = form.get('address') as string;
+    const email = form.get('email') as string;
+
     const setHeaders = new Headers();
     setHeaders.append('Content-Type', 'application/json');
     setHeaders.append('Cache-Control', 'no-cache');
     const raw = JSON.stringify({
       token: claim,
       address: address,
+      email: email,
     });
     const requestOptions = {
       method: 'POST',

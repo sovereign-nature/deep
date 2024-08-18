@@ -183,7 +183,7 @@ type RootTranslation = {
 		 */
 		errorMessage: string
 		/**
-		 * E​n​t​e​r​ ​y​o​u​r​ ​w​a​l​l​e​t​ ​a​d​d​r​e​s​s​ ​(​e​.​g​.​ ​0​x​1​2​3​4​.​.​.​)
+		 * e​.​g​.​ ​0​x​1​2​3​4​.​.​.
 		 */
 		inputPlaceholder: string
 	}
@@ -252,6 +252,18 @@ type RootTranslation = {
 		 * C​l​a​i​m​i​n​g​ ​a​d​d​r​e​s​s​:
 		 */
 		labelWalletAddress: string
+		/**
+		 * E​m​a​i​l​ ​a​d​d​r​e​s​s​ ​(​O​p​t​i​o​n​a​l​)
+		 */
+		labelEmailAddress: string
+		/**
+		 * e​x​a​m​p​l​e​@​e​x​a​m​p​l​e​.​c​o​m
+		 */
+		placeholderEmail: string
+		/**
+		 * *​G​e​t​ ​o​n​e​ ​e​x​t​r​a​ ​t​o​k​e​n​ ​b​y​ ​l​i​n​k​i​n​g​ ​y​o​u​r​ ​e​m​a​i​l
+		 */
+		descriptionEmail: string
 		/**
 		 * S​w​i​t​c​h​ ​t​o​ ​m​a​n​u​a​l​ ​i​n​p​u​t
 		 */
@@ -726,7 +738,7 @@ export type TranslationFunctions = {
 		 */
 		errorMessage: () => LocalizedString
 		/**
-		 * Enter your wallet address (e.g. 0x1234...)
+		 * e.g. 0x1234...
 		 */
 		inputPlaceholder: () => LocalizedString
 	}
@@ -795,6 +807,18 @@ export type TranslationFunctions = {
 		 * Claiming address:
 		 */
 		labelWalletAddress: () => LocalizedString
+		/**
+		 * Email address (Optional)
+		 */
+		labelEmailAddress: () => LocalizedString
+		/**
+		 * example@example.com
+		 */
+		placeholderEmail: () => LocalizedString
+		/**
+		 * *Get one extra token by linking your email
+		 */
+		descriptionEmail: () => LocalizedString
 		/**
 		 * Switch to manual input
 		 */

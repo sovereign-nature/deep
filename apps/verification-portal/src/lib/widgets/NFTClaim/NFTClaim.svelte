@@ -22,10 +22,14 @@
   export let claimIsSubmitted = false;
 
   const claim = $page.url.searchParams.get('claim');
+  const showEmailField =
+    $page.url.searchParams.get('email') === 'false' ? false : true;
+
   const claimToken = readable(claim);
   const formSending = writable(false);
   const formUseWallet = writable(true);
   const formManualAddress = writable('');
+  const formEmail = writable('');
   const claimResponse = writable<CrossmintResponse | null>(null);
   const claimSubmitted = writable(claimIsSubmitted);
   const claimValid = writable(false);
@@ -70,6 +74,7 @@
     formSending,
     formUseWallet,
     formManualAddress,
+    formEmail,
     claimResponse,
     claimSubmitted,
     claimValid,
@@ -195,7 +200,7 @@
           {$LL.claim.invalidMessage()}
         </div>
       {:else}
-        <ClaimForm></ClaimForm>
+        <ClaimForm {showEmailField}></ClaimForm>
       {/if}
     </div>
   </Drawer>
