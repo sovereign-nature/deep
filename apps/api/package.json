@@ -34,11 +34,14 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.4.23",
     "@cloudflare/workers-types": "4.20240815.0",
     "drizzle-kit": "0.24.0",
     "env-cmd": "10.1.0",
     "vite-tsconfig-paths": "5.0.1",
-    "vitest": "2.0.5",
+    "vitest": "1.5.3",
+    "@vitest/runner": "1.5.3",
+    "@vitest/snapshot": "1.5.3",
     "wrangler": "3.71.0"
   }
 }

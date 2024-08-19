@@ -17,6 +17,6 @@
   },
   "devDependencies": {
     "msw": "2.3.5",
-    "vitest": "2.0.5"
+    "vitest": "1.5.3"
   }
 }
