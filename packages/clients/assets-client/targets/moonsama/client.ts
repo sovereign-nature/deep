@@ -1,20 +1,33 @@
-import { GraphQLClient } from 'graphql-request';
 import { DeepAsset } from '@sni/types';
+import { fetchWithRetry } from '../../../lib';
 import { moonSamaApiUrl } from './config';
-import { MoonSamaResponse } from './types';
 import { getNFT } from './queries';
-import moonSamaFormatter from './formatter';
-
-const moonSamaClient = new GraphQLClient(moonSamaApiUrl, { fetch });
 
 export async function getMoonsamaAsset(
   contractAddress: string,
   tokenId: number
 ): Promise<DeepAsset> {
-  return moonSamaFormatter(
-    await moonSamaClient.request<MoonSamaResponse>(getNFT, {
-      contractAddress,
-      tokenId,
-    })
-  );
+  const data = await fetchWithRetry(moonSamaApiUrl, {
+    body: JSON.stringify({
+      query: getNFT,
+      variables: { contractAddress, tokenId },
+    }),
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  const assetData = data.data.tokens[0]; //TODO: Add data validation
+
+  return {
+    id: assetData.id,
+    tokenId: assetData.numericId,
+    name: assetData.metadata.name,
+    description: assetData.metadata.description,
+    image: assetData.metadata.image,
+    address: '', //TODO: Add asset address to the response
+    collection: {
+      id: assetData.address,
+      name: 'Wildsama', //TODO: Remove hardcoded collection name
+    },
+  };
 }

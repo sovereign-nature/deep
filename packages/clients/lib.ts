@@ -5,9 +5,9 @@ const possibleDelays = [12960, 2160, 360, 60, 10];
 
 export async function fetchWithRetry(
   url: string,
-  options = {},
+  options: RequestInit = {},
   retries: number = 5
-) {
+): Promise<unknown> {
   const response = await fetch(url, options);
 
   if (response.ok) {
