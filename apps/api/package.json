@@ -9,7 +9,8 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "tail": "wrangler tail",
-    "test": "vitest"
+    "test": "vitest",
+    "migrate": "drizzle-kit generate"
   },
   "dependencies": {
     "@hono/zod-validator": "0.2.2",
