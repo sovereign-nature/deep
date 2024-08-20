@@ -1,5 +1,4 @@
 import { expect, describe, it } from 'vitest';
-// import { env, SELF } from 'cloudflare:test';
 import app from '.';
 
 describe('Assets API', () => {

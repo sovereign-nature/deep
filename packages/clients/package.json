@@ -12,8 +12,7 @@
     "@sni/constants": "workspace:*",
     "@sni/types": "workspace:*",
     "@sni/utils": "workspace:*",
-    "axios": "1.7.4",
-    "graphql-request": "7.1.0"
+    "axios": "1.7.4"
   },
   "devDependencies": {
     "msw": "2.3.5",
