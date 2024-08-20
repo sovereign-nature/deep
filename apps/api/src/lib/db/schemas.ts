@@ -8,6 +8,6 @@ export const users = sqliteTable('user', {
 export const sessions = sqliteTable('session', {
   id: text('id').notNull().primaryKey(),
   expiresAt: integer('expires_at').notNull(),
-  userId: text('user_id').references(() => users.id),
+  userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
   chainId: integer('chain_id'),
 });
