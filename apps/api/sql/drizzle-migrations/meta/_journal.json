@@ -8,6 +8,13 @@
       "when": 1724151455026,
       "tag": "0000_bitter_white_queen",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1724153146208,
+      "tag": "0001_friendly_calypso",
+      "breakpoints": true
     }
   ]
 }
