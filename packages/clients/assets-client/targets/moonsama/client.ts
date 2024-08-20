@@ -7,7 +7,8 @@ export async function getMoonsamaAsset(
   contractAddress: string,
   tokenId: number
 ): Promise<DeepAsset> {
-  const data = await fetchWithRetry(moonSamaApiUrl, {
+  //@ts-expect-error - data object is not correctly typed
+  const { data } = await fetchWithRetry(moonSamaApiUrl, {
     body: JSON.stringify({
       query: getNFT,
       variables: { contractAddress, tokenId },
@@ -16,7 +17,7 @@ export async function getMoonsamaAsset(
     headers: { 'Content-Type': 'application/json' },
   });
 
-  const assetData = data.data.tokens[0]; //TODO: Add data validation
+  const assetData = data.tokens[0]; //TODO: Add data validation through zod schema
 
   return {
     id: assetData.id,

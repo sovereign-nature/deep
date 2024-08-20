@@ -1,6 +1,4 @@
-import { gql } from 'graphql-request';
-
-export const getNFT = gql`
+export const getNFT = `
   query getLionNFT($contractAddress: String!, $tokenId: BigInt!) {
     tokens(
       where: { address_contains: $contractAddress, numericId_eq: $tokenId }
@@ -8,7 +6,7 @@ export const getNFT = gql`
       id
       numericId
       address
-      metadata {
+      metadata{
         name
         description
         image
