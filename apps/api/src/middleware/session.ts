@@ -9,6 +9,7 @@ import { initializeLucia } from '../lib/lucia';
 export async function session(c: Context, next: Next) {
   console.debug('SESSION MIDDLEWARE'); //TODO: Convert into logging with pinia?
 
+  //TODO: Rename SESSIONS_DB to API_DB
   const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
 
   const lucia = initializeLucia(SESSIONS_DB);

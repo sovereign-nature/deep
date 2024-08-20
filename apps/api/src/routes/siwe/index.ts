@@ -29,6 +29,7 @@ app.post('/nonce', (c) => {
 });
 
 app.post('/verify', async (c) => {
+  //TODO: Rename SESSIONS_DB to API_DB
   const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
   const lucia = c.get('lucia');
 
@@ -57,6 +58,7 @@ app.post('/verify', async (c) => {
 
   if (!session) {
     console.debug('Creating new session'); //TODO: Convert into logging with pinia?
+    //TODO: Rename SESSIONS_DB to API_DB
     await addUser(SESSIONS_DB, address);
 
     session = await lucia.createSession(address, { chainId });
