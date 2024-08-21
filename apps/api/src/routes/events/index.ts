@@ -31,7 +31,7 @@ app.get('/:eventId', async (c) => {
     const seed = eventConfig.seed();
     const token = await sign(
       {
-        id: nanoid(),
+        id: nanoid(), //TODO: Should we secure this with cryptographically correct ID?
         collection: eventConfig.collectionId,
         seed,
       },
