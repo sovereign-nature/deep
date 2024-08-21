@@ -11,6 +11,7 @@ export const sessions = sqliteTable('session', {
   chainId: integer('chain_id'),
 });
 
+//TODO: Move email and telegram to user table
 export const profiles = sqliteTable('profile', {
   id: text('id').notNull().primaryKey(),
   userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),

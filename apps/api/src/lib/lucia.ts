@@ -2,6 +2,7 @@ import { DatabaseSessionAttributes, Lucia } from 'lucia';
 import { D1Adapter } from '@lucia-auth/adapter-sqlite';
 
 export function initializeLucia(db: D1Database) {
+  //Replace with drizzle adapter https://lucia-auth.com/database/drizzle
   const adapter = new D1Adapter(db, {
     user: 'user',
     session: 'session',

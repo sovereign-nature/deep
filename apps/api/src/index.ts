@@ -22,7 +22,7 @@ app.use(
     origin: (origin, _c: Context) => {
       return origin.endsWith('.sovereignnature.com') ||
         origin.endsWith('.vercel.app') || //TODO: Harden by providing proper vercel pattern or by moving Vercel to staging environment
-        origin.includes('localhost') //TODO: Should we allow localhost origin in prod?
+        origin.includes('localhost') //TODO: Should we allow localhost origin in prod? https://hono.dev/docs/middleware/builtin/cors#environment-dependent-cors-configuration
         ? origin
         : 'https://real.sovereignnature.com';
     },
