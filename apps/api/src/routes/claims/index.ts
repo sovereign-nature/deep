@@ -1,5 +1,5 @@
 import { zValidator } from '@hono/zod-validator';
-import { Hono } from 'hono';
+import { OpenAPIHono } from '@hono/zod-openapi';
 import { decode, verify } from 'hono/jwt';
 import { env } from 'hono/adapter';
 import { createAssetDID } from '@sni/address-utils';
@@ -13,7 +13,7 @@ import { getRandomInt } from '$lib/utils';
 import { createClaimLink } from '$lib/claim';
 import { sendTokenEmail } from '$lib/resend';
 
-const app = new Hono();
+const app = new OpenAPIHono();
 
 export type MintRequest = {
   address: string;
