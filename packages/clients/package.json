@@ -12,7 +12,7 @@
     "@sni/constants": "workspace:*",
     "@sni/types": "workspace:*",
     "@sni/utils": "workspace:*",
-    "axios": "1.7.4"
+    "axios": "1.7.5"
   },
   "devDependencies": {
     "msw": "2.3.5",
