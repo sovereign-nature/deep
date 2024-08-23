@@ -26,6 +26,7 @@ d1_databases = [
 
 # Production Configuration Overrides
 [env.production]
+name = "api"
 vars = { ENVIRONMENT = 'production', CROSSMINT_API_URL = "https://crossmint.com/api/2022-06-09/collections" }
 queues.producers = [{ queue = "minting-queue", binding = "MINTING_QUEUE" }]
 queues.consumers = [
@@ -44,6 +45,7 @@ d1_databases = [
 
 # Stage Configuration Overrides
 [env.staging]
+name = "stg-api"
 tail_consumers = [{ service = "stg-api-tail" }]
 vars = { ENVIRONMENT = "staging", CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections" }
 
