@@ -7,7 +7,8 @@ import { env } from 'hono/adapter';
 // import { csrf } from 'hono/csrf';
 import { getCookie, setCookie } from 'hono/cookie';
 import { session } from '$middleware/session';
-import { addUser } from '$lib/lucia';
+import { addUser } from '$lib/db';
+import { logger } from '$lib/logger';
 
 const app = new Hono<{
   Variables: {
@@ -17,6 +18,7 @@ const app = new Hono<{
   };
 }>();
 
+//TODO: Add CSRF protection
 // app.use(csrf({ origin: ['real.sovereignnature.com', 'localhost'] })); //TODO: Localhost in dev
 
 app.use('*', session);
@@ -24,6 +26,7 @@ app.use('*', session);
 app.post('/nonce', (c) => {
   const nonce = generateNonce();
 
+  //TODO: Fix sameSite and secure attributes for production
   setCookie(c, 'siwe-nonce', nonce, { sameSite: 'none', secure: true }); //TODO: Secure only in production, sameSite: 'none' in dev
   return c.text(nonce);
 });
@@ -56,7 +59,8 @@ app.post('/verify', async (c) => {
   let session = c.get('session');
 
   if (!session) {
-    console.debug('Creating new session'); //TODO: Convert into logging with pinia?
+    logger.debug('Creating new session');
+
     await addUser(SESSIONS_DB, address);
 
     session = await lucia.createSession(address, { chainId });
@@ -64,9 +68,9 @@ app.post('/verify', async (c) => {
     const cookie = lucia.createSessionCookie(session.id);
     setCookie(c, cookie.name, cookie.value, cookie.attributes);
 
-    console.debug('Session created', session);
+    logger.debug('Session created', session);
   } else {
-    console.debug('Updating existing session');
+    logger.debug('Updating existing session');
     session.userId = address;
     session.chainId = chainId;
   }

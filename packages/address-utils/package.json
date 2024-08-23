@@ -9,6 +9,6 @@
     "viem": "2.19.7"
   },
   "devDependencies": {
-    "vitest": "2.0.5"
+    "vitest": "1.5.3"
   }
 }

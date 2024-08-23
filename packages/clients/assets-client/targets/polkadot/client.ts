@@ -1,22 +1,26 @@
-import { GraphQLClient } from 'graphql-request';
 import { DeepAsset } from '@sni/types';
+import { fetchWithRetry } from '@sni/clients/lib';
 import { AssetNotFoundError } from '../..';
 import { kusamaApiUrl, polkadotApiUrl } from './config';
 import { getNftById } from './queries';
-import { PolkadotResponse } from './types';
-
-const polkadotClient = new GraphQLClient(polkadotApiUrl, { fetch });
-const kusamaClient = new GraphQLClient(kusamaApiUrl, { fetch });
 
 export async function getPolkadotAsset(
   collectionId: string,
   tokenId: number
 ): Promise<DeepAsset> {
-  const res = await polkadotClient.request<PolkadotResponse>(getNftById, {
-    id: `${collectionId}-${tokenId}`,
+  //@ts-expect-error - data object is not correctly typed
+  const { data } = await fetchWithRetry(polkadotApiUrl, {
+    //TODO: Add data validation through zod schema
+    body: JSON.stringify({
+      query: getNftById,
+      variables: { id: `${collectionId}-${tokenId}` },
+    }),
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
   });
 
-  const nftEntity = res.nftEntity;
+  const nftEntity = data.nftEntity;
+
   if (!nftEntity) {
     throw new AssetNotFoundError();
   }
@@ -35,15 +39,23 @@ export async function getPolkadotAsset(
   };
 }
 
+//TODO: Join methods, remove duplication
 export async function getKusamaAsset(
   collectionId: string,
   tokenId: number
 ): Promise<DeepAsset> {
-  const res = await kusamaClient.request<PolkadotResponse>(getNftById, {
-    id: `${collectionId}-${tokenId}`,
+  //@ts-expect-error - data object is not correctly typed
+  const { data } = await fetchWithRetry(kusamaApiUrl, {
+    //TODO: Add data validation through zod schema
+    body: JSON.stringify({
+      query: getNftById,
+      variables: { id: `${collectionId}-${tokenId}` },
+    }),
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
   });
 
-  const nftEntity = res.nftEntity;
+  const nftEntity = data.nftEntity;
   if (!nftEntity) {
     throw new AssetNotFoundError();
   }
