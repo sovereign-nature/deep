@@ -30,4 +30,10 @@ export const events: Events = {
     seed: () => getRandomInt(0, 2),
     going: true,
   },
+  'polkadot-tokyo-party-2024': {
+    collectionId: 'polkadot-tokyo-party-2024',
+    realCollection: 'dotphin-proofs',
+    seed: () => getRandomInt(0, 2),
+    going: false,
+  },
 };
