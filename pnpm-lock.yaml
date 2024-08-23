@@ -55,16 +55,16 @@ importers:
     dependencies:
       '@hono/zod-openapi':
         specifier: ^0.15.3
-        version: 0.15.3(hono@4.5.6)(zod@3.23.8)
+        version: 0.15.3(hono@4.5.8)(zod@3.23.8)
       '@hono/zod-validator':
         specifier: 0.2.2
-        version: 0.2.2(hono@4.5.6)(zod@3.23.8)
+        version: 0.2.2(hono@4.5.8)(zod@3.23.8)
       '@lucia-auth/adapter-sqlite':
         specifier: 3.0.2
         version: 3.0.2(lucia@3.2.0)
       '@scalar/hono-api-reference':
         specifier: 0.5.141
-        version: 0.5.141(hono@4.5.6)
+        version: 0.5.141(hono@4.5.8)
       '@sni/address-utils':
         specifier: workspace:*
         version: link:../../packages/address-utils
@@ -96,8 +96,8 @@ importers:
         specifier: 0.33.0
         version: 0.33.0(@cloudflare/workers-types@4.20240815.0)(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(react@18.3.1)
       hono:
-        specifier: 4.5.6
-        version: 4.5.6
+        specifier: 4.5.8
+        version: 4.5.8
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -5917,8 +5917,8 @@ packages:
   hmac-drbg@1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}
 
-  hono@4.5.6:
-    resolution: {integrity: sha512-9SuUC/zLQv8YAcnIxJko0KCeLI0Q6menPsDWuJ9jaH+r8ZkVXeLqeLs1QJXCPKKbURAWj9x0SJBSFh803EnAUw==}
+  hono@4.5.8:
+    resolution: {integrity: sha512-pqpSlcdqGkpTTRpLYU1PnCz52gVr0zVR9H5GzMyJWuKQLLEBQxh96q45QizJ2PPX8NATtz2mu31/PKW/Jt+90Q==}
     engines: {node: '>=16.0.0'}
 
   hookable@5.5.3:
@@ -11028,16 +11028,16 @@ snapshots:
     dependencies:
       '@hapi/hoek': 9.3.0
 
-  '@hono/zod-openapi@0.15.3(hono@4.5.6)(zod@3.23.8)':
+  '@hono/zod-openapi@0.15.3(hono@4.5.8)(zod@3.23.8)':
     dependencies:
       '@asteasolutions/zod-to-openapi': 7.1.1(zod@3.23.8)
-      '@hono/zod-validator': 0.2.2(hono@4.5.6)(zod@3.23.8)
-      hono: 4.5.6
+      '@hono/zod-validator': 0.2.2(hono@4.5.8)(zod@3.23.8)
+      hono: 4.5.8
       zod: 3.23.8
 
-  '@hono/zod-validator@0.2.2(hono@4.5.6)(zod@3.23.8)':
+  '@hono/zod-validator@0.2.2(hono@4.5.8)(zod@3.23.8)':
     dependencies:
-      hono: 4.5.6
+      hono: 4.5.8
       zod: 3.23.8
 
   '@humanwhocodes/config-array@0.11.14':
@@ -12982,10 +12982,10 @@ snapshots:
 
   '@safe-global/safe-gateway-typescript-sdk@3.22.1': {}
 
-  '@scalar/hono-api-reference@0.5.141(hono@4.5.6)':
+  '@scalar/hono-api-reference@0.5.141(hono@4.5.8)':
     dependencies:
       '@scalar/types': 0.0.3
-      hono: 4.5.6
+      hono: 4.5.8
 
   '@scalar/openapi-types@0.0.1': {}
 
@@ -16952,7 +16952,7 @@ snapshots:
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
 
-  hono@4.5.6: {}
+  hono@4.5.8: {}
 
   hookable@5.5.3: {}
 
