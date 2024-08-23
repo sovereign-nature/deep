@@ -27,6 +27,20 @@ d1_databases = [
 # Production Configuration Overrides
 [env.production]
 vars = { ENVIRONMENT = 'production', CROSSMINT_API_URL = "https://crossmint.com/api/2022-06-09/collections" }
+queues.producers = [{ queue = "minting-queue", binding = "MINTING_QUEUE" }]
+queues.consumers = [
+  { queue = "minting-queue", dead_letter_queue = "minting-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
+]
+
+kv_namespaces = [
+  { binding = "MINTING_KV", id = "0f4988a01242450187f4ee6ca522a5d6" },
+  { binding = "CLAIMS_KV", id = "974b532adcea43e8b9b90bffe8c834cf" },
+  { binding = "EMAILS_KV", id = "a008ae3da87c4f0ebf3efc2812b2cde4" },
+]
+
+d1_databases = [
+  { binding = "SESSIONS_DB", database_name = "sessions-db", database_id = "4fff6376-d5de-4b1c-a8ec-b9ea13ed4eec" },
+]
 
 # Stage Configuration Overrides
 [env.staging]
@@ -35,18 +49,22 @@ vars = { ENVIRONMENT = "staging", CROSSMINT_API_URL = "https://staging.crossmint
 
 workers_dev = true
 
-# TODO: Setup staging DBs
+
 # Separate infra for staging
+# TODO: Setup staging queues
 queues.producers = [{ queue = "stg-minting-queue", binding = "MINTING_QUEUE" }]
 queues.consumers = [
-  { queue = "stg-minting-queue", dead_letter_queue = "minting-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
+  { queue = "stg-minting-queue", dead_letter_queue = "stg-minting-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
 ]
 
+# TODO: Setup staging KVs
 kv_namespaces = [
   { binding = "MINTING_KV", id = "0f4988a01242450187f4ee6ca522a5d6" },
   { binding = "CLAIMS_KV", id = "974b532adcea43e8b9b90bffe8c834cf" },
   { binding = "EMAILS_KV", id = "a008ae3da87c4f0ebf3efc2812b2cde4" },
 ]
+
+# TODO: Setup staging DBs
 d1_databases = [
-  { binding = "SESSIONS_DB", database_name = "sessions-db", database_id = "4fff6376-d5de-4b1c-a8ec-b9ea13ed4eec" },
+  { binding = "SESSIONS_DB", database_name = "stg-sessions-db", database_id = "4fff6376-d5de-4b1c-a8ec-b9ea13ed4eec" },
 ]
