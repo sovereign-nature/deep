@@ -11,6 +11,7 @@ jobs:
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      TURBO_REMOTE_ONLY: true
       DIRECTUS_API_KEY: ${{ secrets.DIRECTUS_API_KEY }}
       PUBLIC_WALLET_CONNECT_PROJECT_ID: ${{ secrets.PUBLIC_WALLET_CONNECT_PROJECT_ID }}
       OPEN_SEA_API_KEY: ${{ secrets.OPEN_SEA_API_KEY }}
@@ -18,7 +19,6 @@ jobs:
       NFTSCAN_API_KEY: ${{ secrets.NFTSCAN_API_KEY }}
       VERCEL_URL: 'empty'
       PUBLIC_WEB3INBOX_ALL_APPS: false
-      TURBO_REMOTE_ONLY: true
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
