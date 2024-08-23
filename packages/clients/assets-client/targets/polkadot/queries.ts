@@ -1,6 +1,4 @@
-import { gql } from 'graphql-request';
-
-export const getNftById = gql`
+export const getNftById = `
   query nftById($id: String!) {
     nftEntity: nftEntityById(id: $id) {
       id
