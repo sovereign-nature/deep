@@ -4,7 +4,7 @@ compatibility_date = "2024-01-01"
 compatibility_flags = ["nodejs_compat"]
 logpush = false
 
-tail_consumers = [{ service = "api-tail" }]
+
 vars = { ENVIRONMENT = "dev", CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections" }
 
 workers_dev = false
@@ -27,7 +27,9 @@ d1_databases = [
 # Production Configuration Overrides
 [env.production]
 name = "api"
+tail_consumers = [{ service = "api-tail" }]
 vars = { ENVIRONMENT = 'production', CROSSMINT_API_URL = "https://crossmint.com/api/2022-06-09/collections" }
+
 queues.producers = [{ queue = "minting-queue", binding = "MINTING_QUEUE" }]
 queues.consumers = [
   { queue = "minting-queue", dead_letter_queue = "minting-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
@@ -47,10 +49,9 @@ d1_databases = [
 [env.staging]
 name = "stg-api"
 tail_consumers = [{ service = "stg-api-tail" }]
-vars = { ENVIRONMENT = "staging", CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections" }
-
 workers_dev = true
 
+vars = { ENVIRONMENT = "staging", CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections" }
 
 # Separate infra for staging
 # TODO: Setup staging queues
