@@ -62,3 +62,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           workingDirectory: './apps/api'
           packageManager: 'pnpm'
+          environment: 'production'
