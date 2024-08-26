@@ -59,6 +59,20 @@ const web3summit2024Attributes = [
   { trait_type: 'proofOf', value: 'presence' },
 ];
 
+const polkadotTokyoParty2024Attributes = [
+  { trait_type: 'eventId', value: 'polkadot-tokyo-party-2024' },
+  {
+    trait_type: 'eventURL',
+    value: 'https://lu.ma/cxg61tpr',
+  },
+  { trait_type: 'country', value: 'Japan' },
+  { trait_type: 'city', value: 'Tokyo' },
+  { trait_type: 'virtualEvent', value: 'false' },
+  { trait_type: 'startDate', value: '27-Aug-2024' },
+  { trait_type: 'endDate', value: '27-Aug-2024' },
+  { trait_type: 'proofOf', value: 'presence' },
+];
+
 export const collections: Collections = {
   '5f773e35-d5f2-41dc-ae80-c94e0e8e4821': {
     name: 'engie',
@@ -87,73 +101,94 @@ export const collections: Collections = {
     network: 'optimism',
     tokenStandard: 'erc721',
   },
-  'testnet-edcon2024': {
-    name: 'testnet-edcon2024',
+  'testnet-polkadot-tokyo-party-2024': {
+    name: 'testnet-polkadot-tokyo-party-2024',
     externalId: '3551',
     metadata: {
       description:
-        "This is the DOTphin Proof of Attendance for EDCON 2024 in Tokyo.\nThe DOTphin adventure continues. This badge is more than just a collectible; it's the key to a multi-chain and multi-event journey that supports real-world biodiversity conservation. It's an opportunity to connect communities and promote interoperability while supporting marine conservation efforts. This Proof of Attendance extends a greeting from Polkadot to the ETH community, as all Proofs and DOTphin NFTs are supported by EVM and Substrate. Join us in shaping a regenerative future through active community involvement and real-world conservation action.",
+        "You've just unlocked the next chapter in your DOTphin journey with this exclusive Proof of Presence (PoP) from Polkadot WebX side event in Tokyo. Each interaction with the community not only enhances your DOTphin but also contributes to AI-driven research decoding whale songs in the Caribbean. This trailblazing project merges the playful evolution of your DOTphin with a meaningful mission to support marine conservation. Get ready to make a positive impact on our oceans—your presence here isn't just a step forward for you; it's a leap towards a more connected, nature-positive future.",
       image: [
-        'https://real.myfilebase.com/ipfs/QmcChQevauNAkydapjU2xhcnCQhReiqzSRigd7U8nKHTvw/edcon2024-air.png',
-        'https://real.myfilebase.com/ipfs/QmcChQevauNAkydapjU2xhcnCQhReiqzSRigd7U8nKHTvw/edcon2024-earth.png',
-        'https://real.myfilebase.com/ipfs/QmcChQevauNAkydapjU2xhcnCQhReiqzSRigd7U8nKHTvw/edcon2024-water.png',
+        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-water.png',
       ],
-      name: 'DOTphin Proof of Attendance ‒ EDCON 2024',
+      name: 'DOTphin Proof of Attendance ‒ 『POLKADOT』 Tokyo Party',
       attributes: [
-        [{ trait_type: 'element', value: 'air' }, ...edcon2024Attributes],
-        [{ trait_type: 'element', value: 'earth' }, ...edcon2024Attributes],
-        [{ trait_type: 'element', value: 'water' }, ...edcon2024Attributes],
-      ],
-    },
-    network: 'opal',
-    tokenStandard: 'unique2',
-  },
-  'testnet-web3summit2024': {
-    name: 'testnet-web3summit2024',
-    externalId: '3551',
-    metadata: {
-      description:
-        "You've just unlocked the next chapter in your DOTphin journey with this exclusive Proof of Presence (PoP) from Web3 Summit 2024 in Berlin. As you mark your presence at this summit, dedicated to advancing a fully functional and user-friendly decentralised web, your DOTphin evolves alongside you. Each interaction with the community not only enhances your DOTphin but also contributes to AI-driven research decoding whale songs in the Caribbean. This trailblazing project merges the playful evolution of your DOTphin with a meaningful mission to support marine conservation. Get ready to make a positive impact on our oceans—your presence here isn't just a step forward for you; it's a leap towards a more connected, nature-positive future.",
-      image: [
-        'https://real.myfilebase.com/ipfs/QmaCeoQ5yCHBphJ2oX5uTkFKL9GmQbEfarUckwaLMLtt82/web3summit2024-air.png',
-        'https://real.myfilebase.com/ipfs/QmaCeoQ5yCHBphJ2oX5uTkFKL9GmQbEfarUckwaLMLtt82/web3summit2024-earth.png',
-        'https://real.myfilebase.com/ipfs/QmaCeoQ5yCHBphJ2oX5uTkFKL9GmQbEfarUckwaLMLtt82/web3summit2024-water.png',
-      ],
-      name: 'DOTphin Proof of Presence ‒ Web3Summit 2024',
-      attributes: [
-        [{ trait_type: 'element', value: 'air' }, ...web3summit2024Attributes],
+        [
+          { trait_type: 'element', value: 'air' },
+          ...polkadotTokyoParty2024Attributes,
+        ],
         [
           { trait_type: 'element', value: 'earth' },
-          ...web3summit2024Attributes,
+          ...polkadotTokyoParty2024Attributes,
         ],
         [
           { trait_type: 'element', value: 'water' },
-          ...web3summit2024Attributes,
+          ...polkadotTokyoParty2024Attributes,
         ],
       ],
     },
     network: 'opal',
     tokenStandard: 'unique2',
   },
-  'dev-edcon2024': {
-    name: 'dev-edcon2024',
+  'dev-polkadot-tokyo-party-2024': {
+    name: 'dev-polkadot-tokyo-party-2024',
     externalId: '3030',
     metadata: {
       description:
-        "This is the DOTphin Proof of Attendance for EDCON 2024 in Tokyo.\nThe DOTphin adventure continues. This badge is more than just a collectible; it's the key to a multi-chain and multi-event journey that supports real-world biodiversity conservation. It's an opportunity to connect communities and promote interoperability while supporting marine conservation efforts. This Proof of Attendance extends a greeting from Polkadot to the ETH community, as all Proofs and DOTphin NFTs are supported by EVM and Substrate. Join us in shaping a regenerative future through active community involvement and real-world conservation action.",
+        "You've just unlocked the next chapter in your DOTphin journey with this exclusive Proof of Presence (PoP) from Polkadot WebX side event in Tokyo. Each interaction with the community not only enhances your DOTphin but also contributes to AI-driven research decoding whale songs in the Caribbean. This trailblazing project merges the playful evolution of your DOTphin with a meaningful mission to support marine conservation. Get ready to make a positive impact on our oceans—your presence here isn't just a step forward for you; it's a leap towards a more connected, nature-positive future.",
       image: [
-        'https://real.myfilebase.com/ipfs/QmcChQevauNAkydapjU2xhcnCQhReiqzSRigd7U8nKHTvw/edcon2024-air.png',
-        'https://real.myfilebase.com/ipfs/QmcChQevauNAkydapjU2xhcnCQhReiqzSRigd7U8nKHTvw/edcon2024-earth.png',
-        'https://real.myfilebase.com/ipfs/QmcChQevauNAkydapjU2xhcnCQhReiqzSRigd7U8nKHTvw/edcon2024-water.png',
+        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-water.png',
       ],
-      name: 'DOTphin Proof of Attendance ‒ EDCON 2024',
+      name: 'DOTphin Proof of Attendance ‒ 『POLKADOT』 Tokyo Party',
       attributes: [
-        [{ trait_type: 'element', value: 'air' }, ...edcon2024Attributes],
-        [{ trait_type: 'element', value: 'earth' }, ...edcon2024Attributes],
-        [{ trait_type: 'element', value: 'water' }, ...edcon2024Attributes],
+        [
+          { trait_type: 'element', value: 'air' },
+          ...polkadotTokyoParty2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...polkadotTokyoParty2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...polkadotTokyoParty2024Attributes,
+        ],
       ],
     },
     network: 'opal',
+    tokenStandard: 'unique2',
+  },
+  'polkadot-tokyo-party-2024': {
+    name: 'polkadot-tokyo-party-2024',
+    externalId: '665',
+    metadata: {
+      description:
+        "You've just unlocked the next chapter in your DOTphin journey with this exclusive Proof of Presence (PoP) from Polkadot WebX side event in Tokyo. Each interaction with the community not only enhances your DOTphin but also contributes to AI-driven research decoding whale songs in the Caribbean. This trailblazing project merges the playful evolution of your DOTphin with a meaningful mission to support marine conservation. Get ready to make a positive impact on our oceans—your presence here isn't just a step forward for you; it's a leap towards a more connected, nature-positive future.",
+      image: [
+        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Attendance ‒ 『POLKADOT』 Tokyo Party',
+      attributes: [
+        [
+          { trait_type: 'element', value: 'air' },
+          ...polkadotTokyoParty2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...polkadotTokyoParty2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...polkadotTokyoParty2024Attributes,
+        ],
+      ],
+    },
+    network: 'unique',
     tokenStandard: 'unique2',
   },
   'polkadot-decoded2024': {
