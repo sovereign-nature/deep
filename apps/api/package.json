@@ -13,7 +13,7 @@
     "migrate": "drizzle-kit generate"
   },
   "dependencies": {
-    "@hono/zod-openapi": "^0.15.3",
+    "@hono/zod-openapi": "^0.16.0",
     "@hono/zod-validator": "0.2.2",
     "@lucia-auth/adapter-sqlite": "3.0.2",
     "@scalar/hono-api-reference": "0.5.142",
