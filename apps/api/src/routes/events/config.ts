@@ -22,7 +22,7 @@ export const events: Events = {
     collectionId: 'edcon2024',
     realCollection: 'dotphin-proofs',
     seed: () => getRandomInt(0, 2),
-    going: true,
+    going: false,
   },
   web3summit2024: {
     collectionId: 'web3summit2024',
@@ -34,6 +34,6 @@ export const events: Events = {
     collectionId: 'polkadot-tokyo-party-2024',
     realCollection: 'dotphin-proofs',
     seed: () => getRandomInt(0, 2),
-    going: false,
+    going: true,
   },
 };
