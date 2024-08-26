@@ -1,4 +1,8 @@
-import { DatabaseSessionAttributes, Lucia } from 'lucia';
+import {
+  DatabaseSessionAttributes,
+  DatabaseUserAttributes,
+  Lucia,
+} from 'lucia';
 import { D1Adapter } from '@lucia-auth/adapter-sqlite';
 
 export function initializeLucia(db: D1Database) {
@@ -14,6 +18,15 @@ export function initializeLucia(db: D1Database) {
         chainId: attr.chainId,
       };
     },
+    getUserAttributes: (attributes) => {
+      const attr = attributes as DatabaseUserAttributes;
+      return {
+        email: attr.email,
+        emailVerified: attr.emailVerified,
+        telegram: attr.telegram,
+        telegramVerified: attr.telegramVerified,
+      };
+    },
     sessionCookie: { attributes: { sameSite: 'none' } }, //TODO: Add only on staging
   });
 }
@@ -24,5 +37,12 @@ declare module 'lucia' {
   }
   interface DatabaseSessionAttributes {
     chainId: number;
+  }
+
+  interface DatabaseUserAttributes {
+    email: string;
+    emailVerified: boolean;
+    telegram: string;
+    telegramVerified: boolean;
   }
 }
