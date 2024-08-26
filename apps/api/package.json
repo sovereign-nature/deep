@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.4.23",
-    "@cloudflare/workers-types": "4.20240815.0",
+    "@cloudflare/workers-types": "4.20240821.1",
     "drizzle-kit": "0.24.1",
     "env-cmd": "10.1.0",
     "vite-tsconfig-paths": "5.0.1",
