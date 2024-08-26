@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onDestroy, onMount, setContext } from 'svelte';
   import { writable } from 'svelte/store';
+  // Don't upgrade Flowbite until this issue is resolved https://github.com/themesberg/flowbite-datepicker/issues/41#issuecomment-2305210965
   import { Carousel } from 'flowbite';
   import type {
     CarouselItem,
