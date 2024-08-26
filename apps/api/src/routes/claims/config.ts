@@ -112,7 +112,7 @@ export const collections: Collections = {
         'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-earth.png',
         'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-water.png',
       ],
-      name: 'DOTphin Proof of Attendance ‒ 『POLKADOT』 Tokyo Party',
+      name: 'DOTphin Proof of Presence ‒『POLKADOT』Tokyo Party',
       attributes: [
         [
           { trait_type: 'element', value: 'air' },
@@ -142,7 +142,7 @@ export const collections: Collections = {
         'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-earth.png',
         'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-water.png',
       ],
-      name: 'DOTphin Proof of Attendance ‒ 『POLKADOT』 Tokyo Party',
+      name: 'DOTphin Proof of Presence ‒『POLKADOT』Tokyo Party',
       attributes: [
         [
           { trait_type: 'element', value: 'air' },
@@ -172,7 +172,7 @@ export const collections: Collections = {
         'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-earth.png',
         'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-water.png',
       ],
-      name: 'DOTphin Proof of Attendance ‒ 『POLKADOT』 Tokyo Party',
+      name: 'DOTphin Proof of Presence ‒『POLKADOT』Tokyo Party',
       attributes: [
         [
           { trait_type: 'element', value: 'air' },
