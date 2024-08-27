@@ -2,8 +2,10 @@ import { AccountTokensResponseSchema } from '@sni/clients/wallets-client/targets
 import { createAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
 import {
-  ProfileParamsSchema as DotphinProfileParamsSchema,
-  DotphinProfileResponseSchema,
+  ClaimBodySchema,
+  ClaimResponseSchema,
+  ProfileParamsSchema,
+  ProfileResponseSchema,
 } from './schemas';
 
 const app = new OpenAPIHono();
@@ -44,13 +46,13 @@ app.openapi(
     method: 'get',
     path: '/:address',
     request: {
-      params: DotphinProfileParamsSchema,
+      params: ProfileParamsSchema,
     },
     responses: {
       200: {
         content: {
           'application/json': {
-            schema: DotphinProfileResponseSchema,
+            schema: ProfileResponseSchema,
           },
         },
         description: 'Get proofs stats and dotphin DID for an address',
@@ -76,10 +78,27 @@ app.get('/:address/proofs', (c) => {
   return c.json({ address });
 });
 
-//TODO: Discuss with Maija, maybe get with redirect?
-app.post('/claim', (c) => {
-  //TODO: Claim a DOTphin for a certain address and proof DID
-  return c.json({ message: 'Claimed' });
-});
+app.openapi(
+  createRoute({
+    method: 'post',
+    path: '/claim',
+    request: {
+      body: { content: { 'application/json': { schema: ClaimBodySchema } } },
+    },
+    responses: {
+      200: {
+        content: {
+          'application/json': {
+            schema: ClaimResponseSchema,
+          },
+        },
+        description: 'Returns a claim token for the DOTphin',
+      },
+    },
+  }),
+  async (c) => {
+    return c.json({ token: '123', realCollection: '700' });
+  }
+);
 
 export default app;
