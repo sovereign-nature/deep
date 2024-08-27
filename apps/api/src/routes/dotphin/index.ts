@@ -42,7 +42,7 @@ async function getDotphinAddress(address: string) {
 app.openapi(
   createRoute({
     method: 'get',
-    path: '/{address}',
+    path: '/:address',
     request: {
       params: DotphinProfileParamsSchema,
     },
