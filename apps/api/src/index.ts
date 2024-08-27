@@ -12,6 +12,7 @@ import claims, { claimsQueue } from './routes/claims';
 import wallets from './routes/wallets';
 import events from './routes/events';
 import siwe from './routes/siwe';
+import dotphin from './routes/dotphin';
 
 const app = new OpenAPIHono();
 
@@ -97,6 +98,7 @@ app.route('/claims', claims);
 app.route('/wallets', wallets);
 app.route('/events', events);
 app.route('/siwe', siwe);
+app.route('/dotphin', dotphin);
 
 export default {
   fetch: app.fetch,
