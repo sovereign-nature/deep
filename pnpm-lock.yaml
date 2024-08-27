@@ -57,17 +57,17 @@ importers:
   apps/api:
     dependencies:
       '@hono/zod-openapi':
-        specifier: ^0.15.3
-        version: 0.15.3(hono@4.5.8)(zod@3.23.8)
+        specifier: 0.16.0
+        version: 0.16.0(hono@4.5.9)(zod@3.23.8)
       '@hono/zod-validator':
         specifier: 0.2.2
-        version: 0.2.2(hono@4.5.8)(zod@3.23.8)
+        version: 0.2.2(hono@4.5.9)(zod@3.23.8)
       '@lucia-auth/adapter-sqlite':
         specifier: 3.0.2
         version: 3.0.2(lucia@3.2.0)
       '@scalar/hono-api-reference':
-        specifier: 0.5.142
-        version: 0.5.142(hono@4.5.8)
+        specifier: 0.5.143
+        version: 0.5.143(hono@4.5.9)
       '@sni/address-utils':
         specifier: workspace:*
         version: link:../../packages/address-utils
@@ -99,8 +99,8 @@ importers:
         specifier: 0.33.0
         version: 0.33.0(@cloudflare/workers-types@4.20240821.1)(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(react@18.3.1)
       hono:
-        specifier: 4.5.8
-        version: 4.5.8
+        specifier: 4.5.9
+        version: 4.5.9
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -124,7 +124,7 @@ importers:
         version: 3.23.8
     devDependencies:
       '@cloudflare/vitest-pool-workers':
-        specifier: ^0.4.23
+        specifier: 0.4.25
         version: 0.4.25(@cloudflare/workers-types@4.20240821.1)(@vitest/runner@1.5.3)(@vitest/snapshot@1.5.3)(bufferutil@4.0.8)(utf-8-validate@5.0.10)(vitest@1.5.3(@types/node@22.5.0)(terser@5.31.6))
       '@cloudflare/workers-types':
         specifier: 4.20240821.1
@@ -136,8 +136,8 @@ importers:
         specifier: 1.5.3
         version: 1.5.3
       drizzle-kit:
-        specifier: 0.24.1
-        version: 0.24.1
+        specifier: 0.24.2
+        version: 0.24.2
       env-cmd:
         specifier: 10.1.0
         version: 10.1.0
@@ -2009,8 +2009,8 @@ packages:
   '@hapi/topo@5.1.0':
     resolution: {integrity: sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==}
 
-  '@hono/zod-openapi@0.15.3':
-    resolution: {integrity: sha512-9oc4Bbs+L5oGjUOCrApCrx8BSWa5ctOBjRcwxplxkWPYFPhyOhdkMg47QKenGkESfFz0K6zb4F/c0LGPEmR62g==}
+  '@hono/zod-openapi@0.16.0':
+    resolution: {integrity: sha512-jTnccfMTxDmA50FZeyTDD5oNDpcYo0qPzugwMuinnEQRYHLEqOXLv+sP89KNZWCGcL3Ccl+cr5GGE4yxenozqw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       hono: '>=4.3.6'
@@ -3348,8 +3348,8 @@ packages:
     resolution: {integrity: sha512-Y0yAxRaB98LFp2Dm+ACZqBSdAmI3FlpH/LjxOZ94g/ouuDJecSq0iR26XZ5QDuEL8Rf+L4jBJaoDC08CD0KkJw==}
     engines: {node: '>=16'}
 
-  '@scalar/hono-api-reference@0.5.142':
-    resolution: {integrity: sha512-4rGorh7OsrLXtZ4sNxvlaLZYpLcdxwps2y2Y3gBtBNL+n5SuYVCI+zhcYlkkghV98/fFNG23wg/aUSlVt370Dw==}
+  '@scalar/hono-api-reference@0.5.143':
+    resolution: {integrity: sha512-Rojp75Ma2HB2uUsmOQqsB6mJG8ydg1FB8ful3W8rhrahNZv76zK/wXmNl9B9OsK6AFIf8a7/kZuXMrAoHfHBSA==}
     engines: {node: '>=18'}
     peerDependencies:
       hono: ^4.0.0
@@ -3358,12 +3358,12 @@ packages:
     resolution: {integrity: sha512-qMcUrhe+JRXlI9VGWcY/xGHkGplHdZ5UdGFXJ0q9e20gFVk2HMApE98Mo2iUp42Gff0xHIcNHaEQKAhdfW3R2Q==}
     engines: {node: '>=18'}
 
-  '@scalar/themes@0.9.27':
-    resolution: {integrity: sha512-4MLxkYM3S5Xrbb7qiNTi+8KYRzkIuQVc8nKOdZ/TJ5Tw9V+7w99PKQNeDkiZlLTGZsvwi6MTPU+vk9ta83Z18A==}
+  '@scalar/themes@0.9.28':
+    resolution: {integrity: sha512-2pFGnjSBL2daPA5roRNRDy8xAHpeTI5QYpfyTj88iIaYT68EVnDUheUA2i3vRB705FCGEbDR0xKD7poTSfAYng==}
     engines: {node: '>=18'}
 
-  '@scalar/types@0.0.4':
-    resolution: {integrity: sha512-pyKmloTBxq7ktzQlX8r4kAp6qfd0eZyUv1sMS0hKD1CSEAFikgOAxCmjCiFzuNHf4tjCAA0sGPsmI69fOsn9gQ==}
+  '@scalar/types@0.0.5':
+    resolution: {integrity: sha512-aRPKMt6tXUn+jN/YReJ1CCyjM5rAwJYRJrW+XP4YzlCQf6d4N2dOTmkC2GLEu4iPvhy1Pig6Bnbl7fLiPiKEYg==}
     engines: {node: '>=18'}
 
   '@scure/base@1.1.7':
@@ -5171,8 +5171,8 @@ packages:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
 
-  drizzle-kit@0.24.1:
-    resolution: {integrity: sha512-y47ZuFpy3ZEz5v2P4Q4m7CZpC9infdmFAVP8klfl92hyBBvgWlyFnriDkycK2HXqB1PrYWNTck2p5TfFY5+EWw==}
+  drizzle-kit@0.24.2:
+    resolution: {integrity: sha512-nXOaTSFiuIaTMhS8WJC2d4EBeIcN9OSt2A2cyFbQYBAZbi7lRsVGJNqDpEwPqYfJz38yxbY/UtbvBBahBfnExQ==}
     hasBin: true
 
   drizzle-orm@0.33.0:
@@ -6052,8 +6052,8 @@ packages:
   hmac-drbg@1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}
 
-  hono@4.5.8:
-    resolution: {integrity: sha512-pqpSlcdqGkpTTRpLYU1PnCz52gVr0zVR9H5GzMyJWuKQLLEBQxh96q45QizJ2PPX8NATtz2mu31/PKW/Jt+90Q==}
+  hono@4.5.9:
+    resolution: {integrity: sha512-zz8ktqMDRrZETjxBrv8C5PQRFbrTRCLNVAjD1SNQyOzv4VjmX68Uxw83xQ6oxdAB60HiWnGEatiKA8V3SZLDkQ==}
     engines: {node: '>=16.0.0'}
 
   hookable@5.5.3:
@@ -11368,16 +11368,16 @@ snapshots:
     dependencies:
       '@hapi/hoek': 9.3.0
 
-  '@hono/zod-openapi@0.15.3(hono@4.5.8)(zod@3.23.8)':
+  '@hono/zod-openapi@0.16.0(hono@4.5.9)(zod@3.23.8)':
     dependencies:
       '@asteasolutions/zod-to-openapi': 7.1.1(zod@3.23.8)
-      '@hono/zod-validator': 0.2.2(hono@4.5.8)(zod@3.23.8)
-      hono: 4.5.8
+      '@hono/zod-validator': 0.2.2(hono@4.5.9)(zod@3.23.8)
+      hono: 4.5.9
       zod: 3.23.8
 
-  '@hono/zod-validator@0.2.2(hono@4.5.8)(zod@3.23.8)':
+  '@hono/zod-validator@0.2.2(hono@4.5.9)(zod@3.23.8)':
     dependencies:
-      hono: 4.5.8
+      hono: 4.5.9
       zod: 3.23.8
 
   '@humanwhocodes/config-array@0.11.14':
@@ -13464,19 +13464,19 @@ snapshots:
 
   '@safe-global/safe-gateway-typescript-sdk@3.22.2': {}
 
-  '@scalar/hono-api-reference@0.5.142(hono@4.5.8)':
+  '@scalar/hono-api-reference@0.5.143(hono@4.5.9)':
     dependencies:
-      '@scalar/types': 0.0.4
-      hono: 4.5.8
+      '@scalar/types': 0.0.5
+      hono: 4.5.9
 
   '@scalar/openapi-types@0.0.1': {}
 
-  '@scalar/themes@0.9.27': {}
+  '@scalar/themes@0.9.28': {}
 
-  '@scalar/types@0.0.4':
+  '@scalar/types@0.0.5':
     dependencies:
       '@scalar/openapi-types': 0.0.1
-      '@scalar/themes': 0.9.27
+      '@scalar/themes': 0.9.28
       '@unhead/schema': 1.10.0
 
   '@scure/base@1.1.7': {}
@@ -16184,7 +16184,7 @@ snapshots:
 
   dotenv@16.4.5: {}
 
-  drizzle-kit@0.24.1:
+  drizzle-kit@0.24.2:
     dependencies:
       '@drizzle-team/brocli': 0.10.1
       '@esbuild-kit/esm-loader': 2.6.5
@@ -17262,7 +17262,7 @@ snapshots:
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
 
-  hono@4.5.8: {}
+  hono@4.5.9: {}
 
   hookable@5.5.3: {}
 

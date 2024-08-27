@@ -6,25 +6,43 @@ const expectedWalletAssets = [
     address: 'did:asset:eip155:8882.unique2:3019:224',
     collection: {
       id: '3019',
-      name: '',
     },
     description: 'The Dotphin POAP Collection is a series of unique badges.',
     id: '224',
     image: 'ipfs://QmXzECuBhrG2xy6ewRJCivZFiTYeuvoAosTjRADhuHaoUA',
     name: 'Dotphin POAP Test',
     tokenId: '224',
+    attributes: [
+      {
+        trait_type: 'element',
+        value: 'air',
+      },
+      {
+        trait_type: 'event',
+        value: 'polkadot-decoded-2024',
+      },
+    ],
   },
   {
     address: 'did:asset:eip155:8882.unique2:3019:312',
     collection: {
       id: '3019',
-      name: '',
     },
     description: 'The Dotphin POAP Collection is a series of unique badges.',
     id: '312',
     image: 'ipfs://QmXzECuBhrG2xy6ewRJCivZFiTYeuvoAosTjRADhuHaoUA',
     name: 'Dotphin POAP Test',
     tokenId: '312',
+    attributes: [
+      {
+        trait_type: 'element',
+        value: 'air',
+      },
+      {
+        trait_type: 'event',
+        value: 'polkadot-decoded-2024',
+      },
+    ],
   },
 ];
 

@@ -23,9 +23,9 @@ export async function getUniqueAsset(
     name: nftResponse.name,
     description: nftResponse.description || '',
     image: nftResponse.image,
+    attributes: nftResponse.attributes,
     collection: {
       id: nftResponse.collectionId.toString(),
-      name: '', //TODO: Make name optional in the schema
     },
     address: createAssetDID(
       network,
