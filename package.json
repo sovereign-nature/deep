@@ -22,20 +22,21 @@
     ]
   },
   "devDependencies": {
-    "husky": "9.1.5",
-    "lint-staged": "15.2.9",
-    "turbo": "2.0.14",
-    "turbo-ignore": "2.0.14",
-    "prettier": "3.3.3",
-    "prettier-plugin-svelte": "3.2.6",
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
+    "checkly": "^4.8.1",
     "eslint": "8.57.0",
-    "eslint-plugin-svelte": "2.43.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-config-turbo": "2.0.14",
     "eslint-plugin-boundaries": "4.2.2",
     "eslint-plugin-import": "2.29.1",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-config-turbo": "2.0.14"
+    "eslint-plugin-svelte": "2.43.0",
+    "husky": "9.1.5",
+    "lint-staged": "15.2.9",
+    "prettier": "3.3.3",
+    "prettier-plugin-svelte": "3.2.6",
+    "turbo": "2.0.14",
+    "turbo-ignore": "2.0.14"
   },
   "engines": {
     "node": ">=20.0.0",
