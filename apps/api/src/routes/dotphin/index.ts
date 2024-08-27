@@ -1,10 +1,14 @@
-import { Hono } from 'hono';
 import { AccountTokensResponseSchema } from '@sni/clients/wallets-client/targets/unique/schemas';
 import { createAssetDID } from '@sni/address-utils';
+import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
+import {
+  ProfileParamsSchema as DotphinProfileParamsSchema,
+  DotphinProfileResponseSchema,
+} from './schemas';
 
-const app = new Hono();
+const app = new OpenAPIHono();
 
-async function getUsedProofs(address: string) {
+async function getProofsStats(address: string) {
   const result = await fetch(
     `https://rest.unique.network/unique/v1/tokens/account-tokens?address=${address}&collectionId=665`
   );
@@ -35,15 +39,34 @@ async function getDotphinAddress(address: string) {
   return createAssetDID(network, 'unique2', collectionId, dotphin.tokenId);
 }
 
-app.get('/:address', async (c) => {
-  const address = c.req.param('address');
+app.openapi(
+  createRoute({
+    method: 'get',
+    path: '/{address}',
+    request: {
+      params: DotphinProfileParamsSchema,
+    },
+    responses: {
+      200: {
+        content: {
+          'application/json': {
+            schema: DotphinProfileResponseSchema,
+          },
+        },
+        description: 'Get proofs stats and dotphin DID for an address',
+      },
+    },
+  }),
+  async (c) => {
+    const address = c.req.param('address');
 
-  const proofs = await getUsedProofs(address);
+    const proofs = await getProofsStats(address);
 
-  const dotphinDID = await getDotphinAddress(address);
+    const dotphinDID = await getDotphinAddress(address);
 
-  return c.json({ address, proofs, dotphinDID });
-});
+    return c.json({ address, proofs, dotphinDID });
+  }
+);
 
 //TODO: Replace with wallet call?
 app.get('/:address/proofs', (c) => {
