@@ -70,14 +70,6 @@ app.openapi(
   }
 );
 
-//TODO: Replace with wallet call?
-app.get('/:address/proofs', (c) => {
-  const address = c.req.param('address');
-
-  //TODO: Return proofs or available proofs with url param
-  return c.json({ address });
-});
-
 app.openapi(
   createRoute({
     method: 'post',
