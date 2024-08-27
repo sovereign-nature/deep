@@ -7,9 +7,10 @@ export type DeepAsset = {
   animation_url?: string;
   collection: {
     id: string; //TODO: Stores collection address. Do we need to name it id? Rename to contractAddress or collectionAddress?
-    name: string; //TODO: Do we need name?
-    //TODO: Optional collection description?
+    name?: string;
+    description?: string;
   };
+  attributes?: Array<{ trait_type: string; value: string }>;
   multipass?: {
     name: string;
     infoLink: string | undefined;
