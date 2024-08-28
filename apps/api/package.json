@@ -37,7 +37,7 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "0.4.25",
+    "@cloudflare/vitest-pool-workers": "0.4.26",
     "@cloudflare/workers-types": "4.20240821.1",
     "drizzle-kit": "0.24.2",
     "env-cmd": "10.1.0",
