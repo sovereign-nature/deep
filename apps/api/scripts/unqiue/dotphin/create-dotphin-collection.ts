@@ -20,6 +20,7 @@ const createCollection = async (sdk: Sdk): Promise<number> => {
     description: 'Your DOTphin avatar',
     symbol: 'DOTPHIN',
     cover_image: { url: IMAGE_URL },
+    limits: { accountTokenOwnershipLimit: 1 },
     potential_attributes: [
       { trait_type: 'level' },
       { trait_type: 'experience' },
