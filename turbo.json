@@ -15,7 +15,8 @@
         "SENTRY_AUTH_TOKEN",
         "FLAG_SHOW_DRAFT_NEWS",
         "PUBLIC_WEB3INBOX_ALL_APPS",
-        "PRIVATE_KEY"
+        "PRIVATE_KEY",
+        "WALLET_MNEMONIC"
       ],
       "outputs": [
         "artifacts/**",
