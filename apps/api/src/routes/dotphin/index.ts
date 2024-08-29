@@ -3,10 +3,11 @@ import { createAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
 import {
   ClaimBodySchema,
-  ClaimResponseSchema,
+  ClaimsParamsSchema,
   ProfileParamsSchema,
   ProfileResponseSchema,
 } from './schemas';
+import { CrossmintResponse } from '$lib/shared/schemas';
 
 const app = new OpenAPIHono();
 
@@ -81,7 +82,7 @@ app.openapi(
       200: {
         content: {
           'application/json': {
-            schema: ClaimResponseSchema,
+            schema: CrossmintResponse,
           },
         },
         description: 'Returns a claim token for the DOTphin',
@@ -89,7 +90,44 @@ app.openapi(
     },
   }),
   async (c) => {
-    return c.json({ token: '123', realCollection: '700' });
+    return c.json({
+      id: '123',
+      metadata: { image: 'image' },
+      onChain: {
+        status: 'pending',
+        chain: 'chain',
+        contractAddress: 'contractAddress',
+      },
+      actionId: '123',
+    });
+  }
+);
+
+app.openapi(
+  createRoute({
+    method: 'get',
+    path: '/claims/:id',
+    request: {
+      params: ClaimsParamsSchema,
+    },
+    responses: {
+      200: {
+        content: { 'application/json': { schema: CrossmintResponse } },
+        description: 'Returns claim status',
+      },
+    },
+  }),
+  async (c) => {
+    return c.json({
+      id: '123',
+      metadata: { image: 'image' },
+      onChain: {
+        status: 'completed',
+        chain: 'chain',
+        contractAddress: 'contractAddress',
+      },
+      actionId: '123',
+    });
   }
 );
 

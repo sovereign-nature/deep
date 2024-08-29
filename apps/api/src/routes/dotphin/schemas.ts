@@ -40,3 +40,10 @@ export const ClaimResponseSchema = z.object({
   token: z.string().openapi({ example: 'jwtToken' }),
   realCollection: z.string().openapi({ example: 'dotphin' }),
 });
+
+export const ClaimsParamsSchema = z.object({
+  id: z.string().openapi({
+    param: { name: 'id', in: 'path' },
+    example: 'hK4lpasd',
+  }),
+});
