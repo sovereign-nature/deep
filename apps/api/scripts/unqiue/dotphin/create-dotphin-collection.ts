@@ -17,20 +17,14 @@ const getLinkToCollection = (sdk: Sdk, collectionId: number) => {
 const createCollection = async (sdk: Sdk): Promise<number> => {
   const collectionCreationResult = await sdk.collection.createV2({
     name: 'DOTphin',
-    description:
-      'Embark on a trailblazing journey with the DOTphin Proofs collection – your gateway to evolving your DOTphin NFT.',
+    description: 'Your DOTphin avatar',
     symbol: 'DOTPHIN',
     cover_image: { url: IMAGE_URL },
     potential_attributes: [
-      { trait_type: 'element', values: ['air', 'earth', 'water'] },
-      { trait_type: 'eventId' },
-      { trait_type: 'eventURL' },
-      { trait_type: 'country' },
-      { trait_type: 'city' },
-      { trait_type: 'virtualEvent' },
-      { trait_type: 'startDate' },
-      { trait_type: 'endDate' },
-      { trait_type: 'proofOf' },
+      { trait_type: 'level' },
+      { trait_type: 'experience' },
+      { trait_type: 'proofs' },
+      { trait_type: 'name' },
     ],
   });
 
