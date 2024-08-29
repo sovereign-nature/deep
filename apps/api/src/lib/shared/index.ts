@@ -1,7 +1,7 @@
 //TODO: Should it be renamed?
 
 import { Context } from 'hono';
-import { logger } from './logger';
+import { logger } from '../logger';
 
 export function errorResponse(e: unknown, c: Context) {
   if (e instanceof Error) {
