@@ -39,12 +39,13 @@
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "0.4.26",
     "@cloudflare/workers-types": "4.20240821.1",
+    "@vitest/runner": "1.5.3",
+    "@vitest/snapshot": "1.5.3",
+    "dotenv": "16.4.5",
     "drizzle-kit": "0.24.2",
     "env-cmd": "10.1.0",
     "vite-tsconfig-paths": "5.0.1",
     "vitest": "1.5.3",
-    "@vitest/runner": "1.5.3",
-    "@vitest/snapshot": "1.5.3",
     "wrangler": "3.71.0"
   }
 }

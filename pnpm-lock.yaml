@@ -135,6 +135,9 @@ importers:
       '@vitest/snapshot':
         specifier: 1.5.3
         version: 1.5.3
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
       drizzle-kit:
         specifier: 0.24.2
         version: 0.24.2
