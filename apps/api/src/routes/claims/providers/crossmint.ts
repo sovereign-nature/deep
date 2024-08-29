@@ -3,7 +3,7 @@ import { env } from 'hono/adapter';
 import { getChainId } from '@sni/address-utils';
 import { CollectionConfig } from '../config';
 import { Payload } from '../types';
-import { CrossmintResponse } from '../schemas';
+import { CrossmintResponse } from '$lib/shared/schemas';
 
 export async function mintOptimismToken(
   address: string,
