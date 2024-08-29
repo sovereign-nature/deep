@@ -10,7 +10,7 @@ const NETWORK: 'opal' | 'unique' = 'opal';
 const IMAGE_URL =
   'https://real.myfilebase.com/ipfs/QmVQgYDk7655Tu2nKtbky4pcJV34Kg4NDrVW48jYJZTasC';
 
-const COLLECTION_ID = 3019;
+const COLLECTION_ID = 3707;
 
 const getLinkToToken = (sdk: Sdk, collectionId: number, tokenId: number) => {
   return `${sdk.options.baseUrl}/tokens/v2?collectionId=${collectionId}&tokenId=${tokenId}`;
@@ -21,10 +21,18 @@ const mintTokens = async (sdk: Sdk, collectionId: number) => {
     collectionId,
     tokens: [
       {
-        owner: '0xB8A976Ad1d87D070b5E5806B98A768B4BB4E4847',
-        name: 'demo token',
+        owner: '0xB8A976Ad1d87D070b5E5806B98A768B4BB4E4849',
+        name: 'DOTphin #1',
         image: IMAGE_URL,
-        attributes: [{ trait_type: 'color', value: 'YElLLow' }],
+        attributes: [
+          { trait_type: 'level', value: 1 },
+          { trait_type: 'experience', value: 0 },
+          {
+            trait_type: 'proofs',
+            value: 'did:asset:eip155:8880.unique2:665:12',
+          },
+          { trait_type: 'name', value: 'DOTphin' },
+        ],
       },
     ],
   });
