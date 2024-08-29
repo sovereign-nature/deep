@@ -1,9 +1,8 @@
 import { sign } from 'hono/jwt';
 import { nanoid } from 'nanoid';
 
-//TODO: Make REAL collection optional, so just claim works
 export async function createClaimLink(
-  config: { collectionId: string; seed: number; realCollection: string },
+  config: { collectionId: string; seed: number; realCollection?: string },
   secret: string
 ) {
   const token = await sign(
@@ -16,5 +15,9 @@ export async function createClaimLink(
     'HS256'
   );
 
-  return `https://real.sovereignnature.com/?q=${config.realCollection}&claim=${token}`;
+  const collectionUrlParam = config.realCollection
+    ? `q=${config.realCollection}&`
+    : '';
+
+  return `https://real.sovereignnature.com/?${collectionUrlParam}claim=${token}`;
 }
