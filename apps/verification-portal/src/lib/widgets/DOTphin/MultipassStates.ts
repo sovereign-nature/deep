@@ -1,40 +1,20 @@
-import { writable } from 'svelte/store';
+import { writable, derived } from 'svelte/store';
 export type Status = 'locked' | 'active' | 'complete';
 
-export const STATUS: { LOCKED: Status; ACTIVE: Status; COMPLETE: Status } = {
-  LOCKED: 'locked',
-  ACTIVE: 'active',
-  COMPLETE: 'complete',
-};
-const MAX_EVOLUTION_LEVEL = 7;
+// Define the StepState types
+type ProofStepState =
+  | 'LOGGED_OUT'
+  | 'NO_PROOFS'
+  | 'HAS_PROOFS'
+  | 'HAS_AVAILABLE_PROOFS';
+type NftStepState = 'CLAIMED' | 'UNCLAIMED';
+type EvolveStepState = 'INITIAL' | 'EVOLVING' | 'COMPLETE';
 
-// Initial state
-const initialState: MultipassState = {
-  isLoggedIn: false,
-  proofs: {
-    proofCount: 0,
-    unusedProofCount: 0,
-    status: STATUS.ACTIVE as Status, // 'active' since Proof step should always be active if not logged in
-  },
-  nft: {
-    claimed: false,
-    DID: '',
-    status: STATUS.LOCKED as Status,
-    disabled: false,
-  },
-  evolution: {
-    level: 0,
-    status: STATUS.LOCKED as Status,
-    disabled: false,
-  },
-};
-
-//
 type MultipassState = {
   isLoggedIn: boolean;
   proofs: {
     proofCount: number;
-    unusedProofCount: number;
+    availableProofCount: number;
     status: Status;
   };
   nft: {
@@ -48,10 +28,77 @@ type MultipassState = {
     status: Status;
     disabled: boolean;
   };
+  // keep step states separate from properties to allow for custom/additional step cards
+  proofStepState: ProofStepState;
+  nftStepState: NftStepState;
+  evolveStepState: EvolveStepState;
+};
+
+export const STATUS: { LOCKED: Status; ACTIVE: Status; COMPLETE: Status } = {
+  LOCKED: 'locked',
+  ACTIVE: 'active',
+  COMPLETE: 'complete',
+};
+const MAX_EVOLUTION_LEVEL = 7;
+
+// Initial state
+const initialState: MultipassState = {
+  isLoggedIn: false,
+  proofs: {
+    proofCount: 0,
+    availableProofCount: 0,
+    status: STATUS.ACTIVE as Status, // 'active' since Proof step should always be active if not logged in
+  },
+  nft: {
+    claimed: false,
+    DID: '',
+    status: STATUS.LOCKED as Status,
+    disabled: false,
+  },
+  evolution: {
+    level: 0,
+    status: STATUS.LOCKED as Status,
+    disabled: false,
+  },
+  proofStepState: 'LOGGED_OUT', //computed
+  nftStepState: 'UNCLAIMED', //computed
+  evolveStepState: 'INITIAL', //computed
 };
 
 // Svelte store to hold the app state
 export const state = writable<MultipassState>(initialState);
+
+// Derived store to compute the proof step state
+export const proofStepState = derived(state, ($state) => {
+  if (!$state.isLoggedIn) {
+    return 'LOGGED_OUT';
+  } else if ($state.proofs.proofCount === 0) {
+    return 'NO_PROOFS';
+  } else if (
+    $state.proofs.availableProofCount > 0 &&
+    $state.evolution.level >= MAX_EVOLUTION_LEVEL
+  ) {
+    return 'HAS_AVAILABLE_PROOFS';
+  } else {
+    return 'HAS_PROOFS';
+  }
+});
+
+// Derived store to compute the NFT step state
+export const nftStepState = derived(state, ($state) => {
+  return $state.nft.claimed ? 'CLAIMED' : 'UNCLAIMED';
+});
+
+// Derived store to compute the evolve step state
+export const evolveStepState = derived(state, ($state) => {
+  if ($state.evolution.level === 0) {
+    return 'INITIAL';
+  } else if ($state.evolution.level >= MAX_EVOLUTION_LEVEL) {
+    return 'COMPLETE';
+  } else {
+    return 'EVOLVING';
+  }
+});
 
 // Function to compute derived states based on the current state
 function computeDerivedState(currentState: MultipassState): MultipassState {
@@ -60,7 +107,7 @@ function computeDerivedState(currentState: MultipassState): MultipassState {
   // Proof Step Logic
   if (newState.isLoggedIn) {
     newState.proofs.status =
-      newState.proofs.unusedProofCount > 0 ? STATUS.COMPLETE : STATUS.ACTIVE;
+      newState.proofs.availableProofCount > 0 ? STATUS.COMPLETE : STATUS.ACTIVE;
   } else {
     newState.proofs.status = STATUS.ACTIVE; // Proof is always active when not logged in
   }
@@ -82,7 +129,7 @@ function computeDerivedState(currentState: MultipassState): MultipassState {
   if (
     !newState.isLoggedIn ||
     newState.evolution.disabled ||
-    newState.proofs.unusedProofCount <= 0 ||
+    newState.proofs.availableProofCount <= 0 ||
     !newState.nft.claimed
   ) {
     newState.evolution.status = STATUS.LOCKED;

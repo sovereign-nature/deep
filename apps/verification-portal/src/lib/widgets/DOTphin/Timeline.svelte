@@ -1,10 +1,10 @@
 <script lang="ts">
-  import EvolutionCard from './Steps/CardEvolution.svelte';
-  import ProofCard from './Steps/CardProof.svelte';
-  import NFTCard from './Steps/CardNFT.svelte';
+  import EvolutionCard from '$lib/widgets/DOTphin/Steps/CardEvolution.svelte';
+  import ProofCard from '$lib/widgets/DOTphin/Steps/CardProof.svelte';
+  import NFTCard from '$lib/widgets/DOTphin/Steps/CardNFT.svelte';
   import { Timeline } from 'flowbite-svelte';
 
-  import { state } from './MultipassStates';
+  import { state } from '$lib/widgets/DOTphin/MultipassStates';
   export let order: 'horizontal' | 'vertical' = 'horizontal';
 </script>
 
