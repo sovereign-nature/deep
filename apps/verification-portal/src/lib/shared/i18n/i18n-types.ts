@@ -442,177 +442,119 @@ type RootTranslation = {
 	}
 	multipass: {
 		state: {
-			notAuthorized: {
+			proofStep: {
 				/**
-				 * L​o​g​ ​i​n​ ​t​o​ ​s​e​e​ ​y​o​u​r​ ​{​c​o​l​l​e​c​t​i​o​n​}​ ​A​t​t​e​n​d​a​n​c​e​ ​P​r​o​o​f​s
-				 * @param {string} collection
+				 * P​r​o​o​f​s
 				 */
-				header: RequiredParams<'collection'>
-				/**
-				 * Y​o​u​ ​n​e​e​d​ ​t​o​ ​b​e​ ​l​o​g​g​e​d​ ​i​n​ ​t​o​ ​a​c​c​e​s​s​ ​y​o​u​r​ ​A​t​t​e​n​d​a​n​c​e​ ​P​r​o​o​f​s​.
-				 */
-				content: string
-				/**
-				 * L​o​g​ ​I​n
-				 */
-				cta: string
-				/**
-				 * L​e​a​r​n​ ​m​o​r​e​ ​a​b​o​u​t​ ​A​t​t​e​n​d​a​n​c​e​ ​P​r​o​o​f​s
-				 */
-				moreInfo: string
-			}
-			noProof: {
-				/**
-				 * {​c​o​l​l​e​c​t​i​o​n​}​ ​A​t​t​e​n​d​a​n​c​e​ ​P​r​o​o​f​s​ ​R​e​q​u​i​r​e​d
-				 * @param {string} collection
-				 */
-				title: RequiredParams<'collection'>
-				/**
-				 * Y​o​u​ ​c​u​r​r​e​n​t​l​y​ ​h​a​v​e​ ​n​o​ ​A​t​t​e​n​d​a​n​c​e​ ​P​r​o​o​f​s​.
-				 */
-				content: string
-				/**
-				 * H​o​w​ ​t​o​ ​g​e​t​ ​p​r​o​o​f​s​?
-				 */
-				cta: string
-				/**
-				 * L​e​a​r​n​ ​m​o​r​e​ ​a​b​o​u​t​ ​A​t​t​e​n​d​a​n​c​e​ ​P​r​o​o​f​s
-				 */
-				moreInfo: string
-				complete: {
+				stepTitle: string
+				LOGGED_OUT: {
 					/**
-					 * Y​o​u​ ​h​a​v​e​ ​u​s​e​d​ ​{​c​o​u​n​t​}​ ​D​O​T​p​h​i​n​ ​p​r​o​o​f​s
-					 * @param {number} count
+					 * L​o​g​-​i​n​ ​t​o​ ​s​e​e​ ​y​o​u​r​ ​p​r​o​o​f​s
 					 */
-					header: RequiredParams<'count'>
+					subtitle: string
 					/**
-					 * Y​o​u​r​ ​p​r​o​o​f​s​ ​h​a​v​e​ ​b​e​e​n​ ​u​s​e​d​ ​t​o​ ​u​n​l​o​c​k​ ​r​e​w​a​r​d​s​.
-					 */
-					content: string
-					/**
-					 * S​e​e​ ​a​l​l​ ​y​o​u​r​ ​p​r​o​o​f​s
+					 * L​e​a​r​n​ ​m​o​r​e​ ​a​b​o​u​t​ ​A​t​t​e​n​d​a​n​c​e​ ​P​r​o​o​f​s
 					 */
 					moreInfo: string
-					locked: {
-						/**
-						 * P​r​o​o​f​ ​R​e​q​u​i​r​e​d​ ​t​o​ ​E​v​o​l​v​e​ ​N​F​T
-						 */
-						header: string
-						/**
-						 * G​e​t​ ​m​o​r​e​ ​u​n​u​s​e​d​ ​p​r​o​o​f​s​ ​t​o​ ​e​v​o​l​v​e​ ​y​o​u​r​ ​N​F​T​.
-						 */
-						content: string
-						/**
-						 * E​v​o​l​v​e​ ​t​h​e​ ​E​g​g
-						 */
-						cta: string
-						/**
-						 * U​p​c​o​m​i​n​g​ ​E​v​e​n​t​s
-						 */
-						moreInfo: string
-					}
 				}
-			}
-			unlock: {
-				complete: {
+				NO_PROOFS: {
 					/**
-					 * Y​o​u​ ​o​w​n​ ​{​c​o​u​n​t​}​ ​D​O​T​p​h​i​n​ ​p​r​o​o​f​s
+					 * {​c​o​l​l​e​c​t​i​o​n​}​ ​A​t​t​e​n​d​a​n​c​e​ ​P​r​o​o​f​s​ ​R​e​q​u​i​r​e​d
+					 * @param {unknown} collection
+					 */
+					title: RequiredParams<'collection'>
+					/**
+					 * Y​o​u​ ​c​u​r​r​e​n​t​l​y​ ​h​a​v​e​ ​n​o​ ​A​t​t​e​n​d​a​n​c​e​ ​P​r​o​o​f​s​.
+					 */
+					subtitle: string
+					/**
+					 * H​o​w​ ​t​o​ ​g​e​t​ ​p​r​o​o​f​s​?
+					 */
+					cta: string
+					/**
+					 * L​e​a​r​n​ ​m​o​r​e​ ​a​b​o​u​t​ ​A​t​t​e​n​d​a​n​c​e​ ​P​r​o​o​f​s
+					 */
+					moreInfo: string
+				}
+				HAS_AVAILABLE_PROOFS: {
+					/**
+					 * Y​o​u​ ​h​a​v​e​ ​<​>​{​c​o​u​n​t​}​<​>​ ​u​n​u​s​e​d​ ​D​O​T​p​h​i​n​ ​p​r​o​o​f​{​{​s​}​}
 					 * @param {number} count
 					 */
-					header: RequiredParams<'count'>
+					title: RequiredParams<'count'>
 					/**
-					 * Y​o​u​ ​c​a​n​ ​u​s​e​ ​y​o​u​r​ ​p​r​o​o​f​s​ ​t​o​ ​u​n​l​o​c​k​ ​r​e​w​a​r​d​s​.
+					 * Y​o​u​ ​h​a​v​e​ ​a​ ​t​o​t​a​l​ ​o​f​ ​{​c​o​u​n​t​}​ ​{​c​o​l​l​e​c​t​i​o​n​}​ ​p​r​o​o​f​{​{​s​}​}
+					 * @param {string} collection
+					 * @param {string | number | boolean} count
 					 */
-					content: string
+					subtitle: RequiredParams<'collection' | 'count'>
 					/**
 					 * S​e​e​ ​a​l​l​ ​y​o​u​r​ ​p​r​o​o​f​s
 					 */
 					moreInfo: string
 				}
+				NO_AVAILABLE_PROOFS: {
+					/**
+					 * Y​o​u​ ​h​a​v​e​ ​n​o​ ​u​n​u​s​e​d​ ​{​c​o​l​l​e​c​t​i​o​n​}​ ​ ​p​r​o​o​f​s
+					 * @param {unknown} collection
+					 */
+					title: RequiredParams<'collection'>
+				}
 			}
-			evolve: {
-				complete: {
+			nftStep: {
+				/**
+				 * N​F​T
+				 */
+				stepTitle: string
+				UNCLAIMED: {
 					/**
-					 * Y​o​u​ ​h​a​v​e​ ​u​s​e​d​ ​{​c​o​u​n​t​}​ ​D​O​T​p​h​i​n​ ​p​r​o​o​f​s
-					 * @param {number} count
+					 * U​s​e​ ​y​o​u​r​ ​p​r​o​o​f​s​ ​t​o​ ​u​n​l​o​c​k​ ​t​h​e​ ​D​O​T​p​h​i​n​.
 					 */
-					header: RequiredParams<'count'>
+					subtitle: string
 					/**
-					 * Y​o​u​r​ ​p​r​o​o​f​s​ ​h​a​v​e​ ​b​e​e​n​ ​u​s​e​d​ ​t​o​ ​u​n​l​o​c​k​ ​r​e​w​a​r​d​s​.
+					 * C​o​l​l​e​c​t​ ​t​h​e​ ​O​r​b
 					 */
-					content: string
+					cta: string
+				}
+				CLAIMED: {
+				}
+			}
+			evolveStep: {
+				/**
+				 * E​v​o​l​v​e
+				 */
+				stepTitle: string
+				INITIAL: {
 					/**
-					 * S​e​e​ ​a​l​l​ ​y​o​u​r​ ​p​r​o​o​f​s
+					 * Y​o​u​ ​n​e​e​d​ ​t​o​ ​h​a​v​e​ ​a​n​ ​N​F​T​ ​t​o​ ​s​t​a​r​t​ ​e​v​o​l​v​i​n​g
+					 */
+					subtitle: string
+					/**
+					 * E​v​o​l​v​e
+					 */
+					cta: string
+					/**
+					 * R​e​a​d​ ​m​o​r​e
 					 */
 					moreInfo: string
 				}
-			}
-			multipassNFT: {
-				locked: {
+				EVOLVING: {
 					/**
-					 * U​n​l​o​c​k​ ​y​o​u​r​ ​D​O​T​p​h​i​n​ ​E​g​g
+					 * E​v​o​l​u​t​i​o​n​ ​l​e​v​e​l​ ​{​l​e​v​e​l​}​/​{​m​a​x​L​e​v​e​l​}
+					 * @param {unknown} level
+					 * @param {unknown} maxLevel
 					 */
-					header: string
-					/**
-					 * U​s​e​ ​y​o​u​r​ ​p​r​o​o​f​s​ ​t​o​ ​u​n​l​o​c​k​ ​t​h​e​ ​E​g​g​.
-					 */
-					content: string
-					/**
-					 * U​n​l​o​c​k​ ​t​h​e​ ​E​g​g
-					 */
-					cta: string
+					subtitle: RequiredParams<'level' | 'maxLevel'>
 				}
-				unlock: {
+				COMPLETE: {
 					/**
-					 * U​n​l​o​c​k​ ​y​o​u​r​ ​D​O​T​p​h​i​n​ ​E​g​g
+					 * C​o​n​g​r​a​t​u​l​a​t​i​o​n​,​ ​y​o​u​ ​h​a​v​e​ ​c​o​m​p​l​e​t​e​d​ ​y​o​u​r​ ​D​O​T​p​h​i​n
 					 */
-					header: string
+					title: string
 					/**
-					 * Y​o​u​ ​c​a​n​ ​n​o​w​ ​u​n​l​o​c​k​ ​y​o​u​r​ ​E​g​g​ ​u​s​i​n​g​ ​y​o​u​r​ ​p​r​o​o​f​s​.
+					 * Y​o​u​r​ ​N​F​T​ ​h​a​s​ ​r​e​a​c​h​e​d​ ​i​t​s​ ​m​a​x​i​m​u​m​ ​e​v​o​l​u​t​i​o​n​ ​l​e​v​e​l
 					 */
-					content: string
-					/**
-					 * U​n​l​o​c​k​ ​t​h​e​ ​E​g​g
-					 */
-					cta: string
-				}
-			}
-			evolveNFT: {
-				locked: {
-					/**
-					 * E​v​o​l​v​e​ ​y​o​u​r​ ​D​O​T​p​h​i​n​ ​E​g​g
-					 */
-					header: string
-					/**
-					 * Y​o​u​ ​n​e​e​d​ ​m​o​r​e​ ​p​r​o​o​f​s​ ​t​o​ ​e​v​o​l​v​e​ ​y​o​u​r​ ​N​F​T​.
-					 */
-					content: string
-					/**
-					 * E​v​o​l​v​e​ ​t​h​e​ ​E​g​g
-					 */
-					cta: string
-					/**
-					 * L​e​a​r​n​ ​m​o​r​e​ ​a​b​o​u​t​ ​e​v​o​l​v​i​n​g​ ​y​o​u​r​ ​E​g​g
-					 */
-					moreInfo: string
-				}
-				active: {
-					/**
-					 * E​v​o​l​v​e​ ​y​o​u​r​ ​D​O​T​p​h​i​n​ ​E​g​g
-					 */
-					header: string
-					/**
-					 * Y​o​u​ ​c​a​n​ ​n​o​w​ ​e​v​o​l​v​e​ ​y​o​u​r​ ​E​g​g​ ​u​s​i​n​g​ ​y​o​u​r​ ​p​r​o​o​f​s​.
-					 */
-					content: string
-					/**
-					 * E​v​o​l​v​e​ ​t​h​e​ ​E​g​g
-					 */
-					cta: string
-					/**
-					 * L​e​a​r​n​ ​m​o​r​e​ ​a​b​o​u​t​ ​e​v​o​l​v​i​n​g​ ​y​o​u​r​ ​E​g​g
-					 */
-					moreInfo: string
+					subtitle: string
 				}
 			}
 		}
@@ -1158,172 +1100,112 @@ export type TranslationFunctions = {
 	}
 	multipass: {
 		state: {
-			notAuthorized: {
+			proofStep: {
 				/**
-				 * Log in to see your {collection} Attendance Proofs
+				 * Proofs
 				 */
-				header: (arg: { collection: string }) => LocalizedString
-				/**
-				 * You need to be logged in to access your Attendance Proofs.
-				 */
-				content: () => LocalizedString
-				/**
-				 * Log In
-				 */
-				cta: () => LocalizedString
-				/**
-				 * Learn more about Attendance Proofs
-				 */
-				moreInfo: () => LocalizedString
-			}
-			noProof: {
-				/**
-				 * {collection} Attendance Proofs Required
-				 */
-				title: (arg: { collection: string }) => LocalizedString
-				/**
-				 * You currently have no Attendance Proofs.
-				 */
-				content: () => LocalizedString
-				/**
-				 * How to get proofs?
-				 */
-				cta: () => LocalizedString
-				/**
-				 * Learn more about Attendance Proofs
-				 */
-				moreInfo: () => LocalizedString
-				complete: {
+				stepTitle: () => LocalizedString
+				LOGGED_OUT: {
 					/**
-					 * You have used {count} DOTphin proofs
+					 * Log-in to see your proofs
 					 */
-					header: (arg: { count: number }) => LocalizedString
+					subtitle: () => LocalizedString
 					/**
-					 * Your proofs have been used to unlock rewards.
-					 */
-					content: () => LocalizedString
-					/**
-					 * See all your proofs
+					 * Learn more about Attendance Proofs
 					 */
 					moreInfo: () => LocalizedString
-					locked: {
-						/**
-						 * Proof Required to Evolve NFT
-						 */
-						header: () => LocalizedString
-						/**
-						 * Get more unused proofs to evolve your NFT.
-						 */
-						content: () => LocalizedString
-						/**
-						 * Evolve the Egg
-						 */
-						cta: () => LocalizedString
-						/**
-						 * Upcoming Events
-						 */
-						moreInfo: () => LocalizedString
-					}
 				}
-			}
-			unlock: {
-				complete: {
+				NO_PROOFS: {
 					/**
-					 * You own {count} DOTphin proofs
+					 * {collection} Attendance Proofs Required
 					 */
-					header: (arg: { count: number }) => LocalizedString
+					title: (arg: { collection: unknown }) => LocalizedString
 					/**
-					 * You can use your proofs to unlock rewards.
+					 * You currently have no Attendance Proofs.
 					 */
-					content: () => LocalizedString
+					subtitle: () => LocalizedString
+					/**
+					 * How to get proofs?
+					 */
+					cta: () => LocalizedString
+					/**
+					 * Learn more about Attendance Proofs
+					 */
+					moreInfo: () => LocalizedString
+				}
+				HAS_AVAILABLE_PROOFS: {
+					/**
+					 * You have <>{count}<> unused DOTphin proof{{s}}
+					 */
+					title: (arg: { count: number }) => LocalizedString
+					/**
+					 * You have a total of {count} {collection} proof{{s}}
+					 */
+					subtitle: (arg: { collection: string, count: string | number | boolean }) => LocalizedString
 					/**
 					 * See all your proofs
 					 */
 					moreInfo: () => LocalizedString
 				}
+				NO_AVAILABLE_PROOFS: {
+					/**
+					 * You have no unused {collection}  proofs
+					 */
+					title: (arg: { collection: unknown }) => LocalizedString
+				}
 			}
-			evolve: {
-				complete: {
+			nftStep: {
+				/**
+				 * NFT
+				 */
+				stepTitle: () => LocalizedString
+				UNCLAIMED: {
 					/**
-					 * You have used {count} DOTphin proofs
+					 * Use your proofs to unlock the DOTphin.
 					 */
-					header: (arg: { count: number }) => LocalizedString
+					subtitle: () => LocalizedString
 					/**
-					 * Your proofs have been used to unlock rewards.
+					 * Collect the Orb
 					 */
-					content: () => LocalizedString
+					cta: () => LocalizedString
+				}
+				CLAIMED: {
+				}
+			}
+			evolveStep: {
+				/**
+				 * Evolve
+				 */
+				stepTitle: () => LocalizedString
+				INITIAL: {
 					/**
-					 * See all your proofs
+					 * You need to have an NFT to start evolving
+					 */
+					subtitle: () => LocalizedString
+					/**
+					 * Evolve
+					 */
+					cta: () => LocalizedString
+					/**
+					 * Read more
 					 */
 					moreInfo: () => LocalizedString
 				}
-			}
-			multipassNFT: {
-				locked: {
+				EVOLVING: {
 					/**
-					 * Unlock your DOTphin Egg
+					 * Evolution level {level}/{maxLevel}
 					 */
-					header: () => LocalizedString
-					/**
-					 * Use your proofs to unlock the Egg.
-					 */
-					content: () => LocalizedString
-					/**
-					 * Unlock the Egg
-					 */
-					cta: () => LocalizedString
+					subtitle: (arg: { level: unknown, maxLevel: unknown }) => LocalizedString
 				}
-				unlock: {
+				COMPLETE: {
 					/**
-					 * Unlock your DOTphin Egg
+					 * Congratulation, you have completed your DOTphin
 					 */
-					header: () => LocalizedString
+					title: () => LocalizedString
 					/**
-					 * You can now unlock your Egg using your proofs.
+					 * Your NFT has reached its maximum evolution level
 					 */
-					content: () => LocalizedString
-					/**
-					 * Unlock the Egg
-					 */
-					cta: () => LocalizedString
-				}
-			}
-			evolveNFT: {
-				locked: {
-					/**
-					 * Evolve your DOTphin Egg
-					 */
-					header: () => LocalizedString
-					/**
-					 * You need more proofs to evolve your NFT.
-					 */
-					content: () => LocalizedString
-					/**
-					 * Evolve the Egg
-					 */
-					cta: () => LocalizedString
-					/**
-					 * Learn more about evolving your Egg
-					 */
-					moreInfo: () => LocalizedString
-				}
-				active: {
-					/**
-					 * Evolve your DOTphin Egg
-					 */
-					header: () => LocalizedString
-					/**
-					 * You can now evolve your Egg using your proofs.
-					 */
-					content: () => LocalizedString
-					/**
-					 * Evolve the Egg
-					 */
-					cta: () => LocalizedString
-					/**
-					 * Learn more about evolving your Egg
-					 */
-					moreInfo: () => LocalizedString
+					subtitle: () => LocalizedString
 				}
 			}
 		}

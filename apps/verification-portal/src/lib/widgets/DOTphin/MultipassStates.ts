@@ -5,8 +5,8 @@ export type Status = 'locked' | 'active' | 'complete';
 type ProofStepState =
   | 'LOGGED_OUT'
   | 'NO_PROOFS'
-  | 'HAS_PROOFS'
-  | 'HAS_AVAILABLE_PROOFS';
+  | 'HAS_AVAILABLE_PROOFS'
+  | 'NO_AVAILABLE_PROOFS';
 type NftStepState = 'CLAIMED' | 'UNCLAIMED';
 type EvolveStepState = 'INITIAL' | 'EVOLVING' | 'COMPLETE';
 
@@ -39,7 +39,7 @@ export const STATUS: { LOCKED: Status; ACTIVE: Status; COMPLETE: Status } = {
   ACTIVE: 'active',
   COMPLETE: 'complete',
 };
-const MAX_EVOLUTION_LEVEL = 7;
+export const MAX_EVOLUTION_LEVEL = 7;
 
 // Initial state
 const initialState: MultipassState = {
@@ -74,13 +74,10 @@ export const proofStepState = derived(state, ($state) => {
     return 'LOGGED_OUT';
   } else if ($state.proofs.proofCount === 0) {
     return 'NO_PROOFS';
-  } else if (
-    $state.proofs.availableProofCount > 0 &&
-    $state.evolution.level >= MAX_EVOLUTION_LEVEL
-  ) {
+  } else if ($state.proofs.availableProofCount > 0) {
     return 'HAS_AVAILABLE_PROOFS';
   } else {
-    return 'HAS_PROOFS';
+    return 'NO_AVAILABLE_PROOFS';
   }
 });
 
@@ -107,7 +104,10 @@ function computeDerivedState(currentState: MultipassState): MultipassState {
   // Proof Step Logic
   if (newState.isLoggedIn) {
     newState.proofs.status =
-      newState.proofs.availableProofCount > 0 ? STATUS.COMPLETE : STATUS.ACTIVE;
+      newState.proofs.availableProofCount > 0 ||
+      newState.evolution.level >= MAX_EVOLUTION_LEVEL
+        ? STATUS.COMPLETE
+        : STATUS.ACTIVE;
   } else {
     newState.proofs.status = STATUS.ACTIVE; // Proof is always active when not logged in
   }

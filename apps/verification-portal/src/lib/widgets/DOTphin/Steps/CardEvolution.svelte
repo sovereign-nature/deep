@@ -1,29 +1,47 @@
 <script lang="ts">
-  import { state, evolveStepState } from '$lib/widgets/DOTphin/MultipassStates';
+  import {
+    state,
+    evolveStepState,
+    MAX_EVOLUTION_LEVEL,
+  } from '$lib/widgets/DOTphin/MultipassStates';
   import TimelineItem from '$lib/widgets/DOTphin/TimelineItem/TimelineItem.svelte';
+  import TimelineActionButton from '$lib/widgets/DOTphin/TimelineItem/TimelineActionButton.svelte';
+  import CardSubtitle from '$lib/widgets/DOTphin/TimelineItem/Typography/Subtitle.svelte';
+  import CardTitle from '$lib/widgets/DOTphin/TimelineItem/Typography/Title.svelte';
+
   import { LL } from '$lib/shared/i18n/i18n-svelte';
 </script>
 
-<TimelineItem itemState={$state.evolution.status} stepTitle="Evolve" multiIcon>
+<TimelineItem
+  itemState={$state.evolution.status}
+  stepTitle={$LL.multipass.state.evolveStep.stepTitle()}
+  multiIcon
+>
   <svelte:fragment slot="header">
-    <button
-      type="button"
-      disabled
-      class="px-4 py-2 rounded-full whitespace-nowrap disabled:cursor-not-allowed drop-shadow-sm text-deep-green bg-gray-300 font-aeonik text-base"
-      >Evolve the Egg</button
-    >
+    {#if $evolveStepState === 'COMPLETE'}
+      <CardTitle content={$LL.multipass.state.evolveStep.COMPLETE.title()} />
+    {:else}
+      <TimelineActionButton
+        disabled={$state.evolution.status !== 'active'}
+        title={$LL.multipass.state.evolveStep.INITIAL.cta()}
+      />
+    {/if}
   </svelte:fragment>
   <svelte:fragment slot="content">
-    <div class="my-4 flex items-start flex-wrap gap-3">
-      <p
-        class=" text-sm font-normal text-gray-500 dark:text-gray-400 block w-full"
-      >
-        {$LL.multipass.state.evolve.complete}
-        {$evolveStepState}
-      </p>
-      <a href="https://sovereignnature.com/dotphin" class="text-xs text-primary"
-        >Read more</a
-      >
-    </div>
+    {#if $evolveStepState === 'INITIAL'}
+      <CardSubtitle content={$LL.multipass.state.evolveStep.INITIAL.subtitle()}
+      ></CardSubtitle>
+    {:else}
+      <CardSubtitle>
+        {$LL.multipass.state.evolveStep.EVOLVING.subtitle({
+          level: $state.evolution.level,
+          maxLevel: MAX_EVOLUTION_LEVEL,
+        })}
+      </CardSubtitle>
+    {/if}
+
+    <a href="https://sovereignnature.com/dotphin" class="text-xs text-primary"
+      >{$LL.multipass.state.evolveStep.INITIAL.moreInfo()}</a
+    >
   </svelte:fragment>
 </TimelineItem>

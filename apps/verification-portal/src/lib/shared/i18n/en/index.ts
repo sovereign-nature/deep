@@ -153,67 +153,50 @@ const en: BaseTranslation = {
   },
   multipass: {
     state: {
-      notAuthorized: {
-        header: `Log in to see your {collection: string} Attendance Proofs`,
-        content: 'You need to be logged in to access your Attendance Proofs.',
-        cta: 'Log In',
-        moreInfo: 'Learn more about Attendance Proofs',
-      },
-      noProof: {
-        title: `{collection: string} Attendance Proofs Required`,
-        content: 'You currently have no Attendance Proofs.',
-        cta: 'How to get proofs?',
-        moreInfo: 'Learn more about Attendance Proofs',
-        complete: {
-          header: `You have used {count: number} DOTphin proofs`,
-          content: 'Your proofs have been used to unlock rewards.',
-          moreInfo: 'See all your proofs',
-          locked: {
-            header: 'Proof Required to Evolve NFT',
-            content: 'Get more unused proofs to evolve your NFT.',
-            cta: 'Evolve the Egg',
-            moreInfo: 'Upcoming Events',
-          },
+      proofStep: {
+        stepTitle: 'Proofs',
+
+        LOGGED_OUT: {
+          subtitle: 'Log-in to see your proofs',
+          moreInfo: 'Learn more about Attendance Proofs',
         },
-      },
-      unlock: {
-        complete: {
-          header: `You own {count: number} DOTphin proofs`,
-          content: 'You can use your proofs to unlock rewards.',
+        NO_PROOFS: {
+          title: `{collection} Attendance Proofs Required`,
+          subtitle: 'You currently have no Attendance Proofs.',
+          cta: 'How to get proofs?',
+          moreInfo: 'Learn more about Attendance Proofs',
+        },
+        HAS_AVAILABLE_PROOFS: {
+          title: `You have <>{count:number}<> unused DOTphin proof{{count:s}}`,
+          subtitle:
+            'You have a total of {count} {collection:string} proof{{count:s}}',
           moreInfo: 'See all your proofs',
         },
-      },
-      evolve: {
-        complete: {
-          header: `You have used {count:number} DOTphin proofs`,
-          content: 'Your proofs have been used to unlock rewards.',
-          moreInfo: 'See all your proofs',
+        NO_AVAILABLE_PROOFS: {
+          title: `You have no unused {collection}  proofs`,
         },
       },
-      multipassNFT: {
-        locked: {
-          header: 'Unlock your DOTphin Egg',
-          content: 'Use your proofs to unlock the Egg.',
-          cta: 'Unlock the Egg',
+      nftStep: {
+        stepTitle: 'NFT',
+        UNCLAIMED: {
+          subtitle: 'Use your proofs to unlock the DOTphin.',
+          cta: 'Collect the Orb',
         },
-        unlock: {
-          header: 'Unlock your DOTphin Egg',
-          content: 'You can now unlock your Egg using your proofs.',
-          cta: 'Unlock the Egg',
-        },
+        CLAIMED: {},
       },
-      evolveNFT: {
-        locked: {
-          header: 'Evolve your DOTphin Egg',
-          content: 'You need more proofs to evolve your NFT.',
-          cta: 'Evolve the Egg',
-          moreInfo: 'Learn more about evolving your Egg',
+      evolveStep: {
+        stepTitle: 'Evolve',
+        INITIAL: {
+          subtitle: 'You need to have an NFT to start evolving',
+          cta: 'Evolve',
+          moreInfo: 'Read more',
         },
-        active: {
-          header: 'Evolve your DOTphin Egg',
-          content: 'You can now evolve your Egg using your proofs.',
-          cta: 'Evolve the Egg',
-          moreInfo: 'Learn more about evolving your Egg',
+        EVOLVING: {
+          subtitle: 'Evolution level {level}/{maxLevel}',
+        },
+        COMPLETE: {
+          title: 'Congratulation, you have completed your DOTphin',
+          subtitle: 'Your NFT has reached its maximum evolution level',
         },
       },
     },

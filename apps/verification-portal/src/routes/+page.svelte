@@ -6,7 +6,7 @@
   import CollectionsTabs from '$lib/widgets/CollectionTabs/CollectionTabs.svelte';
 
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import DoTphinTimelineWrapper from '$lib/widgets/DOTphin/DOTphinTimelineWrapper.svelte';
+  import DoTphinTimelineWrapper from '$lib/widgets/DOTphin/TimelineWrapper.svelte';
 
   export let data;
 </script>

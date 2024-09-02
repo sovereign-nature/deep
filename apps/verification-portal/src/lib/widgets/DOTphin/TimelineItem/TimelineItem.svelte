@@ -29,7 +29,7 @@
         <slot name="header"></slot>
       </div>
       <div
-        class="flex gap-3 self-start lg:self-center xl:self-auto my-4 sm:my-0 lg:my-4 xl:my-0"
+        class="flex gap-3 self-start lg:self-center xl:self-baseline my-4 sm:my-0 lg:my-4 xl:my-0"
       >
         {#if eggIcon}
           <HexagonEggIcon
@@ -48,6 +48,10 @@
         {/if}
       </div>
     </div>
-    <slot name="content"></slot>
+
+    <div class="my-4 flex items-start flex-wrap gap-3">
+      <slot name="content"></slot>
+    </div>
+    <slot name="body"></slot>
   </div>
 </TimelineItem>
