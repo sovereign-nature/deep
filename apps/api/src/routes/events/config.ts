@@ -36,4 +36,10 @@ export const events: Events = {
     seed: () => getRandomInt(0, 2),
     going: true,
   },
+  'decoded-asia-2024': {
+    collectionId: 'decoded-asia-2024',
+    realCollection: 'dotphin-proofs',
+    seed: () => getRandomInt(0, 2),
+    going: false,
+  },
 };
