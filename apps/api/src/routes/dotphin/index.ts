@@ -1,6 +1,9 @@
 import { AccountTokensResponseSchema } from '@sni/clients/wallets-client/targets/unique/schemas';
 import { createAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
+import { Context } from 'hono';
+import { DeepAsset } from '@sni/types';
+import walletsApp from '../wallets';
 import {
   ClaimBodySchema,
   ClaimsParamsSchema,
@@ -11,16 +14,41 @@ import { CrossmintResponse } from '$lib/shared/schemas';
 
 const app = new OpenAPIHono();
 
-async function getProofsStats(address: string) {
-  const result = await fetch(
-    `https://rest.unique.network/unique/v1/tokens/account-tokens?address=${address}&collectionId=665`
+//TODO: Move to wrangler config?
+const NETWORK: 'unique' | 'opal' = 'unique';
+const COLLECTION_ID = 665;
+
+const PROOFS_COLLECTION_DID = createAssetDID(NETWORK, 'unique2', COLLECTION_ID);
+
+function getAttributeValue(
+  attributes: { trait_type: string; value: string }[],
+  trait: string
+) {
+  const attribute = attributes.find((a) => a.trait_type === trait);
+
+  return attribute?.value;
+}
+
+async function getProofsStats(address: string, c: Context) {
+  const requestUrl = `/${address}?assetDID=${PROOFS_COLLECTION_DID}`;
+
+  const result = await walletsApp.request(
+    requestUrl,
+    c.req.raw,
+    c.env,
+    c.executionCtx
   );
-  const data = AccountTokensResponseSchema.parse(await result.json());
-  const total = data.tokens.length;
+
+  const data = (await result.json()) as DeepAsset[];
+
+  const total = data.length;
+  const used = data.filter((asset: DeepAsset) =>
+    Boolean(getAttributeValue(asset.attributes!, 'used'))
+  ).length;
 
   return {
     total,
-    used: total, //TODO: Get used from proofsCollection
+    used,
   };
 }
 
@@ -63,7 +91,7 @@ app.openapi(
   async (c) => {
     const address = c.req.param('address');
 
-    const proofs = await getProofsStats(address);
+    const proofs = await getProofsStats(address, c);
 
     const dotphinDID = await getDotphinAddress(address);
 
