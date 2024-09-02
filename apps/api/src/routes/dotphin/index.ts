@@ -129,6 +129,8 @@ app.openapi(
 
     console.log('Received claim request for ', address, proofDID);
 
+    //TODO: Check if user logged in
+
     //TODO: Check if proofDID is valid
     //TODO: Check if proofDID is not used
     //TODO: Check if user has DOTphin already
