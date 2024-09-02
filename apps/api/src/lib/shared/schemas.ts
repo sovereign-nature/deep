@@ -19,3 +19,8 @@ export const CrossmintResponse = z.object({
   }),
   actionId: z.string(),
 });
+
+export const ErrorSchema = z.object({
+  error: z.boolean(),
+  message: z.string(),
+});
