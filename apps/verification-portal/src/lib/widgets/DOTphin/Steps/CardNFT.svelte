@@ -45,7 +45,9 @@
     stepTitle={$LL.multipass.state.nftStep.stepTitle()}
   >
     <svelte:fragment slot="featured">
-      <FeaturedCard {item} />
+      <div class="max-h-[200px] mb-12">
+        <FeaturedCard {item} />
+      </div>
     </svelte:fragment>
   </TimelineItem>
 {/if}

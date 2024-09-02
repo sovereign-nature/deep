@@ -4,7 +4,7 @@
   import Timeline from '$lib/widgets/DOTphin/Timeline.svelte';
 </script>
 
-<div class="bg-gray-100 p-10 mb-2">
+<div class="bg-gray-100 dark:bg-transparent p-10 mb-2">
   <TestStateForm />
 </div>
 <div class="grid grid-cols-1 py-4 md:py-4 mx-4 md:mx-0 mb-16">

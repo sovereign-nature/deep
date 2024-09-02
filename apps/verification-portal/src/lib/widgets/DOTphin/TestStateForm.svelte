@@ -1,5 +1,11 @@
 <script lang="ts">
-  import { state, updateState } from './MultipassStates';
+  import {
+    state,
+    updateState,
+    proofStepState,
+    nftStepState,
+    evolveStepState,
+  } from './MultipassStates';
 
   // Function to handle login state toggle
   function toggleLogin() {
@@ -130,6 +136,10 @@
     <div class="mt-2">
       <span>Unused Proof Count: {$state.proofs.availableProofCount}</span>
     </div>
+    <div class="mt-2 flex flex-col">
+      <span>Proof Step Status: {$state.proofs.status}</span>
+      <span>Proof Step State: {$proofStepState}</span>
+    </div>
   </div>
 
   <!-- NFT URL -->
@@ -142,6 +152,10 @@
       on:change={updateNFTClaimed}
       disabled={$state.nft.status === 'locked'}
     />
+    <div class="mt-2 flex flex-col">
+      <span>NFT Step Status: {$state.nft.status}</span>
+      <span>NFT Step State: {$nftStepState}</span>
+    </div>
   </div>
 
   <!-- Evolution Level Counter -->
@@ -158,6 +172,10 @@
       class="border border-primary h-10 w-10"
       on:click={decrementEvolutionLevel}>-</button
     >
+    <div class="mt-2 flex flex-col">
+      <span>Evolution Step Status: {$state.evolution.status}</span>
+      <span>Evolution Step State: {$evolveStepState}</span>
+    </div>
   </div>
 </div>
 
