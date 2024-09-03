@@ -1,22 +1,25 @@
 <script lang="ts">
   /* eslint-disable */
   // TODO: fix linting issue
-  const currentYear = new Date().getFullYear();
-  const copyrightNotice = `© ${currentYear} SNI`;
-  import ArrowRight from '$lib/components/icons/ArrowRight.svelte';
+
+  import CONFIGS from '$lib/shared/siteConfigs';
+  import SocialFollowMenu from '$lib/entities/SocialFollow/SocialFollowMenu.svelte';
+
   import LL from '$lib/shared/i18n/i18n-svelte';
 
+  const currentYear = new Date().getFullYear();
+  const copyrightNotice = `© ${currentYear} SNI`;
   const links = {
     mailing: {
-      url: 'https://sovereignnature.com/#subscribe',
+      url: CONFIGS.social.mailing,
       title: $LL.footer.mailing(),
     },
     terms: {
-      url: 'https://sovereignnature.com/terms-conditions',
+      url: CONFIGS.footer.terms,
       title: $LL.footer.terms(),
     },
     privacy: {
-      url: 'https://sovereignnature.com/privacy-policy',
+      url: CONFIGS.footer.privacy,
       title: $LL.footer.privacy(),
     },
     copyright: {
@@ -32,17 +35,7 @@
   >
     <div class="grid md:grid-cols-10 gap-3 h-full">
       <div class=" md:col-span-4">
-        <a
-          class=" flex hover-arrow-link pt-1 items-center md:items-baseline dark:!text-primary-300 opacity-79 text-sm mb-4 md:mb-0 hover:opacity-100"
-          href={links.mailing.url}
-          target="_blank"
-        >
-          <span
-            class="transition ease-in arrow-link mr-3 flex justify-center items-center rounded-full h-6 w-6 bg-primary-300 text-black"
-          >
-            <ArrowRight className="h-3 w-3" />
-          </span>{links.mailing.title}</a
-        >
+        <SocialFollowMenu />
       </div>
 
       {#each Object.entries(links) as [_key, value], index}
@@ -65,11 +58,3 @@
     </div>
   </div>
 </div>
-
-<style>
-  .hover-arrow-link:hover .arrow-link {
-    transform: translateX(0.25em);
-
-    @apply bg-primary-200;
-  }
-</style>

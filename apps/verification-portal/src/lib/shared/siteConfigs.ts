@@ -5,4 +5,13 @@ export default {
   feature: {
     collectionsTest: false,
   },
+  social: {
+    discord: 'discord:https://discord.gg/ZXyC3tN87K',
+    telegram: 'https://t.me/+WuLLqjb1IEY2MWVk',
+    mailing: 'https://sovereignnature.com/#subscribe',
+  },
+  footer: {
+    terms: 'https://sovereignnature.com/terms-conditions',
+    privacy: 'https://sovereignnature.com/privacy-policy',
+  },
 };

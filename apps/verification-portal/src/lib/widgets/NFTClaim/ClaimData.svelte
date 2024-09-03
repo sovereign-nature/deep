@@ -5,6 +5,8 @@
   import Property from '$lib/shared/typography/Property.svelte';
   import NftImage from '$lib/components/NFTImage.svelte';
   import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
+  import SocialFollowMenu from '$lib/entities/SocialFollow/SocialFollowMenu.svelte';
+
   const { claimResponse, claimStatus } = getNFTClaimContext();
 </script>
 
@@ -46,6 +48,7 @@
             </Property>
           </div>
         {/if}
+        <SocialFollowMenu wrapperClass="text-white mt-2" iconsOnly />
       </div>
     </div>
   </div>
@@ -80,6 +83,7 @@
             </Property>
           </div>
         {/if}
+        <SocialFollowMenu wrapperClass="text-white mt-2" iconsOnly />
       </div>
     </div>
   </div>
