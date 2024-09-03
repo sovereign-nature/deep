@@ -5,6 +5,7 @@
   import { browser } from '$app/environment';
   import config from '$lib/shared/siteConfigs';
   import type { FeaturesConfig } from '$lib/types';
+  import DoTphinTimelineWrapper from '$lib/widgets/DOTphin/TimelineWrapper.svelte';
 
   let featureState: FeaturesConfig = {};
 
@@ -121,3 +122,5 @@
     </div>
   </div>
 </div>
+
+<DoTphinTimelineWrapper />

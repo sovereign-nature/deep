@@ -28,10 +28,6 @@ type MultipassState = {
     status: Status;
     disabled: boolean;
   };
-  // keep step states separate from properties to allow for custom/additional step cards
-  proofStepState: ProofStepState;
-  nftStepState: NftStepState;
-  evolveStepState: EvolveStepState;
 };
 
 export const STATUS: { LOCKED: Status; ACTIVE: Status; COMPLETE: Status } = {
@@ -60,16 +56,13 @@ const initialState: MultipassState = {
     status: STATUS.LOCKED as Status,
     disabled: false,
   },
-  proofStepState: 'LOGGED_OUT', //computed
-  nftStepState: 'UNCLAIMED', //computed
-  evolveStepState: 'INITIAL', //computed
 };
 
 // Svelte store to hold the app state
 export const state = writable<MultipassState>(initialState);
 
 // Derived store to compute the proof step state
-export const proofStepState = derived(state, ($state) => {
+export const proofStepState = derived(state, ($state): ProofStepState => {
   if (!$state.isLoggedIn) {
     return 'LOGGED_OUT';
   } else if ($state.proofs.proofCount === 0) {
@@ -82,12 +75,12 @@ export const proofStepState = derived(state, ($state) => {
 });
 
 // Derived store to compute the NFT step state
-export const nftStepState = derived(state, ($state) => {
+export const nftStepState = derived(state, ($state): NftStepState => {
   return $state.nft.claimed ? 'CLAIMED' : 'UNCLAIMED';
 });
 
 // Derived store to compute the evolve step state
-export const evolveStepState = derived(state, ($state) => {
+export const evolveStepState = derived(state, ($state): EvolveStepState => {
   if ($state.evolution.level === 0) {
     return 'INITIAL';
   } else if ($state.evolution.level >= MAX_EVOLUTION_LEVEL) {

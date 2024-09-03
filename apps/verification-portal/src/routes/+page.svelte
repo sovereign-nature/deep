@@ -4,9 +4,7 @@
   import ShareCard from '$lib/components/ShareCard.svelte';
   import FeaturedContainer from '$lib/entities/featured/FeaturedContainer.svelte';
   import CollectionsTabs from '$lib/widgets/CollectionTabs/CollectionTabs.svelte';
-
   import { LL } from '$lib/shared/i18n/i18n-svelte';
-  import DoTphinTimelineWrapper from '$lib/widgets/DOTphin/TimelineWrapper.svelte';
 
   export let data;
 </script>
@@ -37,13 +35,12 @@
       >
         {$LL.subtitle()}
       </span>
-      <a
+      <!-- <a
         href="/#collections"
         class=" text-primary-300 font-aeonik font-regular text-base md:text-[18px] block xl:w-11/12 sm:w-9/12 mx-auto md:mx-0"
         >See all collections</a
-      >
+      > -->
     </div>
-    <DoTphinTimelineWrapper />
     <div id="collections" class="px-4 md:px-2 lg:px-0">
       <CollectionsTabs>
         {#await data.streamed.highlights then highlights}
