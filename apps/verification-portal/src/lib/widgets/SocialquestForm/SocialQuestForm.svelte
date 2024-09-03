@@ -1,14 +1,15 @@
 <script>
   import ModalWrapper from '$lib/shared/components/ModalWrapper.svelte';
 
-  import { Button, Label, Checkbox } from 'flowbite-svelte';
+  import { Label, Checkbox } from 'flowbite-svelte';
   let formModal = false;
   const title = '      Get A Free DOTphin Proof';
 </script>
 
-<Button
-  class=" bg-primary-400 dark:bg-primary-400 dark:hover:bg-primary-300 font-aeonik  text-white rounded-full"
-  on:click={() => (formModal = true)}>Get Free Proof</Button
+<button
+  type="button"
+  class="sni-primary-btn !text-sm !font-bold"
+  on:click={() => (formModal = true)}>Get A Free Proof</button
 >
 <ModalWrapper
   open={formModal}

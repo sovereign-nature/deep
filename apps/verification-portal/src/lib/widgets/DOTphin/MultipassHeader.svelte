@@ -2,7 +2,6 @@
   import HexagonGridIcon from '$lib/components/icons/HexagonGridIcon.svelte';
   import Subheader from '$lib/shared/typography/Subheader.svelte';
   import HexagonEggIcon from '$lib/components/icons/HexagonEggIcon.svelte';
-  import SocialQuestForm from '$lib/widgets/SocialquestForm/SocialQuestForm.svelte';
   export let name: string;
   const description =
     'A multi-month, multi-event and multi-chain initiative that evolves with your engagement.';
@@ -21,9 +20,6 @@
       >
       <h3 class="text-6xl">{name}</h3>
       <p>{description}</p>
-      <div class="my-4">
-        <SocialQuestForm />
-      </div>
     </div>
     <div
       class="bg-multipass sm:text-white pb-4 sm:px-8 md:px-11 sm:py-8 xl:pt-11 col-span-2 flex flex-row justify-start sm:items-center gap-5"

@@ -5,6 +5,7 @@
   import CardTitle from '$lib/widgets/DOTphin/TimelineItem/Typography/Title.svelte';
   import CardSubtitle from '$lib/widgets/DOTphin/TimelineItem/Typography/Subtitle.svelte';
   import WrapTranslation from '$lib/shared/components/WrapTranslation.svelte';
+  import SocialQuestForm from '$lib/widgets/SocialquestForm/SocialQuestForm.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   export let collection = 'DOTphin';
   export let collectionLink = '/#collections';
@@ -84,19 +85,21 @@
 
     <svelte:fragment slot="content">
       <CardSubtitle content={subtitle} />
+      {#if hasCollectionLink && collectionLink}
+        <a href={collectionLink} class="text-xs text-primary block w-full mb-4">
+          {$LL.multipass.state.proofStep.HAS_AVAILABLE_PROOFS.moreInfo()}
+        </a>
+      {/if}
+      <SocialQuestForm />
 
       {#if $proofStepState === 'NO_PROOFS'}
-        <button
+        <a
           type="button"
-          disabled
-          class="px-4 py-3 rounded-full whitespace-nowrap disabled:cursor-not-allowed drop-shadow-sm text-primary-200 bg-deep-blue font-aeonik text-sm"
+          target="_blank"
+          href="https://sovereignnature.com/dotphin"
+          class="sni-secondary-btn !text-sm"
         >
           {$LL.multipass.state.proofStep.NO_PROOFS.cta()}
-        </button>
-      {/if}
-      {#if hasCollectionLink && collectionLink}
-        <a href={collectionLink} class="text-xs text-primary">
-          {$LL.multipass.state.proofStep.HAS_AVAILABLE_PROOFS.moreInfo()}
         </a>
       {/if}
     </svelte:fragment>
