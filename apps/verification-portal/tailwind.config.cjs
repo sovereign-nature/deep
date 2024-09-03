@@ -109,6 +109,7 @@ const config = {
         navbar: 70,
         modalOverlay: 75,
         drawer: 80,
+        modal: 85,
       },
     },
   },
