@@ -452,6 +452,125 @@ type RootTranslation = {
 			infoLink: RequiredParams<'multipassName'>
 		}
 	}
+	multipass: {
+		state: {
+			proofStep: {
+				/**
+				 * P​r​o​o​f​s
+				 */
+				stepTitle: string
+				LOGGED_OUT: {
+					/**
+					 * L​o​g​-​i​n​ ​t​o​ ​s​e​e​ ​y​o​u​r​ ​p​r​o​o​f​s
+					 */
+					subtitle: string
+					/**
+					 * L​e​a​r​n​ ​m​o​r​e​ ​a​b​o​u​t​ ​A​t​t​e​n​d​a​n​c​e​ ​P​r​o​o​f​s
+					 */
+					moreInfo: string
+				}
+				NO_PROOFS: {
+					/**
+					 * {​c​o​l​l​e​c​t​i​o​n​}​ ​A​t​t​e​n​d​a​n​c​e​ ​P​r​o​o​f​s​ ​R​e​q​u​i​r​e​d
+					 * @param {unknown} collection
+					 */
+					title: RequiredParams<'collection'>
+					/**
+					 * Y​o​u​ ​c​u​r​r​e​n​t​l​y​ ​h​a​v​e​ ​n​o​ ​A​t​t​e​n​d​a​n​c​e​ ​P​r​o​o​f​s​.
+					 */
+					subtitle: string
+					/**
+					 * H​o​w​ ​t​o​ ​g​e​t​ ​p​r​o​o​f​s​?
+					 */
+					cta: string
+					/**
+					 * L​e​a​r​n​ ​m​o​r​e​ ​a​b​o​u​t​ ​A​t​t​e​n​d​a​n​c​e​ ​P​r​o​o​f​s
+					 */
+					moreInfo: string
+				}
+				HAS_AVAILABLE_PROOFS: {
+					/**
+					 * Y​o​u​ ​h​a​v​e​ ​<​>​{​c​o​u​n​t​}​<​>​ ​u​n​u​s​e​d​ ​D​O​T​p​h​i​n​ ​p​r​o​o​f​{​{​s​}​}
+					 * @param {number} count
+					 */
+					title: RequiredParams<'count'>
+					/**
+					 * Y​o​u​ ​h​a​v​e​ ​a​ ​t​o​t​a​l​ ​o​f​ ​{​c​o​u​n​t​}​ ​{​c​o​l​l​e​c​t​i​o​n​}​ ​p​r​o​o​f​{​{​s​}​}
+					 * @param {string} collection
+					 * @param {string | number | boolean} count
+					 */
+					subtitle: RequiredParams<'collection' | 'count'>
+					/**
+					 * S​e​e​ ​a​l​l​ ​y​o​u​r​ ​p​r​o​o​f​s
+					 */
+					moreInfo: string
+				}
+				NO_AVAILABLE_PROOFS: {
+					/**
+					 * Y​o​u​ ​h​a​v​e​ ​n​o​ ​u​n​u​s​e​d​ ​{​c​o​l​l​e​c​t​i​o​n​}​ ​ ​p​r​o​o​f​s
+					 * @param {unknown} collection
+					 */
+					title: RequiredParams<'collection'>
+				}
+			}
+			nftStep: {
+				/**
+				 * N​F​T
+				 */
+				stepTitle: string
+				UNCLAIMED: {
+					/**
+					 * U​s​e​ ​y​o​u​r​ ​p​r​o​o​f​s​ ​t​o​ ​u​n​l​o​c​k​ ​t​h​e​ ​D​O​T​p​h​i​n​.
+					 */
+					subtitle: string
+					/**
+					 * C​o​l​l​e​c​t​ ​t​h​e​ ​O​r​b
+					 */
+					cta: string
+				}
+				CLAIMED: {
+				}
+			}
+			evolveStep: {
+				/**
+				 * E​v​o​l​v​e
+				 */
+				stepTitle: string
+				INITIAL: {
+					/**
+					 * Y​o​u​ ​n​e​e​d​ ​t​o​ ​h​a​v​e​ ​a​n​ ​N​F​T​ ​t​o​ ​s​t​a​r​t​ ​e​v​o​l​v​i​n​g
+					 */
+					subtitle: string
+					/**
+					 * E​v​o​l​v​e
+					 */
+					cta: string
+					/**
+					 * R​e​a​d​ ​m​o​r​e
+					 */
+					moreInfo: string
+				}
+				EVOLVING: {
+					/**
+					 * E​v​o​l​u​t​i​o​n​ ​l​e​v​e​l​ ​{​l​e​v​e​l​}​/​{​m​a​x​L​e​v​e​l​}
+					 * @param {unknown} level
+					 * @param {unknown} maxLevel
+					 */
+					subtitle: RequiredParams<'level' | 'maxLevel'>
+				}
+				COMPLETE: {
+					/**
+					 * C​o​n​g​r​a​t​u​l​a​t​i​o​n​,​ ​y​o​u​ ​h​a​v​e​ ​c​o​m​p​l​e​t​e​d​ ​y​o​u​r​ ​D​O​T​p​h​i​n
+					 */
+					title: string
+					/**
+					 * Y​o​u​r​ ​N​F​T​ ​h​a​s​ ​r​e​a​c​h​e​d​ ​i​t​s​ ​m​a​x​i​m​u​m​ ​e​v​o​l​u​t​i​o​n​ ​l​e​v​e​l
+					 */
+					subtitle: string
+				}
+			}
+		}
+	}
 	social: {
 		shareCard: {
 			/**
@@ -1001,6 +1120,118 @@ export type TranslationFunctions = {
 			 * About {multipassName}
 			 */
 			infoLink: (arg: { multipassName: string }) => LocalizedString
+		}
+	}
+	multipass: {
+		state: {
+			proofStep: {
+				/**
+				 * Proofs
+				 */
+				stepTitle: () => LocalizedString
+				LOGGED_OUT: {
+					/**
+					 * Log-in to see your proofs
+					 */
+					subtitle: () => LocalizedString
+					/**
+					 * Learn more about Attendance Proofs
+					 */
+					moreInfo: () => LocalizedString
+				}
+				NO_PROOFS: {
+					/**
+					 * {collection} Attendance Proofs Required
+					 */
+					title: (arg: { collection: unknown }) => LocalizedString
+					/**
+					 * You currently have no Attendance Proofs.
+					 */
+					subtitle: () => LocalizedString
+					/**
+					 * How to get proofs?
+					 */
+					cta: () => LocalizedString
+					/**
+					 * Learn more about Attendance Proofs
+					 */
+					moreInfo: () => LocalizedString
+				}
+				HAS_AVAILABLE_PROOFS: {
+					/**
+					 * You have <>{count}<> unused DOTphin proof{{s}}
+					 */
+					title: (arg: { count: number }) => LocalizedString
+					/**
+					 * You have a total of {count} {collection} proof{{s}}
+					 */
+					subtitle: (arg: { collection: string, count: string | number | boolean }) => LocalizedString
+					/**
+					 * See all your proofs
+					 */
+					moreInfo: () => LocalizedString
+				}
+				NO_AVAILABLE_PROOFS: {
+					/**
+					 * You have no unused {collection}  proofs
+					 */
+					title: (arg: { collection: unknown }) => LocalizedString
+				}
+			}
+			nftStep: {
+				/**
+				 * NFT
+				 */
+				stepTitle: () => LocalizedString
+				UNCLAIMED: {
+					/**
+					 * Use your proofs to unlock the DOTphin.
+					 */
+					subtitle: () => LocalizedString
+					/**
+					 * Collect the Orb
+					 */
+					cta: () => LocalizedString
+				}
+				CLAIMED: {
+				}
+			}
+			evolveStep: {
+				/**
+				 * Evolve
+				 */
+				stepTitle: () => LocalizedString
+				INITIAL: {
+					/**
+					 * You need to have an NFT to start evolving
+					 */
+					subtitle: () => LocalizedString
+					/**
+					 * Evolve
+					 */
+					cta: () => LocalizedString
+					/**
+					 * Read more
+					 */
+					moreInfo: () => LocalizedString
+				}
+				EVOLVING: {
+					/**
+					 * Evolution level {level}/{maxLevel}
+					 */
+					subtitle: (arg: { level: unknown, maxLevel: unknown }) => LocalizedString
+				}
+				COMPLETE: {
+					/**
+					 * Congratulation, you have completed your DOTphin
+					 */
+					title: () => LocalizedString
+					/**
+					 * Your NFT has reached its maximum evolution level
+					 */
+					subtitle: () => LocalizedString
+				}
+			}
 		}
 	}
 	social: {

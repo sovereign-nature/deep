@@ -154,6 +154,56 @@ const en: BaseTranslation = {
       infoLink: 'About {multipassName: string}',
     },
   },
+  multipass: {
+    state: {
+      proofStep: {
+        stepTitle: 'Proofs',
+
+        LOGGED_OUT: {
+          subtitle: 'Log-in to see your proofs',
+          moreInfo: 'Learn more about Attendance Proofs',
+        },
+        NO_PROOFS: {
+          title: `{collection} Attendance Proofs Required`,
+          subtitle: 'You currently have no Attendance Proofs.',
+          cta: 'How to get proofs?',
+          moreInfo: 'Learn more about Attendance Proofs',
+        },
+        HAS_AVAILABLE_PROOFS: {
+          title: `You have <>{count:number}<> unused DOTphin proof{{count:s}}`,
+          subtitle:
+            'You have a total of {count} {collection:string} proof{{count:s}}',
+          moreInfo: 'See all your proofs',
+        },
+        NO_AVAILABLE_PROOFS: {
+          title: `You have no unused {collection}  proofs`,
+        },
+      },
+      nftStep: {
+        stepTitle: 'NFT',
+        UNCLAIMED: {
+          subtitle: 'Use your proofs to unlock the DOTphin.',
+          cta: 'Collect the Orb',
+        },
+        CLAIMED: {},
+      },
+      evolveStep: {
+        stepTitle: 'Evolve',
+        INITIAL: {
+          subtitle: 'You need to have an NFT to start evolving',
+          cta: 'Evolve',
+          moreInfo: 'Read more',
+        },
+        EVOLVING: {
+          subtitle: 'Evolution level {level}/{maxLevel}',
+        },
+        COMPLETE: {
+          title: 'Congratulation, you have completed your DOTphin',
+          subtitle: 'Your NFT has reached its maximum evolution level',
+        },
+      },
+    },
+  },
   social: {
     shareCard: {
       title: 'REAL by Sovereign Nature Initiative',
