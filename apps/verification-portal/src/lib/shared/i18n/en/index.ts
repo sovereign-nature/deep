@@ -174,6 +174,11 @@ const en: BaseTranslation = {
     shareImagePrefix:
       'Check out my collectible linked to real-world impact by Sovereign Nature Initiative',
   },
+  socialFollow: {
+    title: 'Follow us',
+    discord: 'Follow us on Discord',
+    telegram: 'Follow us on Telegram',
+  },
   footer: {
     mailing: 'Subscribe to our mailing list',
     terms: 'Terms & Conditions',

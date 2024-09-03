@@ -495,6 +495,20 @@ type RootTranslation = {
 		 */
 		shareImagePrefix: string
 	}
+	socialFollow: {
+		/**
+		 * F​o​l​l​o​w​ ​u​s
+		 */
+		title: string
+		/**
+		 * F​o​l​l​o​w​ ​u​s​ ​o​n​ ​D​i​s​c​o​r​d
+		 */
+		discord: string
+		/**
+		 * F​o​l​l​o​w​ ​u​s​ ​o​n​ ​T​e​l​e​g​r​a​m
+		 */
+		telegram: string
+	}
 	footer: {
 		/**
 		 * S​u​b​s​c​r​i​b​e​ ​t​o​ ​o​u​r​ ​m​a​i​l​i​n​g​ ​l​i​s​t
@@ -1044,6 +1058,20 @@ export type TranslationFunctions = {
 		 * Check out my collectible linked to real-world impact by Sovereign Nature Initiative
 		 */
 		shareImagePrefix: () => LocalizedString
+	}
+	socialFollow: {
+		/**
+		 * Follow us
+		 */
+		title: () => LocalizedString
+		/**
+		 * Follow us on Discord
+		 */
+		discord: () => LocalizedString
+		/**
+		 * Follow us on Telegram
+		 */
+		telegram: () => LocalizedString
 	}
 	footer: {
 		/**
