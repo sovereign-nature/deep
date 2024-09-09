@@ -1,7 +1,7 @@
 import { DeepAsset } from '@sni/types';
 
 //TODO: Cover with tests
-function getAttributeValue(
+export function getAttributeValue(
   attributes: { trait_type: string; value: string }[],
   trait: string
 ) {

@@ -5,6 +5,7 @@ import { Context } from 'hono';
 import { DeepAsset } from '@sni/types';
 import { env } from 'hono/adapter';
 import walletsApp from '../wallets';
+import assetsApp from '../assets';
 import {
   ClaimBodySchema,
   ClaimsParamsSchema,
@@ -12,7 +13,7 @@ import {
   ProfileResponseSchema,
 } from './schemas';
 import { collectionConfig } from './config';
-import { countByAttribute } from './lib';
+import { countByAttribute, getAttributeValue } from './lib';
 import { CrossmintResponse, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
 import { getRandomId } from '$lib/utils';
@@ -114,12 +115,12 @@ app.openapi(
     },
     responses: {
       200: {
-        content: {
-          'application/json': {
-            schema: CrossmintResponse,
-          },
-        },
+        content: { 'application/json': { schema: CrossmintResponse } },
         description: 'Returns a claim token for the DOTphin',
+      },
+      400: {
+        content: { 'application/json': { schema: ErrorSchema } },
+        description: 'Proof is already used',
       },
     },
   }),
@@ -133,9 +134,29 @@ app.openapi(
 
     //TODO: Check if user logged in
 
-    //TODO: Check if proofDID is valid
-    //TODO: Check if proofDID is not used
-    //TODO: Check if user has DOTphin already
+    //Check if proofDID is valid
+    const requestUrl = `/${proofDID}`;
+    const assetResponse = await assetsApp.request(
+      requestUrl,
+      c.req.raw,
+      c.env,
+      c.executionCtx
+    );
+
+    const proofAsset = (await assetResponse.json()) as DeepAsset;
+    const usedAttribute = Boolean(
+      getAttributeValue(proofAsset.attributes!, 'used')
+    );
+
+    if (usedAttribute) {
+      return c.json({ error: true, message: 'Proof is already used' }, 400);
+    }
+
+    //Check if user has DOTphin already
+    const dotphinDID = await getDotphinAddress(address);
+    if (dotphinDID) {
+      return c.json({ error: true, message: 'User already has DOTphin' }, 400);
+    }
 
     const mintId = getRandomId();
 
@@ -171,7 +192,7 @@ app.openapi(
 
     await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
 
-    return c.json(pendingResponse);
+    return c.json(pendingResponse, 200);
   }
 );
 
