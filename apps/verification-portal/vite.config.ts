@@ -18,7 +18,7 @@ export default defineConfig({
       },
     }),
     sveltekit(),
-    SvelteKitPWA(),
+    SvelteKitPWA({ workbox: { maximumFileSizeToCacheInBytes: 3000000 } }),
     // Visualize bundle size in stats.html files
     isVisualizeBuild() &&
       (visualizer({
