@@ -37,7 +37,7 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "0.4.26",
+    "@cloudflare/vitest-pool-workers": "0.4.29",
     "@cloudflare/workers-types": "4.20240821.1",
     "@vitest/runner": "1.5.3",
     "@vitest/snapshot": "1.5.3",
