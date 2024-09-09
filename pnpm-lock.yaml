@@ -111,8 +111,8 @@ importers:
         specifier: 5.0.7
         version: 5.0.7
       pino:
-        specifier: 9.3.2
-        version: 9.3.2
+        specifier: 9.4.0
+        version: 9.4.0
       resend:
         specifier: 3.5.0
         version: 3.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -7810,8 +7810,8 @@ packages:
     resolution: {integrity: sha512-dMACeu63HtRLmCG8VKdy4cShCPKaYDR4youZqoSWLxl5Gu99HUw8bw75thbPv9Nip+H+QYX8o3ZJbTdVZZ2TVg==}
     hasBin: true
 
-  pino@9.3.2:
-    resolution: {integrity: sha512-WtARBjgZ7LNEkrGWxMBN/jvlFiE17LTbBoH0konmBU684Kd0uIiDwBXlcTCW7iJnA6HfIKwUssS/2AC6cDEanw==}
+  pino@9.4.0:
+    resolution: {integrity: sha512-nbkQb5+9YPhQRz/BeQmrWpEknAaqjpAqRK8NwJpmrX/JHu7JuZC5G1CeAwJDJfGes4h+YihC6in3Q2nGb+Y09w==}
     hasBin: true
 
   pirates@4.0.6:
@@ -19300,7 +19300,7 @@ snapshots:
       sonic-boom: 2.8.0
       thread-stream: 0.15.2
 
-  pino@9.3.2:
+  pino@9.4.0:
     dependencies:
       atomic-sleep: 1.0.0
       fast-redact: 3.5.0
