@@ -21,6 +21,9 @@ export const ProfileResponseSchema = z.object({
     used: z.number().openapi({
       example: 1,
     }),
+    available: z.number().openapi({
+      example: 2,
+    }),
   }),
   dotphinDID: z.string().nullable().openapi({
     example: 'did:asset:eip155:8880.unique2:700:1', //TODO: Update example with real DID

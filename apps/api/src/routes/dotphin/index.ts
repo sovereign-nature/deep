@@ -50,9 +50,12 @@ async function getProofsStats(address: string, c: Context) {
     Boolean(getAttributeValue(asset.attributes!, 'used'))
   ).length;
 
+  const available = total - used;
+
   return {
     total,
     used,
+    available,
   };
 }
 
