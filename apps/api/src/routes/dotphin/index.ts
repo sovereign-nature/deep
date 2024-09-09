@@ -84,13 +84,13 @@ async function getDotphinAddress(address: string) {
 }
 
 export async function updateTokenAttribute(
-  c: Context,
+  mnemonic: string,
   collectionId: number,
   tokenId: number,
   attribute: string,
   value: string
 ) {
-  const sdk = getUniqueSdk(c.env.WALLET_MNEMONIC, NETWORK);
+  const sdk = getUniqueSdk(mnemonic, NETWORK);
 
   const token = await sdk.token.getV2({ collectionId, tokenId });
 
@@ -172,6 +172,8 @@ app.openapi(
     const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<string> }>(c);
     const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c);
 
+    const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c);
+
     const { address, proofDID } = c.req.valid('json');
 
     console.log('Received claim request for ', address, proofDID);
@@ -249,7 +251,13 @@ app.openapi(
     const { contractAddress, tokenId } = parseAssetDID(proofDID);
 
     //Mark proof as used
-    updateTokenAttribute(c, Number(contractAddress), tokenId, 'used', 'true');
+    updateTokenAttribute(
+      WALLET_MNEMONIC,
+      Number(contractAddress),
+      tokenId,
+      'used',
+      'true'
+    );
 
     return c.json(pendingResponse, 200);
   }
