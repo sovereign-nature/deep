@@ -21,8 +21,19 @@ export const ProfileResponseSchema = z.object({
     used: z.number().openapi({
       example: 1,
     }),
-    available: z.number().openapi({
-      example: 2,
+    available: z.object({
+      water: z.number().openapi({
+        example: 1,
+      }),
+      air: z.number().openapi({
+        example: 1,
+      }),
+      earth: z.number().openapi({
+        example: 1,
+      }),
+      total: z.number().openapi({
+        example: 3,
+      }),
     }),
   }),
   dotphinDID: z.string().nullable().openapi({

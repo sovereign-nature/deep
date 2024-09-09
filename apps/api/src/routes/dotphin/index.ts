@@ -12,6 +12,7 @@ import {
   ProfileResponseSchema,
 } from './schemas';
 import { collectionConfig } from './config';
+import { countByAttribute } from './lib';
 import { CrossmintResponse, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
 import { getRandomId } from '$lib/utils';
@@ -23,15 +24,6 @@ const NETWORK: 'unique' | 'opal' = 'unique';
 const COLLECTION_ID = 665;
 
 const PROOFS_COLLECTION_DID = createAssetDID(NETWORK, 'unique2', COLLECTION_ID);
-
-function getAttributeValue(
-  attributes: { trait_type: string; value: string }[],
-  trait: string
-) {
-  const attribute = attributes.find((a) => a.trait_type === trait);
-
-  return attribute?.value;
-}
 
 async function getProofsStats(address: string, c: Context) {
   const requestUrl = `/${address}?assetDID=${PROOFS_COLLECTION_DID}`;
@@ -46,16 +38,23 @@ async function getProofsStats(address: string, c: Context) {
   const data = (await result.json()) as DeepAsset[];
 
   const total = data.length;
-  const used = data.filter((asset: DeepAsset) =>
-    Boolean(getAttributeValue(asset.attributes!, 'used'))
-  ).length;
+  const used = countByAttribute(data, 'used', 'true');
 
   const available = total - used;
+
+  const waterAvailable = countByAttribute(data, 'element', 'water');
+  const airAvailable = countByAttribute(data, 'element', 'air');
+  const earthAvailable = countByAttribute(data, 'element', 'earth');
 
   return {
     total,
     used,
-    available,
+    available: {
+      water: waterAvailable,
+      air: airAvailable,
+      earth: earthAvailable,
+      total: available,
+    },
   };
 }
 
