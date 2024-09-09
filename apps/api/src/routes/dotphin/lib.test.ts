@@ -1,6 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { testAssets } from './fixtures';
-import { countByAttribute, getAttributeValue } from './lib';
+import {
+  countByAttribute,
+  getAttributeIndex,
+  getAttributeValue,
+  updateOrAddAttribute,
+} from './lib';
 
 describe('Attributes helper functions', () => {
   it('should be able to get attribute value (element)', () => {
@@ -33,5 +38,47 @@ describe('Attributes helper functions', () => {
     const earthAssets = countByAttribute(assets, 'element', 'earth');
 
     expect(earthAssets).toBe(1);
+  });
+
+  it('should be able to find the index of an attribute (element)', () => {
+    const attributes = testAssets[0].attributes!;
+
+    const index = getAttributeIndex(attributes, 'element');
+
+    expect(index).toBe(0);
+  });
+
+  it('should be able to find the index of an attribute (eventId)', () => {
+    const attributes = testAssets[0].attributes!;
+
+    const index = getAttributeIndex(attributes, 'eventId');
+
+    expect(index).toBe(1);
+  });
+
+  it('should be able to update an attribute', () => {
+    const attributes = testAssets[0].attributes!;
+
+    const updatedAttributes = updateOrAddAttribute(
+      attributes,
+      'element',
+      'water'
+    );
+
+    expect(getAttributeValue(updatedAttributes, 'element')).toBe('water');
+  });
+
+  it('should be able to add an attribute', () => {
+    const attributes = testAssets[0].attributes!;
+
+    const updatedAttributes = updateOrAddAttribute(
+      attributes,
+      'newAttribute',
+      'newValue'
+    );
+
+    expect(getAttributeValue(updatedAttributes, 'newAttribute')).toBe(
+      'newValue'
+    );
   });
 });

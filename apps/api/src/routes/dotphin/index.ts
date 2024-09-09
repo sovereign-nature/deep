@@ -1,5 +1,5 @@
 import { AccountTokensResponseSchema } from '@sni/clients/wallets-client/targets/unique/schemas';
-import { createAssetDID } from '@sni/address-utils';
+import { createAssetDID, parseAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
 import { Context } from 'hono';
 import { DeepAsset } from '@sni/types';
@@ -13,10 +13,16 @@ import {
   ProfileResponseSchema,
 } from './schemas';
 import { collectionConfig } from './config';
-import { countByAttribute, getAttributeValue, getSeed } from './lib';
+import {
+  countByAttribute,
+  getAttributeValue,
+  getSeed,
+  updateOrAddAttribute,
+} from './lib';
 import { CrossmintResponse, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
 import { getRandomId } from '$lib/utils';
+import { getUniqueSdk } from '$lib/unique';
 
 const app = new OpenAPIHono();
 
@@ -75,6 +81,44 @@ async function getDotphinAddress(address: string) {
   }
 
   return createAssetDID(network, 'unique2', collectionId, dotphin.tokenId);
+}
+
+export async function updateTokenAttribute(
+  c: Context,
+  collectionId: number,
+  tokenId: number,
+  attribute: string,
+  value: string
+) {
+  const sdk = getUniqueSdk(c.env.WALLET_MNEMONIC, NETWORK);
+
+  const token = await sdk.token.getV2({ collectionId, tokenId });
+
+  const tokenDataProp = token.properties.find((p) => p.key === 'tokenData');
+  if (!tokenDataProp) throw Error('Cannot find tokenData property');
+
+  const tokenDataValue = JSON.parse(tokenDataProp.value);
+
+  if (!tokenDataValue.attributes) throw Error('Cannot parse attributes');
+
+  tokenDataValue.attributes = updateOrAddAttribute(
+    tokenDataValue.attributes,
+    attribute,
+    value
+  );
+
+  //TODO: Move to queue?
+  await sdk.token.setProperties({
+    collectionId,
+    tokenId,
+    properties: [{ key: 'tokenData', value: JSON.stringify(tokenDataValue) }],
+  });
+
+  console.log(
+    `Tokens updated in collection ${collectionId} with ID ${tokenId}}`
+  );
+
+  return tokenId;
 }
 
 app.openapi(
@@ -202,7 +246,10 @@ app.openapi(
 
     await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
 
-    //TODO: Mark proof as used
+    const { contractAddress, tokenId } = parseAssetDID(proofDID);
+
+    //Mark proof as used
+    updateTokenAttribute(c, Number(contractAddress), tokenId, 'used', 'true');
 
     return c.json(pendingResponse, 200);
   }
