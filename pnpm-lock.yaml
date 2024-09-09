@@ -66,8 +66,8 @@ importers:
         specifier: 3.0.2
         version: 3.0.2(lucia@3.2.0)
       '@scalar/hono-api-reference':
-        specifier: 0.5.143
-        version: 0.5.143(hono@4.5.10)
+        specifier: 0.5.145
+        version: 0.5.145(hono@4.5.10)
       '@sni/address-utils':
         specifier: workspace:*
         version: link:../../packages/address-utils
@@ -3498,22 +3498,22 @@ packages:
     resolution: {integrity: sha512-Y0yAxRaB98LFp2Dm+ACZqBSdAmI3FlpH/LjxOZ94g/ouuDJecSq0iR26XZ5QDuEL8Rf+L4jBJaoDC08CD0KkJw==}
     engines: {node: '>=16'}
 
-  '@scalar/hono-api-reference@0.5.143':
-    resolution: {integrity: sha512-Rojp75Ma2HB2uUsmOQqsB6mJG8ydg1FB8ful3W8rhrahNZv76zK/wXmNl9B9OsK6AFIf8a7/kZuXMrAoHfHBSA==}
+  '@scalar/hono-api-reference@0.5.145':
+    resolution: {integrity: sha512-ySfQ+fz1hyX/aWIZ+7Ict/LX3Y4uNVXhBZJqORI0yDUNfw/eqYUH47PHLqg3a+j7Und54RqQY8TKQkH9xQkzog==}
     engines: {node: '>=18'}
     peerDependencies:
       hono: ^4.0.0
 
-  '@scalar/openapi-types@0.0.1':
-    resolution: {integrity: sha512-qMcUrhe+JRXlI9VGWcY/xGHkGplHdZ5UdGFXJ0q9e20gFVk2HMApE98Mo2iUp42Gff0xHIcNHaEQKAhdfW3R2Q==}
+  '@scalar/openapi-types@0.1.0':
+    resolution: {integrity: sha512-UxyIkRqC2rbvQJhenA+KdgAbLNUPjqI5CHhZmTuxiv7De9ZJLRVTQCa0JxNqSJ/b51VKpqZ/pDLvjbQpxGFWcA==}
     engines: {node: '>=18'}
 
   '@scalar/themes@0.9.28':
     resolution: {integrity: sha512-2pFGnjSBL2daPA5roRNRDy8xAHpeTI5QYpfyTj88iIaYT68EVnDUheUA2i3vRB705FCGEbDR0xKD7poTSfAYng==}
     engines: {node: '>=18'}
 
-  '@scalar/types@0.0.5':
-    resolution: {integrity: sha512-aRPKMt6tXUn+jN/YReJ1CCyjM5rAwJYRJrW+XP4YzlCQf6d4N2dOTmkC2GLEu4iPvhy1Pig6Bnbl7fLiPiKEYg==}
+  '@scalar/types@0.0.7':
+    resolution: {integrity: sha512-ylMAM8Kx+mSVu1yBipz7h2pQrEXyMTHkYWc/UigGdn3dpuBArTnkBdJte85yH/7+R630HGm3FSbAHSioOCT+vA==}
     engines: {node: '>=18'}
 
   '@scure/base@1.1.7':
@@ -13696,18 +13696,18 @@ snapshots:
 
   '@safe-global/safe-gateway-typescript-sdk@3.22.2': {}
 
-  '@scalar/hono-api-reference@0.5.143(hono@4.5.10)':
+  '@scalar/hono-api-reference@0.5.145(hono@4.5.10)':
     dependencies:
-      '@scalar/types': 0.0.5
+      '@scalar/types': 0.0.7
       hono: 4.5.10
 
-  '@scalar/openapi-types@0.0.1': {}
+  '@scalar/openapi-types@0.1.0': {}
 
   '@scalar/themes@0.9.28': {}
 
-  '@scalar/types@0.0.5':
+  '@scalar/types@0.0.7':
     dependencies:
-      '@scalar/openapi-types': 0.0.1
+      '@scalar/openapi-types': 0.1.0
       '@scalar/themes': 0.9.28
       '@unhead/schema': 1.10.0
 
