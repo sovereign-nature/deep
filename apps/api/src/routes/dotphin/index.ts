@@ -1,26 +1,58 @@
 import { AccountTokensResponseSchema } from '@sni/clients/wallets-client/targets/unique/schemas';
 import { createAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
+import { Context } from 'hono';
+import { DeepAsset } from '@sni/types';
+import { env } from 'hono/adapter';
+import walletsApp from '../wallets';
 import {
   ClaimBodySchema,
   ClaimsParamsSchema,
   ProfileParamsSchema,
   ProfileResponseSchema,
 } from './schemas';
-import { CrossmintResponse } from '$lib/shared/schemas';
+import { collectionConfig } from './config';
+import { CrossmintResponse, ErrorSchema } from '$lib/shared/schemas';
+import { logger } from '$lib/logger';
+import { getRandomId } from '$lib/utils';
 
 const app = new OpenAPIHono();
 
-async function getProofsStats(address: string) {
-  const result = await fetch(
-    `https://rest.unique.network/unique/v1/tokens/account-tokens?address=${address}&collectionId=665`
+//TODO: Move to wrangler config? Need to make it ENV dependent
+const NETWORK: 'unique' | 'opal' = 'unique';
+const COLLECTION_ID = 665;
+
+const PROOFS_COLLECTION_DID = createAssetDID(NETWORK, 'unique2', COLLECTION_ID);
+
+function getAttributeValue(
+  attributes: { trait_type: string; value: string }[],
+  trait: string
+) {
+  const attribute = attributes.find((a) => a.trait_type === trait);
+
+  return attribute?.value;
+}
+
+async function getProofsStats(address: string, c: Context) {
+  const requestUrl = `/${address}?assetDID=${PROOFS_COLLECTION_DID}`;
+
+  const result = await walletsApp.request(
+    requestUrl,
+    c.req.raw,
+    c.env,
+    c.executionCtx
   );
-  const data = AccountTokensResponseSchema.parse(await result.json());
-  const total = data.tokens.length;
+
+  const data = (await result.json()) as DeepAsset[];
+
+  const total = data.length;
+  const used = data.filter((asset: DeepAsset) =>
+    Boolean(getAttributeValue(asset.attributes!, 'used'))
+  ).length;
 
   return {
     total,
-    used: total, //TODO: Get used from proofsCollection
+    used,
   };
 }
 
@@ -63,7 +95,7 @@ app.openapi(
   async (c) => {
     const address = c.req.param('address');
 
-    const proofs = await getProofsStats(address);
+    const proofs = await getProofsStats(address, c);
 
     const dotphinDID = await getDotphinAddress(address);
 
@@ -90,16 +122,54 @@ app.openapi(
     },
   }),
   async (c) => {
-    return c.json({
-      id: '123',
-      metadata: { image: 'image' },
+    const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<string> }>(c);
+    const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c);
+
+    const { address, proofDID } = c.req.valid('json');
+
+    console.log('Received claim request for ', address, proofDID);
+
+    //TODO: Check if user logged in
+
+    //TODO: Check if proofDID is valid
+    //TODO: Check if proofDID is not used
+    //TODO: Check if user has DOTphin already
+
+    const mintId = getRandomId();
+
+    logger.info(`Claiming DOTphin, sending minting ${mintId} to queue`);
+
+    const seed = 0;
+
+    const pendingResponse = {
+      id: mintId,
       onChain: {
         status: 'pending',
-        chain: 'chain',
-        contractAddress: 'contractAddress',
+        chain: NETWORK,
+        contractAddress: COLLECTION_ID.toString(),
       },
-      actionId: '123',
-    });
+      metadata: {
+        image: collectionConfig.metadata.image[seed],
+      },
+      actionId: mintId,
+    };
+
+    await MINTING_QUEUE.send(
+      JSON.stringify({
+        address,
+        payload: {
+          id: mintId,
+          collection: COLLECTION_ID,
+          seed,
+        },
+        collectionConfig,
+      }),
+      { contentType: 'json' }
+    );
+
+    await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
+
+    return c.json(pendingResponse);
   }
 );
 
@@ -115,19 +185,23 @@ app.openapi(
         content: { 'application/json': { schema: CrossmintResponse } },
         description: 'Returns claim status',
       },
+      404: {
+        content: { 'application/json': { schema: ErrorSchema } },
+        description: 'Claim not found',
+      },
     },
   }),
   async (c) => {
-    return c.json({
-      id: '123',
-      metadata: { image: 'image' },
-      onChain: {
-        status: 'completed',
-        chain: 'chain',
-        contractAddress: 'contractAddress',
-      },
-      actionId: '123',
-    });
+    const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c);
+
+    const mintId = c.req.valid('param').id;
+    const mintResponse = await MINTING_KV.get(mintId);
+
+    if (mintResponse !== null) {
+      return c.json(JSON.parse(mintResponse));
+    } else {
+      return c.json({ error: true, message: 'Minting ID was not found' }, 404);
+    }
   }
 );
 

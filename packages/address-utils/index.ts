@@ -139,8 +139,8 @@ export function createAssetDID(
   chainName: string,
   contractStandard: TokenStandard,
   contractAddress: string | number,
-  tokenId: number | string
+  tokenId?: number | string
 ) {
   const chainId = getChainId(chainName);
-  return `did:asset:eip155:${chainId}.${contractStandard}:${contractAddress}:${tokenId}`;
+  return `did:asset:eip155:${chainId}.${contractStandard}:${contractAddress}${tokenId ? `:${tokenId}` : ''}`;
 }
