@@ -21,3 +21,14 @@ export function countByAttribute(
     return attribute === value;
   }).length;
 }
+
+/**
+ * Get the seed (index) of the proof element
+ * @param element id of the element
+ * @returns seed (index) of the element (0, 1, 2)
+ */
+export function getSeed(element: string) {
+  const elements = ['air', 'earth', 'water'];
+
+  return elements.indexOf(element);
+}

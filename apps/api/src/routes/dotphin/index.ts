@@ -13,7 +13,7 @@ import {
   ProfileResponseSchema,
 } from './schemas';
 import { collectionConfig } from './config';
-import { countByAttribute, getAttributeValue } from './lib';
+import { countByAttribute, getAttributeValue, getSeed } from './lib';
 import { CrossmintResponse, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
 import { getRandomId } from '$lib/utils';
@@ -162,7 +162,30 @@ app.openapi(
 
     logger.info(`Claiming DOTphin, sending minting ${mintId} to queue`);
 
-    const seed = 0;
+    //Get the element from the proof and create a seed
+    const element = getAttributeValue(proofAsset.attributes!, 'element');
+    if (!element) {
+      return c.json(
+        { error: true, message: 'Something wrong with the proof' },
+        400
+      );
+    }
+
+    const seed = getSeed(element);
+
+    //Send minting request to the queue
+    await MINTING_QUEUE.send(
+      JSON.stringify({
+        address,
+        payload: {
+          id: mintId,
+          collection: COLLECTION_ID,
+          seed,
+        },
+        collectionConfig,
+      }),
+      { contentType: 'json' }
+    );
 
     const pendingResponse = {
       id: mintId,
@@ -177,20 +200,9 @@ app.openapi(
       actionId: mintId,
     };
 
-    await MINTING_QUEUE.send(
-      JSON.stringify({
-        address,
-        payload: {
-          id: mintId,
-          collection: COLLECTION_ID,
-          seed,
-        },
-        collectionConfig,
-      }),
-      { contentType: 'json' }
-    );
-
     await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
+
+    //TODO: Mark proof as used
 
     return c.json(pendingResponse, 200);
   }
