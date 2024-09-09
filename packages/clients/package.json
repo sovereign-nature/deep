@@ -15,7 +15,7 @@
     "axios": "1.7.5"
   },
   "devDependencies": {
-    "msw": "2.3.5",
+    "msw": "2.4.4",
     "vitest": "1.5.3"
   }
 }
