@@ -5,7 +5,7 @@ import { AccountTokensResponseSchema } from './schemas';
 
 //TODO: Cover with tests
 export async function getUniqueWalletAssets(
-  network: 'unique' | 'opal',
+  network: 'unique' | 'opal', //TODO: Use UniqueNetwork type (move it to shared types)
   walletAddress: string,
   collectionId: number
 ): Promise<DeepAsset[]> {
