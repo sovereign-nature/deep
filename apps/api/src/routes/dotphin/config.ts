@@ -3,11 +3,12 @@ import { CollectionConfig } from '../claims/config'; //TODO: Move to shared
 const baseAttributes = [
   { trait_type: 'level', value: '1' },
   { trait_type: 'experience', value: '0' },
+  { trait_type: 'type', value: 'orbo' },
 ];
 
 export const collectionConfig: CollectionConfig = {
   name: 'DOTphin',
-  externalId: '777',
+  externalId: '3745',
   network: 'unique',
   metadata: {
     name: 'DOTphin',

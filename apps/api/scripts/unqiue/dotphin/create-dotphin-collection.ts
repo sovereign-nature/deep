@@ -8,7 +8,7 @@ const NETWORK: 'opal' | 'unique' = 'opal';
 
 // man picture (medium size png)
 const IMAGE_URL =
-  'https://real.myfilebase.com/ipfs/QmVQgYDk7655Tu2nKtbky4pcJV34Kg4NDrVW48jYJZTasC';
+  'https://real.myfilebase.com/ipfs/QmSd8qhWTqYvPYGEnXcB9cRhFGwA8XVR1wfN5GGv4x4vJj/orbo-air.png';
 
 const getLinkToCollection = (sdk: Sdk, collectionId: number) => {
   return `${sdk.options.baseUrl}/collections/v2?collectionId=${collectionId}`;
@@ -25,6 +25,8 @@ const createCollection = async (sdk: Sdk): Promise<number> => {
       { trait_type: 'level' },
       { trait_type: 'experience' },
       { trait_type: 'proofs' },
+      { trait_type: 'type' },
+      { trait_type: 'mainElement' },
     ],
   });
 
