@@ -2,7 +2,7 @@ import { AccountTokensResponseSchema } from '@sni/clients/wallets-client/targets
 import { createAssetDID, parseAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
 import { Context } from 'hono';
-import { DeepAsset } from '@sni/types';
+import { DeepAsset, UniqueNetwork } from '@sni/types';
 import { env } from 'hono/adapter';
 import walletsApp from '../wallets';
 import assetsApp from '../assets';
@@ -25,9 +25,6 @@ import { getRandomId } from '$lib/utils';
 import { getUniqueSdk } from '$lib/unique';
 
 const app = new OpenAPIHono();
-
-//TODO: Move to wrangler config? Need to make it ENV dependent
-type UniqueNetwork = 'unique' | 'opal';
 
 function getDotphinEnvConfig(c: Context) {
   const {

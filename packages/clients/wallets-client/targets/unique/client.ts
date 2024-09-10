@@ -1,11 +1,11 @@
-import { DeepAsset } from '@sni/types';
+import { DeepAsset, UniqueNetwork } from '@sni/types';
 import { getUniqueAsset } from '../../../assets-client/targets/unique/client'; //TODO: Add path aliases
 import { fetchWithRetry } from '../../../lib';
 import { AccountTokensResponseSchema } from './schemas';
 
 //TODO: Cover with tests
 export async function getUniqueWalletAssets(
-  network: 'unique' | 'opal', //TODO: Use UniqueNetwork type (move it to shared types)
+  network: UniqueNetwork,
   walletAddress: string,
   collectionId: number
 ): Promise<DeepAsset[]> {

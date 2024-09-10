@@ -20,3 +20,5 @@ export type DeepAsset = {
 
 export class ExternalApiError extends Error {}
 export type EvmAddress = `0x${string}`; //TODO Try to use it in code
+
+export type UniqueNetwork = 'unique' | 'opal';
