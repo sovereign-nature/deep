@@ -8,9 +8,9 @@ import { ClaimBody, JWTToken } from './schemas';
 import { mintOptimismToken } from './providers/crossmint';
 import { mintUniqueToken } from './providers/unique';
 import { Payload } from './types';
+import { createClaimLink } from './lib';
 import { logger } from '$lib/logger';
 import { getRandomInt } from '$lib/utils';
-import { createClaimLink } from '$lib/claim';
 import { sendTokenEmail } from '$lib/resend';
 import { CrossmintResponse } from '$lib/shared/schemas';
 

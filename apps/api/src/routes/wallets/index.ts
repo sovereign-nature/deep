@@ -12,7 +12,7 @@ import {
 import { env } from 'hono/adapter';
 import { zValidator } from '@hono/zod-validator';
 import { parseAssetDID } from '@sni/address-utils';
-import { errorResponse } from '$lib/shared';
+import { errorResponse } from '$lib/shared/responses';
 
 app.get(
   '/:walletAddress',

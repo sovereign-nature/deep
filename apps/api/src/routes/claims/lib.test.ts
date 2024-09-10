@@ -1,5 +1,5 @@
 import { expect, describe, it } from 'vitest';
-import { createClaimLink } from './claim';
+import { createClaimLink } from './lib';
 
 describe('Claim link generator', () => {
   it('createClaimLink', async () => {

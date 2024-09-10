@@ -1,5 +1,5 @@
 import { AccountTokensResponseSchema } from '@sni/clients/wallets-client/targets/unique/schemas';
-import { createAssetDID } from '@sni/address-utils';
+import { createAssetDID, parseAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
 import { Context } from 'hono';
 import { DeepAsset } from '@sni/types';
@@ -13,18 +13,29 @@ import {
   ProfileResponseSchema,
 } from './schemas';
 import { collectionConfig } from './config';
-import { countByAttribute, getAttributeValue } from './lib';
+import {
+  countByAttribute,
+  getAttributeValue,
+  getSeed,
+  updateOrAddAttribute,
+} from './lib';
 import { CrossmintResponse, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
 import { getRandomId } from '$lib/utils';
+import { getUniqueSdk } from '$lib/unique';
 
 const app = new OpenAPIHono();
 
 //TODO: Move to wrangler config? Need to make it ENV dependent
-const NETWORK: 'unique' | 'opal' = 'unique';
-const COLLECTION_ID = 665;
+const NETWORK: 'unique' | 'opal' = 'opal';
+const PROOFS_COLLECTION_ID = 3551; //665;
+const DOTPHIN_COLLECTION_ID = 664; //TODO: Proper collection ID from config
 
-const PROOFS_COLLECTION_DID = createAssetDID(NETWORK, 'unique2', COLLECTION_ID);
+const PROOFS_COLLECTION_DID = createAssetDID(
+  NETWORK,
+  'unique2',
+  PROOFS_COLLECTION_ID
+);
 
 async function getProofsStats(address: string, c: Context) {
   const requestUrl = `/${address}?assetDID=${PROOFS_COLLECTION_DID}`;
@@ -61,10 +72,9 @@ async function getProofsStats(address: string, c: Context) {
 
 async function getDotphinAddress(address: string) {
   const network = 'unique';
-  const collectionId = 664;
 
   const result = await fetch(
-    `https://rest.unique.network/${network}/v1/tokens/account-tokens?address=${address}&collectionId=${collectionId}`
+    `https://rest.unique.network/${network}/v1/tokens/account-tokens?address=${address}&collectionId=${DOTPHIN_COLLECTION_ID}`
   );
   const data = AccountTokensResponseSchema.parse(await result.json());
 
@@ -74,7 +84,50 @@ async function getDotphinAddress(address: string) {
     return null;
   }
 
-  return createAssetDID(network, 'unique2', collectionId, dotphin.tokenId);
+  return createAssetDID(
+    network,
+    'unique2',
+    DOTPHIN_COLLECTION_ID,
+    dotphin.tokenId
+  );
+}
+
+export async function updateTokenAttribute(
+  mnemonic: string,
+  collectionId: number,
+  tokenId: number,
+  attribute: string,
+  value: string
+) {
+  const sdk = getUniqueSdk(mnemonic, NETWORK);
+
+  const token = await sdk.token.getV2({ collectionId, tokenId });
+
+  const tokenDataProp = token.properties.find((p) => p.key === 'tokenData');
+  if (!tokenDataProp) throw Error('Cannot find tokenData property');
+
+  const tokenDataValue = JSON.parse(tokenDataProp.value);
+
+  if (!tokenDataValue.attributes) throw Error('Cannot parse attributes');
+
+  tokenDataValue.attributes = updateOrAddAttribute(
+    tokenDataValue.attributes,
+    attribute,
+    value
+  );
+
+  //TODO: Move to queue?
+  await sdk.token.setProperties({
+    collectionId,
+    tokenId,
+    properties: [{ key: 'tokenData', value: JSON.stringify(tokenDataValue) }],
+  });
+
+  console.log(
+    `Tokens updated in collection ${collectionId} with ID ${tokenId}}`
+  );
+
+  return tokenId;
 }
 
 app.openapi(
@@ -128,6 +181,8 @@ app.openapi(
     const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<string> }>(c);
     const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c);
 
+    const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c);
+
     const { address, proofDID } = c.req.valid('json');
 
     console.log('Received claim request for ', address, proofDID);
@@ -162,27 +217,24 @@ app.openapi(
 
     logger.info(`Claiming DOTphin, sending minting ${mintId} to queue`);
 
-    const seed = 0;
+    //Get the element from the proof and create a seed
+    const element = getAttributeValue(proofAsset.attributes!, 'element');
+    if (!element) {
+      return c.json(
+        { error: true, message: 'Something wrong with the proof' },
+        400
+      );
+    }
 
-    const pendingResponse = {
-      id: mintId,
-      onChain: {
-        status: 'pending',
-        chain: NETWORK,
-        contractAddress: COLLECTION_ID.toString(),
-      },
-      metadata: {
-        image: collectionConfig.metadata.image[seed],
-      },
-      actionId: mintId,
-    };
+    const seed = getSeed(element);
 
+    //Send minting request to the queue
     await MINTING_QUEUE.send(
       JSON.stringify({
         address,
         payload: {
           id: mintId,
-          collection: COLLECTION_ID,
+          collection: PROOFS_COLLECTION_ID,
           seed,
         },
         collectionConfig,
@@ -190,7 +242,31 @@ app.openapi(
       { contentType: 'json' }
     );
 
+    const pendingResponse = {
+      id: mintId,
+      onChain: {
+        status: 'pending',
+        chain: NETWORK,
+        contractAddress: PROOFS_COLLECTION_ID.toString(),
+      },
+      metadata: {
+        image: collectionConfig.metadata.image[seed],
+      },
+      actionId: mintId,
+    };
+
     await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
+
+    const { contractAddress, tokenId } = parseAssetDID(proofDID);
+
+    //Mark proof as used
+    updateTokenAttribute(
+      WALLET_MNEMONIC,
+      Number(contractAddress),
+      tokenId,
+      'used',
+      'true'
+    );
 
     return c.json(pendingResponse, 200);
   }

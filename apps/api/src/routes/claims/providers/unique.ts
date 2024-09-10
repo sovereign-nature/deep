@@ -1,9 +1,7 @@
-import Sdk from '@unique-nft/sdk';
-import { Sr25519Account } from '@unique-nft/utils/sr25519';
-// import { Address } from '@unique-nft/utils';
 import { CollectionConfig } from '../config';
 import { Payload } from '../types';
 import { logger } from '$lib/logger';
+import { getUniqueSdk } from '$lib/unique';
 
 export async function mintUniqueToken(
   network: 'opal' | 'unique',
@@ -12,13 +10,7 @@ export async function mintUniqueToken(
   collectionConfig: CollectionConfig,
   mnemonic: string
 ) {
-  const account = Sr25519Account.fromUri(mnemonic);
-
-  const sdk = new Sdk({
-    baseUrl: `https://rest.unique.network/${network}/v1`,
-    account,
-    axiosConfig: { adapter: 'fetch' },
-  });
+  const sdk = getUniqueSdk(mnemonic, network);
 
   class MintingError extends Error {
     constructor(message: string) {
