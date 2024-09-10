@@ -27,10 +27,15 @@ import { getUniqueSdk } from '$lib/unique';
 const app = new OpenAPIHono();
 
 //TODO: Move to wrangler config? Need to make it ENV dependent
-const NETWORK: 'unique' | 'opal' = 'unique';
-const COLLECTION_ID = 665;
+const NETWORK: 'unique' | 'opal' = 'opal';
+const PROOFS_COLLECTION_ID = 3551; //665;
+const DOTPHIN_COLLECTION_ID = 664; //TODO: Proper collection ID from config
 
-const PROOFS_COLLECTION_DID = createAssetDID(NETWORK, 'unique2', COLLECTION_ID);
+const PROOFS_COLLECTION_DID = createAssetDID(
+  NETWORK,
+  'unique2',
+  PROOFS_COLLECTION_ID
+);
 
 async function getProofsStats(address: string, c: Context) {
   const requestUrl = `/${address}?assetDID=${PROOFS_COLLECTION_DID}`;
@@ -67,10 +72,9 @@ async function getProofsStats(address: string, c: Context) {
 
 async function getDotphinAddress(address: string) {
   const network = 'unique';
-  const collectionId = 664;
 
   const result = await fetch(
-    `https://rest.unique.network/${network}/v1/tokens/account-tokens?address=${address}&collectionId=${collectionId}`
+    `https://rest.unique.network/${network}/v1/tokens/account-tokens?address=${address}&collectionId=${DOTPHIN_COLLECTION_ID}`
   );
   const data = AccountTokensResponseSchema.parse(await result.json());
 
@@ -80,7 +84,12 @@ async function getDotphinAddress(address: string) {
     return null;
   }
 
-  return createAssetDID(network, 'unique2', collectionId, dotphin.tokenId);
+  return createAssetDID(
+    network,
+    'unique2',
+    DOTPHIN_COLLECTION_ID,
+    dotphin.tokenId
+  );
 }
 
 export async function updateTokenAttribute(
@@ -225,7 +234,7 @@ app.openapi(
         address,
         payload: {
           id: mintId,
-          collection: COLLECTION_ID,
+          collection: PROOFS_COLLECTION_ID,
           seed,
         },
         collectionConfig,
@@ -238,7 +247,7 @@ app.openapi(
       onChain: {
         status: 'pending',
         chain: NETWORK,
-        contractAddress: COLLECTION_ID.toString(),
+        contractAddress: PROOFS_COLLECTION_ID.toString(),
       },
       metadata: {
         image: collectionConfig.metadata.image[seed],
