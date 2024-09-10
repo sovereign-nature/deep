@@ -2,7 +2,7 @@ import { AccountTokensResponseSchema } from '@sni/clients/wallets-client/targets
 import { createAssetDID, parseAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
 import { Context } from 'hono';
-import { DeepAsset, UniqueNetwork } from '@sni/types';
+import { DeepAsset, ExternalApiError, UniqueNetwork } from '@sni/types';
 import { env } from 'hono/adapter';
 import walletsApp from '../wallets';
 import assetsApp from '../assets';
@@ -91,14 +91,17 @@ async function getProofsWithStats(address: string, c: Context) {
 
 async function getDotphinAddress(
   address: string,
+  network: UniqueNetwork,
   dotphinCollectionId: number | string
 ) {
-  const network = 'unique';
-
-  const result = await fetch(
+  const response = await fetch(
     `https://rest.unique.network/${network}/v1/tokens/account-tokens?address=${address}&collectionId=${dotphinCollectionId}`
   );
-  const data = AccountTokensResponseSchema.parse(await result.json());
+
+  if (!response.ok)
+    throw new ExternalApiError(`External API error: ${response.statusText}`);
+
+  const data = AccountTokensResponseSchema.parse(await response.json());
 
   const dotphin = data.tokens[0];
 
@@ -153,6 +156,7 @@ export async function updateTokenAttribute(
   return tokenId;
 }
 
+//Profile
 app.openapi(
   createRoute({
     method: 'get',
@@ -174,11 +178,15 @@ app.openapi(
   async (c) => {
     const address = c.req.param('address');
 
-    const { DOTPHIN_COLLECTION_ID } = getDotphinEnvConfig(c);
+    const { DOTPHIN_COLLECTION_ID, DOTPHIN_NETWORK } = getDotphinEnvConfig(c);
 
     const proofsWithStats = await getProofsWithStats(address, c);
 
-    const dotphinDID = await getDotphinAddress(address, DOTPHIN_COLLECTION_ID);
+    const dotphinDID = await getDotphinAddress(
+      address,
+      DOTPHIN_NETWORK,
+      DOTPHIN_COLLECTION_ID
+    );
 
     return c.json(
       {
@@ -247,7 +255,12 @@ app.openapi(
     }
 
     //Check if user has DOTphin already
-    const dotphinDID = await getDotphinAddress(address, DOTPHIN_COLLECTION_ID);
+    const dotphinDID = await getDotphinAddress(
+      address,
+      DOTPHIN_NETWORK,
+      DOTPHIN_COLLECTION_ID
+    );
+
     if (dotphinDID) {
       return c.json({ error: true, message: 'User already has DOTphin' }, 400);
     }

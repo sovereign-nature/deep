@@ -18,7 +18,9 @@ export type DeepAsset = {
   address: string; //TODO: Rename to assetDID?
 };
 
+//TODO: This is not a type, probably should be moved to another library
 export class ExternalApiError extends Error {}
+
 export type EvmAddress = `0x${string}`; //TODO Try to use it in code
 
 export type UniqueNetwork = 'unique' | 'opal';

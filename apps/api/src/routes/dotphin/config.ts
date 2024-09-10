@@ -6,6 +6,7 @@ const baseAttributes = [
   { trait_type: 'type', value: 'orbo' },
 ];
 
+//TODO: Different collections for dev/staging/prod
 export const collectionConfig: CollectionConfig = {
   name: 'DOTphin',
   externalId: '3745',
