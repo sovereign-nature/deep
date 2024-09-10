@@ -21,7 +21,7 @@
   class="w-full"
   classDialog="z-modal"
   bodyClass="border-none border-deep-green-900 pt-1 h-full overflow-y-auto px-5 mb-4"
-  defaultClass="mt-24 md:mt-36  bg-gray-100 dark:bg-deep-green-950 "
+  defaultClass="mt-24 md:mt-36 text-deep-green dark:text-gray-100  bg-gray-100 dark:bg-deep-green-950 "
   headerClass="bg-gray-100 dark:bg-deep-green-950 flex justify-between items-center p-4 md:p-5 rounded-t-lg"
   backdropClass="fixed inset-0  bg-deep-green   dark:bg-opacity-80 bg-opacity-75 z-modalOverlay"
 >
