@@ -13,7 +13,7 @@ export type DeepAsset = {
   attributes?: Array<{ trait_type: string; value: string }>;
   multipass?: {
     name: string;
-    infoLink: string | undefined;
+    infoLink: string | undefined; //TODO: Mark as optional?
   };
   address: string; //TODO: Rename to assetDID?
 };
