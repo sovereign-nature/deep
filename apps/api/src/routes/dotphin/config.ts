@@ -10,7 +10,7 @@ const baseAttributes = [
 export const collectionConfig: CollectionConfig = {
   name: 'DOTphin',
   externalId: '3745',
-  network: 'unique',
+  network: 'opal',
   metadata: {
     name: 'DOTphin',
     description: 'DOTphin is a collection of unique NFTs.',

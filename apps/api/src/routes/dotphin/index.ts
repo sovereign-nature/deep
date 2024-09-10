@@ -238,14 +238,23 @@ app.openapi(
 
     //Check if proofDID is valid
     const requestUrl = `/${proofDID}`;
+    console.log('Requesting asset', requestUrl);
     const assetResponse = await assetsApp.request(
       requestUrl,
-      c.req.raw,
+      {},
       c.env,
       c.executionCtx
     );
 
+    console.log('Asset response', assetResponse);
+
     const proofAsset = (await assetResponse.json()) as DeepAsset;
+
+    console.log('Proof asset', proofAsset);
+
+    //TODO: Check if proof owner is the same as the user
+
+    //Proof is not used
     const usedAttribute = Boolean(
       getAttributeValue(proofAsset.attributes!, 'used')
     );
