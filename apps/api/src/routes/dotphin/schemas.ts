@@ -14,7 +14,7 @@ export const ProfileResponseSchema = z.object({
   address: z.string().openapi({
     example: '0xcf12c02454a11c01857733d19d8a702b42780dd4',
   }),
-  proofs: z.object({
+  proofsStats: z.object({
     total: z.number().openapi({
       example: 3,
     }),

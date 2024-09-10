@@ -151,11 +151,11 @@ app.openapi(
   async (c) => {
     const address = c.req.param('address');
 
-    const proofs = await getProofsStats(address, c);
+    const proofsStats = await getProofsStats(address, c);
 
     const dotphinDID = await getDotphinAddress(address);
 
-    return c.json({ address, proofs, dotphinDID });
+    return c.json({ address, proofsStats, dotphinDID });
   }
 );
 
