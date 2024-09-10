@@ -2,7 +2,7 @@ import { AccountTokensResponseSchema } from '@sni/clients/wallets-client/targets
 import { createAssetDID, parseAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
 import { Context } from 'hono';
-import { DeepAsset } from '@sni/types';
+import { DeepAsset, ExternalApiError, UniqueNetwork } from '@sni/types';
 import { env } from 'hono/adapter';
 import walletsApp from '../wallets';
 import assetsApp from '../assets';
@@ -26,18 +26,34 @@ import { getUniqueSdk } from '$lib/unique';
 
 const app = new OpenAPIHono();
 
-//TODO: Move to wrangler config? Need to make it ENV dependent
-const NETWORK: 'unique' | 'opal' = 'opal';
-const PROOFS_COLLECTION_ID = 3551; //665;
-const DOTPHIN_COLLECTION_ID = 664; //TODO: Proper collection ID from config
+function getDotphinEnvConfig(c: Context) {
+  const {
+    DOTPHIN_PROOFS_COLLECTION_ID,
+    DOTPHIN_COLLECTION_ID,
+    DOTPHIN_NETWORK,
+  } = env<{
+    DOTPHIN_PROOFS_COLLECTION_ID: string;
+    DOTPHIN_COLLECTION_ID: number;
+    DOTPHIN_NETWORK: UniqueNetwork;
+  }>(c);
 
-const PROOFS_COLLECTION_DID = createAssetDID(
-  NETWORK,
-  'unique2',
-  PROOFS_COLLECTION_ID
-);
+  const PROOFS_COLLECTION_DID = createAssetDID(
+    DOTPHIN_NETWORK,
+    'unique2',
+    DOTPHIN_PROOFS_COLLECTION_ID
+  );
+
+  return {
+    DOTPHIN_PROOFS_COLLECTION_ID,
+    DOTPHIN_COLLECTION_ID,
+    DOTPHIN_NETWORK,
+    PROOFS_COLLECTION_DID,
+  };
+}
 
 async function getProofsWithStats(address: string, c: Context) {
+  const { PROOFS_COLLECTION_DID } = getDotphinEnvConfig(c);
+
   const requestUrl = `/${address}?assetDID=${PROOFS_COLLECTION_DID}`;
 
   const result = await walletsApp.request(
@@ -73,13 +89,19 @@ async function getProofsWithStats(address: string, c: Context) {
   };
 }
 
-async function getDotphinAddress(address: string) {
-  const network = 'unique';
-
-  const result = await fetch(
-    `https://rest.unique.network/${network}/v1/tokens/account-tokens?address=${address}&collectionId=${DOTPHIN_COLLECTION_ID}`
+async function getDotphinAddress(
+  address: string,
+  network: UniqueNetwork,
+  dotphinCollectionId: number | string
+) {
+  const response = await fetch(
+    `https://rest.unique.network/${network}/v1/tokens/account-tokens?address=${address}&collectionId=${dotphinCollectionId}`
   );
-  const data = AccountTokensResponseSchema.parse(await result.json());
+
+  if (!response.ok)
+    throw new ExternalApiError(`External API error: ${response.statusText}`);
+
+  const data = AccountTokensResponseSchema.parse(await response.json());
 
   const dotphin = data.tokens[0];
 
@@ -90,19 +112,20 @@ async function getDotphinAddress(address: string) {
   return createAssetDID(
     network,
     'unique2',
-    DOTPHIN_COLLECTION_ID,
+    dotphinCollectionId,
     dotphin.tokenId
   );
 }
 
 export async function updateTokenAttribute(
   mnemonic: string,
+  network: UniqueNetwork,
   collectionId: number,
   tokenId: number,
   attribute: string,
   value: string
 ) {
-  const sdk = getUniqueSdk(mnemonic, NETWORK);
+  const sdk = getUniqueSdk(mnemonic, network);
 
   const token = await sdk.token.getV2({ collectionId, tokenId });
 
@@ -133,6 +156,7 @@ export async function updateTokenAttribute(
   return tokenId;
 }
 
+//Profile
 app.openapi(
   createRoute({
     method: 'get',
@@ -154,9 +178,15 @@ app.openapi(
   async (c) => {
     const address = c.req.param('address');
 
+    const { DOTPHIN_COLLECTION_ID, DOTPHIN_NETWORK } = getDotphinEnvConfig(c);
+
     const proofsWithStats = await getProofsWithStats(address, c);
 
-    const dotphinDID = await getDotphinAddress(address);
+    const dotphinDID = await getDotphinAddress(
+      address,
+      DOTPHIN_NETWORK,
+      DOTPHIN_COLLECTION_ID
+    );
 
     return c.json(
       {
@@ -188,10 +218,17 @@ app.openapi(
     },
   }),
   async (c) => {
+    //TODO: Move to shared helper like getMintingEnvConfig
     const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<string> }>(c);
     const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c);
 
     const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c);
+
+    const {
+      DOTPHIN_COLLECTION_ID,
+      DOTPHIN_PROOFS_COLLECTION_ID,
+      DOTPHIN_NETWORK,
+    } = getDotphinEnvConfig(c);
 
     const { address, proofDID } = c.req.valid('json');
 
@@ -201,14 +238,23 @@ app.openapi(
 
     //Check if proofDID is valid
     const requestUrl = `/${proofDID}`;
+    console.log('Requesting asset', requestUrl);
     const assetResponse = await assetsApp.request(
       requestUrl,
-      c.req.raw,
+      {},
       c.env,
       c.executionCtx
     );
 
+    console.log('Asset response', assetResponse);
+
     const proofAsset = (await assetResponse.json()) as DeepAsset;
+
+    console.log('Proof asset', proofAsset);
+
+    //TODO: Check if proof owner is the same as the user
+
+    //Proof is not used
     const usedAttribute = Boolean(
       getAttributeValue(proofAsset.attributes!, 'used')
     );
@@ -218,14 +264,15 @@ app.openapi(
     }
 
     //Check if user has DOTphin already
-    const dotphinDID = await getDotphinAddress(address);
+    const dotphinDID = await getDotphinAddress(
+      address,
+      DOTPHIN_NETWORK,
+      DOTPHIN_COLLECTION_ID
+    );
+
     if (dotphinDID) {
       return c.json({ error: true, message: 'User already has DOTphin' }, 400);
     }
-
-    const mintId = getRandomId();
-
-    logger.info(`Claiming DOTphin, sending minting ${mintId} to queue`);
 
     //Get the element from the proof and create a seed
     const element = getAttributeValue(proofAsset.attributes!, 'element');
@@ -239,12 +286,15 @@ app.openapi(
     const seed = getSeed(element);
 
     //Send minting request to the queue
+    //TODO: Add workaround for dynamic collection config
+    const mintId = getRandomId();
+    logger.info(`Claiming DOTphin, sending minting ${mintId} to queue`);
     await MINTING_QUEUE.send(
       JSON.stringify({
         address,
         payload: {
           id: mintId,
-          collection: PROOFS_COLLECTION_ID,
+          collection: DOTPHIN_PROOFS_COLLECTION_ID,
           seed,
         },
         collectionConfig,
@@ -256,8 +306,8 @@ app.openapi(
       id: mintId,
       onChain: {
         status: 'pending',
-        chain: NETWORK,
-        contractAddress: PROOFS_COLLECTION_ID.toString(),
+        chain: DOTPHIN_NETWORK,
+        contractAddress: DOTPHIN_PROOFS_COLLECTION_ID,
       },
       metadata: {
         image: collectionConfig.metadata.image[seed],
@@ -272,6 +322,7 @@ app.openapi(
     //Mark proof as used
     updateTokenAttribute(
       WALLET_MNEMONIC,
+      DOTPHIN_NETWORK,
       Number(contractAddress),
       tokenId,
       'used',

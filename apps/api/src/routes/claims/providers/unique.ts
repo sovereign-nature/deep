@@ -1,10 +1,11 @@
+import { UniqueNetwork } from '@sni/types';
 import { CollectionConfig } from '../config';
 import { Payload } from '../types';
 import { logger } from '$lib/logger';
 import { getUniqueSdk } from '$lib/unique';
 
 export async function mintUniqueToken(
-  network: 'opal' | 'unique',
+  network: UniqueNetwork,
   address: string, //TODO: Would be cool to validate this address like 0x${string}
   payload: Payload,
   collectionConfig: CollectionConfig,

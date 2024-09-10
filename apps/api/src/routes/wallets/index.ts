@@ -1,18 +1,17 @@
 import { Hono } from 'hono';
-const app = new Hono();
 import { z } from 'zod';
-
 import { DeepAsset } from '@sni/types';
 import {
   getArbitrumWalletAssets,
   getCrossmintWalletAssets,
   getUniqueWalletAssets,
 } from '@sni/clients/wallets-client';
-
 import { env } from 'hono/adapter';
 import { zValidator } from '@hono/zod-validator';
 import { parseAssetDID } from '@sni/address-utils';
 import { errorResponse } from '$lib/shared/responses';
+
+const app = new Hono();
 
 app.get(
   '/:walletAddress',
