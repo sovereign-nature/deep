@@ -1,11 +1,14 @@
 <script lang="ts">
-  import { state, proofStepState } from '$lib/widgets/DOTphin/MultipassStates';
+  import {
+    multipassStepConfig,
+    multipassData,
+    proofStepState,
+  } from '$lib/features/MultipassStates';
   import Web3ConnectBtn from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
   import TimelineItem from '$lib/widgets/DOTphin/TimelineItem/TimelineItem.svelte';
   import CardTitle from '$lib/widgets/DOTphin/TimelineItem/Typography/Title.svelte';
   import CardSubtitle from '$lib/widgets/DOTphin/TimelineItem/Typography/Subtitle.svelte';
   import WrapTranslation from '$lib/shared/components/WrapTranslation.svelte';
-  import SocialQuestForm from '$lib/widgets/SocialquestForm/SocialQuestForm.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   export let collection = 'DOTphin';
   export let collectionLink = '/#collections';
@@ -34,7 +37,7 @@
       default:
         return $LL.multipass.state.proofStep.HAS_AVAILABLE_PROOFS.subtitle({
           collection,
-          count: $state.proofs.proofCount,
+          count: $multipassData.proofs.proofCount,
         });
     }
   })();
@@ -42,7 +45,7 @@
 
 {#if $proofStepState === 'LOGGED_OUT'}
   <TimelineItem
-    itemState={$state.proofs.status}
+    itemState={$multipassStepConfig.proofs.stepStatus}
     stepTitle={$LL.multipass.state.proofStep.stepTitle()}
     proofIcon
   >
@@ -60,7 +63,7 @@
   </TimelineItem>
 {:else}
   <TimelineItem
-    itemState={$state.proofs.status}
+    itemState={$multipassStepConfig.proofs.stepStatus}
     stepTitle={$LL.multipass.state.proofStep.stepTitle()}
     proofIcon
   >
@@ -69,7 +72,7 @@
         <CardTitle>
           <WrapTranslation
             message={$LL.multipass.state.proofStep.HAS_AVAILABLE_PROOFS.title({
-              count: $state.proofs.availableProofCount,
+              count: $multipassData.proofs.availableProofCount,
             })}
             let:infix
           >
@@ -90,7 +93,6 @@
           {$LL.multipass.state.proofStep.HAS_AVAILABLE_PROOFS.moreInfo()}
         </a>
       {/if}
-      <SocialQuestForm />
 
       {#if $proofStepState === 'NO_PROOFS'}
         <a

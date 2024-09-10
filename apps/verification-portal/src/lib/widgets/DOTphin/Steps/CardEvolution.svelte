@@ -1,9 +1,10 @@
 <script lang="ts">
   import {
-    state,
+    multipassData,
     evolveStepState,
+    multipassStepConfig,
     MAX_EVOLUTION_LEVEL,
-  } from '$lib/widgets/DOTphin/MultipassStates';
+  } from '$lib/features/MultipassStates';
   import TimelineItem from '$lib/widgets/DOTphin/TimelineItem/TimelineItem.svelte';
   import TimelineActionButton from '$lib/widgets/DOTphin/TimelineItem/TimelineActionButton.svelte';
   import CardSubtitle from '$lib/widgets/DOTphin/TimelineItem/Typography/Subtitle.svelte';
@@ -13,7 +14,7 @@
 </script>
 
 <TimelineItem
-  itemState={$state.evolution.status}
+  itemState={$multipassStepConfig.evolution.stepStatus}
   stepTitle={$LL.multipass.state.evolveStep.stepTitle()}
   multiIcon
 >
@@ -22,7 +23,7 @@
       <CardTitle content={$LL.multipass.state.evolveStep.COMPLETE.title()} />
     {:else}
       <TimelineActionButton
-        disabled={$state.evolution.status !== 'active'}
+        disabled={$multipassStepConfig.evolution.stepStatus !== 'active'}
         title={$LL.multipass.state.evolveStep.INITIAL.cta()}
       />
     {/if}
@@ -34,7 +35,7 @@
     {:else}
       <CardSubtitle>
         {$LL.multipass.state.evolveStep.EVOLVING.subtitle({
-          level: $state.evolution.level,
+          level: $multipassData.evolution.level,
           maxLevel: MAX_EVOLUTION_LEVEL,
         })}
       </CardSubtitle>
