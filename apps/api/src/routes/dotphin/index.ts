@@ -154,14 +154,14 @@ app.openapi(
   async (c) => {
     const address = c.req.param('address');
 
-    const proofsStats = await getProofsWithStats(address, c);
+    const proofsWithStats = await getProofsWithStats(address, c);
 
     const dotphinDID = await getDotphinAddress(address);
 
     return c.json(
       {
         address,
-        ...proofsStats,
+        ...proofsWithStats,
         dotphinDID,
       },
       200
