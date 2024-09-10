@@ -37,7 +37,7 @@ const PROOFS_COLLECTION_DID = createAssetDID(
   PROOFS_COLLECTION_ID
 );
 
-async function getProofsStats(address: string, c: Context) {
+async function getProofsWithStats(address: string, c: Context) {
   const requestUrl = `/${address}?assetDID=${PROOFS_COLLECTION_DID}`;
 
   const result = await walletsApp.request(
@@ -59,13 +59,16 @@ async function getProofsStats(address: string, c: Context) {
   const earthAvailable = countByAttribute(data, 'element', 'earth');
 
   return {
-    total,
-    used,
-    available: {
-      water: waterAvailable,
-      air: airAvailable,
-      earth: earthAvailable,
-      total: available,
+    proofs: data,
+    proofsStats: {
+      total,
+      used,
+      available: {
+        water: waterAvailable,
+        air: airAvailable,
+        earth: earthAvailable,
+        total: available,
+      },
     },
   };
 }
@@ -144,18 +147,25 @@ app.openapi(
             schema: ProfileResponseSchema,
           },
         },
-        description: 'Get proofs stats and dotphin DID for an address',
+        description: 'Get proofs, proofs stats and dotphin DID for an address',
       },
     },
   }),
   async (c) => {
     const address = c.req.param('address');
 
-    const proofsStats = await getProofsStats(address, c);
+    const proofsStats = await getProofsWithStats(address, c);
 
     const dotphinDID = await getDotphinAddress(address);
 
-    return c.json({ address, proofsStats, dotphinDID });
+    return c.json(
+      {
+        address,
+        ...proofsStats,
+        dotphinDID,
+      },
+      200
+    );
   }
 );
 

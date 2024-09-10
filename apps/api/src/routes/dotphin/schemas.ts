@@ -10,9 +10,58 @@ export const ProfileParamsSchema = z.object({
   }), //TODO: Add validation?
 });
 
+//TODO: Move to packages/schemas
+const DeepAssetSchema = z.object({
+  id: z.string().openapi({ example: '1' }),
+  tokenId: z.string().openapi({ example: '1' }),
+  name: z.string().openapi({ example: 'Water' }),
+  description: z.string().openapi({ example: 'Water is wet' }),
+  image: z.string().openapi({ example: 'https://example.com/water.png' }),
+  animation_url: z.string().optional().openapi({
+    example: 'https://example.com/water.mp4',
+  }),
+  collection: z.object({
+    id: z.string().openapi({ example: '1' }),
+    name: z.string().optional().openapi({ example: 'Water Collection' }),
+    description: z.string().optional().openapi({ example: 'Water Collection' }),
+  }),
+  attributes: z
+    .array(z.object({ trait_type: z.string(), value: z.string() }))
+    .optional()
+    .openapi({ example: [{ trait_type: 'element', value: 'water' }] }),
+  multipass: z
+    .object({ name: z.string(), infoLink: z.string().optional() })
+    .optional()
+    .openapi({
+      example: { name: 'Water', infoLink: 'https://example.com/water' },
+    }),
+  address: z
+    .string()
+    .openapi({ example: 'did:asset:eip155:8880.unique2:700:1' }),
+});
+
 export const ProfileResponseSchema = z.object({
   address: z.string().openapi({
     example: '0xcf12c02454a11c01857733d19d8a702b42780dd4',
+  }),
+  proofs: z.array(DeepAssetSchema).openapi({
+    example: [
+      {
+        id: '1',
+        tokenId: '1',
+        name: 'Water',
+        description: 'Water is wet',
+        image: 'https://example.com/water.png',
+        collection: {
+          id: '1',
+          name: 'Water Collection',
+          description: 'Water Collection',
+        },
+        attributes: [{ trait_type: 'element', value: 'water' }],
+        multipass: { name: 'Water', infoLink: 'https://example.com/water' },
+        address: 'did:asset:eip155:8880.unique2:700:1',
+      },
+    ],
   }),
   proofsStats: z.object({
     total: z.number().openapi({
