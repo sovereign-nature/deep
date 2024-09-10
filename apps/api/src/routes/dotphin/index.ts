@@ -252,10 +252,6 @@ app.openapi(
       return c.json({ error: true, message: 'User already has DOTphin' }, 400);
     }
 
-    const mintId = getRandomId();
-
-    logger.info(`Claiming DOTphin, sending minting ${mintId} to queue`);
-
     //Get the element from the proof and create a seed
     const element = getAttributeValue(proofAsset.attributes!, 'element');
     if (!element) {
@@ -268,6 +264,9 @@ app.openapi(
     const seed = getSeed(element);
 
     //Send minting request to the queue
+    //TODO: Add workaround for dynamic collection config
+    const mintId = getRandomId();
+    logger.info(`Claiming DOTphin, sending minting ${mintId} to queue`);
     await MINTING_QUEUE.send(
       JSON.stringify({
         address,

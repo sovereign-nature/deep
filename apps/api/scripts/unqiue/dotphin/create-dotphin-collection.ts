@@ -25,7 +25,6 @@ const createCollection = async (sdk: Sdk): Promise<number> => {
       { trait_type: 'level' },
       { trait_type: 'experience' },
       { trait_type: 'proofs' },
-      { trait_type: 'name' },
     ],
   });
 
