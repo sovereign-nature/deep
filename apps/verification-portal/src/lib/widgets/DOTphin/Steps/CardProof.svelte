@@ -3,6 +3,7 @@
     multipassStepConfig,
     multipassData,
     proofStepState,
+    isLoading,
   } from '$lib/features/MultipassStates';
   import Web3ConnectBtn from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
   import TimelineItem from '$lib/widgets/DOTphin/TimelineItem/TimelineItem.svelte';
@@ -48,6 +49,7 @@
     itemState={$multipassStepConfig.proofs.stepStatus}
     stepTitle={$LL.multipass.state.proofStep.stepTitle()}
     proofIcon
+    isLoading={$isLoading}
   >
     <svelte:fragment slot="header">
       <div class="flex flex-row justify-start md:justify-center">
@@ -66,6 +68,7 @@
     itemState={$multipassStepConfig.proofs.stepStatus}
     stepTitle={$LL.multipass.state.proofStep.stepTitle()}
     proofIcon
+    isLoading={$isLoading}
   >
     <svelte:fragment slot="header">
       {#if $proofStepState === 'HAS_AVAILABLE_PROOFS'}

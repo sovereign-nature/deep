@@ -3,8 +3,9 @@
     multipassData,
     evolveStepState,
     multipassStepConfig,
-    MAX_EVOLUTION_LEVEL,
+    isLoading,
   } from '$lib/features/MultipassStates';
+  import { MAX_EVOLUTION_LEVEL } from '$lib/shared/multipassConfig';
   import TimelineItem from '$lib/widgets/DOTphin/TimelineItem/TimelineItem.svelte';
   import TimelineActionButton from '$lib/widgets/DOTphin/TimelineItem/TimelineActionButton.svelte';
   import CardSubtitle from '$lib/widgets/DOTphin/TimelineItem/Typography/Subtitle.svelte';
@@ -17,6 +18,7 @@
   itemState={$multipassStepConfig.evolution.stepStatus}
   stepTitle={$LL.multipass.state.evolveStep.stepTitle()}
   multiIcon
+  isLoading={$isLoading}
 >
   <svelte:fragment slot="header">
     {#if $evolveStepState === 'COMPLETE'}

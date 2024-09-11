@@ -1,8 +1,8 @@
 import { deepApiUrl } from '@sni/clients/config';
-import { updateState } from './MultipassStates';
+import { updateState, isLoading } from './MultipassStates';
 
 // API URL
-const BASE_URL = `${deepApiUrl}/dotphin`; // Replace with actual API URL
+const BASE_URL = `${deepApiUrl}/dotphin`;
 
 // Fetch Dotphin Data for a given address
 async function fetchDotphinData(address: string) {
@@ -48,12 +48,19 @@ async function submitClaim(address: string, proofDID: string) {
   }
 }
 
-// Example: Fetch data for a specific address
+// Fetch data for a specific address
 export async function updateMultipassStateForAddress(address: string) {
-  await fetchDotphinData(address);
+  isLoading.set(true);
+  try {
+    await fetchDotphinData(address);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  } finally {
+    isLoading.set(false);
+  }
 }
 
-// Example: Claim a DOTphin NFT
+// Claim a DOTphin NFT
 export async function claimDotphinNFT(address: string, proofDID: string) {
   await submitClaim(address, proofDID);
 }
