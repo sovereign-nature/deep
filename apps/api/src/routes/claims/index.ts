@@ -207,8 +207,8 @@ export async function claimsQueue(batch: MessageBatch<string>, env: Env) {
           const successResponse = await mintUniqueToken(
             network,
             mintRequest.address,
-            mintRequest.payload,
-            mintRequest.collectionConfig, //TODO: Take collection config from env
+            mintRequest.payload, //TODO: Retype payload, should't require collectionId
+            mintRequest.collectionConfig,
             env.WALLET_MNEMONIC
           );
 

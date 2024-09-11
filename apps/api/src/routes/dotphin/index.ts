@@ -14,13 +14,13 @@ import {
   ProfileParamsSchema,
   ProfileResponseSchema,
 } from './schemas';
-import { collectionConfig } from './config';
 import {
   countByAttribute,
   getAttributeValue,
   getSeed,
   updateOrAddAttribute,
 } from './lib';
+import { getDotphinCollectionConfig } from './config';
 import { CrossmintResponse, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
 import { getRandomId } from '$lib/utils';
@@ -226,11 +226,7 @@ app.openapi(
 
     const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c);
 
-    const {
-      DOTPHIN_COLLECTION_ID,
-      DOTPHIN_PROOFS_COLLECTION_ID,
-      DOTPHIN_NETWORK,
-    } = getDotphinEnvConfig(c);
+    const { DOTPHIN_COLLECTION_ID, DOTPHIN_NETWORK } = getDotphinEnvConfig(c);
 
     const { address, proofDID } = c.req.valid('json');
 
@@ -282,6 +278,10 @@ app.openapi(
 
     const seed = getSeed(element);
 
+    const collectionConfig = getDotphinCollectionConfig(
+      DOTPHIN_COLLECTION_ID.toString()
+    );
+
     //Send minting request to the queue
     //TODO: Add workaround for dynamic collection config
     const mintId = getRandomId();
@@ -291,7 +291,7 @@ app.openapi(
         address,
         payload: {
           id: mintId,
-          collection: DOTPHIN_PROOFS_COLLECTION_ID,
+          collection: 'UNNEEDED', //TODO: Remove collection from payload
           seed,
         },
         collectionConfig,
@@ -304,7 +304,7 @@ app.openapi(
       onChain: {
         status: 'pending',
         chain: DOTPHIN_NETWORK,
-        contractAddress: DOTPHIN_PROOFS_COLLECTION_ID,
+        contractAddress: DOTPHIN_COLLECTION_ID.toString(),
       },
       metadata: {
         image: collectionConfig.metadata.image[seed],
