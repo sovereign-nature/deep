@@ -111,10 +111,13 @@ export const ClaimsParamsSchema = z.object({
   }),
 });
 
-export const BurnParamsSchema = z.object({
+export const BurnBodySchema = z.object({
   dotphinDID: z
     .string()
     .openapi({ example: 'did:asset:eip155:8880.unique2:700:1' }),
+  owner: z
+    .string()
+    .openapi({ example: '0xa9f57799D9aF9DA0B8Cc1597111c974F38736815' }),
 });
 
 export const BurnResponseSchema = z.object({

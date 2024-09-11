@@ -7,7 +7,7 @@ import { env } from 'hono/adapter';
 import walletsApp from '../wallets';
 import assetsApp from '../assets';
 import {
-  BurnParamsSchema,
+  BurnBodySchema,
   BurnResponseSchema,
   ClaimBodySchema,
   ClaimsParamsSchema,
@@ -24,7 +24,7 @@ import { getDotphinCollectionConfig } from './config';
 import { CrossmintResponse, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
 import { getRandomId } from '$lib/utils';
-import { getUniqueSdk } from '$lib/unique';
+import { getUniqueAccount, getUniqueSdk } from '$lib/unique';
 
 const app = new OpenAPIHono();
 
@@ -365,8 +365,10 @@ app.openapi(
 app.openapi(
   createRoute({
     method: 'post',
-    path: '/burn/:dotphinDID',
-    request: { params: BurnParamsSchema },
+    path: '/burn',
+    request: {
+      body: { content: { 'application/json': { schema: BurnBodySchema } } },
+    },
     responses: {
       200: {
         content: { 'application/json': { schema: BurnResponseSchema } },
@@ -383,30 +385,38 @@ app.openapi(
     },
   }),
   async (c) => {
-    const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c);
-
-    const { dotphinDID } = c.req.valid('param');
+    const { dotphinDID, owner } = c.req.valid('json');
     const { contractAddress, tokenId, network } = parseAssetDID(dotphinDID);
 
+    const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c);
+
     logger.info(
-      `Burning token ${tokenId} from collection ${contractAddress} on ${network}`
+      `Burning token ${tokenId} from collection ${Number(contractAddress)} on ${network}`
     );
 
     if (network !== 'opal')
       return c.json({ error: true, message: 'Wrong network' }, 400);
 
     const sdk = getUniqueSdk(WALLET_MNEMONIC, network);
+    const account = getUniqueAccount(WALLET_MNEMONIC);
 
-    const result = await sdk.token.burn({
-      collectionId: Number(contractAddress),
-      tokenId,
-    });
+    const result = await sdk.token.burn(
+      {
+        collectionId: Number(contractAddress),
+        tokenId,
+        from: owner,
+        address: account.address,
+      },
+      { signer: account.signer }
+    );
 
-    if (result.error)
+    if (result.error) {
+      logger.error(result.error);
       return c.json(
         { error: true, message: "Something went wrong, can't burn token" },
         500
       );
+    }
 
     return c.json({ success: true }, 200);
   }
