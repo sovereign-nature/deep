@@ -1,4 +1,16 @@
 import { writable, derived } from 'svelte/store';
+import {
+  MAX_EVOLUTION_LEVEL,
+  initialStepConfig,
+  STATUS,
+} from '$lib/shared/multipassConfig';
+import type {
+  ProofStepState,
+  NftStepState,
+  EvolveStepState,
+  MultipassStepConfig,
+} from '$lib/shared/multipassConfig';
+
 // TODO: move to types
 export type MultipassData = {
   isLoggedIn: boolean;
@@ -13,40 +25,7 @@ export type MultipassData = {
     level: number;
   };
 };
-// Define the StepState types
-type ProofStepState =
-  | 'LOGGED_OUT'
-  | 'NO_PROOFS'
-  | 'HAS_AVAILABLE_PROOFS'
-  | 'NO_AVAILABLE_PROOFS';
-type NftStepState = 'CLAIMED' | 'UNCLAIMED';
-type EvolveStepState = 'INITIAL' | 'EVOLVING' | 'COMPLETE';
 
-export type MultipassStepConfig = {
-  proofs: {
-    stepStatus: Status;
-    state: ProofStepState;
-  };
-  nft: {
-    stepStatus: Status;
-    state: NftStepState;
-    claimed: boolean;
-    disabled: boolean;
-  };
-  evolution: {
-    stepStatus: Status;
-    state: EvolveStepState;
-    disabled: boolean;
-  };
-};
-export type Status = 'locked' | 'active' | 'complete';
-
-export const MAX_EVOLUTION_LEVEL = 7;
-export const STATUS: { LOCKED: Status; ACTIVE: Status; COMPLETE: Status } = {
-  LOCKED: 'locked',
-  ACTIVE: 'active',
-  COMPLETE: 'complete',
-};
 // Initial state
 const initialState: MultipassData = {
   isLoggedIn: false,
@@ -64,6 +43,8 @@ const initialState: MultipassData = {
 
 // Svelte store to hold the app state
 export const multipassData = writable<MultipassData>(initialState);
+// Add a generic loading state IMPROVEMENT could separate it per card/data point
+export const isLoading = writable(false);
 // Function to update the Multipass data
 export function updateState(updates: Partial<MultipassData>) {
   multipassData.update((currentState) => {
@@ -71,26 +52,6 @@ export function updateState(updates: Partial<MultipassData>) {
     return { ...currentState, ...updates };
   });
 }
-
-//TODO: Separate to another file?
-// Initial MultipassStepConfig
-const initialStepConfig: MultipassStepConfig = {
-  proofs: {
-    stepStatus: STATUS.ACTIVE, // Proofs active by default as first step
-    state: 'NO_PROOFS',
-  },
-  nft: {
-    stepStatus: STATUS.LOCKED,
-    state: 'UNCLAIMED',
-    claimed: false,
-    disabled: false, // Disable the feature
-  },
-  evolution: {
-    stepStatus: STATUS.LOCKED,
-    state: 'INITIAL',
-    disabled: true, // Disable the feature
-  },
-};
 
 // Derived store to compute the proof step state
 export const proofStepState = derived(

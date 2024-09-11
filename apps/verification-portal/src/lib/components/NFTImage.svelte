@@ -4,7 +4,7 @@
 
   import { Tooltip } from 'flowbite-svelte';
 
-  import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
+  import SkeletonCard from '$lib/shared/components/SkeletonCard.svelte';
   import VerifiedIcon from '$lib/components/icons/VerifiedIcon.svelte';
   import HexagonGridIcon from '$lib/components/icons/HexagonGridIcon.svelte';
   import LL from '$lib/shared/i18n/i18n-svelte';
@@ -68,7 +68,7 @@
   <div class={containerClass}>
     <!-- Loading placeholder  -->
     {#if isLoading && !isError}
-      <ImagePlaceholder className={imgPlaceholderClass}></ImagePlaceholder>
+      <SkeletonCard className={imgPlaceholderClass}></SkeletonCard>
     {:else if isError}
       <!-- Display error message when there's an error loading the image -->
       <p class="px-10 py-20 text-sm font-thin whitespace-pre-line">

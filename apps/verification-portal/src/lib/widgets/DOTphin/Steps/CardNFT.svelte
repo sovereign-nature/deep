@@ -4,6 +4,7 @@
   import {
     multipassStepConfig,
     nftStepState,
+    isLoading,
   } from '$lib/features/MultipassStates';
   import FeaturedCard from '$lib/entities/featured/FeaturedCardSM.svelte';
   import TimelineItem from '$lib/widgets/DOTphin/TimelineItem/TimelineItem.svelte';
@@ -32,6 +33,7 @@
     itemState={$multipassStepConfig.nft.stepStatus}
     stepTitle={$LL.multipass.state.nftStep.stepTitle()}
     eggIcon
+    isLoading={$isLoading}
   >
     <svelte:fragment slot="header">
       <TimelineActionButton

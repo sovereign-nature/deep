@@ -4,7 +4,7 @@
   import { flip } from 'svelte/animate';
   import type { DeepAsset } from '@sni/types';
   import Card from '$lib/components/Card.svelte';
-  import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
+  import SkeletonCard from '$lib/shared/components/SkeletonCard.svelte';
   import Spinner from '$lib/components/icons/Spinner.svelte';
   import type { Web3DataState } from '$lib/types';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
@@ -28,13 +28,13 @@
     <div id="search-results" class=" flex flex-col sm:min-h-[460px]">
       {#if $web3Connected && !$web3Response.loaded}
         <div class="flex flex-row justify-between mt-16 text-white">
-          <ImagePlaceholder className="h-4 !w-36" />
-          <ImagePlaceholder className="h-4 !w-24" />
+          <SkeletonCard className="h-4 !w-36" />
+          <SkeletonCard className="h-4 !w-24" />
         </div>
         <div class="flex flex-col gap-2 mt-8 text-white w-full">
-          <ImagePlaceholder className="h-20" />
-          <ImagePlaceholder className="h-20" />
-          <ImagePlaceholder className="h-20" />
+          <SkeletonCard className="h-20" />
+          <SkeletonCard className="h-20" />
+          <SkeletonCard className="h-20" />
         </div>
       {:else if $web3Connected && $web3Response.loaded && !$web3Response.error}
         <div
