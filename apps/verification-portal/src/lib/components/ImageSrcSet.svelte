@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { directusUrl } from '@sni/clients/config';
-  import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
+  import SkeletonCard from '$lib/shared/components/SkeletonCard.svelte';
 
   export let assetID: string;
   export let altText: string;
@@ -30,7 +30,7 @@
   <!-- Skeleton loading card -->
   {#if !imageLoaded}
     <div class="skeleton-card"></div>
-    <ImagePlaceholder></ImagePlaceholder>
+    <SkeletonCard></SkeletonCard>
   {/if}
   {#if isMounted}
     <!-- Render the image when it's loaded -->

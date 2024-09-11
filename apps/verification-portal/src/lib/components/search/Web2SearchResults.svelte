@@ -5,7 +5,7 @@
   import type { FuseResult } from 'fuse.js';
   import type { DeepAsset } from '@sni/types';
   import Card from '$lib/components/Card.svelte';
-  import ImagePlaceholder from '$lib/components/ImagePlaceholder.svelte';
+  import SkeletonCard from '$lib/shared/components/SkeletonCard.svelte';
   import type { Web2DataState } from '$lib/types';
   import type { Collection } from '$lib/shared/collectionsConfig';
 
@@ -24,13 +24,13 @@
   <div id="search-results" class="min-h-[420px]">
     {#if !$web2data.loaded}
       <div class="flex flex-row justify-between mt-16 text-white">
-        <ImagePlaceholder className="h-4 !w-36" />
-        <ImagePlaceholder className="h-4 !w-24" />
+        <SkeletonCard className="h-4 !w-36" />
+        <SkeletonCard className="h-4 !w-24" />
       </div>
       <div class="flex flex-col gap-2 mt-8 text-white w-full">
-        <ImagePlaceholder className="h-20" />
-        <ImagePlaceholder className="h-20" />
-        <ImagePlaceholder className="h-20" />
+        <SkeletonCard className="h-20" />
+        <SkeletonCard className="h-20" />
+        <SkeletonCard className="h-20" />
       </div>
     {:else if $web2data.loaded && !$web2data.error}
       <div
