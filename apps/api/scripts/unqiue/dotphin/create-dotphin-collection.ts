@@ -6,7 +6,6 @@ dotenv.config();
 
 const NETWORK: 'opal' | 'unique' = 'opal';
 
-// man picture (medium size png)
 const IMAGE_URL =
   'https://real.myfilebase.com/ipfs/QmSd8qhWTqYvPYGEnXcB9cRhFGwA8XVR1wfN5GGv4x4vJj/orbo-air.png';
 
@@ -20,7 +19,7 @@ const createCollection = async (sdk: Sdk): Promise<number> => {
     description: 'Your DOTphin avatar',
     symbol: 'DOTPHIN',
     cover_image: { url: IMAGE_URL },
-    limits: { accountTokenOwnershipLimit: 1 }, //TODO: Should we add transfer limit (soul bound)?
+    limits: { accountTokenOwnershipLimit: 1, ownerCanTransfer: true }, //TODO: Should we add transfer limit (soul bound)? IMPORTANT: Remove transfer from PROD
     potential_attributes: [
       { trait_type: 'level' },
       { trait_type: 'experience' },
