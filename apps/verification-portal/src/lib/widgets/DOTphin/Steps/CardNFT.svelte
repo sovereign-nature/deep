@@ -1,8 +1,8 @@
 <script lang="ts">
   import { openModal } from '$lib/widgets/DOTphin/collectModalStore';
-
   import {
     multipassStepConfig,
+    multipassData,
     nftStepState,
     isLoading,
   } from '$lib/features/MultipassStates';
@@ -12,20 +12,6 @@
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import TimelineActionButton from '$lib/widgets/DOTphin/TimelineItem/TimelineActionButton.svelte';
   import CollectModal from '../CollectForm/CollectModal.svelte';
-
-  const item = {
-    id: '12',
-    tokenId: '12',
-    name: 'DOTphin Egg',
-    description: 'lorem',
-    image:
-      'https://real.myfilebase.com/ipfs/QmagUnan8yPS7fFRL6hxk2VkdXbroD4AJGfLPDFzAgFEis/polkadot-decoded-2024-water.png',
-    collection: {
-      id: '665',
-      name: '',
-    },
-    address: 'did:asset:eip155:8880.unique2:665:12',
-  };
 </script>
 
 {#if $nftStepState === 'UNCLAIMED'}
@@ -53,10 +39,13 @@
   <TimelineItem
     itemState={$multipassStepConfig.nft.stepStatus}
     stepTitle={$LL.multipass.state.nftStep.stepTitle()}
+    isLoading={$isLoading ||
+      !$multipassData.nft.data ||
+      $multipassData.nft.pending}
   >
     <svelte:fragment slot="featured">
       <div class="max-h-[200px] mb-12">
-        <FeaturedCard {item} />
+        <FeaturedCard item={$multipassData.nft.data} />
       </div>
     </svelte:fragment>
   </TimelineItem>

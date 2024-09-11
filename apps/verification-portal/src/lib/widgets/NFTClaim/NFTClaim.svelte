@@ -11,6 +11,7 @@
   import ClaimData from './ClaimData.svelte';
   import { setNFTClaimContext } from './context';
   import type { CrossmintResponse } from './context';
+  import { checkIfDOTphin } from '$lib/features/DOTphin';
   import CheckButton from './ButtonCheck.svelte';
   import TriggerButton from './ButtonTrigger.svelte';
   import CloseButton from './ButtonClose.svelte';
@@ -130,6 +131,7 @@
           $claimPending = result?.data?.onChain?.status !== 'success';
           if (!$claimPending) {
             $claimResponse = result?.data as CrossmintResponse | null;
+            if ($claimResponse) checkIfDOTphin($claimAddress, $claimResponse);
             clearInterval(intervalId);
           }
           break;

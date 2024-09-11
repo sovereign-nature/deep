@@ -1,0 +1,65 @@
+<script lang="ts">
+  import HexagonGridIcon from '$lib/components/icons/HexagonGridIcon.svelte';
+  import Subheader from '$lib/shared/typography/Subheader.svelte';
+  import HexagonEggIcon from '$lib/components/icons/HexagonEggIcon.svelte';
+  export let name: string;
+</script>
+
+<div
+  class=" bg-multipass bg-deep-green rounded-t-lg xl:rounded-t-lg text-white overflow-hidden"
+>
+  <div class=" grid lg:grid-cols-4 grid-flow-row lg:grid-flow-col">
+    <div class="col-span-2 px-12 py-4 sm:py-12">
+      <Subheader
+        id="multipass"
+        title={'Multipass collection'}
+        className="md:!text-base font-normal text-white "
+        >Featured collection</Subheader
+      >
+      <h3 class="text-4xl leading-tight">
+        The {name} Journey
+      </h3>
+      <a
+        href="https://sovereignnature.com/dotphin"
+        target="_blank"
+        class="text-primary-200 hover:text-white text-xs"
+      >
+        Get to know more
+      </a>
+    </div>
+    <div
+      class=" hidden sm:text-white pb-4 sm:px-8 md:px-11 sm:py-8 xl:pt-11 col-span-2 sm:flex flex-row justify-start sm:items-center gap-5"
+    >
+      <div
+        class=" sm:bg-black sm:bg-opacity-35 rounded-lg p-4 flex flex-col items-center text-center w-full md:w-md"
+      >
+        <HexagonGridIcon
+          className=" fill-primary-500 text-deep-green-500 h-12 w-12 sm:h-[65px] sm:w-[65px]"
+        />
+        <span class="text-xs pt-2">Multiple Proofs of Presence</span>
+      </div>
+
+      <div
+        class=" sm:bg-black sm:bg-opacity-35 rounded-lg p-4 flex flex-col items-center text-center w-full md:w-md"
+      >
+        <HexagonEggIcon
+          className=" fill-primary-500 text-deep-green-500 h-12 w-12 sm:h-[65px] sm:w-[65px]"
+        />
+        <span class="text-xs pt-2">One Eco-evolving Avatar</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* TODO: Use SNI CDN image if we keep this */
+  @media (min-width: 640px) {
+    .bg-multipass {
+      background-image: url('https://optim.tildacdn.net/tild6535-6238-4062-b137-303364373263/-/format/webp/SNI_Dotphin_header-m.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 40%;
+      text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
+    }
+  }
+</style>

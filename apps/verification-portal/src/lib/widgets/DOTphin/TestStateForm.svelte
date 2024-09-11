@@ -14,27 +14,30 @@
   }
 
   // Function to increment proof count
-  function incrementProofCount() {
+  function incrementtotal() {
     updateState({
-      proofs: {
-        ...$multipassData.proofs,
-        proofCount: $multipassData.proofs.proofCount + 1,
-        availableProofCount: $multipassData.proofs.availableProofCount + 1,
+      proofStats: {
+        ...$multipassData.proofStats,
+        total: $multipassData.proofStats.total + 1,
+        available: {
+          ...$multipassData.proofStats.available,
+          total: $multipassData.proofStats.available.total + 1,
+        },
       },
     });
   }
 
   // Function to decrement proof count
-  function decrementProofCount() {
-    if ($multipassData.proofs.proofCount > 0) {
+  function decrementtotal() {
+    if ($multipassData.proofStats.total > 0) {
       updateState({
-        proofs: {
-          ...$multipassData.proofs,
-          proofCount: $multipassData.proofs.proofCount - 1,
-          availableProofCount: Math.max(
-            $multipassData.proofs.availableProofCount - 1,
-            0
-          ),
+        proofStats: {
+          ...$multipassData.proofStats,
+          total: $multipassData.proofStats.total - 1,
+          available: {
+            ...$multipassData.proofStats.available,
+            total: Math.max($multipassData.proofStats.available.total - 1, 0),
+          },
         },
       });
     }
@@ -51,10 +54,10 @@
     });
   }
 
-  // Function to increment evolution level (only if unused proofs are available)
+  // Function to increment evolution level (only if unused proofs are available.total)
   function incrementEvolutionLevel() {
     if (
-      $multipassData.proofs.availableProofCount > 0 &&
+      $multipassData.proofStats.available.total > 0 &&
       $multipassData.evolution.level < 7
     ) {
       updateState({
@@ -62,9 +65,12 @@
           ...$multipassData.evolution,
           level: $multipassData.evolution.level + 1,
         },
-        proofs: {
-          ...$multipassData.proofs,
-          availableProofCount: $multipassData.proofs.availableProofCount - 1,
+        proofStats: {
+          ...$multipassData.proofStats,
+          available: {
+            ...$multipassData.proofStats.available,
+            total: $multipassData.proofStats.available.total - 1,
+          },
         },
       });
     }
@@ -78,9 +84,12 @@
           ...$multipassData.evolution,
           level: $multipassData.evolution.level - 1,
         },
-        proofs: {
-          ...$multipassData.proofs,
-          availableProofCount: $multipassData.proofs.availableProofCount + 1,
+        proofStats: {
+          ...$multipassData.proofStats,
+          available: {
+            ...$multipassData.proofStats.available,
+            total: $multipassData.proofStats.available.total + 1,
+          },
         },
       });
     }
@@ -88,7 +97,7 @@
 
   // Reactive statement to handle disabling NFT URL input and resetting evolution level
   $: {
-    if ($multipassData.proofs.proofCount === 0) {
+    if ($multipassData.proofStats.total === 0) {
       updateState({
         nft: {
           ...$multipassData.nft,
@@ -128,18 +137,16 @@
 
   <!-- Proof Counters -->
   <div class="form-group">
-    <span>Proof Count: {$multipassData.proofs.proofCount}</span>
-    <button
-      class="border border-primary h-10 w-10"
-      on:click={incrementProofCount}>+</button
+    <span>Proof Count: {$multipassData.proofStats.total}</span>
+    <button class="border border-primary h-10 w-10" on:click={incrementtotal}
+      >+</button
     >
-    <button
-      class="border border-primary h-10 w-10"
-      on:click={decrementProofCount}>-</button
+    <button class="border border-primary h-10 w-10" on:click={decrementtotal}
+      >-</button
     >
     <div class="mt-2">
       <span
-        >Unused Proof Count: {$multipassData.proofs.availableProofCount}</span
+        >Unused Proof Count: {$multipassData.proofStats.available.total}</span
       >
     </div>
     <div class="mt-2 flex flex-col">

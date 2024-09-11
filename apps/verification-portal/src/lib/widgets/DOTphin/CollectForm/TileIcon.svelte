@@ -10,7 +10,7 @@
 <button
   type="button"
   {disabled}
-  class="flex flex-col justify-center disabled:opacity-75 disabled:pointer-events-none items-center border border-gray-300 rounded-lg p-4 hover:bg-gray-200 cursor-pointer transition-all"
+  class="flex flex-col min-h-24 aspect-square justify-center bg-deep-blue-700 disabled:opacity-35 disabled:bg-deep-blue-800 disabled:pointer-events-none items-center border-2 border-transparent hover:border-primary-200 rounded-lg p-4 cursor-pointer transition-all"
   on:click={() => dispatch('select', { value })}
   on:keydown={(event) =>
     (event.key === 'Enter' || event.key === ' ') &&

@@ -5,10 +5,7 @@
   import ProofCard from '$lib/widgets/DOTphin/Steps/CardProof.svelte';
   import NFTCard from '$lib/widgets/DOTphin/Steps/CardNFT.svelte';
   import { Timeline } from 'flowbite-svelte';
-  import {
-    multipassData,
-    multipassStepConfig,
-  } from '$lib/features/MultipassStates';
+  import { multipassData, nftStepState } from '$lib/features/MultipassStates';
   import { updateMultipassStateForAddress } from '$lib/features/DOTphin';
   const web3Connected: Writable<boolean> = getContext('web3Connected');
   const web3Address: Writable<string> = getContext('web3Address');
@@ -37,11 +34,11 @@
   class="bg-deep-green dark:bg-black dark:bg-opacity-60 text-white rounded-b-lg ps-6 pt-8 sm:p-16 overflow-x-auto mb-8"
 >
   <Timeline {order}>
-    {#if $multipassStepConfig.nft.claimed}
+    {#if $nftStepState === 'CLAIMED'}
       <NFTCard />
     {/if}
     <ProofCard />
-    {#if !$multipassStepConfig.nft.claimed}
+    {#if $nftStepState !== 'CLAIMED'}
       <NFTCard />
     {/if}
     <EvolutionCard />
