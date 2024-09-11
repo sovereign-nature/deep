@@ -201,14 +201,14 @@ export async function claimsQueue(batch: MessageBatch<string>, env: Env) {
         {
           const mintId = mintRequest.payload.id;
           logger.info(
-            `Queue job is started to mint ${mintId} on ${network} network`
+            `Queue job is started to mint ${mintId} on ${network} network in collection ${mintRequest.collectionConfig.externalId}`
           );
 
           const successResponse = await mintUniqueToken(
             network,
             mintRequest.address,
             mintRequest.payload,
-            mintRequest.collectionConfig,
+            mintRequest.collectionConfig, //TODO: Take collection config from env
             env.WALLET_MNEMONIC
           );
 

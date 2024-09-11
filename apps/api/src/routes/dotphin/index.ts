@@ -232,13 +232,12 @@ app.openapi(
 
     const { address, proofDID } = c.req.valid('json');
 
-    console.log('Received claim request for ', address, proofDID);
+    logger.info('Received claim request for ', address, proofDID);
 
     //TODO: Check if user logged in
 
     //Check if proofDID is valid
     const requestUrl = `/${proofDID}`;
-    console.log('Requesting asset', requestUrl);
     const assetResponse = await assetsApp.request(
       requestUrl,
       {},
@@ -246,11 +245,7 @@ app.openapi(
       c.executionCtx
     );
 
-    console.log('Asset response', assetResponse);
-
     const proofAsset = (await assetResponse.json()) as DeepAsset;
-
-    console.log('Proof asset', proofAsset);
 
     //TODO: Check if proof owner is the same as the user
 

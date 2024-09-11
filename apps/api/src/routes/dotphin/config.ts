@@ -9,7 +9,7 @@ const baseAttributes = [
 //TODO: Different collections for dev/staging/prod
 export const collectionConfig: CollectionConfig = {
   name: 'DOTphin',
-  externalId: '3745',
+  externalId: '3754', //TODO: remove, take from ENV
   network: 'opal',
   metadata: {
     name: 'DOTphin',
