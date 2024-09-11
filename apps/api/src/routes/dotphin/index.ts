@@ -389,7 +389,7 @@ app.openapi(
     const { contractAddress, tokenId, network } = parseAssetDID(dotphinDID);
 
     logger.info(
-      `Burning token ${tokenId} from collection ${contractAddress} on ${network}`
+      `Burning token ${tokenId} from collection ${Number(contractAddress)} on ${network}`
     );
 
     if (network !== 'opal')
@@ -402,11 +402,12 @@ app.openapi(
       tokenId,
     });
 
-    if (result.error)
+    if (result.error) {
       return c.json(
         { error: true, message: "Something went wrong, can't burn token" },
         500
       );
+    }
 
     return c.json({ success: true }, 200);
   }
