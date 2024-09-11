@@ -110,3 +110,13 @@ export const ClaimsParamsSchema = z.object({
     example: 'hK4lpasd',
   }),
 });
+
+export const BurnParamsSchema = z.object({
+  dotphinDID: z
+    .string()
+    .openapi({ example: 'did:asset:eip155:8880.unique2:700:1' }),
+});
+
+export const BurnResponseSchema = z.object({
+  success: z.boolean().openapi({ example: true }),
+});

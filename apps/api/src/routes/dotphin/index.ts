@@ -7,6 +7,8 @@ import { env } from 'hono/adapter';
 import walletsApp from '../wallets';
 import assetsApp from '../assets';
 import {
+  BurnParamsSchema,
+  BurnResponseSchema,
   ClaimBodySchema,
   ClaimsParamsSchema,
   ProfileParamsSchema,
@@ -357,6 +359,56 @@ app.openapi(
     } else {
       return c.json({ error: true, message: 'Minting ID was not found' }, 404);
     }
+  }
+);
+
+app.openapi(
+  createRoute({
+    method: 'post',
+    path: '/burn/:dotphinDID',
+    request: { params: BurnParamsSchema },
+    responses: {
+      200: {
+        content: { 'application/json': { schema: BurnResponseSchema } },
+        description: 'Returns burn status',
+      },
+      400: {
+        content: { 'application/json': { schema: ErrorSchema } },
+        description: 'Wrong DOTphin DID format',
+      },
+      500: {
+        content: { 'application/json': { schema: ErrorSchema } },
+        description: 'Wrong DOTphin DID format',
+      },
+    },
+  }),
+  async (c) => {
+    const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c);
+
+    const { dotphinDID } = c.req.valid('param');
+    const { contractAddress, tokenId, network } = parseAssetDID(dotphinDID);
+
+    logger.info(
+      `Burning token ${tokenId} from collection ${contractAddress} on ${network}`
+    );
+
+    if (network !== 'opal')
+      return c.json({ error: true, message: 'Wrong network' }, 400);
+
+    const sdk = getUniqueSdk(WALLET_MNEMONIC, network);
+
+    const result = await sdk.token.burn({
+      collectionId: Number(contractAddress),
+      tokenId,
+    });
+
+    if (result.error)
+      return c.json(
+        { error: true, message: "Something went wrong, can't burn token" },
+        500
+      );
+
+    return c.json({ success: true }, 200);
   }
 );
 
