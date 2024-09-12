@@ -4,6 +4,7 @@ export default {
     'The eco-data pipeline to connect real life ecology with the digital world.',
   feature: {
     collectionsTest: false,
+    multipassTest: false,
   },
   social: {
     discord: 'discord:https://discord.gg/ZXyC3tN87K',

@@ -175,3 +175,45 @@ async function fetchNFTDataByDID(did: string) {
     console.error('Error fetching NFT data:', error);
   }
 }
+
+// Dev function: Burn a dotphin based on DID
+export async function burnDOTphinNFT() {
+  const currentState = get(multipassData);
+  const dotphinDID = currentState.nft.DID;
+
+  if (!dotphinDID) {
+    console.log('No dotphinDID found in multipassData');
+    return;
+  }
+
+  try {
+    const response = await fetch(`${BASE_URL}/burn`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        dotphinDID,
+        owner: currentState.address,
+      }),
+    });
+
+    if (response.ok) {
+      console.log('DOTphin NFT burned successfully');
+      toast.success('Burned the NFT');
+      // Optionally, update the state to reflect the burned NFT
+      updateState({
+        ...currentState,
+        nft: {
+          DID: null,
+          data: null,
+          pending: false,
+        },
+      });
+    } else {
+      console.error('Failed to burn DOTphin NFT');
+    }
+  } catch (error) {
+    console.error('Error burning DOTphin NFT:', error);
+  }
+}

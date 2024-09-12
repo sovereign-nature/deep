@@ -45,9 +45,7 @@
   }
 </script>
 
-<div
-  class="flex flex-col items-center justify-start pt-16 min-h-screen dark:text-white"
->
+<div class="flex flex-col items-center justify-start py-16 dark:text-white">
   <div>
     <h2 class="text-xl font-semibold">Enabled Features</h2>
     <a

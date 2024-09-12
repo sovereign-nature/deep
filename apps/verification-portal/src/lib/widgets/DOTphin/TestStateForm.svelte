@@ -7,6 +7,7 @@
     nftStepState,
     evolveStepState,
   } from '../../features/MultipassStates';
+  import { burnDOTphinNFT } from '$lib/features/DOTphin';
 
   // Function to handle login state toggle
   function toggleLogin() {
@@ -111,7 +112,7 @@
   }
 </script>
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-2 gap-8">
   <!-- Login State Toggle -->
   <div class="form-group">
     <span>Login State:</span>
@@ -173,6 +174,12 @@
     <div class="mt-2 flex flex-col">
       <span>NFT Step stepStatus: {$multipassStepConfig.nft.stepStatus}</span>
       <span>NFT Step State: {$nftStepState}</span>
+      <button
+        class="bg-primary-200 px-5 p-2 rounded-lg"
+        on:click={burnDOTphinNFT}
+      >
+        Burn</button
+      >
     </div>
   </div>
 
