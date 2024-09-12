@@ -515,12 +515,12 @@ type RootTranslation = {
 			}
 			nftStep: {
 				/**
-				 * N​F​T
+				 * E​c​o​-​e​v​o​l​v​i​n​g​ ​a​v​a​t​a​r
 				 */
 				stepTitle: string
 				UNCLAIMED: {
 					/**
-					 * U​s​e​ ​y​o​u​r​ ​p​r​o​o​f​s​ ​t​o​ ​u​n​l​o​c​k​ ​t​h​e​ ​D​O​T​p​h​i​n​.
+					 * U​s​e​ ​y​o​u​r​ ​p​r​o​o​f​s​ ​t​o​ ​u​n​l​o​c​k​ ​t​h​e​ ​D​O​T​p​h​i​n​ ​E​c​o​-​e​v​o​l​v​i​n​g​ ​a​v​a​t​a​r​ 
 					 */
 					subtitle: string
 					/**
@@ -533,7 +533,7 @@ type RootTranslation = {
 			}
 			evolveStep: {
 				/**
-				 * E​v​o​l​v​e
+				 * E​v​o​l​u​t​i​o​n
 				 */
 				stepTitle: string
 				INITIAL: {
@@ -1194,12 +1194,12 @@ export type TranslationFunctions = {
 			}
 			nftStep: {
 				/**
-				 * NFT
+				 * Eco-evolving avatar
 				 */
 				stepTitle: () => LocalizedString
 				UNCLAIMED: {
 					/**
-					 * Use your proofs to unlock the DOTphin.
+					 * Use your proofs to unlock the DOTphin Eco-evolving avatar 
 					 */
 					subtitle: () => LocalizedString
 					/**
@@ -1212,7 +1212,7 @@ export type TranslationFunctions = {
 			}
 			evolveStep: {
 				/**
-				 * Evolve
+				 * Evolution
 				 */
 				stepTitle: () => LocalizedString
 				INITIAL: {

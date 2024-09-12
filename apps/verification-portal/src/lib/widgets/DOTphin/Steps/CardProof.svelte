@@ -38,7 +38,7 @@
       default:
         return $LL.multipass.state.proofStep.HAS_AVAILABLE_PROOFS.subtitle({
           collection,
-          count: $multipassData.proofs.proofCount,
+          count: $multipassData.proofStats.total,
         });
     }
   })();
@@ -75,7 +75,7 @@
         <CardTitle>
           <WrapTranslation
             message={$LL.multipass.state.proofStep.HAS_AVAILABLE_PROOFS.title({
-              count: $multipassData.proofs.availableProofCount,
+              count: $multipassData.proofStats.available.total,
             })}
             let:infix
           >
@@ -90,7 +90,10 @@
     </svelte:fragment>
 
     <svelte:fragment slot="content">
-      <CardSubtitle content={subtitle} />
+      <CardSubtitle>
+        {subtitle}
+      </CardSubtitle>
+
       {#if hasCollectionLink && collectionLink}
         <a href={collectionLink} class="text-xs text-primary block w-full mb-4">
           {$LL.multipass.state.proofStep.HAS_AVAILABLE_PROOFS.moreInfo()}

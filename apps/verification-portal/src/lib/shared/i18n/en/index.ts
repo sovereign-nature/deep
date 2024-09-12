@@ -180,15 +180,16 @@ const en: BaseTranslation = {
         },
       },
       nftStep: {
-        stepTitle: 'NFT',
+        stepTitle: 'Eco-evolving avatar',
         UNCLAIMED: {
-          subtitle: 'Use your proofs to unlock the DOTphin.',
+          subtitle:
+            'Use your proofs to unlock the DOTphin Eco-evolving avatar ',
           cta: 'Collect the Orb',
         },
         CLAIMED: {},
       },
       evolveStep: {
-        stepTitle: 'Evolve',
+        stepTitle: 'Evolution',
         INITIAL: {
           subtitle: 'You need to have an NFT to start evolving',
           cta: 'Evolve',
