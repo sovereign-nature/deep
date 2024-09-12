@@ -1,6 +1,6 @@
 import { drizzle } from 'drizzle-orm/d1';
 import { eq } from 'drizzle-orm/sql';
-import { users } from './schemas';
+import { dotphinClaims, users } from './schemas';
 import { logger } from '$lib/logger';
 
 export async function addUser(db: D1Database, address: string) {
@@ -36,4 +36,26 @@ export async function verifyEmail(db: D1Database, address: string) {
     .update(users)
     .set({ emailVerified: true })
     .where(eq(users.id, address));
+}
+
+export async function setDotphinClaim(
+  db: D1Database,
+  claimId: string,
+  userId: string
+) {
+  const orm = drizzle(db);
+
+  return orm.insert(dotphinClaims).values({
+    id: userId,
+    userId,
+  });
+}
+
+export async function getDotphinClaim(db: D1Database, userId: string) {
+  const orm = drizzle(db);
+
+  return orm
+    .select()
+    .from(dotphinClaims)
+    .where(eq(dotphinClaims.userId, userId));
 }

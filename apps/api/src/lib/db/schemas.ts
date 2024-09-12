@@ -18,3 +18,11 @@ export const sessions = sqliteTable('session', {
   userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
   chainId: integer('chain_id'),
 });
+
+export const dotphinClaims = sqliteTable('dotphin_claim', {
+  id: text('id').notNull().primaryKey(),
+  userId: text('user_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' })
+    .unique(), // One claim per user
+});

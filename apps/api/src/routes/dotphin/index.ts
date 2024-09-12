@@ -25,6 +25,7 @@ import { CrossmintResponse, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
 import { getRandomId } from '$lib/utils';
 import { getUniqueAccount, getUniqueSdk } from '$lib/unique';
+import { getDotphinClaim, setDotphinClaim } from '$lib/db';
 
 const app = new OpenAPIHono();
 
@@ -154,8 +155,6 @@ export async function updateTokenAttribute(
   console.log(
     `Tokens updated in collection ${collectionId} with ID ${tokenId}}`
   );
-
-  return tokenId;
 }
 
 //Profile
@@ -224,15 +223,33 @@ app.openapi(
     const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<string> }>(c);
     const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c);
 
+    const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
+
     const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c);
 
     const { DOTPHIN_COLLECTION_ID, DOTPHIN_NETWORK } = getDotphinEnvConfig(c);
 
     const { address, proofDID } = c.req.valid('json');
 
-    logger.info('Received claim request for ', address, proofDID);
+    const dotphinClaim = await getDotphinClaim(SESSIONS_DB, address);
+
+    if (dotphinClaim.length > 0) {
+      const claimId = dotphinClaim[0].id;
+
+      const mintResponse = await MINTING_KV.get(claimId);
+
+      if (mintResponse !== null) {
+        const parsedMintResponse = CrossmintResponse.parse(
+          JSON.parse(mintResponse)
+        );
+
+        return c.json(parsedMintResponse, 200);
+      }
+    }
 
     //TODO: Check if user logged in
+
+    logger.info('Received claim request for ', address, proofDID);
 
     //Check if proofDID is valid
     const requestUrl = `/${proofDID}`;
@@ -313,6 +330,7 @@ app.openapi(
     };
 
     await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
+    await setDotphinClaim(SESSIONS_DB, mintId, address);
 
     const { contractAddress, tokenId } = parseAssetDID(proofDID);
 
