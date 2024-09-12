@@ -45,8 +45,11 @@ export async function setDotphinClaim(
 ) {
   const orm = drizzle(db);
 
+  //This is needed only for API testing with random addresses, can be removed
+  await addUser(db, userId);
+
   return orm.insert(dotphinClaims).values({
-    id: userId,
+    id: claimId,
     userId,
   });
 }
