@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MultipassHeaderSM from '$lib/widgets/DOTphin/MultipassHeaderSM.svelte';
+  import Header from '$lib/widgets/DOTphin/Header.svelte';
   import TestStateForm from '$lib/widgets/DOTphin/TestStateForm.svelte';
   import Timeline from '$lib/widgets/DOTphin/Timeline.svelte';
 
@@ -14,7 +14,7 @@
   </div>
 {/if}
 <div class="grid grid-cols-1 py-4 md:py-4 mx-4 md:mx-0 mb-16">
-  <MultipassHeaderSM name="DOTphin" />
+  <Header name="DOTphin" />
   <div class="hidden lg:block">
     <Timeline order="horizontal" />
   </div>

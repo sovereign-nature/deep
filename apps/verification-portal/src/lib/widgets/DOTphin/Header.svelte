@@ -55,7 +55,7 @@
   /* TODO: Use SNI CDN image if we keep this */
   @media (min-width: 640px) {
     .bg-multipass {
-      background-image: url('https://optim.tildacdn.net/tild6535-6238-4062-b137-303364373263/-/format/webp/SNI_Dotphin_header-m.png');
+      background-image: url('https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/7f77fa3a-1e23-4920-7802-9794d1886f00/public');
       background-size: cover;
       background-repeat: no-repeat;
       background-position: 50% 40%;

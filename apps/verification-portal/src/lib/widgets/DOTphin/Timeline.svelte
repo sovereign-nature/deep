@@ -14,10 +14,8 @@
   $: {
     if ($web3Connected) {
       $multipassData.isLoggedIn = true;
-      console.log('User is logged in');
     } else {
       $multipassData.isLoggedIn = false;
-      console.log('User is logged out');
     }
   }
 
