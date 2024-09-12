@@ -1,4 +1,6 @@
 import { writable, derived } from 'svelte/store';
+import type { DeepAsset } from '@sni/types';
+
 import {
   MAX_EVOLUTION_LEVEL,
   initialStepConfig,
@@ -14,12 +16,21 @@ import type {
 // TODO: move to types
 export type MultipassData = {
   isLoggedIn: boolean;
-  proofs: {
-    proofCount: number;
-    availableProofCount: number;
+  address: string | null;
+  proofStats: {
+    total: number;
+    available: {
+      total: number;
+      air: number;
+      earth: number;
+      water: number;
+    };
   };
+  proofs: DeepAsset[] | null;
   nft: {
     DID: string | null;
+    data: DeepAsset | null;
+    pending: boolean;
   };
   evolution: {
     level: number;
@@ -29,12 +40,16 @@ export type MultipassData = {
 // Initial state
 const initialState: MultipassData = {
   isLoggedIn: false,
-  proofs: {
-    proofCount: 0,
-    availableProofCount: 0,
+  address: null,
+  proofStats: {
+    total: 0,
+    available: { total: 0, air: 0, earth: 0, water: 0 },
   },
+  proofs: null,
   nft: {
     DID: null,
+    data: null,
+    pending: false,
   },
   evolution: {
     level: 0,
@@ -59,9 +74,9 @@ export const proofStepState = derived(
   ($multipassData): ProofStepState => {
     if (!$multipassData.isLoggedIn) {
       return 'LOGGED_OUT';
-    } else if ($multipassData.proofs.proofCount === 0) {
+    } else if ($multipassData.proofStats.total === 0) {
       return 'NO_PROOFS';
-    } else if ($multipassData.proofs.availableProofCount > 0) {
+    } else if ($multipassData.proofStats.available.total > 0) {
       return 'HAS_AVAILABLE_PROOFS';
     } else {
       return 'NO_AVAILABLE_PROOFS';
@@ -73,7 +88,9 @@ export const proofStepState = derived(
 export const nftStepState = derived(
   multipassData,
   ($multipassData): NftStepState => {
-    return $multipassData.nft.DID ? 'CLAIMED' : 'UNCLAIMED';
+    return $multipassData.nft.DID || $multipassData.nft.pending
+      ? 'CLAIMED'
+      : 'UNCLAIMED';
   }
 );
 
