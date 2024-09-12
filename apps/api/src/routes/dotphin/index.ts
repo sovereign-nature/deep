@@ -25,7 +25,11 @@ import { CrossmintResponse, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
 import { getRandomId } from '$lib/utils';
 import { getUniqueAccount, getUniqueSdk } from '$lib/unique';
-import { deleteDotphinClaim, getDotphinClaim, setDotphinClaim } from '$lib/db';
+import {
+  deleteDotphinClaim,
+  getDotphinClaim,
+  setDotphinClaim,
+} from '$lib/db/dotphin-claims';
 
 const app = new OpenAPIHono();
 

@@ -26,3 +26,11 @@ export const dotphinClaims = sqliteTable('dotphin_claim', {
     .references(() => users.id, { onDelete: 'cascade' })
     .unique(), // One claim per user
 });
+
+export const proofs = sqliteTable('proof', {
+  id: text('id').notNull().primaryKey(),
+  used: integer('used', { mode: 'boolean' }).notNull().default(false),
+  owner: text('owner')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+});
