@@ -25,7 +25,7 @@ import { CrossmintResponse, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
 import { getRandomId } from '$lib/utils';
 import { getUniqueAccount, getUniqueSdk } from '$lib/unique';
-import { getDotphinClaim, setDotphinClaim } from '$lib/db';
+import { deleteDotphinClaim, getDotphinClaim, setDotphinClaim } from '$lib/db';
 
 const app = new OpenAPIHono();
 
@@ -146,14 +146,16 @@ export async function updateTokenAttribute(
   );
 
   //TODO: Move to queue?
-  await sdk.token.setProperties({
+  const result = await sdk.token.setProperties({
     collectionId,
     tokenId,
     properties: [{ key: 'tokenData', value: JSON.stringify(tokenDataValue) }],
   });
 
-  console.log(
-    `Tokens updated in collection ${collectionId} with ID ${tokenId}}`
+  console.log(result);
+
+  logger.info(
+    `Tokens attribute updated in collection ${collectionId} with ID ${tokenId}}`
   );
 }
 
@@ -225,7 +227,7 @@ app.openapi(
 
     const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
 
-    const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c);
+    // const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c);
 
     const { DOTPHIN_COLLECTION_ID, DOTPHIN_NETWORK } = getDotphinEnvConfig(c);
 
@@ -332,17 +334,17 @@ app.openapi(
     await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
     await setDotphinClaim(SESSIONS_DB, mintId, address);
 
-    const { contractAddress, tokenId } = parseAssetDID(proofDID);
+    // const { contractAddress, tokenId } = parseAssetDID(proofDID);
 
     //Mark proof as used
-    updateTokenAttribute(
-      WALLET_MNEMONIC,
-      DOTPHIN_NETWORK,
-      Number(contractAddress),
-      tokenId,
-      'used',
-      'true'
-    );
+    // await updateTokenAttribute(
+    //   WALLET_MNEMONIC,
+    //   DOTPHIN_NETWORK,
+    //   Number(contractAddress),
+    //   tokenId,
+    //   'used',
+    //   'true'
+    // );
 
     return c.json(pendingResponse, 200);
   }
@@ -407,6 +409,7 @@ app.openapi(
     const { contractAddress, tokenId, network } = parseAssetDID(dotphinDID);
 
     const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c);
+    const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
 
     logger.info(
       `Burning token ${tokenId} from collection ${Number(contractAddress)} on ${network}`
@@ -435,6 +438,8 @@ app.openapi(
         500
       );
     }
+
+    await deleteDotphinClaim(SESSIONS_DB, owner);
 
     return c.json({ success: true }, 200);
   }

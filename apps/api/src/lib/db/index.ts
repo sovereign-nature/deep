@@ -62,3 +62,9 @@ export async function getDotphinClaim(db: D1Database, userId: string) {
     .from(dotphinClaims)
     .where(eq(dotphinClaims.userId, userId));
 }
+
+export async function deleteDotphinClaim(db: D1Database, userId: string) {
+  const orm = drizzle(db);
+
+  return orm.delete(dotphinClaims).where(eq(dotphinClaims.userId, userId));
+}
