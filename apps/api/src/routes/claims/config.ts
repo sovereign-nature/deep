@@ -227,7 +227,7 @@ export const collections: Collections = {
     externalId: '3030',
     metadata: {
       description:
-        'An exciting new PoP has surfaced! This unique Proof of Presence for Decoded Asia 2024 in Singapore is a token of your continuous involvement with the Polkadot community. More than just a keepsake, this badge unlocks a multi-event adventure dedicated to supporting real-world whale conservation initiatives by decoding their songs. Your eco-evolving avatar awaits. Take the plunge and immerse yourself in nature.',
+        'An exciting new PoP has surfaced! This unique Proof of Presence for Decoded Asia 2024 in Singapore is a token of your continuous involvement with the Polkadot community. More than just a keepsake, this badge unlocks a multi-event adventure dedicated to supporting real-world whale conservation initiatives. Your eco-evolving avatar awaits. Take the plunge and immerse yourself in nature.',
       image: [
         'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-air.png',
         'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-earth.png',
@@ -254,7 +254,7 @@ export const collections: Collections = {
     externalId: '3551',
     metadata: {
       description:
-        'An exciting new PoP has surfaced! This unique Proof of Presence for Decoded Asia 2024 in Singapore is a token of your continuous involvement with the Polkadot community. More than just a keepsake, this badge unlocks a multi-event adventure dedicated to supporting real-world whale conservation initiatives by decoding their songs. Your eco-evolving avatar awaits. Take the plunge and immerse yourself in nature.',
+        'An exciting new PoP has surfaced! This unique Proof of Presence for Decoded Asia 2024 in Singapore is a token of your continuous involvement with the Polkadot community. More than just a keepsake, this badge unlocks a multi-event adventure dedicated to supporting real-world whale conservation initiatives. Your eco-evolving avatar awaits. Take the plunge and immerse yourself in nature.',
       image: [
         'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-air.png',
         'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-earth.png',
