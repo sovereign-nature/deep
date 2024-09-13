@@ -265,6 +265,8 @@ app.openapi(
       return c.json({ error: true, message: 'User is not logged in' }, 401);
     }
 
+    logger.info({ user, address });
+
     if (user.id.toLowerCase() !== address.toLowerCase()) {
       return c.json(
         { error: true, message: 'User address does not match' },

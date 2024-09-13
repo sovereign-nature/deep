@@ -2,8 +2,8 @@ import { Context, Next } from 'hono';
 import { env } from 'hono/adapter';
 import { getCookie, setCookie } from 'hono/cookie';
 import { Lucia, Session, User } from 'lucia';
-import { logger } from '$lib/logger';
 import { initializeLucia } from '../lib/lucia';
+import { logger } from '$lib/logger';
 
 /** Session middleware
  * @see {@link https://lucia-auth.com/guides/validate-session-cookies/hono}
