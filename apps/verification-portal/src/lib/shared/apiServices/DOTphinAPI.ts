@@ -17,6 +17,7 @@ export async function submitClaim(address: string, proofDID: string) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ address, proofDID }),
+    credentials: 'include',
   });
   if (!response.ok) throw new Error('Failed to submit claim');
   return await response.json();
