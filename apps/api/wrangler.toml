@@ -5,7 +5,7 @@ compatibility_flags = ["nodejs_compat"]
 logpush = false
 
 
-vars = { ENVIRONMENT = "dev", CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections" }
+vars = { ENVIRONMENT = "dev", CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections", DOTPHIN_NETWORK = "opal", DOTPHIN_PROOFS_COLLECTION_ID = 3030, DOTPHIN_COLLECTION_ID = 3758 }
 
 workers_dev = false
 
