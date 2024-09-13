@@ -1,4 +1,7 @@
-import { DeepAsset } from '@sni/types';
+import { createAssetDID } from '@sni/address-utils';
+import { DeepAsset, UniqueNetwork } from '@sni/types';
+import { Context } from 'hono';
+import { env } from 'hono/adapter';
 
 type Attribute = { trait_type: string; value: string };
 
@@ -49,4 +52,29 @@ export function updateOrAddAttribute(
   }
 
   return attributes;
+}
+
+export function getDotphinEnvConfig(c: Context) {
+  const {
+    DOTPHIN_PROOFS_COLLECTION_ID,
+    DOTPHIN_COLLECTION_ID,
+    DOTPHIN_NETWORK,
+  } = env<{
+    DOTPHIN_PROOFS_COLLECTION_ID: string;
+    DOTPHIN_COLLECTION_ID: number;
+    DOTPHIN_NETWORK: UniqueNetwork;
+  }>(c);
+
+  const PROOFS_COLLECTION_DID = createAssetDID(
+    DOTPHIN_NETWORK,
+    'unique2',
+    DOTPHIN_PROOFS_COLLECTION_ID
+  );
+
+  return {
+    DOTPHIN_PROOFS_COLLECTION_ID,
+    DOTPHIN_COLLECTION_ID,
+    DOTPHIN_NETWORK,
+    PROOFS_COLLECTION_DID,
+  };
 }
