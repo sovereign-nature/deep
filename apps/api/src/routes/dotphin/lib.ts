@@ -23,6 +23,19 @@ export function countByAttribute(
   }).length;
 }
 
+export function countUnusedByAttribute(
+  assets: DeepAsset[],
+  traitType: string,
+  value: string
+) {
+  return assets.filter((asset) => {
+    const targetAttribute = getAttributeValue(asset.attributes!, traitType);
+    const isUsed = Boolean(getAttributeValue(asset.attributes!, 'used'));
+
+    return targetAttribute === value && !isUsed;
+  }).length;
+}
+
 /**
  * Get the seed (index) of the proof element
  * @param element id of the element

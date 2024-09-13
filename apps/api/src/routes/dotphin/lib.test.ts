@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { testAssets } from './fixtures';
 import {
   countByAttribute,
+  countUnusedByAttribute,
   getAttributeIndex,
   getAttributeValue,
   updateOrAddAttribute,
@@ -80,5 +81,11 @@ describe('Attributes helper functions', () => {
     expect(getAttributeValue(updatedAttributes, 'newAttribute')).toBe(
       'newValue'
     );
+  });
+
+  it('should be able to count unused assets by attribute (element - water)', () => {
+    const count = countUnusedByAttribute(testAssets, 'element', 'water');
+
+    expect(count).toBe(1);
   });
 });

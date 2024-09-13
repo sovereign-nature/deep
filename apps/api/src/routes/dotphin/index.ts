@@ -16,6 +16,7 @@ import {
 } from './schemas';
 import {
   countByAttribute,
+  countUnusedByAttribute,
   getAttributeValue,
   getDotphinEnvConfig,
   getSeed,
@@ -67,9 +68,9 @@ async function getProofsWithStats(address: string, c: Context) {
 
   const available = total - used;
 
-  const waterAvailable = countByAttribute(assets, 'element', 'water');
-  const airAvailable = countByAttribute(assets, 'element', 'air');
-  const earthAvailable = countByAttribute(assets, 'element', 'earth');
+  const waterAvailable = countUnusedByAttribute(assets, 'element', 'water');
+  const airAvailable = countUnusedByAttribute(assets, 'element', 'air');
+  const earthAvailable = countUnusedByAttribute(assets, 'element', 'earth');
 
   return {
     proofs: assets,

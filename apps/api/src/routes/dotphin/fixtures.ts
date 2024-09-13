@@ -148,6 +148,10 @@ export const testAssets: DeepAsset[] = [
         trait_type: 'proofOf',
         value: 'attendance',
       },
+      {
+        trait_type: 'used',
+        value: 'false',
+      },
     ],
     collection: {
       id: '665',
@@ -198,6 +202,10 @@ export const testAssets: DeepAsset[] = [
       {
         trait_type: 'proofOf',
         value: 'presence',
+      },
+      {
+        trait_type: 'used',
+        value: 'true',
       },
     ],
     collection: {
