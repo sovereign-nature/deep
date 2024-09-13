@@ -250,7 +250,7 @@ export const collections: Collections = {
     tokenStandard: 'unique2',
   },
   'testnet-decoded-asia-2024': {
-    name: 'dev-decoded-asia-2024',
+    name: 'testnet-decoded-asia-2024',
     externalId: '3551',
     metadata: {
       description:
@@ -386,8 +386,8 @@ export const collections: Collections = {
     tokenStandard: 'unique2',
   },
   'testnet-token2049-singapore-2024': {
-    name: 'dev-token2049-singapore-2024',
-    externalId: '3030',
+    name: 'testnet-token2049-singapore-2024',
+    externalId: '3551',
     metadata: {
       description:
         "You've just unlocked the next chapter in your DOTphin journey with this exclusive Proof of Presence (PoP) from Web3 Summit 2024 in Berlin. As you mark your presence at this summit, dedicated to advancing a fully functional and user-friendly decentralised web, your DOTphin evolves alongside you. Each interaction with the community not only enhances your DOTphin but also contributes to AI-driven research decoding whale songs in the Caribbean. This trailblazing project merges the playful evolution of your DOTphin with a meaningful mission to support marine conservation. Get ready to make a positive impact on our oceans—your presence here isn't just a step forward for you; it's a leap towards a more connected, nature-positive future.",
