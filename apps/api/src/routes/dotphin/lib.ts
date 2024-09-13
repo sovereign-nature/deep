@@ -30,7 +30,7 @@ export function countUnusedByAttribute(
 ) {
   return assets.filter((asset) => {
     const targetAttribute = getAttributeValue(asset.attributes!, traitType);
-    const isUsed = Boolean(getAttributeValue(asset.attributes!, 'used'));
+    const isUsed = getAttributeValue(asset.attributes!, 'used') === 'true';
 
     return targetAttribute === value && !isUsed;
   }).length;
