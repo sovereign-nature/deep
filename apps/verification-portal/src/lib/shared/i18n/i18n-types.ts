@@ -524,7 +524,7 @@ type RootTranslation = {
 					 */
 					subtitle: string
 					/**
-					 * C​o​l​l​e​c​t​ ​t​h​e​ ​O​r​b
+					 * C​o​l​l​e​c​t​ ​t​h​e​ ​O​r​b​o
 					 */
 					cta: string
 				}
@@ -1203,7 +1203,7 @@ export type TranslationFunctions = {
 					 */
 					subtitle: () => LocalizedString
 					/**
-					 * Collect the Orb
+					 * Collect the Orbo
 					 */
 					cta: () => LocalizedString
 				}

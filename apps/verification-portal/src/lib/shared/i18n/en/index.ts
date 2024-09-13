@@ -184,7 +184,7 @@ const en: BaseTranslation = {
         UNCLAIMED: {
           subtitle:
             'Use your proofs to unlock the DOTphin Eco-evolving avatar ',
-          cta: 'Collect the Orb',
+          cta: 'Collect the Orbo',
         },
         CLAIMED: {},
       },
