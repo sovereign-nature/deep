@@ -17,6 +17,7 @@ import {
 import {
   countByAttribute,
   getAttributeValue,
+  getDotphinEnvConfig,
   getSeed,
   updateOrAddAttribute,
 } from './lib';
@@ -30,36 +31,13 @@ import {
   getDotphinClaim,
   setDotphinClaim,
 } from '$lib/db/dotphin-claims';
+import { addProofAsUsed, getProof } from '$lib/db/proofs';
 
 const app = new OpenAPIHono();
 
-function getDotphinEnvConfig(c: Context) {
-  const {
-    DOTPHIN_PROOFS_COLLECTION_ID,
-    DOTPHIN_COLLECTION_ID,
-    DOTPHIN_NETWORK,
-  } = env<{
-    DOTPHIN_PROOFS_COLLECTION_ID: string;
-    DOTPHIN_COLLECTION_ID: number;
-    DOTPHIN_NETWORK: UniqueNetwork;
-  }>(c);
-
-  const PROOFS_COLLECTION_DID = createAssetDID(
-    DOTPHIN_NETWORK,
-    'unique2',
-    DOTPHIN_PROOFS_COLLECTION_ID
-  );
-
-  return {
-    DOTPHIN_PROOFS_COLLECTION_ID,
-    DOTPHIN_COLLECTION_ID,
-    DOTPHIN_NETWORK,
-    PROOFS_COLLECTION_DID,
-  };
-}
-
 async function getProofsWithStats(address: string, c: Context) {
   const { PROOFS_COLLECTION_DID } = getDotphinEnvConfig(c);
+  const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
 
   const requestUrl = `/${address}?assetDID=${PROOFS_COLLECTION_DID}`;
 
@@ -70,19 +48,28 @@ async function getProofsWithStats(address: string, c: Context) {
     c.executionCtx
   );
 
-  const data = (await result.json()) as DeepAsset[];
+  const assets = (await result.json()) as DeepAsset[];
 
-  const total = data.length;
-  const used = countByAttribute(data, 'used', 'true');
+  //TODO: Remove when on-chain used state is implemented
+  for (const asset of assets) {
+    const { used } = (await getProof(SESSIONS_DB, asset.address))[0];
+    const attributes = asset.attributes!;
+    updateOrAddAttribute(attributes, 'used', used.toString());
+
+    asset.attributes = attributes;
+  }
+
+  const total = assets.length;
+  const used = countByAttribute(assets, 'used', 'true');
 
   const available = total - used;
 
-  const waterAvailable = countByAttribute(data, 'element', 'water');
-  const airAvailable = countByAttribute(data, 'element', 'air');
-  const earthAvailable = countByAttribute(data, 'element', 'earth');
+  const waterAvailable = countByAttribute(assets, 'element', 'water');
+  const airAvailable = countByAttribute(assets, 'element', 'air');
+  const earthAvailable = countByAttribute(assets, 'element', 'earth');
 
   return {
-    proofs: data,
+    proofs: assets,
     proofsStats: {
       total,
       used,
@@ -257,6 +244,7 @@ app.openapi(
 
     logger.info('Received claim request for ', address, proofDID);
 
+    //Proof validation
     //Check if proofDID is valid
     const requestUrl = `/${proofDID}`;
     const assetResponse = await assetsApp.request(
@@ -268,16 +256,15 @@ app.openapi(
 
     const proofAsset = (await assetResponse.json()) as DeepAsset;
 
-    //TODO: Check if proof owner is the same as the user
-
     //Proof is not used
-    const usedAttribute = Boolean(
-      getAttributeValue(proofAsset.attributes!, 'used')
-    );
+    //TODO: Check token attributes like Boolean(getAttributeValue(proofAsset.attributes!, 'used'));
+    const { used } = (await getProof(SESSIONS_DB, proofDID))[0];
 
-    if (usedAttribute) {
+    if (used) {
       return c.json({ error: true, message: 'Proof is already used' }, 400);
     }
+
+    //TODO: Check if proof owner is the same as the user
 
     //Check if user has DOTphin already
     const dotphinDID = await getDotphinAddress(
@@ -306,7 +293,6 @@ app.openapi(
     );
 
     //Send minting request to the queue
-    //TODO: Add workaround for dynamic collection config
     const mintId = getRandomId();
     logger.info(`Claiming DOTphin, sending minting ${mintId} to queue`);
     await MINTING_QUEUE.send(
@@ -338,17 +324,9 @@ app.openapi(
     await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
     await setDotphinClaim(SESSIONS_DB, mintId, address);
 
-    // const { contractAddress, tokenId } = parseAssetDID(proofDID);
-
     //Mark proof as used
-    // await updateTokenAttribute(
-    //   WALLET_MNEMONIC,
-    //   DOTPHIN_NETWORK,
-    //   Number(contractAddress),
-    //   tokenId,
-    //   'used',
-    //   'true'
-    // );
+    //TODO: Update token on chain with used attribute (updateTokenAttribute method)
+    await addProofAsUsed(SESSIONS_DB, proofDID, address);
 
     return c.json(pendingResponse, 200);
   }
