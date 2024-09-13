@@ -227,7 +227,7 @@ export const collections: Collections = {
     externalId: '3030',
     metadata: {
       description:
-        'This is the first DOTphin Proof of Attendance!\nYour proof of attendance at Decoded 2024 in Brussels! This isn’t just any badge; it’s the key to unlocking your DOTphin journey. Get ready to dive into a world where your engagement drives real-world marine conservation.\nYour proof of attendance is the first step in making waves with DOTphin. This trailblazing project merges dynamic, evolving NFTs with sustainability, supporting marine conservation through every interaction. Join us in transforming community engagement and making a tangible impact on our oceans.',
+        'An exciting new PoP has surfaced! This unique Proof of Presence for Decoded Asia 2024 in Singapore is a token of your continuous involvement with the Polkadot community. More than just a keepsake, this badge unlocks a multi-event adventure dedicated to supporting real-world whale conservation initiatives by decoding their songs. Your eco-evolving avatar awaits. Take the plunge and immerse yourself in nature.',
       image: [
         'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-air.png',
         'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-earth.png',
@@ -254,7 +254,7 @@ export const collections: Collections = {
     externalId: '3551',
     metadata: {
       description:
-        'This is the first DOTphin Proof of Attendance!\nYour proof of attendance at Decoded 2024 in Brussels! This isn’t just any badge; it’s the key to unlocking your DOTphin journey. Get ready to dive into a world where your engagement drives real-world marine conservation.\nYour proof of attendance is the first step in making waves with DOTphin. This trailblazing project merges dynamic, evolving NFTs with sustainability, supporting marine conservation through every interaction. Join us in transforming community engagement and making a tangible impact on our oceans.',
+        'An exciting new PoP has surfaced! This unique Proof of Presence for Decoded Asia 2024 in Singapore is a token of your continuous involvement with the Polkadot community. More than just a keepsake, this badge unlocks a multi-event adventure dedicated to supporting real-world whale conservation initiatives by decoding their songs. Your eco-evolving avatar awaits. Take the plunge and immerse yourself in nature.',
       image: [
         'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-air.png',
         'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-earth.png',
@@ -360,7 +360,7 @@ export const collections: Collections = {
     externalId: '3030',
     metadata: {
       description:
-        "You've just unlocked the next chapter in your DOTphin journey with this exclusive Proof of Presence (PoP) from Web3 Summit 2024 in Berlin. As you mark your presence at this summit, dedicated to advancing a fully functional and user-friendly decentralised web, your DOTphin evolves alongside you. Each interaction with the community not only enhances your DOTphin but also contributes to AI-driven research decoding whale songs in the Caribbean. This trailblazing project merges the playful evolution of your DOTphin with a meaningful mission to support marine conservation. Get ready to make a positive impact on our oceans—your presence here isn't just a step forward for you; it's a leap towards a more connected, nature-positive future.",
+        "From the deep oceans, another beautiful PoP has emerged. Bridging all ecosystems, this Proof of Presence confirms your participation at one of the largest blockchain events in the world, Token2049 / Singapore. This badge is the key to listening to real-world whale songs and supporting their conservation efforts. Are you ready to evolve with their songs? Don't forget to collect your eco-evolving DOTphin avatar right away.",
       image: [
         'https://real.myfilebase.com/ipfs/QmQEGjX4DiNyaTDUC7AxzizxF2G5U4DhDEHwYzMH27UGwu/token2049-singapore-2024-air.png',
         'https://real.myfilebase.com/ipfs/QmQEGjX4DiNyaTDUC7AxzizxF2G5U4DhDEHwYzMH27UGwu/token2049-singapore-2024-earth.png',
@@ -390,7 +390,7 @@ export const collections: Collections = {
     externalId: '3551',
     metadata: {
       description:
-        "You've just unlocked the next chapter in your DOTphin journey with this exclusive Proof of Presence (PoP) from Web3 Summit 2024 in Berlin. As you mark your presence at this summit, dedicated to advancing a fully functional and user-friendly decentralised web, your DOTphin evolves alongside you. Each interaction with the community not only enhances your DOTphin but also contributes to AI-driven research decoding whale songs in the Caribbean. This trailblazing project merges the playful evolution of your DOTphin with a meaningful mission to support marine conservation. Get ready to make a positive impact on our oceans—your presence here isn't just a step forward for you; it's a leap towards a more connected, nature-positive future.",
+        "From the deep oceans, another beautiful PoP has emerged. Bridging all ecosystems, this Proof of Presence confirms your participation at one of the largest blockchain events in the world, Token2049 / Singapore. This badge is the key to listening to real-world whale songs and supporting their conservation efforts. Are you ready to evolve with their songs? Don't forget to collect your eco-evolving DOTphin avatar right away.",
       image: [
         'https://real.myfilebase.com/ipfs/QmQEGjX4DiNyaTDUC7AxzizxF2G5U4DhDEHwYzMH27UGwu/token2049-singapore-2024-air.png',
         'https://real.myfilebase.com/ipfs/QmQEGjX4DiNyaTDUC7AxzizxF2G5U4DhDEHwYzMH27UGwu/token2049-singapore-2024-earth.png',
