@@ -276,6 +276,33 @@ export const collections: Collections = {
     network: 'opal',
     tokenStandard: 'unique2',
   },
+  'decoded-asia-2024': {
+    name: 'decoded-asia-2024',
+    externalId: '665',
+    metadata: {
+      description:
+        'An exciting new PoP has surfaced! This unique Proof of Presence for Decoded Asia 2024 in Singapore is a token of your continuous involvement with the Polkadot community. More than just a keepsake, this badge unlocks a multi-event adventure dedicated to supporting real-world whale conservation initiatives. Your eco-evolving avatar awaits. Take the plunge and immerse yourself in nature.',
+      image: [
+        'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Presence ‒ Decoded Asia 2024',
+      attributes: [
+        [{ trait_type: 'element', value: 'air' }, ...decodedAsia2024Attributes],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...decodedAsia2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...decodedAsia2024Attributes,
+        ],
+      ],
+    },
+    network: 'unique',
+    tokenStandard: 'unique2',
+  },
   //POLKADOT DECODED 2024
   'polkadot-decoded2024': {
     name: 'polkadot-decoded2024',
@@ -413,6 +440,36 @@ export const collections: Collections = {
       ],
     },
     network: 'opal',
+    tokenStandard: 'unique2',
+  },
+  'token2049-singapore-2024': {
+    name: 'testnet-token2049-singapore-2024',
+    externalId: '665',
+    metadata: {
+      description:
+        "From the deep oceans, another beautiful PoP has emerged. Bridging all ecosystems, this Proof of Presence confirms your participation at one of the largest blockchain events in the world, Token2049 / Singapore. This badge is the key to listening to real-world whale songs and supporting their conservation efforts. Are you ready to evolve with their songs? Don't forget to collect your eco-evolving DOTphin avatar right away.",
+      image: [
+        'https://real.myfilebase.com/ipfs/QmQEGjX4DiNyaTDUC7AxzizxF2G5U4DhDEHwYzMH27UGwu/token2049-singapore-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmQEGjX4DiNyaTDUC7AxzizxF2G5U4DhDEHwYzMH27UGwu/token2049-singapore-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmQEGjX4DiNyaTDUC7AxzizxF2G5U4DhDEHwYzMH27UGwu/token2049-singapore-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Presence ‒ Token2049 Singapore 2024',
+      attributes: [
+        [
+          { trait_type: 'element', value: 'air' },
+          ...token2049Singapore2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...token2049Singapore2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...token2049Singapore2024Attributes,
+        ],
+      ],
+    },
+    network: 'unique',
     tokenStandard: 'unique2',
   },
 };
