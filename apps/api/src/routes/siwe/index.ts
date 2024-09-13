@@ -90,7 +90,7 @@ app.post('/session', (c) => {
   return c.json({ address: session.userId, chainId: session.chainId });
 });
 
-app.post('/signout', (c) => {
+app.post('/signout', async (c) => {
   const session = c.get('session');
   const lucia = c.get('lucia');
 
@@ -98,7 +98,11 @@ app.post('/signout', (c) => {
     return c.json({ message: 'No session found' }, 404);
   }
 
-  lucia.invalidateSession(session.id);
+  await lucia.invalidateSession(session.id);
+  logger.info('Session invalidated', { session });
+
+  const cookie = lucia.createBlankSessionCookie();
+  setCookie(c, cookie.name, cookie.value, cookie.attributes);
 
   return c.json({ message: 'Successfully signed out' });
 });

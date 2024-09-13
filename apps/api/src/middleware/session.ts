@@ -39,6 +39,7 @@ export async function session(c: Context, next: Next) {
   }
 
   c.set('user', user);
+  logger.info({ user });
   c.set('session', session);
 
   return next();
