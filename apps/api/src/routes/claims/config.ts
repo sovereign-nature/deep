@@ -87,6 +87,20 @@ const decodedAsia2024Attributes = [
   { trait_type: 'proofOf', value: 'presence' },
 ];
 
+const token2049Singapore2024Attributes = [
+  { trait_type: 'eventId', value: 'token2049-singapore-2024' },
+  {
+    trait_type: 'eventURL',
+    value: 'https://www.asia.token2049.com/',
+  },
+  { trait_type: 'country', value: 'Singapore' },
+  { trait_type: 'city', value: 'Singapore' },
+  { trait_type: 'virtualEvent', value: 'false' },
+  { trait_type: 'startDate', value: '18-Sep-2024' },
+  { trait_type: 'endDate', value: '19-Sep-2024' },
+  { trait_type: 'proofOf', value: 'presence' },
+];
+
 export const collections: Collections = {
   //ENGIE
   '5f773e35-d5f2-41dc-ae80-c94e0e8e4821': {
@@ -338,6 +352,67 @@ export const collections: Collections = {
       ],
     },
     network: 'unique',
+    tokenStandard: 'unique2',
+  },
+  //TOKEN2049 Singapore 2024
+  'dev-token2049-singapore-2024': {
+    name: 'dev-token2049-singapore-2024',
+    externalId: '3030',
+    metadata: {
+      description:
+        "You've just unlocked the next chapter in your DOTphin journey with this exclusive Proof of Presence (PoP) from Web3 Summit 2024 in Berlin. As you mark your presence at this summit, dedicated to advancing a fully functional and user-friendly decentralised web, your DOTphin evolves alongside you. Each interaction with the community not only enhances your DOTphin but also contributes to AI-driven research decoding whale songs in the Caribbean. This trailblazing project merges the playful evolution of your DOTphin with a meaningful mission to support marine conservation. Get ready to make a positive impact on our oceans—your presence here isn't just a step forward for you; it's a leap towards a more connected, nature-positive future.",
+      image: [
+        'https://real.myfilebase.com/ipfs/QmQEGjX4DiNyaTDUC7AxzizxF2G5U4DhDEHwYzMH27UGwu/token2049-singapore-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmQEGjX4DiNyaTDUC7AxzizxF2G5U4DhDEHwYzMH27UGwu/token2049-singapore-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmQEGjX4DiNyaTDUC7AxzizxF2G5U4DhDEHwYzMH27UGwu/token2049-singapore-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Presence ‒ Token2049 Singapore 2024',
+      attributes: [
+        [
+          { trait_type: 'element', value: 'air' },
+          ...token2049Singapore2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...token2049Singapore2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...token2049Singapore2024Attributes,
+        ],
+      ],
+    },
+    network: 'opal',
+    tokenStandard: 'unique2',
+  },
+  'testnet-token2049-singapore-2024': {
+    name: 'dev-token2049-singapore-2024',
+    externalId: '3030',
+    metadata: {
+      description:
+        "You've just unlocked the next chapter in your DOTphin journey with this exclusive Proof of Presence (PoP) from Web3 Summit 2024 in Berlin. As you mark your presence at this summit, dedicated to advancing a fully functional and user-friendly decentralised web, your DOTphin evolves alongside you. Each interaction with the community not only enhances your DOTphin but also contributes to AI-driven research decoding whale songs in the Caribbean. This trailblazing project merges the playful evolution of your DOTphin with a meaningful mission to support marine conservation. Get ready to make a positive impact on our oceans—your presence here isn't just a step forward for you; it's a leap towards a more connected, nature-positive future.",
+      image: [
+        'https://real.myfilebase.com/ipfs/QmQEGjX4DiNyaTDUC7AxzizxF2G5U4DhDEHwYzMH27UGwu/token2049-singapore-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmQEGjX4DiNyaTDUC7AxzizxF2G5U4DhDEHwYzMH27UGwu/token2049-singapore-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmQEGjX4DiNyaTDUC7AxzizxF2G5U4DhDEHwYzMH27UGwu/token2049-singapore-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Presence ‒ Token2049 Singapore 2024',
+      attributes: [
+        [
+          { trait_type: 'element', value: 'air' },
+          ...token2049Singapore2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...token2049Singapore2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...token2049Singapore2024Attributes,
+        ],
+      ],
+    },
+    network: 'opal',
     tokenStandard: 'unique2',
   },
 };
