@@ -233,7 +233,7 @@ export const collections: Collections = {
         'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-earth.png',
         'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-water.png',
       ],
-      name: 'DOTphin Proof of Attendance ‒ Decoded Asia 2024',
+      name: 'DOTphin Proof of Presence ‒ Decoded Asia 2024',
       attributes: [
         [{ trait_type: 'element', value: 'air' }, ...decodedAsia2024Attributes],
         [
@@ -260,7 +260,7 @@ export const collections: Collections = {
         'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-earth.png',
         'https://real.myfilebase.com/ipfs/QmQ8eTPtXjHvqrTRie2uEaBgmHZwjsukX7zSz5rFSDfB9T/decoded-asia-2024-water.png',
       ],
-      name: 'DOTphin Proof of Attendance ‒ Decoded Asia 2024',
+      name: 'DOTphin Proof of Presence ‒ Decoded Asia 2024',
       attributes: [
         [{ trait_type: 'element', value: 'air' }, ...decodedAsia2024Attributes],
         [
