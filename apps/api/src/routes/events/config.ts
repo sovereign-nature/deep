@@ -40,7 +40,7 @@ export const events: Events = {
     collectionId: 'decoded-asia-2024',
     realCollection: 'dotphin-proofs',
     seed: () => getRandomInt(0, 2),
-    going: false,
+    going: true,
   },
   'token2049-singapore-2024': {
     collectionId: 'token2049-singapore-2024',
