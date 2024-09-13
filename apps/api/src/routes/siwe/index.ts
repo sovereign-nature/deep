@@ -1,21 +1,15 @@
 import { Context, Hono } from 'hono';
 import { generateNonce, SiweMessage } from 'siwe';
 
-import { Lucia, Session, User } from 'lucia';
-
 import { env } from 'hono/adapter';
 // import { csrf } from 'hono/csrf';
 import { getCookie, setCookie } from 'hono/cookie';
-import { session } from '$middleware/session';
+import { session, SessionVariables } from '$middleware/session';
 import { addUser } from '$lib/db';
 import { logger } from '$lib/logger';
 
 const app = new Hono<{
-  Variables: {
-    user: User | null;
-    session: Session | null;
-    lucia: Lucia;
-  };
+  Variables: SessionVariables;
 }>();
 
 //TODO: Add CSRF protection

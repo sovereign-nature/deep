@@ -33,8 +33,15 @@ import {
   setDotphinClaim,
 } from '$lib/db/dotphin-claims';
 import { addProofAsUsed, getProof } from '$lib/db/proofs';
+import { SessionVariables, session } from '$middleware/session';
 
-const app = new OpenAPIHono();
+const app = new OpenAPIHono<{
+  Variables: SessionVariables;
+}>();
+
+//TODO: Add CSRF protection?
+//Protecting claim with session middleware
+app.use('/claim', session);
 
 async function getProofsWithStats(address: string, c: Context) {
   const { PROOFS_COLLECTION_DID } = getDotphinEnvConfig(c);
@@ -211,14 +218,21 @@ app.openapi(
       },
       400: {
         content: { 'application/json': { schema: ErrorSchema } },
-        description: 'Proof is already used',
+        description:
+          'Proof is already used, wrong address or user already has DOTphin',
+      },
+      401: {
+        content: { 'application/json': { schema: ErrorSchema } },
+        description: 'User is not logged in',
       },
     },
   }),
   async (c) => {
     //TODO: Move to shared helper like getMintingEnvConfig
-    const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<string> }>(c);
-    const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c);
+    const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<string> }>(
+      c as Context
+    );
+    const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c as Context);
 
     const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
 
@@ -244,7 +258,19 @@ app.openapi(
       }
     }
 
-    //TODO: Check if user logged in
+    //TODO: Check if user logged in and have the rights to claim
+    const user = c.get('user');
+
+    if (!user) {
+      return c.json({ error: true, message: 'User is not logged in' }, 401);
+    }
+
+    if (user.id.toLowerCase() !== address.toLowerCase()) {
+      return c.json(
+        { error: true, message: 'User address does not match' },
+        400
+      );
+    }
 
     logger.info('Received claim request for ', address, proofDID);
 
@@ -359,7 +385,7 @@ app.openapi(
     },
   }),
   async (c) => {
-    const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c);
+    const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c as Context);
 
     const mintId = c.req.valid('param').id;
     const mintResponse = await MINTING_KV.get(mintId);
@@ -398,7 +424,7 @@ app.openapi(
     const { dotphinDID, owner } = c.req.valid('json');
     const { contractAddress, tokenId, network } = parseAssetDID(dotphinDID);
 
-    const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c);
+    const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c as Context);
     const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
 
     logger.info(
