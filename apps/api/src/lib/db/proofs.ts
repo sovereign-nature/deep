@@ -11,9 +11,13 @@ export function addProofAsUsed(
   return orm.insert(proofs).values({ id: proofDID, used: true, owner });
 }
 
-export function getProof(db: D1Database, proofDID: string) {
+export async function getProof(db: D1Database, proofDID: string) {
   const orm = drizzle(db);
-  return orm.select().from(proofs).where(eq(proofs.id, proofDID));
+  const items = await orm.select().from(proofs).where(eq(proofs.id, proofDID));
+
+  if (items.length === 0) return null;
+
+  return items[0];
 }
 
 export function setProofAsUsed(db: D1Database, proofDID: string) {

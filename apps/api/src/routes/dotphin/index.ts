@@ -52,11 +52,14 @@ async function getProofsWithStats(address: string, c: Context) {
 
   //TODO: Remove when on-chain used state is implemented
   for (const asset of assets) {
-    const { used } = (await getProof(SESSIONS_DB, asset.address))[0];
-    const attributes = asset.attributes!;
-    updateOrAddAttribute(attributes, 'used', used.toString());
+    const proof = await getProof(SESSIONS_DB, asset.address);
 
-    asset.attributes = attributes;
+    if (proof === null) {
+      updateOrAddAttribute(asset.attributes!, 'used', 'false');
+    } else {
+      const { used } = proof;
+      updateOrAddAttribute(asset.attributes!, 'used', used.toString());
+    }
   }
 
   const total = assets.length;
@@ -258,10 +261,14 @@ app.openapi(
 
     //Proof is not used
     //TODO: Check token attributes like Boolean(getAttributeValue(proofAsset.attributes!, 'used'));
-    const { used } = (await getProof(SESSIONS_DB, proofDID))[0];
+    const proof = await getProof(SESSIONS_DB, proofDID);
 
-    if (used) {
-      return c.json({ error: true, message: 'Proof is already used' }, 400);
+    if (proof !== null) {
+      const { used } = proof;
+
+      if (used) {
+        return c.json({ error: true, message: 'Proof is already used' }, 400);
+      }
     }
 
     //TODO: Check if proof owner is the same as the user
