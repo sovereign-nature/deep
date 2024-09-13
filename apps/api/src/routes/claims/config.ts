@@ -88,6 +88,7 @@ const decodedAsia2024Attributes = [
 ];
 
 export const collections: Collections = {
+  //ENGIE
   '5f773e35-d5f2-41dc-ae80-c94e0e8e4821': {
     name: 'engie',
     externalId: '5f773e35-d5f2-41dc-ae80-c94e0e8e4821',
@@ -115,6 +116,7 @@ export const collections: Collections = {
     network: 'optimism',
     tokenStandard: 'erc721',
   },
+  //TOKYO PARTY
   'testnet-polkadot-tokyo-party-2024': {
     name: 'testnet-polkadot-tokyo-party-2024',
     externalId: '3551',
@@ -175,6 +177,37 @@ export const collections: Collections = {
     network: 'opal',
     tokenStandard: 'unique2',
   },
+  'polkadot-tokyo-party-2024': {
+    name: 'polkadot-tokyo-party-2024',
+    externalId: '665',
+    metadata: {
+      description:
+        "You've just unlocked the next chapter in your DOTphin journey with this exclusive Proof of Presence (PoP) from Polkadot WebX side event in Tokyo. Each interaction with the community not only enhances your DOTphin but also contributes to AI-driven research decoding whale songs in the Caribbean. This trailblazing project merges the playful evolution of your DOTphin with a meaningful mission to support marine conservation. Get ready to make a positive impact on our oceans—your presence here isn't just a step forward for you; it's a leap towards a more connected, nature-positive future.",
+      image: [
+        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Presence ‒『POLKADOT』Tokyo Party',
+      attributes: [
+        [
+          { trait_type: 'element', value: 'air' },
+          ...polkadotTokyoParty2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...polkadotTokyoParty2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...polkadotTokyoParty2024Attributes,
+        ],
+      ],
+    },
+    network: 'unique',
+    tokenStandard: 'unique2',
+  },
+  //DECODED ASIA
   'dev-decoded-asia-2024': {
     name: 'dev-decoded-asia-2024',
     externalId: '3030',
@@ -229,36 +262,7 @@ export const collections: Collections = {
     network: 'opal',
     tokenStandard: 'unique2',
   },
-  'polkadot-tokyo-party-2024': {
-    name: 'polkadot-tokyo-party-2024',
-    externalId: '665',
-    metadata: {
-      description:
-        "You've just unlocked the next chapter in your DOTphin journey with this exclusive Proof of Presence (PoP) from Polkadot WebX side event in Tokyo. Each interaction with the community not only enhances your DOTphin but also contributes to AI-driven research decoding whale songs in the Caribbean. This trailblazing project merges the playful evolution of your DOTphin with a meaningful mission to support marine conservation. Get ready to make a positive impact on our oceans—your presence here isn't just a step forward for you; it's a leap towards a more connected, nature-positive future.",
-      image: [
-        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-air.png',
-        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-earth.png',
-        'https://real.myfilebase.com/ipfs/QmcikNxZxXdfoPJppUMeNkoseUUn6HVKN79kTFMEBmh6dD/polkadot-tokyo-party-2024-water.png',
-      ],
-      name: 'DOTphin Proof of Presence ‒『POLKADOT』Tokyo Party',
-      attributes: [
-        [
-          { trait_type: 'element', value: 'air' },
-          ...polkadotTokyoParty2024Attributes,
-        ],
-        [
-          { trait_type: 'element', value: 'earth' },
-          ...polkadotTokyoParty2024Attributes,
-        ],
-        [
-          { trait_type: 'element', value: 'water' },
-          ...polkadotTokyoParty2024Attributes,
-        ],
-      ],
-    },
-    network: 'unique',
-    tokenStandard: 'unique2',
-  },
+  //POLKADOT DECODED 2024
   'polkadot-decoded2024': {
     name: 'polkadot-decoded2024',
     externalId: '665',
@@ -286,6 +290,7 @@ export const collections: Collections = {
     network: 'unique',
     tokenStandard: 'unique2',
   },
+  //EDCON 2024
   edcon2024: {
     name: 'edcon2024',
     externalId: '665',
@@ -307,6 +312,7 @@ export const collections: Collections = {
     network: 'unique',
     tokenStandard: 'unique2',
   },
+  //WEB3 SUMMIT 2024
   web3summit2024: {
     name: 'web3summit2024',
     externalId: '665',
