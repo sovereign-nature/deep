@@ -4,6 +4,7 @@ import { generateNonce, SiweMessage } from 'siwe';
 import { env } from 'hono/adapter';
 // import { csrf } from 'hono/csrf';
 import { getCookie, setCookie } from 'hono/cookie';
+import { csrf } from 'hono/csrf';
 import { session, SessionVariables } from '$middleware/session';
 import { addUser } from '$lib/db';
 import { logger } from '$lib/logger';
@@ -13,7 +14,7 @@ const app = new Hono<{
 }>();
 
 //TODO: Add CSRF protection
-// app.use(csrf({ origin: ['real.sovereignnature.com', 'localhost'] })); //TODO: Localhost in dev
+app.use(csrf({ origin: ['real.sovereignnature.com', 'localhost'] })); //TODO: Localhost in dev
 
 app.use('*', session);
 
@@ -21,7 +22,12 @@ app.post('/nonce', (c) => {
   const nonce = generateNonce();
 
   //TODO: Fix sameSite and secure attributes for production
-  setCookie(c, 'siwe-nonce', nonce, { sameSite: 'none', secure: true }); //TODO: Secure only in production, sameSite: 'none' in dev
+  setCookie(c, 'siwe-nonce', nonce, {
+    sameSite: 'none',
+    secure: true,
+    // domain: 'api.sovereignnature.com',
+  }); //TODO: Secure only in production, sameSite: 'none' in dev
+
   return c.text(nonce);
 });
 

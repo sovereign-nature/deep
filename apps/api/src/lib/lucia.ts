@@ -27,7 +27,9 @@ export function initializeLucia(db: D1Database) {
         telegramVerified: attr.telegramVerified,
       };
     },
-    sessionCookie: { attributes: { sameSite: 'none' } }, //TODO: Add only on staging
+    sessionCookie: {
+      attributes: { sameSite: 'none' },
+    }, //TODO: Add only on staging
   });
 }
 

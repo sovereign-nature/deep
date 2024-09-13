@@ -259,18 +259,18 @@ app.openapi(
     }
 
     //TODO: Check if user logged in and have the rights to claim
-    // const user = c.get('user');
+    const user = c.get('user');
 
-    // if (!user) {
-    //   return c.json({ error: true, message: 'User is not logged in' }, 401);
-    // }
+    if (!user) {
+      return c.json({ error: true, message: 'User is not logged in' }, 401);
+    }
 
-    // if (user.id.toLowerCase() !== address.toLowerCase()) {
-    //   return c.json(
-    //     { error: true, message: 'User address does not match' },
-    //     400
-    //   );
-    // }
+    if (user.id.toLowerCase() !== address.toLowerCase()) {
+      return c.json(
+        { error: true, message: 'User address does not match' },
+        400
+      );
+    }
 
     logger.info('Received claim request for ', address, proofDID);
 

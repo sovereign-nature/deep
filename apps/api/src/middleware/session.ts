@@ -2,6 +2,7 @@ import { Context, Next } from 'hono';
 import { env } from 'hono/adapter';
 import { getCookie, setCookie } from 'hono/cookie';
 import { Lucia, Session, User } from 'lucia';
+import { logger } from '$lib/logger';
 import { initializeLucia } from '../lib/lucia';
 
 /** Session middleware
@@ -16,11 +17,13 @@ export async function session(c: Context, next: Next) {
 
   const sessionId = getCookie(c, lucia.sessionCookieName) ?? null;
 
+  logger.debug('SESSION ID:', sessionId);
+
   if (!sessionId) {
     c.set('user', null);
     c.set('session', null);
 
-    console.debug('NO SESSION ID');
+    logger.debug('NO SESSION ID');
     return next();
   }
   const { session, user } = await lucia.validateSession(sessionId);
