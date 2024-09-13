@@ -292,8 +292,8 @@ importers:
         specifier: 1.4.0
         version: 1.4.0(svelte@4.2.19)
       svelte-sonner:
-        specifier: 0.3.27
-        version: 0.3.27(svelte@4.2.19)
+        specifier: 0.3.28
+        version: 0.3.28(svelte@4.2.19)
       tailwindcss:
         specifier: 3.4.10
         version: 3.4.10(ts-node@10.9.2(@types/node@22.5.4)(typescript@5.6.2))
@@ -8917,6 +8917,11 @@ packages:
 
   svelte-sonner@0.3.27:
     resolution: {integrity: sha512-+PvbuePNTyTNCepCWqKcFeu+Lo27yYuwfSc7zJvrWjCRMJrWAmccPg3j7jO1W13QoN3TySXU5Trb956VBQiM5Q==}
+    peerDependencies:
+      svelte: ^3.0.0 || ^4.0.0 || ^5.0.0-next.1
+
+  svelte-sonner@0.3.28:
+    resolution: {integrity: sha512-K3AmlySeFifF/cKgsYNv5uXqMVNln0NBAacOYgmkQStLa/UoU0LhfAACU6Gr+YYC8bOCHdVmFNoKuDbMEsppJg==}
     peerDependencies:
       svelte: ^3.0.0 || ^4.0.0 || ^5.0.0-next.1
 
@@ -20688,6 +20693,10 @@ snapshots:
       svelte: 4.2.19
 
   svelte-sonner@0.3.27(svelte@4.2.19):
+    dependencies:
+      svelte: 4.2.19
+
+  svelte-sonner@0.3.28(svelte@4.2.19):
     dependencies:
       svelte: 4.2.19
 
