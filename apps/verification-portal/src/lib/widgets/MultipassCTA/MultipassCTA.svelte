@@ -5,6 +5,9 @@
   import LL from '$lib/shared/i18n/i18n-svelte';
   export let name: string;
   export let infoLink: string | undefined;
+  import { isFeatureEnabled } from '$lib/shared/utils';
+
+  const showDotphin = isFeatureEnabled('dotphinWidget');
 </script>
 
 <div
@@ -36,15 +39,18 @@
       class="bg-multipass px-12 sm:px-8 md:px-11 py-8 xl:pt-11 col-span-3 flex flex-col sm:flex-row justify-start sm:items-end gap-5"
     >
       <div class="flex gap-1 flex-col">
-        <span class="text-sm font-aeonik font-bold text-gray-200">
-          {$LL.assets.multipass.comingSoon()}</span
-        >
+        {#if !showDotphin}
+          <span class="text-sm font-aeonik font-bold text-gray-200">
+            {$LL.assets.multipass.comingSoon()}</span
+          >
+        {/if}
         <Button
           color="none"
-          class="z-50  bg-deep-blue-700 text-gray-200 rounded-sm  border-none opacity-80 !py-2.5 !px-4 text-lg  uppercase"
+          class="z-50 transition-colors  bg-deep-blue-800 hover:bg-primary-400 text-white rounded-sm  border-none disabled:opacity-80 !py-2.5 !px-4 text-lg  uppercase"
           type="button"
           tabindex="1"
-          disabled={true}
+          href="/#DOTphin"
+          disabled={!showDotphin}
         >
           {$LL.assets.multipass.CTA()}
         </Button>
@@ -68,8 +74,9 @@
 
 <style>
   .bg-multipass {
-    background-image: url('https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/5c63ac43-4c0d-4495-f767-815bd3284a00/public');
+    background-image: url('https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/7f77fa3a-1e23-4920-7802-9794d1886f00/public');
     background-size: cover;
+    background-position: 50% 40%;
     background-repeat: no-repeat;
   }
 </style>

@@ -13,7 +13,7 @@
     <TestStateForm />
   </div>
 {/if}
-<div class="grid grid-cols-1 py-4 md:py-4 mx-4 md:mx-0 mb-16">
+<div id="DOTphin" class="grid grid-cols-1 py-4 md:py-4 mx-4 md:mx-0 mb-16">
   <Header name="DOTphin" />
   <div class="hidden lg:block">
     <Timeline order="horizontal" />

@@ -4,6 +4,7 @@
   import NFTImage from '$lib/components/NFTImage.svelte';
   export let item: DeepAsset;
   let showId = item.tokenId !== undefined;
+  import LL from '$lib/shared/i18n/i18n-svelte';
 </script>
 
 <div
@@ -35,5 +36,8 @@
         </div>
       {/if}
     </div>
+    <a class="stretched-link" href={`/assets/${item.address}`}
+      ><span class="sr-only">{$LL.selectToken()} </span></a
+    >
   </div>
 </div>

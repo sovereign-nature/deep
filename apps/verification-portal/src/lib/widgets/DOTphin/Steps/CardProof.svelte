@@ -5,6 +5,7 @@
     proofStepState,
     isLoading,
   } from '$lib/features/MultipassStates';
+  import siteConfigs from '$lib/shared/siteConfigs';
   import Web3ConnectBtn from '$lib/widgets/ButtonWalletConnect/Web3ConnectBtn.svelte';
   import TimelineItem from '$lib/widgets/DOTphin/TimelineItem/TimelineItem.svelte';
   import CardTitle from '$lib/widgets/DOTphin/TimelineItem/Typography/Title.svelte';
@@ -13,6 +14,10 @@
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   export let collection = 'DOTphin';
   export let collectionLink = '/#collections';
+  const cardLink =
+    siteConfigs?.contentLinks?.DOTphin?.upcomingEvents ||
+    siteConfigs?.contentLinks?.DOTphin?.default ||
+    '';
 
   //set states to show collection link
   $: hasCollectionLink =
@@ -90,21 +95,22 @@
     </svelte:fragment>
 
     <svelte:fragment slot="content">
-      <CardSubtitle>
-        {subtitle}
-      </CardSubtitle>
+      <CardSubtitle content={subtitle}></CardSubtitle>
 
       {#if hasCollectionLink && collectionLink}
-        <a href={collectionLink} class="text-xs text-primary block w-full mb-4">
+        <a
+          href={collectionLink}
+          class="text-xs text-primary-300 hover:text-primary-200 transition-colors block w-full mb-4"
+        >
           {$LL.multipass.state.proofStep.HAS_AVAILABLE_PROOFS.moreInfo()}
         </a>
       {/if}
 
-      {#if $proofStepState === 'NO_PROOFS'}
+      {#if $proofStepState === 'NO_PROOFS' && cardLink}
         <a
           type="button"
           target="_blank"
-          href="https://sovereignnature.com/dotphin"
+          href={cardLink}
           class="sni-secondary-btn !text-sm"
         >
           {$LL.multipass.state.proofStep.NO_PROOFS.cta()}

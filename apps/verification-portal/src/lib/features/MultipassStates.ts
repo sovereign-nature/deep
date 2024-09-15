@@ -68,6 +68,11 @@ export function updateState(updates: Partial<MultipassData>) {
   });
 }
 
+// Derived store to watch for changes in isLoggedIn
+export function resetData() {
+  updateState(initialState);
+}
+
 // Derived store to compute the proof step state
 export const proofStepState = derived(
   multipassData,

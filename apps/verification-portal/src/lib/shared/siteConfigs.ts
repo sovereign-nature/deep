@@ -5,6 +5,7 @@ export default {
   feature: {
     collectionsTest: false,
     multipassTest: false,
+    dotphinWidget: false,
   },
   social: {
     discord: 'discord:https://discord.gg/ZXyC3tN87K',
@@ -14,5 +15,12 @@ export default {
   footer: {
     terms: 'https://sovereignnature.com/terms-conditions',
     privacy: 'https://sovereignnature.com/privacy-policy',
+  },
+  contentLinks: {
+    DOTphin: {
+      default: 'https://sovereignnature.com/dotphin',
+      upcomingEvents: '',
+      evolution: 'https://sovereignnature.com/dotphin/#evolution',
+    },
   },
 };
