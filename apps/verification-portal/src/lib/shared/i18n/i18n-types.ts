@@ -453,6 +453,29 @@ type RootTranslation = {
 		}
 	}
 	multipass: {
+		header: {
+			/**
+			 * F​e​a​t​u​r​e​d​ ​c​o​l​l​e​c​t​i​o​n
+			 */
+			subtitle: string
+			/**
+			 * T​h​e​ ​{​c​o​l​l​e​c​t​i​o​n​N​a​m​e​}​ ​J​o​u​r​n​e​y
+			 * @param {string} collectionName
+			 */
+			title: RequiredParams<'collectionName'>
+			/**
+			 * G​e​t​ ​t​o​ ​k​n​o​w​ ​m​o​r​e
+			 */
+			moreInfo: string
+			/**
+			 * M​u​l​t​i​p​l​e​ ​P​r​o​o​f​s​ ​o​f​ ​P​r​e​s​e​n​c​e
+			 */
+			proofsSubtitle: string
+			/**
+			 * O​n​e​ ​E​c​o​-​e​v​o​l​v​i​n​g​ ​A​v​a​t​a​r
+			 */
+			nftSubtitle: string
+		}
 		state: {
 			proofStep: {
 				/**
@@ -533,7 +556,7 @@ type RootTranslation = {
 			}
 			evolveStep: {
 				/**
-				 * E​v​o​l​u​t​i​o​n
+				 * E​v​o​l​u​t​i​o​n​ ​(​c​o​m​i​n​g​ ​s​o​o​n​)
 				 */
 				stepTitle: string
 				INITIAL: {
@@ -1137,6 +1160,28 @@ export type TranslationFunctions = {
 		}
 	}
 	multipass: {
+		header: {
+			/**
+			 * Featured collection
+			 */
+			subtitle: () => LocalizedString
+			/**
+			 * The {collectionName} Journey
+			 */
+			title: (arg: { collectionName: string }) => LocalizedString
+			/**
+			 * Get to know more
+			 */
+			moreInfo: () => LocalizedString
+			/**
+			 * Multiple Proofs of Presence
+			 */
+			proofsSubtitle: () => LocalizedString
+			/**
+			 * One Eco-evolving Avatar
+			 */
+			nftSubtitle: () => LocalizedString
+		}
 		state: {
 			proofStep: {
 				/**
@@ -1212,7 +1257,7 @@ export type TranslationFunctions = {
 			}
 			evolveStep: {
 				/**
-				 * Evolution
+				 * Evolution (coming soon)
 				 */
 				stepTitle: () => LocalizedString
 				INITIAL: {

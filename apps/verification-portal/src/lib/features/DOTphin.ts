@@ -28,14 +28,10 @@ const TESTNET_CONTRACT_ADDRESS = '3551';
 
 // Fetch Data and Update State
 export async function updateMultipassStateForAddress(address: string) {
-  console.log('UPDATING');
   isLoading.set(true);
   try {
     const data = await fetchDotphinData(address);
-    console.log(data);
     const currentState = get(multipassData);
-    console.log(data);
-    console.log(data.proofsStats.available);
     updateState({
       address: data.address,
       proofStats: {
@@ -74,6 +70,13 @@ export async function claimDOTphinNFT(address: string, proofDID: string) {
     const currentState = get(multipassData);
     updateState({
       ...currentState,
+      proofStats: {
+        ...currentState.proofStats,
+        available: {
+          ...currentState.proofStats.available,
+          total: currentState.proofStats.available.total - 1,
+        },
+      },
       nft: { DID: null, data: claimData, pending: true },
     });
     setCookie('claimPending', claimData.id);
@@ -127,10 +130,14 @@ function findProofByTraitType(
   proofs: DeepAsset[],
   element: 'air' | 'water' | 'earth'
 ): string | undefined {
-  const proof = proofs.find((proof) =>
-    proof.attributes?.some(
-      (attr) => attr.trait_type === 'element' && attr.value === element
-    )
+  const proof = proofs.find(
+    (proof) =>
+      proof.attributes?.some(
+        (attr) => attr.trait_type === 'element' && attr.value === element
+      ) &&
+      proof.attributes?.some(
+        (attr) => attr.trait_type === 'used' && attr.value === 'false'
+      )
   );
   return proof?.address;
 }
@@ -147,6 +154,9 @@ export async function claimProofByTraitType(
   if (proofAddress) {
     await claimDOTphinNFT(address, proofAddress);
   } else {
+    toast.error(
+      'Error finding a valid proof, please refresh the page and try again'
+    );
     console.log(`No proof found for trait type: ${element}`);
   }
 }

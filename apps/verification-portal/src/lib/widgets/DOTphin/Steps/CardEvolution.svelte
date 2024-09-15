@@ -5,6 +5,7 @@
     multipassStepConfig,
     isLoading,
   } from '$lib/features/MultipassStates';
+  import siteConfigs from '$lib/shared/siteConfigs';
   import { MAX_EVOLUTION_LEVEL } from '$lib/shared/multipassConfig';
   import TimelineItem from '$lib/widgets/DOTphin/TimelineItem/TimelineItem.svelte';
   import TimelineActionButton from '$lib/widgets/DOTphin/TimelineItem/TimelineActionButton.svelte';
@@ -12,6 +13,10 @@
   import CardTitle from '$lib/widgets/DOTphin/TimelineItem/Typography/Title.svelte';
 
   import { LL } from '$lib/shared/i18n/i18n-svelte';
+  const cardLink =
+    siteConfigs?.contentLinks?.DOTphin?.evolution ||
+    siteConfigs?.contentLinks?.DOTphin?.default ||
+    '';
 </script>
 
 <TimelineItem
@@ -42,9 +47,12 @@
         })}
       </CardSubtitle>
     {/if}
-
-    <a href="https://sovereignnature.com/dotphin" class="text-xs text-primary"
-      >{$LL.multipass.state.evolveStep.INITIAL.moreInfo()}</a
-    >
+    {#if cardLink}
+      <a
+        href={cardLink}
+        class="text-xs text-primary-300 hover:text-primary-200 transition-colors"
+        target="_blank">{$LL.multipass.state.evolveStep.INITIAL.moreInfo()}</a
+      >
+    {/if}
   </svelte:fragment>
 </TimelineItem>

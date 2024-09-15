@@ -155,6 +155,13 @@ const en: BaseTranslation = {
     },
   },
   multipass: {
+    header: {
+      subtitle: 'Featured collection',
+      title: `The {collectionName: string} Journey`,
+      moreInfo: `Get to know more`,
+      proofsSubtitle: `Multiple Proofs of Presence`,
+      nftSubtitle: `One Eco-evolving Avatar`,
+    },
     state: {
       proofStep: {
         stepTitle: 'Proofs',
@@ -165,7 +172,7 @@ const en: BaseTranslation = {
         },
         NO_PROOFS: {
           title: `{collection} Attendance Proofs Required`,
-          subtitle: 'You currently have no Attendance Proofs.',
+          subtitle: `You currently have no Attendance Proofs.`,
           cta: 'How to get proofs?',
           moreInfo: 'Learn more about Attendance Proofs',
         },
@@ -189,7 +196,7 @@ const en: BaseTranslation = {
         CLAIMED: {},
       },
       evolveStep: {
-        stepTitle: 'Evolution',
+        stepTitle: 'Evolution (coming soon)',
         INITIAL: {
           subtitle: 'You need to have an NFT to start evolving',
           cta: 'Evolve',

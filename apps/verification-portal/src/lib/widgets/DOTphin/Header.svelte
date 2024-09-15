@@ -1,7 +1,11 @@
 <script lang="ts">
+  import siteConfigs from '$lib/shared/siteConfigs';
   import HexagonGridIcon from '$lib/components/icons/HexagonGridIcon.svelte';
   import Subheader from '$lib/shared/typography/Subheader.svelte';
   import HexagonEggIcon from '$lib/components/icons/HexagonEggIcon.svelte';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
+
+  const cardLink = siteConfigs?.contentLinks?.DOTphin?.default || '';
   export let name: string;
 </script>
 
@@ -14,18 +18,20 @@
         id="multipass"
         title={'Multipass collection'}
         className="md:!text-base font-normal text-white "
-        >Featured collection</Subheader
+        >{$LL.multipass.header.subtitle()}</Subheader
       >
       <h3 class="text-4xl leading-tight">
-        The {name} Journey
+        {$LL.multipass.header.title({ collectionName: name })}
       </h3>
-      <a
-        href="https://sovereignnature.com/dotphin"
-        target="_blank"
-        class="text-primary-200 hover:text-white text-xs"
-      >
-        Get to know more
-      </a>
+      {#if cardLink}
+        <a
+          href="https://sovereignnature.com/dotphin"
+          target="_blank"
+          class="text-primary-200 hover:text-white text-xs"
+        >
+          {$LL.multipass.header.moreInfo()}
+        </a>
+      {/if}
     </div>
     <div
       class=" hidden sm:text-white pb-4 sm:px-8 md:px-11 sm:py-8 xl:pt-11 col-span-2 sm:flex flex-row justify-start sm:items-center gap-5"
@@ -36,7 +42,8 @@
         <HexagonGridIcon
           className=" fill-primary-500 text-deep-green-500 h-12 w-12 sm:h-[65px] sm:w-[65px]"
         />
-        <span class="text-xs pt-2">Multiple Proofs of Presence</span>
+        <span class="text-xs pt-2">{$LL.multipass.header.proofsSubtitle()}</span
+        >
       </div>
 
       <div
@@ -45,7 +52,7 @@
         <HexagonEggIcon
           className=" fill-primary-500 text-deep-green-500 h-12 w-12 sm:h-[65px] sm:w-[65px]"
         />
-        <span class="text-xs pt-2">One Eco-evolving Avatar</span>
+        <span class="text-xs pt-2">{$LL.multipass.header.nftSubtitle()}</span>
       </div>
     </div>
   </div>
