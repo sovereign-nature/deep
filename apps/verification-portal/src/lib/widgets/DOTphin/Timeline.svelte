@@ -43,7 +43,7 @@
 
 <div
   class={`${
-    $multipassData.nft.pending ? 'pt-0' : 'pt-6 sm:pt-8'
+    $multipassData.nft.pending ? 'pt-4 sm:pt-4' : 'pt-6 sm:pt-8'
   } bg-deep-green dark:bg-black dark:bg-opacity-60 text-white rounded-b-lg ps-6 sm:p-16 overflow-x-auto mb-8`}
 >
   {#if $multipassData.nft.pending}

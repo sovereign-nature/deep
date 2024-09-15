@@ -2,6 +2,7 @@
   import TileIcon from '$lib/widgets/DOTphin/CollectForm/TileIcon.svelte';
   import { multipassData } from '$lib/features/MultipassStates';
   import { claimProofByTraitType } from '$lib/features/DOTphin';
+  import Spinner from '$lib/components/icons/Spinner.svelte';
 
   let selectedValue: string | null = null;
   import { closeModal } from '$lib/widgets/DOTphin/collectModalStore';
@@ -9,20 +10,34 @@
     selectedValue = value;
     handleSubmit();
   }
+  let isSubmitting = false;
 
-  function handleSubmit() {
+  async function handleSubmit() {
+    if (isSubmitting) return;
+    isSubmitting = true;
+
     if ($multipassData.address && selectedValue !== null) {
-      claimProofByTraitType(
+      await claimProofByTraitType(
         $multipassData.address,
         selectedValue as 'earth' | 'air' | 'water'
-      );
-      closeModal();
+      ).finally(() => {
+        isSubmitting = false;
+        closeModal();
+      });
+    } else {
+      isSubmitting = false;
     }
   }
 </script>
 
+<div class="h-6 mb-2 flex items-center justify-center w-full gap-4">
+  {#if isSubmitting}
+    <span class="text-sm"> Processing... </span>
+    <Spinner className="h-4 w-4 text-primary-200" />
+  {/if}
+</div>
 <form
-  class="grid sm:grid-cols-3 grid-rows-3 sm:grid-rows-1 gap-4 w-full max-w-sm mx-auto"
+  class="grid md:grid-cols-3 grid-rows-3 md:grid-rows-1 gap-4 w-full max-w-sm mx-auto"
   on:submit|preventDefault={handleSubmit}
 >
   <TileIcon
@@ -30,7 +45,7 @@
       ? '(unavailable)'
       : ''}"
     value="earth"
-    disabled={$multipassData.proofStats.available.earth === 0}
+    disabled={$multipassData.proofStats.available.earth === 0 || isSubmitting}
     on:select={(e) => handleTileClick(e.detail.value)}
   >
     <div slot="icon">🌍</div>
@@ -41,7 +56,7 @@
       ? '(unavailable)'
       : ''}"
     value="air"
-    disabled={$multipassData.proofStats.available.air === 0}
+    disabled={$multipassData.proofStats.available.air === 0 || isSubmitting}
     on:select={(e) => handleTileClick(e.detail.value)}
   >
     <div slot="icon">☁️</div>
@@ -52,7 +67,7 @@
       ? '(unavailable)'
       : ''}"
     value="water"
-    disabled={$multipassData.proofStats.available.water === 0}
+    disabled={$multipassData.proofStats.available.water === 0 || isSubmitting}
     on:select={(e) => handleTileClick(e.detail.value)}
   >
     <div slot="icon">💧</div>
