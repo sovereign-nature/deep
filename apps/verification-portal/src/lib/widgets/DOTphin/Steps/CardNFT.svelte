@@ -10,8 +10,15 @@
   import TimelineItem from '$lib/widgets/DOTphin/TimelineItem/TimelineItem.svelte';
   import CardSubtitle from '$lib/widgets/DOTphin/TimelineItem/Typography/Subtitle.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
+  import { Confetti } from 'svelte-confetti';
   import TimelineActionButton from '$lib/widgets/DOTphin/TimelineItem/TimelineActionButton.svelte';
   import CollectModal from '../CollectForm/CollectModal.svelte';
+
+  let showConfetti = false;
+
+  $: if ($multipassData.nft.pending && !showConfetti) {
+    showConfetti = true;
+  }
 </script>
 
 {#if $nftStepState === 'UNCLAIMED'}
@@ -46,6 +53,9 @@
     <svelte:fragment slot="featured">
       <div class="max-h-[200px] mb-12">
         <FeaturedCard item={$multipassData.nft.data} />
+        {#if showConfetti && !$isLoading}
+          <Confetti delay={[100, 250]} rounded colorRange={[75, 175]} />
+        {/if}
       </div>
     </svelte:fragment>
   </TimelineItem>
