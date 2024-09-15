@@ -32,7 +32,7 @@ import {
   getDotphinClaim,
   setDotphinClaim,
 } from '$lib/db/dotphin-claims';
-import { addProofAsUsed, getProof } from '$lib/db/proofs';
+import { addProofAsUsed, getProof, resetProofsForUser } from '$lib/db/proofs';
 import { SessionVariables, session } from '$middleware/session';
 
 const app = new OpenAPIHono<{
@@ -457,6 +457,7 @@ app.openapi(
       );
     }
 
+    await resetProofsForUser(SESSIONS_DB, owner);
     await deleteDotphinClaim(SESSIONS_DB, owner);
 
     return c.json({ success: true }, 200);

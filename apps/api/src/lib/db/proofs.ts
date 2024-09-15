@@ -24,3 +24,9 @@ export function setProofAsUsed(db: D1Database, proofDID: string) {
   const orm = drizzle(db);
   return orm.update(proofs).set({ used: true }).where(eq(proofs.id, proofDID));
 }
+
+//Needed only for testing. Not used in production
+export function resetProofsForUser(db: D1Database, userId: string) {
+  const orm = drizzle(db);
+  return orm.delete(proofs).where(eq(proofs.owner, userId));
+}
