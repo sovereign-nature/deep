@@ -199,7 +199,8 @@ const en: BaseTranslation = {
       evolveStep: {
         stepTitle: 'Evolution (coming soon)',
         INITIAL: {
-          subtitle: 'You need to have an NFT to start evolving',
+          subtitle:
+            'Coming soon. You need to have a DOTphin Orbo to start evolving',
           cta: 'Evolve',
           moreInfo: 'Read more',
         },
