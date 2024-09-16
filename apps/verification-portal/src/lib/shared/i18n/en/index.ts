@@ -162,6 +162,7 @@ const en: BaseTranslation = {
       proofsSubtitle: `Multiple Proofs of Presence`,
       nftSubtitle: `One Eco-evolving Avatar`,
     },
+    pendingCollect: `Hang tight, we're processing your claim! This could take up to a minute. Feel free to check back soon to meet your DOTphin pal! 🐬🌊`,
     state: {
       proofStep: {
         stepTitle: 'Proofs',

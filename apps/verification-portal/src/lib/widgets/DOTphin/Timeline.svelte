@@ -6,6 +6,7 @@
   import NFTCard from '$lib/widgets/DOTphin/Steps/CardNFT.svelte';
   import { Timeline } from 'flowbite-svelte';
   import Spinner from '$lib/components/icons/Spinner.svelte';
+  import { LL } from '$lib/shared/i18n/i18n-svelte';
 
   import {
     multipassData,
@@ -43,16 +44,16 @@
 
 <div
   class={`${
-    $multipassData.nft.pending ? 'pt-0' : 'pt-6 sm:pt-8'
+    $multipassData.nft.pending ? 'pt-8 sm:pt-4' : 'pt-6 sm:pt-8'
   } bg-deep-green dark:bg-black dark:bg-opacity-60 text-white rounded-b-lg ps-6 sm:p-16 overflow-x-auto mb-8`}
 >
   {#if $multipassData.nft.pending}
     <div
-      class="flex gap-x-2 items-center font-serif mb-4 sm:mb-8 text-gray-200"
+      class="flex text-[15px] whitespace-pre-line max-w-fit gap-x-4 items-center font-aeonik mb-4 sm:mb-8 text-gray-200 p-2 px-5 bg-black dark:bg-deep-green-800 rounded-lg me-6"
     >
-      <span> Processing claim </span>
       <Spinner className=" w-5 h-5 text-primary-200  fill-primary-400 "
       ></Spinner>
+      <span> {$LL.multipass.pendingCollect()}</span>
     </div>
   {/if}
   <Timeline {order}>

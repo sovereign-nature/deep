@@ -12,9 +12,9 @@
 >
   <div class="relative overflow-hidden h-64 text-white">
     <NFTImage
-      imgPlaceholderClass="w-[300px] h-64"
-      containerClass="w-[300px] h-64 img-container "
-      imgClass="w-[300px] h-64 object-cover object-center"
+      imgPlaceholderClass=" h-64"
+      containerClass=" h-64 img-container "
+      imgClass=" h-64 object-cover object-right-bottom"
       url={item.image}
       alt={item.name}
       size={400}

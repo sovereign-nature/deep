@@ -7,18 +7,23 @@
 
   import Form from './Form.svelte';
 
-  const title = 'Select the element';
+  const title = 'Pick an Element';
 </script>
 
 <ModalWrapper
   open={$formModal}
   size="sm"
   on:close={() => closeModal()}
-  {title}
   autoclose={false}
 >
   <svelte:fragment slot="body">
-    <div class="py-6">
+    <div class="text-center px-4 dark:text-gray-200">
+      <h2 class="text-3xl font-sans">{title}</h2>
+      <p class="text-sm">
+        The element will determine the type of DOTphin that will hatch
+      </p>
+    </div>
+    <div class="pt-1 pb-16">
       <Form />
     </div>
   </svelte:fragment>

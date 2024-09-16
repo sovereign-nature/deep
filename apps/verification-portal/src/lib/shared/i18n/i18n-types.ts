@@ -476,6 +476,10 @@ type RootTranslation = {
 			 */
 			nftSubtitle: string
 		}
+		/**
+		 * H​a​n​g​ ​t​i​g​h​t​,​ ​w​e​'​r​e​ ​p​r​o​c​e​s​s​i​n​g​ ​y​o​u​r​ ​c​l​a​i​m​!​ ​T​h​i​s​ ​c​o​u​l​d​ ​t​a​k​e​ ​u​p​ ​t​o​ ​a​ ​m​i​n​u​t​e​.​F​e​e​l​ ​f​r​e​e​ ​t​o​ ​c​h​e​c​k​ ​b​a​c​k​ ​s​o​o​n​ ​t​o​ ​m​e​e​t​ ​y​o​u​r​ ​D​O​T​p​h​i​n​ ​p​a​l​!​ ​�​�​�​�
+		 */
+		pendingCollect: string
 		state: {
 			proofStep: {
 				/**
@@ -1182,6 +1186,10 @@ export type TranslationFunctions = {
 			 */
 			nftSubtitle: () => LocalizedString
 		}
+		/**
+		 * Hang tight, we're processing your claim! This could take up to a minute.Feel free to check back soon to meet your DOTphin pal! 🐬🌊
+		 */
+		pendingCollect: () => LocalizedString
 		state: {
 			proofStep: {
 				/**
