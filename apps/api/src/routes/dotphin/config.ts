@@ -15,7 +15,8 @@ export function getDotphinCollectionConfig(
     network: 'opal',
     metadata: {
       name: 'DOTphin',
-      description: 'DOTphin is a collection of unique NFTs.',
+      description:
+        "Beneath the depths of the Polkadot ecosystem, something extraordinary lurks - the enigmatic DOTphin. This mystical being embodies the essence of nature, continuously growing and transforming. The adventure commences with Orbo, a powerful symbol of life's boundless potential. Orbo serves as a blank canvas from which all aspects of existence emerge, a primal Orb pulsating with promise. It signifies the genesis of life's endless opportunities.",
       image: [
         'https://real.myfilebase.com/ipfs/QmSd8qhWTqYvPYGEnXcB9cRhFGwA8XVR1wfN5GGv4x4vJj/orbo-air.png',
         'https://real.myfilebase.com/ipfs/QmSd8qhWTqYvPYGEnXcB9cRhFGwA8XVR1wfN5GGv4x4vJj/orbo-earth.png',
