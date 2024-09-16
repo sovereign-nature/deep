@@ -263,9 +263,6 @@ app.openapi(
     }
 
     const user = c.get('user');
-    const session = c.get('session');
-
-    logger.info(`Claiming for ${{ user, address, session }}`);
 
     //Check if user logged in and have the rights to claim
     if (!user) {
