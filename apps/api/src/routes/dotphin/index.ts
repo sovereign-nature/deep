@@ -272,7 +272,9 @@ app.openapi(
     }
 
     if (user.id.toLowerCase() !== address.toLowerCase()) {
-      logger.error('User address and claim address does not match');
+      logger.error(
+        `User address and claim address does not match.  UserID: ${user.id.toLowerCase()} Claim Address: ${address.toLowerCase()}`
+      );
 
       return c.json(
         {
