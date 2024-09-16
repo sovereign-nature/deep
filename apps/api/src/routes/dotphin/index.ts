@@ -353,6 +353,11 @@ app.openapi(
       DOTPHIN_COLLECTION_ID.toString()
     );
 
+    collectionConfig.metadata.attributes![seed].push({
+      trait_type: 'proofs',
+      value: proofDID,
+    });
+
     //Send minting request to the queue
     const mintId = getRandomId();
     logger.info(`Claiming DOTphin, sending minting ${mintId} to queue`);
