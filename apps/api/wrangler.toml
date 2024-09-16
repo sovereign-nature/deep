@@ -29,7 +29,7 @@ d1_databases = [
 name = "api"
 tail_consumers = [{ service = "api-tail" }]
 
-vars = { ENVIRONMENT = 'production', ROSSMINT_API_URL = "https://crossmint.com/api/2022-06-09/collections", DOTPHIN_NETWORK = "opal", DOTPHIN_PROOFS_COLLECTION_ID = 3551, DOTPHIN_COLLECTION_ID = 3773 }
+vars = { ENVIRONMENT = 'production', ROSSMINT_API_URL = "https://crossmint.com/api/2022-06-09/collections", DOTPHIN_NETWORK = "unique", DOTPHIN_PROOFS_COLLECTION_ID = 665, DOTPHIN_COLLECTION_ID = 813 }
 
 queues.producers = [{ queue = "minting-queue", binding = "MINTING_QUEUE" }]
 queues.consumers = [
@@ -52,7 +52,7 @@ name = "stg-api"
 tail_consumers = [{ service = "stg-api-tail" }]
 workers_dev = true
 
-vars = { ENVIRONMENT = "staging", CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections" }
+vars = { ENVIRONMENT = "staging", CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections", DOTPHIN_NETWORK = "opal", DOTPHIN_PROOFS_COLLECTION_ID = 3551, DOTPHIN_COLLECTION_ID = 3773 }
 
 # Separate infra for staging
 # TODO: Setup staging queues
