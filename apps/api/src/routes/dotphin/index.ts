@@ -266,10 +266,14 @@ app.openapi(
 
     //Check if user logged in and have the rights to claim
     if (!user) {
+      logger.error('User is not logged in');
+
       return c.json({ error: true, message: 'User is not logged in' }, 401);
     }
 
     if (user.id.toLowerCase() !== address.toLowerCase()) {
+      logger.error('User address and claim address does not match');
+
       return c.json(
         {
           error: true,
@@ -293,6 +297,8 @@ app.openapi(
 
     //Check if proof is from the DOTphin collection
     if (proofAsset.collection.id !== DOTPHIN_PROOFS_COLLECTION_ID.toString()) {
+      logger.error('Proof is not from the DOTphin collection');
+
       return c.json(
         {
           error: true,
@@ -304,6 +310,8 @@ app.openapi(
 
     //Checking if proof owner is the same as the user
     if (proofAsset.owner.toLowerCase() !== address.toLowerCase()) {
+      logger.error('Proof owner and claim address does not match');
+
       return c.json(
         {
           error: true,
@@ -320,6 +328,8 @@ app.openapi(
       const { used } = proofCache;
 
       if (used) {
+        logger.error('Proof is already used');
+
         return c.json({ error: true, message: 'Proof is already used' }, 400);
       }
     }
@@ -332,12 +342,16 @@ app.openapi(
     );
 
     if (dotphinDID) {
+      logger.error('User already has DOTphin');
+
       return c.json({ error: true, message: 'User already has DOTphin' }, 400);
     }
 
     //Get the element from the proof and create a seed
     const element = getAttributeValue(proofAsset.attributes!, 'element');
     if (!element) {
+      logger.error("Something wrong with the proof, can't get element");
+
       return c.json(
         { error: true, message: 'Something wrong with the proof' },
         400
