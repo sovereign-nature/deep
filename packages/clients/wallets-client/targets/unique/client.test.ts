@@ -22,6 +22,7 @@ const expectedWalletAssets = [
         value: 'polkadot-decoded-2024',
       },
     ],
+    owner: '0xb8a976ad1d87d070b5e5806b98a768b4bb4e4847',
   },
   {
     address: 'did:asset:eip155:8882.unique2:3019:312',
@@ -43,6 +44,7 @@ const expectedWalletAssets = [
         value: 'polkadot-decoded-2024',
       },
     ],
+    owner: '0xb8a976ad1d87d070b5e5806b98a768b4bb4e4847',
   },
 ];
 
