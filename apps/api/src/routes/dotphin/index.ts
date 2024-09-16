@@ -347,7 +347,8 @@ app.openapi(
     const seed = getSeed(element);
 
     const collectionConfig = getDotphinCollectionConfig(
-      DOTPHIN_COLLECTION_ID.toString()
+      DOTPHIN_COLLECTION_ID.toString(),
+      DOTPHIN_NETWORK
     );
 
     collectionConfig.metadata.attributes![seed].push({
@@ -363,7 +364,7 @@ app.openapi(
         address,
         payload: {
           id: mintId,
-          collection: 'UNNEEDED', //TODO: Remove collection from payload
+          collection: 'DOTphin', //TODO: Remove collection from payload
           seed,
         },
         collectionConfig,
