@@ -6,7 +6,7 @@ import { logger } from '$lib/logger';
 export async function addUser(db: D1Database, address: string) {
   logger.debug('Adding user ', address);
 
-  const orm = drizzle(db, { logger: true });
+  const orm = drizzle(db);
 
   const query = orm
     .insert(users)
