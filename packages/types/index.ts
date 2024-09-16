@@ -16,6 +16,7 @@ export type DeepAsset = {
     infoLink: string | undefined; //TODO: Mark as optional?
   };
   address: string; //TODO: Rename to assetDID?
+  owner: string;
 };
 
 //TODO: This is not a type, probably should be moved to another library
