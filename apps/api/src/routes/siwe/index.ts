@@ -101,8 +101,8 @@ app.post('/signout', async (c) => {
   await lucia.invalidateSession(session.id);
   logger.info('Session invalidated', { session });
 
-  const cookie = lucia.createBlankSessionCookie();
-  setCookie(c, cookie.name, cookie.value, cookie.attributes);
+  const blankCookie = lucia.createBlankSessionCookie();
+  setCookie(c, blankCookie.name, blankCookie.value, blankCookie.attributes);
 
   return c.json({ message: 'Successfully signed out' });
 });
