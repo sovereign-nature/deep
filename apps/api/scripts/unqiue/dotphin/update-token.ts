@@ -10,7 +10,7 @@ const NETWORK: 'opal' | 'unique' = 'opal';
 const IMAGE_URL =
   'https://real.myfilebase.com/ipfs/QmXzECuBhrG2xy6ewRJCivZFiTYeuvoAosTjRADhuHaoUA';
 
-const COLLECTION_ID = 3707;
+const COLLECTION_ID = 3773;
 
 const getLinkToToken = (sdk: Sdk, collectionId: number, tokenId: number) => {
   return `${sdk.options.baseUrl}/tokens/v2?collectionId=${collectionId}&tokenId=${tokenId}`;
@@ -61,7 +61,9 @@ const updateToken = async (sdk: Sdk, collectionId: number, tokenId: number) => {
 
   console.log('New Image:', tokenDataValue.image);
 
-  await sdk.token.setProperties({
+  tokenDataValue.description = 'UPDATED';
+
+  const result = await sdk.token.setProperties({
     collectionId,
     tokenId,
     properties: [{ key: 'tokenData', value: JSON.stringify(tokenDataValue) }],
@@ -70,6 +72,10 @@ const updateToken = async (sdk: Sdk, collectionId: number, tokenId: number) => {
   console.log(
     `Tokens updated in collection ${collectionId} with ID ${tokenId}}`
   );
+
+  if (result.error) {
+    console.error('Errors:', result.error);
+  }
 
   console.log(`${getLinkToToken(sdk, collectionId, tokenId)}`);
 
@@ -90,7 +96,7 @@ const main = async () => {
     waitBetweenStatusRequestsInMs: 5000,
   });
 
-  const tokenIds = await updateToken(sdk, COLLECTION_ID, 3);
+  const tokenIds = await updateToken(sdk, COLLECTION_ID, 5);
 
   console.log('Tokens minted:', tokenIds);
 };
