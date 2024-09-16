@@ -63,7 +63,7 @@
                   <Card
                     name={result.name}
                     image={result.image}
-                    collection={result.collection.name}
+                    collection={result.collection.id}
                     source="Web3"
                     address={result.address}
                   />

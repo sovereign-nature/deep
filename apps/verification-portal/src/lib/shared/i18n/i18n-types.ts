@@ -477,7 +477,7 @@ type RootTranslation = {
 			nftSubtitle: string
 		}
 		/**
-		 * H​a​n​g​ ​t​i​g​h​t​,​ ​w​e​'​r​e​ ​p​r​o​c​e​s​s​i​n​g​ ​y​o​u​r​ ​c​l​a​i​m​!​ ​T​h​i​s​ ​c​o​u​l​d​ ​t​a​k​e​ ​u​p​ ​t​o​ ​a​ ​m​i​n​u​t​e​.​F​e​e​l​ ​f​r​e​e​ ​t​o​ ​c​h​e​c​k​ ​b​a​c​k​ ​s​o​o​n​ ​t​o​ ​m​e​e​t​ ​y​o​u​r​ ​D​O​T​p​h​i​n​ ​p​a​l​!​ ​�​�​�​�
+		 * H​a​n​g​ ​t​i​g​h​t​,​ ​w​e​'​r​e​ ​p​r​o​c​e​s​s​i​n​g​ ​y​o​u​r​ ​c​l​a​i​m​!​ ​T​h​i​s​ ​c​o​u​l​d​ ​t​a​k​e​ ​u​p​ ​t​o​ ​a​ ​m​i​n​u​t​e​.​ ​F​e​e​l​ ​f​r​e​e​ ​t​o​ ​c​h​e​c​k​ ​b​a​c​k​ ​s​o​o​n​ ​t​o​ ​m​e​e​t​ ​y​o​u​r​ ​D​O​T​p​h​i​n​ ​p​a​l​!​ ​�​�​�​�
 		 */
 		pendingCollect: string
 		state: {
@@ -565,7 +565,7 @@ type RootTranslation = {
 				stepTitle: string
 				INITIAL: {
 					/**
-					 * Y​o​u​ ​n​e​e​d​ ​t​o​ ​h​a​v​e​ ​a​n​ ​N​F​T​ ​t​o​ ​s​t​a​r​t​ ​e​v​o​l​v​i​n​g
+					 * C​o​m​i​n​g​ ​s​o​o​n​.​ ​Y​o​u​ ​n​e​e​d​ ​t​o​ ​h​a​v​e​ ​a​ ​D​O​T​p​h​i​n​ ​O​r​b​o​ ​t​o​ ​s​t​a​r​t​ ​e​v​o​l​v​i​n​g
 					 */
 					subtitle: string
 					/**
@@ -1187,7 +1187,7 @@ export type TranslationFunctions = {
 			nftSubtitle: () => LocalizedString
 		}
 		/**
-		 * Hang tight, we're processing your claim! This could take up to a minute.Feel free to check back soon to meet your DOTphin pal! 🐬🌊
+		 * Hang tight, we're processing your claim! This could take up to a minute. Feel free to check back soon to meet your DOTphin pal! 🐬🌊
 		 */
 		pendingCollect: () => LocalizedString
 		state: {
@@ -1270,7 +1270,7 @@ export type TranslationFunctions = {
 				stepTitle: () => LocalizedString
 				INITIAL: {
 					/**
-					 * You need to have an NFT to start evolving
+					 * Coming soon. You need to have a DOTphin Orbo to start evolving
 					 */
 					subtitle: () => LocalizedString
 					/**
