@@ -1,6 +1,6 @@
+import { UniqueNetwork } from '@sni/types';
 import { CollectionConfig } from '../claims/config'; //TODO: Move to shared
 import { getRandomInt } from '$lib/utils';
-import { UniqueNetwork } from '@sni/types';
 
 const baseAttributes = [
   { trait_type: 'level', value: '1' },
