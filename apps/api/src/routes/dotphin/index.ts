@@ -4,6 +4,7 @@ import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
 import { Context } from 'hono';
 import { DeepAsset, ExternalApiError, UniqueNetwork } from '@sni/types';
 import { env } from 'hono/adapter';
+import { setCookie } from 'hono/cookie';
 import walletsApp from '../wallets';
 import assetsApp from '../assets';
 import {
@@ -275,6 +276,26 @@ app.openapi(
       logger.error(
         `User address and claim address does not match.  UserID: ${user.id.toLowerCase()} Claim Address: ${address.toLowerCase()}`
       );
+
+      //Cookies cleanup hack, so users are not connecting with broken or wrong session
+      const session = c.get('session');
+
+      const lucia = c.get('lucia');
+
+      //Invalidate the session
+      if (session) {
+        logger.info(`Removing the session ${session.id}`);
+
+        await lucia.invalidateSession(session.id);
+        logger.info('Session invalidated', { session });
+      }
+
+      //Invalidate all user sessions (just in case)
+      await lucia.invalidateUserSessions(user.id);
+
+      //Remove the cookie
+      const blankCookie = lucia.createBlankSessionCookie();
+      setCookie(c, blankCookie.name, blankCookie.value, blankCookie.attributes);
 
       return c.json(
         {
