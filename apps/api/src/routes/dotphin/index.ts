@@ -236,11 +236,15 @@ app.openapi(
 
     const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
 
-    // const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c);
-
-    const { DOTPHIN_COLLECTION_ID, DOTPHIN_NETWORK } = getDotphinEnvConfig(c);
+    const {
+      DOTPHIN_COLLECTION_ID,
+      DOTPHIN_NETWORK,
+      DOTPHIN_PROOFS_COLLECTION_ID,
+    } = getDotphinEnvConfig(c);
 
     const { address, proofDID } = c.req.valid('json');
+
+    logger.info('Received claim request for ', address, proofDID);
 
     const dotphinClaim = await getDotphinClaim(SESSIONS_DB, address);
 
@@ -258,23 +262,25 @@ app.openapi(
       }
     }
 
-    //TODO: Check if user logged in and have the rights to claim
     const user = c.get('user');
+    const session = c.get('session');
 
+    logger.info(`Claiming for ${{ user, address, session }}`);
+
+    //Check if user logged in and have the rights to claim
     if (!user) {
       return c.json({ error: true, message: 'User is not logged in' }, 401);
     }
 
-    logger.info({ user, address });
-
     if (user.id.toLowerCase() !== address.toLowerCase()) {
       return c.json(
-        { error: true, message: 'User address does not match' },
+        {
+          error: true,
+          message: 'User address and claim address does not match',
+        },
         400
       );
     }
-
-    logger.info('Received claim request for ', address, proofDID);
 
     //Proof validation
     //Check if proofDID is valid
@@ -288,19 +294,38 @@ app.openapi(
 
     const proofAsset = (await assetResponse.json()) as DeepAsset;
 
-    //Proof is not used
-    //TODO: Check token attributes like Boolean(getAttributeValue(proofAsset.attributes!, 'used'));
-    const proof = await getProof(SESSIONS_DB, proofDID);
+    //Check if proof is from the DOTphin collection
+    if (proofAsset.collection.id !== DOTPHIN_PROOFS_COLLECTION_ID.toString()) {
+      return c.json(
+        {
+          error: true,
+          message: 'Proof is not from the DOTphin collection',
+        },
+        400
+      );
+    }
 
-    if (proof !== null) {
-      const { used } = proof;
+    //Checking if proof owner is the same as the user
+    if (proofAsset.owner.toLowerCase() !== address.toLowerCase()) {
+      return c.json(
+        {
+          error: true,
+          message: 'Proof owner and claim address does not match',
+        },
+        400
+      );
+    }
+
+    //Check if proof is not used
+    const proofCache = await getProof(SESSIONS_DB, proofDID);
+
+    if (proofCache !== null) {
+      const { used } = proofCache;
 
       if (used) {
         return c.json({ error: true, message: 'Proof is already used' }, 400);
       }
     }
-
-    //TODO: Check if proof owner is the same as the user
 
     //Check if user has DOTphin already
     const dotphinDID = await getDotphinAddress(
