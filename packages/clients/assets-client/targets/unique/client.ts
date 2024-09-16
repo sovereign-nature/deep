@@ -33,5 +33,6 @@ export async function getUniqueAsset(
       nftResponse.collectionId,
       nftResponse.tokenId
     ),
+    owner: nftResponse.owner,
   };
 }
