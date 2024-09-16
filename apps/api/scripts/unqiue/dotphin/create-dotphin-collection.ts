@@ -4,10 +4,10 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-const NETWORK: 'opal' | 'unique' = 'opal';
+const NETWORK: 'opal' | 'unique' = 'unique';
 
 const IMAGE_URL =
-  'https://real.myfilebase.com/ipfs/QmSd8qhWTqYvPYGEnXcB9cRhFGwA8XVR1wfN5GGv4x4vJj/orbo-air.png';
+  'https://real.myfilebase.com/ipfs/QmbCKLNSdDUia33AQ8FvGc7UhrGsTuVbhnyPsPKfWUoexu/earth/dotphin-orbo-earth-0.png';
 
 const getLinkToCollection = (sdk: Sdk, collectionId: number) => {
   return `${sdk.options.baseUrl}/collections/v2?collectionId=${collectionId}`;
@@ -16,10 +16,11 @@ const getLinkToCollection = (sdk: Sdk, collectionId: number) => {
 const createCollection = async (sdk: Sdk): Promise<number> => {
   const collectionCreationResult = await sdk.collection.createV2({
     name: 'DOTphin',
-    description: 'Your DOTphin avatar',
+    description:
+      'Beneath the depths of the Polkadot ecosystem, something extraordinary lurks - the enigmatic DOTphin.',
     symbol: 'DOTPHIN',
     cover_image: { url: IMAGE_URL },
-    limits: { accountTokenOwnershipLimit: 1, ownerCanTransfer: true }, //TODO: Should we add transfer limit (soul bound)? IMPORTANT: Remove transfer from PROD
+    limits: { accountTokenOwnershipLimit: 1, ownerCanTransfer: true }, //TODO: Should we add transfer limit (soul bound)?
     potential_attributes: [
       { trait_type: 'level' },
       { trait_type: 'experience' },
