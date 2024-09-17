@@ -115,7 +115,7 @@
       tabindex="3"
       formaction="/?/claim"
       disabled={$formSending}
-      data-umami-event="nft-claim-manual-submit"
+      data-umami-event="nft-claim-submit"
     >
       {$LL.claim.buttonSubmit()}
       {#if $formSending}
