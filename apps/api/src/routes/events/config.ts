@@ -46,6 +46,6 @@ export const events: Events = {
     collectionId: 'token2049-singapore-2024',
     realCollection: 'dotphin-proofs',
     seed: () => getRandomInt(0, 2),
-    going: false,
+    going: true,
   },
 };
