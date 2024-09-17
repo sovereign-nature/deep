@@ -443,7 +443,7 @@ export const collections: Collections = {
     tokenStandard: 'unique2',
   },
   'token2049-singapore-2024': {
-    name: 'testnet-token2049-singapore-2024',
+    name: 'token2049-singapore-2024',
     externalId: '665',
     metadata: {
       description:
