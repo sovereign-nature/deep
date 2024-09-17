@@ -73,6 +73,7 @@
           type="button"
           class="clear-btn"
           on:click={() => ($formManualAddress = '')}
+          data-umami-event="nft-claim-manual-input-clear"
           ><span class="sr-only">clear input</span>
         </button>
       </div>
@@ -114,6 +115,7 @@
       tabindex="3"
       formaction="/?/claim"
       disabled={$formSending}
+      data-umami-event="nft-claim-manual-submit"
     >
       {$LL.claim.buttonSubmit()}
       {#if $formSending}

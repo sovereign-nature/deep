@@ -33,6 +33,7 @@
         class={`${responsive ? 'h-8 md:h-11 md:text-base text-xs px-3 md:px-5' : 'text-base h-11 px-5'} text-white dark:text-primary-200 hover:bg-primary-300   hover:dark:bg-deep-green-400 active:opacity-100 flex items-center gap-2 rounded-full bg-primary-400 dark:bg-deep-green-500`}
         type="button"
         on:click={openModal}
+        data-umami-event="web3modal-open"
       >
         <span class="flex items-center gap-2">
           <span
