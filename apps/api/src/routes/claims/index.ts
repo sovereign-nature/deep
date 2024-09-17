@@ -109,7 +109,7 @@ app.post(
           }
 
           logger.info(`Sending minting ${mintId} to queue`);
-          await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
+          await MINTING_KV.put(mintId, JSON.stringify(pendingResponse)); //This is a bug - MINTING_KV takes too much time to update, so it gives us null response
           await MINTING_QUEUE.send(
             JSON.stringify({ address, payload, collectionConfig }),
             { contentType: 'json' }
