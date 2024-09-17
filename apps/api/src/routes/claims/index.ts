@@ -46,7 +46,7 @@ app.post(
     try {
       await verify(token, CLAIMS_SECRET);
     } catch (e) {
-      logger.error(e);
+      logger.error(`Invalid token: ${token}`);
       return c.json({ error: true, message: 'Invalid token' }, 400);
     }
 
@@ -59,6 +59,9 @@ app.post(
     const mintResponse = await MINTING_KV.get(mintId);
 
     if (claim && mintResponse === null) {
+      logger.error(
+        `Token from ${collectionConfig.name} was already claimed for this wallet`
+      );
       return c.json(
         {
           error: true,
@@ -152,6 +155,10 @@ app.post(
         const owner = parsedMintResponse.onChain.owner;
 
         if (owner && owner.toLocaleLowerCase() !== address.toLowerCase()) {
+          logger.error(
+            `Token was already claimed for different owner address: ${owner}`
+          );
+
           return c.json(
             {
               error: true,
@@ -178,6 +185,7 @@ app.post(
         return c.json(parsedMintResponse);
       }
       default:
+        logger.error(`Network ${network} not supported`);
         return c.json({ error: true, message: 'Network not supported' }, 400);
     }
   }
