@@ -52,6 +52,7 @@
   <div class="relative">
     <button
       type="button"
+      data-umami-event="rollover-button-click"
       {disabled}
       class={`${btnClass} ${$$slots.default && isOpen ? 'open' : 'closed'}`}
       on:click={() => {

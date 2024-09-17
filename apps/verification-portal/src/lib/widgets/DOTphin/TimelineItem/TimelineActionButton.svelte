@@ -11,6 +11,7 @@
 
 <button
   type="button"
+  data-umami-event="dotphin-timeline-action-button-click"
   class={`${baseClass} ${disabled ? disabledClass : activeClass}`}
   on:click={() => dispatch('click')}
   {disabled}>{title}</button
