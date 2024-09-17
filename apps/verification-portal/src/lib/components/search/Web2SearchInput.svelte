@@ -75,6 +75,7 @@
 
       <Button
         type="submit"
+        data-umami-event="web2-search-submit"
         color="none"
         class="bg-primary-300 sm:w-20 border-none !p-2.5 rounded-lg sm:rounded-s-none  ms-auto sm:!rounded-r-sm absolute top-1/2 right-3 sm:right-0 transform -translate-y-1/2 sm:translate-y-0  sm:relative"
         aria-label="search"

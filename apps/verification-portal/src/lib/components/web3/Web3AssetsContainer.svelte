@@ -90,6 +90,7 @@
         on:click={refetchItems}
         disabled={!$web3Response.loaded}
         class="mt-8 font-aeonki text-sm flex items-center gap-3 opacity-80 hover:opacity-100 text-gray-500 px-4 py-2 bg-gray-200 disabled:opacity-30 bg-opacity-5 rounded-full focus-within focus:border-primary-100 justify-self-center self-center"
+        data-umami-event="web3-refresh-feed"
       >
         {#if $web3Response.loaded}
           {$LL.results.refreshFeed()}

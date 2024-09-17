@@ -9,6 +9,7 @@
   class="bg-primary-400 hover:bg-primary-300 disabled:opacity-80 text-white font-aeonik py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline flex"
   disabled={$formSending}
   on:click
+  data-umami-event="nft-claim-check"
 >
   {$LL.claim.checkClaim()}
   {#if $formSending}

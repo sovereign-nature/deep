@@ -29,7 +29,12 @@
 </script>
 
 <div class="flex gap-2">
-  <button class="social-button" on:click={shareOnTwitter} title="Twitter">
+  <button
+    class="social-button"
+    data-umami-event="share-twitter"
+    on:click={shareOnTwitter}
+    title="Twitter"
+  >
     <HexagonIcon className="absolute text-white dark:text-black z-0" />
     <svg
       class="w-5 h-5 icon"
@@ -42,7 +47,12 @@
       />
     </svg>
   </button>
-  <button class="social-button" on:click={shareOnTelegram} title="Telegram">
+  <button
+    class="social-button"
+    data-umami-event="share-telegram"
+    on:click={shareOnTelegram}
+    title="Telegram"
+  >
     <HexagonIcon className="absolute text-white dark:text-black z-0" />
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -58,6 +68,7 @@
 
   <button
     class="social-button"
+    data-umami-event="share-instagram"
     on:click={() =>
       shareFile(shareImage, shareTitle, $LL.social.shareImagePrefix())}
     title="Instagram"
