@@ -52,6 +52,6 @@ export const events: Events = {
     collectionId: 'european-blockchain-convention-2024',
     realCollection: 'dotphin-proofs',
     seed: () => getRandomInt(0, 2),
-    going: false,
+    going: true,
   },
 };
