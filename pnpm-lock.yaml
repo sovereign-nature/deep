@@ -235,8 +235,8 @@ importers:
         specifier: 1.4.0
         version: 1.4.0(bufferutil@4.0.8)(react@18.3.1)(utf-8-validate@5.0.10)
       '@web3modal/siwe':
-        specifier: 5.1.8
-        version: 5.1.8(react@18.3.1)
+        specifier: 5.1.9
+        version: 5.1.9(react@18.3.1)
       '@web3modal/wagmi':
         specifier: 5.1.9
         version: 5.1.9(r23shojlfu6kme4vwmyisnvcqm)
@@ -4402,20 +4402,11 @@ packages:
   '@web3modal/base@5.1.9':
     resolution: {integrity: sha512-XvMRbYzhdLEg59E0IsDVuvLB1525EGI5iMG2i9G4OVWUB3y9+STjZfl9M3KTy4ONRjWQPEt4OC6iWIkUef1w7Q==}
 
-  '@web3modal/common@5.1.8':
-    resolution: {integrity: sha512-W3tvTQ5FPauFjDSRIx3H6SurzzDHPeN3q7cMaxuOZb3Scf76vMkz9Af970Q44Jmlz1PGDKZzhEsmOzw6LJF+CA==}
-
   '@web3modal/common@5.1.9':
     resolution: {integrity: sha512-VgYWXrUyhJRlNsRfBO/JUgrUHMdAuE0W7uahM7He4AEohc8zq0bu+iFCwKaDTdhhdwUnBFRLpOkk/6BRgpC6gw==}
 
-  '@web3modal/core@5.1.8':
-    resolution: {integrity: sha512-cdDCZP0JSuYofuMCZkFW2GkLqkFRxLSmFE/+8IJAWIwmDzEpvhkycQpbtkL7eNKah3Mm56ggQsF8jLDmcTJyYQ==}
-
   '@web3modal/core@5.1.9':
     resolution: {integrity: sha512-MNYEcC4OrQvmXmY/mwCESjHAgzo/A46rVkx6a2JsyFpEoGUHGNQYd69ov0V9pbYTQntVnjolMPeWB6ZIUUWDmg==}
-
-  '@web3modal/polyfills@5.1.8':
-    resolution: {integrity: sha512-QtmwrFEomehyRDShL7hkcmDJuRQRStzgaHGRocNg52ScLw+uQYyHYNnqretRzUXNgfh+I6dy0olKO0Aj8Rw9Nw==}
 
   '@web3modal/polyfills@5.1.9':
     resolution: {integrity: sha512-Z1cDmoYlwG+KbGyNWpc+YdbkEcQ+a+Nwed49HTm5ufMuq165iKyoe2uZYicV77Hma60/n599zcIGVP42w7e2+g==}
@@ -4423,20 +4414,11 @@ packages:
   '@web3modal/scaffold-ui@5.1.9':
     resolution: {integrity: sha512-p+SJABeb/9TiN/wHMawPttep/+bZZ4i9tt0zZMQpcjp5IgnZwBr83zAd0KwUudFiync8GGv09V4GdhI+MkQDRw==}
 
-  '@web3modal/scaffold-utils@5.1.8':
-    resolution: {integrity: sha512-Eh0Z9uhOvqYID4T5k/T+rh8nr9U6BrlZbJGkD5DQeidMCwnq5IDnt8v4xCjyZoPRKu3KZS3goBItEwXLwOTiIg==}
-
   '@web3modal/scaffold-utils@5.1.9':
     resolution: {integrity: sha512-RB4xr5c9kaoE2H9xUFOHExhgdp7DEyZAv/4vqzCU14pH1fyCz0HE4UWkS8BtbJJ3dXjp9IVzhA2Az1zhuYBx8w==}
 
-  '@web3modal/siwe@5.1.8':
-    resolution: {integrity: sha512-twlQ28A32ZiJNXppV3L/ByveigPtngEqyju9tT2EZlN+6BPXRJg7ZTv97viOaJTKfnApfFYOBB0wE8pBuC49Lg==}
-
   '@web3modal/siwe@5.1.9':
     resolution: {integrity: sha512-C6Bb8jq7MxojT+niioSBkhFSpGPbCiiieO1M/polLItsPr9tEf439v4Id94Neap6E6P2vtfqvHoRPiDkuvDCJQ==}
-
-  '@web3modal/ui@5.1.8':
-    resolution: {integrity: sha512-M42datuMhDwj+AATw3TqgLLlame2kac4X+3cAMqQ3JRY5a2M/Oz9vXQ0UuOVBxuFpVqioMnQvBiXwjyvdkkO4Q==}
 
   '@web3modal/ui@5.1.9':
     resolution: {integrity: sha512-HGf9qpb7bFWT/YJ8yFmMhz7gWUC6/Jyrb4QWO4YcybL3BqbDH90XFUCP2OPvJ8pYur1RFx/ScYbFhop+O7iaWA==}
@@ -4458,9 +4440,6 @@ packages:
         optional: true
       vue:
         optional: true
-
-  '@web3modal/wallet@5.1.8':
-    resolution: {integrity: sha512-FpIqOE6YrKc4w70qmYeePaVjELKM8d4fEefnQD7ROPnoOsqbbd9lWF0XYhOr+iD6eG+yaVKc4XFN0NDbw+lDdA==}
 
   '@web3modal/wallet@5.1.9':
     resolution: {integrity: sha512-xCT8yYl4ev8oGpvLKx7By46QvXVVDkwJ2kQXrOAuaZPpKkkDLk37a2G0TRiAHquQqIJOfwdEj60l46pu8Z6oiw==}
@@ -15689,24 +15668,10 @@ snapshots:
       - react
       - uWebSockets.js
 
-  '@web3modal/common@5.1.8':
-    dependencies:
-      bignumber.js: 9.1.2
-      dayjs: 1.11.10
-
   '@web3modal/common@5.1.9':
     dependencies:
       bignumber.js: 9.1.2
       dayjs: 1.11.10
-
-  '@web3modal/core@5.1.8(react@18.3.1)':
-    dependencies:
-      '@web3modal/common': 5.1.8
-      '@web3modal/wallet': 5.1.8
-      valtio: 1.11.2(react@18.3.1)
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
 
   '@web3modal/core@5.1.9(react@18.3.1)':
     dependencies:
@@ -15716,10 +15681,6 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - react
-
-  '@web3modal/polyfills@5.1.8':
-    dependencies:
-      buffer: 6.0.3
 
   '@web3modal/polyfills@5.1.9':
     dependencies:
@@ -15752,17 +15713,6 @@ snapshots:
       - react
       - uWebSockets.js
 
-  '@web3modal/scaffold-utils@5.1.8(react@18.3.1)':
-    dependencies:
-      '@web3modal/common': 5.1.8
-      '@web3modal/core': 5.1.8(react@18.3.1)
-      '@web3modal/polyfills': 5.1.8
-      '@web3modal/wallet': 5.1.8
-      valtio: 1.11.2(react@18.3.1)
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
-
   '@web3modal/scaffold-utils@5.1.9(react@18.3.1)':
     dependencies:
       '@web3modal/common': 5.1.9
@@ -15773,34 +15723,6 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - react
-
-  '@web3modal/siwe@5.1.8(react@18.3.1)':
-    dependencies:
-      '@walletconnect/utils': 2.16.1
-      '@web3modal/common': 5.1.8
-      '@web3modal/core': 5.1.8(react@18.3.1)
-      '@web3modal/scaffold-utils': 5.1.8(react@18.3.1)
-      '@web3modal/ui': 5.1.8
-      '@web3modal/wallet': 5.1.8
-      lit: 3.1.0
-      valtio: 1.11.2(react@18.3.1)
-    transitivePeerDependencies:
-      - '@azure/app-configuration'
-      - '@azure/cosmos'
-      - '@azure/data-tables'
-      - '@azure/identity'
-      - '@azure/keyvault-secrets'
-      - '@azure/storage-blob'
-      - '@capacitor/preferences'
-      - '@netlify/blobs'
-      - '@planetscale/database'
-      - '@react-native-async-storage/async-storage'
-      - '@types/react'
-      - '@upstash/redis'
-      - '@vercel/kv'
-      - ioredis
-      - react
-      - uWebSockets.js
 
   '@web3modal/siwe@5.1.9(react@18.3.1)':
     dependencies:
@@ -15829,11 +15751,6 @@ snapshots:
       - ioredis
       - react
       - uWebSockets.js
-
-  '@web3modal/ui@5.1.8':
-    dependencies:
-      lit: 3.1.0
-      qrcode: 1.5.3
 
   '@web3modal/ui@5.1.9':
     dependencies:
@@ -15876,13 +15793,6 @@ snapshots:
       - ioredis
       - uWebSockets.js
       - utf-8-validate
-
-  '@web3modal/wallet@5.1.8':
-    dependencies:
-      '@walletconnect/logger': 2.1.2
-      '@web3modal/common': 5.1.8
-      '@web3modal/polyfills': 5.1.8
-      zod: 3.22.4
 
   '@web3modal/wallet@5.1.9':
     dependencies:
