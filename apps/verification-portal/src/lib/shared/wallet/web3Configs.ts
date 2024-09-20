@@ -47,4 +47,5 @@ export const wagmiConfig = defaultWagmiConfig({
     showWallets: false, // default to true
     walletFeatures: false, // default to true
   },
+  ssr: true,
 });
