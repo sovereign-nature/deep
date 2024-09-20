@@ -48,4 +48,10 @@ export const events: Events = {
     seed: () => getRandomInt(0, 2),
     going: true,
   },
+  'european-blockchain-convention-2024': {
+    collectionId: 'european-blockchain-convention-2024',
+    realCollection: 'dotphin-proofs',
+    seed: () => getRandomInt(0, 2),
+    going: false,
+  },
 };

@@ -101,6 +101,21 @@ const token2049Singapore2024Attributes = [
   { trait_type: 'proofOf', value: 'presence' },
 ];
 
+const europeanBlockchainConvention2024Attributes = [
+  { trait_type: 'eventId', value: 'european-blockchain-convention-2024' },
+  {
+    trait_type: 'eventURL',
+    value:
+      'https://eblockchainconvention.com/european-blockchain-convention-10/',
+  },
+  { trait_type: 'country', value: 'Spain' },
+  { trait_type: 'city', value: 'Barcelona' },
+  { trait_type: 'virtualEvent', value: 'false' },
+  { trait_type: 'startDate', value: '25-Sep-2024' },
+  { trait_type: 'endDate', value: '26-Sep-2024' },
+  { trait_type: 'proofOf', value: 'presence' },
+];
+
 export const collections: Collections = {
   //ENGIE
   '5f773e35-d5f2-41dc-ae80-c94e0e8e4821': {
@@ -470,6 +485,37 @@ export const collections: Collections = {
       ],
     },
     network: 'unique',
+    tokenStandard: 'unique2',
+  },
+  //EUROPEAN BLOCKCHAIN CONVENTION 2024
+  'dev-european-blockchain-convention-2024': {
+    name: 'dev-european-blockchain-convention-2024',
+    externalId: '3030',
+    metadata: {
+      description:
+        'Congrats on claiming your PoP at European Blockchain Convention 2024 in Barcelona! This isn’t just a badge—it’s your gateway to a whole new adventure. Your DOTphin journey starts (or continues) here, blending digital evolution with real-world ocean conservation. Every step you take pushes your eco-evolving avatar forward, driving real impact for our oceans.\nHave you claimed your DOTphin yet? Dive in!',
+      image: [
+        'https://real.myfilebase.com/ipfs/QmY3aYGt9qHmp1RmcLBPzukGAMyxEAbux52ahSNaYXF9VU/european-blockchain-convention-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmY3aYGt9qHmp1RmcLBPzukGAMyxEAbux52ahSNaYXF9VU/european-blockchain-convention-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmY3aYGt9qHmp1RmcLBPzukGAMyxEAbux52ahSNaYXF9VU/european-blockchain-convention-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Presence ‒ European Blockchain Convention 2024',
+      attributes: [
+        [
+          { trait_type: 'element', value: 'air' },
+          ...europeanBlockchainConvention2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...europeanBlockchainConvention2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...europeanBlockchainConvention2024Attributes,
+        ],
+      ],
+    },
+    network: 'opal',
     tokenStandard: 'unique2',
   },
 };
