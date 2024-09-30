@@ -30,7 +30,7 @@
     "eslint-config-turbo": "2.1.2",
     "eslint-plugin-boundaries": "4.2.2",
     "eslint-plugin-import": "2.30.0",
-    "eslint-plugin-svelte": "2.44.0",
+    "eslint-plugin-svelte": "2.44.1",
     "husky": "9.1.6",
     "lint-staged": "15.2.10",
     "prettier": "3.3.3",
