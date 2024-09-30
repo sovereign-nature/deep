@@ -52,7 +52,7 @@
     "autoprefixer": "10.4.20",
     "date-fns": "3.6.0",
     "flowbite": "2.3.0",
-    "flowbite-svelte": "0.46.16",
+    "flowbite-svelte": "0.46.20",
     "fuse.js": "7.0.0",
     "howler": "2.2.4",
     "leaflet": "1.9.4",
