@@ -57,8 +57,8 @@ importers:
   apps/api:
     dependencies:
       '@hono/zod-openapi':
-        specifier: 0.16.0
-        version: 0.16.0(hono@4.5.11)(zod@3.23.8)
+        specifier: 0.16.2
+        version: 0.16.2(hono@4.5.11)(zod@3.23.8)
       '@hono/zod-validator':
         specifier: 0.2.2
         version: 0.2.2(hono@4.5.11)(zod@3.23.8)
@@ -2159,8 +2159,8 @@ packages:
   '@hapi/topo@5.1.0':
     resolution: {integrity: sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==}
 
-  '@hono/zod-openapi@0.16.0':
-    resolution: {integrity: sha512-jTnccfMTxDmA50FZeyTDD5oNDpcYo0qPzugwMuinnEQRYHLEqOXLv+sP89KNZWCGcL3Ccl+cr5GGE4yxenozqw==}
+  '@hono/zod-openapi@0.16.2':
+    resolution: {integrity: sha512-MxlZzvHTXmOihKgIqYrEH5TysIs3Ep0PlTfmdaXe22HR0o2BULbpWW3F7W4I+2jAbt9rxLbxcs3aE2MXnIuAbw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       hono: '>=4.3.6'
@@ -2168,6 +2168,12 @@ packages:
 
   '@hono/zod-validator@0.2.2':
     resolution: {integrity: sha512-dSDxaPV70Py8wuIU2QNpoVEIOSzSXZ/6/B/h4xA7eOMz7+AarKTSGV8E6QwrdcCbBLkpqfJ4Q2TmBO0eP1tCBQ==}
+    peerDependencies:
+      hono: '>=3.9.0'
+      zod: ^3.19.1
+
+  '@hono/zod-validator@0.3.0':
+    resolution: {integrity: sha512-7XcTk3yYyk6ldrO/VuqsroE7stvDZxHJQcpATRAyha8rUxJNBPV3+6waDrARfgEqxOVlzIadm3/6sE/dPseXgQ==}
     peerDependencies:
       hono: '>=3.9.0'
       zod: ^3.19.1
@@ -11708,14 +11714,19 @@ snapshots:
     dependencies:
       '@hapi/hoek': 9.3.0
 
-  '@hono/zod-openapi@0.16.0(hono@4.5.11)(zod@3.23.8)':
+  '@hono/zod-openapi@0.16.2(hono@4.5.11)(zod@3.23.8)':
     dependencies:
       '@asteasolutions/zod-to-openapi': 7.1.1(zod@3.23.8)
-      '@hono/zod-validator': 0.2.2(hono@4.5.11)(zod@3.23.8)
+      '@hono/zod-validator': 0.3.0(hono@4.5.11)(zod@3.23.8)
       hono: 4.5.11
       zod: 3.23.8
 
   '@hono/zod-validator@0.2.2(hono@4.5.11)(zod@3.23.8)':
+    dependencies:
+      hono: 4.5.11
+      zod: 3.23.8
+
+  '@hono/zod-validator@0.3.0(hono@4.5.11)(zod@3.23.8)':
     dependencies:
       hono: 4.5.11
       zod: 3.23.8
