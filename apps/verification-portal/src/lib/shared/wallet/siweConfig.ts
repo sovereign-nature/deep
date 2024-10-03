@@ -74,12 +74,12 @@ const signOut = async (): Promise<boolean> => {
     method: 'POST',
     credentials: 'include',
   });
+
   if (!res.ok) {
-    throw new Error('Network response was not ok');
+    return false;
   }
 
-  const data = await res.json();
-  return data == '{}';
+  return true;
 };
 
 /**Create SIWE config
