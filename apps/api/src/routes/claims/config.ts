@@ -120,7 +120,7 @@ const newsletterOctober2024Attributes = [
   { trait_type: 'eventId', value: 'newsletter-october-2024' },
   {
     trait_type: 'eventURL',
-    value: '',
+    value: 'https://news.sovereignnature.com/september2024',
   },
   { trait_type: 'virtualEvent', value: 'true' },
   { trait_type: 'startDate', value: '3-Sep-2024' },
