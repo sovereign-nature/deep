@@ -449,7 +449,7 @@ export const collections: Collections = {
   },
   'testnet-newsletter-october-2024': {
     name: 'testnet-newsletter-october-2024',
-    externalId: '3030',
+    externalId: '3551',
     metadata: {
       description:
         'Congratulations on earning the Proof of Reader (PoR) Badge from DOTphin! This badge recognises your commitment to staying informed and engaged with our community by reading our newsletter. By keeping up with the latest updates, insights, and innovations, you’re an essential part of the DOTphin journey. Wear this badge with pride—it symbolises your curiosity and dedication to community engagement with real-world impact!',
