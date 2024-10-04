@@ -123,8 +123,8 @@ const newsletterOctober2024Attributes = [
     value: 'https://news.sovereignnature.com/september2024',
   },
   { trait_type: 'virtualEvent', value: 'true' },
-  { trait_type: 'startDate', value: '3-Sep-2024' },
-  { trait_type: 'endDate', value: '3-Sep-2024' },
+  { trait_type: 'startDate', value: '4-Oct-2024' },
+  { trait_type: 'endDate', value: '4-Oct-2024' },
   { trait_type: 'proofOf', value: 'reader' },
 ];
 
@@ -445,6 +445,66 @@ export const collections: Collections = {
       ],
     },
     network: 'opal',
+    tokenStandard: 'unique2',
+  },
+  'testnet-newsletter-october-2024': {
+    name: 'testnet-newsletter-october-2024',
+    externalId: '3030',
+    metadata: {
+      description:
+        'Congratulations on earning the Proof of Reader (PoR) Badge from DOTphin! This badge recognises your commitment to staying informed and engaged with our community by reading our newsletter. By keeping up with the latest updates, insights, and innovations, you’re an essential part of the DOTphin journey. Wear this badge with pride—it symbolises your curiosity and dedication to community engagement with real-world impact!',
+      image: [
+        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Reader - October 2024',
+      attributes: [
+        [
+          { trait_type: 'element', value: 'air' },
+          ...newsletterOctober2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...newsletterOctober2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...newsletterOctober2024Attributes,
+        ],
+      ],
+    },
+    network: 'opal',
+    tokenStandard: 'unique2',
+  },
+  'newsletter-october-2024': {
+    name: 'newsletter-october-2024',
+    externalId: '665',
+    metadata: {
+      description:
+        'Congratulations on earning the Proof of Reader (PoR) Badge from DOTphin! This badge recognises your commitment to staying informed and engaged with our community by reading our newsletter. By keeping up with the latest updates, insights, and innovations, you’re an essential part of the DOTphin journey. Wear this badge with pride—it symbolises your curiosity and dedication to community engagement with real-world impact!',
+      image: [
+        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Reader - October 2024',
+      attributes: [
+        [
+          { trait_type: 'element', value: 'air' },
+          ...newsletterOctober2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...newsletterOctober2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...newsletterOctober2024Attributes,
+        ],
+      ],
+    },
+    network: 'unique',
     tokenStandard: 'unique2',
   },
 };
