@@ -424,9 +424,9 @@ export const collections: Collections = {
       description:
         'Congratulations on earning the Proof of Reader (PoR) Badge from DOTphin! This badge recognises your commitment to staying informed and engaged with our community by reading our newsletter. By keeping up with the latest updates, insights, and innovations, you’re an essential part of the DOTphin journey. Wear this badge with pride—it symbolises your curiosity and dedication to community engagement with real-world impact!',
       image: [
-        'https://real.myfilebase.com/ipfs/QmY3aYGt9qHmp1RmcLBPzukGAMyxEAbux52ahSNaYXF9VU/european-blockchain-convention-2024-air.png',
-        'https://real.myfilebase.com/ipfs/QmY3aYGt9qHmp1RmcLBPzukGAMyxEAbux52ahSNaYXF9VU/european-blockchain-convention-2024-earth.png',
-        'https://real.myfilebase.com/ipfs/QmY3aYGt9qHmp1RmcLBPzukGAMyxEAbux52ahSNaYXF9VU/european-blockchain-convention-2024-water.png',
+        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-water.png',
       ],
       name: 'DOTphin Proof of Reader - October 2024',
       attributes: [
