@@ -124,8 +124,8 @@ importers:
         version: 3.23.8
     devDependencies:
       '@cloudflare/vitest-pool-workers':
-        specifier: 0.5.13
-        version: 0.5.13(@cloudflare/workers-types@4.20240925.0)(@vitest/runner@1.5.3)(@vitest/snapshot@1.5.3)(bufferutil@4.0.8)(utf-8-validate@5.0.10)(vitest@1.5.3(@types/node@22.7.4)(terser@5.34.1))
+        specifier: 0.5.14
+        version: 0.5.14(@cloudflare/workers-types@4.20240925.0)(@vitest/runner@1.5.3)(@vitest/snapshot@1.5.3)(bufferutil@4.0.8)(utf-8-validate@5.0.10)(vitest@1.5.3(@types/node@22.7.4)(terser@5.34.1))
       '@cloudflare/workers-types':
         specifier: 4.20240925.0
         version: 4.20240925.0
@@ -1214,8 +1214,8 @@ packages:
     resolution: {integrity: sha512-YLPHc8yASwjNkmcDMQMY35yiWjoKAKnhUbPRszBRS0YgH+IXtsMp61j+yTcnCE3oO2DgP0U3iejLC8FTtKDC8Q==}
     engines: {node: '>=16.13'}
 
-  '@cloudflare/vitest-pool-workers@0.5.13':
-    resolution: {integrity: sha512-/Fqp1Rl48K2uzAp3erprv5GoOju0wj7ePItvaNRLbZE+ZmOKaLpsDkeC9Po7FPVdMPm7txBE9vdkkpYheLnoPA==}
+  '@cloudflare/vitest-pool-workers@0.5.14':
+    resolution: {integrity: sha512-5uGiWfHSU95l8fp7rX7RqdwznMmGmO65nGfmMb8zhoZhMRykSccJwia9aVe2gsIiG+NLo1J0XiFoj6LVcMWDpQ==}
     peerDependencies:
       '@vitest/runner': 2.0.x - 2.1.x
       '@vitest/snapshot': 2.0.x - 2.1.x
@@ -1312,9 +1312,11 @@ packages:
 
   '@esbuild-kit/core-utils@3.3.2':
     resolution: {integrity: sha512-sPRAnw9CdSsRmEtnsl2WXWdyquogVpB3yZ3dgwJfe8zrOzTsV7cJvmwrKVa+0ma5BoiGJ+BoqkMvawbayKUsqQ==}
+    deprecated: 'Merged into tsx: https://tsx.is'
 
   '@esbuild-kit/esm-loader@2.6.5':
     resolution: {integrity: sha512-FxEMIkJKnodyA1OaCUoEvbYRkoZlLZ4d/eXFu9Fh8CbBBgP5EmZxrfTRyN0qpXZ4vOvqnE5YdRdcrmUUXuU+dA==}
+    deprecated: 'Merged into tsx: https://tsx.is'
 
   '@esbuild-plugins/node-globals-polyfill@0.2.3':
     resolution: {integrity: sha512-r3MIryXDeXDOZh7ih1l/yE9ZLORCd5e8vWg02azWRGj5SPTuoh69A2AIyn0Z31V/kHBfZ4HgWJ+OK3GTTwLmnw==}
@@ -5850,6 +5852,7 @@ packages:
   eslint@8.57.1:
     resolution: {integrity: sha512-ypowyDxpVSYpkXr9WPv2PAZCtNip1Mv5KTW0SCurXv/9iOpcrH9PaqUElksqEB6pChqHGDRCFTyrZlGhnLNGiA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   esm-env@1.0.0:
@@ -9821,8 +9824,8 @@ packages:
       '@cloudflare/workers-types':
         optional: true
 
-  wrangler@3.79.0:
-    resolution: {integrity: sha512-29wzQWc5qNKtD3bSyAEX11j/U5IIk8xy2/ZJ4wljJlS5ppff8qGqI+LtlLmqjqTSeQqFLb87xRkms0YFUgNLXg==}
+  wrangler@3.80.0:
+    resolution: {integrity: sha512-c9aN7Buf7XgTPpQkw1d0VjNRI4qg3m35PTg70Tg4mOeHwHGjsd74PAsP1G8BjpdqDjfWtsua7tj1g4M3/5dYNQ==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -10953,7 +10956,7 @@ snapshots:
     dependencies:
       mime: 3.0.0
 
-  '@cloudflare/vitest-pool-workers@0.5.13(@cloudflare/workers-types@4.20240925.0)(@vitest/runner@1.5.3)(@vitest/snapshot@1.5.3)(bufferutil@4.0.8)(utf-8-validate@5.0.10)(vitest@1.5.3(@types/node@22.7.4)(terser@5.34.1))':
+  '@cloudflare/vitest-pool-workers@0.5.14(@cloudflare/workers-types@4.20240925.0)(@vitest/runner@1.5.3)(@vitest/snapshot@1.5.3)(bufferutil@4.0.8)(utf-8-validate@5.0.10)(vitest@1.5.3(@types/node@22.7.4)(terser@5.34.1))':
     dependencies:
       '@vitest/runner': 1.5.3
       '@vitest/snapshot': 1.5.3
@@ -10964,7 +10967,7 @@ snapshots:
       miniflare: 3.20240925.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       semver: 7.6.3
       vitest: 1.5.3(@types/node@22.7.4)(terser@5.34.1)
-      wrangler: 3.79.0(@cloudflare/workers-types@4.20240925.0)(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      wrangler: 3.80.0(@cloudflare/workers-types@4.20240925.0)(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       zod: 3.23.8
     transitivePeerDependencies:
       - '@cloudflare/workers-types'
@@ -21753,7 +21756,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  wrangler@3.79.0(@cloudflare/workers-types@4.20240925.0)(bufferutil@4.0.8)(utf-8-validate@5.0.10):
+  wrangler@3.80.0(@cloudflare/workers-types@4.20240925.0)(bufferutil@4.0.8)(utf-8-validate@5.0.10):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@cloudflare/workers-shared': 0.5.4
