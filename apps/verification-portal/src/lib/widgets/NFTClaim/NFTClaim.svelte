@@ -186,7 +186,7 @@
 
     <div class={drawerBodyClass}>
       {#if $claimStatus === 'valid'}
-        <ClaimData>
+        <ClaimData on:navigated={() => (drawerHidden = true)}>
           <Confetti
             delay={[100, 250]}
             rounded
