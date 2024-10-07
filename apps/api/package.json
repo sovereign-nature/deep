@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@hono/zod-openapi": "0.16.3",
-    "@hono/zod-validator": "0.3.0",
+    "@hono/zod-validator": "0.4.1",
     "@lucia-auth/adapter-sqlite": "3.0.2",
     "@scalar/hono-api-reference": "0.5.150",
     "@sni/address-utils": "workspace:*",
