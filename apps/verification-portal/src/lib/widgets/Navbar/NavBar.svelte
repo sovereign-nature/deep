@@ -65,7 +65,7 @@
   <div class="ms-auto flex flex-row gap-x-2 sm:gap-x-4 text-white">
     <Web3Notifications responsive></Web3Notifications>
 
-    <BtnWeb3Connect responsive></BtnWeb3Connect>
+    <BtnWeb3Connect umamiID="navbar" responsive></BtnWeb3Connect>
     <ThemeSwitch className="hidden md:flex"></ThemeSwitch>
     <Hamburger open={menuOpen} on:click={() => (menuOpen = !menuOpen)} />
   </div>

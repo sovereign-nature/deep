@@ -30,6 +30,7 @@
   >
     <svelte:fragment slot="header">
       <TimelineActionButton
+        umamiID="collect-orbo"
         disabled={$multipassStepConfig.nft.stepStatus !== 'active'}
         title={$LL.multipass.state.nftStep.UNCLAIMED.cta()}
         on:click={() => openModal()}

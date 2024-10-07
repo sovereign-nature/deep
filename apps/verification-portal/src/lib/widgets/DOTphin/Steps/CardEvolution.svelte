@@ -30,6 +30,7 @@
       <CardTitle content={$LL.multipass.state.evolveStep.COMPLETE.title()} />
     {:else}
       <TimelineActionButton
+        umamiID="evolution"
         disabled={$multipassStepConfig.evolution.stepStatus !== 'active'}
         title={$LL.multipass.state.evolveStep.INITIAL.cta()}
       />

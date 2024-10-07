@@ -25,6 +25,9 @@
   $: address =
     $web3Connected && $formUseWallet ? $web3Address : $formManualAddress;
   $: showEmailClass = showEmailField ? 'w-full' : 'h-16 ';
+  $: umamiEvent = $formUseWallet
+    ? 'nft-claim-submit-wallet'
+    : 'nft-claim-submit-manual';
 </script>
 
 <div
@@ -47,7 +50,10 @@
   {:else if $formUseWallet}
     <div>
       <span class="block pb-2">{$LL.claim.labelConnectWallet()}</span>
-      <Web3ConnectBtn buttonClass=" w-64 justify-center" alwaysOpen
+      <Web3ConnectBtn
+        umamiID="NFT-Claim"
+        buttonClass=" w-64 justify-center"
+        alwaysOpen
       ></Web3ConnectBtn>
     </div>
   {:else}
@@ -115,7 +121,7 @@
       tabindex="3"
       formaction="/?/claim"
       disabled={$formSending}
-      data-umami-event="nft-claim-submit"
+      data-umami-event={umamiEvent}
     >
       {$LL.claim.buttonSubmit()}
       {#if $formSending}

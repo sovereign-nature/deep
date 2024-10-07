@@ -11,6 +11,9 @@
   export let alwaysOpen = false;
   export let responsive = false;
   export let buttonClass = '';
+  export let umamiID: string = '';
+  const connectClickEvent = 'wallet-connect-click';
+  const modalOpenEvent = 'web3modal-open';
 
   const web3Connected: Writable<boolean> = getContext('web3Connected');
   const web3Address: Writable<string> = getContext('web3Address');
@@ -33,7 +36,7 @@
         class={`${responsive ? 'h-8 md:h-11 md:text-base text-xs px-3 md:px-5' : 'text-base h-11 px-5'} text-white dark:text-primary-200 hover:bg-primary-300   hover:dark:bg-deep-green-400 active:opacity-100 flex items-center gap-2 rounded-full bg-primary-400 dark:bg-deep-green-500`}
         type="button"
         on:click={openModal}
-        data-umami-event="web3modal-open"
+        data-umami-event={modalOpenEvent}
       >
         <span class="flex items-center gap-2">
           <span
@@ -48,6 +51,8 @@
       type="primary"
       className="text-sm sm:text-base"
       keepOpen={alwaysOpen}
+      umamiEvent={connectClickEvent}
+      {umamiID}
       on:click={() => openModal()}
       customBtnClass={responsive
         ? 'h-8 md:h-11 md:text-base text-sm ' + buttonClass

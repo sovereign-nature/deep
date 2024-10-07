@@ -25,6 +25,7 @@
 </script>
 
 <RolloverBtn
+  umamiEvent="theme-mode-switch"
   type="secondary"
   keepOpen={dropdownOpen}
   customBtnClass={`${containerClass} theme-rollover  flex items-center `}

@@ -79,6 +79,7 @@
   <RolloverBtn
     type="alert"
     className="text-xs"
+    umamiEvent="notifications-button-click"
     customBtnClass={responsive ? 'h-8 md:h-11 md:text-base text-sm' : ''}
     disabled={$web3InboxLoading || $web3InboxEnabling}
     hasNew={$web3InboxRegistered && $web3InboxSubscribed ? hasMessages : false}

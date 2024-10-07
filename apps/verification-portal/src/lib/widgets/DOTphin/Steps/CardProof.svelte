@@ -58,7 +58,7 @@
   >
     <svelte:fragment slot="header">
       <div class="flex flex-row justify-start md:justify-center">
-        <Web3ConnectBtn alwaysOpen />
+        <Web3ConnectBtn umamiID="DOTphin-widget" alwaysOpen />
       </div>
     </svelte:fragment>
 

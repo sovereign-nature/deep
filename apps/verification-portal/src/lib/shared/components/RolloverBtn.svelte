@@ -15,7 +15,10 @@
   export let customIconClass: string = '';
   export let customLabelClass: string = '';
   export let disabled: boolean = false;
-
+  export let umamiID: string = '';
+  export let umamiEvent: string = 'rollover-button-click';
+  $: umamiSuffix = umamiID ? `-${umamiID}` : '';
+  $: umamiEventPath = `${umamiEvent}${umamiSuffix}`;
   $: isAlert = hasNew;
 
   let colorClasses = {
@@ -52,7 +55,7 @@
   <div class="relative">
     <button
       type="button"
-      data-umami-event="rollover-button-click"
+      data-umami-event={umamiEventPath}
       {disabled}
       class={`${btnClass} ${$$slots.default && isOpen ? 'open' : 'closed'}`}
       on:click={() => {
