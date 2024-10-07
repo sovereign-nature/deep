@@ -128,6 +128,20 @@ const newsletterOctober2024Attributes = [
   { trait_type: 'proofOf', value: 'reader' },
 ];
 
+const mergeMadrid2024Attributes = [
+  { trait_type: 'eventId', value: 'merge-madrid-2024' },
+  {
+    trait_type: 'eventURL',
+    value: 'https://www.mmerge.io/',
+  },
+  { trait_type: 'country', value: 'Spain' },
+  { trait_type: 'city', value: 'Madrid' },
+  { trait_type: 'virtualEvent', value: 'false' },
+  { trait_type: 'startDate', value: '8-Oct-2024' },
+  { trait_type: 'endDate', value: '10-Oct-2024' },
+  { trait_type: 'proofOf', value: 'presence' },
+];
+
 export const collections: Collections = {
   //ENGIE
   '5f773e35-d5f2-41dc-ae80-c94e0e8e4821': {
@@ -505,6 +519,32 @@ export const collections: Collections = {
       ],
     },
     network: 'unique',
+    tokenStandard: 'unique2',
+  },
+  'dev-merge-madrid-2024': {
+    name: 'dev-merge-madrid-2024',
+    externalId: '3030',
+    metadata: {
+      description: 'This is the Merge Madrid 2024 collection',
+      image: [
+        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Presence ‒ Merge Madrid 2024',
+      attributes: [
+        [{ trait_type: 'element', value: 'air' }, ...mergeMadrid2024Attributes],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...mergeMadrid2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...mergeMadrid2024Attributes,
+        ],
+      ],
+    },
+    network: 'opal',
     tokenStandard: 'unique2',
   },
 };
