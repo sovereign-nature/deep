@@ -27,6 +27,7 @@
       <div class="flex flex-col items-center md:items-start">
         <CardHeader
           className="mb-0"
+          externalLink={false}
           title={$claimResponse?.metadata?.name}
           url={`/assets/${$claimResponse?.assetDID}`}
         />
