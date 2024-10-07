@@ -525,11 +525,12 @@ export const collections: Collections = {
     name: 'dev-merge-madrid-2024',
     externalId: '3030',
     metadata: {
-      description: 'This is the Merge Madrid 2024 collection',
+      description:
+        'Congrats on claiming your PoP at Merge Madrid 2024! This isn’t just a badge—it’s your gateway to the next chapter of the DOTphin journey. By claiming it, you’re stepping into a world where your presence fuels the evolution of the mysterious DOTphin, guiding its transformation with every step. Have you claimed your Orbo yet? Dive in, you just need a PoP!',
       image: [
-        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-air.png',
-        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-earth.png',
-        'https://real.myfilebase.com/ipfs/QmNqQmfUyonCr7Ca7mjyA4BiGXZamnMd7fGVtCrmPu6khJ/newsletter-october-2024-water.png',
+        'https://real.myfilebase.com/ipfs/QmRZY3saF8FJxaN4JaG1YMRcXy9XUG7FqjpP5LwMbQ3138/merge-madrid-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmRZY3saF8FJxaN4JaG1YMRcXy9XUG7FqjpP5LwMbQ3138/merge-madrid-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmRZY3saF8FJxaN4JaG1YMRcXy9XUG7FqjpP5LwMbQ3138/merge-madrid-2024-water.png',
       ],
       name: 'DOTphin Proof of Presence ‒ Merge Madrid 2024',
       attributes: [
@@ -545,6 +546,60 @@ export const collections: Collections = {
       ],
     },
     network: 'opal',
+    tokenStandard: 'unique2',
+  },
+  'testnet-merge-madrid-2024': {
+    name: 'dev-merge-madrid-2024',
+    externalId: '3551',
+    metadata: {
+      description:
+        'Congrats on claiming your PoP at Merge Madrid 2024! This isn’t just a badge—it’s your gateway to the next chapter of the DOTphin journey. By claiming it, you’re stepping into a world where your presence fuels the evolution of the mysterious DOTphin, guiding its transformation with every step. Have you claimed your Orbo yet? Dive in, you just need a PoP!',
+      image: [
+        'https://real.myfilebase.com/ipfs/QmRZY3saF8FJxaN4JaG1YMRcXy9XUG7FqjpP5LwMbQ3138/merge-madrid-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmRZY3saF8FJxaN4JaG1YMRcXy9XUG7FqjpP5LwMbQ3138/merge-madrid-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmRZY3saF8FJxaN4JaG1YMRcXy9XUG7FqjpP5LwMbQ3138/merge-madrid-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Presence ‒ Merge Madrid 2024',
+      attributes: [
+        [{ trait_type: 'element', value: 'air' }, ...mergeMadrid2024Attributes],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...mergeMadrid2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...mergeMadrid2024Attributes,
+        ],
+      ],
+    },
+    network: 'opal',
+    tokenStandard: 'unique2',
+  },
+  'merge-madrid-2024': {
+    name: 'dev-merge-madrid-2024',
+    externalId: '665',
+    metadata: {
+      description:
+        'Congrats on claiming your PoP at Merge Madrid 2024! This isn’t just a badge—it’s your gateway to the next chapter of the DOTphin journey. By claiming it, you’re stepping into a world where your presence fuels the evolution of the mysterious DOTphin, guiding its transformation with every step. Have you claimed your Orbo yet? Dive in, you just need a PoP!',
+      image: [
+        'https://real.myfilebase.com/ipfs/QmRZY3saF8FJxaN4JaG1YMRcXy9XUG7FqjpP5LwMbQ3138/merge-madrid-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmRZY3saF8FJxaN4JaG1YMRcXy9XUG7FqjpP5LwMbQ3138/merge-madrid-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmRZY3saF8FJxaN4JaG1YMRcXy9XUG7FqjpP5LwMbQ3138/merge-madrid-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Presence ‒ Merge Madrid 2024',
+      attributes: [
+        [{ trait_type: 'element', value: 'air' }, ...mergeMadrid2024Attributes],
+        [
+          { trait_type: 'element', value: 'earth' },
+          ...mergeMadrid2024Attributes,
+        ],
+        [
+          { trait_type: 'element', value: 'water' },
+          ...mergeMadrid2024Attributes,
+        ],
+      ],
+    },
+    network: 'unique',
     tokenStandard: 'unique2',
   },
 };
