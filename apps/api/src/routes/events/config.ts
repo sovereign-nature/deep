@@ -64,6 +64,6 @@ export const events: Events = {
     collectionId: 'merge-madrid-2024',
     realCollection: 'dotphin-proofs',
     seed: () => getRandomInt(0, 2),
-    going: false,
+    going: true,
   },
 };
