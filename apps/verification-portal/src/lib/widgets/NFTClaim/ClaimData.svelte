@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
   import { getNFTClaimContext } from './context';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import CardHeader from '$lib/shared/typography/CardHeader.svelte';
@@ -7,6 +8,7 @@
   import SkeletonCard from '$lib/shared/components/SkeletonCard.svelte';
   import SocialFollowMenu from '$lib/entities/SocialFollow/SocialFollowMenu.svelte';
 
+  const dispatch = createEventDispatcher();
   const { claimResponse, claimStatus } = getNFTClaimContext();
 </script>
 
@@ -28,6 +30,7 @@
         <CardHeader
           className="mb-0"
           externalLink={false}
+          on:click={() => dispatch('navigated')}
           title={$claimResponse?.metadata?.name}
           url={`/assets/${$claimResponse?.assetDID}`}
         />
