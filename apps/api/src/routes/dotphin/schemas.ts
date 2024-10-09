@@ -99,6 +99,18 @@ export const ClaimBodySchema = z.object({
     .openapi({ example: 'did:asset:eip155:8880.unique2:665:592' }),
 });
 
+export const EvolveBodySchema = z.object({
+  address: z
+    .string()
+    .openapi({ example: '0xcf12c02454a11c01857733d19d8a702b42780dd4' }),
+  dotphinDID: z
+    .string()
+    .openapi({ example: 'did:asset:eip155:8880.unique2:813:100' }),
+  proofDID: z
+    .string()
+    .openapi({ example: 'did:asset:eip155:8880.unique2:665:592' }),
+});
+
 export const ClaimResponseSchema = z.object({
   token: z.string().openapi({ example: 'jwtToken' }),
   realCollection: z.string().openapi({ example: 'dotphin' }),

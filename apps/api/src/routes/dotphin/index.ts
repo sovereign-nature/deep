@@ -12,6 +12,7 @@ import {
   BurnResponseSchema,
   ClaimBodySchema,
   ClaimsParamsSchema,
+  EvolveBodySchema,
   ProfileParamsSchema,
   ProfileResponseSchema,
 } from './schemas';
@@ -433,6 +434,7 @@ app.openapi(
   }
 );
 
+//TODO: Universal API for status check?
 app.openapi(
   createRoute({
     method: 'get',
@@ -526,6 +528,35 @@ app.openapi(
     await deleteDotphinClaim(SESSIONS_DB, owner);
 
     return c.json({ success: true }, 200);
+  }
+);
+
+app.openapi(
+  createRoute({
+    method: 'post',
+    path: '/evolve',
+    request: {
+      body: { content: { 'application/json': { schema: EvolveBodySchema } } },
+    },
+    responses: {
+      200: {
+        content: { 'application/json': { schema: CrossmintResponse } },
+        description: 'Returns evolving token',
+      },
+      400: {
+        content: { 'application/json': { schema: ErrorSchema } },
+        description:
+          "Proof is already used, wrong address, user don't have DOTphin or wrong proofDID",
+      },
+      401: {
+        content: { 'application/json': { schema: ErrorSchema } },
+        description: 'User is not logged in',
+      },
+    },
+  }),
+  async (c) => {
+    console.log(c);
+    throw new Error('Not implemented');
   }
 );
 
