@@ -1,0 +1,26 @@
+import { UniqueNetwork } from '@sni/types';
+import { Lucia, Session, User } from 'lucia';
+
+export type AppContext = {
+  Bindings: {
+    //DB
+    SESSIONS_DB: D1Database;
+
+    WALLET_MNEMONIC: string;
+
+    //Minting
+    MINTING_QUEUE: Queue<string>;
+    MINTING_KV: KVNamespace;
+
+    //Dotphin
+    DOTPHIN_PROOFS_COLLECTION_ID: string;
+    DOTPHIN_COLLECTION_ID: number;
+    DOTPHIN_NETWORK: UniqueNetwork;
+  };
+  Variables: {
+    //Session variables
+    user: User | null;
+    session: Session | null;
+    lucia: Lucia;
+  };
+};

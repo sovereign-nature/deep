@@ -1,9 +1,8 @@
 import { AccountTokensResponseSchema } from '@sni/clients/wallets-client/targets/unique/schemas';
 import { createAssetDID, parseAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
-import { Context } from 'hono';
+import { contextStorage, getContext } from 'hono/context-storage';
 import { DeepAsset, ExternalApiError, UniqueNetwork } from '@sni/types';
-import { env } from 'hono/adapter';
 import { setCookie } from 'hono/cookie';
 import walletsApp from '../wallets';
 import assetsApp from '../assets';
@@ -35,19 +34,20 @@ import {
   setDotphinClaim,
 } from '$lib/db/dotphin-claims';
 import { addProofAsUsed, getProof, resetProofsForUser } from '$lib/db/proofs';
-import { SessionVariables, session } from '$middleware/session';
+import { session } from '$middleware/session';
+import { AppContext } from '$lib/shared/types';
 
-const app = new OpenAPIHono<{
-  Variables: SessionVariables;
-}>();
+const app = new OpenAPIHono<AppContext>();
+app.use(contextStorage());
 
 //TODO: Add CSRF protection?
 //Protecting claim with session middleware
 app.use('/claim', session);
 
-async function getProofsWithStats(address: string, c: Context) {
-  const { PROOFS_COLLECTION_DID } = getDotphinEnvConfig(c);
-  const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
+async function getProofsWithStats(address: string) {
+  const c = getContext<AppContext>();
+
+  const { PROOFS_COLLECTION_DID } = getDotphinEnvConfig();
 
   const requestUrl = `/${address}?assetDID=${PROOFS_COLLECTION_DID}`;
 
@@ -62,7 +62,7 @@ async function getProofsWithStats(address: string, c: Context) {
 
   //TODO: Remove when on-chain used state is implemented
   for (const asset of assets) {
-    const proof = await getProof(SESSIONS_DB, asset.address);
+    const proof = await getProof(c.env.SESSIONS_DB, asset.address);
 
     if (proof === null) {
       updateOrAddAttribute(asset.attributes!, 'used', 'false');
@@ -185,9 +185,9 @@ app.openapi(
   async (c) => {
     const address = c.req.param('address');
 
-    const { DOTPHIN_COLLECTION_ID, DOTPHIN_NETWORK } = getDotphinEnvConfig(c);
+    const { DOTPHIN_COLLECTION_ID, DOTPHIN_NETWORK } = getDotphinEnvConfig();
 
-    const proofsWithStats = await getProofsWithStats(address, c);
+    const proofsWithStats = await getProofsWithStats(address);
 
     const dotphinDID = await getDotphinAddress(
       address,
@@ -230,19 +230,13 @@ app.openapi(
     },
   }),
   async (c) => {
-    //TODO: Move to shared helper like getMintingEnvConfig
-    const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<string> }>(
-      c as Context
-    );
-    const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c as Context);
-
-    const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
-
     const {
       DOTPHIN_COLLECTION_ID,
       DOTPHIN_NETWORK,
       DOTPHIN_PROOFS_COLLECTION_ID,
-    } = getDotphinEnvConfig(c);
+    } = getDotphinEnvConfig();
+
+    const { MINTING_KV, SESSIONS_DB, MINTING_QUEUE } = c.env;
 
     const { address, proofDID } = c.req.valid('json');
 
@@ -454,7 +448,7 @@ app.openapi(
     },
   }),
   async (c) => {
-    const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c as Context);
+    const { MINTING_KV } = c.env;
 
     const mintId = c.req.valid('param').id;
     const mintResponse = await MINTING_KV.get(mintId);
@@ -493,8 +487,7 @@ app.openapi(
     const { dotphinDID, owner } = c.req.valid('json');
     const { contractAddress, tokenId, network } = parseAssetDID(dotphinDID);
 
-    const { WALLET_MNEMONIC } = env<{ WALLET_MNEMONIC: string }>(c as Context);
-    const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
+    const { WALLET_MNEMONIC, SESSIONS_DB } = c.env;
 
     logger.info(
       `Burning token ${tokenId} from collection ${Number(contractAddress)} on ${network}`
