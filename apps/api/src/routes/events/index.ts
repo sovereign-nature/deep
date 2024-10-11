@@ -1,16 +1,14 @@
 import { Hono } from 'hono';
-import { env } from 'hono/adapter';
 import { sign } from 'hono/jwt';
 import { nanoid } from 'nanoid';
 import { events } from './config';
 import { logger } from '$lib/logger';
+import { AppContext } from '$lib/shared/types';
 
-const app = new Hono();
+const app = new Hono<AppContext>();
 
 app.get('/:eventId', async (c) => {
   c.res.headers.set('Cache-Control', 'no-store'); // Disable caching, maybe let's enable in production later
-
-  const { CLAIMS_SECRET } = env<{ CLAIMS_SECRET: string }>(c);
 
   const eventId = c.req.param('eventId');
 
@@ -35,7 +33,7 @@ app.get('/:eventId', async (c) => {
         collection: eventConfig.collectionId,
         seed,
       },
-      CLAIMS_SECRET,
+      c.env.CLAIMS_SECRET,
       'HS256'
     );
 

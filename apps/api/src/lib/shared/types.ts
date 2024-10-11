@@ -11,6 +11,8 @@ export type AppContext = {
     OPEN_SEA_API_KEY: string;
     ALCHEMY_API_KEY: string;
 
+    CLAIMS_SECRET: string;
+
     //Minting
     MINTING_QUEUE: Queue<string>;
     MINTING_KV: KVNamespace;
