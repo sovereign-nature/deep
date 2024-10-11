@@ -8,10 +8,12 @@ import {
 import { zValidator } from '@hono/zod-validator';
 import { parseAssetDID } from '@sni/address-utils';
 import { OpenAPIHono } from '@hono/zod-openapi';
+import { contextStorage } from 'hono/context-storage';
 import { errorResponse } from '$lib/shared/responses';
 import { AppContext } from '$lib/shared/types';
 
 const app = new OpenAPIHono<AppContext>();
+app.use(contextStorage());
 
 app.get(
   '/:walletAddress',
@@ -36,7 +38,7 @@ app.get(
           );
           return c.json(assets);
         } catch (e) {
-          return errorResponse(e, c);
+          return errorResponse(e);
         }
       //TODO: Not working because of the production config
       case 'polygon-sepolia':
@@ -51,7 +53,7 @@ app.get(
           );
           return c.json(assets);
         } catch (e) {
-          return errorResponse(e, c);
+          return errorResponse(e);
         }
       case 'polygon':
       case 'optimism':
@@ -65,7 +67,7 @@ app.get(
           );
           return c.json(assets);
         } catch (e) {
-          return errorResponse(e, c);
+          return errorResponse(e);
         }
       case 'unique':
       case 'opal':
@@ -77,7 +79,7 @@ app.get(
           );
           return c.json(assets);
         } catch (e) {
-          return errorResponse(e, c);
+          return errorResponse(e);
         }
       default:
         return c.json({ error: true, message: 'Invalid network' }, 400);
