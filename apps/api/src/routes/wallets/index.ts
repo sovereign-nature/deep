@@ -13,7 +13,7 @@ import { errorResponse } from '$lib/shared/responses';
 import { AppContext } from '$lib/shared/types';
 
 const app = new OpenAPIHono<AppContext>();
-app.use(contextStorage());
+app.use(contextStorage()); // TODO: Should we use this on a global level?
 
 app.get(
   '/:walletAddress',
