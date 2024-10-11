@@ -1,4 +1,5 @@
-export const MAX_EVOLUTION_LEVEL = 7;
+export const MAX_EVOLUTION_LEVEL = 4;
+export const EVOLUTION_LIMIT = 3;
 
 // Multipass step states, derived from API data. Used for dynamic UI/UX and translation based on API Data points
 export type ProofStepState =
@@ -7,7 +8,7 @@ export type ProofStepState =
   | 'HAS_AVAILABLE_PROOFS'
   | 'NO_AVAILABLE_PROOFS';
 export type NftStepState = 'CLAIMED' | 'UNCLAIMED';
-export type EvolveStepState = 'INITIAL' | 'EVOLVING' | 'COMPLETE';
+export type EvolveStepState = 'INITIAL' | 'EVOLVING' | 'LIMITED' | 'COMPLETE';
 
 export type MultipassStepConfig = {
   proofs: {

@@ -207,6 +207,11 @@ const en: BaseTranslation = {
         EVOLVING: {
           subtitle: 'Evolution level {level}/{maxLevel}',
         },
+        LIMITED: {
+          title: 'Come back later to complete the evolution',
+          subtitle:
+            'Evolution level {level}/{maxLevel}.\n(Full evolution coming soon!)',
+        },
         COMPLETE: {
           title: 'Congratulation, you have completed your DOTphin',
           subtitle: 'Your NFT has reached its maximum evolution level',
