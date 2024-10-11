@@ -1,16 +1,24 @@
-import { Context, Next } from 'hono';
-import { env } from 'hono/adapter';
 import { getCookie, setCookie } from 'hono/cookie';
 import { Lucia, Session, User } from 'lucia';
+import { createMiddleware } from 'hono/factory';
 import { initializeLucia } from '../lib/lucia';
 import { logger } from '$lib/logger';
 
 /** Session middleware
  * @see {@link https://lucia-auth.com/guides/validate-session-cookies/hono}
  */
-export async function session(c: Context, next: Next) {
-  //TODO: Rename SESSIONS_DB to API_DB
-  const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
+//TODO: Remove type
+export type SessionVariables = {
+  user: User | null;
+  session: Session | null;
+  lucia: Lucia;
+};
+
+export const session = createMiddleware<{
+  Bindings: { SESSIONS_DB: D1Database };
+  Variables: SessionVariables;
+}>(async (c, next) => {
+  const SESSIONS_DB = c.env.SESSIONS_DB;
 
   const lucia = initializeLucia(SESSIONS_DB);
   c.set('lucia', lucia);
@@ -43,10 +51,4 @@ export async function session(c: Context, next: Next) {
   c.set('session', session);
 
   return next();
-}
-
-export type SessionVariables = {
-  user: User | null;
-  session: Session | null;
-  lucia: Lucia;
-};
+});
