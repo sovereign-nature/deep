@@ -1,17 +1,14 @@
-import { Context, Hono } from 'hono';
 import { generateNonce, SiweMessage } from 'siwe';
 
-import { env } from 'hono/adapter';
-// import { csrf } from 'hono/csrf';
 import { getCookie, setCookie } from 'hono/cookie';
 import { csrf } from 'hono/csrf';
-import { session, SessionVariables } from '$middleware/session';
+import { OpenAPIHono } from '@hono/zod-openapi';
+import { session } from '$middleware/session';
 import { addUser } from '$lib/db';
 import { logger } from '$lib/logger';
+import { AppContext } from '$lib/shared/types';
 
-const app = new Hono<{
-  Variables: SessionVariables;
-}>();
+const app = new OpenAPIHono<AppContext>();
 
 //TODO: Add CSRF protection
 app.use(csrf({ origin: ['real.sovereignnature.com', 'localhost'] })); //TODO: Localhost in dev
@@ -33,7 +30,7 @@ app.post('/nonce', (c) => {
 
 app.post('/verify', async (c) => {
   //TODO: Rename SESSIONS_DB to API_DB
-  const { SESSIONS_DB } = env<{ SESSIONS_DB: D1Database }>(c as Context);
+  const { SESSIONS_DB } = c.env;
   const lucia = c.get('lucia');
 
   const body = await c.req.json();
