@@ -49,7 +49,7 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
       - name: Deploy @sni/api
-        uses: cloudflare/wrangler-action@168bc28b7078db16f6f1ecc26477fc2248592143 # v3
+        uses: cloudflare/wrangler-action@9681c2997648301493e78cacbfb790a9f19c833f # v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           workingDirectory: './apps/api'
