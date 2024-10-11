@@ -14,6 +14,8 @@ export type AppContext = {
     CROSSMINT_API_URL: string;
     CROSSMINT_API_KEY: string;
 
+    NFTSCAN_API_KEY: string;
+
     CLAIMS_SECRET: string;
     CLAIMS_KV: KVNamespace;
 

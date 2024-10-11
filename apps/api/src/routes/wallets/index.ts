@@ -1,4 +1,3 @@
-import { Hono } from 'hono';
 import { z } from 'zod';
 import { DeepAsset } from '@sni/types';
 import {
@@ -6,19 +5,19 @@ import {
   getCrossmintWalletAssets,
   getUniqueWalletAssets,
 } from '@sni/clients/wallets-client';
-import { env } from 'hono/adapter';
 import { zValidator } from '@hono/zod-validator';
 import { parseAssetDID } from '@sni/address-utils';
+import { OpenAPIHono } from '@hono/zod-openapi';
 import { errorResponse } from '$lib/shared/responses';
+import { AppContext } from '$lib/shared/types';
 
-const app = new Hono();
+const app = new OpenAPIHono<AppContext>();
 
 app.get(
   '/:walletAddress',
   zValidator('query', z.object({ assetDID: z.string() })),
   async (c) => {
-    const { NFTSCAN_API_KEY } = env<{ NFTSCAN_API_KEY: string }>(c);
-    const { CROSSMINT_API_KEY } = env<{ CROSSMINT_API_KEY: string }>(c); //TODO: Add both staging and production keys
+    const { NFTSCAN_API_KEY, CROSSMINT_API_KEY } = c.env;
 
     const assetDID = c.req.query('assetDID') || '';
     const walletAddress = c.req.param('walletAddress');
