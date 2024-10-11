@@ -58,16 +58,16 @@ importers:
     dependencies:
       '@hono/zod-openapi':
         specifier: 0.16.4
-        version: 0.16.4(hono@4.5.11)(zod@3.23.8)
+        version: 0.16.4(hono@4.6.4)(zod@3.23.8)
       '@hono/zod-validator':
         specifier: 0.4.1
-        version: 0.4.1(hono@4.5.11)(zod@3.23.8)
+        version: 0.4.1(hono@4.6.4)(zod@3.23.8)
       '@lucia-auth/adapter-sqlite':
         specifier: 3.0.2
         version: 3.0.2(lucia@3.2.1)
       '@scalar/hono-api-reference':
         specifier: 0.5.150
-        version: 0.5.150(hono@4.5.11)
+        version: 0.5.150(hono@4.6.4)
       '@sni/address-utils':
         specifier: workspace:*
         version: link:../../packages/address-utils
@@ -99,8 +99,8 @@ importers:
         specifier: 0.34.1
         version: 0.34.1(@cloudflare/workers-types@4.20241004.0)(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(react@18.3.1)
       hono:
-        specifier: 4.5.11
-        version: 4.5.11
+        specifier: 4.6.4
+        version: 4.6.4
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -4405,6 +4405,7 @@ packages:
 
   '@web3modal/wagmi@5.1.11':
     resolution: {integrity: sha512-etV1qfBVvh41EMuBHXUpcO/W818jZVNh5/l9Z5kqRPZxlQmBaJbt5mTzw6nw/Lujoe1yYKugGQFhgjfEQK+eyA==}
+    deprecated: Web3Modal is now Reown AppKit. Please follow the upgrade guide at https://docs.reown.com/appkit/upgrade/from-w3m-to-reown
     peerDependencies:
       '@wagmi/connectors': '>=4'
       '@wagmi/core': '>=2.0.0'
@@ -6321,9 +6322,9 @@ packages:
   hmac-drbg@1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}
 
-  hono@4.5.11:
-    resolution: {integrity: sha512-62FcjLPtjAFwISVBUshryl+vbHOjg8rE4uIK/dxyR8GpLztunZpwFmfEvmJCUI7xoGh/Sr3CGCDPCmYxVw7wUQ==}
-    engines: {node: '>=16.0.0'}
+  hono@4.6.4:
+    resolution: {integrity: sha512-T5WqBkTOcIQblqBKB5mpzaH/A+dSpvVe938xZJCHOmOuYfF7DSwE/9/10+BMvwSPq9N/f6LiQ38HxrZSQOsXKw==}
+    engines: {node: '>=16.9.0'}
 
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
@@ -12407,21 +12408,21 @@ snapshots:
     dependencies:
       '@hapi/hoek': 9.3.0
 
-  '@hono/zod-openapi@0.16.4(hono@4.5.11)(zod@3.23.8)':
+  '@hono/zod-openapi@0.16.4(hono@4.6.4)(zod@3.23.8)':
     dependencies:
       '@asteasolutions/zod-to-openapi': 7.1.1(zod@3.23.8)
-      '@hono/zod-validator': 0.3.0(hono@4.5.11)(zod@3.23.8)
-      hono: 4.5.11
+      '@hono/zod-validator': 0.3.0(hono@4.6.4)(zod@3.23.8)
+      hono: 4.6.4
       zod: 3.23.8
 
-  '@hono/zod-validator@0.3.0(hono@4.5.11)(zod@3.23.8)':
+  '@hono/zod-validator@0.3.0(hono@4.6.4)(zod@3.23.8)':
     dependencies:
-      hono: 4.5.11
+      hono: 4.6.4
       zod: 3.23.8
 
-  '@hono/zod-validator@0.4.1(hono@4.5.11)(zod@3.23.8)':
+  '@hono/zod-validator@0.4.1(hono@4.6.4)(zod@3.23.8)':
     dependencies:
-      hono: 4.5.11
+      hono: 4.6.4
       zod: 3.23.8
 
   '@humanwhocodes/config-array@0.13.0':
@@ -14534,10 +14535,10 @@ snapshots:
 
   '@safe-global/safe-gateway-typescript-sdk@3.22.2': {}
 
-  '@scalar/hono-api-reference@0.5.150(hono@4.5.11)':
+  '@scalar/hono-api-reference@0.5.150(hono@4.6.4)':
     dependencies:
       '@scalar/types': 0.0.12
-      hono: 4.5.11
+      hono: 4.6.4
 
   '@scalar/openapi-types@0.1.1': {}
 
@@ -17458,7 +17459,7 @@ snapshots:
 
   core-js-compat@3.38.1:
     dependencies:
-      browserslist: 4.23.3
+      browserslist: 4.24.0
 
   core-util-is@1.0.3: {}
 
@@ -18815,7 +18816,7 @@ snapshots:
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
 
-  hono@4.5.11: {}
+  hono@4.6.4: {}
 
   hookable@5.5.3: {}
 
