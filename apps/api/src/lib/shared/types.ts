@@ -8,6 +8,9 @@ export type AppContext = {
 
     WALLET_MNEMONIC: string;
 
+    OPEN_SEA_API_KEY: string;
+    ALCHEMY_API_KEY: string;
+
     //Minting
     MINTING_QUEUE: Queue<string>;
     MINTING_KV: KVNamespace;
