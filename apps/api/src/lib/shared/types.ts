@@ -19,11 +19,9 @@ export type AppContext = {
     NFTSCAN_API_KEY: string;
 
     CLAIMS_SECRET: string;
-    CLAIMS_KV: KVNamespace;
 
     //Minting
     MINTING_QUEUE: Queue<string>;
-    MINTING_KV: KVNamespace;
 
     EMAILS_KV: KVNamespace;
     RESEND_API_KEY: string;

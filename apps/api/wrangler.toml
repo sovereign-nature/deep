@@ -15,8 +15,6 @@ queues.consumers = [
 ]
 
 kv_namespaces = [
-  { binding = "MINTING_KV", id = "0f4988a01242450187f4ee6ca522a5d6" },
-  { binding = "CLAIMS_KV", id = "974b532adcea43e8b9b90bffe8c834cf" },
   { binding = "EMAILS_KV", id = "a008ae3da87c4f0ebf3efc2812b2cde4" },
 ]
 
@@ -37,8 +35,6 @@ queues.consumers = [
 ]
 
 kv_namespaces = [
-  { binding = "MINTING_KV", id = "0f4988a01242450187f4ee6ca522a5d6" },
-  { binding = "CLAIMS_KV", id = "974b532adcea43e8b9b90bffe8c834cf" },
   { binding = "EMAILS_KV", id = "a008ae3da87c4f0ebf3efc2812b2cde4" },
 ]
 
@@ -63,8 +59,6 @@ queues.consumers = [
 
 # TODO: Setup staging KVs
 kv_namespaces = [
-  { binding = "MINTING_KV", id = "0f4988a01242450187f4ee6ca522a5d6" },
-  { binding = "CLAIMS_KV", id = "974b532adcea43e8b9b90bffe8c834cf" },
   { binding = "EMAILS_KV", id = "a008ae3da87c4f0ebf3efc2812b2cde4" },
 ]
 

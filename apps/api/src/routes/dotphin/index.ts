@@ -36,6 +36,7 @@ import {
 import { addProofAsUsed, getProof, resetProofsForUser } from '$lib/db/proofs';
 import { session } from '$middleware/session';
 import { AppContext } from '$lib/shared/types';
+import { addMint, getMint } from '$lib/db/mints';
 
 const app = new OpenAPIHono<AppContext>();
 app.use(contextStorage());
@@ -236,7 +237,7 @@ app.openapi(
       DOTPHIN_PROOFS_COLLECTION_ID,
     } = getDotphinEnvConfig();
 
-    const { MINTING_KV, SESSIONS_DB, MINTING_QUEUE } = c.env;
+    const { SESSIONS_DB, MINTING_QUEUE } = c.env;
 
     const { address, proofDID } = c.req.valid('json');
 
@@ -247,11 +248,11 @@ app.openapi(
     if (dotphinClaim.length > 0) {
       const claimId = dotphinClaim[0].id;
 
-      const mintResponse = await MINTING_KV.get(claimId);
+      const mintResponse = await getMint(SESSIONS_DB, claimId);
 
-      if (mintResponse !== null) {
+      if (mintResponse) {
         const parsedMintResponse = CrossmintResponseSchema.parse(
-          JSON.parse(mintResponse)
+          mintResponse.tokenData
         );
 
         return c.json(parsedMintResponse, 200);
@@ -417,7 +418,8 @@ app.openapi(
       actionId: mintId,
     };
 
-    await MINTING_KV.put(mintId, JSON.stringify(pendingResponse));
+    await addMint(SESSIONS_DB, mintId, pendingResponse);
+
     await setDotphinClaim(SESSIONS_DB, mintId, address);
 
     //Mark proof as used
@@ -448,13 +450,12 @@ app.openapi(
     },
   }),
   async (c) => {
-    const { MINTING_KV } = c.env;
-
+    const { SESSIONS_DB } = c.env;
     const mintId = c.req.valid('param').id;
-    const mintResponse = await MINTING_KV.get(mintId);
+    const mintResponse = await getMint(SESSIONS_DB, mintId);
 
-    if (mintResponse !== null) {
-      return c.json(JSON.parse(mintResponse));
+    if (mintResponse) {
+      return c.json(mintResponse.tokenData, 200);
     } else {
       return c.json({ error: true, message: 'Minting ID was not found' }, 404);
     }
