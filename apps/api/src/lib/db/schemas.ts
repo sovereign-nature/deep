@@ -33,10 +33,7 @@ export const proofClaims = sqliteTable('proof_claim', {
   userId: text('user_id')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
-  mintId: text('mint_id')
-    .notNull()
-    .unique()
-    .references(() => mints.id),
+  mintId: text('mint_id').notNull().unique(),
 });
 
 export const proofs = sqliteTable('proof', {
