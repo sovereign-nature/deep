@@ -12,7 +12,7 @@ import { createClaimLink } from './lib';
 import { logger } from '$lib/logger';
 import { getRandomInt } from '$lib/utils';
 import { sendTokenEmail } from '$lib/resend';
-import { CrossmintResponse } from '$lib/shared/schemas';
+import { CrossmintResponseSchema } from '$lib/shared/schemas';
 import { AppContext } from '$lib/shared/types';
 import { addProofClaim, getProofClaim } from '$lib/db/proof-claims';
 
@@ -99,7 +99,7 @@ app.post(
           };
 
           try {
-            CrossmintResponse.parse(pendingResponse);
+            CrossmintResponseSchema.parse(pendingResponse);
           } catch (e) {
             logger.error(e);
             return c.json(
@@ -156,7 +156,7 @@ app.post(
           return c.json(pendingResponse);
         }
 
-        const parsedMintResponse = CrossmintResponse.parse(
+        const parsedMintResponse = CrossmintResponseSchema.parse(
           JSON.parse(mintResponse)
         );
 
@@ -227,7 +227,7 @@ export async function claimsQueue(batch: MessageBatch<string>, env: Env) {
             env.WALLET_MNEMONIC
           );
 
-          const parsedResponse = CrossmintResponse.parse(successResponse);
+          const parsedResponse = CrossmintResponseSchema.parse(successResponse);
 
           await env.MINTING_KV.put(mintId, JSON.stringify(parsedResponse));
 

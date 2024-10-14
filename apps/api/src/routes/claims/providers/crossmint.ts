@@ -2,7 +2,7 @@ import { getContext } from 'hono/context-storage';
 import { getChainId } from '@sni/address-utils';
 import { CollectionConfig } from '../config';
 import { Payload } from '../types';
-import { CrossmintResponse } from '$lib/shared/schemas';
+import { CrossmintResponseSchema } from '$lib/shared/schemas';
 import { AppContext } from '$lib/shared/types';
 
 export async function mintOptimismToken(
@@ -36,7 +36,7 @@ export async function mintOptimismToken(
     }
   );
 
-  const data = CrossmintResponse.parse(await resp.json());
+  const data = CrossmintResponseSchema.parse(await resp.json());
 
   if (data.onChain.owner && data.onChain.owner !== address) {
     return c.json(

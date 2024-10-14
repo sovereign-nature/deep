@@ -24,7 +24,7 @@ import {
   updateOrAddAttribute,
 } from './lib';
 import { getDotphinCollectionConfig } from './config';
-import { CrossmintResponse, ErrorSchema } from '$lib/shared/schemas';
+import { CrossmintResponseSchema, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
 import { getRandomId } from '$lib/utils';
 import { getUniqueAccount, getUniqueSdk } from '$lib/unique';
@@ -215,7 +215,7 @@ app.openapi(
     },
     responses: {
       200: {
-        content: { 'application/json': { schema: CrossmintResponse } },
+        content: { 'application/json': { schema: CrossmintResponseSchema } },
         description: 'Returns a claim token for the DOTphin',
       },
       400: {
@@ -250,7 +250,7 @@ app.openapi(
       const mintResponse = await MINTING_KV.get(claimId);
 
       if (mintResponse !== null) {
-        const parsedMintResponse = CrossmintResponse.parse(
+        const parsedMintResponse = CrossmintResponseSchema.parse(
           JSON.parse(mintResponse)
         );
 
@@ -438,7 +438,7 @@ app.openapi(
     },
     responses: {
       200: {
-        content: { 'application/json': { schema: CrossmintResponse } },
+        content: { 'application/json': { schema: CrossmintResponseSchema } },
         description: 'Returns claim status',
       },
       404: {
@@ -533,7 +533,7 @@ app.openapi(
     },
     responses: {
       200: {
-        content: { 'application/json': { schema: CrossmintResponse } },
+        content: { 'application/json': { schema: CrossmintResponseSchema } },
         description: 'Returns evolving token',
       },
       400: {

@@ -1,5 +1,7 @@
 import { UniqueNetwork } from '@sni/types';
 import { Lucia, Session, User } from 'lucia';
+import { z } from 'zod';
+import { CrossmintResponseSchema } from './schemas';
 
 export type AppContext = {
   Bindings: {
@@ -38,3 +40,5 @@ export type AppContext = {
     lucia: Lucia;
   };
 };
+
+export type CrossmintResponse = z.infer<typeof CrossmintResponseSchema>;

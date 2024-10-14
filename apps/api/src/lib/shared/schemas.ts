@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 //TODO: Split schema into pending and completed responses
-export const CrossmintResponse = z.object({
+export const CrossmintResponseSchema = z.object({
   id: z.string(),
   metadata: z
     .object({

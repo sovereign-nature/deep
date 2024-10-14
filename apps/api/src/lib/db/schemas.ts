@@ -1,4 +1,5 @@
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+import { CrossmintResponse } from '$lib/shared/types';
 
 export const users = sqliteTable('user', {
   id: text('id').notNull().primaryKey(),
@@ -32,7 +33,10 @@ export const proofClaims = sqliteTable('proof_claim', {
   userId: text('user_id')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
-  mintId: text('mint_id').notNull().unique(),
+  mintId: text('mint_id')
+    .notNull()
+    .unique()
+    .references(() => mints.id),
 });
 
 export const proofs = sqliteTable('proof', {
@@ -41,4 +45,14 @@ export const proofs = sqliteTable('proof', {
   owner: text('owner')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
+});
+
+export const mints = sqliteTable('mint', {
+  id: text('id').notNull().primaryKey(),
+  status: text('status', { enum: ['pending', 'success'] })
+    .notNull()
+    .default('pending'),
+  tokenData: text('token_data', { mode: 'json' })
+    .notNull()
+    .$type<CrossmintResponse>(),
 });
