@@ -17,14 +17,10 @@ import {
 import { setCookie, removeCookie } from '$lib/shared/utils';
 
 import type { CrossmintResponse } from '$lib/widgets/NFTClaim/context';
-import { collections, type Collection } from '$lib/shared/collectionsConfig';
 
-// DOTphin Collection and Testnet Contract Address
-const DOTPHIN_COLLECTION: Collection = collections.find(
-  (collection) => collection.key === 'dotphin-proofs'
-) as Collection;
-
+// DOTphin Collection and Testnet Contract ID
 const TESTNET_CONTRACT_ADDRESS = '3551';
+const DOTPHIN_CONTRACT_ADDRESS = '665';
 
 // Fetch Data and Update State
 export async function updateMultipassStateForAddress(address: string) {
@@ -90,7 +86,7 @@ export async function claimDOTphinNFT(address: string, proofDID: string) {
 // Check if DOTphin
 export async function checkIfDOTphin(address: string, data: CrossmintResponse) {
   if (
-    DOTPHIN_COLLECTION.collectionAddress === data.onChain.contractAddress ||
+    DOTPHIN_CONTRACT_ADDRESS === data.onChain.contractAddress ||
     TESTNET_CONTRACT_ADDRESS === data.onChain.contractAddress
   ) {
     await updateMultipassStateForAddress(address);
