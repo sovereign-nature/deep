@@ -59,9 +59,9 @@ app.post(
 
     const claim = await getProofClaim(SESSIONS_DB, address, payload.collection);
 
-    const mintResponse = (await getMint(SESSIONS_DB, mintId)).tokenData;
+    const mintResponse = await getMint(SESSIONS_DB, mintId);
 
-    if (claim && mintResponse === null) {
+    if (claim && !mintResponse) {
       logger.error(
         `Token from ${collectionConfig.name} was already claimed for this wallet`
       );
@@ -81,7 +81,7 @@ app.post(
         return mintOptimismToken(address, payload, collectionConfig);
       case 'opal':
       case 'unique': {
-        if (mintResponse === null) {
+        if (!mintResponse) {
           logger.info(`Minting ${mintId}`);
 
           const image = collectionConfig.metadata.image[payload.seed];
@@ -158,7 +158,9 @@ app.post(
           return c.json(pendingResponse);
         }
 
-        const parsedMintResponse = CrossmintResponseSchema.parse(mintResponse);
+        const parsedMintResponse = CrossmintResponseSchema.parse(
+          mintResponse.tokenData
+        );
 
         const owner = parsedMintResponse.onChain.owner;
 
