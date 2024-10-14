@@ -1,11 +1,11 @@
 import { Hono } from 'hono';
-import { env } from 'hono/adapter';
 import { DeepAsset } from '@sni/types';
 import _ from 'lodash';
 import { getAssetByDID } from '@sni/clients/assets-client';
 import { collections } from './config';
+import { AppContext } from '$lib/shared/types';
 
-const app = new Hono();
+const app = new Hono<AppContext>();
 
 //TODO: Move to clients/assets-client
 async function fetchAssets(
@@ -31,14 +31,6 @@ async function fetchAssets(
 app.get('/:collectionId', async (c) => {
   const collectionId = c.req.param('collectionId');
 
-  const { OPEN_SEA_API_KEY } = env<{ OPEN_SEA_API_KEY: string }>(c);
-  const { ALCHEMY_API_KEY } = env<{ ALCHEMY_API_KEY: string }>(c);
-
-  const keys = {
-    openSeaAPIKey: OPEN_SEA_API_KEY,
-    alchemyAPIKey: ALCHEMY_API_KEY,
-  };
-
   if (!collections[collectionId]) {
     return c.json({ error: true, message: 'Invalid collection' }, 400);
   }
@@ -51,7 +43,10 @@ app.get('/:collectionId', async (c) => {
     assets = await fetchAssets(
       currentCollection.collectionAddress,
       currentCollection.highlightIds,
-      keys
+      {
+        openSeaAPIKey: c.env.OPEN_SEA_API_KEY,
+        alchemyAPIKey: c.env.ALCHEMY_API_KEY,
+      }
     );
   } catch (error) {
     console.error(error);

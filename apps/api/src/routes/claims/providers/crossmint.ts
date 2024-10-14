@@ -1,18 +1,16 @@
-import { Context } from 'hono';
-import { env } from 'hono/adapter';
+import { getContext } from 'hono/context-storage';
 import { getChainId } from '@sni/address-utils';
 import { CollectionConfig } from '../config';
 import { Payload } from '../types';
 import { CrossmintResponse } from '$lib/shared/schemas';
+import { AppContext } from '$lib/shared/types';
 
 export async function mintOptimismToken(
   address: string,
   payload: Payload,
-  collectionConfig: CollectionConfig,
-  c: Context
+  collectionConfig: CollectionConfig
 ) {
-  const { CROSSMINT_API_URL } = env<{ CROSSMINT_API_URL: string }>(c);
-  const { CROSSMINT_API_KEY } = env<{ CROSSMINT_API_KEY: string }>(c);
+  const c = getContext<AppContext>();
 
   const image = `${collectionConfig.metadata.image}${payload.seed}.jpg`;
   const metadata = {
@@ -27,13 +25,13 @@ export async function mintOptimismToken(
   };
 
   const resp = await fetch(
-    `${CROSSMINT_API_URL}/${collectionConfig.externalId}/nfts/${payload.id}`,
+    `${c.env.CROSSMINT_API_URL}/${collectionConfig.externalId}/nfts/${payload.id}`,
     {
       method: 'PUT',
       body: JSON.stringify(mintingConfig),
       headers: {
         'Content-Type': 'application/json',
-        'X-API-KEY': CROSSMINT_API_KEY,
+        'X-API-KEY': c.env.CROSSMINT_API_KEY,
       },
     }
   );

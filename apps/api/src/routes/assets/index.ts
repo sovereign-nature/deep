@@ -1,21 +1,18 @@
 import { Hono } from 'hono';
-import { env } from 'hono/adapter';
 import { AssetNotFoundError, getAssetByDID } from '@sni/clients/assets-client';
 import { AddressParsingError, parseAssetDID } from '@sni/address-utils';
 import { logger } from '$lib/logger';
+import { AppContext } from '$lib/shared/types';
 
-const app = new Hono();
+const app = new Hono<AppContext>();
 
 app.get('/:assetDid', async (c) => {
-  const { OPEN_SEA_API_KEY } = env<{ OPEN_SEA_API_KEY: string }>(c);
-  const { ALCHEMY_API_KEY } = env<{ ALCHEMY_API_KEY: string }>(c);
-
   const assetDID = c.req.param('assetDid');
 
   try {
     const assetData = await getAssetByDID(assetDID, {
-      openSeaAPIKey: OPEN_SEA_API_KEY,
-      alchemyAPIKey: ALCHEMY_API_KEY,
+      openSeaAPIKey: c.env.OPEN_SEA_API_KEY,
+      alchemyAPIKey: c.env.ALCHEMY_API_KEY,
     });
 
     //TODO: This is a hack, need to stabilize on API level

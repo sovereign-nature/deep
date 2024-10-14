@@ -1,8 +1,8 @@
 import { zValidator } from '@hono/zod-validator';
 import { OpenAPIHono } from '@hono/zod-openapi';
 import { decode, verify } from 'hono/jwt';
-import { env } from 'hono/adapter';
 import { createAssetDID } from '@sni/address-utils';
+import { contextStorage } from 'hono/context-storage';
 import { CollectionConfig, collections } from './config';
 import { ClaimBody, JWTToken } from './schemas';
 import { mintOptimismToken } from './providers/crossmint';
@@ -13,8 +13,10 @@ import { logger } from '$lib/logger';
 import { getRandomInt } from '$lib/utils';
 import { sendTokenEmail } from '$lib/resend';
 import { CrossmintResponse } from '$lib/shared/schemas';
+import { AppContext } from '$lib/shared/types';
 
-const app = new OpenAPIHono();
+const app = new OpenAPIHono<AppContext>();
+app.use(contextStorage());
 
 export type MintRequest = {
   address: string;
@@ -28,15 +30,14 @@ app.post(
   zValidator('json', ClaimBody),
 
   async (c) => {
-    const { CLAIMS_SECRET } = env<{ CLAIMS_SECRET: string }>(c);
-
-    const { MINTING_QUEUE } = env<{ MINTING_QUEUE: Queue<string> }>(c);
-
-    const { MINTING_KV } = env<{ MINTING_KV: KVNamespace }>(c); //TODO: Join KVs into one table
-    const { CLAIMS_KV } = env<{ CLAIMS_KV: KVNamespace }>(c);
-    const { EMAILS_KV } = env<{ EMAILS_KV: KVNamespace }>(c);
-
-    const { RESEND_API_KEY } = env<{ RESEND_API_KEY: string }>(c);
+    const {
+      CLAIMS_SECRET,
+      MINTING_QUEUE,
+      MINTING_KV,
+      CLAIMS_KV,
+      EMAILS_KV,
+      RESEND_API_KEY,
+    } = c.env;
 
     const body = c.req.valid('json');
 
@@ -75,7 +76,7 @@ app.post(
 
     switch (network) {
       case 'optimism':
-        return mintOptimismToken(address, payload, collectionConfig, c);
+        return mintOptimismToken(address, payload, collectionConfig);
       case 'opal':
       case 'unique': {
         if (mintResponse === null) {
