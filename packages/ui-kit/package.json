@@ -52,7 +52,7 @@
     "prettier-plugin-svelte": "3.2.7",
     "prettier-plugin-tailwindcss": "0.6.8",
     "publint": "0.2.11",
-    "shadcn-svelte": "0.13.0",
+    "shadcn-svelte": "0.14.0",
     "sonner": "^1.4.3",
     "svelte": "4.2.19",
     "svelte-check": "4.0.4",
