@@ -15,6 +15,7 @@ import { sendTokenEmail } from '$lib/resend';
 import { CrossmintResponseSchema } from '$lib/shared/schemas';
 import { AppContext } from '$lib/shared/types';
 import { addProofClaim, getProofClaim } from '$lib/db/proof-claims';
+import { addMint, getMint, updateMint } from '$lib/db/mints';
 
 const app = new OpenAPIHono<AppContext>();
 app.use(contextStorage());
@@ -34,7 +35,6 @@ app.post(
     const {
       CLAIMS_SECRET,
       MINTING_QUEUE,
-      MINTING_KV,
       EMAILS_KV,
       RESEND_API_KEY,
       SESSIONS_DB,
@@ -59,9 +59,9 @@ app.post(
 
     const claim = await getProofClaim(SESSIONS_DB, address, payload.collection);
 
-    const mintResponse = await MINTING_KV.get(mintId);
+    const mintResponse = await getMint(SESSIONS_DB, mintId);
 
-    if (claim && mintResponse === null) {
+    if (claim && !mintResponse) {
       logger.error(
         `Token from ${collectionConfig.name} was already claimed for this wallet`
       );
@@ -81,7 +81,7 @@ app.post(
         return mintOptimismToken(address, payload, collectionConfig);
       case 'opal':
       case 'unique': {
-        if (mintResponse === null) {
+        if (!mintResponse) {
           logger.info(`Minting ${mintId}`);
 
           const image = collectionConfig.metadata.image[payload.seed];
@@ -112,7 +112,9 @@ app.post(
           }
 
           logger.info(`Sending minting ${mintId} to queue`);
-          await MINTING_KV.put(mintId, JSON.stringify(pendingResponse)); //This is a bug - MINTING_KV takes too much time to update, so it gives us null response
+
+          await addMint(SESSIONS_DB, mintId, pendingResponse);
+
           await MINTING_QUEUE.send(
             JSON.stringify({ address, payload, collectionConfig }),
             { contentType: 'json' }
@@ -157,7 +159,7 @@ app.post(
         }
 
         const parsedMintResponse = CrossmintResponseSchema.parse(
-          JSON.parse(mintResponse)
+          mintResponse.tokenData
         );
 
         const owner = parsedMintResponse.onChain.owner;
@@ -201,7 +203,7 @@ app.post(
 
 type Env = {
   WALLET_MNEMONIC: string;
-  MINTING_KV: KVNamespace;
+  SESSIONS_DB: D1Database;
 };
 
 export async function claimsQueue(batch: MessageBatch<string>, env: Env) {
@@ -229,7 +231,7 @@ export async function claimsQueue(batch: MessageBatch<string>, env: Env) {
 
           const parsedResponse = CrossmintResponseSchema.parse(successResponse);
 
-          await env.MINTING_KV.put(mintId, JSON.stringify(parsedResponse));
+          await updateMint(env.SESSIONS_DB, mintId, parsedResponse);
 
           logger.info(
             `Queue job is finished to mint ${mintId} on ${network} network`
