@@ -47,6 +47,6 @@
     "tsx": "4.19.1",
     "vite-tsconfig-paths": "5.0.1",
     "vitest": "2.1.2",
-    "wrangler": "3.71.0"
+    "wrangler": "3.80.4"
   }
 }
