@@ -465,8 +465,8 @@ importers:
         specifier: 0.2.11
         version: 0.2.11
       shadcn-svelte:
-        specifier: 0.13.0
-        version: 0.13.0
+        specifier: 0.14.0
+        version: 0.14.0
       sonner:
         specifier: ^1.4.3
         version: 1.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -5527,6 +5527,7 @@ packages:
 
   eciesjs@0.3.20:
     resolution: {integrity: sha512-Rz5AB8v9+xmMdS/R7RzWPe/R8DP5QfyrkA6ce4umJopoB5su2H2aDy/GcgIfwhmCwxnBkqGf/PbGzmKcGtIgGA==}
+    deprecated: Please upgrade to v0.4+
 
   editorconfig@1.0.4:
     resolution: {integrity: sha512-L9Qe08KWTlqYMVvMcTIvMAdl1cDUubzRNYL+WfA4bLDMHe4nemKkpmYzkznE1FwLKu0EEmy6obgQKzMJrg4x9Q==}
@@ -8596,8 +8597,8 @@ packages:
     resolution: {integrity: sha512-QMEp5B7cftE7APOjk5Y6xgrbWu+WkLVQwk8JNjZ8nKRciZaByEW6MubieAiToS7+dwvrjGhH8jRXz3MVd0AYqQ==}
     hasBin: true
 
-  shadcn-svelte@0.13.0:
-    resolution: {integrity: sha512-pr/2ZJVRaI5qQKkZEEqthWu7NU1NYVTwqNLvtsa6nlwo29Dep5rHlXGnkQjnzqjWxh9PSwhzyYuRHsx+nyFu5A==}
+  shadcn-svelte@0.14.0:
+    resolution: {integrity: sha512-7yhMGNP212qwN3ryU6lHQzEQ3uoc6x76bM8xUgdCzfdmWK0A+GEc0YYNo75iorILgB91LRsBYI2IGFcM3lAH3w==}
     hasBin: true
 
   shallow-clone@3.0.1:
@@ -21226,7 +21227,7 @@ snapshots:
       inherits: 2.0.4
       safe-buffer: 5.2.1
 
-  shadcn-svelte@0.13.0:
+  shadcn-svelte@0.14.0:
     dependencies:
       '@clack/core': 0.3.4
       chalk: 5.2.0
