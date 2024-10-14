@@ -286,8 +286,8 @@ importers:
         specifier: 4.2.19
         version: 4.2.19
       svelte-check:
-        specifier: 4.0.4
-        version: 4.0.4(picomatch@4.0.2)(svelte@4.2.19)(typescript@5.6.2)
+        specifier: 4.0.5
+        version: 4.0.5(picomatch@4.0.2)(svelte@4.2.19)(typescript@5.6.2)
       svelte-confetti:
         specifier: 1.4.0
         version: 1.4.0(svelte@4.2.19)
@@ -474,8 +474,8 @@ importers:
         specifier: 4.2.19
         version: 4.2.19
       svelte-check:
-        specifier: 4.0.4
-        version: 4.0.4(picomatch@4.0.2)(svelte@4.2.19)(typescript@5.6.2)
+        specifier: 4.0.5
+        version: 4.0.5(picomatch@4.0.2)(svelte@4.2.19)(typescript@5.6.2)
       tslib:
         specifier: 2.7.0
         version: 2.7.0
@@ -5527,6 +5527,7 @@ packages:
 
   eciesjs@0.3.20:
     resolution: {integrity: sha512-Rz5AB8v9+xmMdS/R7RzWPe/R8DP5QfyrkA6ce4umJopoB5su2H2aDy/GcgIfwhmCwxnBkqGf/PbGzmKcGtIgGA==}
+    deprecated: Please upgrade to v0.4+
 
   editorconfig@1.0.4:
     resolution: {integrity: sha512-L9Qe08KWTlqYMVvMcTIvMAdl1cDUubzRNYL+WfA4bLDMHe4nemKkpmYzkznE1FwLKu0EEmy6obgQKzMJrg4x9Q==}
@@ -5960,14 +5961,6 @@ packages:
 
   fb-watchman@2.0.2:
     resolution: {integrity: sha512-p5161BqbuCaSnB8jIbzQHOlpgsPmK5rJVDfDKO91Axs5NC1uu3HRQm6wt9cd9/+GtQQIO53JdGXXoyDpTAsgYA==}
-
-  fdir@6.3.0:
-    resolution: {integrity: sha512-QOnuT+BOtivR77wYvCWHfGt9s4Pz1VIMbD463vegT5MLqNXy8rYFT/lPVEqf/bhYeT6qmqrNHhsX+rWwe3rOCQ==}
-    peerDependencies:
-      picomatch: ^3 || ^4
-    peerDependenciesMeta:
-      picomatch:
-        optional: true
 
   fdir@6.4.0:
     resolution: {integrity: sha512-3oB133prH1o4j/L5lLW7uOCF1PlD+/It2L0eL/iAqWMB91RBbqTewABqxhj0ibBd90EEmWZq7ntIWzVaWcXTGQ==}
@@ -8894,8 +8887,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  svelte-check@4.0.4:
-    resolution: {integrity: sha512-AcHWIPuZb1mh/jKoIrww0ebBPpAvwWd1bfXCnwC2dx4OkydNMaiG//+Xnry91RJMHFH7CiE+6Y2p332DRIaOXQ==}
+  svelte-check@4.0.5:
+    resolution: {integrity: sha512-icBTBZ3ibBaywbXUat3cK6hB5Du+Kq9Z8CRuyLmm64XIe2/r+lQcbuBx/IQgsbrC+kT2jQ0weVpZSSRIPwB6jQ==}
     engines: {node: '>= 18.0.0'}
     hasBin: true
     peerDependencies:
@@ -18424,10 +18417,6 @@ snapshots:
     dependencies:
       bser: 2.1.1
 
-  fdir@6.3.0(picomatch@4.0.2):
-    optionalDependencies:
-      picomatch: 4.0.2
-
   fdir@6.4.0(picomatch@4.0.2):
     optionalDependencies:
       picomatch: 4.0.2
@@ -21551,11 +21540,11 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-check@4.0.4(picomatch@4.0.2)(svelte@4.2.19)(typescript@5.6.2):
+  svelte-check@4.0.5(picomatch@4.0.2)(svelte@4.2.19)(typescript@5.6.2):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       chokidar: 4.0.1
-      fdir: 6.3.0(picomatch@4.0.2)
+      fdir: 6.4.0(picomatch@4.0.2)
       picocolors: 1.1.0
       sade: 1.8.1
       svelte: 4.2.19
