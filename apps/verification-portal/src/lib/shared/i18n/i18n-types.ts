@@ -585,6 +585,19 @@ type RootTranslation = {
 					 */
 					subtitle: RequiredParams<'level' | 'maxLevel'>
 				}
+				LIMITED: {
+					/**
+					 * C​o​m​e​ ​b​a​c​k​ ​l​a​t​e​r​ ​t​o​ ​c​o​m​p​l​e​t​e​ ​t​h​e​ ​e​v​o​l​u​t​i​o​n
+					 */
+					title: string
+					/**
+					 * E​v​o​l​u​t​i​o​n​ ​l​e​v​e​l​ ​{​l​e​v​e​l​}​/​{​m​a​x​L​e​v​e​l​}​.​
+				​(​F​u​l​l​ ​e​v​o​l​u​t​i​o​n​ ​c​o​m​i​n​g​ ​s​o​o​n​!​)
+					 * @param {unknown} level
+					 * @param {unknown} maxLevel
+					 */
+					subtitle: RequiredParams<'level' | 'maxLevel'>
+				}
 				COMPLETE: {
 					/**
 					 * C​o​n​g​r​a​t​u​l​a​t​i​o​n​,​ ​y​o​u​ ​h​a​v​e​ ​c​o​m​p​l​e​t​e​d​ ​y​o​u​r​ ​D​O​T​p​h​i​n
@@ -1285,6 +1298,17 @@ export type TranslationFunctions = {
 				EVOLVING: {
 					/**
 					 * Evolution level {level}/{maxLevel}
+					 */
+					subtitle: (arg: { level: unknown, maxLevel: unknown }) => LocalizedString
+				}
+				LIMITED: {
+					/**
+					 * Come back later to complete the evolution
+					 */
+					title: () => LocalizedString
+					/**
+					 * Evolution level {level}/{maxLevel}.
+				(Full evolution coming soon!)
 					 */
 					subtitle: (arg: { level: unknown, maxLevel: unknown }) => LocalizedString
 				}

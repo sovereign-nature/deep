@@ -1,8 +1,13 @@
 import { writable, derived } from 'svelte/store';
 import type { DeepAsset } from '@sni/types';
 
+import { isFeatureEnabled } from '$lib/shared/utils';
+
+const canEvolve = isFeatureEnabled('dotphinEvolution');
+
 import {
   MAX_EVOLUTION_LEVEL,
+  EVOLUTION_LIMIT,
   initialStepConfig,
   STATUS,
 } from '$lib/shared/multipassConfig';
@@ -107,6 +112,8 @@ export const evolveStepState = derived(
       return 'INITIAL';
     } else if ($multipassData.evolution.level >= MAX_EVOLUTION_LEVEL) {
       return 'COMPLETE';
+    } else if ($multipassData.evolution.level >= EVOLUTION_LIMIT) {
+      return 'LIMITED';
     } else {
       return 'EVOLVING';
     }
@@ -132,7 +139,8 @@ export const multipassStepConfig = derived(
 
     // Retrieve the disabled status from the initial configuration
     const nftDisabled = initialStepConfig.nft.disabled;
-    const evolutionDisabled = initialStepConfig.evolution.disabled;
+    const evolutionDisabled =
+      initialStepConfig.evolution.disabled && !canEvolve;
 
     // NFT step is locked if the user is logged out or disabled; otherwise, check other conditions
     const nftStatus =
@@ -151,7 +159,9 @@ export const multipassStepConfig = derived(
         : proofsStatus === STATUS.COMPLETE && nftStatus === STATUS.COMPLETE
           ? $multipassData.evolution.level >= MAX_EVOLUTION_LEVEL
             ? STATUS.COMPLETE
-            : STATUS.ACTIVE
+            : $multipassData.evolution.level >= EVOLUTION_LIMIT
+              ? STATUS.LOCKED
+              : STATUS.ACTIVE
           : STATUS.LOCKED;
 
     // Simplified MultipassStepConfig with proper disabled checks

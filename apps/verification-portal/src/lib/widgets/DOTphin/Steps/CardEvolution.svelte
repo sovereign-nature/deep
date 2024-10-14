@@ -28,6 +28,8 @@
   <svelte:fragment slot="header">
     {#if $evolveStepState === 'COMPLETE'}
       <CardTitle content={$LL.multipass.state.evolveStep.COMPLETE.title()} />
+    {:else if $evolveStepState === 'LIMITED'}
+      <CardTitle content={$LL.multipass.state.evolveStep.LIMITED.title()} />
     {:else}
       <TimelineActionButton
         umamiID="evolution"
@@ -39,6 +41,13 @@
   <svelte:fragment slot="content">
     {#if $evolveStepState === 'INITIAL'}
       <CardSubtitle content={$LL.multipass.state.evolveStep.INITIAL.subtitle()}
+      ></CardSubtitle>
+    {:else if $evolveStepState === 'LIMITED'}
+      <CardSubtitle
+        content={$LL.multipass.state.evolveStep.LIMITED.subtitle({
+          level: $multipassData.evolution.level,
+          maxLevel: MAX_EVOLUTION_LEVEL,
+        })}
       ></CardSubtitle>
     {:else}
       <CardSubtitle>
