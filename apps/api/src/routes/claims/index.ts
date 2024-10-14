@@ -14,6 +14,7 @@ import { getRandomInt } from '$lib/utils';
 import { sendTokenEmail } from '$lib/resend';
 import { CrossmintResponse } from '$lib/shared/schemas';
 import { AppContext } from '$lib/shared/types';
+import { addProofClaim, getProofClaim } from '$lib/db/proof-claims';
 
 const app = new OpenAPIHono<AppContext>();
 app.use(contextStorage());
@@ -34,9 +35,9 @@ app.post(
       CLAIMS_SECRET,
       MINTING_QUEUE,
       MINTING_KV,
-      CLAIMS_KV,
       EMAILS_KV,
       RESEND_API_KEY,
+      SESSIONS_DB,
     } = c.env;
 
     const body = c.req.valid('json');
@@ -56,10 +57,11 @@ app.post(
 
     const mintId = payload.id;
 
-    const claim = await CLAIMS_KV.get(`${address}-${payload.collection}`);
+    const claim = await getProofClaim(SESSIONS_DB, address, payload.collection);
+
     const mintResponse = await MINTING_KV.get(mintId);
 
-    if (claim && mintResponse === null) {
+    if (claim.mintId && mintResponse === null) {
       logger.error(
         `Token from ${collectionConfig.name} was already claimed for this wallet`
       );
@@ -116,7 +118,12 @@ app.post(
             { contentType: 'json' }
           );
 
-          await CLAIMS_KV.put(`${address}-${payload.collection}`, payload.id);
+          await addProofClaim(
+            SESSIONS_DB,
+            address,
+            payload.collection,
+            payload.id
+          );
 
           logger.debug(`Message queue received ${mintId}`);
 
@@ -195,7 +202,6 @@ app.post(
 type Env = {
   WALLET_MNEMONIC: string;
   MINTING_KV: KVNamespace;
-  CLAIMS_KV: KVNamespace;
 };
 
 export async function claimsQueue(batch: MessageBatch<string>, env: Env) {
