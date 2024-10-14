@@ -61,7 +61,7 @@ app.post(
 
     const mintResponse = await MINTING_KV.get(mintId);
 
-    if (claim.mintId && mintResponse === null) {
+    if (claim && mintResponse === null) {
       logger.error(
         `Token from ${collectionConfig.name} was already claimed for this wallet`
       );
