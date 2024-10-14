@@ -58,12 +58,12 @@ export const events: Events = {
     collectionId: 'newsletter-october-2024',
     realCollection: 'dotphin-proofs',
     seed: () => getRandomInt(0, 2),
-    going: true,
+    going: false,
   },
   'merge-madrid-2024': {
     collectionId: 'merge-madrid-2024',
     realCollection: 'dotphin-proofs',
     seed: () => getRandomInt(0, 2),
-    going: true,
+    going: false,
   },
 };
