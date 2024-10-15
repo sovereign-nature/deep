@@ -58,16 +58,16 @@ importers:
     dependencies:
       '@hono/zod-openapi':
         specifier: 0.16.4
-        version: 0.16.4(hono@4.6.4)(zod@3.23.8)
+        version: 0.16.4(hono@4.6.5)(zod@3.23.8)
       '@hono/zod-validator':
         specifier: 0.4.1
-        version: 0.4.1(hono@4.6.4)(zod@3.23.8)
+        version: 0.4.1(hono@4.6.5)(zod@3.23.8)
       '@lucia-auth/adapter-sqlite':
         specifier: 3.0.2
         version: 3.0.2(lucia@3.2.1)
       '@scalar/hono-api-reference':
         specifier: 0.5.153
-        version: 0.5.153(hono@4.6.4)
+        version: 0.5.153(hono@4.6.5)
       '@sni/address-utils':
         specifier: workspace:*
         version: link:../../packages/address-utils
@@ -99,8 +99,8 @@ importers:
         specifier: 0.34.1
         version: 0.34.1(@cloudflare/workers-types@4.20241011.0)(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(react@18.3.1)
       hono:
-        specifier: 4.6.4
-        version: 4.6.4
+        specifier: 4.6.5
+        version: 4.6.5
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -6208,8 +6208,8 @@ packages:
   hmac-drbg@1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}
 
-  hono@4.6.4:
-    resolution: {integrity: sha512-T5WqBkTOcIQblqBKB5mpzaH/A+dSpvVe938xZJCHOmOuYfF7DSwE/9/10+BMvwSPq9N/f6LiQ38HxrZSQOsXKw==}
+  hono@4.6.5:
+    resolution: {integrity: sha512-qsmN3V5fgtwdKARGLgwwHvcdLKursMd+YOt69eGpl1dUCJb8mCd7hZfyZnBYjxCegBG7qkJRQRUy2oO25yHcyQ==}
     engines: {node: '>=16.9.0'}
 
   hookable@5.5.3:
@@ -11488,21 +11488,21 @@ snapshots:
     dependencies:
       '@hapi/hoek': 9.3.0
 
-  '@hono/zod-openapi@0.16.4(hono@4.6.4)(zod@3.23.8)':
+  '@hono/zod-openapi@0.16.4(hono@4.6.5)(zod@3.23.8)':
     dependencies:
       '@asteasolutions/zod-to-openapi': 7.1.1(zod@3.23.8)
-      '@hono/zod-validator': 0.3.0(hono@4.6.4)(zod@3.23.8)
-      hono: 4.6.4
+      '@hono/zod-validator': 0.3.0(hono@4.6.5)(zod@3.23.8)
+      hono: 4.6.5
       zod: 3.23.8
 
-  '@hono/zod-validator@0.3.0(hono@4.6.4)(zod@3.23.8)':
+  '@hono/zod-validator@0.3.0(hono@4.6.5)(zod@3.23.8)':
     dependencies:
-      hono: 4.6.4
+      hono: 4.6.5
       zod: 3.23.8
 
-  '@hono/zod-validator@0.4.1(hono@4.6.4)(zod@3.23.8)':
+  '@hono/zod-validator@0.4.1(hono@4.6.5)(zod@3.23.8)':
     dependencies:
-      hono: 4.6.4
+      hono: 4.6.5
       zod: 3.23.8
 
   '@humanwhocodes/config-array@0.13.0':
@@ -12909,10 +12909,10 @@ snapshots:
       '@noble/hashes': 1.5.0
       '@polkadot/networks': 13.0.2
       '@polkadot/util': 13.1.1
-      '@polkadot/wasm-crypto': 7.3.2(@polkadot/util@13.1.1)(@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2)))
+      '@polkadot/wasm-crypto': 7.3.2(@polkadot/util@13.1.1)(@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@13.1.1)))
       '@polkadot/wasm-util': 7.3.2(@polkadot/util@13.1.1)
       '@polkadot/x-bigint': 13.0.2
-      '@polkadot/x-randomvalues': 13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2))
+      '@polkadot/x-randomvalues': 13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@13.1.1))
       '@scure/base': 1.1.8
       tslib: 2.7.0
 
@@ -12960,11 +12960,11 @@ snapshots:
       '@polkadot/x-randomvalues': 13.0.2(@polkadot/util@12.6.2)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2))
       tslib: 2.7.0
 
-  '@polkadot/wasm-bridge@7.3.2(@polkadot/util@13.1.1)(@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2)))':
+  '@polkadot/wasm-bridge@7.3.2(@polkadot/util@13.1.1)(@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@13.1.1)))':
     dependencies:
       '@polkadot/util': 13.1.1
       '@polkadot/wasm-util': 7.3.2(@polkadot/util@13.1.1)
-      '@polkadot/x-randomvalues': 13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2))
+      '@polkadot/x-randomvalues': 13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@13.1.1))
       tslib: 2.7.0
 
   '@polkadot/wasm-crypto-asmjs@7.3.2(@polkadot/util@12.6.2)':
@@ -12997,14 +12997,14 @@ snapshots:
       '@polkadot/x-randomvalues': 13.0.2(@polkadot/util@12.6.2)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2))
       tslib: 2.7.0
 
-  '@polkadot/wasm-crypto-init@7.3.2(@polkadot/util@13.1.1)(@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2)))':
+  '@polkadot/wasm-crypto-init@7.3.2(@polkadot/util@13.1.1)(@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@13.1.1)))':
     dependencies:
       '@polkadot/util': 13.1.1
-      '@polkadot/wasm-bridge': 7.3.2(@polkadot/util@13.1.1)(@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2)))
+      '@polkadot/wasm-bridge': 7.3.2(@polkadot/util@13.1.1)(@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@13.1.1)))
       '@polkadot/wasm-crypto-asmjs': 7.3.2(@polkadot/util@13.1.1)
       '@polkadot/wasm-crypto-wasm': 7.3.2(@polkadot/util@13.1.1)
       '@polkadot/wasm-util': 7.3.2(@polkadot/util@13.1.1)
-      '@polkadot/x-randomvalues': 13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2))
+      '@polkadot/x-randomvalues': 13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@13.1.1))
       tslib: 2.7.0
 
   '@polkadot/wasm-crypto-wasm@7.3.2(@polkadot/util@12.6.2)':
@@ -13041,15 +13041,15 @@ snapshots:
       '@polkadot/x-randomvalues': 13.0.2(@polkadot/util@12.6.2)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2))
       tslib: 2.7.0
 
-  '@polkadot/wasm-crypto@7.3.2(@polkadot/util@13.1.1)(@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2)))':
+  '@polkadot/wasm-crypto@7.3.2(@polkadot/util@13.1.1)(@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@13.1.1)))':
     dependencies:
       '@polkadot/util': 13.1.1
-      '@polkadot/wasm-bridge': 7.3.2(@polkadot/util@13.1.1)(@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2)))
+      '@polkadot/wasm-bridge': 7.3.2(@polkadot/util@13.1.1)(@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@13.1.1)))
       '@polkadot/wasm-crypto-asmjs': 7.3.2(@polkadot/util@13.1.1)
-      '@polkadot/wasm-crypto-init': 7.3.2(@polkadot/util@13.1.1)(@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2)))
+      '@polkadot/wasm-crypto-init': 7.3.2(@polkadot/util@13.1.1)(@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@13.1.1)))
       '@polkadot/wasm-crypto-wasm': 7.3.2(@polkadot/util@13.1.1)
       '@polkadot/wasm-util': 7.3.2(@polkadot/util@13.1.1)
-      '@polkadot/x-randomvalues': 13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2))
+      '@polkadot/x-randomvalues': 13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@13.1.1))
       tslib: 2.7.0
 
   '@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2)':
@@ -13115,10 +13115,10 @@ snapshots:
       '@polkadot/x-global': 13.0.2
       tslib: 2.7.0
 
-  '@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@12.6.2))':
+  '@polkadot/x-randomvalues@13.0.2(@polkadot/util@13.1.1)(@polkadot/wasm-util@7.3.2(@polkadot/util@13.1.1))':
     dependencies:
       '@polkadot/util': 13.1.1
-      '@polkadot/wasm-util': 7.3.2(@polkadot/util@12.6.2)
+      '@polkadot/wasm-util': 7.3.2(@polkadot/util@13.1.1)
       '@polkadot/x-global': 13.0.2
       tslib: 2.7.0
 
@@ -13615,10 +13615,10 @@ snapshots:
 
   '@safe-global/safe-gateway-typescript-sdk@3.22.2': {}
 
-  '@scalar/hono-api-reference@0.5.153(hono@4.6.4)':
+  '@scalar/hono-api-reference@0.5.153(hono@4.6.5)':
     dependencies:
       '@scalar/types': 0.0.14
-      hono: 4.6.4
+      hono: 4.6.5
 
   '@scalar/openapi-types@0.1.2': {}
 
@@ -17866,7 +17866,7 @@ snapshots:
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
 
-  hono@4.6.4: {}
+  hono@4.6.5: {}
 
   hookable@5.5.3: {}
 
