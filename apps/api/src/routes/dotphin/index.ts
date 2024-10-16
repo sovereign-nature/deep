@@ -561,14 +561,29 @@ async function generateEvolutionImage(token: string) {
   const API_URL =
     'https://api.cloudflare.com/client/v4/accounts/2ca8f087834868e70427f43cb09afcce/images/v1';
 
-  const res = await fetch(
-    'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/dotphins/dotphin-nix-air.png',
+  // const composedImageResp = await fetch(
+  //   'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/dotphins/dotphin-nix-air.png',
+  //   {
+  //     cf: {
+  //       image: {
+  //         draw: [
+  //           {
+  //             url: 'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/elements/air/element-nix-air-01.png',
+  //           },
+  //         ],
+  //       },
+  //     },
+  //   }
+  // );
+
+  const composedImageResp = await fetch(
+    'https://cdn2.sovereignnature.com/images/dotphin/dotphin-nix/dotphins/dotphin-nix-air.png',
     {
       cf: {
         image: {
           draw: [
             {
-              url: 'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/elements/air/element-nix-air-01.png',
+              url: 'https://cdn2.sovereignnature.com/images/dotphin/dotphin-nix/elements/earth/element-nix-earth-02.png',
             },
           ],
         },
@@ -576,12 +591,14 @@ async function generateEvolutionImage(token: string) {
     }
   );
 
-  const imageBytes = await res.bytes();
+  console.log('Image status', composedImageResp.status);
+
+  const imageBytes = await composedImageResp.bytes();
 
   const formData = new FormData();
   formData.append('file', new File([imageBytes], 'tmp-dotphin-evolution.png'));
 
-  const response = await fetch(API_URL, {
+  const uploadResp = await fetch(API_URL, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -589,7 +606,7 @@ async function generateEvolutionImage(token: string) {
     body: formData,
   });
 
-  return await response.json();
+  return await uploadResp.json();
 }
 
 export default app;
