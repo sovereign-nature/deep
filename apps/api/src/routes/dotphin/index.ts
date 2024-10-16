@@ -549,9 +549,47 @@ app.openapi(
     },
   }),
   async (c) => {
-    console.log(c);
-    throw new Error('Not implemented');
+    const { CF_IMAGES_TOKEN } = c.env;
+    const resp = await generateEvolutionImage(CF_IMAGES_TOKEN);
+    console.log(resp);
+
+    return c.json({ status: 'ok' }, 200);
   }
 );
+
+async function generateEvolutionImage(token: string) {
+  const API_URL =
+    'https://api.cloudflare.com/client/v4/accounts/2ca8f087834868e70427f43cb09afcce/images/v1';
+
+  const res = await fetch(
+    'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/dotphins/dotphin-nix-air.png',
+    {
+      cf: {
+        image: {
+          draw: [
+            {
+              url: 'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/elements/air/element-nix-air-01.png',
+            },
+          ],
+        },
+      },
+    }
+  );
+
+  const imageBytes = await res.bytes();
+
+  const formData = new FormData();
+  formData.append('file', new File([imageBytes], 'tmp-dotphin-evolution.png'));
+
+  const response = await fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  });
+
+  return await response.json();
+}
 
 export default app;

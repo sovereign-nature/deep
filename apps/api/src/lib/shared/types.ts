@@ -30,6 +30,9 @@ export type AppContext = {
     DOTPHIN_PROOFS_COLLECTION_ID: string;
     DOTPHIN_COLLECTION_ID: number;
     DOTPHIN_NETWORK: UniqueNetwork;
+
+    CF_IMAGES_TOKEN: string;
+    CF_IMAGES_ACCOUNT_ID: string;
   };
   Variables: {
     //Session variables
