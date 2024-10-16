@@ -7,10 +7,12 @@
   import { Timeline } from 'flowbite-svelte';
   import Spinner from '$lib/components/icons/Spinner.svelte';
   import { LL } from '$lib/shared/i18n/i18n-svelte';
+  import CollectModal from '$lib/widgets/DOTphin/CollectForm/CollectModal.svelte';
 
   import {
     multipassData,
     nftStepState,
+    evolveStepState,
     resetData,
   } from '$lib/features/MultipassStates';
   import { updateMultipassStateForAddress } from '$lib/features/DOTphin';
@@ -67,3 +69,7 @@
     <EvolutionCard />
   </Timeline>
 </div>
+
+{#if $nftStepState === 'UNCLAIMED' || $evolveStepState === 'INITIAL' || $evolveStepState === 'EVOLVING'}
+  <CollectModal />
+{/if}

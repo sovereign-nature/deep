@@ -12,7 +12,6 @@
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import { Confetti } from 'svelte-confetti';
   import TimelineActionButton from '$lib/widgets/DOTphin/TimelineItem/TimelineActionButton.svelte';
-  import CollectModal from '../CollectForm/CollectModal.svelte';
 
   let showConfetti = false;
 
@@ -33,7 +32,7 @@
         umamiID="collect-orbo"
         disabled={$multipassStepConfig.nft.stepStatus !== 'active'}
         title={$LL.multipass.state.nftStep.UNCLAIMED.cta()}
-        on:click={() => openModal()}
+        on:click={() => openModal('claim')}
       />
     </svelte:fragment>
     <svelte:fragment slot="content">
@@ -42,7 +41,6 @@
       />
     </svelte:fragment>
   </TimelineItem>
-  <CollectModal></CollectModal>
 {:else}
   <TimelineItem
     itemState={$multipassStepConfig.nft.stepStatus}
