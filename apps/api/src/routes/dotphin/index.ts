@@ -1,10 +1,9 @@
-import { AccountTokensResponseSchema } from '@sni/clients/wallets-client/targets/unique/schemas';
-import { createAssetDID, parseAssetDID } from '@sni/address-utils';
+import { parseAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
-import { contextStorage, getContext } from 'hono/context-storage';
-import { DeepAsset, ExternalApiError, UniqueNetwork } from '@sni/types';
+import { contextStorage } from 'hono/context-storage';
+import { DeepAsset } from '@sni/types';
 import { setCookie } from 'hono/cookie';
-import walletsApp from '../wallets';
+
 import assetsApp from '../assets';
 import {
   BurnBodySchema,
@@ -16,12 +15,11 @@ import {
   ProfileResponseSchema,
 } from './schemas';
 import {
-  countByAttribute,
-  countUnusedByAttribute,
   getAttributeValue,
+  getDotphinAddress,
   getDotphinEnvConfig,
+  getProofsWithStats,
   getSeed,
-  updateOrAddAttribute,
 } from './lib';
 import { getDotphinCollectionConfig } from './config';
 import { CrossmintResponseSchema, ErrorSchema } from '$lib/shared/schemas';
@@ -44,125 +42,6 @@ app.use(contextStorage());
 //TODO: Add CSRF protection?
 //Protecting claim with session middleware
 app.use('/claim', session);
-
-async function getProofsWithStats(address: string) {
-  const c = getContext<AppContext>();
-
-  const { PROOFS_COLLECTION_DID } = getDotphinEnvConfig();
-
-  const requestUrl = `/${address}?assetDID=${PROOFS_COLLECTION_DID}`;
-
-  const result = await walletsApp.request(
-    requestUrl,
-    c.req.raw,
-    c.env,
-    c.executionCtx
-  );
-
-  const assets = (await result.json()) as DeepAsset[];
-
-  //TODO: Remove when on-chain used state is implemented
-  for (const asset of assets) {
-    const proof = await getProof(c.env.SESSIONS_DB, asset.address);
-
-    if (proof === null) {
-      updateOrAddAttribute(asset.attributes!, 'used', 'false');
-    } else {
-      const { used } = proof;
-      updateOrAddAttribute(asset.attributes!, 'used', used.toString());
-    }
-  }
-
-  const total = assets.length;
-  const used = countByAttribute(assets, 'used', 'true');
-
-  const available = total - used;
-
-  const waterAvailable = countUnusedByAttribute(assets, 'element', 'water');
-  const airAvailable = countUnusedByAttribute(assets, 'element', 'air');
-  const earthAvailable = countUnusedByAttribute(assets, 'element', 'earth');
-
-  return {
-    proofs: assets,
-    proofsStats: {
-      total,
-      used,
-      available: {
-        water: waterAvailable,
-        air: airAvailable,
-        earth: earthAvailable,
-        total: available,
-      },
-    },
-  };
-}
-
-async function getDotphinAddress(
-  address: string,
-  network: UniqueNetwork,
-  dotphinCollectionId: number | string
-) {
-  const response = await fetch(
-    `https://rest.unique.network/${network}/v1/tokens/account-tokens?address=${address}&collectionId=${dotphinCollectionId}`
-  );
-
-  if (!response.ok)
-    throw new ExternalApiError(`External API error: ${response.statusText}`);
-
-  const data = AccountTokensResponseSchema.parse(await response.json());
-
-  const dotphin = data.tokens[0];
-
-  if (!dotphin) {
-    return null;
-  }
-
-  return createAssetDID(
-    network,
-    'unique2',
-    dotphinCollectionId,
-    dotphin.tokenId
-  );
-}
-
-export async function updateTokenAttribute(
-  mnemonic: string,
-  network: UniqueNetwork,
-  collectionId: number,
-  tokenId: number,
-  attribute: string,
-  value: string
-) {
-  const sdk = getUniqueSdk(mnemonic, network);
-
-  const token = await sdk.token.getV2({ collectionId, tokenId });
-
-  const tokenDataProp = token.properties.find((p) => p.key === 'tokenData');
-  if (!tokenDataProp) throw Error('Cannot find tokenData property');
-
-  const tokenDataValue = JSON.parse(tokenDataProp.value);
-
-  if (!tokenDataValue.attributes) throw Error('Cannot parse attributes');
-
-  tokenDataValue.attributes = updateOrAddAttribute(
-    tokenDataValue.attributes,
-    attribute,
-    value
-  );
-
-  //TODO: Move to queue?
-  const result = await sdk.token.setProperties({
-    collectionId,
-    tokenId,
-    properties: [{ key: 'tokenData', value: JSON.stringify(tokenDataValue) }],
-  });
-
-  console.log(result);
-
-  logger.info(
-    `Tokens attribute updated in collection ${collectionId} with ID ${tokenId}}`
-  );
-}
 
 //Profile
 app.openapi(
@@ -560,21 +439,6 @@ app.openapi(
 async function generateEvolutionImage(token: string) {
   const API_URL =
     'https://api.cloudflare.com/client/v4/accounts/2ca8f087834868e70427f43cb09afcce/images/v1';
-
-  // const composedImageResp = await fetch(
-  //   'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/dotphins/dotphin-nix-air.png',
-  //   {
-  //     cf: {
-  //       image: {
-  //         draw: [
-  //           {
-  //             url: 'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/elements/air/element-nix-air-01.png',
-  //           },
-  //         ],
-  //       },
-  //     },
-  //   }
-  // );
 
   const composedImageResp = await fetch(
     'https://cdn2.sovereignnature.com/images/dotphin/dotphin-nix/dotphins/dotphin-nix-air.png',
