@@ -1,7 +1,7 @@
 import { generateNonce, SiweMessage } from 'siwe';
 
 import { getCookie, setCookie } from 'hono/cookie';
-import { csrf } from 'hono/csrf';
+// import { csrf } from 'hono/csrf';
 import { OpenAPIHono } from '@hono/zod-openapi';
 import { session } from '$middleware/session';
 import { addUser } from '$lib/db';
@@ -11,7 +11,7 @@ import { AppContext } from '$lib/shared/types';
 const app = new OpenAPIHono<AppContext>();
 
 //TODO: Add CSRF protection
-app.use(csrf({ origin: ['real.sovereignnature.com', 'localhost'] })); //TODO: Localhost in dev
+// app.use(csrf({ origin: ['real.sovereignnature.com', 'localhost'] })); //TODO: Localhost in dev
 
 app.use('*', session);
 
