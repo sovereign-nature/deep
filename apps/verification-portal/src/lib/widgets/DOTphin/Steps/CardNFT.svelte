@@ -12,11 +12,13 @@
   import { LL } from '$lib/shared/i18n/i18n-svelte';
   import { Confetti } from 'svelte-confetti';
   import TimelineActionButton from '$lib/widgets/DOTphin/TimelineItem/TimelineActionButton.svelte';
+  import {
+    showConfetti,
+    triggerConfetti,
+  } from '$lib/widgets/DOTphin/confettiStore';
 
-  let showConfetti = false;
-
-  $: if ($multipassData.nft.pending && !showConfetti) {
-    showConfetti = true;
+  $: if ($multipassData.nft.pending && !$showConfetti) {
+    triggerConfetti();
   }
 </script>
 
@@ -52,7 +54,7 @@
     <svelte:fragment slot="featured">
       <div class="max-h-[200px] mb-12">
         <FeaturedCard item={$multipassData.nft.data} />
-        {#if showConfetti && !$isLoading}
+        {#if $showConfetti && !$isLoading}
           <Confetti delay={[100, 250]} rounded colorRange={[75, 175]} />
         {/if}
       </div>

@@ -55,7 +55,11 @@
     >
       <Spinner className=" w-5 h-5 text-primary-200  fill-primary-400 "
       ></Spinner>
-      <span> {$LL.multipass.pendingCollect()}</span>
+      {#if $evolveStepState === 'EVOLVING'}
+        <span> {$LL.multipass.pendingEvolve()}</span>
+      {:else}
+        <span> {$LL.multipass.pendingCollect()}</span>
+      {/if}
     </div>
   {/if}
   <Timeline {order}>

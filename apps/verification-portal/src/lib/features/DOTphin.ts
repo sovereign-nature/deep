@@ -191,8 +191,11 @@ export async function evolveDOTphinNFT(
         },
       },
       nft: { DID: dotphinDID, data: evolveData, pending: true },
+      evolution: {
+        level: currentState.evolution.level + 1,
+      },
     });
-    setCookie('evolvePending', evolveData.id);
+    setCookie('claimPending', evolveData.id);
     checkClaimStatus(evolveData.id, address);
   } catch (error) {
     toast.error('Error submitting evolve, please try again');

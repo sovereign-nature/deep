@@ -3,7 +3,7 @@
   import { multipassData } from '$lib/features/MultipassStates';
   import { handleProofByTraitType } from '$lib/features/DOTphin';
   import Spinner from '$lib/components/icons/Spinner.svelte';
-
+  import { resetConfetti } from '$lib/widgets/DOTphin/confettiStore';
   import { closeModal } from '$lib/widgets/DOTphin/collectModalStore';
   let selectedValue: string | null = null;
 
@@ -26,6 +26,7 @@
         action
       ).finally(() => {
         isSubmitting = false;
+        resetConfetti(); // so that evolution triggers new state
         closeModal();
       });
     } else {
