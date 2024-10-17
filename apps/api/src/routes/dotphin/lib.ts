@@ -161,6 +161,55 @@ export async function updateTokenAttribute(
   );
 }
 
+export async function updateDOTphin(
+  tokenId: number,
+  image: string,
+  proofs: string,
+  proofsElements: string
+) {
+  const c = getContext<AppContext>();
+
+  const { DOTPHIN_COLLECTION_ID, DOTPHIN_NETWORK, WALLET_MNEMONIC } = c.env;
+
+  const sdk = getUniqueSdk(WALLET_MNEMONIC, DOTPHIN_NETWORK);
+
+  const token = await sdk.token.getV2({
+    collectionId: DOTPHIN_COLLECTION_ID,
+    tokenId,
+  });
+
+  const tokenDataProp = token.properties.find((p) => p.key === 'tokenData');
+  if (!tokenDataProp) throw Error('Cannot find tokenData property');
+
+  const tokenDataValue = JSON.parse(tokenDataProp.value);
+
+  tokenDataValue['image'] = image;
+
+  tokenDataValue.attributes = updateOrAddAttribute(
+    tokenDataValue.attributes,
+    'proofs',
+    proofs
+  );
+
+  tokenDataValue.attributes = updateOrAddAttribute(
+    tokenDataValue.attributes,
+    'proofsElements',
+    proofsElements
+  );
+
+  const result = await sdk.token.setProperties({
+    collectionId: DOTPHIN_COLLECTION_ID,
+    tokenId,
+    properties: [{ key: 'tokenData', value: JSON.stringify(tokenDataValue) }],
+  });
+
+  console.log(result);
+
+  logger.info(
+    `Tokens attribute updated in collection ${DOTPHIN_COLLECTION_ID} with ID ${tokenId}}`
+  );
+}
+
 export async function getProofsWithStats(address: string) {
   const c = getContext<AppContext>();
 
