@@ -8,11 +8,12 @@ import { apiReference } from '@scalar/hono-api-reference';
 // Importing routes
 import assets from './routes/assets';
 import highlights from './routes/highlights';
-import claims, { processClaimsMessages } from './routes/claims';
+import claims from './routes/claims';
 import wallets from './routes/wallets';
 import events from './routes/events';
 import siwe from './routes/siwe';
 import dotphin from './routes/dotphin';
+import { consumeClaimsMessages } from './routes/claims/queue';
 import { AppEnv } from '$lib/shared/types';
 
 const app = new OpenAPIHono();
@@ -106,7 +107,7 @@ export default {
   async queue(batch: MessageBatch<string>, env: AppEnv) {
     switch (batch.queue) {
       case 'minting-queue':
-        await processClaimsMessages(batch, env);
+        await consumeClaimsMessages(batch, env);
         break;
     }
   },
