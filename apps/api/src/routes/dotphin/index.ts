@@ -1,9 +1,8 @@
 import { parseAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
 import { contextStorage } from 'hono/context-storage';
-import { DeepAsset } from '@sni/types';
-import { setCookie } from 'hono/cookie';
 
+import { DeepAsset } from '@sni/types';
 import assetsApp from '../assets';
 import {
   BurnBodySchema,
@@ -22,6 +21,7 @@ import {
   getSeed,
 } from './lib';
 import { getDotphinCollectionConfig } from './config';
+import { validateProof, validateUser } from './validators';
 import { CrossmintResponseSchema, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
 import { getRandomId } from '$lib/utils';
@@ -31,9 +31,9 @@ import {
   getDotphinClaim,
   setDotphinClaim,
 } from '$lib/db/dotphin-claims';
-import { addProofAsUsed, getProof, resetProofsForUser } from '$lib/db/proofs';
+import { addProofAsUsed, resetProofsForUser } from '$lib/db/proofs';
 import { session } from '$middleware/session';
-import { AppContext } from '$lib/shared/types';
+import { AppContext, DOTphinElement } from '$lib/shared/types';
 import { addMint, getMint } from '$lib/db/mints';
 
 const app = new OpenAPIHono<AppContext>();
@@ -86,6 +86,10 @@ app.openapi(
   }
 );
 
+function getProofElement(proof: DeepAsset): DOTphinElement {
+  return getAttributeValue(proof.attributes!, 'element') as DOTphinElement;
+}
+
 app.openapi(
   createRoute({
     method: 'post',
@@ -110,11 +114,7 @@ app.openapi(
     },
   }),
   async (c) => {
-    const {
-      DOTPHIN_COLLECTION_ID,
-      DOTPHIN_NETWORK,
-      DOTPHIN_PROOFS_COLLECTION_ID,
-    } = getDotphinEnvConfig();
+    const { DOTPHIN_COLLECTION_ID, DOTPHIN_NETWORK } = getDotphinEnvConfig();
 
     const { SESSIONS_DB, MINTING_QUEUE } = c.env;
 
@@ -138,51 +138,12 @@ app.openapi(
       }
     }
 
-    const user = c.get('user');
-
-    //Check if user logged in and have the rights to claim
-    if (!user) {
-      logger.error('User is not logged in');
-
-      return c.json({ error: true, message: 'User is not logged in' }, 401);
-    }
-
-    if (user.id.toLowerCase() !== address.toLowerCase()) {
-      logger.error(
-        `User address and claim address does not match.  UserID: ${user.id.toLowerCase()} Claim Address: ${address.toLowerCase()}`
-      );
-
-      //Cookies cleanup hack, so users are not connecting with broken or wrong session
-      const session = c.get('session');
-
-      const lucia = c.get('lucia');
-
-      //Invalidate the session
-      if (session) {
-        logger.info(`Removing the session ${session.id}`);
-
-        await lucia.invalidateSession(session.id);
-        logger.info('Session invalidated', { session });
-      }
-
-      //Invalidate all user sessions (just in case)
-      await lucia.invalidateUserSessions(user.id);
-
-      //Remove the cookie
-      const blankCookie = lucia.createBlankSessionCookie();
-      setCookie(c, blankCookie.name, blankCookie.value, blankCookie.attributes);
-
-      return c.json(
-        {
-          error: true,
-          message: 'User address and claim address does not match',
-        },
-        400
-      );
+    //User validation
+    if (c.env.ENVIRONMENT !== 'dev') {
+      await validateUser(address, c);
     }
 
     //Proof validation
-    //Check if proofDID is valid
     const requestUrl = `/${proofDID}`;
     const assetResponse = await assetsApp.request(
       requestUrl,
@@ -193,44 +154,7 @@ app.openapi(
 
     const proofAsset = (await assetResponse.json()) as DeepAsset;
 
-    //Check if proof is from the DOTphin collection
-    if (proofAsset.collection.id !== DOTPHIN_PROOFS_COLLECTION_ID.toString()) {
-      logger.error('Proof is not from the DOTphin collection');
-
-      return c.json(
-        {
-          error: true,
-          message: 'Proof is not from the DOTphin collection',
-        },
-        400
-      );
-    }
-
-    //Checking if proof owner is the same as the user
-    if (proofAsset.owner.toLowerCase() !== address.toLowerCase()) {
-      logger.error('Proof owner and claim address does not match');
-
-      return c.json(
-        {
-          error: true,
-          message: 'Proof owner and claim address does not match',
-        },
-        400
-      );
-    }
-
-    //Check if proof is not used
-    const proofCache = await getProof(SESSIONS_DB, proofDID);
-
-    if (proofCache !== null) {
-      const { used } = proofCache;
-
-      if (used) {
-        logger.error('Proof is already used');
-
-        return c.json({ error: true, message: 'Proof is already used' }, 400);
-      }
-    }
+    await validateProof(proofAsset, address, c);
 
     //Check if user has DOTphin already
     const dotphinDID = await getDotphinAddress(
@@ -246,7 +170,7 @@ app.openapi(
     }
 
     //Get the element from the proof and create a seed
-    const element = getAttributeValue(proofAsset.attributes!, 'element');
+    const element = getProofElement(proofAsset);
     if (!element) {
       logger.error("Something wrong with the proof, can't get element");
 
@@ -428,15 +352,95 @@ app.openapi(
     },
   }),
   async (c) => {
-    const { CF_IMAGES_TOKEN } = c.env;
-    const resp = await generateEvolutionImage(CF_IMAGES_TOKEN);
-    console.log(resp);
+    const { CF_IMAGES_TOKEN, DOTPHIN_NETWORK, DOTPHIN_COLLECTION_ID } = c.env;
 
-    return c.json({ status: 'ok' }, 200);
+    const { address, proofDID, dotphinDID } = c.req.valid('json');
+
+    logger.info(
+      'Received evolution request for ',
+      address,
+      proofDID,
+      dotphinDID
+    );
+
+    //User validation
+    if (c.env.ENVIRONMENT !== 'dev') {
+      await validateUser(address, c);
+    }
+
+    //Proof validation
+    const requestUrl = `/${proofDID}`;
+    const assetResponse = await assetsApp.request(
+      requestUrl,
+      {},
+      c.env,
+      c.executionCtx
+    );
+
+    const proofAsset = (await assetResponse.json()) as DeepAsset;
+
+    await validateProof(proofAsset, address, c);
+
+    //Check if user has DOTphin already
+    const ownedDotphinDID = await getDotphinAddress(
+      address,
+      DOTPHIN_NETWORK,
+      DOTPHIN_COLLECTION_ID
+    );
+
+    if (!ownedDotphinDID || ownedDotphinDID !== dotphinDID) {
+      logger.error("User don't have DOTphin or wrong DOTphin DID");
+
+      return c.json(
+        {
+          error: true,
+          message: "User don't have DOTphin or wrong DOTphin DID",
+        },
+        400
+      );
+    }
+
+    const proofElement = getProofElement(proofAsset);
+    const dotphinElement = 'air'; //TODO: Get element from the DOTphin
+    const dotphinLevel = 2; //TODO: Get level from the DOTphin
+
+    const dotphinImage = await generateEvolutionImage(
+      dotphinLevel,
+      dotphinElement,
+      [proofElement],
+      CF_IMAGES_TOKEN
+    );
+
+    const mintId = getRandomId();
+
+    const pendingResponse = {
+      id: mintId,
+      onChain: {
+        status: 'pending',
+        chain: DOTPHIN_NETWORK,
+        contractAddress: DOTPHIN_COLLECTION_ID.toString(),
+      },
+      metadata: {
+        image: dotphinImage,
+      },
+      actionId: mintId,
+    };
+
+    return c.json(pendingResponse, 200);
   }
 );
 
-async function generateEvolutionImage(token: string) {
+async function generateEvolutionImage(
+  level: number,
+  mainElement: DOTphinElement,
+  proofsElements: string[],
+  apiToken: string
+) {
+  console.log('Generating evolution image');
+  console.log('Level', level);
+  console.log('Main element', mainElement);
+  console.log('Proofs elements', proofsElements);
+
   const API_URL =
     'https://api.cloudflare.com/client/v4/accounts/2ca8f087834868e70427f43cb09afcce/images/v1';
 
@@ -465,12 +469,16 @@ async function generateEvolutionImage(token: string) {
   const uploadResp = await fetch(API_URL, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${apiToken}`,
     },
     body: formData,
   });
 
-  return await uploadResp.json();
+  const uploadJson = await uploadResp.json();
+
+  console.log('Upload response', uploadJson);
+
+  return 'IMAGE_URL';
 }
 
 export default app;

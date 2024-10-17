@@ -33,6 +33,8 @@ export type AppContext = {
 
     CF_IMAGES_TOKEN: string;
     CF_IMAGES_ACCOUNT_ID: string;
+
+    ENVIRONMENT: string;
   };
   Variables: {
     //Session variables
@@ -45,3 +47,5 @@ export type AppContext = {
 export type AppEnv = AppContext['Bindings'];
 
 export type CrossmintResponse = z.infer<typeof CrossmintResponseSchema>;
+
+export type DOTphinElement = 'air' | 'earth' | 'water';
