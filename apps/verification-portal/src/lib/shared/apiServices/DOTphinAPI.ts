@@ -31,6 +31,22 @@ export async function claimStatus(claimId: string) {
   return data.onChain.status === 'success';
 }
 
+// Evolve Dotphin
+export async function evolveDotphin(
+  address: string,
+  dotphinDID: string,
+  proofDID: string
+) {
+  console.table({ address, dotphinDID, proofDID });
+  const response = await fetch(`${BASE_URL}/evolve`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ address, dotphinDID, proofDID }),
+  });
+  if (!response.ok) throw new Error('Failed to evolve DOTphin');
+  return await response.json();
+}
+
 // Burn NFT
 export async function burnNFT(dotphinDID: string, owner: string) {
   const response = await fetch(`${BASE_URL}/burn`, {

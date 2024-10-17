@@ -163,6 +163,7 @@ const en: BaseTranslation = {
       nftSubtitle: `One Eco-evolving Avatar`,
     },
     pendingCollect: `Hang tight, we're processing your claim! This could take up to a minute. Feel free to check back soon to meet your DOTphin pal! 🐬🌊`,
+    pendingEvolve: `Hang tight, we're processing your evolution! This could take up to a minute. Feel free to check back soon and see the evolution! 🐬🌊`,
     state: {
       proofStep: {
         stepTitle: 'Proofs',

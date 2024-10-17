@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { openModal } from '$lib/widgets/DOTphin/collectModalStore';
+
   import {
     multipassData,
     evolveStepState,
@@ -11,8 +13,8 @@
   import TimelineActionButton from '$lib/widgets/DOTphin/TimelineItem/TimelineActionButton.svelte';
   import CardSubtitle from '$lib/widgets/DOTphin/TimelineItem/Typography/Subtitle.svelte';
   import CardTitle from '$lib/widgets/DOTphin/TimelineItem/Typography/Title.svelte';
-
   import { LL } from '$lib/shared/i18n/i18n-svelte';
+
   const cardLink =
     siteConfigs?.contentLinks?.DOTphin?.evolution ||
     siteConfigs?.contentLinks?.DOTphin?.default ||
@@ -35,6 +37,7 @@
         umamiID="evolution"
         disabled={$multipassStepConfig.evolution.stepStatus !== 'active'}
         title={$LL.multipass.state.evolveStep.INITIAL.cta()}
+        on:click={() => openModal('evolve')}
       />
     {/if}
   </svelte:fragment>
@@ -57,6 +60,7 @@
         })}
       </CardSubtitle>
     {/if}
+
     {#if cardLink}
       <a
         href={cardLink}
