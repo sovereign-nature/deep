@@ -13,7 +13,7 @@ import { logger } from '$lib/logger';
 import { getRandomInt } from '$lib/utils';
 import { sendTokenEmail } from '$lib/resend';
 import { CrossmintResponseSchema } from '$lib/shared/schemas';
-import { AppContext } from '$lib/shared/types';
+import { AppContext, AppEnv } from '$lib/shared/types';
 import { addProofClaim, getProofClaim } from '$lib/db/proof-claims';
 import { addMint, getMint, updateMint } from '$lib/db/mints';
 
@@ -201,12 +201,10 @@ app.post(
   }
 );
 
-type Env = {
-  WALLET_MNEMONIC: string;
-  SESSIONS_DB: D1Database;
-};
-
-export async function claimsQueue(batch: MessageBatch<string>, env: Env) {
+export async function processClaimsMessages(
+  batch: MessageBatch<string>,
+  env: AppEnv
+) {
   for (const message of batch.messages) {
     const mintRequest = JSON.parse(message.body) as MintRequest;
 
