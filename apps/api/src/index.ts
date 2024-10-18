@@ -14,6 +14,7 @@ import events from './routes/events';
 import siwe from './routes/siwe';
 import dotphin from './routes/dotphin';
 import { consumeClaimsMessages } from './routes/claims/queue';
+import { consumeEvolutionMessages } from './routes/dotphin/queue';
 import { AppEnv } from '$lib/shared/types';
 
 const app = new OpenAPIHono();
@@ -108,6 +109,9 @@ export default {
     switch (batch.queue) {
       case 'minting-queue':
         await consumeClaimsMessages(batch, env);
+        break;
+      case 'evolution-queue':
+        await consumeEvolutionMessages(batch, env);
         break;
     }
   },
