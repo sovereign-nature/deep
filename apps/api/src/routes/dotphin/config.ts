@@ -34,30 +34,30 @@ export function getLevelName(level: number): string {
   return levelNames[level - 1];
 }
 
+const cdnFolder = 'https://cdn2.sovereignnature.com/images/dotphin';
 export const evolutionImages = {
   nix: {
     dotphin: {
-      air: 'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/dotphins/dotphin-nix-air.png',
-      earth:
-        'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/dotphins/dotphin-nix-earth.png',
-      water:
-        'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/dotphins/dotphin-nix-water.png',
+      air: `${cdnFolder}/dotphin-nix/dotphins/dotphin-nix-air.png`,
+      earth: `${cdnFolder}/dotphin-nix/dotphins/dotphin-nix-earth.png`,
+      water: `${cdnFolder}/dotphin-nix/dotphins/dotphin-nix-water.png`,
     },
+    //https://cdn2.sovereignnature.com/images/dotphin/dotphin-nix/elements/air/element-nix-air-01.png
     elements: {
       air: [
-        'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/elements/air/element-nix-air-01.png',
-        'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/elements/air/element-nix-air-02.png',
-        'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/elements/air/element-nix-air-03.png',
+        `${cdnFolder}/dotphin-nix/elements/air/element-nix-air-01.png`,
+        `${cdnFolder}/dotphin-nix/elements/air/element-nix-air-02.png`,
+        `${cdnFolder}/dotphin-nix/elements/air/element-nix-air-03.png`,
       ],
       earth: [
-        'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/elements/earth/nix-earth-01.png',
-        'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/elements/earth/nix-earth-02.png',
-        'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/elements/earth/nix-earth-03.png',
+        `${cdnFolder}/dotphin-nix/elements/earth/element-nix-earth-01.png`,
+        `${cdnFolder}/dotphin-nix/elements/earth/element-nix-earth-02.png`,
+        `${cdnFolder}/dotphin-nix/elements/earth/element-nix-earth-03.png`,
       ],
       water: [
-        'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/elements/water/element-nix-water-01.png',
-        'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/elements/water/element-nix-water-02.png',
-        'https://real.myfilebase.com/ipfs/QmdSGvyzcXXCWZ33rV5FHEW1Siqenj3QEt7jMhtuq5Wok5/elements/water/element-nix-water-03.png',
+        `${cdnFolder}/dotphin-nix/elements/water/element-nix-water-01.png`,
+        `${cdnFolder}/dotphin-nix/elements/water/element-nix-water-02.png`,
+        `${cdnFolder}/dotphin-nix/elements/water/element-nix-water-03.png`,
       ],
     },
   },
