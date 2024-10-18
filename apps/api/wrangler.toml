@@ -9,9 +9,13 @@ vars = { ENVIRONMENT = "dev", CROSSMINT_API_URL = "https://staging.crossmint.com
 
 workers_dev = false
 
-queues.producers = [{ queue = "minting-queue", binding = "MINTING_QUEUE" }]
+queues.producers = [
+  { queue = "minting-queue", binding = "MINTING_QUEUE" },
+  { queue = "evolution-queue", binding = "EVOLUTION_QUEUE" },
+]
 queues.consumers = [
   { queue = "minting-queue", dead_letter_queue = "minting-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
+  { queue = "evolution-queue", dead_letter_queue = "evolution-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
 ]
 
 kv_namespaces = [
@@ -29,9 +33,13 @@ tail_consumers = [{ service = "api-tail" }]
 
 vars = { ENVIRONMENT = 'production', CROSSMINT_API_URL = "https://crossmint.com/api/2022-06-09/collections", DOTPHIN_NETWORK = "unique", DOTPHIN_PROOFS_COLLECTION_ID = 665, DOTPHIN_COLLECTION_ID = 813 }
 
-queues.producers = [{ queue = "minting-queue", binding = "MINTING_QUEUE" }]
+queues.producers = [
+  { queue = "minting-queue", binding = "MINTING_QUEUE" },
+  { queue = "evolution-queue", binding = "EVOLUTION_QUEUE" },
+]
 queues.consumers = [
   { queue = "minting-queue", dead_letter_queue = "minting-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
+  { queue = "evolution-queue", dead_letter_queue = "evolution-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
 ]
 
 kv_namespaces = [
@@ -50,11 +58,13 @@ workers_dev = true
 
 vars = { ENVIRONMENT = "staging", CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections", DOTPHIN_NETWORK = "opal", DOTPHIN_PROOFS_COLLECTION_ID = 3551, DOTPHIN_COLLECTION_ID = 3773 }
 
-# Separate infra for staging
-# TODO: Setup staging queues
-queues.producers = [{ queue = "stg-minting-queue", binding = "MINTING_QUEUE" }]
+queues.producers = [
+  { queue = "minting-queue", binding = "MINTING_QUEUE" },
+  { queue = "evolution-queue", binding = "EVOLUTION_QUEUE" },
+]
 queues.consumers = [
-  { queue = "stg-minting-queue", dead_letter_queue = "stg-minting-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
+  { queue = "minting-queue", dead_letter_queue = "minting-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
+  { queue = "evolution-queue", dead_letter_queue = "evolution-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
 ]
 
 # TODO: Setup staging KVs

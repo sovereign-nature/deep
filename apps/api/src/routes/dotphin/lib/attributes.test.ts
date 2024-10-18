@@ -6,7 +6,7 @@ import {
   getAttributeIndex,
   getAttributeValue,
   updateOrAddAttribute,
-} from './lib';
+} from './attributes';
 
 function deepCopy<T>(obj: T): T {
   return JSON.parse(JSON.stringify(obj));

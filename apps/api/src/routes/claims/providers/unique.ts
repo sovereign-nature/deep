@@ -53,12 +53,6 @@ export async function mintUniqueToken(
     `Tokens minted in collection ${collectionId}, ids ${tokenIds.join(', ')}, job ${payload.id}`
   );
 
-  // for (const tokenId of tokenIds) {
-  //   console.log(
-  //     `${sdk.options.baseUrl}/tokens/v2?collectionId=${collectionId}&tokenId=${tokenId}`
-  //   );
-  // }
-
   const tokenId = tokenIds[0];
 
   const tokenMetadata = await sdk.token.getV2({
