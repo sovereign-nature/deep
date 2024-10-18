@@ -23,6 +23,9 @@ export type AppContext = {
     //Minting
     MINTING_QUEUE: Queue<string>;
 
+    //Evolution
+    EVOLUTION_QUEUE: Queue<string>;
+
     EMAILS_KV: KVNamespace;
     RESEND_API_KEY: string;
 

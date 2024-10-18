@@ -13,7 +13,7 @@ import wallets from './routes/wallets';
 import events from './routes/events';
 import siwe from './routes/siwe';
 import dotphin from './routes/dotphin';
-import { consumeClaimsMessages } from './routes/claims/queue';
+import { consumeMintingMessages } from './routes/claims/queue';
 import { consumeEvolutionMessages } from './routes/dotphin/queue';
 import { AppEnv } from '$lib/shared/types';
 
@@ -108,7 +108,7 @@ export default {
   async queue(batch: MessageBatch<string>, env: AppEnv) {
     switch (batch.queue) {
       case 'minting-queue':
-        await consumeClaimsMessages(batch, env);
+        await consumeMintingMessages(batch, env);
         break;
       case 'evolution-queue':
         await consumeEvolutionMessages(batch, env);

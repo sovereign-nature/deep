@@ -6,18 +6,18 @@ import { logger } from '$lib/logger';
 import { CrossmintResponseSchema } from '$lib/shared/schemas';
 import { AppEnv } from '$lib/shared/types';
 
-type MintRequest = {
+type MintingQueueMessage = {
   address: string;
   payload: Payload;
   collectionConfig: CollectionConfig;
 };
 
-export async function consumeClaimsMessages(
+export async function consumeMintingMessages(
   batch: MessageBatch<string>,
   env: AppEnv
 ) {
   for (const message of batch.messages) {
-    const mintRequest = JSON.parse(message.body) as MintRequest;
+    const mintRequest = JSON.parse(message.body) as MintingQueueMessage;
 
     const network = mintRequest.collectionConfig.network;
 

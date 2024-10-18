@@ -4,7 +4,7 @@ import { AppEnv } from '$lib/shared/types';
 import { CrossmintResponseSchema } from '$lib/shared/schemas';
 import { updateMint } from '$lib/db/mints';
 
-type EvolutionRequest = {
+type EvolutionQueueMessage = {
   tokenId: number;
   mintId: string;
   dataUpdate: {
@@ -28,7 +28,7 @@ export async function consumeEvolutionMessages(
   for (const message of batch.messages) {
     const { dataUpdate, tokenId, mintId } = JSON.parse(
       message.body
-    ) as EvolutionRequest;
+    ) as EvolutionQueueMessage;
 
     logger.info(
       `Queue job is started to update token ${tokenId} in collection ${DOTPHIN_COLLECTION_ID} on ${DOTPHIN_NETWORK} network`
