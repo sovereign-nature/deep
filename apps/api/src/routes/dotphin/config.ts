@@ -2,6 +2,8 @@ import { UniqueNetwork } from '@sni/types';
 import { CollectionConfig } from '../claims/config'; //TODO: Move to shared
 import { getRandomInt } from '$lib/utils';
 
+export const MAX_DOTPHIN_LEVEL = 2;
+
 const baseAttributes = [
   { trait_type: 'level', value: '1' },
   { trait_type: 'experience', value: '0' },

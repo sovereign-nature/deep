@@ -19,11 +19,13 @@ import {
   getProofsWithStats,
   getSeed,
 } from './lib';
-import { getDotphinCollectionConfig } from './config';
+import { getDotphinCollectionConfig, MAX_DOTPHIN_LEVEL } from './config';
 import { validateProof, validateUser } from './validators';
 import { EvolutionQueueMessage } from './types';
 import { generateEvolutionImage } from './lib/image';
 import {
+  appendProof,
+  appendProofElement,
   getDotphinElement,
   getDotphinLevel,
   getProofElement,
@@ -368,7 +370,12 @@ app.openapi(
     },
   }),
   async (c) => {
-    const { CF_IMAGES_TOKEN, DOTPHIN_NETWORK, DOTPHIN_COLLECTION_ID } = c.env;
+    const {
+      CF_IMAGES_TOKEN,
+      DOTPHIN_NETWORK,
+      DOTPHIN_COLLECTION_ID,
+      ENVIRONMENT,
+    } = c.env;
 
     const { address, proofDID, dotphinDID } = c.req.valid('json');
 
@@ -380,7 +387,7 @@ app.openapi(
     );
 
     //User validation
-    if (c.env.ENVIRONMENT !== 'dev') {
+    if (ENVIRONMENT !== 'dev') {
       await validateUser(address, c);
     }
 
@@ -410,19 +417,28 @@ app.openapi(
 
     const dotphinAsset = await getAsset(dotphinDID, c);
 
-    console.log('DOTphin asset', dotphinAsset);
-
     const proofElement = getProofElement(proofAsset);
 
     const dotphinElement = getDotphinElement(dotphinAsset);
     const dotphinLevel = getDotphinLevel(dotphinAsset);
 
-    const nextDotphinLevel = dotphinLevel + 1;
+    if (ENVIRONMENT !== 'dev' && dotphinLevel >= MAX_DOTPHIN_LEVEL) {
+      logger.error('DOTphin is already at max level');
+
+      return c.json(
+        { error: true, message: 'DOTphin is already at max level' },
+        400
+      );
+    }
+
+    const updatedDotphinLevel = dotphinLevel + 1;
+    const updatedProofs = appendProof(dotphinAsset, proofDID);
+    const updatedProofElements = appendProofElement(dotphinAsset, proofElement);
 
     const dotphinImage = await generateEvolutionImage(
-      nextDotphinLevel,
+      updatedDotphinLevel,
       dotphinElement,
-      [proofElement],
+      updatedProofElements.split('-'),
       CF_IMAGES_TOKEN
     );
 
@@ -433,9 +449,9 @@ app.openapi(
       tokenId: Number(dotphinAsset.tokenId),
       dataUpdate: {
         image: dotphinImage,
-        proofs: '123', //TODO: Get proofs from the DOTphin
-        proofsElements: 'air-air-air', //TODO: Get proofs elements from the DOTphin,
-        level: nextDotphinLevel,
+        proofs: updatedProofs,
+        proofsElements: updatedProofElements,
+        level: updatedDotphinLevel,
       },
     });
 
@@ -451,6 +467,8 @@ app.openapi(
       },
       actionId: mintId,
     };
+
+    //await addProofAsUsed(SESSIONS_DB, proofDID, address);
 
     return c.json(pendingResponse, 200);
   }

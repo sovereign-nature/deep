@@ -11,10 +11,12 @@ export function getAttributeValue(attributes: Attribute[], trait: string) {
   return attribute?.value;
 }
 
+//TODO: Cover with tests
 export function getProofElement(proof: DeepAsset): DOTphinElement {
   return getAttributeValue(proof.attributes!, 'element') as DOTphinElement;
 }
 
+//TODO: Cover with tests
 export function getDotphinElement(dotphin: DeepAsset): DOTphinElement {
   return getAttributeValue(
     dotphin.attributes!,
@@ -22,6 +24,25 @@ export function getDotphinElement(dotphin: DeepAsset): DOTphinElement {
   ) as DOTphinElement;
 }
 
+//TODO: Cover with tests
+export function appendProof(dotphin: DeepAsset, proofDID: string) {
+  const proofs = getAttributeValue(dotphin.attributes!, 'proofs') || '';
+
+  return `${proofs}-${proofDID}`;
+}
+
+//TODO: Cover with tests
+export function appendProofElement(
+  dotphin: DeepAsset,
+  element: DOTphinElement
+) {
+  const elements =
+    getAttributeValue(dotphin.attributes!, 'proofsElements') || '';
+
+  return `${elements}-${element}`;
+}
+
+//TODO: Cover with tests
 export function getDotphinLevel(dotphin: DeepAsset): number {
   return Number(getAttributeValue(dotphin.attributes!, 'level'));
 }
