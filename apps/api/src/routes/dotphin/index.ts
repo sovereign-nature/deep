@@ -21,7 +21,7 @@ import {
 } from './lib';
 import { getDotphinCollectionConfig, MAX_DOTPHIN_LEVEL } from './config';
 import { validateProof, validateUser } from './validators';
-import { EvolutionQueueMessage } from './types';
+import { DOTphinElement, EvolutionQueueMessage } from './types';
 import { generateEvolutionImage } from './lib/image';
 import {
   appendProof,
@@ -438,7 +438,7 @@ app.openapi(
     const dotphinImage = await generateEvolutionImage(
       updatedDotphinLevel,
       dotphinElement,
-      updatedProofElements.split('-'),
+      updatedProofElements.split('-') as DOTphinElement[],
       CF_IMAGES_TOKEN
     );
 
