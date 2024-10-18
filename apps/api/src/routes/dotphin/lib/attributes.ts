@@ -1,6 +1,6 @@
+import { DeepAsset, UniqueNetwork } from '@sni/types';
 import { logger } from '$lib/logger';
 import { getUniqueSdk } from '$lib/unique';
-import { DeepAsset, UniqueNetwork } from '@sni/types';
 
 type Attribute = { trait_type: string; value: string | number };
 
