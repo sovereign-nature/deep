@@ -1,7 +1,6 @@
 import { parseAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
-import { contextStorage } from 'hono/context-storage';
-
+import { contextStorage, getContext } from 'hono/context-storage';
 import { DeepAsset } from '@sni/types';
 import assetsApp from '../assets';
 import {
@@ -22,9 +21,10 @@ import {
 } from './lib';
 import { getDotphinCollectionConfig } from './config';
 import { validateProof, validateUser } from './validators';
+import { EvolutionQueueMessage } from './types';
 import { CrossmintResponseSchema, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
-import { getRandomId } from '$lib/utils';
+import { getRandomId, submitQueueMessage } from '$lib/utils';
 import { getUniqueAccount, getUniqueSdk } from '$lib/unique';
 import {
   deleteDotphinClaim,
@@ -413,6 +413,17 @@ app.openapi(
 
     const mintId = getRandomId();
 
+    await submitEvolutionMessage({
+      mintId,
+      tokenId: 0,
+      dataUpdate: {
+        image: dotphinImage,
+        proofs: '123', //TODO: Get proofs from the DOTphin
+        proofsElements: 'air-air-air', //TODO: Get proofs elements from the DOTphin,
+        level: 2, //TODO: Get level from the DOTphin
+      },
+    });
+
     const pendingResponse = {
       id: mintId,
       onChain: {
@@ -429,6 +440,14 @@ app.openapi(
     return c.json(pendingResponse, 200);
   }
 );
+
+async function submitEvolutionMessage(message: EvolutionQueueMessage) {
+  const c = getContext<AppContext>();
+
+  const { EVOLUTION_QUEUE } = c.env;
+
+  await submitQueueMessage(message, EVOLUTION_QUEUE);
+}
 
 async function generateEvolutionImage(
   level: number,

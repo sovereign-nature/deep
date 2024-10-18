@@ -1,18 +1,9 @@
 import { updateDOTphin } from './lib';
+import { EvolutionQueueMessage } from './types';
 import { logger } from '$lib/logger';
 import { AppEnv } from '$lib/shared/types';
 import { CrossmintResponseSchema } from '$lib/shared/schemas';
 import { updateMint } from '$lib/db/mints';
-
-type EvolutionQueueMessage = {
-  tokenId: number;
-  mintId: string;
-  dataUpdate: {
-    image: string;
-    proofs: string;
-    proofsElements: string;
-  };
-};
 
 export async function consumeEvolutionMessages(
   batch: MessageBatch<string>,

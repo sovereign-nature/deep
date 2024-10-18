@@ -3,12 +3,13 @@ import { DeepAsset, ExternalApiError, UniqueNetwork } from '@sni/types';
 import { getContext } from 'hono/context-storage';
 import { AccountTokensResponseSchema } from '@sni/clients/wallets-client/targets/unique/schemas';
 import walletsApp from '../wallets';
+import { DOTphinUpdate } from './types';
 import { AppContext } from '$lib/shared/types';
 import { logger } from '$lib/logger';
 import { getUniqueSdk } from '$lib/unique';
 import { getProof } from '$lib/db/proofs';
 
-type Attribute = { trait_type: string; value: string };
+type Attribute = { trait_type: string; value: string | number };
 
 export function getAttributeValue(attributes: Attribute[], trait: string) {
   const attribute = attributes.find((a) => a.trait_type === trait);
@@ -59,7 +60,7 @@ export function getAttributeIndex(attributes: Attribute[], traitType: string) {
 export function updateOrAddAttribute(
   attributes: Attribute[],
   traitType: string,
-  value: string
+  value: string | number
 ) {
   const index = getAttributeIndex(attributes, traitType);
 
@@ -163,11 +164,7 @@ export async function updateTokenAttribute(
 
 export async function updateDOTphin(
   tokenId: number,
-  dataUpdate: {
-    image: string;
-    proofs: string;
-    proofsElements: string;
-  },
+  dataUpdate: DOTphinUpdate,
   dotphinConfig: { collectionId: number; network: UniqueNetwork },
   mintId: string,
   mnemonic: string
@@ -198,6 +195,12 @@ export async function updateDOTphin(
     tokenDataValue.attributes,
     'proofsElements',
     dataUpdate.proofsElements
+  );
+
+  tokenDataValue.attributes = updateOrAddAttribute(
+    tokenDataValue.attributes,
+    'level',
+    dataUpdate.level
   );
 
   const tokenUpdateResult = await sdk.token.setProperties({
