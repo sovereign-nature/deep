@@ -2,6 +2,7 @@ import { parseAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
 import { contextStorage, getContext } from 'hono/context-storage';
 import { DeepAsset } from '@sni/types';
+import { Context } from 'hono';
 import assetsApp from '../assets';
 import {
   BurnBodySchema,
@@ -13,7 +14,6 @@ import {
   ProfileResponseSchema,
 } from './schemas';
 import {
-  getAttributeValue,
   getDotphinAddress,
   getDotphinEnvConfig,
   getProofsWithStats,
@@ -22,6 +22,8 @@ import {
 import { getDotphinCollectionConfig } from './config';
 import { validateProof, validateUser } from './validators';
 import { EvolutionQueueMessage } from './types';
+import { generateEvolutionImage } from './lib/image';
+import { getAttributeValue } from './lib/attributes';
 import { CrossmintResponseSchema, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
 import { getRandomId, submitQueueMessage } from '$lib/utils';
@@ -328,6 +330,20 @@ app.openapi(
   }
 );
 
+async function getAsset(
+  did: string,
+  c: Context<AppContext>
+): Promise<DeepAsset> {
+  const assetResponse = await assetsApp.request(
+    `/${did}`,
+    {},
+    c.env,
+    c.executionCtx
+  );
+
+  return (await assetResponse.json()) as DeepAsset;
+}
+
 app.openapi(
   createRoute({
     method: 'post',
@@ -369,16 +385,8 @@ app.openapi(
     }
 
     //Proof validation
-    const requestUrl = `/${proofDID}`;
-    const assetResponse = await assetsApp.request(
-      requestUrl,
-      {},
-      c.env,
-      c.executionCtx
-    );
 
-    const proofAsset = (await assetResponse.json()) as DeepAsset;
-
+    const proofAsset = await getAsset(proofDID, c);
     await validateProof(proofAsset, address, c);
 
     //Check if user has DOTphin already
@@ -399,6 +407,10 @@ app.openapi(
         400
       );
     }
+
+    const dotphinAsset = await getAsset(dotphinDID, c);
+
+    console.log('DOTphin asset', dotphinAsset);
 
     const proofElement = getProofElement(proofAsset);
     const dotphinElement = 'air'; //TODO: Get element from the DOTphin
@@ -447,57 +459,6 @@ async function submitEvolutionMessage(message: EvolutionQueueMessage) {
   const { EVOLUTION_QUEUE } = c.env;
 
   await submitQueueMessage(message, EVOLUTION_QUEUE);
-}
-
-async function generateEvolutionImage(
-  level: number,
-  mainElement: DOTphinElement,
-  proofsElements: string[],
-  apiToken: string
-) {
-  console.log('Generating evolution image');
-  console.log('Level', level);
-  console.log('Main element', mainElement);
-  console.log('Proofs elements', proofsElements);
-
-  const API_URL =
-    'https://api.cloudflare.com/client/v4/accounts/2ca8f087834868e70427f43cb09afcce/images/v1';
-
-  const composedImageResp = await fetch(
-    'https://cdn2.sovereignnature.com/images/dotphin/dotphin-nix/dotphins/dotphin-nix-air.png',
-    {
-      cf: {
-        image: {
-          draw: [
-            {
-              url: 'https://cdn2.sovereignnature.com/images/dotphin/dotphin-nix/elements/earth/element-nix-earth-02.png',
-            },
-          ],
-        },
-      },
-    }
-  );
-
-  console.log('Image status', composedImageResp.status);
-
-  const imageBytes = await composedImageResp.bytes();
-
-  const formData = new FormData();
-  formData.append('file', new File([imageBytes], 'tmp-dotphin-evolution.png'));
-
-  const uploadResp = await fetch(API_URL, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiToken}`,
-    },
-    body: formData,
-  });
-
-  const uploadJson = await uploadResp.json();
-
-  console.log('Upload response', uploadJson);
-
-  return 'IMAGE_URL';
 }
 
 export default app;
