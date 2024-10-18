@@ -50,5 +50,3 @@ export type AppContext = {
 export type AppEnv = AppContext['Bindings'];
 
 export type CrossmintResponse = z.infer<typeof CrossmintResponseSchema>;
-
-export type DOTphinElement = 'air' | 'earth' | 'water';
