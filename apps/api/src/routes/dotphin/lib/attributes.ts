@@ -1,7 +1,7 @@
 import { DeepAsset, UniqueNetwork } from '@sni/types';
+import { DOTphinElement } from '../types';
 import { logger } from '$lib/logger';
 import { getUniqueSdk } from '$lib/unique';
-import { DOTphinElement } from '$lib/shared/types';
 
 type Attribute = { trait_type: string; value: string };
 

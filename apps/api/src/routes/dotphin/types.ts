@@ -10,3 +10,7 @@ export type EvolutionQueueMessage = {
   mintId: string;
   dataUpdate: DOTphinUpdate;
 };
+
+export type DOTphinElement = 'air' | 'earth' | 'water';
+
+export type DOTphinLevel = 'orbo' | 'nix';

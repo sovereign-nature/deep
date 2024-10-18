@@ -35,7 +35,25 @@ export function getLevelName(level: number): string {
 }
 
 const cdnFolder = 'https://cdn2.sovereignnature.com/images/dotphin';
-export const evolutionImages = {
+
+type EvolutionImages = {
+  dotphin: {
+    air: string;
+    earth: string;
+    water: string;
+  };
+  elements: {
+    air: string[];
+    earth: string[];
+    water: string[];
+  };
+};
+
+interface DOTphinEvolutions {
+  [key: string]: EvolutionImages;
+}
+
+export const evolutionImages: DOTphinEvolutions = {
   nix: {
     dotphin: {
       air: `${cdnFolder}/dotphin-nix/dotphins/dotphin-nix-air.png`,

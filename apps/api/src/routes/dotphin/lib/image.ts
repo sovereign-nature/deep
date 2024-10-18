@@ -1,10 +1,18 @@
 import { CFImageUploadResponseSchema } from '../schemas';
-import { DOTphinElement } from '$lib/shared/types';
+import { evolutionImages, MAX_DOTPHIN_LEVEL } from '../config';
+import { DOTphinElement, DOTphinLevel } from '../types';
+import { getRandomInt } from '$lib/utils';
+
+function levelToName(level: number) {
+  return ['orbo', 'nix'][
+    Math.max(level, MAX_DOTPHIN_LEVEL) - 1
+  ] as DOTphinLevel;
+}
 
 export async function generateEvolutionImage(
   level: number,
   mainElement: DOTphinElement,
-  proofsElements: string[],
+  proofsElements: DOTphinElement[],
   apiToken: string
 ) {
   console.log('Generating evolution image');
@@ -15,20 +23,24 @@ export async function generateEvolutionImage(
   const API_URL =
     'https://api.cloudflare.com/client/v4/accounts/2ca8f087834868e70427f43cb09afcce/images/v1';
 
-  const composedImageResp = await fetch(
-    'https://cdn2.sovereignnature.com/images/dotphin/dotphin-nix/dotphins/dotphin-nix-air.png',
-    {
-      cf: {
-        image: {
-          draw: [
-            {
-              url: 'https://cdn2.sovereignnature.com/images/dotphin/dotphin-nix/elements/earth/element-nix-earth-02.png',
-            },
-          ],
-        },
+  const evolutionName = levelToName(level);
+  const mainImage = evolutionImages[evolutionName].dotphin[mainElement];
+
+  const draw = [];
+  for (const element of proofsElements) {
+    const imageUrl =
+      evolutionImages[evolutionName].elements[element][getRandomInt(0, 2)];
+
+    draw.push({ url: imageUrl });
+  }
+
+  const composedImageResp = await fetch(mainImage, {
+    cf: {
+      image: {
+        draw,
       },
-    }
-  );
+    },
+  });
 
   console.log('Image status', composedImageResp.status);
   //TODO: Handle error when composed image is not available
