@@ -1,13 +1,29 @@
 import { DeepAsset, UniqueNetwork } from '@sni/types';
 import { logger } from '$lib/logger';
 import { getUniqueSdk } from '$lib/unique';
+import { DOTphinElement } from '$lib/shared/types';
 
-type Attribute = { trait_type: string; value: string | number };
+type Attribute = { trait_type: string; value: string };
 
 export function getAttributeValue(attributes: Attribute[], trait: string) {
   const attribute = attributes.find((a) => a.trait_type === trait);
 
   return attribute?.value;
+}
+
+export function getProofElement(proof: DeepAsset): DOTphinElement {
+  return getAttributeValue(proof.attributes!, 'element') as DOTphinElement;
+}
+
+export function getDotphinElement(dotphin: DeepAsset): DOTphinElement {
+  return getAttributeValue(
+    dotphin.attributes!,
+    'mainElement'
+  ) as DOTphinElement;
+}
+
+export function getDotphinLevel(dotphin: DeepAsset): number {
+  return Number(getAttributeValue(dotphin.attributes!, 'level'));
 }
 
 export function countByAttribute(
@@ -42,7 +58,7 @@ export function getAttributeIndex(attributes: Attribute[], traitType: string) {
 export function updateOrAddAttribute(
   attributes: Attribute[],
   traitType: string,
-  value: string | number
+  value: string
 ) {
   const index = getAttributeIndex(attributes, traitType);
 

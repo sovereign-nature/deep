@@ -45,8 +45,12 @@ async function updateDOTphin(
   tokenDataValue.attributes = updateOrAddAttribute(
     tokenDataValue.attributes,
     'level',
-    dataUpdate.level
+    dataUpdate.level.toString()
   );
+
+  console.log('UPDATING TOKEN DATA');
+  console.log(collectionId, tokenId);
+  console.log('tokenDataValue', tokenDataValue);
 
   const tokenUpdateResult = await sdk.token.setProperties({
     collectionId,

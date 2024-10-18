@@ -23,7 +23,11 @@ import { getDotphinCollectionConfig } from './config';
 import { validateProof, validateUser } from './validators';
 import { EvolutionQueueMessage } from './types';
 import { generateEvolutionImage } from './lib/image';
-import { getAttributeValue } from './lib/attributes';
+import {
+  getDotphinElement,
+  getDotphinLevel,
+  getProofElement,
+} from './lib/attributes';
 import { CrossmintResponseSchema, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
 import { getRandomId, submitQueueMessage } from '$lib/utils';
@@ -35,7 +39,7 @@ import {
 } from '$lib/db/dotphin-claims';
 import { addProofAsUsed, resetProofsForUser } from '$lib/db/proofs';
 import { session } from '$middleware/session';
-import { AppContext, DOTphinElement } from '$lib/shared/types';
+import { AppContext } from '$lib/shared/types';
 import { addMint, getMint } from '$lib/db/mints';
 
 const app = new OpenAPIHono<AppContext>();
@@ -87,10 +91,6 @@ app.openapi(
     );
   }
 );
-
-function getProofElement(proof: DeepAsset): DOTphinElement {
-  return getAttributeValue(proof.attributes!, 'element') as DOTphinElement;
-}
 
 app.openapi(
   createRoute({
@@ -413,11 +413,14 @@ app.openapi(
     console.log('DOTphin asset', dotphinAsset);
 
     const proofElement = getProofElement(proofAsset);
-    const dotphinElement = 'air'; //TODO: Get element from the DOTphin
-    const dotphinLevel = 2; //TODO: Get level from the DOTphin
+
+    const dotphinElement = getDotphinElement(dotphinAsset);
+    const dotphinLevel = getDotphinLevel(dotphinAsset);
+
+    const nextDotphinLevel = dotphinLevel + 1;
 
     const dotphinImage = await generateEvolutionImage(
-      dotphinLevel,
+      nextDotphinLevel,
       dotphinElement,
       [proofElement],
       CF_IMAGES_TOKEN
@@ -427,12 +430,12 @@ app.openapi(
 
     await submitEvolutionMessage({
       mintId,
-      tokenId: 0,
+      tokenId: Number(dotphinAsset.tokenId),
       dataUpdate: {
         image: dotphinImage,
         proofs: '123', //TODO: Get proofs from the DOTphin
         proofsElements: 'air-air-air', //TODO: Get proofs elements from the DOTphin,
-        level: 2, //TODO: Get level from the DOTphin
+        level: nextDotphinLevel,
       },
     });
 

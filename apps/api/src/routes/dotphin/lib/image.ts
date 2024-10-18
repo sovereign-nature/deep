@@ -1,3 +1,4 @@
+import { CFImageUploadResponseSchema } from '../schemas';
 import { DOTphinElement } from '$lib/shared/types';
 
 export async function generateEvolutionImage(
@@ -30,6 +31,7 @@ export async function generateEvolutionImage(
   );
 
   console.log('Image status', composedImageResp.status);
+  //TODO: Handle error when composed image is not available
 
   const imageBytes = await composedImageResp.bytes();
 
@@ -44,9 +46,9 @@ export async function generateEvolutionImage(
     body: formData,
   });
 
-  const uploadJson = await uploadResp.json();
+  //TODO: Handle error when can't upload image
 
-  console.log('Upload response', uploadJson);
+  const uploadData = CFImageUploadResponseSchema.parse(await uploadResp.json());
 
-  return 'IMAGE_URL';
+  return `https://imagedelivery.net/TbEOGfUBcfmfflqdtuuZVA/${uploadData.result.id}/dotphin2560`;
 }

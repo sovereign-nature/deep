@@ -135,3 +135,16 @@ export const BurnBodySchema = z.object({
 export const BurnResponseSchema = z.object({
   success: z.boolean().openapi({ example: true }),
 });
+
+export const CFImageUploadResponseSchema = z.object({
+  result: z.object({
+    id: z.string(),
+    filename: z.string(),
+    uploaded: z.string(),
+    requireSignedURLs: z.boolean(),
+    variants: z.array(z.string()),
+  }),
+  success: z.boolean(),
+  errors: z.array(z.string()),
+  messages: z.array(z.string()),
+});
