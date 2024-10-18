@@ -163,18 +163,21 @@ export async function updateTokenAttribute(
 
 export async function updateDOTphin(
   tokenId: number,
-  image: string,
-  proofs: string,
-  proofsElements: string
+  dataUpdate: {
+    image: string;
+    proofs: string;
+    proofsElements: string;
+  },
+  dotphinConfig: { collectionId: number; network: UniqueNetwork },
+  mintId: string,
+  mnemonic: string
 ) {
-  const c = getContext<AppContext>();
+  const sdk = getUniqueSdk(mnemonic, dotphinConfig.network);
 
-  const { DOTPHIN_COLLECTION_ID, DOTPHIN_NETWORK, WALLET_MNEMONIC } = c.env;
-
-  const sdk = getUniqueSdk(WALLET_MNEMONIC, DOTPHIN_NETWORK);
+  const { collectionId } = dotphinConfig;
 
   const token = await sdk.token.getV2({
-    collectionId: DOTPHIN_COLLECTION_ID,
+    collectionId,
     tokenId,
   });
 
@@ -183,31 +186,57 @@ export async function updateDOTphin(
 
   const tokenDataValue = JSON.parse(tokenDataProp.value);
 
-  tokenDataValue['image'] = image;
+  tokenDataValue['image'] = dataUpdate.image;
 
   tokenDataValue.attributes = updateOrAddAttribute(
     tokenDataValue.attributes,
     'proofs',
-    proofs
+    dataUpdate.proofs
   );
 
   tokenDataValue.attributes = updateOrAddAttribute(
     tokenDataValue.attributes,
     'proofsElements',
-    proofsElements
+    dataUpdate.proofsElements
   );
 
-  const result = await sdk.token.setProperties({
-    collectionId: DOTPHIN_COLLECTION_ID,
+  const tokenUpdateResult = await sdk.token.setProperties({
+    collectionId,
     tokenId,
     properties: [{ key: 'tokenData', value: JSON.stringify(tokenDataValue) }],
   });
 
-  console.log(result);
+  if (!tokenUpdateResult.parsed) {
+    throw tokenUpdateResult.error;
+  }
+
+  const tokenMetadata = await sdk.token.getV2({
+    collectionId,
+    tokenId,
+  });
+
+  const response = {
+    id: mintId,
+    metadata: {
+      name: tokenMetadata.name,
+      description: tokenMetadata.description || '',
+      image: tokenMetadata.image,
+    },
+    onChain: {
+      status: 'success',
+      chain: dotphinConfig.network,
+      contractAddress: dotphinConfig.collectionId.toString(),
+      owner: tokenMetadata.owner,
+      tokenId: tokenId.toString(),
+    },
+    actionId: mintId,
+  };
 
   logger.info(
-    `Tokens attribute updated in collection ${DOTPHIN_COLLECTION_ID} with ID ${tokenId}}`
+    `Tokens attribute updated in collection ${dotphinConfig.collectionId} with ID ${tokenId}}`
   );
+
+  return response;
 }
 
 export async function getProofsWithStats(address: string) {

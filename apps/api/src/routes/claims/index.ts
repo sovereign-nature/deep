@@ -180,7 +180,7 @@ app.post(
 
           return c.json({
             ...parsedMintResponse,
-            assetDID,
+            assetDID, //TODO: AssetDID should be in the minted object by default
           });
         }
 
