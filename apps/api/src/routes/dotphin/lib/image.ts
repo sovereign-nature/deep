@@ -34,6 +34,9 @@ export async function generateEvolutionImage(
     draw.push({ url: imageUrl });
   }
 
+  console.log('Main Image', mainImage);
+  console.log('Draw', draw);
+
   const composedImageResp = await fetch(mainImage, {
     cf: {
       image: {
@@ -42,7 +45,7 @@ export async function generateEvolutionImage(
     },
   });
 
-  console.log('Image status', composedImageResp.status);
+  console.log('Composed Image Status', composedImageResp.status);
   //TODO: Handle error when composed image is not available
 
   const imageBytes = await composedImageResp.bytes();

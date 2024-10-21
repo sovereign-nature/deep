@@ -85,7 +85,7 @@ async function updateDOTphin(
   };
 
   logger.info(
-    `Tokens attribute updated in collection ${dotphinConfig.collectionId} with ID ${tokenId}}`
+    `Tokens attribute updated in collection ${dotphinConfig.collectionId} with ID ${tokenId}`
   );
 
   return response;

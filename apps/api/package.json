@@ -8,7 +8,9 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
+    "deploy:staging": "wrangler deploy --env staging",
     "tail": "wrangler tail",
+    "tail:staging": "wrangler tail --env staging",
     "test": "vitest",
     "migrate": "drizzle-kit generate"
   },

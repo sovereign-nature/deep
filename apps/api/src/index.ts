@@ -106,11 +106,12 @@ app.route('/dotphin', dotphin);
 export default {
   fetch: app.fetch,
   async queue(batch: MessageBatch<string>, env: AppEnv) {
+    const queuePrefix = env.ENVIRONMENT === 'staging' ? 'stg-' : '';
     switch (batch.queue) {
-      case 'minting-queue':
+      case `${queuePrefix}minting-queue`:
         await consumeMintingMessages(batch, env);
         break;
-      case 'evolution-queue':
+      case `${queuePrefix}evolution-queue`:
         await consumeEvolutionMessages(batch, env);
         break;
     }
