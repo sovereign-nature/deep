@@ -19,5 +19,7 @@ const imagesResponse = {
 };
 
 it('Should be able to parse image response schema', () => {
-  expect(CFImageUploadResponseSchema.parse(imagesResponse));
+  const parsed = CFImageUploadResponseSchema.parse(imagesResponse);
+
+  expect(parsed).toEqual(imagesResponse);
 });
