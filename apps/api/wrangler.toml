@@ -3,11 +3,9 @@ main = "src/index.ts"
 compatibility_date = "2024-01-01"
 compatibility_flags = ["nodejs_compat"]
 logpush = false
-
+workers_dev = false
 
 vars = { ENVIRONMENT = "dev", CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections", DOTPHIN_NETWORK = "opal", DOTPHIN_PROOFS_COLLECTION_ID = 3030, DOTPHIN_COLLECTION_ID = 3758 }
-
-workers_dev = false
 
 queues.producers = [
   { queue = "minting-queue", binding = "MINTING_QUEUE" },
@@ -53,7 +51,7 @@ d1_databases = [
 # Stage Configuration Overrides
 [env.staging]
 name = "stg-api"
-tail_consumers = [{ service = "stg-api-tail" }]
+# tail_consumers = [{ service = "stg-api-tail" }]
 workers_dev = true
 
 vars = { ENVIRONMENT = "staging", CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections", DOTPHIN_NETWORK = "opal", DOTPHIN_PROOFS_COLLECTION_ID = 3551, DOTPHIN_COLLECTION_ID = 3773 }
