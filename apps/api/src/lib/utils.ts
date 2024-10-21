@@ -21,3 +21,10 @@ export function getRandomInt(min: number, max: number): number {
 export function getRandomId(): string {
   return nanoid();
 }
+
+export async function submitQueueMessage(
+  message: object,
+  queue: Queue<string>
+) {
+  await queue.send(JSON.stringify(message), { contentType: 'json' });
+}

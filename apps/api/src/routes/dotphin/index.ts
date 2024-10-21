@@ -1,10 +1,8 @@
-import { AccountTokensResponseSchema } from '@sni/clients/wallets-client/targets/unique/schemas';
-import { createAssetDID, parseAssetDID } from '@sni/address-utils';
+import { parseAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
 import { contextStorage, getContext } from 'hono/context-storage';
-import { DeepAsset, ExternalApiError, UniqueNetwork } from '@sni/types';
-import { setCookie } from 'hono/cookie';
-import walletsApp from '../wallets';
+import { DeepAsset } from '@sni/types';
+import { Context } from 'hono';
 import assetsApp from '../assets';
 import {
   BurnBodySchema,
@@ -16,24 +14,32 @@ import {
   ProfileResponseSchema,
 } from './schemas';
 import {
-  countByAttribute,
-  countUnusedByAttribute,
-  getAttributeValue,
+  getDotphinAddress,
   getDotphinEnvConfig,
+  getProofsWithStats,
   getSeed,
-  updateOrAddAttribute,
 } from './lib';
-import { getDotphinCollectionConfig } from './config';
+import { getDotphinCollectionConfig, MAX_DOTPHIN_LEVEL } from './config';
+import { validateProof, validateUser } from './validators';
+import { DOTphinElement, EvolutionQueueMessage } from './types';
+import { generateEvolutionImage } from './lib/image';
+import {
+  appendProof,
+  appendProofElement,
+  getDotphinElement,
+  getDotphinLevel,
+  getProofElement,
+} from './lib/attributes';
 import { CrossmintResponseSchema, ErrorSchema } from '$lib/shared/schemas';
 import { logger } from '$lib/logger';
-import { getRandomId } from '$lib/utils';
+import { getRandomId, submitQueueMessage } from '$lib/utils';
 import { getUniqueAccount, getUniqueSdk } from '$lib/unique';
 import {
   deleteDotphinClaim,
   getDotphinClaim,
   setDotphinClaim,
 } from '$lib/db/dotphin-claims';
-import { addProofAsUsed, getProof, resetProofsForUser } from '$lib/db/proofs';
+import { addProofAsUsed, resetProofsForUser } from '$lib/db/proofs';
 import { session } from '$middleware/session';
 import { AppContext } from '$lib/shared/types';
 import { addMint, getMint } from '$lib/db/mints';
@@ -44,125 +50,6 @@ app.use(contextStorage());
 //TODO: Add CSRF protection?
 //Protecting claim with session middleware
 app.use('/claim', session);
-
-async function getProofsWithStats(address: string) {
-  const c = getContext<AppContext>();
-
-  const { PROOFS_COLLECTION_DID } = getDotphinEnvConfig();
-
-  const requestUrl = `/${address}?assetDID=${PROOFS_COLLECTION_DID}`;
-
-  const result = await walletsApp.request(
-    requestUrl,
-    c.req.raw,
-    c.env,
-    c.executionCtx
-  );
-
-  const assets = (await result.json()) as DeepAsset[];
-
-  //TODO: Remove when on-chain used state is implemented
-  for (const asset of assets) {
-    const proof = await getProof(c.env.SESSIONS_DB, asset.address);
-
-    if (proof === null) {
-      updateOrAddAttribute(asset.attributes!, 'used', 'false');
-    } else {
-      const { used } = proof;
-      updateOrAddAttribute(asset.attributes!, 'used', used.toString());
-    }
-  }
-
-  const total = assets.length;
-  const used = countByAttribute(assets, 'used', 'true');
-
-  const available = total - used;
-
-  const waterAvailable = countUnusedByAttribute(assets, 'element', 'water');
-  const airAvailable = countUnusedByAttribute(assets, 'element', 'air');
-  const earthAvailable = countUnusedByAttribute(assets, 'element', 'earth');
-
-  return {
-    proofs: assets,
-    proofsStats: {
-      total,
-      used,
-      available: {
-        water: waterAvailable,
-        air: airAvailable,
-        earth: earthAvailable,
-        total: available,
-      },
-    },
-  };
-}
-
-async function getDotphinAddress(
-  address: string,
-  network: UniqueNetwork,
-  dotphinCollectionId: number | string
-) {
-  const response = await fetch(
-    `https://rest.unique.network/${network}/v1/tokens/account-tokens?address=${address}&collectionId=${dotphinCollectionId}`
-  );
-
-  if (!response.ok)
-    throw new ExternalApiError(`External API error: ${response.statusText}`);
-
-  const data = AccountTokensResponseSchema.parse(await response.json());
-
-  const dotphin = data.tokens[0];
-
-  if (!dotphin) {
-    return null;
-  }
-
-  return createAssetDID(
-    network,
-    'unique2',
-    dotphinCollectionId,
-    dotphin.tokenId
-  );
-}
-
-export async function updateTokenAttribute(
-  mnemonic: string,
-  network: UniqueNetwork,
-  collectionId: number,
-  tokenId: number,
-  attribute: string,
-  value: string
-) {
-  const sdk = getUniqueSdk(mnemonic, network);
-
-  const token = await sdk.token.getV2({ collectionId, tokenId });
-
-  const tokenDataProp = token.properties.find((p) => p.key === 'tokenData');
-  if (!tokenDataProp) throw Error('Cannot find tokenData property');
-
-  const tokenDataValue = JSON.parse(tokenDataProp.value);
-
-  if (!tokenDataValue.attributes) throw Error('Cannot parse attributes');
-
-  tokenDataValue.attributes = updateOrAddAttribute(
-    tokenDataValue.attributes,
-    attribute,
-    value
-  );
-
-  //TODO: Move to queue?
-  const result = await sdk.token.setProperties({
-    collectionId,
-    tokenId,
-    properties: [{ key: 'tokenData', value: JSON.stringify(tokenDataValue) }],
-  });
-
-  console.log(result);
-
-  logger.info(
-    `Tokens attribute updated in collection ${collectionId} with ID ${tokenId}}`
-  );
-}
 
 //Profile
 app.openapi(
@@ -231,11 +118,7 @@ app.openapi(
     },
   }),
   async (c) => {
-    const {
-      DOTPHIN_COLLECTION_ID,
-      DOTPHIN_NETWORK,
-      DOTPHIN_PROOFS_COLLECTION_ID,
-    } = getDotphinEnvConfig();
+    const { DOTPHIN_COLLECTION_ID, DOTPHIN_NETWORK } = getDotphinEnvConfig();
 
     const { SESSIONS_DB, MINTING_QUEUE } = c.env;
 
@@ -259,51 +142,12 @@ app.openapi(
       }
     }
 
-    const user = c.get('user');
-
-    //Check if user logged in and have the rights to claim
-    if (!user) {
-      logger.error('User is not logged in');
-
-      return c.json({ error: true, message: 'User is not logged in' }, 401);
-    }
-
-    if (user.id.toLowerCase() !== address.toLowerCase()) {
-      logger.error(
-        `User address and claim address does not match.  UserID: ${user.id.toLowerCase()} Claim Address: ${address.toLowerCase()}`
-      );
-
-      //Cookies cleanup hack, so users are not connecting with broken or wrong session
-      const session = c.get('session');
-
-      const lucia = c.get('lucia');
-
-      //Invalidate the session
-      if (session) {
-        logger.info(`Removing the session ${session.id}`);
-
-        await lucia.invalidateSession(session.id);
-        logger.info('Session invalidated', { session });
-      }
-
-      //Invalidate all user sessions (just in case)
-      await lucia.invalidateUserSessions(user.id);
-
-      //Remove the cookie
-      const blankCookie = lucia.createBlankSessionCookie();
-      setCookie(c, blankCookie.name, blankCookie.value, blankCookie.attributes);
-
-      return c.json(
-        {
-          error: true,
-          message: 'User address and claim address does not match',
-        },
-        400
-      );
+    //User validation
+    if (c.env.ENVIRONMENT !== 'dev') {
+      await validateUser(address, c);
     }
 
     //Proof validation
-    //Check if proofDID is valid
     const requestUrl = `/${proofDID}`;
     const assetResponse = await assetsApp.request(
       requestUrl,
@@ -314,44 +158,7 @@ app.openapi(
 
     const proofAsset = (await assetResponse.json()) as DeepAsset;
 
-    //Check if proof is from the DOTphin collection
-    if (proofAsset.collection.id !== DOTPHIN_PROOFS_COLLECTION_ID.toString()) {
-      logger.error('Proof is not from the DOTphin collection');
-
-      return c.json(
-        {
-          error: true,
-          message: 'Proof is not from the DOTphin collection',
-        },
-        400
-      );
-    }
-
-    //Checking if proof owner is the same as the user
-    if (proofAsset.owner.toLowerCase() !== address.toLowerCase()) {
-      logger.error('Proof owner and claim address does not match');
-
-      return c.json(
-        {
-          error: true,
-          message: 'Proof owner and claim address does not match',
-        },
-        400
-      );
-    }
-
-    //Check if proof is not used
-    const proofCache = await getProof(SESSIONS_DB, proofDID);
-
-    if (proofCache !== null) {
-      const { used } = proofCache;
-
-      if (used) {
-        logger.error('Proof is already used');
-
-        return c.json({ error: true, message: 'Proof is already used' }, 400);
-      }
-    }
+    await validateProof(proofAsset, address, c);
 
     //Check if user has DOTphin already
     const dotphinDID = await getDotphinAddress(
@@ -367,7 +174,7 @@ app.openapi(
     }
 
     //Get the element from the proof and create a seed
-    const element = getAttributeValue(proofAsset.attributes!, 'element');
+    const element = getProofElement(proofAsset);
     if (!element) {
       logger.error("Something wrong with the proof, can't get element");
 
@@ -525,6 +332,20 @@ app.openapi(
   }
 );
 
+async function getAsset(
+  did: string,
+  c: Context<AppContext>
+): Promise<DeepAsset> {
+  const assetResponse = await assetsApp.request(
+    `/${did}`,
+    {},
+    c.env,
+    c.executionCtx
+  );
+
+  return (await assetResponse.json()) as DeepAsset;
+}
+
 app.openapi(
   createRoute({
     method: 'post',
@@ -549,9 +370,116 @@ app.openapi(
     },
   }),
   async (c) => {
-    console.log(c);
-    throw new Error('Not implemented');
+    const {
+      CF_IMAGES_TOKEN,
+      DOTPHIN_NETWORK,
+      DOTPHIN_COLLECTION_ID,
+      ENVIRONMENT,
+    } = c.env;
+
+    const { address, proofDID, dotphinDID } = c.req.valid('json');
+
+    logger.info(
+      'Received evolution request for ',
+      address,
+      proofDID,
+      dotphinDID
+    );
+
+    //User validation
+    if (ENVIRONMENT !== 'dev') {
+      await validateUser(address, c);
+    }
+
+    //Proof validation
+
+    const proofAsset = await getAsset(proofDID, c);
+    await validateProof(proofAsset, address, c);
+
+    //Check if user has DOTphin already
+    const ownedDotphinDID = await getDotphinAddress(
+      address,
+      DOTPHIN_NETWORK,
+      DOTPHIN_COLLECTION_ID
+    );
+
+    if (!ownedDotphinDID || ownedDotphinDID !== dotphinDID) {
+      logger.error("User don't have DOTphin or wrong DOTphin DID");
+
+      return c.json(
+        {
+          error: true,
+          message: "User don't have DOTphin or wrong DOTphin DID",
+        },
+        400
+      );
+    }
+
+    const dotphinAsset = await getAsset(dotphinDID, c);
+
+    const proofElement = getProofElement(proofAsset);
+
+    const dotphinElement = getDotphinElement(dotphinAsset);
+    const dotphinLevel = getDotphinLevel(dotphinAsset);
+
+    if (ENVIRONMENT !== 'dev' && dotphinLevel >= MAX_DOTPHIN_LEVEL) {
+      logger.error('DOTphin is already at max level');
+
+      return c.json(
+        { error: true, message: 'DOTphin is already at max level' },
+        400
+      );
+    }
+
+    const updatedDotphinLevel = dotphinLevel + 1;
+    const updatedProofs = appendProof(dotphinAsset, proofDID);
+    const updatedProofElements = appendProofElement(dotphinAsset, proofElement);
+
+    const dotphinImage = await generateEvolutionImage(
+      updatedDotphinLevel,
+      dotphinElement,
+      updatedProofElements.split('-') as DOTphinElement[],
+      CF_IMAGES_TOKEN
+    );
+
+    const mintId = getRandomId();
+
+    await submitEvolutionMessage({
+      mintId,
+      tokenId: Number(dotphinAsset.tokenId),
+      dataUpdate: {
+        image: dotphinImage,
+        proofs: updatedProofs,
+        proofsElements: updatedProofElements,
+        level: updatedDotphinLevel,
+      },
+    });
+
+    const pendingResponse = {
+      id: mintId,
+      onChain: {
+        status: 'pending',
+        chain: DOTPHIN_NETWORK,
+        contractAddress: DOTPHIN_COLLECTION_ID.toString(),
+      },
+      metadata: {
+        image: dotphinImage,
+      },
+      actionId: mintId,
+    };
+
+    //await addProofAsUsed(SESSIONS_DB, proofDID, address);
+
+    return c.json(pendingResponse, 200);
   }
 );
+
+async function submitEvolutionMessage(message: EvolutionQueueMessage) {
+  const c = getContext<AppContext>();
+
+  const { EVOLUTION_QUEUE } = c.env;
+
+  await submitQueueMessage(message, EVOLUTION_QUEUE);
+}
 
 export default app;

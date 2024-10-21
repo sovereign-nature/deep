@@ -3,11 +3,9 @@ import { OpenAPIHono } from '@hono/zod-openapi';
 import { decode, verify } from 'hono/jwt';
 import { createAssetDID } from '@sni/address-utils';
 import { contextStorage } from 'hono/context-storage';
-import { CollectionConfig, collections } from './config';
+import { collections } from './config';
 import { ClaimBody, JWTToken } from './schemas';
 import { mintOptimismToken } from './providers/crossmint';
-import { mintUniqueToken } from './providers/unique';
-import { Payload } from './types';
 import { createClaimLink } from './lib';
 import { logger } from '$lib/logger';
 import { getRandomInt } from '$lib/utils';
@@ -15,16 +13,10 @@ import { sendTokenEmail } from '$lib/resend';
 import { CrossmintResponseSchema } from '$lib/shared/schemas';
 import { AppContext } from '$lib/shared/types';
 import { addProofClaim, getProofClaim } from '$lib/db/proof-claims';
-import { addMint, getMint, updateMint } from '$lib/db/mints';
+import { addMint, getMint } from '$lib/db/mints';
 
 const app = new OpenAPIHono<AppContext>();
 app.use(contextStorage());
-
-export type MintRequest = {
-  address: string;
-  payload: Payload;
-  collectionConfig: CollectionConfig;
-};
 
 //TODO: Check this endpoint with fresh eyes
 app.post(
@@ -188,7 +180,7 @@ app.post(
 
           return c.json({
             ...parsedMintResponse,
-            assetDID,
+            assetDID, //TODO: AssetDID should be in the minted object by default
           });
         }
 
@@ -200,48 +192,5 @@ app.post(
     }
   }
 );
-
-type Env = {
-  WALLET_MNEMONIC: string;
-  SESSIONS_DB: D1Database;
-};
-
-export async function claimsQueue(batch: MessageBatch<string>, env: Env) {
-  for (const message of batch.messages) {
-    const mintRequest = JSON.parse(message.body) as MintRequest;
-
-    const network = mintRequest.collectionConfig.network;
-
-    switch (network) {
-      case 'opal':
-      case 'unique':
-        {
-          const mintId = mintRequest.payload.id;
-          logger.info(
-            `Queue job is started to mint ${mintId} on ${network} network in collection ${mintRequest.collectionConfig.externalId}`
-          );
-
-          const successResponse = await mintUniqueToken(
-            network,
-            mintRequest.address,
-            mintRequest.payload, //TODO: Retype payload, should't require collectionId
-            mintRequest.collectionConfig,
-            env.WALLET_MNEMONIC
-          );
-
-          const parsedResponse = CrossmintResponseSchema.parse(successResponse);
-
-          await updateMint(env.SESSIONS_DB, mintId, parsedResponse);
-
-          logger.info(
-            `Queue job is finished to mint ${mintId} on ${network} network`
-          );
-        }
-        break;
-      default:
-        break;
-    }
-  }
-}
 
 export default app;

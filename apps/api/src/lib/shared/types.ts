@@ -23,6 +23,9 @@ export type AppContext = {
     //Minting
     MINTING_QUEUE: Queue<string>;
 
+    //Evolution
+    EVOLUTION_QUEUE: Queue<string>;
+
     EMAILS_KV: KVNamespace;
     RESEND_API_KEY: string;
 
@@ -30,6 +33,11 @@ export type AppContext = {
     DOTPHIN_PROOFS_COLLECTION_ID: string;
     DOTPHIN_COLLECTION_ID: number;
     DOTPHIN_NETWORK: UniqueNetwork;
+
+    CF_IMAGES_TOKEN: string;
+    CF_IMAGES_ACCOUNT_ID: string;
+
+    ENVIRONMENT: string;
   };
   Variables: {
     //Session variables
@@ -38,5 +46,7 @@ export type AppContext = {
     lucia: Lucia;
   };
 };
+
+export type AppEnv = AppContext['Bindings'];
 
 export type CrossmintResponse = z.infer<typeof CrossmintResponseSchema>;
