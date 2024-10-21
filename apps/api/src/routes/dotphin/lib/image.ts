@@ -5,7 +5,7 @@ import { getRandomInt } from '$lib/utils';
 
 function levelToName(level: number) {
   return ['orbo', 'nix'][
-    Math.max(level, MAX_DOTPHIN_LEVEL) - 1
+    Math.min(level, MAX_DOTPHIN_LEVEL) - 1
   ] as DOTphinLevel;
 }
 
