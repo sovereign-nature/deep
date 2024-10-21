@@ -226,7 +226,6 @@ app.openapi(
     };
 
     await addMint(SESSIONS_DB, mintId, pendingResponse);
-
     await setDotphinClaim(SESSIONS_DB, mintId, address);
 
     //Mark proof as used
@@ -456,6 +455,7 @@ app.openapi(
       actionId: mintId,
     };
 
+    await addMint(SESSIONS_DB, mintId, pendingResponse);
     await addProofAsUsed(SESSIONS_DB, proofDID, address);
 
     return c.json(pendingResponse, 200);
