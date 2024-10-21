@@ -36,10 +36,13 @@ export function appendProofElement(
   dotphin: DeepAsset,
   element: DOTphinElement
 ) {
-  const elements =
-    getAttributeValue(dotphin.attributes!, 'proofsElements') || '';
+  const elements = getAttributeValue(dotphin.attributes!, 'proofsElements');
 
-  return `${elements}-${element}`;
+  if (elements) {
+    return `${elements}-${element}`;
+  } else {
+    return element;
+  }
 }
 
 //TODO: Cover with tests

@@ -2,7 +2,6 @@ import { parseAssetDID } from '@sni/address-utils';
 import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
 import { contextStorage, getContext } from 'hono/context-storage';
 import { DeepAsset } from '@sni/types';
-import { Context } from 'hono';
 import assetsApp from '../assets';
 import {
   BurnBodySchema,
@@ -14,6 +13,7 @@ import {
   ProfileResponseSchema,
 } from './schemas';
 import {
+  getAsset,
   getDotphinAddress,
   getDotphinEnvConfig,
   getProofsWithStats,
@@ -143,7 +143,7 @@ app.openapi(
     }
 
     //User validation
-    if (c.env.ENVIRONMENT !== 'dev') {
+    if (c.env.ENVIRONMENT !== 'dev' && c.env.ENVIRONMENT !== 'staging') {
       await validateUser(address, c);
     }
 
@@ -332,20 +332,6 @@ app.openapi(
   }
 );
 
-async function getAsset(
-  did: string,
-  c: Context<AppContext>
-): Promise<DeepAsset> {
-  const assetResponse = await assetsApp.request(
-    `/${did}`,
-    {},
-    c.env,
-    c.executionCtx
-  );
-
-  return (await assetResponse.json()) as DeepAsset;
-}
-
 app.openapi(
   createRoute({
     method: 'post',
@@ -375,6 +361,7 @@ app.openapi(
       DOTPHIN_NETWORK,
       DOTPHIN_COLLECTION_ID,
       ENVIRONMENT,
+      SESSIONS_DB,
     } = c.env;
 
     const { address, proofDID, dotphinDID } = c.req.valid('json');
@@ -387,12 +374,11 @@ app.openapi(
     );
 
     //User validation
-    if (ENVIRONMENT !== 'dev') {
+    if (ENVIRONMENT !== 'dev' && ENVIRONMENT !== 'staging') {
       await validateUser(address, c);
     }
 
     //Proof validation
-
     const proofAsset = await getAsset(proofDID, c);
     await validateProof(proofAsset, address, c);
 
@@ -422,7 +408,7 @@ app.openapi(
     const dotphinElement = getDotphinElement(dotphinAsset);
     const dotphinLevel = getDotphinLevel(dotphinAsset);
 
-    if (ENVIRONMENT !== 'dev' && dotphinLevel >= MAX_DOTPHIN_LEVEL) {
+    if (dotphinLevel >= MAX_DOTPHIN_LEVEL) {
       logger.error('DOTphin is already at max level');
 
       return c.json(
@@ -434,6 +420,8 @@ app.openapi(
     const updatedDotphinLevel = dotphinLevel + 1;
     const updatedProofs = appendProof(dotphinAsset, proofDID);
     const updatedProofElements = appendProofElement(dotphinAsset, proofElement);
+
+    console.log('Updated proofs elements', updatedProofElements);
 
     const dotphinImage = await generateEvolutionImage(
       updatedDotphinLevel,
@@ -468,7 +456,7 @@ app.openapi(
       actionId: mintId,
     };
 
-    //await addProofAsUsed(SESSIONS_DB, proofDID, address);
+    await addProofAsUsed(SESSIONS_DB, proofDID, address);
 
     return c.json(pendingResponse, 200);
   }

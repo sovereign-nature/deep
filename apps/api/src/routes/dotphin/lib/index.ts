@@ -2,7 +2,9 @@ import { createAssetDID } from '@sni/address-utils';
 import { DeepAsset, ExternalApiError, UniqueNetwork } from '@sni/types';
 import { getContext } from 'hono/context-storage';
 import { AccountTokensResponseSchema } from '@sni/clients/wallets-client/targets/unique/schemas';
+import { Context } from 'hono';
 import walletsApp from '../../wallets';
+import assetsApp from '../../assets';
 import {
   countByAttribute,
   countUnusedByAttribute,
@@ -122,4 +124,18 @@ export async function getProofsWithStats(address: string) {
       },
     },
   };
+}
+
+export async function getAsset(
+  did: string,
+  c: Context<AppContext>
+): Promise<DeepAsset> {
+  const assetResponse = await assetsApp.request(
+    `/${did}`,
+    {},
+    c.env,
+    c.executionCtx
+  );
+
+  return (await assetResponse.json()) as DeepAsset;
 }
