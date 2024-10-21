@@ -57,20 +57,18 @@ workers_dev = true
 vars = { ENVIRONMENT = "staging", CROSSMINT_API_URL = "https://staging.crossmint.com/api/2022-06-09/collections", DOTPHIN_NETWORK = "opal", DOTPHIN_PROOFS_COLLECTION_ID = 3551, DOTPHIN_COLLECTION_ID = 3773 }
 
 queues.producers = [
-  { queue = "minting-queue", binding = "MINTING_QUEUE" },
-  { queue = "evolution-queue", binding = "EVOLUTION_QUEUE" },
+  { queue = "stg-minting-queue", binding = "MINTING_QUEUE" },
+  { queue = "stg-evolution-queue", binding = "EVOLUTION_QUEUE" },
 ]
 queues.consumers = [
-  { queue = "minting-queue", dead_letter_queue = "minting-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
-  { queue = "evolution-queue", dead_letter_queue = "evolution-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
+  { queue = "stg-minting-queue", dead_letter_queue = "minting-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
+  { queue = "stg-evolution-queue", dead_letter_queue = "evolution-queue-dlq", max_concurrency = 15, max_batch_size = 1 },
 ]
 
-# TODO: Setup staging KVs
 kv_namespaces = [
   { binding = "EMAILS_KV", id = "a008ae3da87c4f0ebf3efc2812b2cde4" },
 ]
 
-# TODO: Setup staging DBs
 d1_databases = [
-  { binding = "SESSIONS_DB", database_name = "stg-sessions-db", database_id = "4fff6376-d5de-4b1c-a8ec-b9ea13ed4eec" },
+  { binding = "SESSIONS_DB", database_name = "sessions-db", database_id = "4fff6376-d5de-4b1c-a8ec-b9ea13ed4eec" },
 ]
