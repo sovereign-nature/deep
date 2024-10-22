@@ -41,6 +41,10 @@ export async function updateMultipassStateForAddress(address: string) {
         DID: data.dotphinDID,
         pending: false,
       },
+      evolution: {
+        level: data.dotphin ? getLevelAttributeValue(data.dotphin) : 0,
+        maxLevel: data.dotphinMaxLevel,
+      },
     });
 
     if (data.dotphinDID) {
@@ -121,7 +125,13 @@ async function fetchNFTDataByDID(did: string) {
     console.error('Error fetching NFT data:', error);
   }
 }
-
+// Get Level Attribute Value
+function getLevelAttributeValue(asset: DeepAsset): number {
+  const levelAttribute = asset.attributes?.find(
+    (attr) => attr.trait_type === 'level'
+  );
+  return levelAttribute ? Number(levelAttribute.value) : 0;
+}
 // Find Proof by Trait Type
 function findProofByTraitType(
   proofs: DeepAsset[],
@@ -192,6 +202,7 @@ export async function evolveDOTphinNFT(
       },
       nft: { DID: dotphinDID, data: evolveData, pending: true },
       evolution: {
+        ...currentState.evolution,
         level: currentState.evolution.level + 1,
       },
     });
