@@ -66,4 +66,10 @@ export const events: Events = {
     seed: () => getRandomInt(0, 2),
     going: false,
   },
+  vds2024: {
+    collectionId: 'vds2024',
+    realCollection: 'dotphin-proofs',
+    seed: () => getRandomInt(0, 2),
+    going: true,
+  },
 };
