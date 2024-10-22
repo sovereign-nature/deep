@@ -83,11 +83,19 @@ app.openapi(
       DOTPHIN_COLLECTION_ID
     );
 
+    let dotphinAsset;
+
+    if (dotphinDID) {
+      dotphinAsset = await getAsset(dotphinDID);
+    }
+
     return c.json(
       {
         address,
         ...proofsWithStats,
         dotphinDID,
+        dotphin: dotphinAsset,
+        dotphinMaxLevel: MAX_DOTPHIN_LEVEL,
       },
       200
     );
@@ -378,7 +386,7 @@ app.openapi(
     }
 
     //Proof validation
-    const proofAsset = await getAsset(proofDID, c);
+    const proofAsset = await getAsset(proofDID);
     await validateProof(proofAsset, address, c);
 
     //Check if user has DOTphin already
@@ -400,7 +408,7 @@ app.openapi(
       );
     }
 
-    const dotphinAsset = await getAsset(dotphinDID, c);
+    const dotphinAsset = await getAsset(dotphinDID);
 
     const proofElement = getProofElement(proofAsset);
 
