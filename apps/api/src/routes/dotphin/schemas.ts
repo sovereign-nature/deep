@@ -85,9 +85,11 @@ export const ProfileResponseSchema = z.object({
       }),
     }),
   }),
+  dotphin: DeepAssetSchema.optional(), //TODO: Add example
   dotphinDID: z.string().nullable().openapi({
     example: 'did:asset:eip155:8880.unique2:700:1', //TODO: Update example with real DID
   }),
+  dotphinMaxLevel: z.number().openapi({ example: 3 }),
 });
 
 export const ClaimBodySchema = z.object({
