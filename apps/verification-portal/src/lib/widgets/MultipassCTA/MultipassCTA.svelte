@@ -5,9 +5,6 @@
   import LL from '$lib/shared/i18n/i18n-svelte';
   export let name: string;
   export let infoLink: string | undefined;
-  import { isFeatureEnabled } from '$lib/shared/utils';
-
-  const showDotphin = isFeatureEnabled('dotphinWidget');
 </script>
 
 <div
@@ -39,18 +36,15 @@
       class="bg-multipass px-12 sm:px-8 md:px-11 py-8 xl:pt-11 col-span-3 flex flex-col sm:flex-row justify-start sm:items-end gap-5"
     >
       <div class="flex gap-1 flex-col">
-        {#if !showDotphin}
-          <span class="text-sm font-aeonik font-bold text-gray-200">
-            {$LL.assets.multipass.comingSoon()}</span
-          >
-        {/if}
+        <span class="text-sm font-aeonik font-bold text-gray-200">
+          {$LL.assets.multipass.comingSoon()}</span
+        >
         <Button
           color="none"
           class="z-50 transition-colors  bg-deep-blue-800 hover:bg-primary-400 text-white rounded-sm  border-none disabled:opacity-80 !py-2.5 !px-4 text-lg  uppercase"
           type="button"
-          tabindex="1"
+          tabindex={1}
           href="/#DOTphin"
-          disabled={!showDotphin}
         >
           {$LL.assets.multipass.CTA()}
         </Button>
@@ -61,7 +55,7 @@
           color="none"
           class="z-50 hover:bg-primary-300 bg-primary-400 text-white rounded-sm  border-none !py-2.5 !px-4 text-lg uppercase"
           type="button"
-          tabindex="1"
+          tabindex={1}
           href={infoLink}
           target="_blank"
         >
