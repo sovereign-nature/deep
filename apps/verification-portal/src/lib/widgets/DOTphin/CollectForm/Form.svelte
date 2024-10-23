@@ -1,11 +1,14 @@
 <script lang="ts">
   import TileIcon from '$lib/widgets/DOTphin/CollectForm/TileIcon.svelte';
   import { multipassData } from '$lib/features/MultipassStates';
-  import { claimProofByTraitType } from '$lib/features/DOTphin';
+  import { handleProofByTraitType } from '$lib/features/DOTphin';
   import Spinner from '$lib/components/icons/Spinner.svelte';
-
-  let selectedValue: string | null = null;
+  import { resetConfetti } from '$lib/widgets/DOTphin/confettiStore';
   import { closeModal } from '$lib/widgets/DOTphin/collectModalStore';
+  let selectedValue: string | null = null;
+
+  export let action: 'claim' | 'evolve' = 'claim';
+
   function handleTileClick(value: string) {
     selectedValue = value;
     handleSubmit();
@@ -17,11 +20,13 @@
     isSubmitting = true;
 
     if ($multipassData.address && selectedValue !== null) {
-      await claimProofByTraitType(
+      await handleProofByTraitType(
         $multipassData.address,
-        selectedValue as 'earth' | 'air' | 'water'
+        selectedValue as 'earth' | 'air' | 'water',
+        action
       ).finally(() => {
         isSubmitting = false;
+        resetConfetti(); // so that evolution triggers new state
         closeModal();
       });
     } else {

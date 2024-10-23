@@ -11,6 +11,7 @@ import {
 import {
   fetchDotphinData,
   submitClaim,
+  evolveDotphin,
   claimStatus,
   burnNFT,
 } from '$lib/shared/apiServices/DOTphinAPI';
@@ -39,6 +40,10 @@ export async function updateMultipassStateForAddress(address: string) {
         ...currentState.nft,
         DID: data.dotphinDID,
         pending: false,
+      },
+      evolution: {
+        level: data.dotphin ? getLevelAttributeValue(data.dotphin) : 0,
+        maxLevel: data.dotphinMaxLevel,
       },
     });
 
@@ -120,7 +125,13 @@ async function fetchNFTDataByDID(did: string) {
     console.error('Error fetching NFT data:', error);
   }
 }
-
+// Get Level Attribute Value
+function getLevelAttributeValue(asset: DeepAsset): number {
+  const levelAttribute = asset.attributes?.find(
+    (attr) => attr.trait_type === 'level'
+  );
+  return levelAttribute ? Number(levelAttribute.value) : 0;
+}
 // Find Proof by Trait Type
 function findProofByTraitType(
   proofs: DeepAsset[],
@@ -139,21 +150,67 @@ function findProofByTraitType(
 }
 
 // Claim Proof by Trait Type
-export async function claimProofByTraitType(
+export async function handleProofByTraitType(
   address: string,
-  element: 'air' | 'water' | 'earth'
+  element: 'air' | 'water' | 'earth',
+  action: 'claim' | 'evolve'
 ) {
   const data = get(multipassData);
   const proofAddress = data.proofs
     ? findProofByTraitType(data.proofs, element)
     : undefined;
   if (proofAddress) {
-    await claimDOTphinNFT(address, proofAddress);
+    if (action === 'claim') {
+      await claimDOTphinNFT(address, proofAddress);
+    } else if (action === 'evolve') {
+      const dotphinDID = data.nft.DID;
+      if (dotphinDID) {
+        await evolveDOTphinNFT(address, dotphinDID, proofAddress);
+      } else {
+        toast.error(
+          'Error: No DOTphin found for evolution, please refresh the page and try again'
+        );
+        console.log('No DOTphin DID found for evolution');
+      }
+    }
   } else {
     toast.error(
       'Error finding a valid proof, please refresh the page and try again'
     );
     console.log(`No proof found for trait type: ${element}`);
+  }
+}
+
+// Evolve DOTphin NFT
+export async function evolveDOTphinNFT(
+  address: string,
+  dotphinDID: string,
+  proofDID: string
+) {
+  try {
+    const evolveData = await evolveDotphin(address, dotphinDID, proofDID);
+    toast.success('Evolution submitted successfully');
+    const currentState = get(multipassData);
+    updateState({
+      ...currentState,
+      proofStats: {
+        ...currentState.proofStats,
+        available: {
+          ...currentState.proofStats.available,
+          total: currentState.proofStats.available.total - 1,
+        },
+      },
+      nft: { DID: dotphinDID, data: evolveData, pending: true },
+      evolution: {
+        ...currentState.evolution,
+        level: currentState.evolution.level + 1,
+      },
+    });
+    setCookie('claimPending', evolveData.id);
+    checkClaimStatus(evolveData.id, address);
+  } catch (error) {
+    toast.error('Error submitting evolve, please try again');
+    console.error('Error during evolve submission:', error);
   }
 }
 

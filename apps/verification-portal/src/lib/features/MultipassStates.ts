@@ -7,7 +7,6 @@ const canEvolve = isFeatureEnabled('dotphinEvolution');
 
 import {
   MAX_EVOLUTION_LEVEL,
-  EVOLUTION_LIMIT,
   initialStepConfig,
   STATUS,
 } from '$lib/shared/multipassConfig';
@@ -39,6 +38,7 @@ export type MultipassData = {
   };
   evolution: {
     level: number;
+    maxLevel: number;
   };
 };
 
@@ -58,6 +58,7 @@ const initialState: MultipassData = {
   },
   evolution: {
     level: 0,
+    maxLevel: MAX_EVOLUTION_LEVEL, // set limit same as max
   },
 };
 
@@ -112,7 +113,9 @@ export const evolveStepState = derived(
       return 'INITIAL';
     } else if ($multipassData.evolution.level >= MAX_EVOLUTION_LEVEL) {
       return 'COMPLETE';
-    } else if ($multipassData.evolution.level >= EVOLUTION_LIMIT) {
+    } else if (
+      $multipassData.evolution.level >= $multipassData.evolution.maxLevel
+    ) {
       return 'LIMITED';
     } else {
       return 'EVOLVING';
@@ -159,7 +162,8 @@ export const multipassStepConfig = derived(
         : proofsStatus === STATUS.COMPLETE && nftStatus === STATUS.COMPLETE
           ? $multipassData.evolution.level >= MAX_EVOLUTION_LEVEL
             ? STATUS.COMPLETE
-            : $multipassData.evolution.level >= EVOLUTION_LIMIT
+            : $multipassData.evolution.level >=
+                $multipassData.evolution.maxLevel
               ? STATUS.LOCKED
               : STATUS.ACTIVE
           : STATUS.LOCKED;
