@@ -564,12 +564,12 @@ type RootTranslation = {
 			}
 			evolveStep: {
 				/**
-				 * E​v​o​l​u​t​i​o​n​ ​(​c​o​m​i​n​g​ ​s​o​o​n​)
+				 * E​v​o​l​u​t​i​o​n
 				 */
 				stepTitle: string
 				INITIAL: {
 					/**
-					 * C​o​m​i​n​g​ ​s​o​o​n​.​ ​Y​o​u​ ​n​e​e​d​ ​t​o​ ​h​a​v​e​ ​a​ ​D​O​T​p​h​i​n​ ​O​r​b​o​ ​t​o​ ​s​t​a​r​t​ ​e​v​o​l​v​i​n​g
+					 * Y​o​u​ ​n​e​e​d​ ​t​o​ ​h​a​v​e​ ​a​ ​D​O​T​p​h​i​n​ ​O​r​b​o​ ​t​o​ ​s​t​a​r​t​ ​e​v​o​l​v​i​n​g
 					 */
 					subtitle: string
 					/**
@@ -1286,12 +1286,12 @@ export type TranslationFunctions = {
 			}
 			evolveStep: {
 				/**
-				 * Evolution (coming soon)
+				 * Evolution
 				 */
 				stepTitle: () => LocalizedString
 				INITIAL: {
 					/**
-					 * Coming soon. You need to have a DOTphin Orbo to start evolving
+					 * You need to have a DOTphin Orbo to start evolving
 					 */
 					subtitle: () => LocalizedString
 					/**

@@ -5,8 +5,6 @@ export default {
   feature: {
     collectionsTest: false,
     multipassTest: false,
-    dotphinWidget: true,
-    dotphinEvolution: false,
   },
   social: {
     discord: 'discord:https://discord.gg/ZXyC3tN87K',
