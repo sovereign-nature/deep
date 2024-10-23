@@ -138,7 +138,7 @@ export const multipassStepConfig = derived(
 
     // Retrieve the disabled status from the initial configuration
     const nftDisabled = initialStepConfig.nft.disabled;
-    const evolutionDisabled = initialStepConfig.evolution.disabled;
+    const evolutionDisabled = initialStepConfig.evolution.disabled && false;
 
     // NFT step is locked if the user is logged out or disabled; otherwise, check other conditions
     const nftStatus =
