@@ -1,12 +1,10 @@
 import { CFImageUploadResponseSchema } from '../schemas';
-import { evolutionImages, MAX_DOTPHIN_LEVEL } from '../config';
+import { evolutionImages, levelNames, MAX_DOTPHIN_LEVEL } from '../config';
 import { DOTphinElement, DOTphinLevel } from '../types';
 import { getRandomInt } from '$lib/utils';
 
 function levelToName(level: number) {
-  return ['orbo', 'nix'][
-    Math.min(level, MAX_DOTPHIN_LEVEL) - 1
-  ] as DOTphinLevel;
+  return levelNames[Math.min(level, MAX_DOTPHIN_LEVEL) - 1] as DOTphinLevel;
 }
 
 export async function generateEvolutionImage(
