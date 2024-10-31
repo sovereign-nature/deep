@@ -28,7 +28,7 @@ const orboImages = {
   ],
 };
 
-const levelNames = ['orbo', 'nix', 'naia '];
+export const levelNames = ['orbo', 'nix', 'naia '];
 
 export function getLevelName(level: number): string {
   return levelNames[level - 1];
