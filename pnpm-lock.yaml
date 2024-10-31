@@ -124,8 +124,8 @@ importers:
         version: 3.23.8
     devDependencies:
       '@cloudflare/vitest-pool-workers':
-        specifier: 0.5.22
-        version: 0.5.22(@cloudflare/workers-types@4.20241011.0)(@vitest/runner@2.1.2)(@vitest/snapshot@2.1.2)(bufferutil@4.0.8)(utf-8-validate@5.0.10)(vitest@2.1.2(@types/node@22.7.4)(msw@2.4.11(typescript@5.6.3))(terser@5.34.1))
+        specifier: 0.5.23
+        version: 0.5.23(@cloudflare/workers-types@4.20241011.0)(@vitest/runner@2.1.2)(@vitest/snapshot@2.1.2)(bufferutil@4.0.8)(utf-8-validate@5.0.10)(vitest@2.1.2(@types/node@22.7.4)(msw@2.4.11(typescript@5.6.3))(terser@5.34.1))
       '@cloudflare/workers-types':
         specifier: 4.20241011.0
         version: 4.20241011.0
@@ -1215,8 +1215,8 @@ packages:
     resolution: {integrity: sha512-YLPHc8yASwjNkmcDMQMY35yiWjoKAKnhUbPRszBRS0YgH+IXtsMp61j+yTcnCE3oO2DgP0U3iejLC8FTtKDC8Q==}
     engines: {node: '>=16.13'}
 
-  '@cloudflare/vitest-pool-workers@0.5.22':
-    resolution: {integrity: sha512-Zynt47hQbITDGDVjuI11/NlLuKCByooIVKbCPG0kIu3C4Wr1QcNmzZyhGVxVWKjQDRjXDgbqVN605G+SXy8twg==}
+  '@cloudflare/vitest-pool-workers@0.5.23':
+    resolution: {integrity: sha512-hn+Lzjq8FZxsq29kn3KORM3qeZjST8/xSzRC7YZoDw/NuNGb9Lkb0fAx9djxxgYtn4ajUZuH0jzTihyt53Qj9w==}
     peerDependencies:
       '@vitest/runner': 2.0.x - 2.1.x
       '@vitest/snapshot': 2.0.x - 2.1.x
@@ -9196,8 +9196,8 @@ packages:
   unenv-nightly@2.0.0-20241009-125958-e8ea22f:
     resolution: {integrity: sha512-hRxmKz1iSVRmuFx/vBdPsx7rX4o7Cas9vdjDNeUeWpQTK2LzU3Xy3Jz0zbo7MJX0bpqo/LEFCA+GPwsbl6zKEQ==}
 
-  unenv-nightly@2.0.0-20241018-011344-e666fcf:
-    resolution: {integrity: sha512-D00bYn8rzkCBOlLx+k1iHQlc69jvtJRT7Eek4yIGQ6461a2tUBjngGZdRpqsoXAJCz/qBW0NgPting7Zvg+ysg==}
+  unenv-nightly@2.0.0-20241024-111401-d4156ac:
+    resolution: {integrity: sha512-xJO1hfY+Te+/XnfCYrCbFbRcgu6XEODND1s5wnVbaBCkuQX7JXF7fHEXPrukFE2j8EOH848P8QN19VO47XN8hw==}
 
   unenv@1.10.0:
     resolution: {integrity: sha512-wY5bskBQFL9n3Eca5XnhH6KbUo/tfvkwm9OpcdCvLaeA7piBNbavbOKJySEwQ1V0RH6HvNlSAFRTpvTqgKRQXQ==}
@@ -9692,8 +9692,8 @@ packages:
       '@cloudflare/workers-types':
         optional: true
 
-  wrangler@3.83.0:
-    resolution: {integrity: sha512-qDzdUuTngKqmm2OJUZm7Gk4+Hv37F2nNNAHuhIgItEIhxBdOVDsgKmvpd+f41MFxyuGg3fbGWYANHI+0V2Z5yw==}
+  wrangler@3.84.0:
+    resolution: {integrity: sha512-EA8oh7YQmZ3kD+a5MId9reHKGgXpodmsPWMLriE5gT5YmG9is66n0AA2tyLzQZKZXmgbo6JyGxvCDPcLeb/X0w==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -10822,7 +10822,7 @@ snapshots:
     dependencies:
       mime: 3.0.0
 
-  '@cloudflare/vitest-pool-workers@0.5.22(@cloudflare/workers-types@4.20241011.0)(@vitest/runner@2.1.2)(@vitest/snapshot@2.1.2)(bufferutil@4.0.8)(utf-8-validate@5.0.10)(vitest@2.1.2(@types/node@22.7.4)(msw@2.4.11(typescript@5.6.3))(terser@5.34.1))':
+  '@cloudflare/vitest-pool-workers@0.5.23(@cloudflare/workers-types@4.20241011.0)(@vitest/runner@2.1.2)(@vitest/snapshot@2.1.2)(bufferutil@4.0.8)(utf-8-validate@5.0.10)(vitest@2.1.2(@types/node@22.7.4)(msw@2.4.11(typescript@5.6.3))(terser@5.34.1))':
     dependencies:
       '@vitest/runner': 2.1.2
       '@vitest/snapshot': 2.1.2
@@ -10833,7 +10833,7 @@ snapshots:
       miniflare: 3.20241022.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       semver: 7.6.3
       vitest: 2.1.2(@types/node@22.7.4)(msw@2.4.11(typescript@5.6.3))(terser@5.34.1)
-      wrangler: 3.83.0(@cloudflare/workers-types@4.20241011.0)(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      wrangler: 3.84.0(@cloudflare/workers-types@4.20241011.0)(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       zod: 3.23.8
     transitivePeerDependencies:
       - '@cloudflare/workers-types'
@@ -21122,7 +21122,7 @@ snapshots:
       pathe: 1.1.2
       ufo: 1.5.4
 
-  unenv-nightly@2.0.0-20241018-011344-e666fcf:
+  unenv-nightly@2.0.0-20241024-111401-d4156ac:
     dependencies:
       defu: 6.1.4
       ohash: 1.1.4
@@ -21694,7 +21694,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  wrangler@3.83.0(@cloudflare/workers-types@4.20241011.0)(bufferutil@4.0.8)(utf-8-validate@5.0.10):
+  wrangler@3.84.0(@cloudflare/workers-types@4.20241011.0)(bufferutil@4.0.8)(utf-8-validate@5.0.10):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@cloudflare/workers-shared': 0.7.0
@@ -21712,7 +21712,7 @@ snapshots:
       resolve.exports: 2.0.2
       selfsigned: 2.4.1
       source-map: 0.6.1
-      unenv: unenv-nightly@2.0.0-20241018-011344-e666fcf
+      unenv: unenv-nightly@2.0.0-20241024-111401-d4156ac
       workerd: 1.20241022.0
       xxhash-wasm: 1.0.2
     optionalDependencies:
