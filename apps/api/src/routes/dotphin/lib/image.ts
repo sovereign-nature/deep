@@ -24,12 +24,18 @@ export async function generateEvolutionImage(
     'https://api.cloudflare.com/client/v4/accounts/2ca8f087834868e70427f43cb09afcce/images/v1';
 
   const evolutionName = levelToName(level);
-  const mainImage = evolutionImages[evolutionName].dotphin[mainElement];
+
+  //Deep copy the images object
+  const images = JSON.parse(JSON.stringify(evolutionImages));
+
+  const mainImage = images[evolutionName].dotphin[mainElement];
 
   const draw = [];
   for (const element of proofsElements) {
-    const imageUrl =
-      evolutionImages[evolutionName].elements[element][getRandomInt(0, 2)];
+    const elementImages = images[evolutionName].elements[element];
+
+    const elementIndex = getRandomInt(0, elementImages.length - 1);
+    const imageUrl = elementImages.splice(elementIndex, 1)[0];
 
     draw.push({ url: imageUrl });
   }
