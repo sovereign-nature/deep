@@ -1,8 +1,9 @@
 import { UniqueNetwork } from '@sni/types';
 import { CollectionConfig } from '../claims/config'; //TODO: Move to shared
+import { DOTphinLevel } from './types';
 import { getRandomInt } from '$lib/utils';
 
-export const MAX_DOTPHIN_LEVEL = 2;
+export const MAX_DOTPHIN_LEVEL = 3;
 
 const baseAttributes = [
   { trait_type: 'level', value: '1' },
@@ -28,7 +29,7 @@ const orboImages = {
   ],
 };
 
-const levelNames = ['orbo', 'nix'];
+export const levelNames: DOTphinLevel[] = ['orbo', 'nix', 'naia'];
 
 export function getLevelName(level: number): string {
   return levelNames[level - 1];
@@ -76,6 +77,30 @@ export const evolutionImages: DOTphinEvolutions = {
         `${cdnFolder}/dotphin-nix/elements/water/element-nix-water-01.png`,
         `${cdnFolder}/dotphin-nix/elements/water/element-nix-water-02.png`,
         `${cdnFolder}/dotphin-nix/elements/water/element-nix-water-03.png`,
+      ],
+    },
+  },
+  naia: {
+    dotphin: {
+      air: `${cdnFolder}/dotphin-naia/dotphins/dotphin-naia-air.png`,
+      earth: `${cdnFolder}/dotphin-naia/dotphins/dotphin-naia-earth.png`,
+      water: `${cdnFolder}/dotphin-naia/dotphins/dotphin-naia-water.png`,
+    },
+    elements: {
+      air: [
+        `${cdnFolder}/dotphin-naia/elements/air/element-naia-air-01.png`,
+        `${cdnFolder}/dotphin-naia/elements/air/element-naia-air-02.png`,
+        `${cdnFolder}/dotphin-naia/elements/air/element-naia-air-03.png`,
+      ],
+      earth: [
+        `${cdnFolder}/dotphin-naia/elements/earth/element-naia-earth-01.png`,
+        `${cdnFolder}/dotphin-naia/elements/earth/element-naia-earth-02.png`,
+        `${cdnFolder}/dotphin-naia/elements/earth/element-naia-earth-03.png`,
+      ],
+      water: [
+        `${cdnFolder}/dotphin-naia/elements/water/element-naia-water-01.png`,
+        `${cdnFolder}/dotphin-naia/elements/water/element-naia-water-02.png`,
+        `${cdnFolder}/dotphin-naia/elements/water/element-naia-water-03.png`,
       ],
     },
   },
