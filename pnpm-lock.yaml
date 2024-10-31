@@ -81,8 +81,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/types
       '@types/lodash':
-        specifier: 4.17.10
-        version: 4.17.10
+        specifier: 4.17.13
+        version: 4.17.13
       '@unique-nft/accounts':
         specifier: 0.3.7
         version: 0.3.7(@polkadot/api@12.4.2(bufferutil@4.0.8)(utf-8-validate@5.0.10))(@polkadot/keyring@13.0.2(@polkadot/util-crypto@12.6.2(@polkadot/util@12.6.2))(@polkadot/util@12.6.2))(@polkadot/ui-settings@3.9.1(@polkadot/networks@13.1.1)(@polkadot/util@12.6.2))(@polkadot/util-crypto@12.6.2(@polkadot/util@12.6.2))(bufferutil@4.0.8)(utf-8-validate@5.0.10)
@@ -211,8 +211,8 @@ importers:
         specifier: 1.9.14
         version: 1.9.14
       '@types/lodash':
-        specifier: 4.17.10
-        version: 4.17.10
+        specifier: 4.17.13
+        version: 4.17.13
       '@vercel/analytics':
         specifier: 1.3.1
         version: 1.3.1(react@18.3.1)
@@ -3841,8 +3841,8 @@ packages:
   '@types/leaflet@1.9.14':
     resolution: {integrity: sha512-sx2q6MDJaajwhKeVgPSvqXd8rhNJSTA3tMidQGduZn9S6WBYxDkCpSpV5xXEmSg7Cgdk/5vJGhVF1kMYLzauBg==}
 
-  '@types/lodash@4.17.10':
-    resolution: {integrity: sha512-YpS0zzoduEhuOWjAotS6A5AVCva7X4lVlYLF0FYHAY9sdraBfnatttHItlWeZdGhuEkf+OzMNg2ZYAx8t+52uQ==}
+  '@types/lodash@4.17.13':
+    resolution: {integrity: sha512-lfx+dftrEZcdBPczf9d0Qv0x+j/rfNCMuC6OcfXmO8gkfeNAY88PgKUbvG56whcN23gc27yenwF6oJZXGFpYxg==}
 
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
@@ -14289,7 +14289,7 @@ snapshots:
     dependencies:
       '@types/geojson': 7946.0.14
 
-  '@types/lodash@4.17.10': {}
+  '@types/lodash@4.17.13': {}
 
   '@types/ms@0.7.34': {}
 
