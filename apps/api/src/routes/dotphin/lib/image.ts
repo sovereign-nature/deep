@@ -3,7 +3,7 @@ import { evolutionImages, levelNames, MAX_DOTPHIN_LEVEL } from '../config';
 import { DOTphinElement, DOTphinLevel } from '../types';
 import { getRandomInt } from '$lib/utils';
 
-function levelToName(level: number) {
+function levelToName(level: number): DOTphinLevel {
   return levelNames[Math.min(level, MAX_DOTPHIN_LEVEL) - 1] as DOTphinLevel;
 }
 
@@ -22,6 +22,8 @@ export async function generateEvolutionImage(
     'https://api.cloudflare.com/client/v4/accounts/2ca8f087834868e70427f43cb09afcce/images/v1';
 
   const evolutionName = levelToName(level);
+
+  console.log('Evolution Name', evolutionName);
 
   //Deep copy the images object
   const images = JSON.parse(JSON.stringify(evolutionImages));

@@ -1,5 +1,6 @@
 import { UniqueNetwork } from '@sni/types';
 import { CollectionConfig } from '../claims/config'; //TODO: Move to shared
+import { DOTphinLevel } from './types';
 import { getRandomInt } from '$lib/utils';
 
 export const MAX_DOTPHIN_LEVEL = 3;
@@ -28,7 +29,7 @@ const orboImages = {
   ],
 };
 
-export const levelNames = ['orbo', 'nix', 'naia '];
+export const levelNames: DOTphinLevel[] = ['orbo', 'nix', 'naia'];
 
 export function getLevelName(level: number): string {
   return levelNames[level - 1];

@@ -13,4 +13,4 @@ export type EvolutionQueueMessage = {
 
 export type DOTphinElement = 'air' | 'earth' | 'water';
 
-export type DOTphinLevel = 'orbo' | 'nix';
+export type DOTphinLevel = 'orbo' | 'nix' | 'naia';
