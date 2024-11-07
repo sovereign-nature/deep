@@ -33,7 +33,7 @@
     "@sni/ui-kit": "workspace:*",
     "@sni/utils": "workspace:*",
     "@sveltejs/adapter-auto": "3.2.5",
-    "@sveltejs/adapter-vercel": "5.4.5",
+    "@sveltejs/adapter-vercel": "5.4.7",
     "@sveltejs/kit": "2.7.3",
     "@sveltejs/vite-plugin-svelte": "3.1.2",
     "@sveltejs/vite-plugin-svelte-inspector": "2.1.0",
