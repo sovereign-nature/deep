@@ -76,6 +76,6 @@ export const events: Events = {
     collectionId: 'sub0-reset-2024',
     realCollection: 'dotphin-proofs',
     seed: () => getRandomInt(0, 2),
-    going: false,
+    going: true,
   },
 };
