@@ -156,6 +156,20 @@ const vds2024Attributes = [
   { trait_type: 'proofOf', value: 'presence' },
 ];
 
+const sub0Reset2024Attributes = [
+  { trait_type: 'eventId', value: 'sub0-reset-2024' },
+  {
+    trait_type: 'eventURL',
+    value: 'https://sub0.gg/',
+  },
+  { trait_type: 'country', value: 'Thailand' },
+  { trait_type: 'city', value: 'Bangkok' },
+  { trait_type: 'virtualEvent', value: 'false' },
+  { trait_type: 'startDate', value: '9-Nov-2024' },
+  { trait_type: 'endDate', value: '11-Nov-2024' },
+  { trait_type: 'proofOf', value: 'presence' },
+];
+
 export const collections: Collections = {
   //ENGIE
   '5f773e35-d5f2-41dc-ae80-c94e0e8e4821': {
@@ -674,6 +688,69 @@ export const collections: Collections = {
         [{ trait_type: 'element', value: 'air' }, ...vds2024Attributes],
         [{ trait_type: 'element', value: 'earth' }, ...vds2024Attributes],
         [{ trait_type: 'element', value: 'water' }, ...vds2024Attributes],
+      ],
+    },
+    network: 'unique',
+    tokenStandard: 'unique2',
+  },
+  'dev-sub0-reset-2024': {
+    name: 'dev-sub0-reset-2024',
+    externalId: '3030',
+    metadata: {
+      description:
+        'Congratulations on claiming your DOTphin Proof of Presence at sub0 reset 2024! By claiming it, you’re launching into an exhilarating journey where your presence fuels the evolution of the mysterious DOTphin. Use it to unlock your **Orbo** and evolve your DOTphin. What will it become? Dive in and discover the magic—you’re just one PoP away from greatness!',
+      image: [
+        'https://real.myfilebase.com/ipfs/QmPu258Zshgv4DgpFF7XDhTCz4mw86JiuuCmC9CAUdDecY/sub0-reset-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmPu258Zshgv4DgpFF7XDhTCz4mw86JiuuCmC9CAUdDecY/sub0-reset-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmPu258Zshgv4DgpFF7XDhTCz4mw86JiuuCmC9CAUdDecY/sub0-reset-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Presence ‒ sub0 reset 2024',
+      attributes: [
+        [{ trait_type: 'element', value: 'air' }, ...sub0Reset2024Attributes],
+        [{ trait_type: 'element', value: 'earth' }, ...sub0Reset2024Attributes],
+        [{ trait_type: 'element', value: 'water' }, ...sub0Reset2024Attributes],
+      ],
+    },
+    network: 'opal',
+    tokenStandard: 'unique2',
+  },
+  'testnet-sub0-reset-2024': {
+    name: 'testnet-sub0-reset-2024',
+    externalId: '3551',
+    metadata: {
+      description:
+        'Congratulations on claiming your DOTphin Proof of Presence at sub0 reset 2024! By claiming it, you’re launching into an exhilarating journey where your presence fuels the evolution of the mysterious DOTphin. Use it to unlock your **Orbo** and evolve your DOTphin. What will it become? Dive in and discover the magic—you’re just one PoP away from greatness!',
+      image: [
+        'https://real.myfilebase.com/ipfs/QmPu258Zshgv4DgpFF7XDhTCz4mw86JiuuCmC9CAUdDecY/sub0-reset-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmPu258Zshgv4DgpFF7XDhTCz4mw86JiuuCmC9CAUdDecY/sub0-reset-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmPu258Zshgv4DgpFF7XDhTCz4mw86JiuuCmC9CAUdDecY/sub0-reset-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Presence ‒ sub0 reset 2024',
+      attributes: [
+        [{ trait_type: 'element', value: 'air' }, ...sub0Reset2024Attributes],
+        [{ trait_type: 'element', value: 'earth' }, ...sub0Reset2024Attributes],
+        [{ trait_type: 'element', value: 'water' }, ...sub0Reset2024Attributes],
+      ],
+    },
+    network: 'opal',
+    tokenStandard: 'unique2',
+  },
+  'sub0-reset-2024': {
+    name: 'testnet-sub0-reset-2024',
+    externalId: '665',
+    metadata: {
+      description:
+        'Congratulations on claiming your DOTphin Proof of Presence at sub0 reset 2024! By claiming it, you’re launching into an exhilarating journey where your presence fuels the evolution of the mysterious DOTphin. Use it to unlock your **Orbo** and evolve your DOTphin. What will it become? Dive in and discover the magic—you’re just one PoP away from greatness!',
+      image: [
+        'https://real.myfilebase.com/ipfs/QmPu258Zshgv4DgpFF7XDhTCz4mw86JiuuCmC9CAUdDecY/sub0-reset-2024-air.png',
+        'https://real.myfilebase.com/ipfs/QmPu258Zshgv4DgpFF7XDhTCz4mw86JiuuCmC9CAUdDecY/sub0-reset-2024-earth.png',
+        'https://real.myfilebase.com/ipfs/QmPu258Zshgv4DgpFF7XDhTCz4mw86JiuuCmC9CAUdDecY/sub0-reset-2024-water.png',
+      ],
+      name: 'DOTphin Proof of Presence ‒ sub0 reset 2024',
+      attributes: [
+        [{ trait_type: 'element', value: 'air' }, ...sub0Reset2024Attributes],
+        [{ trait_type: 'element', value: 'earth' }, ...sub0Reset2024Attributes],
+        [{ trait_type: 'element', value: 'water' }, ...sub0Reset2024Attributes],
       ],
     },
     network: 'unique',
