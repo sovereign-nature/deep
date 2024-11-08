@@ -3,7 +3,7 @@ import { CollectionConfig } from '../claims/config'; //TODO: Move to shared
 import { DOTphinLevel } from './types';
 import { getRandomInt } from '$lib/utils';
 
-export const MAX_DOTPHIN_LEVEL = 3;
+export const MAX_DOTPHIN_LEVEL = 4;
 
 const baseAttributes = [
   { trait_type: 'level', value: '1' },
@@ -29,7 +29,7 @@ const orboImages = {
   ],
 };
 
-export const levelNames: DOTphinLevel[] = ['orbo', 'nix', 'naia'];
+export const levelNames: DOTphinLevel[] = ['orbo', 'nix', 'naia', 'eidon'];
 
 export function getLevelName(level: number): string {
   return levelNames[level - 1];
@@ -101,6 +101,30 @@ export const evolutionImages: DOTphinEvolutions = {
         `${cdnFolder}/dotphin-naia/elements/water/element-naia-water-01.png`,
         `${cdnFolder}/dotphin-naia/elements/water/element-naia-water-02.png`,
         `${cdnFolder}/dotphin-naia/elements/water/element-naia-water-03.png`,
+      ],
+    },
+  },
+  eidon: {
+    dotphin: {
+      air: `${cdnFolder}/dotphin-eidon/dotphins/dotphin-eidon-air.png`,
+      earth: `${cdnFolder}/dotphin-eidon/dotphins/dotphin-eidon-earth.png`,
+      water: `${cdnFolder}/dotphin-eidon/dotphins/dotphin-eidon-water.png`,
+    },
+    elements: {
+      air: [
+        `${cdnFolder}/dotphin-eidon/elements/air/element-eidon-air-01.png`,
+        `${cdnFolder}/dotphin-eidon/elements/air/element-eidon-air-02.png`,
+        `${cdnFolder}/dotphin-eidon/elements/air/element-eidon-air-03.png`,
+      ],
+      earth: [
+        `${cdnFolder}/dotphin-eidon/elements/earth/element-eidon-earth-01.png`,
+        `${cdnFolder}/dotphin-eidon/elements/earth/element-eidon-earth-02.png`,
+        `${cdnFolder}/dotphin-eidon/elements/earth/element-eidon-earth-03.png`,
+      ],
+      water: [
+        `${cdnFolder}/dotphin-eidon/elements/water/element-eidon-water-01.png`,
+        `${cdnFolder}/dotphin-eidon/elements/water/element-eidon-water-02.png`,
+        `${cdnFolder}/dotphin-eidon/elements/water/element-eidon-water-03.png`,
       ],
     },
   },
