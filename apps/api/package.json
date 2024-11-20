@@ -18,7 +18,7 @@
     "@hono/zod-openapi": "0.16.4",
     "@hono/zod-validator": "0.4.1",
     "@lucia-auth/adapter-sqlite": "3.0.2",
-    "@scalar/hono-api-reference": "0.5.158",
+    "@scalar/hono-api-reference": "0.5.160",
     "@sni/address-utils": "workspace:*",
     "@sni/clients": "workspace:*",
     "@sni/constants": "workspace:*",
