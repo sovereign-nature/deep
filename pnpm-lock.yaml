@@ -108,8 +108,8 @@ importers:
         specifier: 3.2.1
         version: 3.2.1
       nanoid:
-        specifier: 5.0.7
-        version: 5.0.7
+        specifier: 5.0.9
+        version: 5.0.9
       pino:
         specifier: 9.4.0
         version: 9.4.0
@@ -7272,8 +7272,8 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nanoid@5.0.7:
-    resolution: {integrity: sha512-oLxFY2gd2IqnjcYyOXD8XGCftpGtZP2AbHbOkthDkvRywH5ayNtPVy9YlOPcHckXzbLTCHpkb7FB+yuxKV13pQ==}
+  nanoid@5.0.9:
+    resolution: {integrity: sha512-Aooyr6MXU6HpvvWXKoVoXwKMs/KyVakWwg7xQfv5/S/RIgJMy0Ifa45H9qqYy7pTCszrHzP21Uk4PZq2HpEM8Q==}
     engines: {node: ^18 || >=20}
     hasBin: true
 
@@ -11770,7 +11770,7 @@ snapshots:
       '@internationalized/date': 3.5.5
       dequal: 2.0.3
       focus-trap: 7.5.4
-      nanoid: 5.0.7
+      nanoid: 5.0.9
       svelte: 4.2.19
 
   '@metamask/eth-json-rpc-provider@1.0.1':
@@ -16191,7 +16191,7 @@ snapshots:
     dependencies:
       '@internationalized/date': 3.5.5
       '@melt-ui/svelte': 0.76.2(svelte@4.2.19)
-      nanoid: 5.0.7
+      nanoid: 5.0.9
       svelte: 4.2.19
 
   bl@4.1.0:
@@ -19191,7 +19191,7 @@ snapshots:
 
   nanoid@3.3.7: {}
 
-  nanoid@5.0.7: {}
+  nanoid@5.0.9: {}
 
   natural-compare@1.4.0: {}
 
