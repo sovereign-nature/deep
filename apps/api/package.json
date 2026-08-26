@@ -29,7 +29,7 @@
     "@unique-nft/sr25519": "0.0.2",
     "@unique-nft/utils": "0.3.20",
     "drizzle-orm": "0.34.1",
-    "hono": "4.6.5",
+    "hono": "4.12.34",
     "lodash": "4.17.21",
     "lucia": "3.2.1",
     "nanoid": "5.0.7",
