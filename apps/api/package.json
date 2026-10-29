@@ -36,7 +36,7 @@
     "pino": "9.4.0",
     "resend": "4.0.0",
     "siwe": "2.3.2",
-    "zod": "3.23.8"
+    "zod": "4.6.6"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "0.5.29",
